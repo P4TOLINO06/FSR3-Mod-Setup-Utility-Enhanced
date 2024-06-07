@@ -245,8 +245,6 @@ namespace FSR3ModSetupUtilityEnhanced
             ClockLabel.Text = DateTime.Now.ToString("HH:mm:ss");
             DateOwLabel.Text = DateTime.Now.DayOfWeek.ToString();
             Date.Text = DateTime.Now.ToString("dd/MM/yyyy");
-
-            Debug.Write("Ok");
         }
     }
 }

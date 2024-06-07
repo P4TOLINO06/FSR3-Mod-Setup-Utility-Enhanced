@@ -42,7 +42,7 @@
             buttonGuide = new Button();
             panel5 = new Panel();
             buttonExit = new Button();
-            label1 = new Label();
+            flowLayoutPanel2 = new FlowLayoutPanel();
             sidebarTimer = new System.Windows.Forms.Timer(components);
             mainPanel = new Panel();
             Date = new Label();
@@ -52,7 +52,6 @@
             ClockLabel = new Label();
             pictureBox1 = new PictureBox();
             clockTimer = new System.Windows.Forms.Timer(components);
-            flowLayoutPanel2 = new FlowLayoutPanel();
             sidebar.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
@@ -64,7 +63,6 @@
             flowLayoutPanel1.SuspendLayout();
             flowClock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // sidebar
@@ -210,19 +208,16 @@
             buttonExit.UseVisualStyleBackColor = true;
             buttonExit.Click += button4_Click;
             // 
-            // label1
+            // flowLayoutPanel2
             // 
-            label1.Anchor = AnchorStyles.Bottom;
-            label1.AutoSize = true;
-            label1.FlatStyle = FlatStyle.Flat;
-            label1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(29, 26);
-            label1.TabIndex = 6;
-            label1.Text = "v0.1 Beta";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            flowLayoutPanel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            flowLayoutPanel2.AutoSize = true;
+            flowLayoutPanel2.BackColor = Color.FromArgb(30, 35, 45);
+            flowLayoutPanel2.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutPanel2.Location = new Point(3, 377);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(0, 0);
+            flowLayoutPanel2.TabIndex = 8;
             // 
             // sidebarTimer
             // 
@@ -320,18 +315,6 @@
             // 
             clockTimer.Tick += clockTimer_Tick;
             // 
-            // flowLayoutPanel2
-            // 
-            flowLayoutPanel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            flowLayoutPanel2.AutoSize = true;
-            flowLayoutPanel2.BackColor = Color.FromArgb(30, 35, 45);
-            flowLayoutPanel2.Controls.Add(label1);
-            flowLayoutPanel2.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel2.Location = new Point(3, 377);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(35, 26);
-            flowLayoutPanel2.TabIndex = 8;
-            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -342,7 +325,7 @@
             Controls.Add(mainPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "mainForm";
-            Text = " ";
+            Text = " FSR3 Mod Setup Utility Enhanced";
             Load += mainPanel_Load;
             Resize += Form1_Resize;
             sidebar.ResumeLayout(false);
@@ -361,8 +344,6 @@
             flowClock.ResumeLayout(false);
             flowClock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -389,7 +370,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Label DateOwLabel;
         private Label Date;
-        private Label label1;
         private FlowLayoutPanel flowLayoutPanel2;
     }
 }

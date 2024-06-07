@@ -24,6 +24,7 @@ namespace FSR3ModSetupUtilityEnhanced
         string path_fsr = "";
 
         public string select_mod;
+        bool varLfz = false;
 
         public formSettings()
         {
@@ -107,6 +108,57 @@ namespace FSR3ModSetupUtilityEnhanced
             };
         #endregion
 
+        #region Folder Uniscaler
+        Dictionary<string, string> folder_uniscaler = new Dictionary<string, string>
+            {
+                { "Uniscaler", @"mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler + Xess + Dlss", @"mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" }
+            };
+        #endregion
+
+        #region Folder Uniscaler V2
+        Dictionary<string, string> folder_uniscaler_v2 = new Dictionary<string, string>
+        {
+            {"Uniscaler V2",@"mods\\Temp\\Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml"}
+        };
+        #endregion
+
+        #region Folder Disable Console
+        Dictionary<string, string> folder_disable_console = new Dictionary<string, string>
+            {
+                { "0.10.3", @"mods\Temp\FSR2FSR3_0.10.3\enable_fake_gpu\fsr2fsr3.config.toml" },
+                { "0.10.4", @"mods\Temp\FSR2FSR3_0.10.4\enable_fake_gpu\fsr2fsr3.config.toml" },
+                { "Uniscaler", @"mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler + Xess + Dlss", @"mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" }
+            };
+        #endregion
+
+        #region Clean Ini File Folder
+
+        Dictionary<string, string> folder_clean_ini = new Dictionary<string, string>
+        {
+            { "0.7.4", "mods\\FSR2FSR3_0.7.4\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.7.5", "mods\\FSR2FSR3_0.7.5_hotfix\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.7.6", "mods\\FSR2FSR3_0.7.6\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.8.0", "mods\\FSR2FSR3_0.8.0\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.9.0", "mods\\FSR2FSR3_0.9.0\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.10.0", "mods\\FSR2FSR3_0.10.0\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.10.1", "mods\\FSR2FSR3_0.10.1\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.10.1h1", "mods\\FSR2FSR3_0.10.1h1\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.10.2h1", "mods\\FSR2FSR3_0.10.2h1\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.10.3", "mods\\FSR2FSR3_0.10.3\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.10.4", "mods\\FSR2FSR3_0.10.4\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "Uniscaler", "mods\\FSR2FSR3_Uniscaler\\enable_fake_gpu\\uniscaler.config.toml" },
+            { "Uniscaler + Xess + Dlss", "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\enable_fake_gpu\\uniscaler.config.toml" },
+            { "The Callisto Protocol FSR3", "mods\\FSR3_Callisto\\enable_fake_gpu" },
+            { "Uniscaler V2", "mods\\FSR2FSR3_Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml" },
+            { "Uni Custom Miles", "mods\\FSR2FSR3_Miles\\uni_miles_toml" }
+        };
+
+        #endregion
+
         //Ini Editor
 
         public void ConfigIni(string key, string value, Dictionary<string, string> DictionaryPath, string? section = null)
@@ -118,6 +170,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 IniEditor iniEditor = new IniEditor(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + pathToml));
 
                 iniEditor.Write(section, key, " " + value);
+            }
+        }
+
+        public void ReplaceIni()
+        {
+            if (folder_clean_ini.ContainsKey(select_mod) && folder_fake_gpu.ContainsKey(select_mod))
+            {
+                string path_clean_ini =  Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder_clean_ini[select_mod]);
+                string modified_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) + folder_fake_gpu[select_mod]);
+                File.Copy(path_clean_ini, modified_ini,true);
+                Debug.WriteLine(modified_ini);
             }
         }
 
@@ -135,6 +198,32 @@ namespace FSR3ModSetupUtilityEnhanced
             //Toml file configuration based on the checked box (AddOptionsSelect - CheckedListBox)
 
             select_mod = listMods.SelectedItem as string;
+
+            void ShowErrorMessage(string message)
+            {
+                DialogResult = MessageBox.Show(message, "Error", MessageBoxButtons.OK);
+                e.NewValue = CheckState.Unchecked;
+            }
+
+            void ConfigureMod(string configKey,string modVersionMessage, Dictionary<string, string> folder, string section)
+            {
+                if (select_Folder != null)
+                {
+                    if (folder.ContainsKey(select_mod))
+                    {
+                        string pathToml = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder[select_mod]);
+                        ConfigIni(configKey,AddOptSelect,folder,section);
+                    }
+                    else
+                    {
+                        ShowErrorMessage(modVersionMessage);
+                    }
+                }
+                else
+                {
+                    ShowErrorMessage(modVersionMessage);
+                }
+            }
 
             if (itemText == "Fake Nvidia Gpu" && select_mod != null)
             {
@@ -157,35 +246,80 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
 
-            if (itemText == "Ue Compatibility Mode" && select_mod != null)
+            if (itemText == "Ue Compatibility Mode")
             {
-                if (folder_ue.ContainsKey(select_mod))
+                ConfigureMod("amd_unreal_engine_dlss_workaround", "Select a mod version starting from 0.9.0", folder_ue, "compatibility");
+            }
+            if (itemText == "Nvapi Results")
+            {
+                ConfigureMod("fake_nvapi_results", "Select a mod version starting from 0.10.2h1.", folder_nvapi, "compatibility");
+            }
+            if (itemText == "MacOS Crossover Support")
+            {
+                ConfigureMod("macos_crossover_support", "Select a mod version starting from 0.9.0.", folder_ue, "compatibility");
+            }
+            if (itemText == "Auto Exposure")
+            {
+                ConfigureMod("force_auto_exposure", "Select a mod version starting from Uniscaler.", folder_uniscaler, "general");
+            }
+            if (itemText == "Debug View")
+            {
+                ConfigureMod("enable_debug_view", "Select a mod version starting from 0.9.0.", folder_ue, "debug");
+            }
+            if (itemText == "Debug Tier Lines")
+            {
+                ConfigureMod("enable_debug_tear_lines", "Select a mod version starting from 0.9.0.", folder_ue, "debug");
+            }
+            if (itemText == "Off Frame Gen")
+            {
+                ConfigureMod("disable_overlay_blocker", "Select Uniscaler V2 to use this option.", folder_uniscaler_v2, "general");
+            }
+            if (itemText == "Disable Console")
+            {
+                ConfigureMod("disable_console", "Select a mod version starting from 0.10.3.", folder_disable_console, "logging");
+            }
+            if (itemText == "Install lfz.sl.dlss")
+            {
+                if (CheckedOption is true)
                 {
-                    string pathToml_Ue = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folder_ue[select_mod]);
-                    ConfigIni("amd_unreal_engine_dlss_workaround", AddOptSelect, folder_ue, "compatibility");
+                    varLfz = true;
                 }
                 else
                 {
-                    DialogResult = MessageBox.Show("Please select a mod version starting from 0.9.0", "Error", MessageBoxButtons.OK);
-
-                    e.NewValue = CheckState.Unchecked;
+                    varLfz= false;
                 }
             }
-
-            if (itemText == "Nvapi Results" && select_mod != null)
+            if (itemText == "Enable Signature Over" && CheckedOption is true)
             {
 
-                if (folder_nvapi.ContainsKey(select_mod))
-                {
-                    string pathToml_Nvapi = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folder_nvapi[select_mod]);
+                string path_en_over = @"mods\\Temp\\enable signature override\\EnableSignatureOverride.reg";
 
-                    ConfigIni("fake_nvapi_results", AddOptSelect, folder_nvapi, "compatibility");
+                try
+                {
+                    Process process = new Process();
+                    process.StartInfo.FileName = "regedit.exe";
+                    process.StartInfo.Arguments = "/s \"" + path_en_over + "\""; 
+                    process.Start();
+                    process.WaitForExit();
                 }
-                else
+                catch (Exception ex)
                 {
-                    DialogResult = MessageBox.Show("Please select a mod version starting from 0.10.2h1.", "Error", MessageBoxButtons.OK);
+                }
+            }
+             if (itemText == "Disable Signature Over" && CheckedOption is true)
+            {
+                string path_dis_over = @"mods\Temp\disable signature override\DisableSignatureOverride.reg";
 
-                    e.NewValue = CheckState.Unchecked;
+                try
+                {
+                    Process process = new Process();
+                    process.StartInfo.FileName = "regedit.exe";
+                    process.StartInfo.Arguments = "/s \"" + path_dis_over + "\""; 
+                    process.Start();
+                    process.WaitForExit();
+                }
+                catch (Exception ex)
+                {
                 }
             }
         }
@@ -275,7 +409,6 @@ namespace FSR3ModSetupUtilityEnhanced
             string selectedVersion = listMods.SelectedItem as string;
             string varDici;
             string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2" };
-            Debug.WriteLine(selectedVersion);
 
             if (selectedVersion != null)
             {
@@ -437,6 +570,11 @@ namespace FSR3ModSetupUtilityEnhanced
                         CopyToml();
                     }
                 }
+                if (varLfz is true)
+                {
+                    string path_lfz = "mods\\Temp\\global _lfz\\lfz.sl.dlss.dll";
+                    File.Copy(path_lfz, select_Folder + "\\lfz.sl.dlss.dll", true);
+                }
 
                 if (gameSelected == "Select FSR Version" && fsrSelected != null)
                 {
@@ -446,6 +584,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     MessageBox.Show("Successful installation", "Successful", MessageBoxButtons.OK);
                 }
+                ReplaceIni();
             }
             else
             {
