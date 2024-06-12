@@ -77,7 +77,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 if (homeSettings == null)
                 {
-                    homeSettings = new formSettings();
+                    homeSettings = formSettings.Instance;
                     homeSettings.TopLevel = false;
                     homeSettings.Dock = DockStyle.Fill;
                     this.mainPanel.Controls.Add(homeSettings);

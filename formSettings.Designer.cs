@@ -44,15 +44,19 @@
             listMods = new ComboBox();
             searchFolder = new FolderBrowserDialog();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            flowDel = new FlowLayoutPanel();
+            ButtonDel = new Button();
             panel1.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            flowDel.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(flowDel);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(flowLayoutPanel3);
@@ -118,7 +122,7 @@
             flowLayoutPanel2.Anchor = AnchorStyles.Bottom;
             flowLayoutPanel2.Controls.Add(buttonInstall);
             flowLayoutPanel2.FlowDirection = FlowDirection.BottomUp;
-            flowLayoutPanel2.Location = new Point(367, 370);
+            flowLayoutPanel2.Location = new Point(322, 368);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(100, 36);
             flowLayoutPanel2.TabIndex = 5;
@@ -208,6 +212,32 @@
             listMods.TabIndex = 3;
             listMods.SelectedIndexChanged += listMods_SelectedIndexChanged;
             // 
+            // flowDel
+            // 
+            flowDel.Anchor = AnchorStyles.Bottom;
+            flowDel.Controls.Add(ButtonDel);
+            flowDel.FlowDirection = FlowDirection.BottomUp;
+            flowDel.Location = new Point(420, 368);
+            flowDel.Name = "flowDel";
+            flowDel.Size = new Size(100, 36);
+            flowDel.TabIndex = 9;
+            // 
+            // ButtonDel
+            // 
+            ButtonDel.AutoSize = true;
+            ButtonDel.BackColor = Color.Transparent;
+            ButtonDel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ButtonDel.ForeColor = Color.Black;
+            ButtonDel.Image = (Image)resources.GetObject("ButtonDel.Image");
+            ButtonDel.ImageAlign = ContentAlignment.MiddleLeft;
+            ButtonDel.Location = new Point(3, 4);
+            ButtonDel.Name = "ButtonDel";
+            ButtonDel.Size = new Size(92, 29);
+            ButtonDel.TabIndex = 4;
+            ButtonDel.Text = "      Cleanup";
+            ButtonDel.UseVisualStyleBackColor = false;
+            ButtonDel.Click += ButtonDel_Click;
+            // 
             // formSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -226,6 +256,8 @@
             flowLayoutPanel2.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
+            flowDel.ResumeLayout(false);
+            flowDel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -246,5 +278,7 @@
         private Label label4;
         private FlowLayoutPanel flowLayoutPanel3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private FlowLayoutPanel flowDel;
+        private Button ButtonDel;
     }
 }

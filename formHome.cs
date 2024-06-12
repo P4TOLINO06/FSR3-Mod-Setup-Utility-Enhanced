@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
@@ -10,18 +11,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
     public partial class formHome : Form
     {
         private Image panelBackgroundG;
+        private formSettings settingsForm;
+
         public formHome()
         {
             InitializeComponent();
-            panelBG.Paint += new PaintEventHandler(panelBG_Paint);
-     
-     
+            panelBG.Paint += new PaintEventHandler(panelBG_Paint);  
+            settingsForm = new formSettings();
+
+
         }
 
         private void formHome_Load(object sender, EventArgs e)
@@ -185,6 +190,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 panelSelectFSR.Visible = false;
                 listFSR.Visible = false;
             }
+
+            List<string> rdr2B2List = new List<string> { "RDR2 Build_2", "RDR2 Build_4", "RDR2 Mix", "RDR2 Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam FSR3" };
+            //a.Items.AddRange(rdr2B2List.ToArray());
+            //a.SelectedIndex = 0;
+
+            if (listGames.SelectedItem.ToString() == "Red Dead Redemption 2")
+            {
+                formSettings.Instance.AddItemlistMods(rdr2B2List);
+            }
+            else
+            {
+                formSettings.Instance.RemoveItemlistMods(rdr2B2List);
+            }
+
         }
 
         private void panelBG_Paint(object sender, PaintEventArgs e)
@@ -230,6 +249,10 @@ namespace FSR3ModSetupUtilityEnhanced
             string selectedFsr = listFSR.SelectedItem.ToString();
             formSettings.fsrSelected = selectedFsr;
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

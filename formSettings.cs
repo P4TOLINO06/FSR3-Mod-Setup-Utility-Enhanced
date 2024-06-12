@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Linq;
 using Microsoft.VisualBasic.Devices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -22,6 +23,9 @@ namespace FSR3ModSetupUtilityEnhanced
         public static string gameSelected { get; set; }
         public static string fsrSelected { get; set; }
         string path_fsr = "";
+
+        private List<string> pendingItems = new List<string>();
+        private static formSettings instance;
 
         public string select_mod;
         bool varLfz = false;
@@ -32,6 +36,51 @@ namespace FSR3ModSetupUtilityEnhanced
 
             AddOptionsSelect.ItemCheck += new ItemCheckEventHandler(AddOptionsSelect_ItemCheck);
         }
+
+        public static formSettings Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new formSettings();
+                }
+                return instance;
+            }
+        }
+
+        public void AddItemlistMods(List<string> items)
+        {
+            if (listMods == null && !listMods.Items.Contains(items))
+            {
+                pendingItems.AddRange(items.Where(i => !pendingItems.Contains(i)));
+            }
+            else if (listMods != null && !listMods.Items.Contains(items))
+            {
+                foreach (var item in items)
+                {
+                    if (!listMods.Items.Contains(item))
+                    {
+                        listMods.Items.Add(item);
+                    }
+                }
+            }
+        }
+        public void RemoveItemlistMods(List<string> items)
+        {
+            if (listMods == null)
+            {
+                pendingItems.RemoveAll(i => items.Contains(i));
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    listMods.Items.Remove(item);
+                }
+            }
+        }
+
 
         #region Fake Nvidia Gpu Toml File Path
         static Dictionary<string, string> folder_fake_gpu = new Dictionary<string, string>()
@@ -135,6 +184,56 @@ namespace FSR3ModSetupUtilityEnhanced
             };
         #endregion
 
+        #region Default Mods Files
+        List<string> modCleanList = new List<string> {
+            "fsr2fsr3.config.toml", "winmm.ini", "winmm.dll", "lfz.sl.dlss.dll", "FSR2FSR3.asi",
+            "EnableSignatureOverride.reg", "DisableSignatureOverride.reg", "dxgi.dll",
+            "fsr2fsr3.log", "nvngx.ini", "fsr2fsr3.log", "Uniscaler.asi",
+            "uniscaler.config.toml", "uniscaler.log"
+        };
+
+        #endregion
+
+        #region Folder RDR2
+        Dictionary<string, string[]> origins_rdr2_folder = new Dictionary<string, string[]>
+        {
+            {"0.9.0", new string[] {"mods\\FSR2FSR3_0.9.0\\Red Dead Redemption 2",
+                                    "mods\\FSR2FSR3_0.9.0\\FSR2FSR3_COMMON"}},
+
+            {"0.10.0", new string[] {"mods\\FSR2FSR3_0.10.0\\FSR2FSR3_COMMON",
+                                     "mods\\FSR2FSR3_0.10.0\\Red Dead Redemption 2"}},
+
+            {"0.10.1", new string[] {"mods\\FSR2FSR3_0.10.1\\FSR2FSR3_COMMON",
+                                     "mods\\FSR2FSR3_0.10.1\\Red Dead Redemption 2"}},
+
+            {"0.10.1h1", new string[] {"mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\FSR2FSR3_COMMON",
+                                       "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Red Dead Redemption 2"}},
+
+            {"0.10.2h1", new string[] {"mods\\FSR2FSR3_0.10.2h1\\FSR2FSR3_COMMON",
+                                       "mods\\FSR2FSR3_0.10.2h1\\Red Dead Redemption 2"}},
+
+            {"0.10.3", new string[] {"mods\\FSR2FSR3_0.10.3\\FSR2FSR3_COMMON",
+                                     "mods\\FSR2FSR3_0.10.3\\Red Dead Redemption 2"}},
+
+            {"0.10.4", new string[] {"mods\\FSR2FSR3_0.10.4\\Red Dead Redemption 2\\FSR2FSR3_COMMON",
+                                     "mods\\FSR2FSR3_0.10.4\\Red Dead Redemption 2\\RDR2_FSR"}},
+
+            {"Uniscaler", new string[] {"mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"}},
+            {"Uniscaler + Xess + Dlss", new string[] {"mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"}},
+            {"Uniscaler V2", new string[] {"mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"}}
+        };
+
+        Dictionary<string, string[]> rdr2_folder = new Dictionary<string, string[]>
+        {
+            { "RDR2 Build_2", new string[] { "mods\\Red_Dead_Redemption_2_Build02" } },
+            { "RDR2 Build_4", new string[] { "mods\\RDR2Upscaler-FSR3Build04" } },
+            { "RDR2 Mix", new string[] { "mods\\RDR2_FSR3_mix" } },
+            { "RDR2 Mix 2", new string[] { "mods\\RDR2_FSR3_mix" } },
+            { "Red Dead Redemption V2", new string[] { "mods\\RDR2_FSR3_V2" } },
+            { "RDR2 Non Steam FSR3", new string[] { "mods\\FSR3_RDR2_Non_Steam\\RDR2_FSR3" } }
+        };
+        #endregion
+
         #region Clean Ini File Folder
 
         Dictionary<string, string> folder_clean_ini = new Dictionary<string, string>
@@ -177,9 +276,9 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             if (folder_clean_ini.ContainsKey(select_mod) && folder_fake_gpu.ContainsKey(select_mod))
             {
-                string path_clean_ini =  Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder_clean_ini[select_mod]);
+                string path_clean_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder_clean_ini[select_mod]);
                 string modified_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) + folder_fake_gpu[select_mod]);
-                File.Copy(path_clean_ini, modified_ini,true);
+                File.Copy(path_clean_ini, modified_ini, true);
                 Debug.WriteLine(modified_ini);
             }
         }
@@ -205,14 +304,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 e.NewValue = CheckState.Unchecked;
             }
 
-            void ConfigureMod(string configKey,string modVersionMessage, Dictionary<string, string> folder, string section)
+            void ConfigureMod(string configKey, string modVersionMessage, Dictionary<string, string> folder, string section)
             {
                 if (select_Folder != null)
                 {
                     if (folder.ContainsKey(select_mod))
                     {
                         string pathToml = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder[select_mod]);
-                        ConfigIni(configKey,AddOptSelect,folder,section);
+                        ConfigIni(configKey, AddOptSelect, folder, section);
                     }
                     else
                     {
@@ -286,7 +385,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
                 else
                 {
-                    varLfz= false;
+                    varLfz = false;
                 }
             }
             if (itemText == "Enable Signature Over" && CheckedOption is true)
@@ -298,7 +397,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     Process process = new Process();
                     process.StartInfo.FileName = "regedit.exe";
-                    process.StartInfo.Arguments = "/s \"" + path_en_over + "\""; 
+                    process.StartInfo.Arguments = "/s \"" + path_en_over + "\"";
                     process.Start();
                     process.WaitForExit();
                 }
@@ -306,7 +405,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                 }
             }
-             if (itemText == "Disable Signature Over" && CheckedOption is true)
+            if (itemText == "Disable Signature Over" && CheckedOption is true)
             {
                 string path_dis_over = @"mods\Temp\disable signature override\DisableSignatureOverride.reg";
 
@@ -314,7 +413,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     Process process = new Process();
                     process.StartInfo.FileName = "regedit.exe";
-                    process.StartInfo.Arguments = "/s \"" + path_dis_over + "\""; 
+                    process.StartInfo.Arguments = "/s \"" + path_dis_over + "\"";
                     process.Start();
                     process.WaitForExit();
                 }
@@ -340,7 +439,11 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void formSettings_Load(object sender, EventArgs e)
         {
-
+            foreach (var item in pendingItems)
+            {
+                listMods.Items.Add(item);
+            }
+            pendingItems.Clear();
         }
 
         public string select_Folder;
@@ -381,6 +484,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> fsr_sct_sdk = new List<string> { "SDK" };
 
+        public List<string> fsr_sct_rdr2 = new List<string> { "RDR2", "Red Dead Redemption 2" };
+
         public static async Task CopyModsAsync(string sourcePath, string destPath)
         {
             foreach (var file in Directory.EnumerateFiles(sourcePath))
@@ -397,7 +502,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string destDir = Path.Combine(destPath, Path.GetFileName(dir));
                 Directory.CreateDirectory(destDir);
-                await CopyModsAsync(dir, destDir); 
+                await CopyModsAsync(dir, destDir);
             }
         }
 
@@ -422,7 +527,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         {
                             await CopyModsAsync(path_final, path_dest);
 
-                            if (uniscalerVersion.All(uniscalerVersion => !selectedVersion.Contains(uniscalerVersion)))
+                            if (uniscalerVersion.All(uniscalerVersion => !selectedVersion.Contains(uniscalerVersion) && !rdr2_folder.ContainsKey(select_mod)))
                             {
                                 await CopyModsAsync(path_fsr_common, path_dest);
                             }
@@ -530,6 +635,79 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFSR(origins_sdk_folder);
         }
 
+        public void fsr_rdr2()
+        {
+            CopyFSR(origins_rdr2_folder);
+        }
+
+        public async Task fsr_rdr2_build02()
+        {
+
+            if (select_mod == "RDR2 Non Steam FSR3")
+            {
+                string path_dll = "mods\\FSR3_RDR2_Non_Steam\\RDR2_DLL";
+                string[] dll_files = Directory.GetFiles(path_dll);
+                DialogResult var_rdr2_non_steam = MessageBox.Show("Do you want to copy the DLL files? Some users may receive a DLL error when running the game with the mod. (Only select \'Yes\' if you have received the error)", "DLL", MessageBoxButtons.YesNo);
+
+                if (var_rdr2_non_steam == DialogResult.Yes)
+                {
+                    foreach (string dll_file in dll_files)
+                    {
+                        string dll_name = Path.GetFileName(dll_file);
+                        string full_path_dll = Path.Combine(select_Folder, dll_name);
+                        File.Copy(dll_file, full_path_dll, true);
+                    }
+                }
+            }
+
+            CopyFSR(rdr2_folder);
+
+            try
+            {
+                await Task.Delay((2000));
+                {
+                    string path_ini = "mods\\Temp\\RDR2_FSR3\\rdr2_mix2_ini\\RDR2Upscaler.ini";
+
+                    if (select_mod == "RDR2 Mix 2")
+                    {
+                        Directory.CreateDirectory(select_Folder + "\\mods");
+
+                        File.Copy(path_ini, select_Folder + "\\mods\\RDR2Upscaler.ini", true);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public void CleanupMod()
+        {
+            string[] DelFiles = Directory.GetFiles(select_Folder);
+            try
+            {
+                if (folder_fake_gpu.ContainsKey(select_mod))
+                {
+                    foreach (string filesDestFolder in DelFiles)
+                    {
+                        string DelFileName = Path.GetFileName(filesDestFolder);
+                        string fullPathDelFile = Path.Combine(select_Folder, DelFileName);
+                        File.Delete(fullPathDelFile);
+                    }
+
+                    if (Directory.Exists(select_Folder + "\\uniscaler"))
+                    {
+                        Directory.Delete(select_Folder + "\\uniscaler",true);
+                    }
+                    MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please close the game or any other folders related to the game.", "Error", MessageBoxButtons.OK);
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             select_mod = listMods.SelectedItem as string;
@@ -546,19 +724,29 @@ namespace FSR3ModSetupUtilityEnhanced
                     fsr2_2();
                 }
 
-                if (fsr_2_1_opt.Contains(gameSelected) || fsr_sct_2_1.Contains(fsrSelected))
+                else if (fsr_2_1_opt.Contains(gameSelected) || fsr_sct_2_1.Contains(fsrSelected))
                 {
                     fsr2_1();
                 }
 
-                if (fsr_2_0_opt.Contains(gameSelected) || fsr_sct_2_0.Contains(fsrSelected))
+                else if (fsr_2_0_opt.Contains(gameSelected) || fsr_sct_2_0.Contains(fsrSelected))
                 {
                     fsr_2_0();
                 }
 
-                if (fsr_sdk_opt.Contains(gameSelected) || fsr_sct_sdk.Contains(fsrSelected))
+                else if (fsr_sdk_opt.Contains(gameSelected) || fsr_sct_sdk.Contains(fsrSelected))
                 {
                     fsr_sdk();
+                }
+
+                else if ((fsr_sct_rdr2.Contains(gameSelected) && origins_rdr2_folder.ContainsKey(select_mod)) || (fsr_sct_rdr2.Contains(fsrSelected) && origins_rdr2_folder.ContainsKey(select_mod)))
+                {
+                    fsr_rdr2();
+                }
+
+                else if ((fsr_sct_rdr2.Contains(gameSelected) && rdr2_folder.ContainsKey(select_mod) || fsr_sct_rdr2.Contains(fsrSelected) && rdr2_folder.ContainsKey(select_mod)))
+                {
+                    fsr_rdr2_build02();
                 }
 
                 select_mod = listMods.SelectedItem as string;
@@ -591,6 +779,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 MessageBox.Show("Please fill out the first 3 options, Select Game, Select Folder, and Mod Options.", "Error", MessageBoxButtons.OK);
                 return;
             }
+        }
+
+        private void ButtonDel_Click(object sender, EventArgs e)
+        {
+            CleanupMod();
         }
 
         private void label4_Click(object sender, EventArgs e)
