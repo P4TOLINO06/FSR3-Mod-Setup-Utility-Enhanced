@@ -30,6 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formSettings));
             panel1 = new Panel();
+            mainPanelUpsRes = new Panel();
+            modOpt4 = new Button();
+            panelModOp = new Panel();
+            modOpt3 = new Button();
+            modOpt2 = new Button();
+            modOpt1 = new Button();
+            button2 = new Button();
+            label5 = new Label();
+            flowDel = new FlowLayoutPanel();
+            buttonDel = new Button();
             label4 = new Label();
             label3 = new Label();
             flowLayoutPanel3 = new FlowLayoutPanel();
@@ -44,18 +54,20 @@
             listMods = new ComboBox();
             searchFolder = new FolderBrowserDialog();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            flowDel = new FlowLayoutPanel();
-            ButtonDel = new Button();
             panel1.SuspendLayout();
+            mainPanelUpsRes.SuspendLayout();
+            panelModOp.SuspendLayout();
+            flowDel.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            flowDel.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(mainPanelUpsRes);
+            panel1.Controls.Add(label5);
             panel1.Controls.Add(flowDel);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
@@ -67,6 +79,135 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 450);
             panel1.TabIndex = 0;
+            // 
+            // mainPanelUpsRes
+            // 
+            mainPanelUpsRes.Controls.Add(panelModOp);
+            mainPanelUpsRes.Controls.Add(button2);
+            mainPanelUpsRes.Location = new Point(44, 190);
+            mainPanelUpsRes.Name = "mainPanelUpsRes";
+            mainPanelUpsRes.Size = new Size(337, 150);
+            mainPanelUpsRes.TabIndex = 14;
+            // 
+            // modOpt4
+            // 
+            modOpt4.BackColor = Color.Gray;
+            modOpt4.FlatAppearance.BorderSize = 0;
+            modOpt4.FlatStyle = FlatStyle.Flat;
+            modOpt4.ForeColor = Color.White;
+            modOpt4.Location = new Point(0, 84);
+            modOpt4.Name = "modOpt4";
+            modOpt4.Size = new Size(140, 36);
+            modOpt4.TabIndex = 14;
+            modOpt4.Text = "button5";
+            modOpt4.UseVisualStyleBackColor = false;
+            modOpt4.Click += button6_Click;
+            // 
+            // panelModOp
+            // 
+            panelModOp.BackColor = Color.Transparent;
+            panelModOp.Controls.Add(modOpt4);
+            panelModOp.Controls.Add(modOpt3);
+            panelModOp.Controls.Add(modOpt2);
+            panelModOp.Controls.Add(modOpt1);
+            panelModOp.Location = new Point(0, 27);
+            panelModOp.Name = "panelModOp";
+            panelModOp.Size = new Size(140, 120);
+            panelModOp.TabIndex = 13;
+            // 
+            // modOpt3
+            // 
+            modOpt3.BackColor = Color.Gray;
+            modOpt3.FlatAppearance.BorderSize = 0;
+            modOpt3.FlatStyle = FlatStyle.Flat;
+            modOpt3.ForeColor = Color.White;
+            modOpt3.Location = new Point(0, 56);
+            modOpt3.Name = "modOpt3";
+            modOpt3.Size = new Size(140, 31);
+            modOpt3.TabIndex = 3;
+            modOpt3.Text = "button5";
+            modOpt3.UseVisualStyleBackColor = false;
+            modOpt3.Click += button5_Click;
+            // 
+            // modOpt2
+            // 
+            modOpt2.BackColor = Color.Gray;
+            modOpt2.FlatAppearance.BorderSize = 0;
+            modOpt2.FlatStyle = FlatStyle.Flat;
+            modOpt2.ForeColor = Color.White;
+            modOpt2.Location = new Point(0, 28);
+            modOpt2.Name = "modOpt2";
+            modOpt2.Size = new Size(140, 31);
+            modOpt2.TabIndex = 2;
+            modOpt2.Text = "button4";
+            modOpt2.UseVisualStyleBackColor = false;
+            modOpt2.Click += button4_Click;
+            // 
+            // modOpt1
+            // 
+            modOpt1.BackColor = Color.Gray;
+            modOpt1.FlatAppearance.BorderSize = 0;
+            modOpt1.FlatStyle = FlatStyle.Flat;
+            modOpt1.ForeColor = Color.White;
+            modOpt1.Location = new Point(0, 0);
+            modOpt1.Name = "modOpt1";
+            modOpt1.Size = new Size(140, 31);
+            modOpt1.TabIndex = 1;
+            modOpt1.Text = "modOpt1";
+            modOpt1.UseVisualStyleBackColor = false;
+            modOpt1.Click += button3_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.DarkGray;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Location = new Point(0, 0);
+            button2.Name = "button2";
+            button2.Size = new Size(140, 28);
+            button2.TabIndex = 0;
+            button2.Text = "Mod Operates";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
+            // 
+            // label5
+            // 
+            label5.BackColor = Color.Gray;
+            label5.FlatStyle = FlatStyle.Flat;
+            label5.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold);
+            label5.Location = new Point(44, 135);
+            label5.Name = "label5";
+            label5.Size = new Size(337, 52);
+            label5.TabIndex = 12;
+            label5.Text = "Upscaler/Resolution";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // flowDel
+            // 
+            flowDel.Anchor = AnchorStyles.Bottom;
+            flowDel.Controls.Add(buttonDel);
+            flowDel.FlowDirection = FlowDirection.BottomUp;
+            flowDel.Location = new Point(420, 368);
+            flowDel.Name = "flowDel";
+            flowDel.Size = new Size(100, 36);
+            flowDel.TabIndex = 9;
+            // 
+            // buttonDel
+            // 
+            buttonDel.AutoSize = true;
+            buttonDel.BackColor = Color.Transparent;
+            buttonDel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonDel.ForeColor = Color.Black;
+            buttonDel.Image = (Image)resources.GetObject("buttonDel.Image");
+            buttonDel.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonDel.Location = new Point(3, 4);
+            buttonDel.Name = "buttonDel";
+            buttonDel.Size = new Size(92, 29);
+            buttonDel.TabIndex = 4;
+            buttonDel.Text = "      Cleanup";
+            buttonDel.UseVisualStyleBackColor = false;
+            buttonDel.Click += buttonDel_Click;
             // 
             // label4
             // 
@@ -212,32 +353,6 @@
             listMods.TabIndex = 3;
             listMods.SelectedIndexChanged += listMods_SelectedIndexChanged;
             // 
-            // flowDel
-            // 
-            flowDel.Anchor = AnchorStyles.Bottom;
-            flowDel.Controls.Add(ButtonDel);
-            flowDel.FlowDirection = FlowDirection.BottomUp;
-            flowDel.Location = new Point(420, 368);
-            flowDel.Name = "flowDel";
-            flowDel.Size = new Size(100, 36);
-            flowDel.TabIndex = 9;
-            // 
-            // ButtonDel
-            // 
-            ButtonDel.AutoSize = true;
-            ButtonDel.BackColor = Color.Transparent;
-            ButtonDel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ButtonDel.ForeColor = Color.Black;
-            ButtonDel.Image = (Image)resources.GetObject("ButtonDel.Image");
-            ButtonDel.ImageAlign = ContentAlignment.MiddleLeft;
-            ButtonDel.Location = new Point(3, 4);
-            ButtonDel.Name = "ButtonDel";
-            ButtonDel.Size = new Size(92, 29);
-            ButtonDel.TabIndex = 4;
-            ButtonDel.Text = "      Cleanup";
-            ButtonDel.UseVisualStyleBackColor = false;
-            ButtonDel.Click += ButtonDel_Click;
-            // 
             // formSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -250,14 +365,17 @@
             Name = "formSettings";
             Text = "formSettings";
             Load += formSettings_Load;
+            Resize += formSettings_Resize;
             panel1.ResumeLayout(false);
+            mainPanelUpsRes.ResumeLayout(false);
+            panelModOp.ResumeLayout(false);
+            flowDel.ResumeLayout(false);
+            flowDel.PerformLayout();
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel2.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
-            flowDel.ResumeLayout(false);
-            flowDel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -279,6 +397,14 @@
         private FlowLayoutPanel flowLayoutPanel3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private FlowLayoutPanel flowDel;
-        private Button ButtonDel;
+        private Button buttonDel;
+        private Label label5;
+        private Panel panelModOp;
+        private Button modOpt3;
+        private Button modOpt2;
+        private Button modOpt1;
+        private Button button2;
+        private Panel mainPanelUpsRes;
+        private Button modOpt4;
     }
 }

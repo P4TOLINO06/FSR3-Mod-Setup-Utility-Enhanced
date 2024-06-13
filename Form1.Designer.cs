@@ -75,7 +75,7 @@
             sidebar.Controls.Add(panel5);
             sidebar.Controls.Add(flowLayoutPanel2);
             sidebar.Location = new Point(0, -6);
-            sidebar.MaximumSize = new Size(200, 0);
+            sidebar.MaximumSize = new Size(188, 0);
             sidebar.MinimumSize = new Size(56, 0);
             sidebar.Name = "sidebar";
             sidebar.Size = new Size(56, 426);
@@ -128,6 +128,7 @@
             // 
             buttonHome.FlatAppearance.BorderSize = 0;
             buttonHome.FlatStyle = FlatStyle.Flat;
+            buttonHome.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonHome.ForeColor = Color.White;
             buttonHome.Image = (Image)resources.GetObject("buttonHome.Image");
             buttonHome.ImageAlign = ContentAlignment.MiddleLeft;
@@ -151,6 +152,7 @@
             // 
             buttonSettings.FlatAppearance.BorderSize = 0;
             buttonSettings.FlatStyle = FlatStyle.Flat;
+            buttonSettings.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonSettings.ForeColor = Color.White;
             buttonSettings.Image = (Image)resources.GetObject("buttonSettings.Image");
             buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
@@ -174,6 +176,7 @@
             // 
             buttonGuide.FlatAppearance.BorderSize = 0;
             buttonGuide.FlatStyle = FlatStyle.Flat;
+            buttonGuide.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonGuide.ForeColor = Color.White;
             buttonGuide.Image = (Image)resources.GetObject("buttonGuide.Image");
             buttonGuide.ImageAlign = ContentAlignment.MiddleLeft;
@@ -197,6 +200,7 @@
             // 
             buttonExit.FlatAppearance.BorderSize = 0;
             buttonExit.FlatStyle = FlatStyle.Flat;
+            buttonExit.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonExit.ForeColor = Color.White;
             buttonExit.Image = Properties.Resources.images_removebg_preview__2___3_;
             buttonExit.ImageAlign = ContentAlignment.MiddleLeft;
@@ -243,11 +247,11 @@
             Date.Anchor = AnchorStyles.Top;
             Date.AutoSize = true;
             Date.BackColor = Color.Transparent;
-            Date.Font = new Font("SF Atarian System", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Date.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Date.ForeColor = SystemColors.ButtonShadow;
-            Date.Location = new Point(572, 142);
+            Date.Location = new Point(560, 95);
             Date.Name = "Date";
-            Date.Size = new Size(29, 14);
+            Date.Size = new Size(42, 20);
             Date.TabIndex = 7;
             Date.Text = "Date";
             // 
@@ -257,20 +261,20 @@
             flowLayoutPanel1.AutoSize = true;
             flowLayoutPanel1.BackColor = Color.Transparent;
             flowLayoutPanel1.Controls.Add(DateOwLabel);
-            flowLayoutPanel1.Location = new Point(520, 86);
+            flowLayoutPanel1.Location = new Point(488, 12);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(280, 56);
+            flowLayoutPanel1.Size = new Size(312, 65);
             flowLayoutPanel1.TabIndex = 6;
             // 
             // DateOwLabel
             // 
             DateOwLabel.AutoSize = true;
             DateOwLabel.BackColor = Color.Transparent;
-            DateOwLabel.Font = new Font("SF Atarian System", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DateOwLabel.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DateOwLabel.ForeColor = Color.LightGray;
             DateOwLabel.Location = new Point(3, 0);
             DateOwLabel.Name = "DateOwLabel";
-            DateOwLabel.Size = new Size(274, 56);
+            DateOwLabel.Size = new Size(306, 65);
             DateOwLabel.TabIndex = 5;
             DateOwLabel.Text = "DateofWeek";
             // 
@@ -281,9 +285,9 @@
             flowClock.BackColor = Color.Transparent;
             flowClock.Controls.Add(ClockLabel);
             flowClock.ForeColor = Color.Gray;
-            flowClock.Location = new Point(572, 161);
+            flowClock.Location = new Point(560, 132);
             flowClock.Name = "flowClock";
-            flowClock.Size = new Size(162, 42);
+            flowClock.Size = new Size(179, 50);
             flowClock.TabIndex = 4;
             // 
             // ClockLabel
@@ -291,11 +295,11 @@
             ClockLabel.AutoSize = true;
             ClockLabel.BackColor = Color.Transparent;
             ClockLabel.FlatStyle = FlatStyle.Flat;
-            ClockLabel.Font = new Font("SF Atarian System", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ClockLabel.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ClockLabel.ForeColor = Color.LightGray;
             ClockLabel.Location = new Point(3, 0);
             ClockLabel.Name = "ClockLabel";
-            ClockLabel.Size = new Size(156, 42);
+            ClockLabel.Size = new Size(168, 50);
             ClockLabel.TabIndex = 1;
             ClockLabel.Text = "00:00:00";
             // 

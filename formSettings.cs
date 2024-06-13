@@ -35,6 +35,10 @@ namespace FSR3ModSetupUtilityEnhanced
             InitializeComponent();
 
             AddOptionsSelect.ItemCheck += new ItemCheckEventHandler(AddOptionsSelect_ItemCheck);
+            listMods.SelectedIndexChanged += listMods_SelectedIndexChanged;
+            this.Resize += new EventHandler(formSettings_Resize);
+
+            SubMenuClose();
         }
 
         public static formSettings Instance
@@ -194,6 +198,16 @@ namespace FSR3ModSetupUtilityEnhanced
 
         #endregion
 
+        #region Clean RDR2 Files
+        List<string> del_rdr2_custom_files = new List<string>
+        {
+            "ReShade.ini", "RDR2UpscalerPreset.ini", "d3dcompiler_47.dll", "d3d12.dll", "dinput8.dll",
+            "ScriptHookRDR2.dll", "NVNGX_Loader.asi", "d3dcompiler_47.dll", "nvngx.dll", "winmm.ini",
+            "winmm.dll", "fsr2fsr3.config.toml", "FSR2FSR3.asi", "fsr2fsr3.log"
+        };
+
+        #endregion
+
         #region Folder RDR2
         Dictionary<string, string[]> origins_rdr2_folder = new Dictionary<string, string[]>
         {
@@ -258,8 +272,26 @@ namespace FSR3ModSetupUtilityEnhanced
 
         #endregion
 
-        //Ini Editor
+        #region Folder Mod Operates
+        static Dictionary<string, string> folder_mod_operates = new Dictionary<string, string>()
+        {
+            {"0.9.0", @"\mods\Temp\FSR2FSR3_0.9.0\enable_fake_gpu\fsr2fsr3.config.toml"},
+            {"0.10.0", @"\mods\Temp\FSR2FSR3_0.10.0\enable_fake_gpu\fsr2fsr3.config.toml"},
+            {"0.10.1", @"\mods\Temp\FSR2FSR3_0.10.1\enable_fake_gpu\fsr2fsr3.config.toml"},
+            {"0.10.1h1", @"\mods\Temp\FSR2FSR3_0.10.1h1\enable_fake_gpu\fsr2fsr3.config.toml"},
+            {"0.10.2h1", @"\mods\Temp\FSR2FSR3_0.10.2h1\enable_fake_gpu\fsr2fsr3.config.toml"},
+            {"0.10.3", @"\mods\Temp\FSR2FSR3_0.10.3\enable_fake_gpu\fsr2fsr3.config.toml"},
+            {"0.10.4", @"\mods\Temp\FSR2FSR3_0.10.4\enable_fake_gpu\fsr2fsr3.config.toml"},
+            {"Uniscaler",@"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
+            {"The Callisto Protocol FSR3",@"\mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"},
+            { "Uni Custom Miles", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml" },
+            { "Dlss Jedi", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml" }
+        };
+        #endregion
 
+        //Ini Editor
         public void ConfigIni(string key, string value, Dictionary<string, string> DictionaryPath, string? section = null)
         {
             select_mod = listMods.SelectedItem as string;
@@ -463,7 +495,15 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void listMods_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (listMods.SelectedItem != null)
+            {
+                select_mod = listMods.SelectedItem.ToString();
+                SetTextModOp();
+            }
+            if (!folder_mod_operates.ContainsKey(select_mod))
+            {
+                panelModOp.Visible = false;
+            }
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden", "Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
@@ -681,23 +721,64 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void CleanupMod()
+        #region Default Mod Files
+
+        #endregion
+
+        public void CleanupMod(List <string> ListClean, Dictionary<string, string[]> DictionaryPath)
         {
             string[] DelFiles = Directory.GetFiles(select_Folder);
             try
             {
-                if (folder_fake_gpu.ContainsKey(select_mod))
+                if (DictionaryPath.ContainsKey(select_mod))
                 {
                     foreach (string filesDestFolder in DelFiles)
                     {
                         string DelFileName = Path.GetFileName(filesDestFolder);
-                        string fullPathDelFile = Path.Combine(select_Folder, DelFileName);
-                        File.Delete(fullPathDelFile);
+
+                        if (ListClean.Contains(DelFileName))
+                        {
+                            File.Delete(filesDestFolder);
+                        }
+                    }
+
+                    if (Directory.Exists(select_Folder + "\\mods"))
+                    {
+                        Directory.Delete(select_Folder + "\\mods", true);
+                    }
+                    if (Directory.Exists(select_Folder + "\\reshade-shaders"))
+                    {
+                        Directory.Delete(select_Folder + "\\reshade-shaders", true);
+                    }
+                    MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please close the game or any other folders related to the game.", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        public void CleanupMod(List<string> ListClean, Dictionary<string, string> DictionaryPath)
+        {
+            string[] DelFiles = Directory.GetFiles(select_Folder);
+            try
+            {
+                if (DictionaryPath.ContainsKey(select_mod))
+                {
+                    foreach (string filesDestFolder in DelFiles)
+                    {
+                        string DelFileName = Path.GetFileName(filesDestFolder);
+
+                        if (ListClean.Contains(DelFileName))
+                        {
+                            File.Delete(filesDestFolder);
+                        }
                     }
 
                     if (Directory.Exists(select_Folder + "\\uniscaler"))
                     {
-                        Directory.Delete(select_Folder + "\\uniscaler",true);
+                        Directory.Delete(select_Folder + "\\uniscaler", true);
                     }
                     MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
                 }
@@ -781,14 +862,195 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        private void ButtonDel_Click(object sender, EventArgs e)
+        private void buttonDel_Click(object sender, EventArgs e)
         {
-            CleanupMod();
+            if (folder_fake_gpu.ContainsKey(select_mod))
+            {
+                CleanupMod(modCleanList, folder_fake_gpu);
+            }
+            else if (rdr2_folder.ContainsKey(select_mod))
+            {
+                CleanupMod(del_rdr2_custom_files, rdr2_folder);
+            }
+            else if(select_mod == null && select_Folder == null)
+            {
+                MessageBox.Show("Please fill out the first 3 options, Select Game, Select Folder, and Mod Options.", "Error", MessageBoxButtons.OK);
+                return;
+            }
+        }
+
+        #region Unlock Mod Operates
+        List<string> unlock_mod_operates_list = new List<string> { "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4" };
+        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uni Custom Miles", "Dlss Jedi" };
+        #endregion
+
+
+        public void SubMenuClose()
+        {
+            panelModOp.Visible = false;
+        }
+
+        public void HideSubMenu()
+        {
+            if (panelModOp.Visible == true)
+            {
+                panelModOp.Visible = false;
+            }
+        }
+
+        public void ShowSubMenu(Panel subMenu)
+        {
+            if (subMenu.Visible == false)
+            {
+                HideSubMenu();
+                subMenu.Visible = true;
+            }
+            else
+            {
+                subMenu.Visible = false;
+            }
+        }
+
+        public void SetTextModOp()
+        {
+            if (unlock_mod_operates_list.Contains(select_mod))
+            {
+                modOpt1.Text = "Default";
+                modOpt2.Text = "Enable Upscaling Only";
+                modOpt3.Text = "Use Game Upscaling";
+                modOpt4.Text = "Replace dlss fg";
+                modOpt2.Visible = true;
+                modOpt3.Visible = true;
+                modOpt4.Visible = true;
+            }
+            else if (select_mod == "0.9.0")
+            {
+                modOpt1.Text = "Enable Upscaling Only";
+                modOpt2.Visible = false;
+                modOpt3.Visible = false;
+                modOpt4.Visible = false;
+            }
+            else if (uniscaler_list.Contains(select_mod))
+            {
+                modOpt1.Text = "FSR3";
+                modOpt2.Text = "DLSS";
+                modOpt3.Text = "XESS";
+                modOpt2.Visible = true;
+                modOpt3.Visible = true;
+                modOpt4.Visible = false;
+            }
+            this.Invalidate();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            select_mod = listMods.SelectedItem as string;
+            if (select_mod != null && folder_mod_operates.ContainsKey(select_mod))
+            {
+                SetTextModOp();
+                ShowSubMenu(panelModOp);
+            }
+            else
+            {
+                MessageBox.Show("Select a mod starting from 0.9.0 to use this option", "Error", MessageBoxButtons.OK);
+                return;
+            }
+        }
+
+        bool var_modop = false;
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            select_mod = listMods.SelectedItem as string;
+            if (var_modop == false)
+            {
+                var_modop = true;
+            }
+            else
+            {
+                var_modop = false;
+            }
+
+            if (select_mod == "0.9.0")
+            {
+                ConfigIni("enable_upscaling_only", var_modop.ToString().ToLower(), folder_mod_operates, "general");
+            }
+
+            else if (unlock_mod_operates_list.Contains(select_mod))
+            {
+                ConfigIni("mode", "\"default\"", folder_mod_operates, "general");
+            }
+            else if (uniscaler_list.Contains(select_mod))
+            {
+                ConfigIni("upscaler", "\"fsr3\"", folder_mod_operates, "general");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            if (unlock_mod_operates_list.Contains(select_mod))
+            {
+                ConfigIni("mode", "\"enable_upscaling_only\"", folder_mod_operates, "general");
+            }
+            else if (uniscaler_list.Contains(select_mod))
+            {
+                ConfigIni("upscaler", "\"dlss\"", folder_mod_operates, "general");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (unlock_mod_operates_list.Contains(select_mod))
+            {
+                ConfigIni("mode", "\"use_game_upscaling\"", folder_mod_operates, "general");
+            }
+            else if (uniscaler_list.Contains(select_mod))
+            {
+                ConfigIni("upscaler", "\"xess\"", folder_mod_operates, "general");
+            }
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (unlock_mod_operates_list.Contains(select_mod))
+            {
+                ConfigIni("mode", "\"replace_dlss_fg\"", folder_mod_operates, "general");
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void formSettings_Resize(object sender, EventArgs e)
+        {
+            if (label5 != null)
+            {
+                int newLabel5Left = label4.Left + label4.Width + 16;
+
+                if (newLabel5Left + label5.Width <= this.ClientSize.Width)
+                {
+                    label5.Top = label4.Top;
+                    label5.Left = newLabel5Left;
+                    mainPanelUpsRes.Top = label5.Top + 58;
+                    mainPanelUpsRes.Left = newLabel5Left;
+                }
+                else
+                {
+                    label5.Top = label3.Top + label3.Height + 70;
+                    label5.Left = label3.Left;
+                    mainPanelUpsRes.Top = label3.Top + label3.Height + 130;
+                    mainPanelUpsRes.Left = label3.Left;
+                }
+                mainPanelUpsRes.SendToBack();
+                label3.SendToBack();
+                label4.SendToBack();
+                label5.SendToBack();
+                flowLayoutPanel3.SendToBack();
+                buttonInstall.BringToFront();
+                buttonDel.BringToFront();
+            }
         }
     }
 }
