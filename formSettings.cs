@@ -15,6 +15,7 @@ using System.Linq;
 using Microsoft.VisualBasic.Devices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Globalization;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -37,7 +38,6 @@ namespace FSR3ModSetupUtilityEnhanced
             AddOptionsSelect.ItemCheck += new ItemCheckEventHandler(AddOptionsSelect_ItemCheck);
             listMods.SelectedIndexChanged += listMods_SelectedIndexChanged;
             this.Resize += new EventHandler(formSettings_Resize);
-
             SubMenuClose();
         }
 
@@ -286,8 +286,8 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
             {"The Callisto Protocol FSR3",@"\mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"},
-            { "Uni Custom Miles", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml" },
-            { "Dlss Jedi", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml" }
+            {"Uni Custom Miles", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml"},
+            {"Dlss Jedi", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml"}
         };
         #endregion
 
@@ -503,7 +503,13 @@ namespace FSR3ModSetupUtilityEnhanced
             if (!folder_mod_operates.ContainsKey(select_mod))
             {
                 panelModOp.Visible = false;
+                panelRes.Visible = false;
             }
+            if (!uniscaler_path.ContainsKey(select_mod))
+            {
+                panelResPreset.Visible = false;
+            }
+
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden", "Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
@@ -725,7 +731,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         #endregion
 
-        public void CleanupMod(List <string> ListClean, Dictionary<string, string[]> DictionaryPath)
+        public void CleanupMod(List<string> ListClean, Dictionary<string, string[]> DictionaryPath)
         {
             string[] DelFiles = Directory.GetFiles(select_Folder);
             try
@@ -872,22 +878,61 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 CleanupMod(del_rdr2_custom_files, rdr2_folder);
             }
-            else if(select_mod == null && select_Folder == null)
+            else if (select_mod == null && select_Folder == null)
             {
                 MessageBox.Show("Please fill out the first 3 options, Select Game, Select Folder, and Mod Options.", "Error", MessageBoxButtons.OK);
                 return;
             }
         }
 
+        //Config Resolution/Mod Operates
         #region Unlock Mod Operates
         List<string> unlock_mod_operates_list = new List<string> { "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4" };
         List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uni Custom Miles", "Dlss Jedi" };
         #endregion
 
+        #region UniResolutionCustom
+        static Dictionary<string, Dictionary<string, string>> uni_res_custom = new Dictionary<string, Dictionary<string, string>>
+        {
+            { "1080p", new Dictionary<string, string>
+                {
+                    { "balanced", "0.666667" },
+                    { "quality", "0.886" }
+                }
+            },
+            { "1440p", new Dictionary<string, string>
+                {
+                    { "performance", "0.50" },
+                    { "balanced", "0.666667" },
+                    { "quality", "0.75" }
+                }
+            },
+            { "2160p", new Dictionary<string, string>
+                {
+                    { "ultra_performance", "0.33" },
+                    { "performance", "0.44" },
+                    { "balanced", "0.50" },
+                    { "quality", "0.666667" }
+                }
+            }
+        };
+
+        #endregion
+
+        #region Uniscaler Path
+        Dictionary<string, string> uniscaler_path = new Dictionary<string, string>
+            {
+                { "Uniscaler", @"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler + Xess + Dlss", @"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" }
+            };
+        #endregion
 
         public void SubMenuClose()
         {
             panelModOp.Visible = false;
+            panelRes.Visible = false;
+            panelResPreset.Visible = false;
         }
 
         public void HideSubMenu()
@@ -896,18 +941,65 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 panelModOp.Visible = false;
             }
+            if (panelRes.Visible == true)
+            {
+                panelRes.Visible = false;
+            }
+            if (panelResPreset.Visible == true)
+            {
+                panelResPreset.Visible = false;
+            }
         }
 
         public void ShowSubMenu(Panel subMenu)
         {
             if (subMenu.Visible == false)
             {
-                HideSubMenu();
                 subMenu.Visible = true;
             }
             else
             {
                 subMenu.Visible = false;
+            }
+        }
+
+        public void WriteUniCustomRes(string selectedResolution)
+        {
+            if (uniscaler_path.ContainsKey(select_mod))
+            {
+                if (uni_res_custom.ContainsKey(selectedResolution))
+                {
+                    var resolutionSettings = uni_res_custom[selectedResolution];
+
+                    foreach (var sett in resolutionSettings)
+                    {
+                        string key = sett.Key;
+                        string value = sett.Value;
+
+                        string tomlKey;
+                        switch (key)
+                        {
+                            case "balanced":
+                                tomlKey = "balanced";
+                                break;
+                            case "quality":
+                                tomlKey = "quality";
+                                break;
+                            case "performance":
+                                tomlKey = "performance";
+                                break;
+                            case "ultra_performance":
+                                tomlKey = "ultra_performance";
+                                break;
+                            case "ultra_quality":
+                                tomlKey = "ultra_quality";
+                                break;
+                            default:
+                                continue;
+                        }
+                        ConfigIni(tomlKey, value,uniscaler_path , "resolution_override");
+                    }
+                }
             }
         }
 
@@ -941,6 +1033,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             this.Invalidate();
         }
+
 
         private void button2_Click_1(object sender, EventArgs e)
         {
@@ -1051,6 +1144,143 @@ namespace FSR3ModSetupUtilityEnhanced
                 buttonInstall.BringToFront();
                 buttonDel.BringToFront();
             }
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            if (select_mod != null && folder_ue.ContainsKey(select_mod))
+            {
+                ShowSubMenu(panelRes);
+            }
+            else
+            {
+                MessageBox.Show("Select a mod starting from 0.9.0 to use this option", "Error", MessageBoxButtons.OK);
+                return;
+            }
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueUltraQ != null)
+            {
+                decimal valueConvUltraQ = valueUltraQ.Value / 100;
+                ConfigIni("ultra_quality", valueConvUltraQ.ToString().Replace(',', '.'), folder_ue, "general");
+            }
+            else
+            {
+                MessageBox.Show("Select a mod version starting from 0.9.0 and set a number in the counter next to Sharpness override", "Error", MessageBoxButtons.OK);
+            }
+        }
+        private void buttonQ_Click(object sender, EventArgs e)
+        {
+            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueQ != null)
+            {
+                decimal valueConvQ = valueQ.Value / 100;
+                ConfigIni("quality", valueConvQ.ToString().Replace(',', '.'), folder_ue, "general");
+            }
+            else
+            {
+                MessageBox.Show("Select a mod version starting from 0.9.0 and set a number in the counter next to Sharpness override", "Error", MessageBoxButtons.OK);
+            }
+        }
+        private void buttonBalanced_Click(object sender, EventArgs e)
+        {
+            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueBalanced != null)
+            {
+                decimal valueConvBalanced = valueBalanced.Value / 100;
+                ConfigIni("balanced", valueConvBalanced.ToString().Replace(',', '.'), folder_ue, "general");
+            }
+            else
+            {
+                MessageBox.Show("Select a mod version starting from 0.9.0 and set a number in the counter next to Sharpness override", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void buttonPerf_Click(object sender, EventArgs e)
+        {
+            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valuePerf != null)
+            {
+                decimal valueConvPerf = valuePerf.Value / 100;
+                ConfigIni("performance", valueConvPerf.ToString().Replace(',', '.'), folder_ue, "general");
+            }
+            else
+            {
+                MessageBox.Show("Select a mod version starting from 0.9.0 and set a number in the counter next to Sharpness override", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void buttonUltraP_Click(object sender, EventArgs e)
+        {
+            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueUltraP != null)
+            {
+                decimal valueConvUltraP = valueUltraP.Value / 100;
+                ConfigIni("ultra_performance", valueConvUltraP.ToString().Replace(',', '.'), folder_ue, "general");
+            }
+            else
+            {
+                MessageBox.Show("Select a mod version starting from 0.9.0 and set a number in the counter next to Sharpness override", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void buttonNative_Click(object sender, EventArgs e)
+        {
+            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueNative != null)
+            {
+                decimal valueConvNat = valueNative.Value / 100;
+                ConfigIni("native", valueConvNat.ToString().Replace(',', '.'), folder_ue, "general");
+            }
+            else
+            {
+                MessageBox.Show("Select a mod version starting from 0.9.0 and set a number in the counter next to Sharpness override", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            decimal valueConvSharpOver = valueSharpOver.Value;
+
+            if (valueSharpOver.Value == -1.0m)
+            {
+                valueConvSharpOver = -1.0m;
+            }
+            else
+            {
+                valueConvSharpOver = valueSharpOver.Value / 10;
+            }
+            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueSharpOver != null)
+            {
+                ConfigIni("sharpness_override", valueConvSharpOver.ToString(CultureInfo.InvariantCulture), folder_ue, "general");
+            }
+            else
+            {
+                MessageBox.Show("Select a mod version starting from 0.9.0 and set a number in the counter next to Sharpness override", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void buttonResPreset_Click(object sender, EventArgs e)
+        {
+            if (select_mod != null && uniscaler_path.ContainsKey(select_mod))
+            {
+                ShowSubMenu(panelResPreset);
+            }
+            else
+            {
+                MessageBox.Show("Select a mod starting from Uniscaler to use this option", "Error", MessageBoxButtons.OK);
+                return;
+            }
+        }
+        private void button1080_Click(object sender, EventArgs e)
+        {
+            WriteUniCustomRes("1080p");
+        }
+        private void button1440_Click(object sender, EventArgs e)
+        {
+            WriteUniCustomRes("1440p");
+        }
+
+        private void button2160_Click(object sender, EventArgs e)
+        {
+            WriteUniCustomRes("2160p");
         }
     }
 }
