@@ -510,6 +510,28 @@ namespace FSR3ModSetupUtilityEnhanced
                 panelResPreset.Visible = false;
             }
 
+            if (select_mod == "Uniscaler + Xess + Dlss")
+            {
+                string[] removeOptNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG" };
+
+                foreach (string nvngxOpt in removeOptNvngx)
+                {
+                    optionsNvngx.Items.Remove(nvngxOpt);
+                }
+            }
+            else
+            {
+                string[] addOptNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG" };
+
+                foreach (string addNvngx in addOptNvngx)
+                {
+                    if (!optionsNvngx.Items.Contains(addNvngx))
+                    {
+                        optionsNvngx.Items.Add(addNvngx);
+                    }
+                }
+            }
+
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden", "Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
@@ -767,7 +789,16 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void CleanupMod(List<string> ListClean, Dictionary<string, string> DictionaryPath)
         {
-            string[] DelFiles = Directory.GetFiles(select_Folder);
+            string[] DelFiles;
+            if (select_Folder != null)
+            {
+                DelFiles = Directory.GetFiles(select_Folder);
+            }
+            else
+            {
+                MessageBox.Show("Select the folder where the mod is located before proceeding.", "Error", MessageBoxButtons.OK);
+                return;
+            }
             try
             {
                 if (DictionaryPath.ContainsKey(select_mod))
@@ -798,7 +829,7 @@ namespace FSR3ModSetupUtilityEnhanced
         private void button2_Click(object sender, EventArgs e)
         {
             select_mod = listMods.SelectedItem as string;
-            if (select_Folder != null && select_mod != null)
+            if (select_Folder != null && select_mod != null && gameSelected != null)
             {
                 if (gameSelected == "Select FSR Version" && fsrSelected == null)
                 {
@@ -859,6 +890,54 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     MessageBox.Show("Successful installation", "Successful", MessageBoxButtons.OK);
                 }
+
+                if (select_mod != null)
+                {
+                    foreach (string optNvngx in optionsNvngx.CheckedItems)
+                    {
+                        string pathNvngx;
+                        if (optNvngx.Contains("Default"))
+                        {
+                            if (File.Exists(select_Folder+"\\nvngx.dll"))
+                            {
+                                try
+                                {
+                                    string newNameNvngx = select_Folder + "\\nvngx.txt";
+                                    string oldNameNvngx = select_Folder + "\\nvngx.dll";
+                                    File.Move(oldNameNvngx, newNameNvngx);
+                                }
+                                catch { }
+                            }
+                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx.dll";
+                            File.Copy(pathNvngx, select_Folder + "\\nvngx.dll", true);
+                        }
+                        if (optNvngx.Contains("NVNGX Version 1"))
+                        {
+                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx.ini";
+                            File.Copy(pathNvngx, select_Folder + "\\nvngx.ini", true);
+                        }
+                        if (optNvngx.Contains("Xess 1.3"))
+                        {
+                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll";
+                            File.Copy(pathNvngx, select_Folder + "\\libxess.dll", true);
+                        }
+                        if (optNvngx.Contains("Dlss 3.7.0"))
+                        {
+                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll";
+                            File.Copy(pathNvngx, select_Folder + "\\nvngx_dlss.dll", true);
+                        }
+                        if (optNvngx.Contains("Dlss 3.7.0 FG"))
+                        {
+                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll";
+                            File.Copy(pathNvngx, select_Folder + "\\nvngx_dlssg.dll", true);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Select a version of the mod before proceeding.", "Successful", MessageBoxButtons.OK);
+                    return;
+                }
                 ReplaceIni();
             }
             else
@@ -870,17 +949,42 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
-            if (folder_fake_gpu.ContainsKey(select_mod))
+            if (select_mod != null)
             {
-                CleanupMod(modCleanList, folder_fake_gpu);
+                try
+                {
+                    if (File.Exists(select_Folder + "\\nvngx.txt"))
+                    {
+                        DialogResult var_nvngx = MessageBox.Show("A backup of the file nvngx.dll has been found. Do you want to restore the backup?", "Nvngx.dll", MessageBoxButtons.YesNo);
+
+                        if (var_nvngx == DialogResult.Yes)
+                        {
+                            string oldNvngx = select_Folder + "\\nvngx.txt";
+                            string newNvngx = select_Folder + "\\nvngx.dll";
+                            File.Delete(newNvngx);
+                            File.Move(oldNvngx, newNvngx);
+                        }
+                    }
+                }
+                catch { }
+
+                if (folder_fake_gpu.ContainsKey(select_mod))
+                {
+                    CleanupMod(modCleanList, folder_fake_gpu);
+                }
+                else if (rdr2_folder.ContainsKey(select_mod))
+                {
+                    CleanupMod(del_rdr2_custom_files, rdr2_folder);
+                }
+                else if (select_mod == null && select_Folder == null)
+                {
+                    MessageBox.Show("Please fill out the first 3 options, Select Game, Select Folder, and Mod Options.", "Error", MessageBoxButtons.OK);
+                    return;
+                }         
             }
-            else if (rdr2_folder.ContainsKey(select_mod))
+            else
             {
-                CleanupMod(del_rdr2_custom_files, rdr2_folder);
-            }
-            else if (select_mod == null && select_Folder == null)
-            {
-                MessageBox.Show("Please fill out the first 3 options, Select Game, Select Folder, and Mod Options.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Select a version of the mod before proceeding.", "Error", MessageBoxButtons.OK);
                 return;
             }
         }
@@ -933,6 +1037,7 @@ namespace FSR3ModSetupUtilityEnhanced
             panelModOp.Visible = false;
             panelRes.Visible = false;
             panelResPreset.Visible = false;
+            panelNvngx.Visible = false;
         }
 
         public void HideSubMenu()
@@ -948,6 +1053,10 @@ namespace FSR3ModSetupUtilityEnhanced
             if (panelResPreset.Visible == true)
             {
                 panelResPreset.Visible = false;
+            }
+            if (panelNvngx.Visible == true)
+            {
+                panelNvngx.Visible = false;
             }
         }
 
@@ -997,7 +1106,7 @@ namespace FSR3ModSetupUtilityEnhanced
                             default:
                                 continue;
                         }
-                        ConfigIni(tomlKey, value,uniscaler_path , "resolution_override");
+                        ConfigIni(tomlKey, value, uniscaler_path, "resolution_override");
                     }
                 }
             }
@@ -1128,6 +1237,10 @@ namespace FSR3ModSetupUtilityEnhanced
                     label5.Left = newLabel5Left;
                     mainPanelUpsRes.Top = label5.Top + 58;
                     mainPanelUpsRes.Left = newLabel5Left;
+                    label6.Top = label3.Top + label3.Height + 70;
+                    label6.Left = label3.Left;
+                    panelAddOn.Top = label3.Top + label3.Height + 130;
+                    panelAddOn.Left = label3.Left;
                 }
                 else
                 {
@@ -1135,7 +1248,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     label5.Left = label3.Left;
                     mainPanelUpsRes.Top = label3.Top + label3.Height + 130;
                     mainPanelUpsRes.Left = label3.Left;
+                    label6.Top = label5.Top + label5.Height - 52;
+                    label6.Left = label5.Left + 511;
+                    panelAddOn.Top = label3.Top + label3.Height + 130;
+                    panelAddOn.Left = label5.Left + 511;
                 }
+                panelAddOn.SendToBack();
                 mainPanelUpsRes.SendToBack();
                 label3.SendToBack();
                 label4.SendToBack();
@@ -1282,5 +1400,37 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             WriteUniCustomRes("2160p");
         }
+
+        private void buttonNvngx_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(panelNvngx);
+        }
+
+        private void ShowSelectedNvngx(object sender, EventArgs e)
+        {
+            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG" };
+            foreach (string opt in optNvngx)
+            {
+
+            }
+
+        }
+
+        private void optionsNvngx_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            int index = e.Index;
+
+            bool CheckedNvngx = e.NewValue == CheckState.Checked;
+
+            string ItemNvngx = optionsNvngx.Items[index].ToString();
+
+            string SelectedNvngx = CheckedNvngx.ToString().ToLower();
+
+        }
+
+    private void optionsNvngx_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
     }
 }

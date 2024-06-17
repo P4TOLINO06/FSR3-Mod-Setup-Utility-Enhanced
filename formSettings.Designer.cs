@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formSettings));
             panel1 = new Panel();
+            panelAddOn = new Panel();
+            buttonNvngx = new Button();
+            panelNvngx = new Panel();
+            optionsNvngx = new CheckedListBox();
+            label6 = new Label();
             label5 = new Label();
             mainPanelUpsRes = new Panel();
             panelResPreset = new Panel();
@@ -75,6 +80,8 @@
             listMods = new ComboBox();
             searchFolder = new FolderBrowserDialog();
             panel1.SuspendLayout();
+            panelAddOn.SuspendLayout();
+            panelNvngx.SuspendLayout();
             mainPanelUpsRes.SuspendLayout();
             panelResPreset.SuspendLayout();
             panelRes.SuspendLayout();
@@ -95,6 +102,8 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(panelAddOn);
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(mainPanelUpsRes);
             panel1.Controls.Add(flowDel);
@@ -106,8 +115,69 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 504);
+            panel1.Size = new Size(935, 490);
             panel1.TabIndex = 0;
+            // 
+            // panelAddOn
+            // 
+            panelAddOn.Controls.Add(buttonNvngx);
+            panelAddOn.Controls.Add(panelNvngx);
+            panelAddOn.Location = new Point(565, 194);
+            panelAddOn.Name = "panelAddOn";
+            panelAddOn.Size = new Size(328, 245);
+            panelAddOn.TabIndex = 18;
+            // 
+            // buttonNvngx
+            // 
+            buttonNvngx.BackColor = Color.DarkGray;
+            buttonNvngx.Cursor = Cursors.Hand;
+            buttonNvngx.FlatAppearance.BorderSize = 0;
+            buttonNvngx.FlatStyle = FlatStyle.Flat;
+            buttonNvngx.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonNvngx.Location = new Point(0, 0);
+            buttonNvngx.Name = "buttonNvngx";
+            buttonNvngx.Size = new Size(163, 28);
+            buttonNvngx.TabIndex = 17;
+            buttonNvngx.Text = "Nvngx.dll";
+            buttonNvngx.UseVisualStyleBackColor = false;
+            buttonNvngx.Click += buttonNvngx_Click;
+            // 
+            // panelNvngx
+            // 
+            panelNvngx.BackColor = Color.Transparent;
+            panelNvngx.Controls.Add(optionsNvngx);
+            panelNvngx.Location = new Point(0, 27);
+            panelNvngx.Name = "panelNvngx";
+            panelNvngx.Size = new Size(163, 77);
+            panelNvngx.TabIndex = 16;
+            // 
+            // optionsNvngx
+            // 
+            optionsNvngx.BackColor = Color.DimGray;
+            optionsNvngx.BorderStyle = BorderStyle.None;
+            optionsNvngx.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            optionsNvngx.ForeColor = Color.White;
+            optionsNvngx.FormattingEnabled = true;
+            optionsNvngx.Items.AddRange(new object[] { "Default", "NVNGX Version 1", "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG" });
+            optionsNvngx.Location = new Point(0, 3);
+            optionsNvngx.Name = "optionsNvngx";
+            optionsNvngx.Size = new Size(163, 66);
+            optionsNvngx.TabIndex = 7;
+            optionsNvngx.ItemCheck += optionsNvngx_ItemCheck;
+            optionsNvngx.SelectedIndexChanged += optionsNvngx_SelectedIndexChanged;
+            // 
+            // label6
+            // 
+            label6.BackColor = Color.Gray;
+            label6.FlatStyle = FlatStyle.Flat;
+            label6.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Black;
+            label6.Location = new Point(565, 139);
+            label6.Name = "label6";
+            label6.Size = new Size(328, 52);
+            label6.TabIndex = 17;
+            label6.Text = "Add-On Mods";
+            label6.TextAlign = ContentAlignment.TopCenter;
             // 
             // label5
             // 
@@ -115,12 +185,13 @@
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(44, 135);
+            label5.ImageAlign = ContentAlignment.TopLeft;
+            label5.Location = new Point(53, 139);
             label5.Name = "label5";
             label5.Size = new Size(496, 52);
             label5.TabIndex = 16;
             label5.Text = "Resolution/Upscaler";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            label5.TextAlign = ContentAlignment.TopCenter;
             // 
             // mainPanelUpsRes
             // 
@@ -130,7 +201,7 @@
             mainPanelUpsRes.Controls.Add(button3);
             mainPanelUpsRes.Controls.Add(button2);
             mainPanelUpsRes.Controls.Add(panelModOp);
-            mainPanelUpsRes.Location = new Point(44, 190);
+            mainPanelUpsRes.Location = new Point(53, 194);
             mainPanelUpsRes.Name = "mainPanelUpsRes";
             mainPanelUpsRes.Size = new Size(496, 245);
             mainPanelUpsRes.TabIndex = 14;
@@ -489,7 +560,7 @@
             flowDel.Anchor = AnchorStyles.Bottom;
             flowDel.Controls.Add(buttonDel);
             flowDel.FlowDirection = FlowDirection.BottomUp;
-            flowDel.Location = new Point(422, 468);
+            flowDel.Location = new Point(489, 454);
             flowDel.Name = "flowDel";
             flowDel.Size = new Size(100, 36);
             flowDel.TabIndex = 9;
@@ -565,7 +636,7 @@
             flowLayoutPanel2.Anchor = AnchorStyles.Bottom;
             flowLayoutPanel2.Controls.Add(buttonInstall);
             flowLayoutPanel2.FlowDirection = FlowDirection.BottomUp;
-            flowLayoutPanel2.Location = new Point(324, 468);
+            flowLayoutPanel2.Location = new Point(391, 454);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(100, 36);
             flowLayoutPanel2.TabIndex = 5;
@@ -663,7 +734,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(800, 504);
+            ClientSize = new Size(935, 490);
             Controls.Add(panel1);
             ForeColor = Color.Black;
             FormBorderStyle = FormBorderStyle.None;
@@ -673,6 +744,8 @@
             Load += formSettings_Load;
             Resize += formSettings_Resize;
             panel1.ResumeLayout(false);
+            panelAddOn.ResumeLayout(false);
+            panelNvngx.ResumeLayout(false);
             mainPanelUpsRes.ResumeLayout(false);
             panelResPreset.ResumeLayout(false);
             panelRes.ResumeLayout(false);
@@ -741,5 +814,10 @@
         private Button button1080;
         private Button buttonResPreset;
         private Label label5;
+        private Label label6;
+        private Panel panelAddOn;
+        private Panel panelNvngx;
+        private CheckedListBox optionsNvngx;
+        private Button buttonNvngx;
     }
 }

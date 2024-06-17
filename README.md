@@ -1,5 +1,5 @@
 # FSR3-Mod-Setup-Utility-Enhanced
-Download the  FSR3 Mod Setup Utility Enhanced [Here](https://sharemods.com/nsctffnk8vy1/FSR3_v0.5_Beta.rar.html)
+Download the  FSR3 Mod Setup Utility Enhanced [Here](https://sharemods.com/ex1vb20xug3l/FSR3_v0.6_Beta.rar.html)
 
 Repository FSR3 Mod Setup Utility Standard Version [Here](https://github.com/P4TOLINO06/FSR3.0-Mod-Setup-Utility)
  

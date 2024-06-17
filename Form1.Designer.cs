@@ -78,7 +78,7 @@
             sidebar.MaximumSize = new Size(188, 0);
             sidebar.MinimumSize = new Size(56, 0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(56, 426);
+            sidebar.Size = new Size(56, 457);
             sidebar.TabIndex = 0;
             sidebar.Paint += flowLayoutPanel1_Paint;
             // 
@@ -236,9 +236,10 @@
             mainPanel.Controls.Add(flowLayoutPanel1);
             mainPanel.Controls.Add(flowClock);
             mainPanel.Controls.Add(pictureBox1);
+            mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(800, 401);
+            mainPanel.Size = new Size(919, 451);
             mainPanel.TabIndex = 1;
             mainPanel.Paint += mainPanel_Paint;
             // 
@@ -249,7 +250,7 @@
             Date.BackColor = Color.Transparent;
             Date.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Date.ForeColor = SystemColors.ButtonShadow;
-            Date.Location = new Point(560, 95);
+            Date.Location = new Point(619, 95);
             Date.Name = "Date";
             Date.Size = new Size(42, 20);
             Date.TabIndex = 7;
@@ -261,7 +262,7 @@
             flowLayoutPanel1.AutoSize = true;
             flowLayoutPanel1.BackColor = Color.Transparent;
             flowLayoutPanel1.Controls.Add(DateOwLabel);
-            flowLayoutPanel1.Location = new Point(488, 12);
+            flowLayoutPanel1.Location = new Point(547, 12);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(312, 65);
             flowLayoutPanel1.TabIndex = 6;
@@ -285,7 +286,7 @@
             flowClock.BackColor = Color.Transparent;
             flowClock.Controls.Add(ClockLabel);
             flowClock.ForeColor = Color.Gray;
-            flowClock.Location = new Point(560, 132);
+            flowClock.Location = new Point(619, 132);
             flowClock.Name = "flowClock";
             flowClock.Size = new Size(179, 50);
             flowClock.TabIndex = 4;
@@ -310,7 +311,7 @@
             pictureBox1.InitialImage = null;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(800, 401);
+            pictureBox1.Size = new Size(919, 451);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -324,11 +325,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 401);
+            ClientSize = new Size(919, 451);
             Controls.Add(sidebar);
             Controls.Add(mainPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "mainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = " FSR3 Mod Setup Utility Enhanced";
             Load += mainPanel_Load;
             Resize += Form1_Resize;

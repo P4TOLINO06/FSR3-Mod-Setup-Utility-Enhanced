@@ -93,7 +93,7 @@
             panelBG.Dock = DockStyle.Fill;
             panelBG.Location = new Point(0, 0);
             panelBG.Name = "panelBG";
-            panelBG.Size = new Size(800, 450);
+            panelBG.Size = new Size(951, 450);
             panelBG.TabIndex = 2;
             // 
             // panelSelectFSR
@@ -102,7 +102,7 @@
             panelSelectFSR.AutoSize = true;
             panelSelectFSR.BackColor = Color.Transparent;
             panelSelectFSR.Controls.Add(listFSR);
-            panelSelectFSR.Location = new Point(533, 52);
+            panelSelectFSR.Location = new Point(608, 52);
             panelSelectFSR.Name = "panelSelectFSR";
             panelSelectFSR.Size = new Size(54, 29);
             panelSelectFSR.TabIndex = 6;
@@ -114,7 +114,7 @@
             panel1.AutoSize = true;
             panel1.BackColor = Color.Black;
             panel1.Controls.Add(listGames);
-            panel1.Location = new Point(311, 52);
+            panel1.Location = new Point(386, 52);
             panel1.Name = "panel1";
             panel1.Size = new Size(216, 29);
             panel1.TabIndex = 5;
@@ -126,7 +126,7 @@
             flowLayoutPanel1.BackColor = Color.Black;
             flowLayoutPanel1.BackgroundImageLayout = ImageLayout.None;
             flowLayoutPanel1.Controls.Add(labelSelectGame);
-            flowLayoutPanel1.Location = new Point(311, 3);
+            flowLayoutPanel1.Location = new Point(386, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(216, 49);
             flowLayoutPanel1.TabIndex = 4;
@@ -137,11 +137,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(951, 450);
             Controls.Add(panelBG);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formHome";
             ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "formHome";
             Load += formHome_Load;
             Resize += formHome_Resize;
