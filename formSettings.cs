@@ -16,6 +16,7 @@ using Microsoft.VisualBasic.Devices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Globalization;
+using System.Drawing.Drawing2D;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -291,6 +292,13 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
+        #region Folder Optiscaler
+        static Dictionary<string, string> folder_optiscaler = new Dictionary<string, string>()
+        {
+            { "fsr22","@mods\\Temp\\OptiScaler\\nvngx.ini" }
+        };
+        #endregion
+
         //Ini Editor
         public void ConfigIni(string key, string value, Dictionary<string, string> DictionaryPath, string? section = null)
         {
@@ -303,6 +311,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 iniEditor.Write(section, key, " " + value);
             }
         }
+        public void ConfigIni2(string key, string value, string path, string? section = null)
+        {
+            string pathIni = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, path);
+            IniEditor iniEditor = new IniEditor(pathIni);
+
+            iniEditor.Write(section, key, value);
+        }
 
         public void ReplaceIni()
         {
@@ -311,7 +326,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 string path_clean_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder_clean_ini[select_mod]);
                 string modified_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) + folder_fake_gpu[select_mod]);
                 File.Copy(path_clean_ini, modified_ini, true);
-                Debug.WriteLine(modified_ini);
             }
         }
 
@@ -476,6 +490,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 listMods.Items.Add(item);
             }
             pendingItems.Clear();
+
+            buttonAddOn.Top = buttonNvngx.Top + 30;
+            panelAddOn2.Top = panelNvngx.Top + 35;
+            buttonAddUps.Top = buttonNvngx.Top + 30;
+            panelAddOnUps.Top = panelNvngx.Top + 32;
         }
 
         public string select_Folder;
@@ -618,7 +637,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_220"} },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_220" } },
+                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_220\\FSR2FSR3_220" } },
@@ -643,7 +662,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_210"} },
                 { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_210"} },
                 { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_210"} },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_210" } },
+                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\Generic FSR\\FSR2FSR3_210" } },
                 { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_210"} },
                 { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_210" } },
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_210\\FSR2FSR3_210"} },
@@ -667,7 +686,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_200"} },
                 { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_200"} },
                 { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_200"} },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_200" } },
+                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\Generic FSR\\FSR2FSR3_200" } },
                 { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_200"} },
                 { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_200"} },
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_200\\FSR2FSR3_200"} },
@@ -691,7 +710,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_SDK" } },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_SDK" } },
+                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_SDK\\FSR2FSR3_SDK" } },
@@ -898,7 +917,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         string pathNvngx;
                         if (optNvngx.Contains("Default"))
                         {
-                            if (File.Exists(select_Folder+"\\nvngx.dll"))
+                            if (File.Exists(select_Folder + "\\nvngx.dll"))
                             {
                                 try
                                 {
@@ -930,6 +949,49 @@ namespace FSR3ModSetupUtilityEnhanced
                         {
                             pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll";
                             File.Copy(pathNvngx, select_Folder + "\\nvngx_dlssg.dll", true);
+                        }
+                    }
+                    foreach (string optDxgi in optionsDxgi.CheckedItems)
+                    {
+                        string pathDxgi;
+                        if (optDxgi == "Dxgi.dll")
+                        {
+                            pathDxgi = "mods\\Temp\\dxgi_global\\dxgi.dll";
+                            File.Copy(pathDxgi, select_Folder + "\\dxgi.dll", true);
+                        }
+                        if (optDxgi == "D3D12.dll")
+                        {
+                            pathDxgi = "mods\\Temp\\dxgi_global\\d3d12.dll";
+                            File.Copy(pathDxgi, select_Folder + "\\d3d12.dll", true);
+                        }
+                    }
+                    foreach (string optAddOn in optionsAddOn.CheckedItems)
+                    {
+                        string pathAddOn;
+                        if (optAddOn == "Optiscaler")
+                        {
+                            pathAddOn = "mods\\Addons_mods\\OptiScaler";
+                            string[] fileOptiscaler = Directory.GetFiles(pathAddOn);
+
+                            foreach (string optFile in fileOptiscaler)
+                            {
+                                string nameOptiscaler = Path.GetFileName(optFile);
+                                string fullPath = Path.Combine(select_Folder, nameOptiscaler);
+                                string pathIni = "mods\\Temp\\OptiScaler\\nvngx.ini";
+                                File.Copy(optFile, fullPath, true);
+                                File.Copy(pathIni, select_Folder + "\\nvngx.ini", true);
+                            }
+                        }
+                        if (optAddOn == "Tweak")
+                        {
+                            pathAddOn = "mods\\Addons_mods\\tweak";
+                            string[] filesTweak = Directory.GetFiles(pathAddOn);
+                            foreach (string fileTweak in filesTweak)
+                            {
+                                string fileName = Path.GetFileName(fileTweak);
+                                string fullPath = Path.Combine(select_Folder, fileName);
+                                File.Copy(fileTweak, fullPath, true);
+                            }
                         }
                     }
                 }
@@ -980,7 +1042,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     MessageBox.Show("Please fill out the first 3 options, Select Game, Select Folder, and Mod Options.", "Error", MessageBoxButtons.OK);
                     return;
-                }         
+                }
             }
             else
             {
@@ -1038,6 +1100,9 @@ namespace FSR3ModSetupUtilityEnhanced
             panelRes.Visible = false;
             panelResPreset.Visible = false;
             panelNvngx.Visible = false;
+            panelDxgi.Visible = false;
+            panelAddOn2.Visible = false;
+            panelAddOnUps.Visible = false;
         }
 
         public void HideSubMenu()
@@ -1057,6 +1122,18 @@ namespace FSR3ModSetupUtilityEnhanced
             if (panelNvngx.Visible == true)
             {
                 panelNvngx.Visible = false;
+            }
+            if (panelDxgi.Visible == true)
+            {
+                panelDxgi.Visible = false;
+            }
+            if (panelAddOn2.Visible == true)
+            {
+                panelAddOn2.Visible = false;
+            }
+            if (panelAddOnUps.Visible == true)
+            {
+                panelAddOnUps.Visible = false;
             }
         }
 
@@ -1401,8 +1478,26 @@ namespace FSR3ModSetupUtilityEnhanced
             WriteUniCustomRes("2160p");
         }
 
+        private void optionsAddOn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!optionsAddOn.CheckedItems.Contains("Optiscaler") && panelAddOnUps.Visible == true)
+            {
+                panelAddOnUps.Visible = false;
+            }
+        }
+
         private void buttonNvngx_Click(object sender, EventArgs e)
         {
+            if (panelNvngx.Visible == true)
+            {
+                buttonAddOn.Top = panelNvngx.Top + 3;
+                panelAddOn2.Top = buttonAddOn.Top + 30;
+            }
+            else
+            {
+                buttonAddOn.Top = panelNvngx.Top + 72;
+                panelAddOn2.Top = buttonAddOn.Top + 28;
+            }
             ShowSubMenu(panelNvngx);
         }
 
@@ -1428,9 +1523,57 @@ namespace FSR3ModSetupUtilityEnhanced
 
         }
 
-    private void optionsNvngx_SelectedIndexChanged(object sender, EventArgs e)
-    {
+        private void buttonDxgi_Click_1(object sender, EventArgs e)
+        {
+            if (panelDxgi.Visible == true)
+            {
+                buttonAddUps.Top = panelDxgi.Top;
+                panelAddOnUps.Top = buttonAddUps.Top + 28;
+            }
+            else
+            {
+                buttonAddUps.Top = panelDxgi.Top + 49;
+                panelAddOnUps.Top = buttonAddUps.Top + 28;
+            }
+            ShowSubMenu(panelDxgi);
+        }
 
-    }
+        private void buttonAddOn_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(panelAddOn2);
+        }
+
+        private void buttonAddUps_Click(object sender, EventArgs e)
+        {
+            if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ShowSubMenu(panelAddOnUps);
+            }
+            else
+            {
+                MessageBox.Show("Check the \"Optiscaler\" box in \"Add-On Mods\" to select this option.", "Optiscaler", MessageBoxButtons.OK);
+                return;
+            }
+        }
+
+        private void buttonAddUps1_Click(object sender, EventArgs e)
+        {
+            ConfigIni2("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+        }
+
+        private void buttonAddUps2_Click(object sender, EventArgs e)
+        {
+            ConfigIni2("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+        }
+
+        private void buttonAddUps3_Click(object sender, EventArgs e)
+        {
+            ConfigIni2("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+        }
+
+        private void buttonAddUps4_Click(object sender, EventArgs e)
+        {
+            ConfigIni2("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+        }
     }
 }

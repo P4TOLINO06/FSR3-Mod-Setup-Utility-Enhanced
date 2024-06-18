@@ -31,6 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formSettings));
             panel1 = new Panel();
             panelAddOn = new Panel();
+            panelAddOnUps = new Panel();
+            panel3 = new Panel();
+            buttonAddUps4 = new Button();
+            buttonAddUps3 = new Button();
+            buttonAddUps2 = new Button();
+            buttonAddUps1 = new Button();
+            buttonAddUps = new Button();
+            panelAddOn2 = new Panel();
+            optionsAddOn = new CheckedListBox();
+            buttonAddOn = new Button();
+            panelDxgi = new Panel();
+            optionsDxgi = new CheckedListBox();
+            buttonDxgi = new Button();
             buttonNvngx = new Button();
             panelNvngx = new Panel();
             optionsNvngx = new CheckedListBox();
@@ -81,6 +94,10 @@
             searchFolder = new FolderBrowserDialog();
             panel1.SuspendLayout();
             panelAddOn.SuspendLayout();
+            panelAddOnUps.SuspendLayout();
+            panel3.SuspendLayout();
+            panelAddOn2.SuspendLayout();
+            panelDxgi.SuspendLayout();
             panelNvngx.SuspendLayout();
             mainPanelUpsRes.SuspendLayout();
             panelResPreset.SuspendLayout();
@@ -120,12 +137,185 @@
             // 
             // panelAddOn
             // 
+            panelAddOn.Controls.Add(panelAddOnUps);
+            panelAddOn.Controls.Add(buttonAddUps);
+            panelAddOn.Controls.Add(panelAddOn2);
+            panelAddOn.Controls.Add(buttonAddOn);
+            panelAddOn.Controls.Add(panelDxgi);
+            panelAddOn.Controls.Add(buttonDxgi);
             panelAddOn.Controls.Add(buttonNvngx);
             panelAddOn.Controls.Add(panelNvngx);
             panelAddOn.Location = new Point(565, 194);
             panelAddOn.Name = "panelAddOn";
-            panelAddOn.Size = new Size(328, 245);
+            panelAddOn.Size = new Size(328, 256);
             panelAddOn.TabIndex = 18;
+            // 
+            // panelAddOnUps
+            // 
+            panelAddOnUps.BackColor = Color.Transparent;
+            panelAddOnUps.Controls.Add(panel3);
+            panelAddOnUps.Location = new Point(165, 127);
+            panelAddOnUps.Name = "panelAddOnUps";
+            panelAddOnUps.Size = new Size(163, 127);
+            panelAddOnUps.TabIndex = 23;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Transparent;
+            panel3.Controls.Add(buttonAddUps4);
+            panel3.Controls.Add(buttonAddUps3);
+            panel3.Controls.Add(buttonAddUps2);
+            panel3.Controls.Add(buttonAddUps1);
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(163, 120);
+            panel3.TabIndex = 14;
+            // 
+            // buttonAddUps4
+            // 
+            buttonAddUps4.BackColor = Color.Gray;
+            buttonAddUps4.FlatAppearance.BorderSize = 0;
+            buttonAddUps4.FlatStyle = FlatStyle.Flat;
+            buttonAddUps4.ForeColor = Color.White;
+            buttonAddUps4.Location = new Point(0, 86);
+            buttonAddUps4.Name = "buttonAddUps4";
+            buttonAddUps4.Size = new Size(171, 36);
+            buttonAddUps4.TabIndex = 14;
+            buttonAddUps4.Text = "Xess DX11";
+            buttonAddUps4.UseVisualStyleBackColor = false;
+            buttonAddUps4.Click += buttonAddUps4_Click;
+            // 
+            // buttonAddUps3
+            // 
+            buttonAddUps3.BackColor = Color.Gray;
+            buttonAddUps3.FlatAppearance.BorderSize = 0;
+            buttonAddUps3.FlatStyle = FlatStyle.Flat;
+            buttonAddUps3.ForeColor = Color.White;
+            buttonAddUps3.Location = new Point(0, 56);
+            buttonAddUps3.Name = "buttonAddUps3";
+            buttonAddUps3.Size = new Size(163, 31);
+            buttonAddUps3.TabIndex = 3;
+            buttonAddUps3.Text = "Fsr 2.1 DX11";
+            buttonAddUps3.UseVisualStyleBackColor = false;
+            buttonAddUps3.Click += buttonAddUps3_Click;
+            // 
+            // buttonAddUps2
+            // 
+            buttonAddUps2.BackColor = Color.Gray;
+            buttonAddUps2.FlatAppearance.BorderSize = 0;
+            buttonAddUps2.FlatStyle = FlatStyle.Flat;
+            buttonAddUps2.ForeColor = Color.White;
+            buttonAddUps2.Location = new Point(0, 28);
+            buttonAddUps2.Name = "buttonAddUps2";
+            buttonAddUps2.Size = new Size(163, 31);
+            buttonAddUps2.TabIndex = 2;
+            buttonAddUps2.Text = "Fsr 2.2 DX11 - DX12";
+            buttonAddUps2.UseVisualStyleBackColor = false;
+            buttonAddUps2.Click += buttonAddUps2_Click;
+            // 
+            // buttonAddUps1
+            // 
+            buttonAddUps1.BackColor = Color.Gray;
+            buttonAddUps1.FlatAppearance.BorderSize = 0;
+            buttonAddUps1.FlatStyle = FlatStyle.Flat;
+            buttonAddUps1.ForeColor = Color.White;
+            buttonAddUps1.Location = new Point(0, 0);
+            buttonAddUps1.Name = "buttonAddUps1";
+            buttonAddUps1.Size = new Size(163, 31);
+            buttonAddUps1.TabIndex = 1;
+            buttonAddUps1.Text = "Fsr 2.2 DX11";
+            buttonAddUps1.UseVisualStyleBackColor = false;
+            buttonAddUps1.Click += buttonAddUps1_Click;
+            // 
+            // buttonAddUps
+            // 
+            buttonAddUps.BackColor = Color.DarkGray;
+            buttonAddUps.Cursor = Cursors.Hand;
+            buttonAddUps.FlatAppearance.BorderSize = 0;
+            buttonAddUps.FlatStyle = FlatStyle.Flat;
+            buttonAddUps.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonAddUps.Location = new Point(165, 102);
+            buttonAddUps.Name = "buttonAddUps";
+            buttonAddUps.Size = new Size(163, 28);
+            buttonAddUps.TabIndex = 22;
+            buttonAddUps.Text = "Add-On Upscaler";
+            buttonAddUps.UseVisualStyleBackColor = false;
+            buttonAddUps.Click += buttonAddUps_Click;
+            // 
+            // panelAddOn2
+            // 
+            panelAddOn2.BackColor = Color.Transparent;
+            panelAddOn2.Controls.Add(optionsAddOn);
+            panelAddOn2.Location = new Point(0, 127);
+            panelAddOn2.Name = "panelAddOn2";
+            panelAddOn2.Size = new Size(163, 77);
+            panelAddOn2.TabIndex = 21;
+            // 
+            // optionsAddOn
+            // 
+            optionsAddOn.BackColor = Color.DimGray;
+            optionsAddOn.BorderStyle = BorderStyle.None;
+            optionsAddOn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            optionsAddOn.ForeColor = Color.White;
+            optionsAddOn.FormattingEnabled = true;
+            optionsAddOn.Items.AddRange(new object[] { "Optiscaler", "Tweak" });
+            optionsAddOn.Location = new Point(0, 0);
+            optionsAddOn.Name = "optionsAddOn";
+            optionsAddOn.Size = new Size(156, 66);
+            optionsAddOn.TabIndex = 7;
+            optionsAddOn.SelectedIndexChanged += optionsAddOn_SelectedIndexChanged;
+            // 
+            // buttonAddOn
+            // 
+            buttonAddOn.BackColor = Color.DarkGray;
+            buttonAddOn.Cursor = Cursors.Hand;
+            buttonAddOn.FlatAppearance.BorderSize = 0;
+            buttonAddOn.FlatStyle = FlatStyle.Flat;
+            buttonAddOn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonAddOn.Location = new Point(0, 102);
+            buttonAddOn.Name = "buttonAddOn";
+            buttonAddOn.Size = new Size(163, 28);
+            buttonAddOn.TabIndex = 20;
+            buttonAddOn.Text = "Add-On";
+            buttonAddOn.UseVisualStyleBackColor = false;
+            buttonAddOn.Click += buttonAddOn_Click;
+            // 
+            // panelDxgi
+            // 
+            panelDxgi.BackColor = Color.Transparent;
+            panelDxgi.Controls.Add(optionsDxgi);
+            panelDxgi.Location = new Point(169, 30);
+            panelDxgi.Name = "panelDxgi";
+            panelDxgi.Size = new Size(163, 77);
+            panelDxgi.TabIndex = 19;
+            // 
+            // optionsDxgi
+            // 
+            optionsDxgi.BackColor = Color.DimGray;
+            optionsDxgi.BorderStyle = BorderStyle.None;
+            optionsDxgi.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            optionsDxgi.ForeColor = Color.White;
+            optionsDxgi.FormattingEnabled = true;
+            optionsDxgi.Items.AddRange(new object[] { "Dxgi.dll", "D3D12.dll" });
+            optionsDxgi.Location = new Point(3, 0);
+            optionsDxgi.Name = "optionsDxgi";
+            optionsDxgi.Size = new Size(156, 66);
+            optionsDxgi.TabIndex = 7;
+            // 
+            // buttonDxgi
+            // 
+            buttonDxgi.BackColor = Color.DarkGray;
+            buttonDxgi.Cursor = Cursors.Hand;
+            buttonDxgi.FlatAppearance.BorderSize = 0;
+            buttonDxgi.FlatStyle = FlatStyle.Flat;
+            buttonDxgi.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonDxgi.Location = new Point(165, 0);
+            buttonDxgi.Name = "buttonDxgi";
+            buttonDxgi.Size = new Size(163, 28);
+            buttonDxgi.TabIndex = 18;
+            buttonDxgi.Text = "Dxgi..dll";
+            buttonDxgi.UseVisualStyleBackColor = false;
+            buttonDxgi.Click += buttonDxgi_Click_1;
             // 
             // buttonNvngx
             // 
@@ -164,7 +354,6 @@
             optionsNvngx.Size = new Size(163, 66);
             optionsNvngx.TabIndex = 7;
             optionsNvngx.ItemCheck += optionsNvngx_ItemCheck;
-            optionsNvngx.SelectedIndexChanged += optionsNvngx_SelectedIndexChanged;
             // 
             // label6
             // 
@@ -745,6 +934,10 @@
             Resize += formSettings_Resize;
             panel1.ResumeLayout(false);
             panelAddOn.ResumeLayout(false);
+            panelAddOnUps.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panelAddOn2.ResumeLayout(false);
+            panelDxgi.ResumeLayout(false);
             panelNvngx.ResumeLayout(false);
             mainPanelUpsRes.ResumeLayout(false);
             panelResPreset.ResumeLayout(false);
@@ -819,5 +1012,18 @@
         private Panel panelNvngx;
         private CheckedListBox optionsNvngx;
         private Button buttonNvngx;
+        private Button buttonDxgi;
+        private Panel panelDxgi;
+        private CheckedListBox optionsDxgi;
+        private Panel panelAddOn2;
+        private CheckedListBox optionsAddOn;
+        private Button buttonAddOn;
+        private Panel panelAddOnUps;
+        private Button buttonAddUps;
+        private Panel panel3;
+        private Button buttonAddUps4;
+        private Button buttonAddUps3;
+        private Button buttonAddUps2;
+        private Button buttonAddUps1;
     }
 }
