@@ -32,11 +32,14 @@
             panel1 = new Panel();
             panelAddOn = new Panel();
             panelAddOnUps = new Panel();
+            buttonAddUps7 = new Button();
             panel3 = new Panel();
             buttonAddUps4 = new Button();
             buttonAddUps3 = new Button();
             buttonAddUps2 = new Button();
             buttonAddUps1 = new Button();
+            buttonAddUps6 = new Button();
+            buttonAddUps5 = new Button();
             buttonAddUps = new Button();
             panelAddOn2 = new Panel();
             optionsAddOn = new CheckedListBox();
@@ -132,7 +135,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(935, 490);
+            panel1.Size = new Size(1126, 669);
             panel1.TabIndex = 0;
             // 
             // panelAddOn
@@ -145,19 +148,36 @@
             panelAddOn.Controls.Add(buttonDxgi);
             panelAddOn.Controls.Add(buttonNvngx);
             panelAddOn.Controls.Add(panelNvngx);
-            panelAddOn.Location = new Point(565, 194);
+            panelAddOn.Location = new Point(699, 55);
             panelAddOn.Name = "panelAddOn";
-            panelAddOn.Size = new Size(328, 256);
+            panelAddOn.Size = new Size(328, 353);
             panelAddOn.TabIndex = 18;
             // 
             // panelAddOnUps
             // 
             panelAddOnUps.BackColor = Color.Transparent;
+            panelAddOnUps.Controls.Add(buttonAddUps7);
             panelAddOnUps.Controls.Add(panel3);
+            panelAddOnUps.Controls.Add(buttonAddUps6);
+            panelAddOnUps.Controls.Add(buttonAddUps5);
             panelAddOnUps.Location = new Point(165, 127);
             panelAddOnUps.Name = "panelAddOnUps";
-            panelAddOnUps.Size = new Size(163, 127);
+            panelAddOnUps.Size = new Size(163, 226);
             panelAddOnUps.TabIndex = 23;
+            // 
+            // buttonAddUps7
+            // 
+            buttonAddUps7.BackColor = Color.Gray;
+            buttonAddUps7.FlatAppearance.BorderSize = 0;
+            buttonAddUps7.FlatStyle = FlatStyle.Flat;
+            buttonAddUps7.ForeColor = Color.White;
+            buttonAddUps7.Location = new Point(0, 181);
+            buttonAddUps7.Name = "buttonAddUps7";
+            buttonAddUps7.Size = new Size(163, 31);
+            buttonAddUps7.TabIndex = 3;
+            buttonAddUps7.Text = "Xess DX12";
+            buttonAddUps7.UseVisualStyleBackColor = false;
+            buttonAddUps7.Click += buttonAddUps7_Click;
             // 
             // panel3
             // 
@@ -227,6 +247,34 @@
             buttonAddUps1.UseVisualStyleBackColor = false;
             buttonAddUps1.Click += buttonAddUps1_Click;
             // 
+            // buttonAddUps6
+            // 
+            buttonAddUps6.BackColor = Color.Gray;
+            buttonAddUps6.FlatAppearance.BorderSize = 0;
+            buttonAddUps6.FlatStyle = FlatStyle.Flat;
+            buttonAddUps6.ForeColor = Color.White;
+            buttonAddUps6.Location = new Point(0, 151);
+            buttonAddUps6.Name = "buttonAddUps6";
+            buttonAddUps6.Size = new Size(163, 31);
+            buttonAddUps6.TabIndex = 2;
+            buttonAddUps6.Text = "Fsr 2.1  DX12";
+            buttonAddUps6.UseVisualStyleBackColor = false;
+            buttonAddUps6.Click += buttonAddUps6_Click;
+            // 
+            // buttonAddUps5
+            // 
+            buttonAddUps5.BackColor = Color.Gray;
+            buttonAddUps5.FlatAppearance.BorderSize = 0;
+            buttonAddUps5.FlatStyle = FlatStyle.Flat;
+            buttonAddUps5.ForeColor = Color.White;
+            buttonAddUps5.Location = new Point(0, 120);
+            buttonAddUps5.Name = "buttonAddUps5";
+            buttonAddUps5.Size = new Size(163, 31);
+            buttonAddUps5.TabIndex = 1;
+            buttonAddUps5.Text = "Fsr 2.2 DX12";
+            buttonAddUps5.UseVisualStyleBackColor = false;
+            buttonAddUps5.Click += buttonAddUps5_Click;
+            // 
             // buttonAddUps
             // 
             buttonAddUps.BackColor = Color.DarkGray;
@@ -286,7 +334,7 @@
             panelDxgi.Controls.Add(optionsDxgi);
             panelDxgi.Location = new Point(169, 30);
             panelDxgi.Name = "panelDxgi";
-            panelDxgi.Size = new Size(163, 77);
+            panelDxgi.Size = new Size(163, 42);
             panelDxgi.TabIndex = 19;
             // 
             // optionsDxgi
@@ -299,7 +347,7 @@
             optionsDxgi.Items.AddRange(new object[] { "Dxgi.dll", "D3D12.dll" });
             optionsDxgi.Location = new Point(3, 0);
             optionsDxgi.Name = "optionsDxgi";
-            optionsDxgi.Size = new Size(156, 66);
+            optionsDxgi.Size = new Size(156, 44);
             optionsDxgi.TabIndex = 7;
             // 
             // buttonDxgi
@@ -361,7 +409,7 @@
             label6.FlatStyle = FlatStyle.Flat;
             label6.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(565, 139);
+            label6.Location = new Point(699, 0);
             label6.Name = "label6";
             label6.Size = new Size(328, 52);
             label6.TabIndex = 17;
@@ -749,7 +797,7 @@
             flowDel.Anchor = AnchorStyles.Bottom;
             flowDel.Controls.Add(buttonDel);
             flowDel.FlowDirection = FlowDirection.BottomUp;
-            flowDel.Location = new Point(489, 454);
+            flowDel.Location = new Point(250, 633);
             flowDel.Name = "flowDel";
             flowDel.Size = new Size(100, 36);
             flowDel.TabIndex = 9;
@@ -765,7 +813,7 @@
             buttonDel.ImageAlign = ContentAlignment.MiddleLeft;
             buttonDel.Location = new Point(3, 4);
             buttonDel.Name = "buttonDel";
-            buttonDel.Size = new Size(92, 29);
+            buttonDel.Size = new Size(95, 29);
             buttonDel.TabIndex = 4;
             buttonDel.Text = "      Cleanup";
             buttonDel.UseVisualStyleBackColor = false;
@@ -813,7 +861,7 @@
             AddOptionsSelect.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddOptionsSelect.ForeColor = Color.White;
             AddOptionsSelect.FormattingEnabled = true;
-            AddOptionsSelect.Items.AddRange(new object[] { "Fake Nvidia Gpu", "Nvapi Results", "Ue Compatibility Mode", "MacOS Crossover Support", "Auto Exposure", "Debug View", "Debug Tier Lines", "Off Frame Gen", "Disable Overlay", "Disable Console", "Install lfz.sl.dlss", "Enable Signature Over", "Disable Signature Over" });
+            AddOptionsSelect.Items.AddRange(new object[] { "Toml Editor", "Fake Nvidia Gpu", "Nvapi Results", "Ue Compatibility Mode", "MacOS Crossover Support", "Auto Exposure", "Debug View", "Debug Tier Lines", "Off Frame Gen", "Disable Overlay", "Disable Console", "Install lfz.sl.dlss", "Enable Signature Over", "Disable Signature Over" });
             AddOptionsSelect.Location = new Point(3, 3);
             AddOptionsSelect.Name = "AddOptionsSelect";
             AddOptionsSelect.Size = new Size(275, 66);
@@ -825,9 +873,9 @@
             flowLayoutPanel2.Anchor = AnchorStyles.Bottom;
             flowLayoutPanel2.Controls.Add(buttonInstall);
             flowLayoutPanel2.FlowDirection = FlowDirection.BottomUp;
-            flowLayoutPanel2.Location = new Point(391, 454);
+            flowLayoutPanel2.Location = new Point(156, 633);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(100, 36);
+            flowLayoutPanel2.Size = new Size(97, 36);
             flowLayoutPanel2.TabIndex = 5;
             // 
             // buttonInstall
@@ -863,7 +911,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.Gray;
+            label1.BackColor = Color.Transparent;
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -895,7 +943,7 @@
             // 
             // label2
             // 
-            label2.BackColor = Color.Gray;
+            label2.BackColor = Color.Transparent;
             label2.BorderStyle = BorderStyle.FixedSingle;
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -923,7 +971,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(935, 490);
+            ClientSize = new Size(1126, 669);
             Controls.Add(panel1);
             ForeColor = Color.Black;
             FormBorderStyle = FormBorderStyle.None;
@@ -1025,5 +1073,8 @@
         private Button buttonAddUps3;
         private Button buttonAddUps2;
         private Button buttonAddUps1;
+        private Button buttonAddUps7;
+        private Button buttonAddUps6;
+        private Button buttonAddUps5;
     }
 }

@@ -192,6 +192,10 @@ namespace FSR3ModSetupUtilityEnhanced
             }
 
             List<string> rdr2B2List = new List<string> { "RDR2 Build_2", "RDR2 Build_4", "RDR2 Mix", "RDR2 Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam FSR3" };
+            List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2","Disable Anti Cheat"};
+            var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
+                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3",
+                                 "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler + Xess + Dlss" };
             //a.Items.AddRange(rdr2B2List.ToArray());
             //a.SelectedIndex = 0;
 
@@ -199,9 +203,16 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formSettings.Instance.AddItemlistMods(rdr2B2List);
             }
+            else if(listGames.SelectedItem.ToString() == "Elden Ring")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(EldenList);
+            }
             else
             {
                 formSettings.Instance.RemoveItemlistMods(rdr2B2List);
+                formSettings.Instance.RemoveItemlistMods(EldenList);
+                formSettings.Instance.AddItemlistMods(modsDefaultList);
             }
 
         }

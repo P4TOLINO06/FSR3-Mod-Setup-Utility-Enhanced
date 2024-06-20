@@ -17,6 +17,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Globalization;
 using System.Drawing.Drawing2D;
+using Tomlyn;
+using Tomlyn.Model;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -55,7 +57,18 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         public void AddItemlistMods(List<string> items)
-        {
+        {      
+            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring V2", "Disable Anti Cheat" };
+
+            List<string> gamesIgnore = new List<string> { "Elden Ring"};
+           
+            if (itensDelete.Any(item => listMods.Items.Contains(item)))
+            {
+                foreach (string itemDelete in itensDelete)
+                {
+                    listMods.Items.Remove(itemDelete);
+                }
+            }
             if (listMods == null && !listMods.Items.Contains(items))
             {
                 pendingItems.AddRange(items.Where(i => !pendingItems.Contains(i)));
@@ -84,6 +97,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     listMods.Items.Remove(item);
                 }
             }
+            listMods.Text = "";
+        }
+        
+        public void ClearListMods()
+        {
+            listMods.Items.Clear();
         }
 
 
@@ -177,6 +196,16 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler V2",@"mods\\Temp\\Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml"}
         };
         #endregion
+
+        #region Folder Elden Ring
+        Dictionary<string, string[]> folderEldenRing = new Dictionary<string, string[]>
+        {
+            { "Disable Anti Cheat", new string[] { @"mods\Elden_Ring_FSR3\ToggleAntiCheat" } },
+            { "Elden Ring FSR3", new string[] { @"mods\Elden_Ring_FSR3\EldenRing_FSR3" } },
+            { "Elden Ring FSR3 V2", new string[] { @"mods\Elden_Ring_FSR3\EldenRing_FSR3 v2" } }
+        };
+
+        #endregion;
 
         #region Folder Disable Console
         Dictionary<string, string> folder_disable_console = new Dictionary<string, string>
@@ -369,7 +398,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     ShowErrorMessage(modVersionMessage);
                 }
             }
-
+       
             if (itemText == "Fake Nvidia Gpu" && select_mod != null)
             {
                 string pathToml_f_gpu = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folder_fake_gpu[select_mod]);
@@ -614,7 +643,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         {
                             await CopyModsAsync(path_final, path_dest);
 
-                            if (uniscalerVersion.All(uniscalerVersion => !selectedVersion.Contains(uniscalerVersion) && !rdr2_folder.ContainsKey(select_mod)))
+                            if (uniscalerVersion.All(uniscalerVersion => !selectedVersion.Contains(uniscalerVersion) && !rdr2_folder.ContainsKey(select_mod) && !folderEldenRing.ContainsKey(select_mod)))
                             {
                                 await CopyModsAsync(path_fsr_common, path_dest);
                             }
@@ -768,6 +797,11 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void  elden_fsr3()
+        {
+            CopyFSR(folderEldenRing);
+        }
+
         #region Default Mod Files
 
         #endregion
@@ -885,6 +919,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     fsr_rdr2_build02();
                 }
+                if(folderEldenRing.ContainsKey(select_mod))
+                {
+                    elden_fsr3();
+                }
 
                 select_mod = listMods.SelectedItem as string;
 
@@ -981,6 +1019,9 @@ namespace FSR3ModSetupUtilityEnhanced
                                 File.Copy(optFile, fullPath, true);
                                 File.Copy(pathIni, select_Folder + "\\nvngx.ini", true);
                             }
+                            string oldIni = "mods\\Temp\\OptiScaler\\nvngx.ini";
+                            string newIni = "mods\\Addons_mods\\OptiScaler\\nvngx.ini";
+                            File.Copy(newIni, oldIni, true);
                         }
                         if (optAddOn == "Tweak")
                         {
@@ -1318,6 +1359,8 @@ namespace FSR3ModSetupUtilityEnhanced
                     label6.Left = label3.Left;
                     panelAddOn.Top = label3.Top + label3.Height + 130;
                     panelAddOn.Left = label3.Left;
+                    panel1.Location = new Point(10, 10); // Posição desejada do Panel
+                    panel1.Size = new Size(ClientSize.Width - 20, ClientSize.Height - 20);
                 }
                 else
                 {
@@ -1329,6 +1372,15 @@ namespace FSR3ModSetupUtilityEnhanced
                     label6.Left = label5.Left + 511;
                     panelAddOn.Top = label3.Top + label3.Height + 130;
                     panelAddOn.Left = label5.Left + 511;
+                }
+                   int newLabel6Left = label5.Left + label5.Width + 16;
+
+                    if (newLabel6Left + label6.Width <= this.ClientSize.Width)
+                {
+                    label6.Top = label5.Top;
+                    label6.Left = newLabel6Left;
+                    panelAddOn.Top = label6.Top + 58;
+                    panelAddOn.Left = newLabel6Left;
                 }
                 panelAddOn.SendToBack();
                 mainPanelUpsRes.SendToBack();
@@ -1574,6 +1626,20 @@ namespace FSR3ModSetupUtilityEnhanced
         private void buttonAddUps4_Click(object sender, EventArgs e)
         {
             ConfigIni2("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+        }
+
+        private void buttonAddUps5_Click(object sender, EventArgs e)
+        {
+            ConfigIni2("Dx12Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+        }
+        private void buttonAddUps6_Click(object sender, EventArgs e)
+        {
+            ConfigIni2("Dx12Upscaler", "fsr21", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+        }
+
+        private void buttonAddUps7_Click(object sender, EventArgs e)
+        {
+            ConfigIni2("Dx12Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
         }
     }
 }

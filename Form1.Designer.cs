@@ -78,7 +78,7 @@
             sidebar.MaximumSize = new Size(188, 0);
             sidebar.MinimumSize = new Size(56, 0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(56, 457);
+            sidebar.Size = new Size(56, 517);
             sidebar.TabIndex = 0;
             sidebar.Paint += flowLayoutPanel1_Paint;
             // 
@@ -239,7 +239,7 @@
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(0, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(919, 451);
+            mainPanel.Size = new Size(919, 511);
             mainPanel.TabIndex = 1;
             mainPanel.Paint += mainPanel_Paint;
             // 
@@ -311,7 +311,7 @@
             pictureBox1.InitialImage = null;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(919, 451);
+            pictureBox1.Size = new Size(919, 511);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -325,13 +325,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(919, 451);
+            ClientSize = new Size(919, 511);
             Controls.Add(sidebar);
             Controls.Add(mainPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "mainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " FSR3 Mod Setup Utility Enhanced";
+            WindowState = FormWindowState.Maximized;
             Load += mainPanel_Load;
             Resize += Form1_Resize;
             sidebar.ResumeLayout(false);
