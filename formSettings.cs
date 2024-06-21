@@ -26,17 +26,20 @@ namespace FSR3ModSetupUtilityEnhanced
     {
         public static string gameSelected { get; set; }
         public static string fsrSelected { get; set; }
+        public formEditorToml EditorForm { get; set; }
         string path_fsr = "";
 
         private List<string> pendingItems = new List<string>();
         private static formSettings instance;
-
         public string select_mod;
         bool varLfz = false;
+        private formEditorToml formEditor;
+        private mainForm mainFormInstance;
 
         public formSettings()
         {
             InitializeComponent();
+            this.mainFormInstance = mainFormInstance;
 
             AddOptionsSelect.ItemCheck += new ItemCheckEventHandler(AddOptionsSelect_ItemCheck);
             listMods.SelectedIndexChanged += listMods_SelectedIndexChanged;
@@ -57,11 +60,11 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         public void AddItemlistMods(List<string> items)
-        {      
+        {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring V2", "Disable Anti Cheat" };
 
-            List<string> gamesIgnore = new List<string> { "Elden Ring"};
-           
+            List<string> gamesIgnore = new List<string> { "Elden Ring" };
+
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
                 foreach (string itemDelete in itensDelete)
@@ -99,7 +102,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             listMods.Text = "";
         }
-        
+
         public void ClearListMods()
         {
             listMods.Items.Clear();
@@ -358,6 +361,23 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void LoadEditorTomlForm()
+        {
+            if (formEditor == null)
+            {
+                formEditor = new formEditorToml();
+                formEditor.TopLevel = false;
+                formEditor.Dock = DockStyle.Fill;
+                this.panel1.Controls.Add(formEditor);
+                this.panel1.Tag = formEditor;
+                formEditor.Show();
+            }
+            else
+            {
+                formEditor.BringToFront();
+            }
+        }
+
         private void AddOptionsSelect_ItemCheck(object? sender, ItemCheckEventArgs e)
         {
 
@@ -398,7 +418,19 @@ namespace FSR3ModSetupUtilityEnhanced
                     ShowErrorMessage(modVersionMessage);
                 }
             }
-       
+
+            if (itemText == "Toml Editor")
+            {
+                select_mod = listMods.SelectedItem as string;
+                if (select_mod != null && folder_fake_gpu.ContainsKey(select_mod))
+                {
+                    string path1 = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), folder_fake_gpu[select_mod]);
+
+
+                    ((mainForm)this.ParentForm).loadForm(typeof(formEditorToml), select_mod);
+                }
+            }
+
             if (itemText == "Fake Nvidia Gpu" && select_mod != null)
             {
                 string pathToml_f_gpu = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folder_fake_gpu[select_mod]);
@@ -1359,7 +1391,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     label6.Left = label3.Left;
                     panelAddOn.Top = label3.Top + label3.Height + 130;
                     panelAddOn.Left = label3.Left;
-                    panel1.Location = new Point(10, 10); // Posição desejada do Panel
+                    panel1.Location = new Point(10, 10); 
                     panel1.Size = new Size(ClientSize.Width - 20, ClientSize.Height - 20);
                 }
                 else

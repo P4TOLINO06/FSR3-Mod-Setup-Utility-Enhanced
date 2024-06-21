@@ -9,6 +9,9 @@ namespace FSR3ModSetupUtilityEnhanced
         private formHome homeForm;
         private formSettings homeSettings;
         private formGuide homeGuide;
+        private formEditorToml homeEditor;
+        private static mainForm instance;
+        public string nullHomeEditor { get; set; }
 
         public mainForm()
         {
@@ -52,7 +55,7 @@ namespace FSR3ModSetupUtilityEnhanced
             Application.Exit();
         }
 
-        public void loadForm(Type formType)
+        public void loadForm(Type formType, string pathT = null)
         {
             Form formToShow = null;
 
@@ -107,6 +110,34 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
                 formToShow = homeGuide;
             }
+
+            else if (formType == typeof(formEditorToml))
+            {
+                if (homeEditor == null)
+                {
+                    homeEditor = new formEditorToml();
+                    homeEditor.TopLevel = false;
+                    homeEditor.Dock = DockStyle.Fill;
+                    this.mainPanel.Controls.Add(homeEditor);
+                    this.mainPanel.Tag = homeEditor;
+                    homeEditor.Show();
+                }
+                else
+                {
+                    homeEditor.BringToFront();
+                }
+
+                if (pathT != null)
+                {
+                    homeEditor.SetPathT(pathT); 
+                }
+
+                formToShow = homeEditor;
+                if (nullHomeEditor == null)
+                {
+                    homeEditor = null;
+                }
+            }
             else
             {
                 if (this.mainPanel.Controls.Count > 0 && this.mainPanel.Controls[0].GetType() == formType)
@@ -128,8 +159,6 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formToShow.BringToFront();
             }
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
