@@ -26,6 +26,7 @@ namespace FSR3ModSetupUtilityEnhanced
     {
         public static string gameSelected { get; set; }
         public static string fsrSelected { get; set; }
+        public  bool tomld { get; set; }
         public formEditorToml EditorForm { get; set; }
         string path_fsr = "";
 
@@ -107,7 +108,6 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             listMods.Items.Clear();
         }
-
 
         #region Fake Nvidia Gpu Toml File Path
         static Dictionary<string, string> folder_fake_gpu = new Dictionary<string, string>()
@@ -207,8 +207,25 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Elden Ring FSR3", new string[] { @"mods\Elden_Ring_FSR3\EldenRing_FSR3" } },
             { "Elden Ring FSR3 V2", new string[] { @"mods\Elden_Ring_FSR3\EldenRing_FSR3 v2" } }
         };
+        #endregion
+
+        #region Folder Alan Wake 2
+        Dictionary<string, string[]> folderAw2 = new Dictionary<string, string[]>
+        {
+            {"Alan Wake 2 FG RTX",new string [] {"mods\\FSR3_AW2\\RTX",
+                "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll"}},
+
+            {"Alan Wake 2 Uniscaler Custom",new string []{"mods\\FSR3_AW2\\AMD"}}
+        };
 
         #endregion;
+
+        #region Clean Aw2 Files
+        List<string> del_aw2 = new List<string>
+        {
+            "Uniscaler.asi","winmm.dll","winmm.ini","dlssg_to_fsr3_amd_is_better.dll","DisableNvidiaSignatureChecks.reg","RestoreNvidiaSignatureChecks.reg"
+        };
+        #endregion
 
         #region Folder Disable Console
         Dictionary<string, string> folder_disable_console = new Dictionary<string, string>
@@ -378,6 +395,11 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void DeselectAddOpt()
+        {
+            AddOptionsSelect.SetItemCheckState(0, CheckState.Unchecked);
+        }
+
         private void AddOptionsSelect_ItemCheck(object? sender, ItemCheckEventArgs e)
         {
 
@@ -393,9 +415,12 @@ namespace FSR3ModSetupUtilityEnhanced
 
             select_mod = listMods.SelectedItem as string;
 
-            void ShowErrorMessage(string message)
+            void ShowErrorMessage(string message = null)
             {
-                DialogResult = MessageBox.Show(message, "Error", MessageBoxButtons.OK);
+                if (message != null)
+                {
+                    DialogResult = MessageBox.Show(message, "Error", MessageBoxButtons.OK);
+                }
                 e.NewValue = CheckState.Unchecked;
             }
 
@@ -421,36 +446,45 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (itemText == "Toml Editor")
             {
-                select_mod = listMods.SelectedItem as string;
-                if (select_mod != null && folder_fake_gpu.ContainsKey(select_mod))
+                if (select_mod != null)
                 {
-                    string path1 = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), folder_fake_gpu[select_mod]);
-
-
-                    ((mainForm)this.ParentForm).loadForm(typeof(formEditorToml), select_mod);
-                }
-            }
-
-            if (itemText == "Fake Nvidia Gpu" && select_mod != null)
-            {
-                string pathToml_f_gpu = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folder_fake_gpu[select_mod]);
-
-                if (edit_fake_gpu_list.Contains(select_mod))
-                {
-                    ConfigIni("fake_nvidia_gpu", AddOptSelect, folder_fake_gpu, "compatibility");
-                }
-                else if (edit_old_fake_gpu.Contains(select_mod))
-                {
-                    string[] iniLines = File.ReadAllLines(pathToml_f_gpu);
-
-                    if (iniLines.Length > 0)
+                    select_mod = listMods.SelectedItem as string;
+                    if (select_mod != null && folder_fake_gpu.ContainsKey(select_mod))
                     {
-                        iniLines[0] = "fake_nvidia_gpu = " + AddOptSelect;
+                        string path1 = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), folder_fake_gpu[select_mod]);
+                        
+                        ShowErrorMessage();//Uncheck the Toml Editor in AddOptionsSelect option.
 
-                        File.WriteAllLines(pathToml_f_gpu, iniLines);
+                        ((mainForm)this.ParentForm).loadForm(typeof(formEditorToml), select_mod);
                     }
                 }
+                else
+                { 
+                    ShowErrorMessage("Select a mod version to proceed. (excluding specific versions, for exemple: Elden Ring FSR3");
+                    return;
+                }
             }
+
+                if (itemText == "Fake Nvidia Gpu" && select_mod != null)
+                {
+                    string pathToml_f_gpu = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folder_fake_gpu[select_mod]);
+
+                    if (edit_fake_gpu_list.Contains(select_mod))
+                    {
+                        ConfigIni("fake_nvidia_gpu", AddOptSelect, folder_fake_gpu, "compatibility");
+                    }
+                    else if (edit_old_fake_gpu.Contains(select_mod))
+                    {
+                        string[] iniLines = File.ReadAllLines(pathToml_f_gpu);
+
+                        if (iniLines.Length > 0)
+                        {
+                            iniLines[0] = "fake_nvidia_gpu = " + AddOptSelect;
+
+                            File.WriteAllLines(pathToml_f_gpu, iniLines);
+                        }
+                    }
+                }
 
             if (itemText == "Ue Compatibility Mode")
             {
@@ -556,6 +590,7 @@ namespace FSR3ModSetupUtilityEnhanced
             panelAddOn2.Top = panelNvngx.Top + 35;
             buttonAddUps.Top = buttonNvngx.Top + 30;
             panelAddOnUps.Top = panelNvngx.Top + 32;
+
         }
 
         public string select_Folder;
@@ -829,9 +864,32 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void  elden_fsr3()
+        public void elden_fsr3()
         {
             CopyFSR(folderEldenRing);
+        }
+
+        public void aw2_fsr3()
+        {
+            CopyFSR(folderAw2);
+
+            //Disable Nvidia Signature Checks
+            if (select_mod == "Alan Wake 2 FG RTX")
+            {
+                string path_aw2_over = @"mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
+
+                try
+                {
+                    Process process = new Process();
+                    process.StartInfo.FileName = "regedit.exe";
+                    process.StartInfo.Arguments = "/s \"" + path_aw2_over + "\"";
+                    process.Start();
+                    process.WaitForExit();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
         }
 
         #region Default Mod Files
@@ -954,6 +1012,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 if(folderEldenRing.ContainsKey(select_mod))
                 {
                     elden_fsr3();
+                }
+                if (folderAw2.ContainsKey(select_mod))
+                {
+                    aw2_fsr3();
                 }
 
                 select_mod = listMods.SelectedItem as string;
@@ -1110,6 +1172,25 @@ namespace FSR3ModSetupUtilityEnhanced
                 else if (rdr2_folder.ContainsKey(select_mod))
                 {
                     CleanupMod(del_rdr2_custom_files, rdr2_folder);
+                }
+                else if (folderAw2.ContainsKey(select_mod))
+                {
+                    CleanupMod(del_aw2, folderAw2);
+
+                    //RestoreNvidiaSignatureChecks
+                    if (select_mod == "Alan Wake 2 FG RTX")
+                    {
+                        string path_aw2_en = @"mods\\FSR3_GOT\\DLSS FG\\RestoreNvidiaSignatureChecks.reg";
+                        try
+                        {
+                            Process process = new Process();
+                            process.StartInfo.FileName = "regedit.exe";
+                            process.StartInfo.Arguments = "/s \"" + path_aw2_en + "\"";
+                            process.Start();
+                            process.WaitForExit();
+                        }
+                        catch { }
+                    }
                 }
                 else if (select_mod == null && select_Folder == null)
                 {
