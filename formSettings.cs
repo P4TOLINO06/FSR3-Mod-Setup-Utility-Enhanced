@@ -36,6 +36,8 @@ namespace FSR3ModSetupUtilityEnhanced
         bool varLfz = false;
         private formEditorToml formEditor;
         private mainForm mainFormInstance;
+        public System.Windows.Forms.TextBox fpsLimitTextBox;
+        public System.Windows.Forms.Label labelFpsLimit;
 
         public formSettings()
         {
@@ -45,6 +47,7 @@ namespace FSR3ModSetupUtilityEnhanced
             AddOptionsSelect.ItemCheck += new ItemCheckEventHandler(AddOptionsSelect_ItemCheck);
             listMods.SelectedIndexChanged += listMods_SelectedIndexChanged;
             this.Resize += new EventHandler(formSettings_Resize);
+            TextBoxFpsLimit();
             SubMenuClose();
         }
 
@@ -270,8 +273,8 @@ namespace FSR3ModSetupUtilityEnhanced
             {"0.10.1", new string[] {"mods\\FSR2FSR3_0.10.1\\FSR2FSR3_COMMON",
                                      "mods\\FSR2FSR3_0.10.1\\Red Dead Redemption 2"}},
 
-            {"0.10.1h1", new string[] {"mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\FSR2FSR3_COMMON",
-                                       "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Red Dead Redemption 2"}},
+            {"0.10.1h1", new string[] {"mods\\FSR2FSR3_0.10.1h1\\FSR2FSR3_COMMON",
+                                       "mods\\FSR2FSR3_0.10.1h1\\Red Dead Redemption 2"}},
 
             {"0.10.2h1", new string[] {"mods\\FSR2FSR3_0.10.2h1\\FSR2FSR3_COMMON",
                                        "mods\\FSR2FSR3_0.10.2h1\\Red Dead Redemption 2"}},
@@ -400,6 +403,50 @@ namespace FSR3ModSetupUtilityEnhanced
             AddOptionsSelect.SetItemCheckState(0, CheckState.Unchecked);
         }
 
+        public void TextBoxFpsLimit()
+        {
+            fpsLimitTextBox = new System.Windows.Forms.TextBox();
+            fpsLimitTextBox.Location = new System.Drawing.Point(475, 100);
+            fpsLimitTextBox.Size = new System.Drawing.Size(25,25);
+            panel1.Controls.Add(fpsLimitTextBox);
+            fpsLimitTextBox.BringToFront();
+            fpsLimitTextBox.Visible = false;
+
+            labelFpsLimit = new System.Windows.Forms.Label();
+            labelFpsLimit.Location = new System.Drawing.Point(406, 100);
+            labelFpsLimit.Size = new System.Drawing.Size(125, 20);
+            labelFpsLimit.Text = "Fps Limit";
+            labelFpsLimit.Font = new Font("Segoe UI Semibold", 11.25f, FontStyle.Bold);
+            labelFpsLimit.ForeColor = Color.White; ;
+            panel1.Controls.Add(labelFpsLimit);
+            labelFpsLimit.BringToFront();
+            labelFpsLimit.Visible = false;
+
+            fpsLimitTextBox.KeyPress += textBoxFps_KeyPress;
+            fpsLimitTextBox.TextChanged+= textBoxFps_TextChanged;
+        }
+        private void textBoxFps_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (fpsLimitTextBox.Text.Length >= 3 && e.KeyChar != '\b')
+            {
+                e.Handled = true; 
+            }
+        }
+        private void textBoxFps_TextChanged(object sender, EventArgs e)
+        {
+            fpsLimit();
+        }
+        public void fpsLimit()
+        {
+            if (fpsLimitTextBox.Text.ToString() != null)
+            {
+                ConfigIni("original_frame_rate_limit", fpsLimitTextBox.Text.ToString(), uniscaler_path, "general");
+            }
+        }
         private void AddOptionsSelect_ItemCheck(object? sender, ItemCheckEventArgs e)
         {
 
@@ -517,6 +564,33 @@ namespace FSR3ModSetupUtilityEnhanced
             if (itemText == "Disable Console")
             {
                 ConfigureMod("disable_console", "Select a mod version starting from 0.10.3.", folder_disable_console, "logging");
+            }
+
+            if(itemText == "Fps Limit")
+            {
+                if (select_mod != null && uniscaler_path.ContainsKey(select_mod))
+                {
+                    if (fpsLimitTextBox != null)
+                    {
+                        if (e.NewValue == CheckState.Checked)
+                        {
+                            fpsLimitTextBox.Visible = true;
+                            labelFpsLimit.Visible = true;
+                            AddOptionsSelect.Size = new Size(275, 44);
+                        }
+                        else if (e.NewValue == CheckState.Unchecked)
+                        {
+                            fpsLimitTextBox.Visible = false;
+                            labelFpsLimit.Visible = false;
+                            AddOptionsSelect.Size = new Size(275, 66);
+                        }
+                    }
+                }
+                else
+                {
+                    ShowErrorMessage("Select a Uniscaler option to proceed.");
+                    return;
+                }
             }
             if (itemText == "Install lfz.sl.dlss")
             {
@@ -691,11 +765,9 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task CopyFSR(Dictionary<string, string[]> DictionaryFSR)
         {
-            string path_mods = path_fsr;
             string path_dest = select_Folder;
             string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string selectedVersion = listMods.SelectedItem as string;
-            string varDici;
             string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2" };
 
             if (selectedVersion != null)
@@ -705,7 +777,9 @@ namespace FSR3ModSetupUtilityEnhanced
                     foreach (string relativePath in paths)
                     {
                         string path_final = Path.GetFullPath(Path.Combine(exeDirectory, relativePath));
-                        string path_fsr_common = Path.GetFullPath(Path.Combine(exeDirectory, "mods\\FSR2_FSR3_COMMON_GLOBAL"));
+                        string path_fsr_initial=  (path_final + "\\..\\..") + "\\FSR2FSR3_COMMON";
+                        string path_fsr_common = Path.GetFullPath(path_fsr_initial);
+                        Debug.WriteLine(path_fsr_common);
                         if (Directory.Exists(path_final))
                         {
                             await CopyModsAsync(path_final, path_dest);
@@ -822,7 +896,32 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             CopyFSR(origins_rdr2_folder);
         }
+        public void ac_valhalla_dlss()
+        {
+            #region Copy Ac Valhalla DLSS
+            string dlss_valhalla = "mods\\Ac_Valhalla_DLSS";
 
+            foreach(string files_fsr in Directory.GetFiles(dlss_valhalla))
+            {
+                string fileName = Path.GetFileName(files_fsr);
+                File.Copy(files_fsr, select_Folder +"\\"+ fileName,true);
+            }
+            foreach (var subPath in Directory.GetDirectories(dlss_valhalla, "*", SearchOption.AllDirectories))
+            {
+                string relativePath = subPath.Substring(dlss_valhalla.Length + 1);
+                string fullPath = Path.Combine(select_Folder, relativePath);
+
+                Directory.CreateDirectory(fullPath);
+
+                foreach (string filePath in Directory.GetFiles(subPath))
+                {
+                    string relativeFilePath = filePath.Substring(subPath.Length + 1);
+                    string destFilePath = Path.Combine(fullPath, relativeFilePath);
+                    File.Copy(filePath, destFilePath, true);
+                }
+            }
+        #endregion;
+    }
         public async Task fsr_rdr2_build02()
         {
 
@@ -1016,6 +1115,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (folderAw2.ContainsKey(select_mod))
                 {
                     aw2_fsr3();
+                }
+                if(select_mod == "Ac Valhalla Dlss (Only RTX)")
+                {
+                    ac_valhalla_dlss();
                 }
 
                 select_mod = listMods.SelectedItem as string;
