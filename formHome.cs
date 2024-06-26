@@ -196,6 +196,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2","Disable Anti Cheat"};
             List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom" };
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)" };
+            List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3",
                                  "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler + Xess + Dlss" };
@@ -221,12 +222,18 @@ namespace FSR3ModSetupUtilityEnhanced
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(AcValhallaList);
             }
+            else if( listGames.SelectedItem.ToString() == "Baldur's Gate 3")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(bdg3List);
+            }
             else
             {
                 formSettings.Instance.RemoveItemlistMods(rdr2B2List);
                 formSettings.Instance.RemoveItemlistMods(EldenList);
                 formSettings.Instance.RemoveItemlistMods(Aw2List);
                 formSettings.Instance.RemoveItemlistMods(AcValhallaList);
+                formSettings.Instance.RemoveItemlistMods(bdg3List);
                 formSettings.Instance.AddItemlistMods(modsDefaultList);
             }
 

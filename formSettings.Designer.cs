@@ -1076,6 +1076,5 @@
         private Button buttonAddUps7;
         private Button buttonAddUps6;
         private Button buttonAddUps5;
-        private TextBox textBoxFps;
     }
 }

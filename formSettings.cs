@@ -26,7 +26,6 @@ namespace FSR3ModSetupUtilityEnhanced
     {
         public static string gameSelected { get; set; }
         public static string fsrSelected { get; set; }
-        public  bool tomld { get; set; }
         public formEditorToml EditorForm { get; set; }
         string path_fsr = "";
 
@@ -227,6 +226,22 @@ namespace FSR3ModSetupUtilityEnhanced
         List<string> del_aw2 = new List<string>
         {
             "Uniscaler.asi","winmm.dll","winmm.ini","dlssg_to_fsr3_amd_is_better.dll","DisableNvidiaSignatureChecks.reg","RestoreNvidiaSignatureChecks.reg"
+        };
+        #endregion
+
+        #region Clean Ac Valhalla Files
+        List<string> del_valhalla = new List<string>
+        {
+            "ReShade.ini","dxgi.dll","ACVUpscalerPreset.ini"
+        };
+        #endregion
+
+        #region Folder Bdg3
+        Dictionary<string, string[]> folderBdg3 = new Dictionary<string, string[]>
+        {
+            { "Baldur's Gate 3 FSR3", new string[] { "mods\\FSR3_BDG" } },
+            { "Baldur's Gate 3 FSR3 V2", new string[] { "mods\\FSR3_BDG", "mods\\FSR3_BDG_2" } },
+            { "Baldur's Gate 3 FSR3 V3", new string[] { "mods\\FSR3_BDG", "mods\\FSR3_BDG_2" } }
         };
         #endregion
 
@@ -794,6 +809,28 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public async Task CopyFolder(string pathFolder)
+        {
+            foreach (string files_fsr in Directory.GetFiles(pathFolder))
+            {
+                string fileName = Path.GetFileName(files_fsr);
+                File.Copy(files_fsr, select_Folder + "\\" + fileName, true);
+            }
+            foreach (var subPath in Directory.GetDirectories(pathFolder, "*", SearchOption.AllDirectories))
+            {
+                string relativePath = subPath.Substring(pathFolder.Length + 1);
+                string fullPath = Path.Combine(select_Folder, relativePath);
+
+                Directory.CreateDirectory(fullPath);
+
+                foreach (string filePath in Directory.GetFiles(subPath))
+                {
+                    string relativeFilePath = filePath.Substring(subPath.Length + 1);
+                    string destFilePath = Path.Combine(fullPath, relativeFilePath);
+                    File.Copy(filePath, destFilePath, true);
+                }
+            }
+        }
         public void fsr2_2()
         {
             string path_final;
@@ -896,32 +933,34 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             CopyFSR(origins_rdr2_folder);
         }
+
         public void ac_valhalla_dlss()
         {
-            #region Copy Ac Valhalla DLSS
-            string dlss_valhalla = "mods\\Ac_Valhalla_DLSS";
+            CopyFolder("mods\\Ac_Valhalla_DLSS");
+        }
 
-            foreach(string files_fsr in Directory.GetFiles(dlss_valhalla))
+        public async Task bdg3_fsr3()
+        {
+            CopyFSR(folderBdg3);
+
+            #region Copy ini file for mods folder Baldur's Gate 3 FSR3 V3 
+            if (select_mod == "Baldur's Gate 3 FSR3 V3")
             {
-                string fileName = Path.GetFileName(files_fsr);
-                File.Copy(files_fsr, select_Folder +"\\"+ fileName,true);
-            }
-            foreach (var subPath in Directory.GetDirectories(dlss_valhalla, "*", SearchOption.AllDirectories))
-            {
-                string relativePath = subPath.Substring(dlss_valhalla.Length + 1);
-                string fullPath = Path.Combine(select_Folder, relativePath);
-
-                Directory.CreateDirectory(fullPath);
-
-                foreach (string filePath in Directory.GetFiles(subPath))
+                string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string pathBdgIni = "mods\\FSR3_BDG_3\\BG3Upscaler.ini";
+                string fullPath = Path.Combine(exeDirectory, pathBdgIni);
+                try
                 {
-                    string relativeFilePath = filePath.Substring(subPath.Length + 1);
-                    string destFilePath = Path.Combine(fullPath, relativeFilePath);
-                    File.Copy(filePath, destFilePath, true);
+                    await Task.Delay((2000));
+                    {                
+                        File.Copy(fullPath, select_Folder + "\\mods\\BG3Upscaler.ini", true);
+                    }
                 }
+                catch { }
             }
-        #endregion;
-    }
+            #endregion
+        }
+
         public async Task fsr_rdr2_build02()
         {
 
@@ -991,10 +1030,6 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        #region Default Mod Files
-
-        #endregion
-
         public void CleanupMod(List<string> ListClean, Dictionary<string, string[]> DictionaryPath)
         {
             string[] DelFiles = Directory.GetFiles(select_Folder);
@@ -1029,7 +1064,8 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void CleanupMod(List<string> ListClean, Dictionary<string, string> DictionaryPath)
+        #region CleanupMod2
+        public void CleanupMod2(List<string> ListClean, Dictionary<string, string> DictionaryPath)
         {
             string[] DelFiles;
             if (select_Folder != null)
@@ -1067,6 +1103,43 @@ namespace FSR3ModSetupUtilityEnhanced
                 MessageBox.Show("Please close the game or any other folders related to the game.", "Error", MessageBoxButtons.OK);
             }
         }
+        #endregion
+
+        #region Cleanup Mod 3
+        public void CleanupMod3(List<string> ListClean,string modName)
+        {
+            string[] DelFiles = Directory.GetFiles(select_Folder);
+            try
+            {
+                if (select_mod == modName)
+                {
+                    foreach (string filesDestFolder in DelFiles)
+                    {
+                        string DelFileName = Path.GetFileName(filesDestFolder);
+
+                        if (ListClean.Contains(DelFileName))
+                        {
+                            File.Delete(filesDestFolder);
+                        }
+                    }
+
+                    if (Directory.Exists(select_Folder + "\\mods"))
+                    {
+                        Directory.Delete(select_Folder + "\\mods", true);
+                    }
+                    if (Directory.Exists(select_Folder + "\\reshade-shaders"))
+                    {
+                        Directory.Delete(select_Folder + "\\reshade-shaders", true);
+                    }
+                    MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please close the game or any other folders related to the game.", "Error", MessageBoxButtons.OK);
+            }
+        }
+        #endregion
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -1119,6 +1192,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 if(select_mod == "Ac Valhalla Dlss (Only RTX)")
                 {
                     ac_valhalla_dlss();
+                }
+                if (folderBdg3.ContainsKey(select_mod))
+                {
+                    bdg3_fsr3();
                 }
 
                 select_mod = listMods.SelectedItem as string;
@@ -1270,7 +1347,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (folder_fake_gpu.ContainsKey(select_mod))
                 {
-                    CleanupMod(modCleanList, folder_fake_gpu);
+                    CleanupMod2(modCleanList, folder_fake_gpu);
                 }
                 else if (rdr2_folder.ContainsKey(select_mod))
                 {
@@ -1279,8 +1356,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 else if (folderAw2.ContainsKey(select_mod))
                 {
                     CleanupMod(del_aw2, folderAw2);
-
-                    //RestoreNvidiaSignatureChecks
+                    #region RestoreNvidiaSignatureChecks
                     if (select_mod == "Alan Wake 2 FG RTX")
                     {
                         string path_aw2_en = @"mods\\FSR3_GOT\\DLSS FG\\RestoreNvidiaSignatureChecks.reg";
@@ -1294,6 +1370,11 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                         catch { }
                     }
+                    #endregion
+                }
+                else if (select_mod == "Ac Valhalla Dlss (Only RTX)")
+                {
+                    CleanupMod3(del_valhalla, "Ac Valhalla Dlss (Only RTX)");
                 }
                 else if (select_mod == null && select_Folder == null)
                 {
