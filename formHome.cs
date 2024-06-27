@@ -25,8 +25,6 @@ namespace FSR3ModSetupUtilityEnhanced
             InitializeComponent();
             panelBG.Paint += new PaintEventHandler(panelBG_Paint);  
             settingsForm = new formSettings();
-
-
         }
 
         private void formHome_Load(object sender, EventArgs e)
@@ -197,6 +195,8 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom" };
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
+            List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler + Xess + Dlss DD2", "Uniscaler V2" };
+            List<string> callistoList = new List<string> { "The Callisto Protocol FSR3" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3",
                                  "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler + Xess + Dlss" };
@@ -222,10 +222,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(AcValhallaList);
             }
-            else if( listGames.SelectedItem.ToString() == "Baldur's Gate 3")
+            else if(listGames.SelectedItem.ToString() == "Baldur's Gate 3")
             {
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(bdg3List);
+            }
+            else if(listGames.SelectedItem.ToString() == "Dragons Dogma 2")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(dd2List);
+            }
+            else if (listGames.SelectedItem.ToString() == "The Callisto Protocol")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(callistoList);
             }
             else
             {
@@ -234,6 +244,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 formSettings.Instance.RemoveItemlistMods(Aw2List);
                 formSettings.Instance.RemoveItemlistMods(AcValhallaList);
                 formSettings.Instance.RemoveItemlistMods(bdg3List);
+                formSettings.Instance.RemoveItemlistMods(dd2List);
+                formSettings.Instance.RemoveItemlistMods(callistoList);
                 formSettings.Instance.AddItemlistMods(modsDefaultList);
             }
 

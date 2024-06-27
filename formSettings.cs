@@ -19,6 +19,7 @@ using System.Globalization;
 using System.Drawing.Drawing2D;
 using Tomlyn;
 using Tomlyn.Model;
+using System.Windows.Forms.Design;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -128,7 +129,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler",@"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
-            {"The Callisto Protocol FSR3",@"\mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"}
+            {"The Callisto Protocol FSR3",@"\mods\Temp\FSR3_Callisto\enable_fake_gpu\\fsr2fsr3.config.toml"}
         };
         #endregion
 
@@ -245,6 +246,16 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
+        #region Folder DD2
+        Dictionary<string, string[]> folderDd2 = new Dictionary<string, string[]>
+        {
+            { "Dinput8", new string[] { "mods\\FSR3_DD2\\dinput" } },
+            { "Uniscaler_DD2", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
+            { "Uniscaler + Xess + Dlss DD2", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
+            { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
+        };
+        #endregion
+
         #region Folder Disable Console
         Dictionary<string, string> folder_disable_console = new Dictionary<string, string>
             {
@@ -333,7 +344,7 @@ namespace FSR3ModSetupUtilityEnhanced
             { "0.10.4", "mods\\FSR2FSR3_0.10.4\\enable_fake_gpu\\fsr2fsr3.config.toml" },
             { "Uniscaler", "mods\\FSR2FSR3_Uniscaler\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler + Xess + Dlss", "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\enable_fake_gpu\\uniscaler.config.toml" },
-            { "The Callisto Protocol FSR3", "mods\\FSR3_Callisto\\enable_fake_gpu" },
+            { "The Callisto Protocol FSR3", "mods\\FSR3_Callisto\\enable_fake_gpu\\fsr2fsr3.config.toml" },
             { "Uniscaler V2", "mods\\FSR2FSR3_Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uni Custom Miles", "mods\\FSR2FSR3_Miles\\uni_miles_toml" }
         };
@@ -961,6 +972,56 @@ namespace FSR3ModSetupUtilityEnhanced
             #endregion
         }
 
+        public void dd2_fsr3()
+        {
+            #region CopyWinmm and delete shader.cache2
+            void CopyWinmm()
+            {
+                if (Directory.Exists(select_Folder + "\\_storage_"))
+                {
+                    string pathWinmm = "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod\\winmm.dll";
+                    File.Copy(pathWinmm,select_Folder + "\\_storage_\\winmm.dll",true);
+                }
+
+                if (File.Exists(select_Folder + "\\shader.cache2"))
+                {
+                    DialogResult varCache = MessageBox.Show("Do you want to delete the shader.cache2 file ? Not deleting this file may result in bugs and game crashes.", "Shader Cache", MessageBoxButtons.YesNo);
+                    if (varCache == DialogResult.Yes)
+                    {
+                        File.Delete(select_Folder + "\\shader.cache2");
+                    }
+                }
+            }
+            #endregion
+
+            if (select_mod != "Dinput8" && File.Exists(select_Folder + "\\Dinput8.dll"))
+            {
+                CopyFSR(folderDd2);
+                CopyWinmm();
+            }
+            else if (select_mod == "Dinput8")
+            {
+                CopyFSR(folderDd2);
+            }
+            else
+            {
+                MessageBox.Show("Install \"Dinput8\" before installing the main mod", "Dinput8", MessageBoxButtons.OK);
+                return;
+            }
+        }
+
+        public void callisto_fsr3()
+        {
+            string pathCallisto = "mods\\FSR3_Callisto\\FSR_Callisto";
+
+            foreach (string filesCallisto in Directory.GetFiles(pathCallisto))            
+            {
+                string fileName = Path.GetFileName(filesCallisto);
+
+                File.Copy(filesCallisto, select_Folder + "\\" + fileName,true);
+            }
+        }
+
         public async Task fsr_rdr2_build02()
         {
 
@@ -1181,7 +1242,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     fsr_rdr2_build02();
                 }
-                if(folderEldenRing.ContainsKey(select_mod))
+                if (folderEldenRing.ContainsKey(select_mod))
                 {
                     elden_fsr3();
                 }
@@ -1189,13 +1250,26 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     aw2_fsr3();
                 }
-                if(select_mod == "Ac Valhalla Dlss (Only RTX)")
+                if (select_mod == "Ac Valhalla Dlss (Only RTX)")
                 {
                     ac_valhalla_dlss();
+                }
+                if(select_mod == "The Callisto Protocol FSR3")
+                {
+                    callisto_fsr3(); 
                 }
                 if (folderBdg3.ContainsKey(select_mod))
                 {
                     bdg3_fsr3();
+                }
+
+                if (folderDd2.ContainsKey(select_mod))
+                {
+                    dd2_fsr3();
+                    if (!File.Exists(select_Folder + "\\dinput8.dll"))
+                    {
+                        return;
+                    }
                 }
 
                 select_mod = listMods.SelectedItem as string;

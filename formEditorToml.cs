@@ -41,7 +41,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler",@"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
-            {"The Callisto Protocol FSR3",@"\mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"}
+            {"The Callisto Protocol FSR3",@"\mods\Temp\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"}
         };
         #endregion;
         #region Reload Clean Toml Path
@@ -146,10 +146,14 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string newpathNewToml = clean_file[pathT];
 
-                File.Copy(newpathNewToml, pathOldToml, true);
+                try
+                {
+                    File.Copy(newpathNewToml, pathOldToml, true);
 
-                string newToml = File.ReadAllText(pathOldToml);
-                richToml.Text = newToml;
+                    string newToml = File.ReadAllText(pathOldToml);
+                    richToml.Text = newToml;
+                }
+                catch (Exception ex) { }
             }
         }
 
