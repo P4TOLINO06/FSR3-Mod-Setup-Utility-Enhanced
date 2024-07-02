@@ -191,12 +191,13 @@ namespace FSR3ModSetupUtilityEnhanced
 
             #region Games List
             List<string> rdr2B2List = new List<string> { "RDR2 Build_2", "RDR2 Build_4", "RDR2 Mix", "RDR2 Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam FSR3" };
-            List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2","Disable Anti Cheat"};
+            List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat"};
             List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom" };
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
             List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler + Xess + Dlss DD2", "Uniscaler V2" };
             List<string> callistoList = new List<string> { "The Callisto Protocol FSR3" };
+            List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3",
                                  "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler + Xess + Dlss" };
@@ -237,6 +238,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(callistoList);
             }
+            else if (listGames.SelectedItem.ToString() == "GTA V")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(gtavList);
+            }
             else
             {
                 formSettings.Instance.RemoveItemlistMods(rdr2B2List);
@@ -246,6 +252,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 formSettings.Instance.RemoveItemlistMods(bdg3List);
                 formSettings.Instance.RemoveItemlistMods(dd2List);
                 formSettings.Instance.RemoveItemlistMods(callistoList);
+                formSettings.Instance.RemoveItemlistMods(gtavList);
                 formSettings.Instance.AddItemlistMods(modsDefaultList);
             }
 

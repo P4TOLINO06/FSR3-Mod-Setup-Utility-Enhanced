@@ -65,7 +65,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void AddItemlistMods(List<string> items)
         {
-            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring V2", "Disable Anti Cheat" };
+            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2","Elden Ring FSR3 V3", "Disable Anti Cheat" };
 
             List<string> gamesIgnore = new List<string> { "Elden Ring" };
 
@@ -206,9 +206,10 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Folder Elden Ring
         Dictionary<string, string[]> folderEldenRing = new Dictionary<string, string[]>
         {
-            { "Disable Anti Cheat", new string[] { @"mods\Elden_Ring_FSR3\ToggleAntiCheat" } },
-            { "Elden Ring FSR3", new string[] { @"mods\Elden_Ring_FSR3\EldenRing_FSR3" } },
-            { "Elden Ring FSR3 V2", new string[] { @"mods\Elden_Ring_FSR3\EldenRing_FSR3 v2" } }
+            {"Disable Anti Cheat", new string[] {@"mods\Elden_Ring_FSR3\ToggleAntiCheat" } },
+            {"Elden Ring FSR3", new string[] {@"mods\Elden_Ring_FSR3\EldenRing_FSR3" } },
+            {"Elden Ring FSR3 V2", new string[] {@"mods\Elden_Ring_FSR3\EldenRing_FSR3 v2" } },
+            {"Elden Ring FSR3 V3", new string[]{@"mods\Elden_Ring_FSR3\EldenRing_FSR3 v3"}}
         };
         #endregion
 
@@ -255,6 +256,18 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
         };
         #endregion
+
+        #region Folder GTA V
+        Dictionary<string, string[]> folderGtaV = new Dictionary<string, string[]>
+        {
+            { "Dinput8", new string[] { "mods\\FSR3_GTAV\\dinput8_gtav" } },
+            { "GTA V FSR3", new string[] { "mods\\FSR3_GTAV\\GtaV_B02_FSR3" } },
+            { "GTA V Online", new string []{"mods\\FSR3_GTAV\\GtaV_B02_FSR3"} },
+            { "GTA V FiveM", new string []{"mods\\FSR3_GTAV\\GtaV_B02_FSR3"} },
+            { "GYA V Epic", new string[] { "mods\\FSR3_GTAV\\GtaV_B02_FSR3" } },
+            { "GTA V Epic V2", new string[] { "mods\\FSR3_GTAV\\Gtav_Epic" } },
+        };
+        #endregion 
 
         #region Folder Disable Console
         Dictionary<string, string> folder_disable_console = new Dictionary<string, string>
@@ -338,7 +351,7 @@ namespace FSR3ModSetupUtilityEnhanced
             { "0.9.0", "mods\\FSR2FSR3_0.9.0\\enable_fake_gpu\\fsr2fsr3.config.toml" },
             { "0.10.0", "mods\\FSR2FSR3_0.10.0\\enable_fake_gpu\\fsr2fsr3.config.toml" },
             { "0.10.1", "mods\\FSR2FSR3_0.10.1\\enable_fake_gpu\\fsr2fsr3.config.toml" },
-            { "0.10.1h1", "mods\\FSR2FSR3_0.10.1h1\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            { "0.10.1h1", "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\enable_fake_gpu\\fsr2fsr3.config.toml" },
             { "0.10.2h1", "mods\\FSR2FSR3_0.10.2h1\\enable_fake_gpu\\fsr2fsr3.config.toml" },
             { "0.10.3", "mods\\FSR2FSR3_0.10.3\\enable_fake_gpu\\fsr2fsr3.config.toml" },
             { "0.10.4", "mods\\FSR2FSR3_0.10.4\\enable_fake_gpu\\fsr2fsr3.config.toml" },
@@ -855,7 +868,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_220"} },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\Generic FSR\\FSR2FSR3_220" } },
+                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_220" } },
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_220\\FSR2FSR3_220" } },
@@ -880,7 +893,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_210"} },
                 { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_210"} },
                 { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_210"} },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\Generic FSR\\FSR2FSR3_210" } },
+                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_210" } },
                 { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_210"} },
                 { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_210" } },
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_210\\FSR2FSR3_210"} },
@@ -904,7 +917,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_200"} },
                 { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_200"} },
                 { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_200"} },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\Generic FSR\\FSR2FSR3_200" } },
+                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_200" } },
                 { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_200"} },
                 { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_200"} },
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_200\\FSR2FSR3_200"} },
@@ -928,7 +941,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_SDK" } },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\Generic FSR\\FSR2FSR3_SDK" } },
+                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_SDK" } },
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_SDK\\FSR2FSR3_SDK" } },
@@ -1088,6 +1101,53 @@ namespace FSR3ModSetupUtilityEnhanced
                 catch (Exception ex)
                 {
                 }
+            }
+        }
+
+        public async Task gtav_fsr3()
+        {
+            if (select_mod != "GTA V FSR3")
+            {
+                CopyFSR(folderGtaV);
+            }
+            else if (select_mod == "Dinput8")
+            {
+                CopyFSR(folderGtaV);
+            }
+            else if (select_mod == "GTA V FSR3" && !File.Exists(select_Folder + "\\dinput8.dll"))
+            {
+                MessageBox.Show("Install \"Dinput8\" before installing the main mod", "Dinput8", MessageBoxButtons.OK);
+                return;
+            }
+            else if (select_mod == "GTA V FSR3" && File.Exists(select_Folder + "\\Dinput8.dll"))
+            {
+                CopyFSR(folderGtaV);
+            }
+
+            if (select_mod == "GTA V FiveM")
+            {
+                DialogResult fivemUi = MessageBox.Show("Do you want to fix the delay in the FiveM user interface?", "UI Fix",MessageBoxButtons.YesNo);
+                await Task.Delay((2000));
+                if (DialogResult.Yes == fivemUi && File.Exists(select_Folder + "\\dxgi.asi"))
+                {
+                    File.Move(select_Folder + "\\dxgi.asi", select_Folder + "\\dxgi.dll ", true);
+                }
+            }
+
+            if(select_mod == "GTA V Online")
+            {
+                DialogResult ban = MessageBox.Show("We are not responsible if you get banned. Do you want to proceed with the installation of the mod?", "Ban", MessageBoxButtons.YesNo);
+                await Task.Delay((2000));
+                if (DialogResult.Yes == ban && File.Exists(select_Folder + "\\dxgi.asi" ))
+                {
+                    File.Move(select_Folder + "\\dxgi.asi", select_Folder + "\\d3d12.dll", true);
+                    File.Move(select_Folder + "\\GTAVUpscaler.asi", select_Folder + "\\GTAVUpscaler.dll", true);
+                    File.Move(select_Folder + "\\GTAVUpscaler.org.asi", select_Folder + "\\GTAVUpscaler.org.dll", true);
+                   
+                    File.Copy(select_Folder + "\\d3d12.dll",select_Folder + "\\mods\\d3d12.dll", true);
+                    File.Copy(select_Folder + "\\GTAVUpscaler.dll", select_Folder + "\\mods\\GTAVUpscaler.dll", true);
+                    File.Copy(select_Folder + "\\GTAVUpscaler.org.dll", select_Folder + "\\mods\\GTAVUpscaler.org.dll", true);
+                }   
             }
         }
 
@@ -1267,6 +1327,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     dd2_fsr3();
                     if (!File.Exists(select_Folder + "\\dinput8.dll"))
+                    {
+                        return;
+                    }
+                }
+
+                if (folderGtaV.ContainsKey(select_mod))
+                {
+                    gtav_fsr3();
+                    if(select_mod == "GTA V FSR3" && !File.Exists(select_Folder + "\\dinput8.dll"))
                     {
                         return;
                     }
