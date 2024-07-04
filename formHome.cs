@@ -195,12 +195,11 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom" };
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
-            List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler + Xess + Dlss DD2", "Uniscaler V2" };
+            List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss DD2"};
             List<string> callistoList = new List<string> { "The Callisto Protocol FSR3" };
             List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
-                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3",
-                                 "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler + Xess + Dlss" };
+                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler + Xess + Dlss"};
             #endregion;
             //a.Items.AddRange(rdr2B2List.ToArray());
             //a.SelectedIndex = 0;

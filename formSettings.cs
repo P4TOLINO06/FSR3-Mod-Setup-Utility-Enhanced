@@ -82,12 +82,10 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (listMods != null && !listMods.Items.Contains(items))
             {
+                listMods.Items.Clear();
                 foreach (var item in items)
                 {
-                    if (!listMods.Items.Contains(item))
-                    {
-                        listMods.Items.Add(item);
-                    }
+                    listMods.Items.Add(item);
                 }
             }
         }
@@ -129,6 +127,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler",@"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             {"The Callisto Protocol FSR3",@"\mods\Temp\FSR3_Callisto\enable_fake_gpu\\fsr2fsr3.config.toml"}
         };
         #endregion
@@ -141,7 +140,8 @@ namespace FSR3ModSetupUtilityEnhanced
             "0.10.4",
             "Uniscaler",
             "Uniscaler + Xess + Dlss",
-            "Uniscaler V2"
+            "Uniscaler V2",
+            "Uniscaler V3"
         };
         #endregion
 
@@ -171,7 +171,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.10.4", @"\mods\Temp\FSR2FSR3_0.10.4\enable_fake_gpu\fsr2fsr3.config.toml" },
                 { "Uniscaler", @"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler + Xess + Dlss", @"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
-                { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" }
+                { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler V3", @"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             };
         #endregion
 
@@ -183,7 +184,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.10.4", @"\mods\Temp\FSR2FSR3_0.10.4\enable_fake_gpu\fsr2fsr3.config.toml" },
                 { "Uniscaler", @"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler + Xess + Dlss", @"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
-                { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" }
+                { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             };
         #endregion
 
@@ -192,14 +194,23 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 { "Uniscaler", @"mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler + Xess + Dlss", @"mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
-                { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" }
+                { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler V3",@"mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             };
         #endregion
 
         #region Folder Uniscaler V2
         Dictionary<string, string> folder_uniscaler_v2 = new Dictionary<string, string>
         {
-            {"Uniscaler V2",@"mods\\Temp\\Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml"}
+            {"Uniscaler V2",@"mods\\Temp\\Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml"},
+            {"Uniscaler V3",@"mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+        };
+        #endregion
+
+        #region Folder Uniscaler V3
+        Dictionary<string, string> folder_uniscalerV3 = new Dictionary<string, string>
+        {
+            {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"}
         };
         #endregion
 
@@ -254,6 +265,7 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler_DD2", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
             { "Uniscaler + Xess + Dlss DD2", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
             { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
+            { "Uniscaler V3", new string[]{  "mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
         };
         #endregion
 
@@ -276,7 +288,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.10.4", @"mods\Temp\FSR2FSR3_0.10.4\enable_fake_gpu\fsr2fsr3.config.toml" },
                 { "Uniscaler", @"mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler + Xess + Dlss", @"mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
-                { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" }
+                { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
+                {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"}
             };
         #endregion
 
@@ -326,7 +339,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
             {"Uniscaler", new string[] {"mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"}},
             {"Uniscaler + Xess + Dlss", new string[] {"mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"}},
-            {"Uniscaler V2", new string[] {"mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"}}
+            {"Uniscaler V2", new string[] {"mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"}},
+            {"Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
         };
 
         Dictionary<string, string[]> rdr2_folder = new Dictionary<string, string[]>
@@ -359,9 +373,17 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler + Xess + Dlss", "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\enable_fake_gpu\\uniscaler.config.toml" },
             { "The Callisto Protocol FSR3", "mods\\FSR3_Callisto\\enable_fake_gpu\\fsr2fsr3.config.toml" },
             { "Uniscaler V2", "mods\\FSR2FSR3_Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml" },
+            { "Uniscaler V3", "mods\\FSR2FSR3_Uniscaler_V3\\enable_fake_gpu\\uniscaler.config.toml"},
             { "Uni Custom Miles", "mods\\FSR2FSR3_Miles\\uni_miles_toml" }
         };
 
+        #endregion
+
+        #region Clean DD2 FSR3
+        List<string> del_dd2_fsr3 = new List<string>
+        {
+            "dinput8.dll","Uniscaler.asi","winmm.dll","winmm.ini","uniscaler.config.toml"
+        };
         #endregion
 
         #region Folder Mod Operates
@@ -377,6 +399,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler",@"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             {"The Callisto Protocol FSR3",@"\mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"},
             {"Uni Custom Miles", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml"},
             {"Dlss Jedi", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml"}
@@ -512,7 +535,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             void ConfigureMod(string configKey, string modVersionMessage, Dictionary<string, string> folder, string section)
             {
-                if (select_Folder != null)
+                if (select_mod != null)
                 {
                     if (folder.ContainsKey(select_mod))
                     {
@@ -603,6 +626,14 @@ namespace FSR3ModSetupUtilityEnhanced
             if (itemText == "Disable Console")
             {
                 ConfigureMod("disable_console", "Select a mod version starting from 0.10.3.", folder_disable_console, "logging");
+            }
+            if (itemText == "Ignore Ingame Fg")
+            {
+                ConfigureMod("ignore_ingame_frame_generation_toggle", "Select Uniscaler V3 to proceed", folder_uniscalerV3, "general");
+            }
+            if (itemText == "Ignore Fg Resources")
+            {
+                ConfigureMod("ignore_ingame_frame_generation_resources", "Select Uniscaler V3 to proceed", folder_uniscalerV3, "general");
             }
 
             if(itemText == "Fps Limit")
@@ -807,7 +838,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string path_dest = select_Folder;
             string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string selectedVersion = listMods.SelectedItem as string;
-            string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2" };
+            string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3"};
 
             if (selectedVersion != null)
             {
@@ -874,7 +905,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_220\\FSR2FSR3_220" } },
                 { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
                 { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
-                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } }
+                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
+                { "Uniscaler V3", new string[]{  "mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
             };
             #endregion
 
@@ -899,7 +931,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_210\\FSR2FSR3_210"} },
                 { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"} },
                 { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"} },
-                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } }
+                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
+                { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
             };
             #endregion
             CopyFSR(origins_2_1_folder);
@@ -923,7 +956,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_200\\FSR2FSR3_200"} },
                 { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"} },
                 { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"} },
-                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"} }
+                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"} },
+                { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
             };
             #endregion
             CopyFSR(origins_2_0_folder);
@@ -947,7 +981,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_SDK\\FSR2FSR3_SDK" } },
                 { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
                 { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
-                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } }
+                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
+                { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
             };
             #endregion
             CopyFSR(origins_sdk_folder);
@@ -1176,6 +1211,10 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         Directory.Delete(select_Folder + "\\reshade-shaders", true);
                     }
+                    if (Directory.Exists(select_Folder + "\\uniscaler"))
+                    {
+                        Directory.Delete(select_Folder + "\\uniscaler");
+                    }
                     MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
                 }
             }
@@ -1323,7 +1362,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     bdg3_fsr3();
                 }
 
-                if (folderDd2.ContainsKey(select_mod))
+                if (folderDd2.ContainsKey(select_mod) && gameSelected == "Dragons Dogma 2")
                 {
                     dd2_fsr3();
                     if (!File.Exists(select_Folder + "\\dinput8.dll"))
@@ -1519,6 +1558,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     CleanupMod3(del_valhalla, "Ac Valhalla Dlss (Only RTX)");
                 }
+                else if (folderDd2.ContainsKey(select_mod) && gameSelected == "Dragons Dogma 2")
+                {
+                    CleanupMod(del_dd2_fsr3, folderDd2);
+                }
                 else if (select_mod == null && select_Folder == null)
                 {
                     MessageBox.Show("Please fill out the first 3 options, Select Game, Select Folder, and Mod Options.", "Error", MessageBoxButtons.OK);
@@ -1535,7 +1578,7 @@ namespace FSR3ModSetupUtilityEnhanced
         //Config Resolution/Mod Operates
         #region Unlock Mod Operates
         List<string> unlock_mod_operates_list = new List<string> { "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4" };
-        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uni Custom Miles", "Dlss Jedi" };
+        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uni Custom Miles", "Dlss Jedi" };
         #endregion
 
         #region UniResolutionCustom
@@ -1571,7 +1614,8 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 { "Uniscaler", @"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler + Xess + Dlss", @"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
-                { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" }
+                { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler V3", @"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             };
         #endregion
 

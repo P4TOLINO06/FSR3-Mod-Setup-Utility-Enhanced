@@ -41,6 +41,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler",@"\mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             {"The Callisto Protocol FSR3",@"\mods\Temp\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"}
         };
         #endregion;
@@ -61,6 +62,7 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler", @"mods\FSR2FSR3_Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
             { "Uniscaler + Xess + Dlss", @"mods\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
             { "Uniscaler V2", @"mods\FSR2FSR3_Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
+            { "Uniscaler V3", @"mods\FSR2FSR3_Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             { "The Callisto Protocol FSR3", @"mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml" },
             { "Uni Custom Miles", @"mods\FSR2FSR3_Miles\uni_miles_toml" },
             { "Dlss Jedi", @"mods\FSR2FSR3_Miles\uni_miles_toml" }
