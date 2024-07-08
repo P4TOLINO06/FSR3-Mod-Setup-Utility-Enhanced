@@ -67,7 +67,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2","Elden Ring FSR3 V3", "Disable Anti Cheat" };
 
-            List<string> gamesIgnore = new List<string> { "Elden Ring" };
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077"};
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -80,9 +80,16 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 pendingItems.AddRange(items.Where(i => !pendingItems.Contains(i)));
             }
-            else if (listMods != null && !listMods.Items.Contains(items))
+            else if (listMods != null && !listMods.Items.Contains(items) && !gamesIgnore.Contains(gameSelected))
             {
                 listMods.Items.Clear();
+                foreach (var item in items)
+                {
+                    listMods.Items.Add(item);
+                }
+            }
+            else if (listMods != null && !listMods.Items.Contains(items) && gamesIgnore.Contains(gameSelected))
+            {
                 foreach (var item in items)
                 {
                     listMods.Items.Add(item);
@@ -269,6 +276,13 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
+        #region Clean DD2 FSR3
+        List<string> del_dd2_fsr3 = new List<string>
+        {
+            "dinput8.dll","Uniscaler.asi","winmm.dll","winmm.ini","uniscaler.config.toml"
+        };
+        #endregion
+
         #region Folder GTA V
         Dictionary<string, string[]> folderGtaV = new Dictionary<string, string[]>
         {
@@ -354,6 +368,20 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
+        #region Clean Cyberpunk Files
+        List<string> del_cb2077_fsr3 = new List<string>
+        {
+            "nvngx.dll","RestoreNvidiaSignatureChecks.reg","dlssg_to_fsr3_amd_is_better.dll","DisableNvidiaSignatureChecks.reg","varCleanupUtility.txt"
+        };
+        #endregion
+
+        #region Folder Cyberpunk 2077
+        Dictionary<string, string[]> folderCb2077 = new Dictionary<string, string[]>
+        {
+            { "RTX DLSS FG CB2077", new string[] {"mods\\FSR3_CYBER2077\\dlssg-to-fsr3-0.90_universal"}},
+        };
+        #endregion 
+
         #region Clean Ini File Folder
 
         Dictionary<string, string> folder_clean_ini = new Dictionary<string, string>
@@ -377,13 +405,6 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uni Custom Miles", "mods\\FSR2FSR3_Miles\\uni_miles_toml" }
         };
 
-        #endregion
-
-        #region Clean DD2 FSR3
-        List<string> del_dd2_fsr3 = new List<string>
-        {
-            "dinput8.dll","Uniscaler.asi","winmm.dll","winmm.ini","uniscaler.config.toml"
-        };
         #endregion
 
         #region Folder Mod Operates
@@ -799,7 +820,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "Uncharted Legacy of Thieves Collection" };
 
-        List<string> fsr_2_0_opt = new List<string> { "Alone in the Dark", "Brothers: A Tale of Two Sons Remake", "Deathloop", "Dying Light 2", "Ghostrunner 2", "High On Life", "Jusant", "Layers of Fear", "Marvel's Guardians of the Galaxy", "Nightingale", "Rise of The Tomb Raider", "Shadow of the Tomb Raider", "The Outer Worlds: Spacer's Choice Edition", "The Witcher 3" };
+        List<string> fsr_2_0_opt = new List<string> { "Alone in the Dark", "Brothers: A Tale of Two Sons Remake", "Crime Boss: Rockay City", "Deathloop", "Dying Light 2", "Ghostrunner 2", "High On Life", "Jusant", "Layers of Fear", "Marvel's Guardians of the Galaxy", "Nightingale", "Rise of The Tomb Raider", "Shadow of the Tomb Raider", "The Outer Worlds: Spacer's Choice Edition", "The Witcher 3" };
 
         List<string> fsr_sdk_opt = new List<string> { "MOTO GP 24", "Pacific Drive", "Ratchet & Clank - Rift Apart" };
 
@@ -1161,7 +1182,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (select_mod == "GTA V FiveM")
             {
-                DialogResult fivemUi = MessageBox.Show("Do you want to fix the delay in the FiveM user interface?", "UI Fix",MessageBoxButtons.YesNo);
+                DialogResult fivemUi = MessageBox.Show("Do you want to fix the delay in the FiveM user interface?", "UI Fix", MessageBoxButtons.YesNo);
                 await Task.Delay((2000));
                 if (DialogResult.Yes == fivemUi && File.Exists(select_Folder + "\\dxgi.asi"))
                 {
@@ -1169,20 +1190,47 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
 
-            if(select_mod == "GTA V Online")
+            if (select_mod == "GTA V Online")
             {
                 DialogResult ban = MessageBox.Show("We are not responsible if you get banned. Do you want to proceed with the installation of the mod?", "Ban", MessageBoxButtons.YesNo);
                 await Task.Delay((2000));
-                if (DialogResult.Yes == ban && File.Exists(select_Folder + "\\dxgi.asi" ))
+                if (DialogResult.Yes == ban && File.Exists(select_Folder + "\\dxgi.asi"))
                 {
                     File.Move(select_Folder + "\\dxgi.asi", select_Folder + "\\d3d12.dll", true);
                     File.Move(select_Folder + "\\GTAVUpscaler.asi", select_Folder + "\\GTAVUpscaler.dll", true);
                     File.Move(select_Folder + "\\GTAVUpscaler.org.asi", select_Folder + "\\GTAVUpscaler.org.dll", true);
-                   
-                    File.Copy(select_Folder + "\\d3d12.dll",select_Folder + "\\mods\\d3d12.dll", true);
+
+                    File.Copy(select_Folder + "\\d3d12.dll", select_Folder + "\\mods\\d3d12.dll", true);
                     File.Copy(select_Folder + "\\GTAVUpscaler.dll", select_Folder + "\\mods\\GTAVUpscaler.dll", true);
                     File.Copy(select_Folder + "\\GTAVUpscaler.org.dll", select_Folder + "\\mods\\GTAVUpscaler.org.dll", true);
-                }   
+                }
+            }
+        }
+        public async Task cyber_fsr3()
+        {
+            CopyFSR(folderCb2077);
+            string path_cb2077_over = @"mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
+            try
+            {
+                Process process = new Process();
+                process.StartInfo.FileName = "regedit.exe";
+                process.StartInfo.Arguments = "/s \"" + path_cb2077_over + "\"";
+                process.Start();
+                process.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+            }
+
+            DialogResult varMods = MessageBox.Show("Do you want to install Nova LUT 2-1 and HD Reworked for Cyberpunk 2077?", "Install Mods", MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == varMods)
+            {
+                string pathNovaLut = "mods\\FSR3_CYBER2077\\mods\\Nova_LUT_2-1";
+                string pathHdReworked = "mods\\FSR3_CYBER2077\\mods\\Cyberpunk 2077 HD Reworked";
+
+                CopyFolder(pathNovaLut);
+                CopyFolder(pathHdReworked);
             }
         }
 
@@ -1215,6 +1263,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         Directory.Delete(select_Folder + "\\uniscaler");
                     }
+
                     MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
                 }
             }
@@ -1380,6 +1429,11 @@ namespace FSR3ModSetupUtilityEnhanced
                     }
                 }
 
+                if(gameSelected == "Cyberpunk 2077")
+                {
+                    cyber_fsr3();
+                }
+
                 select_mod = listMods.SelectedItem as string;
 
                 if (select_mod != null)
@@ -1530,6 +1584,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (folder_fake_gpu.ContainsKey(select_mod))
                 {
                     CleanupMod2(modCleanList, folder_fake_gpu);
+                }
+                if (gameSelected == "Cyberpunk 2077")
+                {
+                    #region Remove Files Cyberpunk
+                    if(select_mod == "RTX DLSS FG CB2077")
+                    {
+                        CleanupMod(del_cb2077_fsr3, folderCb2077);
+                    }
+                    //Remove the folder with HD Rework and Nova Lut
+                    if (Directory.Exists(select_Folder + "\\archive"))
+                    {
+                        Directory.Delete(select_Folder + "\\archive", true);
+                    }
+                    #endregion
                 }
                 else if (rdr2_folder.ContainsKey(select_mod))
                 {
@@ -1733,7 +1801,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 modOpt3.Visible = false;
                 modOpt4.Visible = false;
             }
-            else if (uniscaler_list.Contains(select_mod))
+            else if (uniscaler_list.Contains(select_mod) && select_mod != "Uniscaler V3")
             {
                 modOpt1.Text = "FSR3";
                 modOpt2.Text = "DLSS";
@@ -1741,6 +1809,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 modOpt2.Visible = true;
                 modOpt3.Visible = true;
                 modOpt4.Visible = false;
+            }
+            else if (select_mod == "Uniscaler V3")
+            {
+                modOpt1.Text = "None";
+                modOpt2.Text = "FSR3";
+                modOpt3.Text = "DLSS";
+                modOpt4.Text = "XESS";
+                modOpt2.Visible = true;
+                modOpt3.Visible = true;
             }
             this.Invalidate();
         }
@@ -1761,6 +1838,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        //The sequence of options for the Uniscaler V3 mod replaces each other within the ConfigIni method in the last else if. button3_Click: fsr3 = "none" | button4_Click: dlss = "fsr3" | button5_Click: xess = "dlss" | button6_Click: "xess"
         bool var_modop = false;
 
         private void button3_Click(object sender, EventArgs e)
@@ -1784,9 +1862,13 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 ConfigIni("mode", "\"default\"", folder_mod_operates, "general");
             }
-            else if (uniscaler_list.Contains(select_mod))
+            else if (uniscaler_list.Contains(select_mod) && select_mod != "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"fsr3\"", folder_mod_operates, "general");
+            }
+            else if (select_mod == "Uniscaler V3")
+            {
+                ConfigIni("upscaler", "\"none\"", folder_mod_operates, "general");
             }
         }
 
@@ -1797,9 +1879,13 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 ConfigIni("mode", "\"enable_upscaling_only\"", folder_mod_operates, "general");
             }
-            else if (uniscaler_list.Contains(select_mod))
+            else if (uniscaler_list.Contains(select_mod) && select_mod != "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"dlss\"", folder_mod_operates, "general");
+            }
+            else if (select_mod == "Uniscaler V3")
+            {
+                ConfigIni("upscaler", "\"fsr3\"", folder_mod_operates, "general");
             }
         }
 
@@ -1809,9 +1895,13 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 ConfigIni("mode", "\"use_game_upscaling\"", folder_mod_operates, "general");
             }
-            else if (uniscaler_list.Contains(select_mod))
+            else if (uniscaler_list.Contains(select_mod) && select_mod != "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"xess\"", folder_mod_operates, "general");
+            }
+            else if (select_mod == "Uniscaler V3")
+            {
+                ConfigIni("upscaler", "\"dlss\"", folder_mod_operates, "general");
             }
         }
         private void button6_Click(object sender, EventArgs e)
@@ -1819,6 +1909,10 @@ namespace FSR3ModSetupUtilityEnhanced
             if (unlock_mod_operates_list.Contains(select_mod))
             {
                 ConfigIni("mode", "\"replace_dlss_fg\"", folder_mod_operates, "general");
+            }
+            else if (select_mod == "Uniscaler V3")
+            {
+                ConfigIni("upscaler", "\"xess\"", folder_mod_operates, "general");
             }
         }
 

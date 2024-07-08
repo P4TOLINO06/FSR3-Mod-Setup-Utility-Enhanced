@@ -71,6 +71,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Chernobylite","Cherno.png"},
                     {"Cod Black Ops Cold War","Cod.png"},
                     {"Control","Control.png"},
+                    {"Crime Boss: Rockay City","Rockay.png"},
                     {"Cyberpunk 2077","Cyber.png"},
                     {"Dakar Desert Rally","Dakar.png"},
                     {"Dead Island 2","Dead2.png"},
@@ -198,6 +199,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss DD2"};
             List<string> callistoList = new List<string> { "The Callisto Protocol FSR3" };
             List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
+            List<string> cyberList = new List<string> { "RTX DLSS FG CB2077" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler + Xess + Dlss"};
             #endregion;
@@ -242,6 +244,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(gtavList);
             }
+            else if (listGames.SelectedItem.ToString() == "Cyberpunk 2077")
+            {
+                formSettings.Instance.AddItemlistMods(cyberList);
+            }
             else
             {
                 formSettings.Instance.RemoveItemlistMods(rdr2B2List);
@@ -252,6 +258,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 formSettings.Instance.RemoveItemlistMods(dd2List);
                 formSettings.Instance.RemoveItemlistMods(callistoList);
                 formSettings.Instance.RemoveItemlistMods(gtavList);
+                formSettings.Instance.RemoveItemlistMods(cyberList);
                 formSettings.Instance.AddItemlistMods(modsDefaultList);
             }
 
