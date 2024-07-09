@@ -20,6 +20,7 @@ using System.Drawing.Drawing2D;
 using Tomlyn;
 using Tomlyn.Model;
 using System.Windows.Forms.Design;
+using System.Security.Cryptography;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -32,7 +33,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private List<string> pendingItems = new List<string>();
         private static formSettings instance;
-        public string select_mod;
+        public string selectMod;
         bool varLfz = false;
         private formEditorToml formEditor;
         private mainForm mainFormInstance;
@@ -118,7 +119,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         #region Fake Nvidia Gpu Toml File Path
-        static Dictionary<string, string> folder_fake_gpu = new Dictionary<string, string>()
+        static Dictionary<string, string> folderFakeGpu = new Dictionary<string, string>()
         {
             {"0.7.4", @"\mods\Temp\FSR2FSR3_0.7.4\enable_fake_gpu\fsr2fsr3.config.toml"},
             {"0.7.5", @"\mods\Temp\FSR2FSR3_0.7.5_hotfix\enable_fake_gpu\fsr2fsr3.config.toml"},
@@ -277,7 +278,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region Clean DD2 FSR3
-        List<string> del_dd2_fsr3 = new List<string>
+        List<string> del_dd2Fsr3 = new List<string>
         {
             "dinput8.dll","Uniscaler.asi","winmm.dll","winmm.ini","uniscaler.config.toml"
         };
@@ -294,28 +295,6 @@ namespace FSR3ModSetupUtilityEnhanced
             { "GTA V Epic V2", new string[] { "mods\\FSR3_GTAV\\Gtav_Epic" } },
         };
         #endregion 
-
-        #region Folder Disable Console
-        Dictionary<string, string> folder_disable_console = new Dictionary<string, string>
-            {
-                { "0.10.3", @"mods\Temp\FSR2FSR3_0.10.3\enable_fake_gpu\fsr2fsr3.config.toml" },
-                { "0.10.4", @"mods\Temp\FSR2FSR3_0.10.4\enable_fake_gpu\fsr2fsr3.config.toml" },
-                { "Uniscaler", @"mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
-                { "Uniscaler + Xess + Dlss", @"mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
-                { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
-                {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"}
-            };
-        #endregion
-
-        #region Default Mods Files
-        List<string> modCleanList = new List<string> {
-            "fsr2fsr3.config.toml", "winmm.ini", "winmm.dll", "lfz.sl.dlss.dll", "FSR2FSR3.asi",
-            "EnableSignatureOverride.reg", "DisableSignatureOverride.reg", "dxgi.dll",
-            "fsr2fsr3.log", "nvngx.ini", "fsr2fsr3.log", "Uniscaler.asi",
-            "uniscaler.config.toml", "uniscaler.log"
-        };
-
-        #endregion
 
         #region Clean RDR2 Files
         List<string> del_rdr2_custom_files = new List<string>
@@ -371,7 +350,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Cyberpunk Files
         List<string> del_cb2077_fsr3 = new List<string>
         {
-            "nvngx.dll","RestoreNvidiaSignatureChecks.reg","dlssg_to_fsr3_amd_is_better.dll","DisableNvidiaSignatureChecks.reg","varCleanupUtility.txt"
+            "nvngx.dll","RestoreNvidiaSignatureChecks.reg","dlssg_to_fsr3_amd_is_better.dll","DisableNvidiaSignatureChecks.reg"
         };
         #endregion
 
@@ -380,7 +359,82 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             { "RTX DLSS FG CB2077", new string[] {"mods\\FSR3_CYBER2077\\dlssg-to-fsr3-0.90_universal"}},
         };
-        #endregion 
+        #endregion
+
+        #region Folder Forza
+        Dictionary<string, string[]> folderForza = new Dictionary<string, string[]>
+        {
+            { "RTX DLSS FG FZ5", new string[] {"mods\\FSR3_FH\\RTX"}},
+            { "FSR3 FG FZ5 All GPU" , new string [] {"mods\\FSR3_FH\\Ot_Gpu"}}, 
+        };
+        #endregion
+
+        #region Clean Forza Files
+        List<string> del_fz5_files = new List<string>
+        {
+            "winmm.ini","winmm.dll","nvapi64.asi","dlssg_to_fsr3_amd_is_better.dll","dlssg_to_fsr3.asi","dinput8.dll"
+        };
+        #endregion
+
+        #region Folder Got
+        Dictionary<string, string[]> folderGot = new Dictionary<string, string[]>
+        {
+            { "Ghost of Tsushima FG DLSS", new string[] {"mods\\FSR3_GOT\\DLSS FG"}},
+        };
+        #endregion
+
+        #region Clean Got Files
+        List<string> del_got_files = new List<string>
+        {
+            "version.dll", "RestoreNvidiaSignatureChecks.reg", "dxgi.dll", "dlssg_to_fsr3_amd_is_better.dll", "DisableNvidiaSignatureChecks.reg", "d3d12core.dll", "d3d12.dll", "no-filmgrain.reg"
+
+        };
+        #endregion
+
+        #region Folder Lords of The Fallen 
+        Dictionary<string, string[]> folderLotf = new Dictionary<string, string[]>
+        {
+            { "Lords of The Fallen DLSS RTX", new string[] {"mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX"}},
+            { "Lords of The Fallen FSR3 ALL GPU", new string[] {"mods\\FSR3_LOTF\\AMD_GTX"}}
+        };
+        #endregion
+
+        #region Clean Lotf Files
+        List<string> del_lotf_files = new List<string>
+        {
+            "winmm.ini","winmm.dll","Uniscaler.asi","launch.bat","DisableEasyAntiCheat.bat"
+
+        };
+        #endregion
+
+        #region Clean RTX DLSS Files
+        List<string> del_rtx_dlss = new List<string>
+        {
+            "nvngx.dll","RestoreNvidiaSignatureChecks.reg","dlssg_to_fsr3_amd_is_better.dll","DisableNvidiaSignatureChecks.reg"
+        };
+        #endregion
+
+        #region Folder Disable Console
+        Dictionary<string, string> folder_disable_console = new Dictionary<string, string>
+            {
+                { "0.10.3", @"mods\Temp\FSR2FSR3_0.10.3\enable_fake_gpu\fsr2fsr3.config.toml" },
+                { "0.10.4", @"mods\Temp\FSR2FSR3_0.10.4\enable_fake_gpu\fsr2fsr3.config.toml" },
+                { "Uniscaler", @"mods\Temp\Uniscaler\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler + Xess + Dlss", @"mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
+                { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
+                {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"}
+            };
+        #endregion
+
+        #region Default Mods Files
+        List<string> modCleanList = new List<string> {
+            "fsr2fsr3.config.toml", "winmm.ini", "winmm.dll", "lfz.sl.dlss.dll", "FSR2FSR3.asi",
+            "EnableSignatureOverride.reg", "DisableSignatureOverride.reg", "dxgi.dll",
+            "fsr2fsr3.log", "nvngx.ini", "fsr2fsr3.log", "Uniscaler.asi",
+            "uniscaler.config.toml", "uniscaler.log"
+        };
+
+        #endregion
 
         #region Clean Ini File Folder
 
@@ -437,9 +491,9 @@ namespace FSR3ModSetupUtilityEnhanced
         //Ini Editor
         public void ConfigIni(string key, string value, Dictionary<string, string> DictionaryPath, string? section = null)
         {
-            select_mod = listMods.SelectedItem as string;
-            string pathToml = DictionaryPath[select_mod];
-            if (DictionaryPath.ContainsKey(select_mod))
+            selectMod = listMods.SelectedItem as string;
+            string pathToml = DictionaryPath[selectMod];
+            if (DictionaryPath.ContainsKey(selectMod))
             {
                 IniEditor iniEditor = new IniEditor(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + pathToml));
 
@@ -456,10 +510,10 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void ReplaceIni()
         {
-            if (folder_clean_ini.ContainsKey(select_mod) && folder_fake_gpu.ContainsKey(select_mod))
+            if (folder_clean_ini.ContainsKey(selectMod) && folderFakeGpu.ContainsKey(selectMod))
             {
-                string path_clean_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder_clean_ini[select_mod]);
-                string modified_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) + folder_fake_gpu[select_mod]);
+                string path_clean_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder_clean_ini[selectMod]);
+                string modified_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) + folderFakeGpu[selectMod]);
                 File.Copy(path_clean_ini, modified_ini, true);
             }
         }
@@ -543,7 +597,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             //Toml file configuration based on the checked box (AddOptionsSelect - CheckedListBox)
 
-            select_mod = listMods.SelectedItem as string;
+            selectMod = listMods.SelectedItem as string;
 
             void ShowErrorMessage(string message = null)
             {
@@ -556,11 +610,11 @@ namespace FSR3ModSetupUtilityEnhanced
 
             void ConfigureMod(string configKey, string modVersionMessage, Dictionary<string, string> folder, string section)
             {
-                if (select_mod != null)
+                if (selectMod != null)
                 {
-                    if (folder.ContainsKey(select_mod))
+                    if (folder.ContainsKey(selectMod))
                     {
-                        string pathToml = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder[select_mod]);
+                        string pathToml = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder[selectMod]);
                         ConfigIni(configKey, AddOptSelect, folder, section);
                     }
                     else
@@ -576,16 +630,16 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (itemText == "Toml Editor")
             {
-                if (select_mod != null)
+                if (selectMod != null)
                 {
-                    select_mod = listMods.SelectedItem as string;
-                    if (select_mod != null && folder_fake_gpu.ContainsKey(select_mod))
+                    selectMod = listMods.SelectedItem as string;
+                    if (selectMod != null && folderFakeGpu.ContainsKey(selectMod))
                     {
-                        string path1 = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), folder_fake_gpu[select_mod]);
+                        string path1 = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), folderFakeGpu[selectMod]);
                         
                         ShowErrorMessage();//Uncheck the Toml Editor in AddOptionsSelect option.
 
-                        ((mainForm)this.ParentForm).loadForm(typeof(formEditorToml), select_mod);
+                        ((mainForm)this.ParentForm).loadForm(typeof(formEditorToml), selectMod);
                     }
                 }
                 else
@@ -595,15 +649,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
 
-                if (itemText == "Fake Nvidia Gpu" && select_mod != null)
+                if (itemText == "Fake Nvidia Gpu" && selectMod != null)
                 {
-                    string pathToml_f_gpu = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folder_fake_gpu[select_mod]);
+                    string pathToml_f_gpu = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folderFakeGpu[selectMod]);
 
-                    if (edit_fake_gpu_list.Contains(select_mod))
+                    if (edit_fake_gpu_list.Contains(selectMod))
                     {
-                        ConfigIni("fake_nvidia_gpu", AddOptSelect, folder_fake_gpu, "compatibility");
+                        ConfigIni("fake_nvidia_gpu", AddOptSelect, folderFakeGpu, "compatibility");
                     }
-                    else if (edit_old_fake_gpu.Contains(select_mod))
+                    else if (edit_old_fake_gpu.Contains(selectMod))
                     {
                         string[] iniLines = File.ReadAllLines(pathToml_f_gpu);
 
@@ -659,7 +713,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if(itemText == "Fps Limit")
             {
-                if (select_mod != null && uniscaler_path.ContainsKey(select_mod))
+                if (selectMod != null && uniscaler_path.ContainsKey(selectMod))
                 {
                     if (fpsLimitTextBox != null)
                     {
@@ -731,9 +785,9 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void CopyToml()
         {
-            string pathToml = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folder_fake_gpu[select_mod]);
+            string pathToml = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folderFakeGpu[selectMod]);
 
-            string destFolder = Path.Combine(select_Folder, Path.GetFileName(pathToml));
+            string destFolder = Path.Combine(selectFolder, Path.GetFileName(pathToml));
 
             File.Copy(pathToml, destFolder, true);
         }
@@ -758,7 +812,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         }
 
-        public string select_Folder;
+        public string selectFolder;
         public void button1_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog searchFolderPath = new FolderBrowserDialog();
@@ -769,7 +823,7 @@ namespace FSR3ModSetupUtilityEnhanced
             if (searchFolderPath.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = searchFolderPath.SelectedPath;
-                select_Folder = searchFolderPath.SelectedPath;
+                selectFolder = searchFolderPath.SelectedPath;
             }
         }
 
@@ -777,20 +831,20 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             if (listMods.SelectedItem != null)
             {
-                select_mod = listMods.SelectedItem.ToString();
+                selectMod = listMods.SelectedItem.ToString();
                 SetTextModOp();
             }
-            if (!folder_mod_operates.ContainsKey(select_mod))
+            if (!folder_mod_operates.ContainsKey(selectMod))
             {
                 panelModOp.Visible = false;
                 panelRes.Visible = false;
             }
-            if (!uniscaler_path.ContainsKey(select_mod))
+            if (!uniscaler_path.ContainsKey(selectMod))
             {
                 panelResPreset.Visible = false;
             }
 
-            if (select_mod == "Uniscaler + Xess + Dlss")
+            if (selectMod == "Uniscaler + Xess + Dlss")
             {
                 string[] removeOptNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG" };
 
@@ -856,7 +910,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task CopyFSR(Dictionary<string, string[]> DictionaryFSR)
         {
-            string path_dest = select_Folder;
+            string path_dest = selectFolder;
             string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string selectedVersion = listMods.SelectedItem as string;
             string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3"};
@@ -875,7 +929,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         {
                             await CopyModsAsync(path_final, path_dest);
 
-                            if (uniscalerVersion.All(uniscalerVersion => !selectedVersion.Contains(uniscalerVersion) && !rdr2_folder.ContainsKey(select_mod) && !folderEldenRing.ContainsKey(select_mod)))
+                            if (uniscalerVersion.All(uniscalerVersion => !selectedVersion.Contains(uniscalerVersion) && !rdr2_folder.ContainsKey(selectMod) && !folderEldenRing.ContainsKey(selectMod)))
                             {
                                 await CopyModsAsync(path_fsr_common, path_dest);
                             }
@@ -890,12 +944,12 @@ namespace FSR3ModSetupUtilityEnhanced
             foreach (string files_fsr in Directory.GetFiles(pathFolder))
             {
                 string fileName = Path.GetFileName(files_fsr);
-                File.Copy(files_fsr, select_Folder + "\\" + fileName, true);
+                File.Copy(files_fsr, selectFolder + "\\" + fileName, true);
             }
             foreach (var subPath in Directory.GetDirectories(pathFolder, "*", SearchOption.AllDirectories))
             {
                 string relativePath = subPath.Substring(pathFolder.Length + 1);
-                string fullPath = Path.Combine(select_Folder, relativePath);
+                string fullPath = Path.Combine(selectFolder, relativePath);
 
                 Directory.CreateDirectory(fullPath);
 
@@ -907,6 +961,27 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
         }
+
+        public void runReg(string pathReg)
+        {
+            try
+            {
+                Process process = new Process();
+                process.StartInfo.FileName = "regedit.exe";
+                process.StartInfo.Arguments = "/s \"" + pathReg + "\"";
+                process.Start();
+                process.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public async Task AutoShortCut(string pathExe, string nameShortCut, string dx12, string nameMessageBox = null)
+        {
+            AutoShortcut.AShortcut(pathExe,nameShortCut,dx12,nameMessageBox);   
+        }
+
         public void fsr2_2()
         {
             string path_final;
@@ -1009,22 +1084,22 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFSR(origins_sdk_folder);
         }
 
-        public void fsr_rdr2()
+        public void rdr2Fsr3()
         {
             CopyFSR(origins_rdr2_folder);
         }
 
-        public void ac_valhalla_dlss()
+        public void acValhallaDlss()
         {
-            CopyFolder("mods\\Ac_Valhalla_DLSS");
+            CopyFolder("mods\\acValhallaDlss");
         }
 
-        public async Task bdg3_fsr3()
+        public async Task bdg3Fsr3()
         {
             CopyFSR(folderBdg3);
 
             #region Copy ini file for mods folder Baldur's Gate 3 FSR3 V3 
-            if (select_mod == "Baldur's Gate 3 FSR3 V3")
+            if (selectMod == "Baldur's Gate 3 FSR3 V3")
             {
                 string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string pathBdgIni = "mods\\FSR3_BDG_3\\BG3Upscaler.ini";
@@ -1033,7 +1108,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     await Task.Delay((2000));
                     {                
-                        File.Copy(fullPath, select_Folder + "\\mods\\BG3Upscaler.ini", true);
+                        File.Copy(fullPath, selectFolder + "\\mods\\BG3Upscaler.ini", true);
                     }
                 }
                 catch { }
@@ -1041,34 +1116,34 @@ namespace FSR3ModSetupUtilityEnhanced
             #endregion
         }
 
-        public void dd2_fsr3()
+        public void dd2Fsr3()
         {
             #region CopyWinmm and delete shader.cache2
             void CopyWinmm()
             {
-                if (Directory.Exists(select_Folder + "\\_storage_"))
+                if (Directory.Exists(selectFolder + "\\_storage_"))
                 {
                     string pathWinmm = "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod\\winmm.dll";
-                    File.Copy(pathWinmm,select_Folder + "\\_storage_\\winmm.dll",true);
+                    File.Copy(pathWinmm,selectFolder + "\\_storage_\\winmm.dll",true);
                 }
 
-                if (File.Exists(select_Folder + "\\shader.cache2"))
+                if (File.Exists(selectFolder + "\\shader.cache2"))
                 {
                     DialogResult varCache = MessageBox.Show("Do you want to delete the shader.cache2 file ? Not deleting this file may result in bugs and game crashes.", "Shader Cache", MessageBoxButtons.YesNo);
                     if (varCache == DialogResult.Yes)
                     {
-                        File.Delete(select_Folder + "\\shader.cache2");
+                        File.Delete(selectFolder + "\\shader.cache2");
                     }
                 }
             }
             #endregion
 
-            if (select_mod != "Dinput8" && File.Exists(select_Folder + "\\Dinput8.dll"))
+            if (selectMod != "Dinput8" && File.Exists(selectFolder + "\\Dinput8.dll"))
             {
                 CopyFSR(folderDd2);
                 CopyWinmm();
             }
-            else if (select_mod == "Dinput8")
+            else if (selectMod == "Dinput8")
             {
                 CopyFSR(folderDd2);
             }
@@ -1079,7 +1154,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void callisto_fsr3()
+        public void callistoFsr3()
         {
             string pathCallisto = "mods\\FSR3_Callisto\\FSR_Callisto";
 
@@ -1087,14 +1162,14 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string fileName = Path.GetFileName(filesCallisto);
 
-                File.Copy(filesCallisto, select_Folder + "\\" + fileName,true);
+                File.Copy(filesCallisto, selectFolder + "\\" + fileName,true);
             }
         }
 
-        public async Task fsr_rdr2_build02()
+        public async Task fsrRdr2Build02()
         {
 
-            if (select_mod == "RDR2 Non Steam FSR3")
+            if (selectMod == "RDR2 Non Steam FSR3")
             {
                 string path_dll = "mods\\FSR3_RDR2_Non_Steam\\RDR2_DLL";
                 string[] dll_files = Directory.GetFiles(path_dll);
@@ -1105,7 +1180,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     foreach (string dll_file in dll_files)
                     {
                         string dll_name = Path.GetFileName(dll_file);
-                        string full_path_dll = Path.Combine(select_Folder, dll_name);
+                        string full_path_dll = Path.Combine(selectFolder, dll_name);
                         File.Copy(dll_file, full_path_dll, true);
                     }
                 }
@@ -1119,11 +1194,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     string path_ini = "mods\\Temp\\RDR2_FSR3\\rdr2_mix2_ini\\RDR2Upscaler.ini";
 
-                    if (select_mod == "RDR2 Mix 2")
+                    if (selectMod == "RDR2 Mix 2")
                     {
-                        Directory.CreateDirectory(select_Folder + "\\mods");
+                        Directory.CreateDirectory(selectFolder + "\\mods");
 
-                        File.Copy(path_ini, select_Folder + "\\mods\\RDR2Upscaler.ini", true);
+                        File.Copy(path_ini, selectFolder + "\\mods\\RDR2Upscaler.ini", true);
                     }
                 }
             }
@@ -1132,95 +1207,77 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void elden_fsr3()
+        public void eldenFsr3()
         {
             CopyFSR(folderEldenRing);
         }
 
-        public void aw2_fsr3()
+        public void aw2Fsr3()
         {
             CopyFSR(folderAw2);
 
             //Disable Nvidia Signature Checks
-            if (select_mod == "Alan Wake 2 FG RTX")
+            if (selectMod == "Alan Wake 2 FG RTX")
             {
                 string path_aw2_over = @"mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
 
-                try
-                {
-                    Process process = new Process();
-                    process.StartInfo.FileName = "regedit.exe";
-                    process.StartInfo.Arguments = "/s \"" + path_aw2_over + "\"";
-                    process.Start();
-                    process.WaitForExit();
-                }
-                catch (Exception ex)
-                {
-                }
+                runReg(path_aw2_over);
             }
         }
 
-        public async Task gtav_fsr3()
+        public async Task gtavFsr3()
         {
-            if (select_mod != "GTA V FSR3")
+            if (selectMod != "GTA V FSR3")
             {
                 CopyFSR(folderGtaV);
             }
-            else if (select_mod == "Dinput8")
+            else if (selectMod == "Dinput8")
             {
                 CopyFSR(folderGtaV);
             }
-            else if (select_mod == "GTA V FSR3" && !File.Exists(select_Folder + "\\dinput8.dll"))
+            else if (selectMod == "GTA V FSR3" && !File.Exists(selectFolder + "\\dinput8.dll"))
             {
                 MessageBox.Show("Install \"Dinput8\" before installing the main mod", "Dinput8", MessageBoxButtons.OK);
                 return;
             }
-            else if (select_mod == "GTA V FSR3" && File.Exists(select_Folder + "\\Dinput8.dll"))
+            else if (selectMod == "GTA V FSR3" && File.Exists(selectFolder + "\\Dinput8.dll"))
             {
                 CopyFSR(folderGtaV);
             }
 
-            if (select_mod == "GTA V FiveM")
+            if (selectMod == "GTA V FiveM")
             {
                 DialogResult fivemUi = MessageBox.Show("Do you want to fix the delay in the FiveM user interface?", "UI Fix", MessageBoxButtons.YesNo);
                 await Task.Delay((2000));
-                if (DialogResult.Yes == fivemUi && File.Exists(select_Folder + "\\dxgi.asi"))
+                if (DialogResult.Yes == fivemUi && File.Exists(selectFolder + "\\dxgi.asi"))
                 {
-                    File.Move(select_Folder + "\\dxgi.asi", select_Folder + "\\dxgi.dll ", true);
+                    File.Move(selectFolder + "\\dxgi.asi", selectFolder + "\\dxgi.dll ", true);
                 }
             }
 
-            if (select_mod == "GTA V Online")
+            if (selectMod == "GTA V Online")
             {
                 DialogResult ban = MessageBox.Show("We are not responsible if you get banned. Do you want to proceed with the installation of the mod?", "Ban", MessageBoxButtons.YesNo);
-                await Task.Delay((2000));
-                if (DialogResult.Yes == ban && File.Exists(select_Folder + "\\dxgi.asi"))
+                
+                await Task.Delay((2000));//Delay to rename files, to avoid the possibility of renaming before the files are copied
+                if (DialogResult.Yes == ban && File.Exists(selectFolder + "\\dxgi.asi"))
                 {
-                    File.Move(select_Folder + "\\dxgi.asi", select_Folder + "\\d3d12.dll", true);
-                    File.Move(select_Folder + "\\GTAVUpscaler.asi", select_Folder + "\\GTAVUpscaler.dll", true);
-                    File.Move(select_Folder + "\\GTAVUpscaler.org.asi", select_Folder + "\\GTAVUpscaler.org.dll", true);
+                    File.Move(selectFolder + "\\dxgi.asi", selectFolder + "\\d3d12.dll", true);
+                    File.Move(selectFolder + "\\GTAVUpscaler.asi", selectFolder + "\\GTAVUpscaler.dll", true);
+                    File.Move(selectFolder + "\\GTAVUpscaler.org.asi", selectFolder + "\\GTAVUpscaler.org.dll", true);
 
-                    File.Copy(select_Folder + "\\d3d12.dll", select_Folder + "\\mods\\d3d12.dll", true);
-                    File.Copy(select_Folder + "\\GTAVUpscaler.dll", select_Folder + "\\mods\\GTAVUpscaler.dll", true);
-                    File.Copy(select_Folder + "\\GTAVUpscaler.org.dll", select_Folder + "\\mods\\GTAVUpscaler.org.dll", true);
+                    File.Copy(selectFolder + "\\d3d12.dll", selectFolder + "\\mods\\d3d12.dll", true);
+                    File.Copy(selectFolder + "\\GTAVUpscaler.dll", selectFolder + "\\mods\\GTAVUpscaler.dll", true);
+                    File.Copy(selectFolder + "\\GTAVUpscaler.org.dll", selectFolder + "\\mods\\GTAVUpscaler.org.dll", true);
                 }
             }
         }
-        public async Task cyber_fsr3()
+        public async Task cyberFsr3()
         {
             CopyFSR(folderCb2077);
+
             string path_cb2077_over = @"mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
-            try
-            {
-                Process process = new Process();
-                process.StartInfo.FileName = "regedit.exe";
-                process.StartInfo.Arguments = "/s \"" + path_cb2077_over + "\"";
-                process.Start();
-                process.WaitForExit();
-            }
-            catch (Exception ex)
-            {
-            }
+            runReg(path_cb2077_over);
 
             DialogResult varMods = MessageBox.Show("Do you want to install Nova LUT 2-1 and HD Reworked for Cyberpunk 2077?", "Install Mods", MessageBoxButtons.YesNo);
 
@@ -1233,13 +1290,100 @@ namespace FSR3ModSetupUtilityEnhanced
                 CopyFolder(pathHdReworked);
             }
         }
+        public void forzaFsr3()
+        {
+            CopyFSR(folderForza);
+            
+            if (selectMod == "RTX DLSS FG FZ5")
+            {
+                string pathRegFz5 = @"mods\\FSR3_FH\RTX\\DisableNvidiaSignatureChecks.reg";
+                runReg(pathRegFz5);
+            }
+        }
+        public async Task gotFsr3()
+        {
+            #region Copy files using only the path as a parameter
+            async Task CopyFiles(string pathFolder)
+            {
+                foreach (string filePath in Directory.GetFiles(pathFolder))
+                {
+                    string fileName = Path.GetFileName(filePath); 
+                    string destinationPath = Path.Combine(selectFolder ,fileName); 
+
+                    try
+                    {
+                        File.Copy(filePath, destinationPath, true); 
+                    }
+                    catch (IOException e)
+                    {    
+                    }
+                }
+            }
+            #endregion
+
+            string regGot = "mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
+            CopyFSR(folderGot);
+            runReg(regGot);
+
+            #region Additional mods
+            DialogResult dx12_got = MessageBox.Show("Do you want to install the DX12 files? These files fix issues related to DX12. (Only confirm if you have encountered a DX12 related error)", "DX12", MessageBoxButtons.YesNo);
+            if (dx12_got == DialogResult.Yes)
+            {
+                string pathDx12Got = "mods\\FSR3_GOT\\Fix_DX12";
+                CopyFiles(pathDx12Got); 
+            }
+            try
+            {
+                if (MessageBox.Show("Would you like to remove the post-processing effects? (Film grain, Mouse Smoothing, etc.)", "Remove Post Processing", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    string postProcessingFolder = @"mods\\FSR3_GOT\\Remove_Post_Processing";
+                    string pathVarPostProcessing = @"mods\\FSR3_GOT\\Remove_Post_Processing\\no-filmgrain.reg";
+
+                    foreach (string file in Directory.GetFiles(postProcessingFolder, "*.reg"))
+                    {
+                        runReg(file);
+                    }
+
+                    File.Copy(pathVarPostProcessing, selectFolder + "\\no-filmgrain.reg", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error", "It was not possible to remove the post-processing effects.");
+                Debug.WriteLine(ex);
+            }
+
+        }
+        #endregion
+
+        public async Task mediumFsr3()
+        {
+            string pathMediumExe = Path.Combine(selectFolder, "Medium-Win64-Shipping.exe");
+            string nameMediumShortCut = "The Medium";
+            string messageMedium = "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\" . This is necessary for the mod to work correctly.";
+
+            AutoShortCut(pathMediumExe,nameMediumShortCut,"-dx12",messageMedium);
+        }
+
+        public async Task lotfFsr3()
+        {
+
+            CopyFSR(folderLotf);
+            runReg(@"mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
+
+            string pathLotfExe = Path.Combine(selectFolder, "launch.bat");
+            string nameLotfShortCut = "launch";
+            string messageLotf = "Do you want to create a shortcut for the .bat file? To make the mod work, you need to run the game through the .bat file. (If you can't run the .bat file, run the .bat file that is inside the folder where the mod was installed)";
+
+            AutoShortCut(pathLotfExe, nameLotfShortCut, "",messageLotf);
+        }
 
         public void CleanupMod(List<string> ListClean, Dictionary<string, string[]> DictionaryPath)
         {
-            string[] DelFiles = Directory.GetFiles(select_Folder);
+            string[] DelFiles = Directory.GetFiles(selectFolder);
             try
             {
-                if (DictionaryPath.ContainsKey(select_mod))
+                if (DictionaryPath.ContainsKey(selectMod))
                 {
                     foreach (string filesDestFolder in DelFiles)
                     {
@@ -1251,17 +1395,21 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
 
-                    if (Directory.Exists(select_Folder + "\\mods"))
+                    string[] folderModsReshade = { "Red Dead Redemption 2", "Dragons Dogma 2 " };
+                    if (folderModsReshade.Contains(gameSelected)) //Check to delete the 'mods'/'reshade' folder, some FSR3 mods have a 'mods'/'reshade' folder by default
                     {
-                        Directory.Delete(select_Folder + "\\mods", true);
+                        if (Directory.Exists(selectFolder + "\\mods"))
+                        {
+                            Directory.Delete(selectFolder + "\\mods", true);
+                        }
+                        if (Directory.Exists(selectFolder + "\\reshade-shaders"))
+                        {
+                            Directory.Delete(selectFolder + "\\reshade-shaders", true);
+                        }
                     }
-                    if (Directory.Exists(select_Folder + "\\reshade-shaders"))
+                    if (Directory.Exists(selectFolder + "\\uniscaler"))
                     {
-                        Directory.Delete(select_Folder + "\\reshade-shaders", true);
-                    }
-                    if (Directory.Exists(select_Folder + "\\uniscaler"))
-                    {
-                        Directory.Delete(select_Folder + "\\uniscaler");
+                        Directory.Delete(selectFolder + "\\uniscaler");
                     }
 
                     MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
@@ -1277,9 +1425,9 @@ namespace FSR3ModSetupUtilityEnhanced
         public void CleanupMod2(List<string> ListClean, Dictionary<string, string> DictionaryPath)
         {
             string[] DelFiles;
-            if (select_Folder != null)
+            if (selectFolder != null)
             {
-                DelFiles = Directory.GetFiles(select_Folder);
+                DelFiles = Directory.GetFiles(selectFolder);
             }
             else
             {
@@ -1288,7 +1436,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             try
             {
-                if (DictionaryPath.ContainsKey(select_mod))
+                if (DictionaryPath.ContainsKey(selectMod))
                 {
                     foreach (string filesDestFolder in DelFiles)
                     {
@@ -1300,9 +1448,9 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
 
-                    if (Directory.Exists(select_Folder + "\\uniscaler"))
+                    if (Directory.Exists(selectFolder + "\\uniscaler"))
                     {
-                        Directory.Delete(select_Folder + "\\uniscaler", true);
+                        Directory.Delete(selectFolder + "\\uniscaler", true);
                     }
                     MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
                 }
@@ -1317,10 +1465,10 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Cleanup Mod 3
         public void CleanupMod3(List<string> ListClean,string modName)
         {
-            string[] DelFiles = Directory.GetFiles(select_Folder);
+            string[] DelFiles = Directory.GetFiles(selectFolder);
             try
             {
-                if (select_mod == modName)
+                if (selectMod == modName)
                 {
                     foreach (string filesDestFolder in DelFiles)
                     {
@@ -1332,13 +1480,13 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
 
-                    if (Directory.Exists(select_Folder + "\\mods"))
+                    if (Directory.Exists(selectFolder + "\\mods"))
                     {
-                        Directory.Delete(select_Folder + "\\mods", true);
+                        Directory.Delete(selectFolder + "\\mods", true);
                     }
-                    if (Directory.Exists(select_Folder + "\\reshade-shaders"))
+                    if (Directory.Exists(selectFolder + "\\reshade-shaders"))
                     {
-                        Directory.Delete(select_Folder + "\\reshade-shaders", true);
+                        Directory.Delete(selectFolder + "\\reshade-shaders", true);
                     }
                     MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
                 }
@@ -1352,8 +1500,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void button2_Click(object sender, EventArgs e)
         {
-            select_mod = listMods.SelectedItem as string;
-            if (select_Folder != null && select_mod != null && gameSelected != null)
+            selectMod = listMods.SelectedItem as string;
+            if (selectFolder != null && selectMod != null && gameSelected != null)
             {
                 if (gameSelected == "Select FSR Version" && fsrSelected == null)
                 {
@@ -1381,64 +1529,79 @@ namespace FSR3ModSetupUtilityEnhanced
                     fsr_sdk();
                 }
 
-                else if ((fsr_sct_rdr2.Contains(gameSelected) && origins_rdr2_folder.ContainsKey(select_mod)) || (fsr_sct_rdr2.Contains(fsrSelected) && origins_rdr2_folder.ContainsKey(select_mod)))
+                else if ((fsr_sct_rdr2.Contains(gameSelected) && origins_rdr2_folder.ContainsKey(selectMod)) || (fsr_sct_rdr2.Contains(fsrSelected) && origins_rdr2_folder.ContainsKey(selectMod)))
                 {
-                    fsr_rdr2();
+                    rdr2Fsr3();
                 }
 
-                else if ((fsr_sct_rdr2.Contains(gameSelected) && rdr2_folder.ContainsKey(select_mod) || fsr_sct_rdr2.Contains(fsrSelected) && rdr2_folder.ContainsKey(select_mod)))
+                else if ((fsr_sct_rdr2.Contains(gameSelected) && rdr2_folder.ContainsKey(selectMod) || fsr_sct_rdr2.Contains(fsrSelected) && rdr2_folder.ContainsKey(selectMod)))
                 {
-                    fsr_rdr2_build02();
+                    fsrRdr2Build02();
                 }
-                if (folderEldenRing.ContainsKey(select_mod))
+                if (folderEldenRing.ContainsKey(selectMod))
                 {
-                    elden_fsr3();
+                    eldenFsr3();
                 }
-                if (folderAw2.ContainsKey(select_mod))
+                if (folderAw2.ContainsKey(selectMod))
                 {
-                    aw2_fsr3();
+                    aw2Fsr3();
                 }
-                if (select_mod == "Ac Valhalla Dlss (Only RTX)")
+                if (selectMod == "Ac Valhalla Dlss (Only RTX)")
                 {
-                    ac_valhalla_dlss();
+                    acValhallaDlss();
                 }
-                if(select_mod == "The Callisto Protocol FSR3")
+                if (selectMod == "The Callisto Protocol FSR3")
                 {
-                    callisto_fsr3(); 
+                    callistoFsr3(); 
                 }
-                if (folderBdg3.ContainsKey(select_mod))
+                if (folderBdg3.ContainsKey(selectMod))
                 {
-                    bdg3_fsr3();
+                    bdg3Fsr3();
+                }
+                if (gameSelected == "Cyberpunk 2077")
+                {
+                    cyberFsr3();
+                }
+                if (gameSelected == "Forza Horizon 5")
+                {
+                    forzaFsr3();
+                }
+                if (gameSelected == "Ghost of Tsushima")
+                {
+                    gotFsr3();
+                }
+                if (gameSelected == "The Medium")
+                {
+                    mediumFsr3();
+                }
+                if (gameSelected == "Lords of the Fallen")
+                {
+                    lotfFsr3();
                 }
 
-                if (folderDd2.ContainsKey(select_mod) && gameSelected == "Dragons Dogma 2")
+                if (folderDd2.ContainsKey(selectMod) && gameSelected == "Dragons Dogma 2")
                 {
-                    dd2_fsr3();
-                    if (!File.Exists(select_Folder + "\\dinput8.dll"))
+                    dd2Fsr3();
+                    if (!File.Exists(selectFolder + "\\dinput8.dll"))
                     {
                         return;
                     }
                 }
 
-                if (folderGtaV.ContainsKey(select_mod))
+                if (folderGtaV.ContainsKey(selectMod))
                 {
-                    gtav_fsr3();
-                    if(select_mod == "GTA V FSR3" && !File.Exists(select_Folder + "\\dinput8.dll"))
+                    gtavFsr3();
+                    if(selectMod == "GTA V FSR3" && !File.Exists(selectFolder + "\\dinput8.dll"))
                     {
                         return;
                     }
                 }
 
-                if(gameSelected == "Cyberpunk 2077")
-                {
-                    cyber_fsr3();
-                }
+                selectMod = listMods.SelectedItem as string;
 
-                select_mod = listMods.SelectedItem as string;
-
-                if (select_mod != null)
+                if (selectMod != null)
                 {
-                    if (folder_fake_gpu.ContainsKey(select_mod))
+                    if (folderFakeGpu.ContainsKey(selectMod))
                     {
                         CopyToml();
                     }
@@ -1446,7 +1609,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (varLfz is true)
                 {
                     string path_lfz = "mods\\Temp\\global _lfz\\lfz.sl.dlss.dll";
-                    File.Copy(path_lfz, select_Folder + "\\lfz.sl.dlss.dll", true);
+                    File.Copy(path_lfz, selectFolder + "\\lfz.sl.dlss.dll", true);
                 }
 
                 if (gameSelected == "Select FSR Version" && fsrSelected != null)
@@ -1458,45 +1621,45 @@ namespace FSR3ModSetupUtilityEnhanced
                     MessageBox.Show("Successful installation", "Successful", MessageBoxButtons.OK);
                 }
 
-                if (select_mod != null)
+                if (selectMod != null)
                 {
                     foreach (string optNvngx in optionsNvngx.CheckedItems)
                     {
                         string pathNvngx;
                         if (optNvngx.Contains("Default"))
                         {
-                            if (File.Exists(select_Folder + "\\nvngx.dll"))
+                            if (File.Exists(selectFolder + "\\nvngx.dll"))
                             {
                                 try
                                 {
-                                    string newNameNvngx = select_Folder + "\\nvngx.txt";
-                                    string oldNameNvngx = select_Folder + "\\nvngx.dll";
+                                    string newNameNvngx = selectFolder + "\\nvngx.txt";
+                                    string oldNameNvngx = selectFolder + "\\nvngx.dll";
                                     File.Move(oldNameNvngx, newNameNvngx);
                                 }
                                 catch { }
                             }
                             pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx.dll";
-                            File.Copy(pathNvngx, select_Folder + "\\nvngx.dll", true);
+                            File.Copy(pathNvngx, selectFolder + "\\nvngx.dll", true);
                         }
                         if (optNvngx.Contains("NVNGX Version 1"))
                         {
                             pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx.ini";
-                            File.Copy(pathNvngx, select_Folder + "\\nvngx.ini", true);
+                            File.Copy(pathNvngx, selectFolder + "\\nvngx.ini", true);
                         }
                         if (optNvngx.Contains("Xess 1.3"))
                         {
                             pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll";
-                            File.Copy(pathNvngx, select_Folder + "\\libxess.dll", true);
+                            File.Copy(pathNvngx, selectFolder + "\\libxess.dll", true);
                         }
                         if (optNvngx.Contains("Dlss 3.7.0"))
                         {
                             pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll";
-                            File.Copy(pathNvngx, select_Folder + "\\nvngx_dlss.dll", true);
+                            File.Copy(pathNvngx, selectFolder + "\\nvngx_dlss.dll", true);
                         }
                         if (optNvngx.Contains("Dlss 3.7.0 FG"))
                         {
                             pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll";
-                            File.Copy(pathNvngx, select_Folder + "\\nvngx_dlssg.dll", true);
+                            File.Copy(pathNvngx, selectFolder + "\\nvngx_dlssg.dll", true);
                         }
                     }
                     foreach (string optDxgi in optionsDxgi.CheckedItems)
@@ -1505,12 +1668,12 @@ namespace FSR3ModSetupUtilityEnhanced
                         if (optDxgi == "Dxgi.dll")
                         {
                             pathDxgi = "mods\\Temp\\dxgi_global\\dxgi.dll";
-                            File.Copy(pathDxgi, select_Folder + "\\dxgi.dll", true);
+                            File.Copy(pathDxgi, selectFolder + "\\dxgi.dll", true);
                         }
                         if (optDxgi == "D3D12.dll")
                         {
                             pathDxgi = "mods\\Temp\\dxgi_global\\d3d12.dll";
-                            File.Copy(pathDxgi, select_Folder + "\\d3d12.dll", true);
+                            File.Copy(pathDxgi, selectFolder + "\\d3d12.dll", true);
                         }
                     }
                     foreach (string optAddOn in optionsAddOn.CheckedItems)
@@ -1524,10 +1687,10 @@ namespace FSR3ModSetupUtilityEnhanced
                             foreach (string optFile in fileOptiscaler)
                             {
                                 string nameOptiscaler = Path.GetFileName(optFile);
-                                string fullPath = Path.Combine(select_Folder, nameOptiscaler);
+                                string fullPath = Path.Combine(selectFolder, nameOptiscaler);
                                 string pathIni = "mods\\Temp\\OptiScaler\\nvngx.ini";
                                 File.Copy(optFile, fullPath, true);
-                                File.Copy(pathIni, select_Folder + "\\nvngx.ini", true);
+                                File.Copy(pathIni, selectFolder + "\\nvngx.ini", true);
                             }
                             string oldIni = "mods\\Temp\\OptiScaler\\nvngx.ini";
                             string newIni = "mods\\Addons_mods\\OptiScaler\\nvngx.ini";
@@ -1540,7 +1703,7 @@ namespace FSR3ModSetupUtilityEnhanced
                             foreach (string fileTweak in filesTweak)
                             {
                                 string fileName = Path.GetFileName(fileTweak);
-                                string fullPath = Path.Combine(select_Folder, fileName);
+                                string fullPath = Path.Combine(selectFolder, fileName);
                                 File.Copy(fileTweak, fullPath, true);
                             }
                         }
@@ -1562,18 +1725,18 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
-            if (select_mod != null)
+            if (selectMod != null)
             {
                 try
                 {
-                    if (File.Exists(select_Folder + "\\nvngx.txt"))
+                    if (File.Exists(selectFolder + "\\nvngx.txt"))
                     {
                         DialogResult var_nvngx = MessageBox.Show("A backup of the file nvngx.dll has been found. Do you want to restore the backup?", "Nvngx.dll", MessageBoxButtons.YesNo);
 
                         if (var_nvngx == DialogResult.Yes)
                         {
-                            string oldNvngx = select_Folder + "\\nvngx.txt";
-                            string newNvngx = select_Folder + "\\nvngx.dll";
+                            string oldNvngx = selectFolder + "\\nvngx.txt";
+                            string newNvngx = selectFolder + "\\nvngx.dll";
                             File.Delete(newNvngx);
                             File.Move(oldNvngx, newNvngx);
                         }
@@ -1581,56 +1744,116 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
                 catch { }
 
-                if (folder_fake_gpu.ContainsKey(select_mod))
+                if (folderFakeGpu.ContainsKey(selectMod))
                 {
-                    CleanupMod2(modCleanList, folder_fake_gpu);
+                    CleanupMod2(modCleanList, folderFakeGpu);
                 }
                 if (gameSelected == "Cyberpunk 2077")
                 {
                     #region Remove Files Cyberpunk
-                    if(select_mod == "RTX DLSS FG CB2077")
+                    if(selectMod == "RTX DLSS FG CB2077")
                     {
                         CleanupMod(del_cb2077_fsr3, folderCb2077);
                     }
                     //Remove the folder with HD Rework and Nova Lut
-                    if (Directory.Exists(select_Folder + "\\archive"))
+                    if (Directory.Exists(selectFolder + "\\archive"))
                     {
-                        Directory.Delete(select_Folder + "\\archive", true);
+                        Directory.Delete(selectFolder + "\\archive", true);
                     }
                     #endregion
                 }
-                else if (rdr2_folder.ContainsKey(select_mod))
+                else if (rdr2_folder.ContainsKey(selectMod))
                 {
                     CleanupMod(del_rdr2_custom_files, rdr2_folder);
                 }
-                else if (folderAw2.ContainsKey(select_mod))
+                else if (folderAw2.ContainsKey(selectMod))
                 {
                     CleanupMod(del_aw2, folderAw2);
                     #region RestoreNvidiaSignatureChecks
-                    if (select_mod == "Alan Wake 2 FG RTX")
+                    if (selectMod == "Alan Wake 2 FG RTX")
                     {
                         string path_aw2_en = @"mods\\FSR3_GOT\\DLSS FG\\RestoreNvidiaSignatureChecks.reg";
-                        try
-                        {
-                            Process process = new Process();
-                            process.StartInfo.FileName = "regedit.exe";
-                            process.StartInfo.Arguments = "/s \"" + path_aw2_en + "\"";
-                            process.Start();
-                            process.WaitForExit();
-                        }
-                        catch { }
+                        runReg(path_aw2_en);
                     }
                     #endregion
                 }
-                else if (select_mod == "Ac Valhalla Dlss (Only RTX)")
+                else if (selectMod == "Ac Valhalla Dlss (Only RTX)")
                 {
                     CleanupMod3(del_valhalla, "Ac Valhalla Dlss (Only RTX)");
                 }
-                else if (folderDd2.ContainsKey(select_mod) && gameSelected == "Dragons Dogma 2")
+                else if (folderDd2.ContainsKey(selectMod) && gameSelected == "Dragons Dogma 2")
                 {
-                    CleanupMod(del_dd2_fsr3, folderDd2);
+                    CleanupMod(del_dd2Fsr3, folderDd2);
                 }
-                else if (select_mod == null && select_Folder == null)
+                else if (folderGot.ContainsKey(selectMod))
+                {
+                    #region Addition Mods
+                    if (File.Exists(selectFolder + "\\version.dll"))
+                    {
+                        File.Delete(selectFolder + "\\version.dll");
+                    }
+                    if (File.Exists(selectFolder + "\\d3d12core.dll"))
+                    {
+                        File.Delete(selectFolder + "\\d3d12core.dll");
+                        File.Delete(selectFolder + "\\d3d12.dll");
+                    }
+
+                    if (MessageBox.Show("Would you like to restore the post-processing effects? (Film grain, Mouse Smoothing, etc.)", "Restore Post Processing", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (File.Exists(selectFolder + "\\no-filmgrain.reg"))
+                        {
+                            File.Delete(selectFolder + "\\no-filmgrain.reg");
+
+                            try
+                            {
+                                string postProcessingFolder = @"mods\\FSR3_GOT\\Remove_Post_Processing\\restore"; ;
+
+                                foreach (string file in Directory.GetFiles(postProcessingFolder, "*.reg"))
+                                {
+                                    runReg(file);
+                                }
+                            }
+                            catch { }
+                        }
+                    }
+                    CleanupMod(del_got_files, folderGot);
+                    #endregion
+                }
+                else if (folderForza.ContainsKey(selectMod))
+                {
+                    if (selectMod == "RTX DLSS FG FZ5")
+                    {
+                        CleanupMod(del_rtx_dlss,folderForza);
+                    }
+                    else
+                    {
+                        CleanupMod(del_fz5_files, folderForza);
+                    }
+                }
+                else if (folderLotf.ContainsKey(selectMod))
+                {
+                    #region Clean Mods Lotf
+                    if (selectMod == "Lords of The Fallen DLSS RTX")
+                    {
+                        CleanupMod(del_rtx_dlss, folderLotf);
+                        if (File.Exists(selectFolder + "\\launch.bat"))
+                        {
+                            File.Delete(selectFolder + "\\launch.bat");
+                            File.Delete(selectFolder + "\\DisableEasyAntiCheat.bat");
+                            File.Delete(selectFolder + "\\version.dll");
+                        }
+                    }
+                    else
+                    {
+                        if (Directory.Exists(selectFolder + "\\uniscaler"))
+                        {
+                            Directory.Delete(selectFolder + "\\uniscaler", true);
+                        }
+                        CleanupMod(del_lotf_files, folderLotf);
+                    }
+                    #endregion
+                }
+                else if (selectMod == null && selectFolder == null)
                 {
                     MessageBox.Show("Please fill out the first 3 options, Select Game, Select Folder, and Mod Options.", "Error", MessageBoxButtons.OK);
                     return;
@@ -1744,7 +1967,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void WriteUniCustomRes(string selectedResolution)
         {
-            if (uniscaler_path.ContainsKey(select_mod))
+            if (uniscaler_path.ContainsKey(selectMod))
             {
                 if (uni_res_custom.ContainsKey(selectedResolution))
                 {
@@ -1784,7 +2007,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void SetTextModOp()
         {
-            if (unlock_mod_operates_list.Contains(select_mod))
+            if (unlock_mod_operates_list.Contains(selectMod))
             {
                 modOpt1.Text = "Default";
                 modOpt2.Text = "Enable Upscaling Only";
@@ -1794,14 +2017,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 modOpt3.Visible = true;
                 modOpt4.Visible = true;
             }
-            else if (select_mod == "0.9.0")
+            else if (selectMod == "0.9.0")
             {
                 modOpt1.Text = "Enable Upscaling Only";
                 modOpt2.Visible = false;
                 modOpt3.Visible = false;
                 modOpt4.Visible = false;
             }
-            else if (uniscaler_list.Contains(select_mod) && select_mod != "Uniscaler V3")
+            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3")
             {
                 modOpt1.Text = "FSR3";
                 modOpt2.Text = "DLSS";
@@ -1810,7 +2033,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 modOpt3.Visible = true;
                 modOpt4.Visible = false;
             }
-            else if (select_mod == "Uniscaler V3")
+            else if (selectMod == "Uniscaler V3")
             {
                 modOpt1.Text = "None";
                 modOpt2.Text = "FSR3";
@@ -1825,8 +2048,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            select_mod = listMods.SelectedItem as string;
-            if (select_mod != null && folder_mod_operates.ContainsKey(select_mod))
+            selectMod = listMods.SelectedItem as string;
+            if (selectMod != null && folder_mod_operates.ContainsKey(selectMod))
             {
                 SetTextModOp();
                 ShowSubMenu(panelModOp);
@@ -1843,7 +2066,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void button3_Click(object sender, EventArgs e)
         {
-            select_mod = listMods.SelectedItem as string;
+            selectMod = listMods.SelectedItem as string;
             if (var_modop == false)
             {
                 var_modop = true;
@@ -1853,20 +2076,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 var_modop = false;
             }
 
-            if (select_mod == "0.9.0")
+            if (selectMod == "0.9.0")
             {
                 ConfigIni("enable_upscaling_only", var_modop.ToString().ToLower(), folder_mod_operates, "general");
             }
 
-            else if (unlock_mod_operates_list.Contains(select_mod))
+            else if (unlock_mod_operates_list.Contains(selectMod))
             {
                 ConfigIni("mode", "\"default\"", folder_mod_operates, "general");
             }
-            else if (uniscaler_list.Contains(select_mod) && select_mod != "Uniscaler V3")
+            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"fsr3\"", folder_mod_operates, "general");
             }
-            else if (select_mod == "Uniscaler V3")
+            else if (selectMod == "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"none\"", folder_mod_operates, "general");
             }
@@ -1875,15 +2098,15 @@ namespace FSR3ModSetupUtilityEnhanced
         private void button4_Click(object sender, EventArgs e)
         {
 
-            if (unlock_mod_operates_list.Contains(select_mod))
+            if (unlock_mod_operates_list.Contains(selectMod))
             {
                 ConfigIni("mode", "\"enable_upscaling_only\"", folder_mod_operates, "general");
             }
-            else if (uniscaler_list.Contains(select_mod) && select_mod != "Uniscaler V3")
+            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"dlss\"", folder_mod_operates, "general");
             }
-            else if (select_mod == "Uniscaler V3")
+            else if (selectMod == "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"fsr3\"", folder_mod_operates, "general");
             }
@@ -1891,26 +2114,26 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (unlock_mod_operates_list.Contains(select_mod))
+            if (unlock_mod_operates_list.Contains(selectMod))
             {
                 ConfigIni("mode", "\"use_game_upscaling\"", folder_mod_operates, "general");
             }
-            else if (uniscaler_list.Contains(select_mod) && select_mod != "Uniscaler V3")
+            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"xess\"", folder_mod_operates, "general");
             }
-            else if (select_mod == "Uniscaler V3")
+            else if (selectMod == "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"dlss\"", folder_mod_operates, "general");
             }
         }
         private void button6_Click(object sender, EventArgs e)
         {
-            if (unlock_mod_operates_list.Contains(select_mod))
+            if (unlock_mod_operates_list.Contains(selectMod))
             {
                 ConfigIni("mode", "\"replace_dlss_fg\"", folder_mod_operates, "general");
             }
-            else if (select_mod == "Uniscaler V3")
+            else if (selectMod == "Uniscaler V3")
             {
                 ConfigIni("upscaler", "\"xess\"", folder_mod_operates, "general");
             }
@@ -1973,7 +2196,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void button3_Click_2(object sender, EventArgs e)
         {
-            if (select_mod != null && folder_ue.ContainsKey(select_mod))
+            if (selectMod != null && folder_ue.ContainsKey(selectMod))
             {
                 ShowSubMenu(panelRes);
             }
@@ -1986,7 +2209,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueUltraQ != null)
+            if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueUltraQ != null)
             {
                 decimal valueConvUltraQ = valueUltraQ.Value / 100;
                 ConfigIni("ultra_quality", valueConvUltraQ.ToString().Replace(',', '.'), folder_ue, "general");
@@ -1998,7 +2221,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         private void buttonQ_Click(object sender, EventArgs e)
         {
-            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueQ != null)
+            if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueQ != null)
             {
                 decimal valueConvQ = valueQ.Value / 100;
                 ConfigIni("quality", valueConvQ.ToString().Replace(',', '.'), folder_ue, "general");
@@ -2010,7 +2233,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         private void buttonBalanced_Click(object sender, EventArgs e)
         {
-            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueBalanced != null)
+            if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueBalanced != null)
             {
                 decimal valueConvBalanced = valueBalanced.Value / 100;
                 ConfigIni("balanced", valueConvBalanced.ToString().Replace(',', '.'), folder_ue, "general");
@@ -2023,7 +2246,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonPerf_Click(object sender, EventArgs e)
         {
-            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valuePerf != null)
+            if (selectMod != null && folder_ue.ContainsKey(selectMod) && valuePerf != null)
             {
                 decimal valueConvPerf = valuePerf.Value / 100;
                 ConfigIni("performance", valueConvPerf.ToString().Replace(',', '.'), folder_ue, "general");
@@ -2036,7 +2259,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonUltraP_Click(object sender, EventArgs e)
         {
-            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueUltraP != null)
+            if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueUltraP != null)
             {
                 decimal valueConvUltraP = valueUltraP.Value / 100;
                 ConfigIni("ultra_performance", valueConvUltraP.ToString().Replace(',', '.'), folder_ue, "general");
@@ -2049,7 +2272,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonNative_Click(object sender, EventArgs e)
         {
-            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueNative != null)
+            if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueNative != null)
             {
                 decimal valueConvNat = valueNative.Value / 100;
                 ConfigIni("native", valueConvNat.ToString().Replace(',', '.'), folder_ue, "general");
@@ -2072,7 +2295,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 valueConvSharpOver = valueSharpOver.Value / 10;
             }
-            if (select_mod != null && folder_ue.ContainsKey(select_mod) && valueSharpOver != null)
+            if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueSharpOver != null)
             {
                 ConfigIni("sharpness_override", valueConvSharpOver.ToString(CultureInfo.InvariantCulture), folder_ue, "general");
             }
@@ -2084,7 +2307,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonResPreset_Click(object sender, EventArgs e)
         {
-            if (select_mod != null && uniscaler_path.ContainsKey(select_mod))
+            if (selectMod != null && uniscaler_path.ContainsKey(selectMod))
             {
                 ShowSubMenu(panelResPreset);
             }

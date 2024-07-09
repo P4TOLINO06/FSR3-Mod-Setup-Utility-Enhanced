@@ -25,7 +25,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         #region Load Toml Path
-        static Dictionary<string, string> folder_fake_gpu = new Dictionary<string, string>()
+        static Dictionary<string, string> folderFakeGpu = new Dictionary<string, string>()
         {
             {"0.7.4", @"\mods\Temp\FSR2FSR3_0.7.4\enable_fake_gpu\fsr2fsr3.config.toml"},
             {"0.7.5", @"\mods\Temp\FSR2FSR3_0.7.5_hotfix\enable_fake_gpu\fsr2fsr3.config.toml"},
@@ -73,9 +73,9 @@ namespace FSR3ModSetupUtilityEnhanced
         public void SetPathT(string path)
         {
             this.pathT = path;
-            if (!string.IsNullOrEmpty(pathT) && folder_fake_gpu.ContainsKey(pathT))
+            if (!string.IsNullOrEmpty(pathT) && folderFakeGpu.ContainsKey(pathT))
             {
-                string pathTo = folder_fake_gpu[pathT];
+                string pathTo = folderFakeGpu[pathT];
                 LoadToml(pathTo);
             }
         }
