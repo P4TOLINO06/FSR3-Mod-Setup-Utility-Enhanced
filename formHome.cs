@@ -201,6 +201,9 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
             List<string> cyberList = new List<string> { "RTX DLSS FG CB2077" };
             List<string> gotList = new List<string> { "Ghost of Tsushima FG DLSS" };
+            List<string> pwList = new List<string> { "Palworld FG Build03" };
+            List<string> jediList = new List<string> { "DLSS Jedi" };
+            List<string> icarusiList = new List<string> { "RTX DLSS FG ICR", "FSR3 FG ICR All GPU" };
             List<string> lotfList = new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" };
             List<string> forzaList = new List<string> { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
@@ -221,7 +224,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 cyberList,
                 forzaList,
                 gotList,
-                lotfList
+                lotfList,
+                pwList,
+                jediList,
+                icarusiList
             };
             #endregion
 
@@ -281,6 +287,19 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(lotfList);
+            }
+            else if (listGames.SelectedItem.ToString() == "Palworld")
+            {
+                formSettings.Instance.AddItemlistMods(pwList);
+            }
+            else if (listGames.SelectedItem.ToString() == "STAR WARS Jedi: Survivor")
+            {
+                formSettings.Instance.AddItemlistMods(jediList);
+            }
+            else if (listGames.SelectedItem.ToString() == "Icarus")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(icarusiList);
             }
             else
             {

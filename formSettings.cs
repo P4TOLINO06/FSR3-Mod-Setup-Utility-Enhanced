@@ -407,6 +407,44 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
+        #region Folder Jedi 
+        Dictionary<string, string[]> folderJedi = new Dictionary<string, string[]>
+        {
+            { "DLSS Jedi", new string[] {"mods\\FSR2FSR3_Miles\\Uni_Custom_miles"}},
+        };
+        #endregion
+
+        #region Folder Palworld
+        Dictionary<string, string[]> folderPw = new Dictionary<string, string[]>
+        {
+            { "Palworld FG Build03", new string[] {"mods\\FSR3_PW"}},
+        };
+        #endregion
+
+        #region Clean Palworld Files
+        List<string> del_pw_files = new List<string>
+        {
+            "ReShade.ini", "PalworldUpscalerPreset.ini", "d3dcompiler_47.dll", "d3d12.dll",
+            "nvngx.dll"
+        };
+        #endregion
+
+        #region Folder Icarus
+        Dictionary<string, string[]> folderIcr= new Dictionary<string, string[]>
+        {
+            { "RTX DLSS FG ICR", new string[] {"mods\\FSR3_ICR\\ICARUS_DLSS_3_FOR_RTX"}},
+            { "FSR3 FG ICR All GPU", new string[] {"mods\\FSR3_ICR\\ICARUS_FSR_3_FOR_AMD_GTX"}},
+        };
+        #endregion
+
+        #region Clean Icarus Files
+        List<string> del_icr_files = new List<string>
+        {
+            "winmm.ini","winmm.dll","fsr2fsr3.config.toml","FSR2FSR3.asi"
+
+        };
+        #endregion
+
         #region Clean RTX DLSS Files
         List<string> del_rtx_dlss = new List<string>
         {
@@ -434,6 +472,13 @@ namespace FSR3ModSetupUtilityEnhanced
             "uniscaler.config.toml", "uniscaler.log"
         };
 
+        #endregion
+
+        #region Clean Uniscaler Default
+        List<string> del_uni_files = new List<string>
+        {
+            "Uniscaler.asi","winmm.dll","winmm.ini","uniscaler.config.toml"
+        };
         #endregion
 
         #region Clean Ini File Folder
@@ -489,7 +534,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         //Ini Editor
-        public void ConfigIni(string key, string value, Dictionary<string, string> DictionaryPath, string? section = null)
+        public void ConfigToml(string key, string value, Dictionary<string, string> DictionaryPath, string? section = null)
         {
             selectMod = listMods.SelectedItem as string;
             string pathToml = DictionaryPath[selectMod];
@@ -500,12 +545,19 @@ namespace FSR3ModSetupUtilityEnhanced
                 iniEditor.Write(section, key, " " + value);
             }
         }
-        public void ConfigIni2(string key, string value, string path, string? section = null)
+        public void ConfigIni(string key, string value, string path, string? section = null)
         {
             string pathIni = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, path);
             IniEditor iniEditor = new IniEditor(pathIni);
 
             iniEditor.Write(section, key, value);
+        }
+
+        public void ConfigIni2(string key, string value, string path, string? section = null)
+        {
+            string pathIni = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, path);
+            IniEditor2.ConfigIni2(key, value, pathIni, section);
+            Debug.WriteLine(pathIni);
         }
 
         public void ReplaceIni()
@@ -581,7 +633,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             if (fpsLimitTextBox.Text.ToString() != null)
             {
-                ConfigIni("original_frame_rate_limit", fpsLimitTextBox.Text.ToString(), uniscaler_path, "general");
+                ConfigToml("original_frame_rate_limit", fpsLimitTextBox.Text.ToString(), uniscaler_path, "general");
             }
         }
         private void AddOptionsSelect_ItemCheck(object? sender, ItemCheckEventArgs e)
@@ -615,7 +667,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     if (folder.ContainsKey(selectMod))
                     {
                         string pathToml = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder[selectMod]);
-                        ConfigIni(configKey, AddOptSelect, folder, section);
+                        ConfigToml(configKey, AddOptSelect, folder, section);
                     }
                     else
                     {
@@ -655,7 +707,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     if (edit_fake_gpu_list.Contains(selectMod))
                     {
-                        ConfigIni("fake_nvidia_gpu", AddOptSelect, folderFakeGpu, "compatibility");
+                        ConfigToml("fake_nvidia_gpu", AddOptSelect, folderFakeGpu, "compatibility");
                     }
                     else if (edit_old_fake_gpu.Contains(selectMod))
                     {
@@ -1094,6 +1146,40 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFolder("mods\\acValhallaDlss");
         }
 
+        public void jediFsr3()
+        {
+            if (selectMod == "DLSS Jedi")
+            {
+                CopyFSR(folderJedi);
+            }
+        }
+
+        public async Task pwFSR3()
+        {
+            #region FSR3 Palworld
+            if (selectMod == "Palworld FG Build03")
+            {
+                CopyFSR(folderPw);
+            }
+
+            AutoShortCut(selectFolder + "\\Palworld-Win64-Shipping.exe", "Palworld", "-dx12", "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\" . This is necessary for the mod to work correctly");
+
+            if (MessageBox.Show("Do you have an Nvidia RTX GPU?", "Select GPU",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                ConfigIni2("mUpscaleType", "0", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", "Settings");
+            }
+            else
+            {
+                ConfigIni2("mUpscaleType", "3", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", "Settings");
+            }
+            await Task.Delay((2000));
+            {
+                File.Copy("mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", selectFolder + "\\mods\\PalworldUpscaler.ini", true);
+                File.Copy("mods\\FSR3_PW\\mods\\PalworldUpscaler.ini", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", true);
+            }
+            #endregion
+        }
+
         public async Task bdg3Fsr3()
         {
             CopyFSR(folderBdg3);
@@ -1212,6 +1298,12 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFSR(folderEldenRing);
         }
 
+        public void chernobyliteFsr3()
+        {
+            string pathExeCherno = selectFolder + "\\ChernobylGame-Win64-Shipping.exe";
+            AutoShortCut(pathExeCherno, "Chernobylite","-dx12", "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\". This is necessary for the mod to work correctly.");
+        }
+
         public void aw2Fsr3()
         {
             CopyFSR(folderAw2);
@@ -1223,6 +1315,17 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 runReg(path_aw2_over);
             }
+        }
+
+        public void icrFsr3()
+        {
+            string pathExeIcr = selectFolder + "\\Icarus-Win64-Shipping.exe";
+            if (selectMod == ("RTX DLSS FG ICR"))
+            {
+                runReg(@"mods\\FSR3_ICR\\ICARUS_DLSS_3_FOR_RTX\\DisableNvidiaSignatureChecks.reg");
+            }
+            CopyFSR(folderIcr);
+            AutoShortCut(pathExeIcr, "Icarus-Win64-Shipping.exe", "-dx12", "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\". This is necessary for the mod to work correctly.");
         }
 
         public async Task gtavFsr3()
@@ -1395,7 +1498,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
 
-                    string[] folderModsReshade = { "Red Dead Redemption 2", "Dragons Dogma 2 " };
+                    string[] folderModsReshade = { "Red Dead Redemption 2", "Dragons Dogma 2 ", "Palworld"};
                     if (folderModsReshade.Contains(gameSelected)) //Check to delete the 'mods'/'reshade' folder, some FSR3 mods have a 'mods'/'reshade' folder by default
                     {
                         if (Directory.Exists(selectFolder + "\\mods"))
@@ -1409,7 +1512,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     }
                     if (Directory.Exists(selectFolder + "\\uniscaler"))
                     {
-                        Directory.Delete(selectFolder + "\\uniscaler");
+                        Directory.Delete(selectFolder + "\\uniscaler",true);
                     }
 
                     MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
@@ -1577,6 +1680,22 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Lords of the Fallen")
                 {
                     lotfFsr3();
+                }
+                if( selectMod == "DLSS Jedi")
+                {
+                    jediFsr3();
+                }
+                if (selectMod == "Palworld FG Build03")
+                {
+                    pwFSR3();
+                }
+                if (gameSelected == "Chernobylite")
+                {
+                    chernobyliteFsr3();
+                }
+                if (gameSelected == "Icarus")
+                {
+                    icrFsr3();
                 }
 
                 if (folderDd2.ContainsKey(selectMod) && gameSelected == "Dragons Dogma 2")
@@ -1751,7 +1870,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Cyberpunk 2077")
                 {
                     #region Remove Files Cyberpunk
-                    if(selectMod == "RTX DLSS FG CB2077")
+                    if (selectMod == "RTX DLSS FG CB2077")
                     {
                         CleanupMod(del_cb2077_fsr3, folderCb2077);
                     }
@@ -1784,6 +1903,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 else if (folderDd2.ContainsKey(selectMod) && gameSelected == "Dragons Dogma 2")
                 {
                     CleanupMod(del_dd2Fsr3, folderDd2);
+                }
+                else if (folderPw.ContainsKey(selectMod))
+                {
+                    CleanupMod(del_pw_files, folderPw);
+                }
+                else if (folderJedi.ContainsKey(selectMod))
+                {
+                    CleanupMod(del_uni_files,folderJedi);
                 }
                 else if (folderGot.ContainsKey(selectMod))
                 {
@@ -1819,11 +1946,22 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanupMod(del_got_files, folderGot);
                     #endregion
                 }
+                else if (folderIcr.ContainsKey(selectMod))
+                {
+                    if (selectMod == "RTX DLSS FG ICR")
+                    {
+                        CleanupMod(del_rtx_dlss, folderIcr);
+                    }
+                    else
+                    {
+                        CleanupMod(del_icr_files, folderIcr);
+                    }
+                }
                 else if (folderForza.ContainsKey(selectMod))
                 {
                     if (selectMod == "RTX DLSS FG FZ5")
                     {
-                        CleanupMod(del_rtx_dlss,folderForza);
+                        CleanupMod(del_rtx_dlss, folderForza);
                     }
                     else
                     {
@@ -1999,7 +2137,7 @@ namespace FSR3ModSetupUtilityEnhanced
                             default:
                                 continue;
                         }
-                        ConfigIni(tomlKey, value, uniscaler_path, "resolution_override");
+                        ConfigToml(tomlKey, value, uniscaler_path, "resolution_override");
                     }
                 }
             }
@@ -2061,7 +2199,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        //The sequence of options for the Uniscaler V3 mod replaces each other within the ConfigIni method in the last else if. button3_Click: fsr3 = "none" | button4_Click: dlss = "fsr3" | button5_Click: xess = "dlss" | button6_Click: "xess"
+        //The sequence of options for the Uniscaler V3 mod replaces each other within the ConfigToml method in the last else if. button3_Click: fsr3 = "none" | button4_Click: dlss = "fsr3" | button5_Click: xess = "dlss" | button6_Click: "xess"
         bool var_modop = false;
 
         private void button3_Click(object sender, EventArgs e)
@@ -2078,20 +2216,20 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (selectMod == "0.9.0")
             {
-                ConfigIni("enable_upscaling_only", var_modop.ToString().ToLower(), folder_mod_operates, "general");
+                ConfigToml("enable_upscaling_only", var_modop.ToString().ToLower(), folder_mod_operates, "general");
             }
 
             else if (unlock_mod_operates_list.Contains(selectMod))
             {
-                ConfigIni("mode", "\"default\"", folder_mod_operates, "general");
+                ConfigToml("mode", "\"default\"", folder_mod_operates, "general");
             }
             else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3")
             {
-                ConfigIni("upscaler", "\"fsr3\"", folder_mod_operates, "general");
+                ConfigToml("upscaler", "\"fsr3\"", folder_mod_operates, "general");
             }
             else if (selectMod == "Uniscaler V3")
             {
-                ConfigIni("upscaler", "\"none\"", folder_mod_operates, "general");
+                ConfigToml("upscaler", "\"none\"", folder_mod_operates, "general");
             }
         }
 
@@ -2100,15 +2238,15 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (unlock_mod_operates_list.Contains(selectMod))
             {
-                ConfigIni("mode", "\"enable_upscaling_only\"", folder_mod_operates, "general");
+                ConfigToml("mode", "\"enable_upscaling_only\"", folder_mod_operates, "general");
             }
             else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3")
             {
-                ConfigIni("upscaler", "\"dlss\"", folder_mod_operates, "general");
+                ConfigToml("upscaler", "\"dlss\"", folder_mod_operates, "general");
             }
             else if (selectMod == "Uniscaler V3")
             {
-                ConfigIni("upscaler", "\"fsr3\"", folder_mod_operates, "general");
+                ConfigToml("upscaler", "\"fsr3\"", folder_mod_operates, "general");
             }
         }
 
@@ -2116,26 +2254,26 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             if (unlock_mod_operates_list.Contains(selectMod))
             {
-                ConfigIni("mode", "\"use_game_upscaling\"", folder_mod_operates, "general");
+                ConfigToml("mode", "\"use_game_upscaling\"", folder_mod_operates, "general");
             }
             else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3")
             {
-                ConfigIni("upscaler", "\"xess\"", folder_mod_operates, "general");
+                ConfigToml("upscaler", "\"xess\"", folder_mod_operates, "general");
             }
             else if (selectMod == "Uniscaler V3")
             {
-                ConfigIni("upscaler", "\"dlss\"", folder_mod_operates, "general");
+                ConfigToml("upscaler", "\"dlss\"", folder_mod_operates, "general");
             }
         }
         private void button6_Click(object sender, EventArgs e)
         {
             if (unlock_mod_operates_list.Contains(selectMod))
             {
-                ConfigIni("mode", "\"replace_dlss_fg\"", folder_mod_operates, "general");
+                ConfigToml("mode", "\"replace_dlss_fg\"", folder_mod_operates, "general");
             }
             else if (selectMod == "Uniscaler V3")
             {
-                ConfigIni("upscaler", "\"xess\"", folder_mod_operates, "general");
+                ConfigToml("upscaler", "\"xess\"", folder_mod_operates, "general");
             }
         }
 
@@ -2212,7 +2350,7 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueUltraQ != null)
             {
                 decimal valueConvUltraQ = valueUltraQ.Value / 100;
-                ConfigIni("ultra_quality", valueConvUltraQ.ToString().Replace(',', '.'), folder_ue, "general");
+                ConfigToml("ultra_quality", valueConvUltraQ.ToString().Replace(',', '.'), folder_ue, "general");
             }
             else
             {
@@ -2224,7 +2362,7 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueQ != null)
             {
                 decimal valueConvQ = valueQ.Value / 100;
-                ConfigIni("quality", valueConvQ.ToString().Replace(',', '.'), folder_ue, "general");
+                ConfigToml("quality", valueConvQ.ToString().Replace(',', '.'), folder_ue, "general");
             }
             else
             {
@@ -2236,7 +2374,7 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueBalanced != null)
             {
                 decimal valueConvBalanced = valueBalanced.Value / 100;
-                ConfigIni("balanced", valueConvBalanced.ToString().Replace(',', '.'), folder_ue, "general");
+                ConfigToml("balanced", valueConvBalanced.ToString().Replace(',', '.'), folder_ue, "general");
             }
             else
             {
@@ -2249,7 +2387,7 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod != null && folder_ue.ContainsKey(selectMod) && valuePerf != null)
             {
                 decimal valueConvPerf = valuePerf.Value / 100;
-                ConfigIni("performance", valueConvPerf.ToString().Replace(',', '.'), folder_ue, "general");
+                ConfigToml("performance", valueConvPerf.ToString().Replace(',', '.'), folder_ue, "general");
             }
             else
             {
@@ -2262,7 +2400,7 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueUltraP != null)
             {
                 decimal valueConvUltraP = valueUltraP.Value / 100;
-                ConfigIni("ultra_performance", valueConvUltraP.ToString().Replace(',', '.'), folder_ue, "general");
+                ConfigToml("ultra_performance", valueConvUltraP.ToString().Replace(',', '.'), folder_ue, "general");
             }
             else
             {
@@ -2275,7 +2413,7 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueNative != null)
             {
                 decimal valueConvNat = valueNative.Value / 100;
-                ConfigIni("native", valueConvNat.ToString().Replace(',', '.'), folder_ue, "general");
+                ConfigToml("native", valueConvNat.ToString().Replace(',', '.'), folder_ue, "general");
             }
             else
             {
@@ -2297,7 +2435,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             if (selectMod != null && folder_ue.ContainsKey(selectMod) && valueSharpOver != null)
             {
-                ConfigIni("sharpness_override", valueConvSharpOver.ToString(CultureInfo.InvariantCulture), folder_ue, "general");
+                ConfigToml("sharpness_override", valueConvSharpOver.ToString(CultureInfo.InvariantCulture), folder_ue, "general");
             }
             else
             {
@@ -2411,36 +2549,36 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonAddUps1_Click(object sender, EventArgs e)
         {
-            ConfigIni2("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
         }
 
         private void buttonAddUps2_Click(object sender, EventArgs e)
         {
-            ConfigIni2("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
         }
 
         private void buttonAddUps3_Click(object sender, EventArgs e)
         {
-            ConfigIni2("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
         }
 
         private void buttonAddUps4_Click(object sender, EventArgs e)
         {
-            ConfigIni2("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
         }
 
         private void buttonAddUps5_Click(object sender, EventArgs e)
         {
-            ConfigIni2("Dx12Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            ConfigIni("Dx12Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
         }
         private void buttonAddUps6_Click(object sender, EventArgs e)
         {
-            ConfigIni2("Dx12Upscaler", "fsr21", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            ConfigIni("Dx12Upscaler", "fsr21", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
         }
 
         private void buttonAddUps7_Click(object sender, EventArgs e)
         {
-            ConfigIni2("Dx12Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            ConfigIni("Dx12Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
         }
     }
 }
