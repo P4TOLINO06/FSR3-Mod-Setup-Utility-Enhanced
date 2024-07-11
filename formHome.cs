@@ -203,6 +203,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> gotList = new List<string> { "Ghost of Tsushima FG DLSS" };
             List<string> pwList = new List<string> { "Palworld FG Build03" };
             List<string> jediList = new List<string> { "DLSS Jedi" };
+            List<string> tekkenList = new List<string> { "Unlock FPS Tekken 8" };
             List<string> icarusiList = new List<string> { "RTX DLSS FG ICR", "FSR3 FG ICR All GPU" };
             List<string> lotfList = new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" };
             List<string> forzaList = new List<string> { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU" };
@@ -227,7 +228,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 lotfList,
                 pwList,
                 jediList,
-                icarusiList
+                icarusiList,
+                tekkenList
             };
             #endregion
 
@@ -300,6 +302,11 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(icarusiList);
+            }
+            else if (listGames.SelectedItem.ToString() == "TEKKEN 8")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(tekkenList);
             }
             else
             {

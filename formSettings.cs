@@ -445,6 +445,13 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
+        #region Folder Tekken
+        Dictionary<string, string[]> folderTekken = new Dictionary<string, string[]>
+        {
+            { "Unlock FPS Tekken 8", new string[] {"mods\\Unlock_fps_Tekken"}},
+        };
+        #endregion
+
         #region Clean RTX DLSS Files
         List<string> del_rtx_dlss = new List<string>
         {
@@ -1298,10 +1305,41 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFSR(folderEldenRing);
         }
 
+        public async Task motogpFsr3()
+        {
+            await Task.Delay((2000));
+            {
+                if (Directory.Exists(selectFolder + "\\uniscaler"))
+                {
+                    Directory.Delete(selectFolder + "\\uniscaler", true);
+                }
+            }
+        }
+
         public void chernobyliteFsr3()
         {
             string pathExeCherno = selectFolder + "\\ChernobylGame-Win64-Shipping.exe";
             AutoShortCut(pathExeCherno, "Chernobylite","-dx12", "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\". This is necessary for the mod to work correctly.");
+        }
+
+        public void controlFsr3()
+        {
+            #region Files nvngx required for the mod to work in the game Contro
+            string pathNvngx = "mods\\FSR3_Control";
+
+            foreach (string nvngxItem in Directory.GetFiles(pathNvngx))
+            {
+                string nvngxName = Path.GetFileName(nvngxItem);
+                string fullpathNvngx = Path.Combine(selectFolder, nvngxName);
+                
+                File.Copy(pathNvngx + "\\"+ nvngxName, fullpathNvngx, true);
+            }
+            #endregion
+        }
+
+        public void tekkenFsr3()
+        {
+            CopyFSR(folderTekken);
         }
 
         public void aw2Fsr3()
@@ -1665,6 +1703,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     cyberFsr3();
                 }
+                if (gameSelected == "Control")
+                {
+                    controlFsr3();
+                }
                 if (gameSelected == "Forza Horizon 5")
                 {
                     forzaFsr3();
@@ -1689,6 +1731,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     pwFSR3();
                 }
+                if (selectMod == "Unlock FPS Tekken 8")
+                {
+                    tekkenFsr3();
+                    MessageBox.Show("Run TekkenOverlay.exe for the mod to work, the .exe is in the folder where the mod was installed", "Run Overlay", MessageBoxButtons.OK);
+                }
                 if (gameSelected == "Chernobylite")
                 {
                     chernobyliteFsr3();
@@ -1696,6 +1743,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Icarus")
                 {
                     icrFsr3();
+                }
+                if (gameSelected == "MOTO GP 24")
+                {
+                    motogpFsr3();
                 }
 
                 if (folderDd2.ContainsKey(selectMod) && gameSelected == "Dragons Dogma 2")
