@@ -311,6 +311,7 @@
             optionsAddOn.Name = "optionsAddOn";
             optionsAddOn.Size = new Size(156, 66);
             optionsAddOn.TabIndex = 7;
+            optionsAddOn.ItemCheck += optionsAddOn_ItemCheck;
             optionsAddOn.SelectedIndexChanged += optionsAddOn_SelectedIndexChanged;
             // 
             // buttonAddOn

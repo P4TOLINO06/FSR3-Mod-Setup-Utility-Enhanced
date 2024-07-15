@@ -21,6 +21,8 @@ using Tomlyn;
 using Tomlyn.Model;
 using System.Windows.Forms.Design;
 using System.Security.Cryptography;
+using Button = System.Windows.Forms.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -39,6 +41,7 @@ namespace FSR3ModSetupUtilityEnhanced
         private mainForm mainFormInstance;
         public System.Windows.Forms.TextBox fpsLimitTextBox;
         public System.Windows.Forms.Label labelFpsLimit;
+        Form screenMethod = new Form(); //Optiscaler installation method screen
 
         public formSettings()
         {
@@ -66,9 +69,9 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void AddItemlistMods(List<string> items)
         {
-            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2","Elden Ring FSR3 V3", "Disable Anti Cheat" };
+            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077"};
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077" };
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -365,7 +368,7 @@ namespace FSR3ModSetupUtilityEnhanced
         Dictionary<string, string[]> folderForza = new Dictionary<string, string[]>
         {
             { "RTX DLSS FG FZ5", new string[] {"mods\\FSR3_FH\\RTX"}},
-            { "FSR3 FG FZ5 All GPU" , new string [] {"mods\\FSR3_FH\\Ot_Gpu"}}, 
+            { "FSR3 FG FZ5 All GPU" , new string [] {"mods\\FSR3_FH\\Ot_Gpu"}},
         };
         #endregion
 
@@ -430,7 +433,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region Folder Icarus
-        Dictionary<string, string[]> folderIcr= new Dictionary<string, string[]>
+        Dictionary<string, string[]> folderIcr = new Dictionary<string, string[]>
         {
             { "RTX DLSS FG ICR", new string[] {"mods\\FSR3_ICR\\ICARUS_DLSS_3_FOR_RTX"}},
             { "FSR3 FG ICR All GPU", new string[] {"mods\\FSR3_ICR\\ICARUS_FSR_3_FOR_AMD_GTX"}},
@@ -479,6 +482,13 @@ namespace FSR3ModSetupUtilityEnhanced
             "uniscaler.config.toml", "uniscaler.log"
         };
 
+        #endregion
+
+        #region Clean Optiscaler Files
+        List<string> del_optiscaler = new List<string>
+        {
+            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg", "amd_fidelityfx_vk.dll", "amd_fidelityfx_dx12.dll"
+        };
         #endregion
 
         #region Clean Uniscaler Default
@@ -603,7 +613,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             fpsLimitTextBox = new System.Windows.Forms.TextBox();
             fpsLimitTextBox.Location = new System.Drawing.Point(475, 100);
-            fpsLimitTextBox.Size = new System.Drawing.Size(25,25);
+            fpsLimitTextBox.Size = new System.Drawing.Size(25, 25);
             panel1.Controls.Add(fpsLimitTextBox);
             fpsLimitTextBox.BringToFront();
             fpsLimitTextBox.Visible = false;
@@ -619,7 +629,7 @@ namespace FSR3ModSetupUtilityEnhanced
             labelFpsLimit.Visible = false;
 
             fpsLimitTextBox.KeyPress += textBoxFps_KeyPress;
-            fpsLimitTextBox.TextChanged+= textBoxFps_TextChanged;
+            fpsLimitTextBox.TextChanged += textBoxFps_TextChanged;
         }
         private void textBoxFps_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -629,7 +639,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             if (fpsLimitTextBox.Text.Length >= 3 && e.KeyChar != '\b')
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
         }
         private void textBoxFps_TextChanged(object sender, EventArgs e)
@@ -695,39 +705,39 @@ namespace FSR3ModSetupUtilityEnhanced
                     if (selectMod != null && folderFakeGpu.ContainsKey(selectMod))
                     {
                         string path1 = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), folderFakeGpu[selectMod]);
-                        
+
                         ShowErrorMessage();//Uncheck the Toml Editor in AddOptionsSelect option.
 
                         ((mainForm)this.ParentForm).loadForm(typeof(formEditorToml), selectMod);
                     }
                 }
                 else
-                { 
+                {
                     ShowErrorMessage("Select a mod version to proceed. (excluding specific versions, for exemple: Elden Ring FSR3");
                     return;
                 }
             }
 
-                if (itemText == "Fake Nvidia Gpu" && selectMod != null)
+            if (itemText == "Fake Nvidia Gpu" && selectMod != null)
+            {
+                string pathToml_f_gpu = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folderFakeGpu[selectMod]);
+
+                if (edit_fake_gpu_list.Contains(selectMod))
                 {
-                    string pathToml_f_gpu = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)! + folderFakeGpu[selectMod]);
+                    ConfigToml("fake_nvidia_gpu", AddOptSelect, folderFakeGpu, "compatibility");
+                }
+                else if (edit_old_fake_gpu.Contains(selectMod))
+                {
+                    string[] iniLines = File.ReadAllLines(pathToml_f_gpu);
 
-                    if (edit_fake_gpu_list.Contains(selectMod))
+                    if (iniLines.Length > 0)
                     {
-                        ConfigToml("fake_nvidia_gpu", AddOptSelect, folderFakeGpu, "compatibility");
-                    }
-                    else if (edit_old_fake_gpu.Contains(selectMod))
-                    {
-                        string[] iniLines = File.ReadAllLines(pathToml_f_gpu);
+                        iniLines[0] = "fake_nvidia_gpu = " + AddOptSelect;
 
-                        if (iniLines.Length > 0)
-                        {
-                            iniLines[0] = "fake_nvidia_gpu = " + AddOptSelect;
-
-                            File.WriteAllLines(pathToml_f_gpu, iniLines);
-                        }
+                        File.WriteAllLines(pathToml_f_gpu, iniLines);
                     }
                 }
+            }
 
             if (itemText == "Ue Compatibility Mode")
             {
@@ -770,7 +780,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigureMod("ignore_ingame_frame_generation_resources", "Select Uniscaler V3 to proceed", folder_uniscalerV3, "general");
             }
 
-            if(itemText == "Fps Limit")
+            if (itemText == "Fps Limit")
             {
                 if (selectMod != null && uniscaler_path.ContainsKey(selectMod))
                 {
@@ -972,7 +982,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string path_dest = selectFolder;
             string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string selectedVersion = listMods.SelectedItem as string;
-            string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3"};
+            string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3" };
 
             if (selectedVersion != null)
             {
@@ -981,7 +991,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     foreach (string relativePath in paths)
                     {
                         string path_final = Path.GetFullPath(Path.Combine(exeDirectory, relativePath));
-                        string path_fsr_initial=  (path_final + "\\..\\..") + "\\FSR2FSR3_COMMON";
+                        string path_fsr_initial = (path_final + "\\..\\..") + "\\FSR2FSR3_COMMON";
                         string path_fsr_common = Path.GetFullPath(path_fsr_initial);
                         Debug.WriteLine(path_fsr_common);
                         if (Directory.Exists(path_final))
@@ -1038,7 +1048,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task AutoShortCut(string pathExe, string nameShortCut, string dx12, string nameMessageBox = null)
         {
-            AutoShortcut.AShortcut(pathExe,nameShortCut,dx12,nameMessageBox);   
+            AutoShortcut.AShortcut(pathExe, nameShortCut, dx12, nameMessageBox);
         }
 
         public void fsr2_2()
@@ -1171,7 +1181,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             AutoShortCut(selectFolder + "\\Palworld-Win64-Shipping.exe", "Palworld", "-dx12", "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\" . This is necessary for the mod to work correctly");
 
-            if (MessageBox.Show("Do you have an Nvidia RTX GPU?", "Select GPU",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Do you have an Nvidia RTX GPU?", "Select GPU", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 ConfigIni2("mUpscaleType", "0", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", "Settings");
             }
@@ -1200,7 +1210,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 try
                 {
                     await Task.Delay((2000));
-                    {                
+                    {
                         File.Copy(fullPath, selectFolder + "\\mods\\BG3Upscaler.ini", true);
                     }
                 }
@@ -1217,7 +1227,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (Directory.Exists(selectFolder + "\\_storage_"))
                 {
                     string pathWinmm = "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod\\winmm.dll";
-                    File.Copy(pathWinmm,selectFolder + "\\_storage_\\winmm.dll",true);
+                    File.Copy(pathWinmm, selectFolder + "\\_storage_\\winmm.dll", true);
                 }
 
                 if (File.Exists(selectFolder + "\\shader.cache2"))
@@ -1251,11 +1261,11 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             string pathCallisto = "mods\\FSR3_Callisto\\FSR_Callisto";
 
-            foreach (string filesCallisto in Directory.GetFiles(pathCallisto))            
+            foreach (string filesCallisto in Directory.GetFiles(pathCallisto))
             {
                 string fileName = Path.GetFileName(filesCallisto);
 
-                File.Copy(filesCallisto, selectFolder + "\\" + fileName,true);
+                File.Copy(filesCallisto, selectFolder + "\\" + fileName, true);
             }
         }
 
@@ -1319,7 +1329,7 @@ namespace FSR3ModSetupUtilityEnhanced
         public void chernobyliteFsr3()
         {
             string pathExeCherno = selectFolder + "\\ChernobylGame-Win64-Shipping.exe";
-            AutoShortCut(pathExeCherno, "Chernobylite","-dx12", "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\". This is necessary for the mod to work correctly.");
+            AutoShortCut(pathExeCherno, "Chernobylite", "-dx12", "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\". This is necessary for the mod to work correctly.");
         }
 
         public void controlFsr3()
@@ -1331,8 +1341,8 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string nvngxName = Path.GetFileName(nvngxItem);
                 string fullpathNvngx = Path.Combine(selectFolder, nvngxName);
-                
-                File.Copy(pathNvngx + "\\"+ nvngxName, fullpathNvngx, true);
+
+                File.Copy(pathNvngx + "\\" + nvngxName, fullpathNvngx, true);
             }
             #endregion
         }
@@ -1399,7 +1409,7 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod == "GTA V Online")
             {
                 DialogResult ban = MessageBox.Show("We are not responsible if you get banned. Do you want to proceed with the installation of the mod?", "Ban", MessageBoxButtons.YesNo);
-                
+
                 await Task.Delay((2000));//Delay to rename files, to avoid the possibility of renaming before the files are copied
                 if (DialogResult.Yes == ban && File.Exists(selectFolder + "\\dxgi.asi"))
                 {
@@ -1434,7 +1444,7 @@ namespace FSR3ModSetupUtilityEnhanced
         public void forzaFsr3()
         {
             CopyFSR(folderForza);
-            
+
             if (selectMod == "RTX DLSS FG FZ5")
             {
                 string pathRegFz5 = @"mods\\FSR3_FH\RTX\\DisableNvidiaSignatureChecks.reg";
@@ -1448,15 +1458,15 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 foreach (string filePath in Directory.GetFiles(pathFolder))
                 {
-                    string fileName = Path.GetFileName(filePath); 
-                    string destinationPath = Path.Combine(selectFolder ,fileName); 
+                    string fileName = Path.GetFileName(filePath);
+                    string destinationPath = Path.Combine(selectFolder, fileName);
 
                     try
                     {
-                        File.Copy(filePath, destinationPath, true); 
+                        File.Copy(filePath, destinationPath, true);
                     }
                     catch (IOException e)
-                    {    
+                    {
                     }
                 }
             }
@@ -1471,7 +1481,7 @@ namespace FSR3ModSetupUtilityEnhanced
             if (dx12_got == DialogResult.Yes)
             {
                 string pathDx12Got = "mods\\FSR3_GOT\\Fix_DX12";
-                CopyFiles(pathDx12Got); 
+                CopyFiles(pathDx12Got);
             }
             try
             {
@@ -1503,7 +1513,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string nameMediumShortCut = "The Medium";
             string messageMedium = "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\" . This is necessary for the mod to work correctly.";
 
-            AutoShortCut(pathMediumExe,nameMediumShortCut,"-dx12",messageMedium);
+            AutoShortCut(pathMediumExe, nameMediumShortCut, "-dx12", messageMedium);
         }
 
         public async Task lotfFsr3()
@@ -1516,7 +1526,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string nameLotfShortCut = "launch";
             string messageLotf = "Do you want to create a shortcut for the .bat file? To make the mod work, you need to run the game through the .bat file. (If you can't run the .bat file, run the .bat file that is inside the folder where the mod was installed)";
 
-            AutoShortCut(pathLotfExe, nameLotfShortCut, "",messageLotf);
+            AutoShortCut(pathLotfExe, nameLotfShortCut, "", messageLotf);
         }
 
         public void CleanupMod(List<string> ListClean, Dictionary<string, string[]> DictionaryPath)
@@ -1536,7 +1546,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
 
-                    string[] folderModsReshade = { "Red Dead Redemption 2", "Dragons Dogma 2 ", "Palworld"};
+                    string[] folderModsReshade = { "Red Dead Redemption 2", "Dragons Dogma 2 ", "Palworld" };
                     if (folderModsReshade.Contains(gameSelected)) //Check to delete the 'mods'/'reshade' folder, some FSR3 mods have a 'mods'/'reshade' folder by default
                     {
                         if (Directory.Exists(selectFolder + "\\mods"))
@@ -1550,7 +1560,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     }
                     if (Directory.Exists(selectFolder + "\\uniscaler"))
                     {
-                        Directory.Delete(selectFolder + "\\uniscaler",true);
+                        Directory.Delete(selectFolder + "\\uniscaler", true);
                     }
 
                     MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
@@ -1562,8 +1572,160 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public async Task InstallMethod()
+        {
+            string varMethod = null;
+
+            screenMethod.TopLevel = false;
+            panel1.Controls.Add(screenMethod);
+            screenMethod.Location = new System.Drawing.Point(550, 150);
+            screenMethod.MaximizeBox = false;
+            screenMethod.MinimizeBox = false;
+            screenMethod.MinimumSize = screenMethod.MaximumSize = new Size(350, 200);
+            screenMethod.Text = "Optiscaler Install";
+            screenMethod.FormClosing += new FormClosingEventHandler(screenMethod_FormClosing);
+            screenMethod.BringToFront();
+            screenMethod.Show();
+            Icon screenMethodIcon = new Icon(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "Images\\Method.ico"));
+            screenMethod.Icon = screenMethodIcon;
+
+            Button buttonMethod0 = new Button();
+            buttonMethod0.Text = "Default (For test)";
+            buttonMethod0.Location = new System.Drawing.Point(50, 10);
+            buttonMethod0.Size = new Size(220, 30);;
+            buttonMethod0.Click += buttonMethod0_Click;
+
+            Button buttonMethod1 = new Button();
+            buttonMethod1.Text = "Method 1 (RTX/AMD 6000-7000)"; //Use the Default method.
+            buttonMethod1.Location = new System.Drawing.Point(50, 50);
+            buttonMethod1.Size = new Size(220, 30);
+            buttonMethod1.Click += buttonMethod1_Click;
+
+            Button buttonMethod2 = new Button();
+            buttonMethod2.Text = "Method 2 (GTX/Old AMD)";
+            buttonMethod2.Location = new System.Drawing.Point(50, 90);
+            buttonMethod2.Size = new Size(220, 30);
+            buttonMethod2.Click += buttonMethod2_Click;
+
+            Button buttonMethod3 = new Button();
+            buttonMethod3.Text = "Method 3 (If none of the others work)";
+            buttonMethod3.Location = new System.Drawing.Point(50, 130);
+            buttonMethod3.Size = new Size(220, 30);
+            buttonMethod3.Click += buttonMethod3_Click;
+
+            screenMethod.Controls.Add(buttonMethod0);
+            screenMethod.Controls.Add(buttonMethod1);
+            screenMethod.Controls.Add(buttonMethod2);
+            screenMethod.Controls.Add(buttonMethod3);
+
+            screenMethod.Owner = this;
+
+            screenMethod.ShowDialog();
+        }
+
+        private void screenMethod_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+
+                screenMethod.Visible = false;
+            }
+        }
+
+        public async Task BackupOptiscaler()
+        {      
+            string[] filesBackup = ["libxess.dll", "amd_fidelityfx_vk.dll", "nvngx.dll", "amd_fidelityfx_dx12.dll"];
+
+            foreach(string backupFiles in filesBackup)
+            {
+                File.Copy(selectFolder + "\\" +backupFiles, selectFolder + "\\Backup DLL\\" + backupFiles );
+            }
+            runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
+        }
+
+        private void buttonMethod0_Click(object sender, EventArgs e)
+        {
+            screenMethod.Visible = false;
+
+            MessageBox.Show("Default Method successfully selected, the window has been closed automatically.","Method Selected",MessageBoxButtons.OK);
+        }
+
+        private void buttonMethod1_Click(object sender, EventArgs e)
+        {
+            screenMethod.Visible=false;
+
+            MessageBox.Show("Method 1 (RTX/RX 6000-7000) successfully selected, the window has been closed automatically.", "Method Selected", MessageBoxButtons.OK);
+        }
+
+        private void buttonMethod2_Click(object sender, EventArgs e)
+        {
+            File.Copy("mods\\Addons_mods\\Optiscaler dxgi\\dxgi.dll", selectFolder + "\\dxgi.dll",true);
+
+            BackupOptiscaler();
+
+            screenMethod.Visible = false;
+
+            MessageBox.Show("Method 2 (GTX/Old AMD) successfully selected, the window has been closed automatically.", "Method Selected", MessageBoxButtons.OK);
+        }
+
+        private void buttonMethod3_Click(object sender, EventArgs e)
+        {
+            Directory.CreateDirectory(selectFolder + "\\Backup DLL");
+            string pathFolderBackup = selectFolder + "\\Backup DLL";
+            string ranameNvngxDlss = "\\nvngx.dll";
+            string renameNvngx = "\\dxgi.dll";
+
+            try
+            {
+                if (File.Exists(selectFolder + "\\nvngx.dll"))
+                {
+                    if (File.Exists(selectFolder + "\\dxgi.dll"))
+                    {
+                        File.Copy(selectFolder + "\\dxgi.dll", pathFolderBackup + "\\dxgi.dll", true);
+                        File.Delete(selectFolder + "\\dxgi.dll");
+                    }
+
+
+                    File.Copy(selectFolder + "\\nvngx.dll", pathFolderBackup + "\\nvngx.dll", true);
+                    File.Move(selectFolder + "\\nvngx.dll", selectFolder + renameNvngx);
+
+                    if (File.Exists(selectFolder + "\\nvngx_dlss.dll"))
+                    {
+                        File.Copy(selectFolder + "\\nvngx_dlss.dll", pathFolderBackup + "\\nvngx_dlss.dll", true);
+                        File.Move(selectFolder + "\\nvngx_dlss.dll", selectFolder + ranameNvngxDlss);
+                    }
+
+                    BackupOptiscaler();
+                }
+                MessageBox.Show("Method 3 (If none of the others work) successfully selected, the window has been closed automatically.", "Method Selected", MessageBoxButtons.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error copying the files using method 3. Please try again or select the default method", "Error", MessageBoxButtons.OK);
+                Debug.WriteLine(ex.Message);
+            }
+            screenMethod.Visible = false;
+        }
+
+        private void optionsAddOn_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (optionsAddOn.Items[e.Index].ToString() == "Optiscaler")
+            {
+                if (e.NewValue == CheckState.Checked)
+                {
+                    InstallMethod();
+                }
+                else
+                {
+                    screenMethod.Visible = false;
+                }
+
+            }
+        }
+
         #region CleanupMod2
-        public void CleanupMod2(List<string> ListClean, Dictionary<string, string> DictionaryPath)
+        public void CleanupMod2(List<string> ListClean, Dictionary<string, string> DictionaryPath,string message = null)
         {
             string[] DelFiles;
             if (selectFolder != null)
@@ -1593,8 +1755,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         Directory.Delete(selectFolder + "\\uniscaler", true);
                     }
-                    MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
+                    if (message != null)
+                    {
+                        MessageBox.Show(message, "Success", MessageBoxButtons.OK);
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -1604,7 +1770,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region Cleanup Mod 3
-        public void CleanupMod3(List<string> ListClean,string modName)
+        public void CleanupMod3(List<string> ListClean, string modName)
         {
             string[] DelFiles = Directory.GetFiles(selectFolder);
             try
@@ -1693,7 +1859,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
                 if (selectMod == "The Callisto Protocol FSR3")
                 {
-                    callistoFsr3(); 
+                    callistoFsr3();
                 }
                 if (folderBdg3.ContainsKey(selectMod))
                 {
@@ -1723,7 +1889,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     lotfFsr3();
                 }
-                if( selectMod == "DLSS Jedi")
+                if (selectMod == "DLSS Jedi")
                 {
                     jediFsr3();
                 }
@@ -1761,7 +1927,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (folderGtaV.ContainsKey(selectMod))
                 {
                     gtavFsr3();
-                    if(selectMod == "GTA V FSR3" && !File.Exists(selectFolder + "\\dinput8.dll"))
+                    if (selectMod == "GTA V FSR3" && !File.Exists(selectFolder + "\\dinput8.dll"))
                     {
                         return;
                     }
@@ -1851,6 +2017,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         string pathAddOn;
                         if (optAddOn == "Optiscaler")
                         {
+
                             pathAddOn = "mods\\Addons_mods\\OptiScaler";
                             string[] fileOptiscaler = Directory.GetFiles(pathAddOn);
 
@@ -1916,7 +2083,33 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (folderFakeGpu.ContainsKey(selectMod))
                 {
-                    CleanupMod2(modCleanList, folderFakeGpu);
+                    if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+                    {
+                        CleanupMod2(modCleanList, folderFakeGpu);
+                    }
+                    else
+                    {
+                        CleanupMod2(modCleanList, folderFakeGpu, "Mod Successfully Removed");
+                    }
+                }
+                if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+                {
+                    #region  Clean Optiscaler
+                    string pathBackupFolder = selectFolder + "\\Backup DLL";
+
+                    if (File.Exists(selectFolder + "\\amd_fidelityfx_vk.dll"))
+                    {
+                        foreach (var fileBackup in Directory.GetFiles(pathBackupFolder))
+                        {
+                            string fileName = Path.GetFileName(fileBackup);
+                            File.Copy(fileBackup, Path.Combine(selectFolder, fileName), true);
+                        }
+                        Directory.Delete(pathBackupFolder, true);
+                    }
+                    runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
+                    #endregion
+
+                    CleanupMod2(del_optiscaler, folderFakeGpu, "Mod Successfully Removed");
                 }
                 if (gameSelected == "Cyberpunk 2077")
                 {
@@ -1961,7 +2154,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
                 else if (folderJedi.ContainsKey(selectMod))
                 {
-                    CleanupMod(del_uni_files,folderJedi);
+                    CleanupMod(del_uni_files, folderJedi);
                 }
                 else if (folderGot.ContainsKey(selectMod))
                 {
@@ -2349,7 +2542,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     label6.Left = label3.Left;
                     panelAddOn.Top = label3.Top + label3.Height + 130;
                     panelAddOn.Left = label3.Left;
-                    panel1.Location = new Point(10, 10); 
+                    panel1.Location = new Point(10, 10);
                     panel1.Size = new Size(ClientSize.Width - 20, ClientSize.Height - 20);
                 }
                 else
@@ -2363,9 +2556,9 @@ namespace FSR3ModSetupUtilityEnhanced
                     panelAddOn.Top = label3.Top + label3.Height + 130;
                     panelAddOn.Left = label5.Left + 511;
                 }
-                   int newLabel6Left = label5.Left + label5.Width + 16;
+                int newLabel6Left = label5.Left + label5.Width + 16;
 
-                    if (newLabel6Left + label6.Width <= this.ClientSize.Width)
+                if (newLabel6Left + label6.Width <= this.ClientSize.Width)
                 {
                     label6.Top = label5.Top;
                     label6.Left = newLabel6Left;
@@ -2525,6 +2718,10 @@ namespace FSR3ModSetupUtilityEnhanced
             if (!optionsAddOn.CheckedItems.Contains("Optiscaler") && panelAddOnUps.Visible == true)
             {
                 panelAddOnUps.Visible = false;
+            }
+            if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                InstallMethod();
             }
         }
 
