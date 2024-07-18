@@ -193,22 +193,22 @@ namespace FSR3ModSetupUtilityEnhanced
             #region Games List
             List<string> rdr2B2List = new List<string> { "RDR2 Build_2", "RDR2 Build_4", "RDR2 Mix", "RDR2 Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam FSR3" };
             List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat"};
-            List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom" };
-            List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)" };
+            List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1/DLSS" };
+            List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
             List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss DD2"};
             List<string> callistoList = new List<string> { "The Callisto Protocol FSR3" };
             List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
-            List<string> cyberList = new List<string> { "RTX DLSS FG CB2077" };
+            List<string> cyberList = new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1/DLSS" };
             List<string> gotList = new List<string> { "Ghost of Tsushima FG DLSS" };
             List<string> pwList = new List<string> { "Palworld FG Build03" };
             List<string> jediList = new List<string> { "DLSS Jedi" };
             List<string> tekkenList = new List<string> { "Unlock FPS Tekken 8" };
             List<string> icarusiList = new List<string> { "RTX DLSS FG ICR", "FSR3 FG ICR All GPU" };
             List<string> lotfList = new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" };
-            List<string> forzaList = new List<string> { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU" };
+            List<string> forzaList = new List<string> { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU", "Optiscaler FSR 3.1/DLSS" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
-                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler + Xess + Dlss"};
+                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS"};
             #endregion;
 
             #region List To Remove

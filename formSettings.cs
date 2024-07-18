@@ -71,7 +71,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077" };
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2"}; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -488,6 +488,14 @@ namespace FSR3ModSetupUtilityEnhanced
         List<string> del_optiscaler = new List<string>
         {
             "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg", "amd_fidelityfx_vk.dll", "amd_fidelityfx_dx12.dll"
+        };
+        #endregion
+
+        #region Clean Optiscaler Custom Files
+        List<string> del_optiscaler_custom = new List<string>
+        {
+        "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "DisableNvidiaSignatureChecks.reg", "DisableSignatureOverride.reg", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlss-finder.exe", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll",
+        "dxgi.dll", "EnableSignatureOverride.reg", "libxess.dll", "licenses", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg", "unins000.dat", "unins000.exe", "version.dll", "_nvngx.dll"
         };
         #endregion
 
@@ -1153,6 +1161,44 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFSR(origins_sdk_folder);
         }
 
+        public void optiscaler_custom()
+        {
+            CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
+
+            #region Backup Files
+            try
+            {
+                string backupFolderOpts = Path.Combine(selectFolder, "Backup Optiscaler");
+
+                if (!Directory.Exists(backupFolderOpts))
+                {
+                    Directory.CreateDirectory(backupFolderOpts);
+                }
+
+                foreach (var filesOpts in Directory.GetFiles(selectFolder))
+                {
+                    string filesOptsName = Path.GetFileName(filesOpts);
+
+                    if (del_optiscaler_custom.Contains(filesOptsName))
+                    {
+                        string destBackupFolder = Path.Combine(backupFolderOpts, filesOptsName);
+                        File.Copy(filesOpts, destBackupFolder,true);
+                    }
+                }
+
+                File.Copy("mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", selectFolder + "\\nvngx.ini", true);
+                runReg("mods\\Optiscaler FSR 3.1 Custom\\EnableSignatureOverride.reg");
+                runReg("mods\\Optiscaler FSR 3.1 Custom\\DisableNvidiaSignatureChecks.reg");
+                File.Copy("mods\\Optiscaler FSR 3.1 Custom\\nvngx.ini", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", true);
+            }
+
+            catch (Exception ex)
+            {
+                Debug.WriteLine("An error occurred: " + ex.Message);
+            }
+            #endregion
+        }
+
         public void rdr2Fsr3()
         {
             CopyFSR(origins_rdr2_folder);
@@ -1160,7 +1206,14 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void acValhallaDlss()
         {
-            CopyFolder("mods\\acValhallaDlss");
+            if (selectMod == "Ac Valhalla Dlss (Only RTX)")
+            {
+                CopyFolder("mods\\acValhallaDlss");
+            }
+            else if (selectMod == "AC Valhalla FSR3 All GPU")
+            {
+                CopyFolder("mods\\Ac_Valhalla_DLSS2");
+            }
         }
 
         public void jediFsr3()
@@ -1592,7 +1645,7 @@ namespace FSR3ModSetupUtilityEnhanced
             Button buttonMethod0 = new Button();
             buttonMethod0.Text = "Default (For test)";
             buttonMethod0.Location = new System.Drawing.Point(50, 10);
-            buttonMethod0.Size = new Size(220, 30);;
+            buttonMethod0.Size = new Size(220, 30); ;
             buttonMethod0.Click += buttonMethod0_Click;
 
             Button buttonMethod1 = new Button();
@@ -1634,12 +1687,12 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         public async Task BackupOptiscaler()
-        {      
+        {
             string[] filesBackup = ["libxess.dll", "amd_fidelityfx_vk.dll", "nvngx.dll", "amd_fidelityfx_dx12.dll"];
 
-            foreach(string backupFiles in filesBackup)
+            foreach (string backupFiles in filesBackup)
             {
-                File.Copy(selectFolder + "\\" +backupFiles, selectFolder + "\\Backup DLL\\" + backupFiles );
+                File.Copy(selectFolder + "\\" + backupFiles, selectFolder + "\\Backup DLL\\" + backupFiles);
             }
             runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
         }
@@ -1648,19 +1701,19 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             screenMethod.Visible = false;
 
-            MessageBox.Show("Default Method successfully selected, the window has been closed automatically.","Method Selected",MessageBoxButtons.OK);
+            MessageBox.Show("Default Method successfully selected, the window has been closed automatically.", "Method Selected", MessageBoxButtons.OK);
         }
 
         private void buttonMethod1_Click(object sender, EventArgs e)
         {
-            screenMethod.Visible=false;
+            screenMethod.Visible = false;
 
             MessageBox.Show("Method 1 (RTX/RX 6000-7000) successfully selected, the window has been closed automatically.", "Method Selected", MessageBoxButtons.OK);
         }
 
         private void buttonMethod2_Click(object sender, EventArgs e)
         {
-            File.Copy("mods\\Addons_mods\\Optiscaler dxgi\\dxgi.dll", selectFolder + "\\dxgi.dll",true);
+            File.Copy("mods\\Addons_mods\\Optiscaler dxgi\\dxgi.dll", selectFolder + "\\dxgi.dll", true);
 
             BackupOptiscaler();
 
@@ -1714,7 +1767,11 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 if (e.NewValue == CheckState.Checked)
                 {
-                    InstallMethod();
+                    if (selectMod != "Optiscaler FSR 3.1/DLSS")
+                    {
+                        InstallMethod();
+                    }
+
                 }
                 else
                 {
@@ -1725,7 +1782,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         #region CleanupMod2
-        public void CleanupMod2(List<string> ListClean, Dictionary<string, string> DictionaryPath,string message = null)
+        public void CleanupMod2(List<string> ListClean, Dictionary<string, string> DictionaryPath, string message = null)
         {
             string[] DelFiles;
             if (selectFolder != null)
@@ -1852,6 +1909,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (folderAw2.ContainsKey(selectMod))
                 {
                     aw2Fsr3();
+                }
+                if (selectMod == "Optiscaler FSR 3.1/DLSS")
+                {
+                    optiscaler_custom();
                 }
                 if (selectMod == "Ac Valhalla Dlss (Only RTX)")
                 {
@@ -2015,7 +2076,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     foreach (string optAddOn in optionsAddOn.CheckedItems)
                     {
                         string pathAddOn;
-                        if (optAddOn == "Optiscaler")
+                        if (optAddOn == "Optiscaler" && selectMod != "Optiscaler FSR 3.1/DLSS")
                         {
 
                             pathAddOn = "mods\\Addons_mods\\OptiScaler";
@@ -2110,6 +2171,26 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
 
                     CleanupMod2(del_optiscaler, folderFakeGpu, "Mod Successfully Removed");
+                }
+                if (selectMod == "Optiscaler FSR 3.1/DLSS")
+                {
+                    CleanupMod3(del_optiscaler_custom, "Optiscaler FSR 3.1/DLSS");
+                    runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
+
+                    #region Restore Files
+                    string backupOptiscalerFolder = selectFolder + "\\Backup Optiscaler";
+                    if (Directory.Exists(backupOptiscalerFolder))
+                    {
+                        foreach(string filesBackup in Directory.GetFiles(backupOptiscalerFolder))
+                        {
+                            string fileBackupName = Path.GetFileName(filesBackup);
+                            string restoreFilesPath = Path.Combine(selectFolder, fileBackupName);
+                            File.Copy(filesBackup,restoreFilesPath,true);
+                        }
+
+                        Directory.Delete(backupOptiscalerFolder, true);
+                    }
+                    #endregion
                 }
                 if (gameSelected == "Cyberpunk 2077")
                 {
@@ -2784,7 +2865,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonAddUps_Click(object sender, EventArgs e)
         {
-            if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            if (optionsAddOn.CheckedItems.Contains("Optiscaler") || selectMod == "Optiscaler FSR 3.1/DLSS")
             {
                 ShowSubMenu(panelAddOnUps);
             }
@@ -2797,36 +2878,108 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonAddUps1_Click(object sender, EventArgs e)
         {
-            ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
+            }
+            else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
         }
 
         private void buttonAddUps2_Click(object sender, EventArgs e)
         {
-            ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
+            }
+            else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
         }
 
         private void buttonAddUps3_Click(object sender, EventArgs e)
         {
-            ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
+            }
+            else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
         }
 
         private void buttonAddUps4_Click(object sender, EventArgs e)
         {
-            ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
+            }
+            else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                ConfigIni("Dx11Upscaler", "fsr31_12 ", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
+            }
+            else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ConfigIni("Dx11Upscaler", "fsr31_12 ", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
         }
 
         private void buttonAddUps5_Click(object sender, EventArgs e)
         {
-            ConfigIni("Dx12Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                ConfigIni("Dx12Upscaler", "fsr22", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
+            }
+            else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ConfigIni("Dx12Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
+        }
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                ConfigIni("Dx12Upscaler", "fsr31", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
+            }
+            else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ConfigIni("Dx12Upscaler", "fsr31", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
         }
         private void buttonAddUps6_Click(object sender, EventArgs e)
         {
-            ConfigIni("Dx12Upscaler", "fsr21", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                ConfigIni("Dx12Upscaler", "fsr21", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
+            }
+            else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ConfigIni("Dx12Upscaler", "fsr21", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
         }
 
         private void buttonAddUps7_Click(object sender, EventArgs e)
         {
-            ConfigIni("Dx12Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                ConfigIni("Dx12Upscaler", "xess", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
+            }
+            else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
+            {
+                ConfigIni("Dx12Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
         }
     }
 }
