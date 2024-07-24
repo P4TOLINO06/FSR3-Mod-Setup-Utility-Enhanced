@@ -32,8 +32,14 @@
             panel1 = new Panel();
             panelAddOn = new Panel();
             panelAddOnUps = new Panel();
+            buttonDlssVulkan = new Button();
+            buttonFsr31Vulkan = new Button();
+            buttonFsr22Vulkan = new Button();
+            buttonDlssDx12 = new Button();
+            buttonFsr21Vulkan = new Button();
             buttonAddUps4 = new Button();
             button4 = new Button();
+            buttonDlssDX11 = new Button();
             buttonAddUps7 = new Button();
             panel3 = new Panel();
             button5 = new Button();
@@ -78,6 +84,7 @@
             button3 = new Button();
             button2 = new Button();
             panelModOp = new Panel();
+            modOpt5 = new Button();
             modOpt4 = new Button();
             modOpt3 = new Button();
             modOpt2 = new Button();
@@ -152,22 +159,99 @@
             panelAddOn.Controls.Add(panelNvngx);
             panelAddOn.Location = new Point(699, 55);
             panelAddOn.Name = "panelAddOn";
-            panelAddOn.Size = new Size(328, 406);
+            panelAddOn.Size = new Size(328, 611);
             panelAddOn.TabIndex = 18;
             // 
             // panelAddOnUps
             // 
+            panelAddOnUps.AutoScroll = true;
             panelAddOnUps.BackColor = Color.Transparent;
+            panelAddOnUps.Controls.Add(buttonDlssVulkan);
+            panelAddOnUps.Controls.Add(buttonFsr31Vulkan);
+            panelAddOnUps.Controls.Add(buttonFsr22Vulkan);
+            panelAddOnUps.Controls.Add(buttonDlssDx12);
+            panelAddOnUps.Controls.Add(buttonFsr21Vulkan);
             panelAddOnUps.Controls.Add(buttonAddUps4);
             panelAddOnUps.Controls.Add(button4);
+            panelAddOnUps.Controls.Add(buttonDlssDX11);
             panelAddOnUps.Controls.Add(buttonAddUps7);
             panelAddOnUps.Controls.Add(panel3);
             panelAddOnUps.Controls.Add(buttonAddUps6);
             panelAddOnUps.Controls.Add(buttonAddUps5);
             panelAddOnUps.Location = new Point(165, 127);
             panelAddOnUps.Name = "panelAddOnUps";
-            panelAddOnUps.Size = new Size(163, 279);
+            panelAddOnUps.Size = new Size(167, 94);
             panelAddOnUps.TabIndex = 23;
+            // 
+            // buttonDlssVulkan
+            // 
+            buttonDlssVulkan.BackColor = Color.Gray;
+            buttonDlssVulkan.FlatAppearance.BorderSize = 0;
+            buttonDlssVulkan.FlatStyle = FlatStyle.Flat;
+            buttonDlssVulkan.ForeColor = Color.White;
+            buttonDlssVulkan.Location = new Point(0, 432);
+            buttonDlssVulkan.Name = "buttonDlssVulkan";
+            buttonDlssVulkan.Size = new Size(148, 31);
+            buttonDlssVulkan.TabIndex = 18;
+            buttonDlssVulkan.Text = "DLSS Vulkan";
+            buttonDlssVulkan.UseVisualStyleBackColor = false;
+            buttonDlssVulkan.Click += buttonDlssVulkan_Click;
+            // 
+            // buttonFsr31Vulkan
+            // 
+            buttonFsr31Vulkan.BackColor = Color.Gray;
+            buttonFsr31Vulkan.FlatAppearance.BorderSize = 0;
+            buttonFsr31Vulkan.FlatStyle = FlatStyle.Flat;
+            buttonFsr31Vulkan.ForeColor = Color.White;
+            buttonFsr31Vulkan.Location = new Point(0, 401);
+            buttonFsr31Vulkan.Name = "buttonFsr31Vulkan";
+            buttonFsr31Vulkan.Size = new Size(148, 31);
+            buttonFsr31Vulkan.TabIndex = 24;
+            buttonFsr31Vulkan.Text = "Fsr 3.1 Vulkan";
+            buttonFsr31Vulkan.UseVisualStyleBackColor = false;
+            buttonFsr31Vulkan.Click += buttonFsr31Vulkan_Click;
+            // 
+            // buttonFsr22Vulkan
+            // 
+            buttonFsr22Vulkan.BackColor = Color.Gray;
+            buttonFsr22Vulkan.FlatAppearance.BorderSize = 0;
+            buttonFsr22Vulkan.FlatStyle = FlatStyle.Flat;
+            buttonFsr22Vulkan.ForeColor = Color.White;
+            buttonFsr22Vulkan.Location = new Point(0, 370);
+            buttonFsr22Vulkan.Name = "buttonFsr22Vulkan";
+            buttonFsr22Vulkan.Size = new Size(148, 31);
+            buttonFsr22Vulkan.TabIndex = 24;
+            buttonFsr22Vulkan.Text = "Fsr 2.2 Vulkan";
+            buttonFsr22Vulkan.UseVisualStyleBackColor = false;
+            buttonFsr22Vulkan.Click += buttonFsr22Vulkan_Click;
+            // 
+            // buttonDlssDx12
+            // 
+            buttonDlssDx12.BackColor = Color.Gray;
+            buttonDlssDx12.FlatAppearance.BorderSize = 0;
+            buttonDlssDx12.FlatStyle = FlatStyle.Flat;
+            buttonDlssDx12.ForeColor = Color.White;
+            buttonDlssDx12.Location = new Point(0, 308);
+            buttonDlssDx12.Name = "buttonDlssDx12";
+            buttonDlssDx12.Size = new Size(148, 31);
+            buttonDlssDx12.TabIndex = 18;
+            buttonDlssDx12.Text = "DLSS DX12";
+            buttonDlssDx12.UseVisualStyleBackColor = false;
+            buttonDlssDx12.Click += buttonDlssDx12_Click;
+            // 
+            // buttonFsr21Vulkan
+            // 
+            buttonFsr21Vulkan.BackColor = Color.Gray;
+            buttonFsr21Vulkan.FlatAppearance.BorderSize = 0;
+            buttonFsr21Vulkan.FlatStyle = FlatStyle.Flat;
+            buttonFsr21Vulkan.ForeColor = Color.White;
+            buttonFsr21Vulkan.Location = new Point(0, 339);
+            buttonFsr21Vulkan.Name = "buttonFsr21Vulkan";
+            buttonFsr21Vulkan.Size = new Size(148, 31);
+            buttonFsr21Vulkan.TabIndex = 17;
+            buttonFsr21Vulkan.Text = "Fsr 2.1 Vulkan";
+            buttonFsr21Vulkan.UseVisualStyleBackColor = false;
+            buttonFsr21Vulkan.Click += buttonFsr21Vulkan_Click;
             // 
             // buttonAddUps4
             // 
@@ -175,9 +259,9 @@
             buttonAddUps4.FlatAppearance.BorderSize = 0;
             buttonAddUps4.FlatStyle = FlatStyle.Flat;
             buttonAddUps4.ForeColor = Color.White;
-            buttonAddUps4.Location = new Point(-4, 117);
+            buttonAddUps4.Location = new Point(0, 117);
             buttonAddUps4.Name = "buttonAddUps4";
-            buttonAddUps4.Size = new Size(171, 36);
+            buttonAddUps4.Size = new Size(148, 36);
             buttonAddUps4.TabIndex = 14;
             buttonAddUps4.Text = "Xess DX11";
             buttonAddUps4.UseVisualStyleBackColor = false;
@@ -189,13 +273,27 @@
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.ForeColor = Color.White;
-            button4.Location = new Point(0, 211);
+            button4.Location = new Point(-3, 215);
             button4.Name = "button4";
-            button4.Size = new Size(163, 31);
+            button4.Size = new Size(151, 31);
             button4.TabIndex = 15;
             button4.Text = "Fsr 3.1 DX12";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click_1;
+            // 
+            // buttonDlssDX11
+            // 
+            buttonDlssDX11.BackColor = Color.Gray;
+            buttonDlssDX11.FlatAppearance.BorderSize = 0;
+            buttonDlssDX11.FlatStyle = FlatStyle.Flat;
+            buttonDlssDX11.ForeColor = Color.White;
+            buttonDlssDX11.Location = new Point(0, 153);
+            buttonDlssDX11.Name = "buttonDlssDX11";
+            buttonDlssDX11.Size = new Size(148, 31);
+            buttonDlssDX11.TabIndex = 16;
+            buttonDlssDX11.Text = "DLSS DX11";
+            buttonDlssDX11.UseVisualStyleBackColor = false;
+            buttonDlssDX11.Click += buttonDlssDX11_Click;
             // 
             // buttonAddUps7
             // 
@@ -203,9 +301,9 @@
             buttonAddUps7.FlatAppearance.BorderSize = 0;
             buttonAddUps7.FlatStyle = FlatStyle.Flat;
             buttonAddUps7.ForeColor = Color.White;
-            buttonAddUps7.Location = new Point(0, 242);
+            buttonAddUps7.Location = new Point(0, 277);
             buttonAddUps7.Name = "buttonAddUps7";
-            buttonAddUps7.Size = new Size(163, 31);
+            buttonAddUps7.Size = new Size(148, 31);
             buttonAddUps7.TabIndex = 3;
             buttonAddUps7.Text = "Xess DX12";
             buttonAddUps7.UseVisualStyleBackColor = false;
@@ -220,7 +318,7 @@
             panel3.Controls.Add(buttonAddUps1);
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(163, 120);
+            panel3.Size = new Size(148, 120);
             panel3.TabIndex = 14;
             // 
             // button5
@@ -229,9 +327,9 @@
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.ForeColor = Color.White;
-            button5.Location = new Point(0, 86);
+            button5.Location = new Point(0, 87);
             button5.Name = "button5";
-            button5.Size = new Size(163, 31);
+            button5.Size = new Size(148, 30);
             button5.TabIndex = 16;
             button5.Text = "Fsr 3.1 DX11";
             button5.UseVisualStyleBackColor = false;
@@ -243,9 +341,9 @@
             buttonAddUps3.FlatAppearance.BorderSize = 0;
             buttonAddUps3.FlatStyle = FlatStyle.Flat;
             buttonAddUps3.ForeColor = Color.White;
-            buttonAddUps3.Location = new Point(0, 56);
+            buttonAddUps3.Location = new Point(0, 0);
             buttonAddUps3.Name = "buttonAddUps3";
-            buttonAddUps3.Size = new Size(163, 31);
+            buttonAddUps3.Size = new Size(148, 31);
             buttonAddUps3.TabIndex = 3;
             buttonAddUps3.Text = "Fsr 2.1 DX11";
             buttonAddUps3.UseVisualStyleBackColor = false;
@@ -259,7 +357,7 @@
             buttonAddUps2.ForeColor = Color.White;
             buttonAddUps2.Location = new Point(0, 28);
             buttonAddUps2.Name = "buttonAddUps2";
-            buttonAddUps2.Size = new Size(163, 31);
+            buttonAddUps2.Size = new Size(148, 31);
             buttonAddUps2.TabIndex = 2;
             buttonAddUps2.Text = "Fsr 2.2 DX11 - DX12";
             buttonAddUps2.UseVisualStyleBackColor = false;
@@ -271,9 +369,9 @@
             buttonAddUps1.FlatAppearance.BorderSize = 0;
             buttonAddUps1.FlatStyle = FlatStyle.Flat;
             buttonAddUps1.ForeColor = Color.White;
-            buttonAddUps1.Location = new Point(0, 0);
+            buttonAddUps1.Location = new Point(0, 58);
             buttonAddUps1.Name = "buttonAddUps1";
-            buttonAddUps1.Size = new Size(163, 31);
+            buttonAddUps1.Size = new Size(148, 31);
             buttonAddUps1.TabIndex = 1;
             buttonAddUps1.Text = "Fsr 2.2 DX11";
             buttonAddUps1.UseVisualStyleBackColor = false;
@@ -285,9 +383,9 @@
             buttonAddUps6.FlatAppearance.BorderSize = 0;
             buttonAddUps6.FlatStyle = FlatStyle.Flat;
             buttonAddUps6.ForeColor = Color.White;
-            buttonAddUps6.Location = new Point(0, 180);
+            buttonAddUps6.Location = new Point(0, 184);
             buttonAddUps6.Name = "buttonAddUps6";
-            buttonAddUps6.Size = new Size(163, 31);
+            buttonAddUps6.Size = new Size(148, 31);
             buttonAddUps6.TabIndex = 2;
             buttonAddUps6.Text = "Fsr 2.1  DX12";
             buttonAddUps6.UseVisualStyleBackColor = false;
@@ -299,9 +397,9 @@
             buttonAddUps5.FlatAppearance.BorderSize = 0;
             buttonAddUps5.FlatStyle = FlatStyle.Flat;
             buttonAddUps5.ForeColor = Color.White;
-            buttonAddUps5.Location = new Point(0, 153);
+            buttonAddUps5.Location = new Point(0, 246);
             buttonAddUps5.Name = "buttonAddUps5";
-            buttonAddUps5.Size = new Size(163, 31);
+            buttonAddUps5.Size = new Size(148, 31);
             buttonAddUps5.TabIndex = 1;
             buttonAddUps5.Text = "Fsr 2.2 DX12";
             buttonAddUps5.UseVisualStyleBackColor = false;
@@ -760,14 +858,28 @@
             // panelModOp
             // 
             panelModOp.BackColor = Color.Transparent;
+            panelModOp.Controls.Add(modOpt5);
             panelModOp.Controls.Add(modOpt4);
             panelModOp.Controls.Add(modOpt3);
             panelModOp.Controls.Add(modOpt2);
             panelModOp.Controls.Add(modOpt1);
             panelModOp.Location = new Point(333, 27);
             panelModOp.Name = "panelModOp";
-            panelModOp.Size = new Size(163, 120);
+            panelModOp.Size = new Size(163, 160);
             panelModOp.TabIndex = 13;
+            // 
+            // modOpt5
+            // 
+            modOpt5.BackColor = Color.Gray;
+            modOpt5.FlatAppearance.BorderSize = 0;
+            modOpt5.FlatStyle = FlatStyle.Flat;
+            modOpt5.ForeColor = Color.White;
+            modOpt5.Location = new Point(-2, 117);
+            modOpt5.Name = "modOpt5";
+            modOpt5.Size = new Size(168, 36);
+            modOpt5.TabIndex = 18;
+            modOpt5.Text = "button7";
+            modOpt5.UseVisualStyleBackColor = false;
             // 
             // modOpt4
             // 
@@ -775,11 +887,11 @@
             modOpt4.FlatAppearance.BorderSize = 0;
             modOpt4.FlatStyle = FlatStyle.Flat;
             modOpt4.ForeColor = Color.White;
-            modOpt4.Location = new Point(0, 86);
+            modOpt4.Location = new Point(-2, 82);
             modOpt4.Name = "modOpt4";
-            modOpt4.Size = new Size(171, 36);
+            modOpt4.Size = new Size(165, 36);
             modOpt4.TabIndex = 14;
-            modOpt4.Text = "button5";
+            modOpt4.Text = "button6";
             modOpt4.UseVisualStyleBackColor = false;
             modOpt4.Click += button6_Click;
             // 
@@ -992,7 +1104,7 @@
             // 
             listMods.Cursor = Cursors.Hand;
             listMods.FormattingEnabled = true;
-            listMods.Items.AddRange(new object[] { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0", "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS" });
+            listMods.Items.AddRange(new object[] { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0", "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3", "Uniscaler FSR 3.1", "Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS" });
             listMods.Location = new Point(137, 32);
             listMods.Name = "listMods";
             listMods.Size = new Size(156, 23);
@@ -1111,5 +1223,12 @@
         private Button buttonAddUps5;
         private Button button4;
         private Button button5;
+        private Button buttonDlssDx12;
+        private Button buttonFsr21Vulkan;
+        private Button buttonDlssDX11;
+        private Button buttonDlssVulkan;
+        private Button buttonFsr31Vulkan;
+        private Button buttonFsr22Vulkan;
+        private Button modOpt5;
     }
 }
