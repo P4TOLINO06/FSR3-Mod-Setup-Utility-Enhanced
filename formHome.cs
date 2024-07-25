@@ -115,6 +115,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Monster Hunter Rise","Mrise.png"},
                     {"MOTO GP 24","Moto.png"},
                     {"Nightingale","Night.png"},
+                    {"Nobody Wants To Die","Nobody.png"},
                     {"Outpost: Infinity Siege","Outpost.png"},
                     {"Pacific Drive","Pacific.png"},
                     {"Palworld","Palworld.png"},
@@ -193,14 +194,14 @@ namespace FSR3ModSetupUtilityEnhanced
             #region Games List
             List<string> rdr2B2List = new List<string> { "RDR2 Build_2", "RDR2 Build_4", "RDR2 Mix", "RDR2 Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam FSR3", "RDR2 FSR 3.1 FG" };
             List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat"};
-            List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1/DLSS" };
+            List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1/DLSS","Uniscaler FSR 3.1" };
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
             List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss DD2"};
             List<string> callistoList = new List<string> { "The Callisto Protocol FSR3" };
             List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
-            List<string> cyberList = new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1/DLSS" };
-            List<string> gotList = new List<string> { "Ghost of Tsushima FG DLSS" };
+            List<string> cyberList = new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1/DLSS","Uniscaler FSR 3.1" };
+            List<string> gotList = new List<string> { "Ghost of Tsushima FG DLSS","Optiscaler FSR 3.1/DLSS","Uniscaler FSR 3.1"};
             List<string> pwList = new List<string> { "Palworld FG Build03" };
             List<string> jediList = new List<string> { "DLSS Jedi" };
             List<string> tekkenList = new List<string> { "Unlock FPS Tekken 8" };

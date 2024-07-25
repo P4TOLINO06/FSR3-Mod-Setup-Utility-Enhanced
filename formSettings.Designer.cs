@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formSettings));
             panel1 = new Panel();
             panelAddOn = new Panel();
+            panelFgMethod = new Panel();
+            buttonFg31 = new Button();
+            buttonFg3 = new Button();
             panelAddOnUps = new Panel();
             buttonDlssVulkan = new Button();
             buttonFsr31Vulkan = new Button();
@@ -48,6 +51,7 @@
             buttonAddUps1 = new Button();
             buttonAddUps6 = new Button();
             buttonAddUps5 = new Button();
+            buttonFgMethod = new Button();
             buttonAddUps = new Button();
             panelAddOn2 = new Panel();
             optionsAddOn = new CheckedListBox();
@@ -106,6 +110,7 @@
             searchFolder = new FolderBrowserDialog();
             panel1.SuspendLayout();
             panelAddOn.SuspendLayout();
+            panelFgMethod.SuspendLayout();
             panelAddOnUps.SuspendLayout();
             panel3.SuspendLayout();
             panelAddOn2.SuspendLayout();
@@ -149,7 +154,9 @@
             // 
             // panelAddOn
             // 
+            panelAddOn.Controls.Add(panelFgMethod);
             panelAddOn.Controls.Add(panelAddOnUps);
+            panelAddOn.Controls.Add(buttonFgMethod);
             panelAddOn.Controls.Add(buttonAddUps);
             panelAddOn.Controls.Add(panelAddOn2);
             panelAddOn.Controls.Add(buttonAddOn);
@@ -161,6 +168,44 @@
             panelAddOn.Name = "panelAddOn";
             panelAddOn.Size = new Size(328, 611);
             panelAddOn.TabIndex = 18;
+            // 
+            // panelFgMethod
+            // 
+            panelFgMethod.BackColor = Color.Transparent;
+            panelFgMethod.Controls.Add(buttonFg31);
+            panelFgMethod.Controls.Add(buttonFg3);
+            panelFgMethod.Location = new Point(3, 226);
+            panelFgMethod.Name = "panelFgMethod";
+            panelFgMethod.Size = new Size(163, 70);
+            panelFgMethod.TabIndex = 24;
+            // 
+            // buttonFg31
+            // 
+            buttonFg31.BackColor = Color.Gray;
+            buttonFg31.FlatAppearance.BorderSize = 0;
+            buttonFg31.FlatStyle = FlatStyle.Flat;
+            buttonFg31.ForeColor = Color.White;
+            buttonFg31.Location = new Point(-3, 31);
+            buttonFg31.Name = "buttonFg31";
+            buttonFg31.Size = new Size(163, 31);
+            buttonFg31.TabIndex = 23;
+            buttonFg31.Text = "FSR 3.1";
+            buttonFg31.UseVisualStyleBackColor = false;
+            buttonFg31.Click += buttonFg31_Click;
+            // 
+            // buttonFg3
+            // 
+            buttonFg3.BackColor = Color.Gray;
+            buttonFg3.FlatAppearance.BorderSize = 0;
+            buttonFg3.FlatStyle = FlatStyle.Flat;
+            buttonFg3.ForeColor = Color.White;
+            buttonFg3.Location = new Point(0, 0);
+            buttonFg3.Name = "buttonFg3";
+            buttonFg3.Size = new Size(160, 31);
+            buttonFg3.TabIndex = 22;
+            buttonFg3.Text = "FSR 3";
+            buttonFg3.UseVisualStyleBackColor = false;
+            buttonFg3.Click += buttonFg3_Click;
             // 
             // panelAddOnUps
             // 
@@ -404,6 +449,21 @@
             buttonAddUps5.Text = "Fsr 2.2 DX12";
             buttonAddUps5.UseVisualStyleBackColor = false;
             buttonAddUps5.Click += buttonAddUps5_Click;
+            // 
+            // buttonFgMethod
+            // 
+            buttonFgMethod.BackColor = Color.DarkGray;
+            buttonFgMethod.Cursor = Cursors.Hand;
+            buttonFgMethod.FlatAppearance.BorderSize = 0;
+            buttonFgMethod.FlatStyle = FlatStyle.Flat;
+            buttonFgMethod.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonFgMethod.Location = new Point(3, 197);
+            buttonFgMethod.Name = "buttonFgMethod";
+            buttonFgMethod.Size = new Size(160, 28);
+            buttonFgMethod.TabIndex = 21;
+            buttonFgMethod.Text = "Frame Gen Method";
+            buttonFgMethod.UseVisualStyleBackColor = false;
+            buttonFgMethod.Click += buttonFgMethod_Click;
             // 
             // buttonAddUps
             // 
@@ -1127,6 +1187,7 @@
             Resize += formSettings_Resize;
             panel1.ResumeLayout(false);
             panelAddOn.ResumeLayout(false);
+            panelFgMethod.ResumeLayout(false);
             panelAddOnUps.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panelAddOn2.ResumeLayout(false);
@@ -1230,5 +1291,9 @@
         private Button buttonFsr31Vulkan;
         private Button buttonFsr22Vulkan;
         private Button modOpt5;
+        private Panel panelFgMethod;
+        private Button buttonFg3;
+        private Button buttonFgMethod;
+        private Button buttonFg31;
     }
 }

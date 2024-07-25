@@ -232,6 +232,13 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
+        #region Folder Uniscaler FSR 3.1
+        Dictionary<string, string> uniscaler_fsr31 = new Dictionary<string, string>
+            {
+                { "Uniscaler FSR 3.1", @"\mods\\Temp\\Uniscaler_FSR31\\enable_fake_gpu\\uniscaler.config.toml" },
+            };
+        #endregion
+
         #region Folder Elden Ring
         Dictionary<string, string[]> folderEldenRing = new Dictionary<string, string[]>
         {
@@ -570,7 +577,7 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
-        //Ini Editor
+        //Ini/Toml Editor
         public void ConfigToml(string key, string value, Dictionary<string, string> DictionaryPath, string? section = null)
         {
             selectMod = listMods.SelectedItem as string;
@@ -902,7 +909,8 @@ namespace FSR3ModSetupUtilityEnhanced
             panelAddOn2.Top = panelNvngx.Top + 35;
             buttonAddUps.Top = buttonNvngx.Top + 30;
             panelAddOnUps.Top = panelNvngx.Top + 32;
-
+            buttonFgMethod.Top = buttonAddOn.Top + 30;
+            panelFgMethod.Top = panelAddOn.Top + 34;
         }
 
         public string selectFolder;
@@ -962,7 +970,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden", "Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
-            "Everspace 2", "Evil West", "F1 2022", "F1 2023", "FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
+            "Everspace 2", "Evil West", "F1 2022", "F1 2023", "FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "Uncharted Legacy of Thieves Collection" };
@@ -1006,7 +1014,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string path_dest = selectFolder;
             string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string selectedVersion = listMods.SelectedItem as string;
-            string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3","Uniscaler FSR 3.1"};
+            string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uniscaler FSR 3.1" };
 
             if (selectedVersion != null)
             {
@@ -2060,8 +2068,16 @@ namespace FSR3ModSetupUtilityEnhanced
                                 }
                                 catch { }
                             }
-                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx.dll";
-                            File.Copy(pathNvngx, selectFolder + "\\nvngx.dll", true);
+                            if (selectMod == "Uniscaler FSR 3.1")
+                            {
+                                string pathNvngxUni = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_uni_fsr3\\nvngx.dll";
+                                File.Copy(pathNvngxUni, selectFolder + "\\nvngx.dll", true);
+                            }
+                            else
+                            {
+                                pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx.dll";
+                                File.Copy(pathNvngx, selectFolder + "\\nvngx.dll", true);
+                            }
                         }
                         if (optNvngx.Contains("NVNGX Version 1"))
                         {
@@ -2357,7 +2373,7 @@ namespace FSR3ModSetupUtilityEnhanced
         //Config Resolution/Mod Operates
         #region Unlock Mod Operates
         List<string> unlock_mod_operates_list = new List<string> { "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4" };
-        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3","Uniscaler FSR 3.1", "Uni Custom Miles", "Dlss Jedi" };
+        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uniscaler FSR 3.1", "Uni Custom Miles", "Dlss Jedi" };
         #endregion
 
         #region UniResolutionCustom
@@ -2408,6 +2424,7 @@ namespace FSR3ModSetupUtilityEnhanced
             panelDxgi.Visible = false;
             panelAddOn2.Visible = false;
             panelAddOnUps.Visible = false;
+            panelFgMethod.Visible = false;
         }
 
         public void HideSubMenu()
@@ -2439,6 +2456,10 @@ namespace FSR3ModSetupUtilityEnhanced
             if (panelAddOnUps.Visible == true)
             {
                 panelAddOnUps.Visible = false;
+            }
+            if (panelFgMethod.Visible == true)
+            {
+                panelFgMethod.Visible = false;
             }
         }
 
@@ -2638,14 +2659,14 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 ConfigToml("mode", "\"replace_dlss_fg\"", folder_mod_operates, "general");
             }
-            else if (selectMod == "Uniscaler V3"|| selectMod == "Uniscaler FSR 3.1")
+            else if (selectMod == "Uniscaler V3" || selectMod == "Uniscaler FSR 3.1")
             {
                 ConfigToml("upscaler", "\"xess\"", folder_mod_operates, "general");
             }
         }
 
         private void modOpt5_Click(object sender, EventArgs e)
-        {       
+        {
             if (selectMod == "Uniscaler FSR 3.1")
             {
                 ConfigToml("upscaler", "\"fsr3_1\"", folder_mod_operates, "general");
@@ -2862,13 +2883,33 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 buttonAddOn.Top = panelNvngx.Top + 3;
                 panelAddOn2.Top = buttonAddOn.Top + 30;
+
+                buttonFgMethod.Top = panelAddOn2.Top;
+                panelFgMethod.Top = buttonAddOn.Top + 30;
             }
             else
             {
                 buttonAddOn.Top = panelNvngx.Top + 72;
                 panelAddOn2.Top = buttonAddOn.Top + 28;
+
+                buttonFgMethod.Top = panelAddOn2.Top + 3;
+                panelFgMethod.Top = buttonAddOn.Top;
+            }
+
+            if (panelAddOn2.Visible == true)
+            {
+                buttonFgMethod.Top = panelAddOn2.Top + 48;
+                panelFgMethod.Top = buttonAddOn.Top + 101;
+            }
+            else
+            {
+                panelFgMethod.Top = buttonAddOn.Top + 58;
             }
             ShowSubMenu(panelNvngx);
+        }
+        private void buttonFgMethod_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(panelFgMethod);
         }
 
         private void ShowSelectedNvngx(object sender, EventArgs e)
@@ -2907,6 +2948,21 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         private void buttonAddOn_Click(object sender, EventArgs e)
         {
+            if (panelAddOn2.Visible == true && panelNvngx.Visible == true)
+            {
+                buttonFgMethod.Top = panelAddOn2.Top + 3;
+                panelFgMethod.Top = buttonAddOn.Top + 57;
+            }
+            else if (panelAddOn2.Visible == true)
+            {
+                buttonFgMethod.Top = panelAddOn2.Top;
+                panelFgMethod.Top = buttonAddOn.Top + 57;
+            }
+            else
+            {
+                buttonFgMethod.Top = panelAddOn2.Top + 45;
+                panelFgMethod.Top = buttonAddOn.Top + 104;
+            }
             ShowSubMenu(panelAddOn2);
         }
         private void buttonAddUps_Click(object sender, EventArgs e)
@@ -3097,6 +3153,32 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
                 ConfigIni("VulkanUpscaler", "dlss", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+            }
+        }
+
+        private void buttonFg3_Click(object sender, EventArgs e)
+        {
+            if (selectMod == "Uniscaler FSR 3.1")
+            {
+                ConfigToml("frame_generator", "fsr3", uniscaler_fsr31, "general");
+            }
+            else
+            {
+                MessageBox.Show("Select Uniscaler FSR 3.1 to proceed", "Uniscaler FSR 3.1", MessageBoxButtons.OK);
+                return;
+            }
+        }
+
+        private void buttonFg31_Click(object sender, EventArgs e)
+        {
+            if (selectMod == "Uniscaler FSR 3.1")
+            {
+                ConfigToml("frame_generator", "fsr3_1", uniscaler_fsr31, "general");
+            }
+            else
+            {
+                MessageBox.Show("Select Uniscaler FSR 3.1 to proceed", "Uniscaler FSR 3.1", MessageBoxButtons.OK);
+                return;
             }
         }
     }
