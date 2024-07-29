@@ -69,7 +69,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void AddItemlistMods(List<string> items)
         {
-            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat" };
+            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
 
@@ -245,8 +245,24 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Disable Anti Cheat", new string[] {@"mods\Elden_Ring_FSR3\ToggleAntiCheat" } },
             {"Elden Ring FSR3", new string[] {@"mods\Elden_Ring_FSR3\EldenRing_FSR3" } },
             {"Elden Ring FSR3 V2", new string[] {@"mods\Elden_Ring_FSR3\EldenRing_FSR3 v2" } },
-            {"Elden Ring FSR3 V3", new string[]{@"mods\Elden_Ring_FSR3\EldenRing_FSR3 v3"}}
+            {"Elden Ring FSR3 V3", new string[]{@"mods\Elden_Ring_FSR3\EldenRing_FSR3 v3"}},
+            {"Unlock FPS Elden", new string[]{@"mods\\Elden_Ring_FSR3\\Unlock_Fps"}}
         };
+        #endregion
+
+        #region Del Elden Files
+        List<string> del_elden = new List<string>
+        {
+            "_steam_appid.txt", "_winhttp.dll", "anti_cheat_toggler_config.ini", "anti_cheat_toggler_mod_list.txt",
+            "start_game_in_offline_mode.exe", "toggle_anti_cheat.exe", "ReShade.ini", "EldenRingUpscalerPreset.ini",
+            "dxgi.dll", "d3dcompiler_47.dll"
+        };
+
+        List<string> del_elden_custom = new List<string>
+        {
+            "ERSS2.dll", "dxgi.dll"
+        };
+
         #endregion
 
         #region Folder Alan Wake 2
@@ -298,6 +314,42 @@ namespace FSR3ModSetupUtilityEnhanced
         List<string> del_dd2Fsr3 = new List<string>
         {
             "dinput8.dll","Uniscaler.asi","winmm.dll","winmm.ini","uniscaler.config.toml"
+        };
+
+        List<string> del_dd2_all_gpu = new List<string>
+        {
+        "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "DELETE_OPENVR_API_DLL_IF_YOU_WANT_TO_USE_OPENXR",
+        "dinput8.dll", "DisableNvidiaSignatureChecks.reg", "DisableSignatureOverride.reg", "dlss-enabler-upscaler.dll",
+        "dlss-enabler.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "EnableSignatureOverride.reg",
+        "libxess.dll", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "openvr_api.dll",
+        "openxr_loader.dll", "reframework_revision.txt", "RestoreNvidiaSignatureChecks.reg", "unins000.dat", "_nvngx.dll"
+        };
+
+        List<string> del_dd2_nv = new List<string>
+        {
+            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "DELETE_OPENVR_API_DLL_IF_YOU_WANT_TO_USE_OPENXR",
+            "dinput8.dll", "DisableSignatureOverride.reg", "dlss-enabler-upscaler.dll", "dlss-enabler.dll",
+            "dlss-enabler.log", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll",
+            "EnableSignatureOverride.reg", "libxess.dll", "nvngx-wrapper.dll", "nvngx.dll",
+            "nvngx.ini", "openvr_api.dll", "openxr_loader.dll", "reframework_revision.txt",
+            "unins000.dat", "unins000.exe"
+        };
+
+        #endregion
+
+        #region Backup DD2
+        List<string> bkup_dd2_all = new List<string>
+        {
+            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dinput8.dll", "dxgi.dll",
+            "libxess.dll", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll",
+            "nvngx.ini", "openvr_api.dll", "openxr_loader.dll", "_nvngx.dll"
+        };
+
+        List<string> bkup_dd2_nv = new List<string>
+        {
+            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dinput8.dll", "dxgi.dll",
+            "libxess.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "openvr_api.dll", "openxr_loader.dll",
+            "unins000.dat"
         };
         #endregion
 
@@ -1300,15 +1352,18 @@ namespace FSR3ModSetupUtilityEnhanced
             #endregion
         }
 
-        public void dd2Fsr3()
+        public async Task dd2Fsr3()
         {
             #region CopyWinmm and delete shader.cache2
             void CopyWinmm()
             {
-                if (Directory.Exists(selectFolder + "\\_storage_"))
+                if (selectMod != "FSR 3.1/DLSS DD2 NVIDIA" || selectMod != "FSR 3.1/DLSS DD2 ALL GPU")
                 {
-                    string pathWinmm = "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod\\winmm.dll";
-                    File.Copy(pathWinmm, selectFolder + "\\_storage_\\winmm.dll", true);
+                    if (Directory.Exists(selectFolder + "\\_storage_"))
+                    {
+                        string pathWinmm = "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod\\winmm.dll";
+                        File.Copy(pathWinmm, selectFolder + "\\_storage_\\winmm.dll", true);
+                    }
                 }
 
                 if (File.Exists(selectFolder + "\\shader.cache2"))
@@ -1322,7 +1377,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             #endregion
 
-            if (selectMod != "Dinput8" && File.Exists(selectFolder + "\\Dinput8.dll"))
+            if (selectMod != "Dinput8" && File.Exists(selectFolder + "\\dinput8.dll"))
             {
                 CopyFSR(folderDd2);
                 CopyWinmm();
@@ -1331,11 +1386,85 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 CopyFSR(folderDd2);
             }
-            else
+            if (selectMod != "FSR 3.1/DLSS DD2 NVIDIA" && selectMod != "FSR 3.1/DLSS DD2 ALL GPU")
             {
-                MessageBox.Show("Install \"Dinput8\" before installing the main mod", "Dinput8", MessageBoxButtons.OK);
-                return;
+                if (!File.Exists(selectFolder + "\\dinput8.dll"))
+                {
+                    MessageBox.Show("Install \"Dinput8\" before installing the main mod", "Dinput8", MessageBoxButtons.OK);
+                    return;
+                }
             }
+
+            #region FSR 3.1/DLSS DD2 NVIDIA and FSR 3.1/DLSS DD2 ALL GPU
+            if (selectMod == "FSR 3.1/DLSS DD2 ALL GPU")
+            {
+                if (!Directory.Exists(selectFolder + "\\BackupDD2"))
+                {
+                    Directory.CreateDirectory(selectFolder + "\\BackupDD2");
+                }
+
+                foreach(string dd2Bkup in Directory.GetFiles(selectFolder))
+                {
+                    string dd2FileName = Path.GetFileName(dd2Bkup);
+
+                    if (bkup_dd2_all.Contains(dd2FileName))
+                    {
+                        string fullPathDd2 = Path.Combine(selectFolder,"BackupDD2\\" + dd2FileName);
+
+                        File.Copy(dd2Bkup, fullPathDd2, true); 
+                    }
+                }
+
+                DialogResult fsr31_dd2 = MessageBox.Show("Would you like to use FSR 3.1? The game might have some graphical bugs", "FSR 3.1", MessageBoxButtons.YesNo);
+
+                if (fsr31_dd2 == DialogResult.Yes)
+                {
+                    ConfigIni2("Dx12Upscaler","fsr31", "mods\\Temp\\Optiscaler_DD2\\nvngx.ini", "Upscalers");
+                }
+                else
+                {
+                    ConfigIni2("Dx12Upscaler", "xess", "mods\\Temp\\Optiscaler_DD2\\nvngx.ini", "Upscalers");
+                }
+
+                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\Optiscaler_DD2");
+                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\Re_Framework");
+                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\DD2_DLSS");
+
+                File.Copy("mods\\Temp\\Optiscaler_DD2\\nvngx.ini", selectFolder + "\\nvngx.ini",true);
+                File.Copy("mods\\FSR2FSR3_DD2_FSR31\\Optiscaler_DD2\\nvngx.ini", "mods\\Temp\\Optiscaler_DD2\\nvngx.ini",true);
+
+                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
+                runReg("mods\\FSR2FSR3_DD2_FSR31\\DD2_DLSS\\DisableNvidiaSignatureChecks.reg");
+            }
+
+            if (selectMod == "FSR 3.1/DLSS DD2 NVIDIA")
+            {
+
+                if (!Directory.Exists(selectFolder + "\\BackupDD2"))
+                {
+                    Directory.CreateDirectory(selectFolder + "\\BackupDD2");
+                }
+
+                foreach (string dd2Bkup in Directory.GetFiles(selectFolder))
+                {
+                    string dd2FileName = Path.GetFileName(dd2Bkup);
+
+                    if (bkup_dd2_nv.Contains(dd2FileName))
+                    {
+                        string fullPathDd2 = Path.Combine(selectFolder, "BackupDD2\\" + dd2FileName);
+
+                        File.Copy(dd2Bkup, fullPathDd2, true);
+                    }
+                }
+
+                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\Optiscaler_DD2");
+                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\Re_Framework");
+                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\DD2_NVIDIA");
+
+                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
+                runReg("mods\\FSR2FSR3_DD2_FSR31\\DD2_DLSS\\DisableNvidiaSignatureChecks.reg");
+            }
+            #endregion
         }
 
         public void callistoFsr3()
@@ -1399,6 +1528,11 @@ namespace FSR3ModSetupUtilityEnhanced
         public void eldenFsr3()
         {
             CopyFSR(folderEldenRing);
+
+            if (selectMod == "Umlock FPS Elden")
+            {
+                CopyFolder("mods\\Elden_Ring_FSR3\\Unlock_Fps");
+            }
         }
 
         public async Task motogpFsr3()
@@ -1935,7 +2069,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     fsrRdr2Build02();
                 }
-                if (folderEldenRing.ContainsKey(selectMod))
+                if (folderEldenRing.ContainsKey(selectMod) || selectMod == "Unlock FPS Elden")
                 {
                     eldenFsr3();
                 }
@@ -2009,12 +2143,15 @@ namespace FSR3ModSetupUtilityEnhanced
                     motogpFsr3();
                 }
 
-                if (folderDd2.ContainsKey(selectMod) && gameSelected == "Dragons Dogma 2")
+                if (gameSelected == "Dragons Dogma 2")
                 {
                     dd2Fsr3();
-                    if (!File.Exists(selectFolder + "\\dinput8.dll"))
+                    if (selectMod != "FSR 3.1/DLSS DD2 NVIDIA" && selectMod != "FSR 3.1/DLSS DD2 ALL GPU")
                     {
-                        return;
+                        if (!File.Exists(selectFolder + "\\dinput8.dll"))
+                        {
+                            return;
+                        }
                     }
                 }
 
@@ -2266,9 +2403,70 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     CleanupMod3(del_valhalla, "Ac Valhalla Dlss (Only RTX)");
                 }
-                else if (folderDd2.ContainsKey(selectMod) && gameSelected == "Dragons Dogma 2")
+                else if (gameSelected == "Dragons Dogma 2")
                 {
-                    CleanupMod(del_dd2Fsr3, folderDd2);
+                    if (folderDd2.ContainsKey(selectMod))
+                    {
+                        CleanupMod(del_dd2Fsr3, folderDd2);
+                    }
+                    #region FSR 3.1/DLSS DD2 NVIDIA and FSR 3.1/DLSS DD2 ALL GPU
+                    else if (selectMod == "FSR 3.1/DLSS DD2 ALL GPU")
+                    {
+                        CleanupMod3(del_dd2_all_gpu, "FSR 3.1/DLSS DD2 ALL GPU");
+                        Directory.Delete(selectFolder + "\\reframework",true);
+
+                        if (Directory.Exists(selectFolder + "\\BackupDD2"))
+                        {
+                            DialogResult backupDd2 = MessageBox.Show("A backup of the original game files was found. Do you want to restore them after deleting the mod? (This is highly recommended)", "Backup DD2", MessageBoxButtons.YesNo);
+
+                            if(backupDd2 == DialogResult.Yes)
+                            {
+                                foreach(string originFilesDD2 in Directory.GetFiles(selectFolder + "\\BackupDD2"))
+                                {
+                                    string originFileNameDD2 = Path.GetFileName(originFilesDD2);
+
+                                    if (bkup_dd2_all.Contains(originFileNameDD2))
+                                    {
+                                       
+                                        string destFileDD2 = Path.Combine(selectFolder, originFileNameDD2);
+
+                                        File.Copy(originFilesDD2, destFileDD2, true);                                     
+                                    }
+                                }
+                                Directory.Delete(selectFolder + "\\BackupDD2",true);
+                                MessageBox.Show("Files restored successfully", "Sucess", MessageBoxButtons.OK);
+                            }
+                        }
+                    }
+                    else if (selectMod == "FSR 3.1/DLSS DD2 NVIDIA")
+                    {
+                        CleanupMod3(del_dd2_nv, "FSR 3.1/DLSS DD2 NVIDIA");
+                        Directory.Delete(selectFolder + "\\reframework",true);
+
+                        if (Directory.Exists(selectFolder + "\\BackupDD2"))
+                        {
+                            DialogResult backupDd2 = MessageBox.Show("A backup of the original game files was found. Do you want to restore them after deleting the mod? (This is highly recommended)", "Backup DD2", MessageBoxButtons.YesNo);
+
+                            if (backupDd2 == DialogResult.Yes)
+                            {
+                                foreach (string originFilesDD2 in Directory.GetFiles(selectFolder + "\\BackupDD2"))
+                                {
+                                    string originFileNameDD2 = Path.GetFileName(originFilesDD2);
+
+                                    if (bkup_dd2_nv.Contains(originFileNameDD2))
+                                    {
+
+                                        string destFileDD2 = Path.Combine(selectFolder, originFileNameDD2);
+
+                                        File.Copy(originFilesDD2, destFileDD2, true);
+                                    }
+                                }
+                                Directory.Delete(selectFolder + "\\BackupDD2",true);
+                                MessageBox.Show("Files restored successfully", "Sucess", MessageBoxButtons.OK);
+                            }
+                        }
+                    }
+                    #endregion
                 }
                 else if (folderPw.ContainsKey(selectMod))
                 {
@@ -2310,6 +2508,33 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
                     CleanupMod(del_got_files, folderGot);
+                    #endregion
+                }
+                else if (folderEldenRing.ContainsKey(selectMod) || selectMod == "Unlock FPS Elden")
+                {
+                    #region Del Mods Elden Ring
+                    if (File.Exists(selectFolder + "\\UnlockFps.txt"))
+                    {
+                        DialogResult delUlcFps = MessageBox.Show("Do you want to remove the Unlock FPS mod?", "Unlock FPS Elden", MessageBoxButtons.YesNo);
+
+                        if (delUlcFps == DialogResult.Yes)
+                        {
+                            File.Delete(selectFolder + "\\UnlockFps.txt");
+                            File.Delete(selectFolder + "\\mods\\UnlockTheFps.dll");
+                            Directory.Delete(selectFolder + "\\mods\\UnlockTheFps",true);
+                            MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
+                        }
+                    }
+                    else if (selectMod == "Elden Ring FSR3 V3")
+                    {
+                        CleanupMod(del_elden_custom, folderEldenRing);
+                        Directory.Delete(selectFolder + "\\ERSS2",true);
+                    }
+                    else
+                    {
+                        CleanupMod(del_elden, folderEldenRing);
+                        Directory.Delete(selectFolder + "\\reshade-shaders", true);
+                    }
                     #endregion
                 }
                 else if (folderIcr.ContainsKey(selectMod))

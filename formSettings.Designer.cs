@@ -174,9 +174,9 @@
             panelFgMethod.BackColor = Color.Transparent;
             panelFgMethod.Controls.Add(buttonFg31);
             panelFgMethod.Controls.Add(buttonFg3);
-            panelFgMethod.Location = new Point(3, 226);
+            panelFgMethod.Location = new Point(0, 226);
             panelFgMethod.Name = "panelFgMethod";
-            panelFgMethod.Size = new Size(163, 70);
+            panelFgMethod.Size = new Size(166, 70);
             panelFgMethod.TabIndex = 24;
             // 
             // buttonFg31
@@ -187,7 +187,7 @@
             buttonFg31.ForeColor = Color.White;
             buttonFg31.Location = new Point(-3, 31);
             buttonFg31.Name = "buttonFg31";
-            buttonFg31.Size = new Size(163, 31);
+            buttonFg31.Size = new Size(166, 31);
             buttonFg31.TabIndex = 23;
             buttonFg31.Text = "FSR 3.1";
             buttonFg31.UseVisualStyleBackColor = false;
@@ -199,9 +199,9 @@
             buttonFg3.FlatAppearance.BorderSize = 0;
             buttonFg3.FlatStyle = FlatStyle.Flat;
             buttonFg3.ForeColor = Color.White;
-            buttonFg3.Location = new Point(0, 0);
+            buttonFg3.Location = new Point(-3, 0);
             buttonFg3.Name = "buttonFg3";
-            buttonFg3.Size = new Size(160, 31);
+            buttonFg3.Size = new Size(166, 31);
             buttonFg3.TabIndex = 22;
             buttonFg3.Text = "FSR 3";
             buttonFg3.UseVisualStyleBackColor = false;
@@ -457,9 +457,9 @@
             buttonFgMethod.FlatAppearance.BorderSize = 0;
             buttonFgMethod.FlatStyle = FlatStyle.Flat;
             buttonFgMethod.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonFgMethod.Location = new Point(3, 197);
+            buttonFgMethod.Location = new Point(0, 197);
             buttonFgMethod.Name = "buttonFgMethod";
-            buttonFgMethod.Size = new Size(160, 28);
+            buttonFgMethod.Size = new Size(163, 28);
             buttonFgMethod.TabIndex = 21;
             buttonFgMethod.Text = "Frame Gen Method";
             buttonFgMethod.UseVisualStyleBackColor = false;
