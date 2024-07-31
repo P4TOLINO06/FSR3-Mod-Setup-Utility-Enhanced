@@ -70,6 +70,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Brothers: A Tale of Two Sons Remake","Brothers.png" },
                     {"Chernobylite","Cherno.png"},
                     {"Cod Black Ops Cold War","Cod.png"},
+                    {"Cod MW3","mw3.png"},
                     {"Control","Control.png"},
                     {"Crime Boss: Rockay City","Rockay.png"},
                     {"Cyberpunk 2077","Cyber.png"},
@@ -86,6 +87,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"F1 2022","F1.png"},
                     {"F1 2023","F1_23.png"},
                     {"FIST: Forged In Shadow Torch","Fist.png"},
+                    {"Flintlock: The Siege Of Dawn","Flint.png"},
                     {"Fort Solis","Fort.png"},
                     {"Forza Horizon 5","Forza.png"},
                     {"Ghost of Tsushima","GhostT.png"},
@@ -208,6 +210,9 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> icarusiList = new List<string> { "RTX DLSS FG ICR", "FSR3 FG ICR All GPU" };
             List<string> lotfList = new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" };
             List<string> forzaList = new List<string> { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU", "Optiscaler FSR 3.1/DLSS" };
+            List<string> flintList = new List<string> {"Optiscaler FSR 3.1/DLSS" };
+            List<string> codList = new List<string> {"COD MW3 FSR3" };
+            List<string> dl2List = new List<string> { "DL2 DLSS FG" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS"};
             #endregion;
@@ -230,7 +235,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 pwList,
                 jediList,
                 icarusiList,
-                tekkenList
+                tekkenList,
+                flintList,
+                codList,
+                dl2List
             };
             #endregion
 
@@ -308,6 +316,20 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(tekkenList);
+            }
+            else if (listGames.SelectedItem.ToString() == "Flintlock: The Siege Of Dawn")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(flintList);
+            }
+            else if (listGames.SelectedItem.ToString() == "Cod MW3")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(codList);
+            }
+            else if (listGames.SelectedItem.ToString() == "Dying Light 2")
+            {
+                formSettings.Instance.AddItemlistMods(dl2List);
             }
             else
             {

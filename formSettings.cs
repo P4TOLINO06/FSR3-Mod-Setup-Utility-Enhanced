@@ -71,7 +71,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -520,6 +520,25 @@ namespace FSR3ModSetupUtilityEnhanced
         Dictionary<string, string[]> folderTekken = new Dictionary<string, string[]>
         {
             { "Unlock FPS Tekken 8", new string[] {"mods\\Unlock_fps_Tekken"}},
+        };
+        #endregion
+
+        #region Clean Dlss Global Files
+        List<string> del_dlss_global_rtx = new List<string>
+        {
+            "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll",
+            "libxess.dll", "nvngx-wrapper.dll", "nvngx.ini", "unins000.dat",
+            "version.dll", "dlss_rtx.txt"
+
+        };
+
+        List<string> del_dlss_global_amd = new List<string>
+        {
+            "DisableNvidiaSignatureChecks.reg", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlss-finder.exe",
+            "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "libxess.dll",
+            "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg",
+            "unins000.dat", "unins000.exe", "winmm.dll", "_nvngx.dll", "dlss_amd.txt"
+
         };
         #endregion
 
@@ -1279,6 +1298,25 @@ namespace FSR3ModSetupUtilityEnhanced
             #endregion
         }
 
+        public void dlssGlobal()
+        {
+            string pathRtx = "mods\\DLSS_Global\\RTX";
+            string pathAmd = "mods\\DLSS_Global\\AMD";
+
+            DialogResult gpuDlss = MessageBox.Show("Do you have a GPU starting from GTX 1660? (For other GPUs, select \"No\" (including AMD)).", "Dlss GPU", MessageBoxButtons.YesNo);
+
+            if (gpuDlss == DialogResult.Yes)
+            {
+                CopyFolder(pathRtx);
+            }
+            else
+            {
+                CopyFolder(pathAmd);
+            }
+
+            runReg("mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
+        }
+
         public void rdr2Fsr3()
         {
             CopyFSR(origins_rdr2_folder);
@@ -1565,6 +1603,18 @@ namespace FSR3ModSetupUtilityEnhanced
                 File.Copy(pathNvngx + "\\" + nvngxName, fullpathNvngx, true);
             }
             #endregion
+        }
+
+        public void codFsr3()
+        {
+            MessageBox.Show("Do not use the mod in multiplayer, otherwise you may be banned. We are not responsible for any bans", "Ban", MessageBoxButtons.OK);
+
+            dlssGlobal();
+        }
+
+        public void dl2Fsr3()
+        {
+            dlssGlobal();
         }
 
         public void tekkenFsr3()
@@ -2142,6 +2192,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     motogpFsr3();
                 }
+                if (gameSelected == "Cod MW3")
+                {
+                    codFsr3();
+                }
+                if (selectMod == "DL2 DLSS FG")
+                {
+                    dl2Fsr3();
+                }
 
                 if (gameSelected == "Dragons Dogma 2")
                 {
@@ -2299,6 +2357,19 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void CleanDlssGlobal(string modName)
+        {
+            if (File.Exists(selectFolder + "\\dlss_rtx.txt"))
+            {
+                CleanupMod3(del_dlss_global_rtx, modName);
+            }
+            else if (File.Exists(selectFolder + "\\dlss_amd.txt"))
+            {
+                CleanupMod3(del_dlss_global_amd, modName);
+            }
+
+            runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
+        }
         private void buttonDel_Click(object sender, EventArgs e)
         {
             if (selectMod != null)
@@ -2559,6 +2630,15 @@ namespace FSR3ModSetupUtilityEnhanced
                         CleanupMod(del_fz5_files, folderForza);
                     }
                 }
+                else if (selectMod == "COD MW3 FSR3")
+                {
+                    CleanDlssGlobal("COD MW3 FSR3");
+                }
+                else if (selectMod == "DL2 DLSS FG")
+                {
+                    CleanDlssGlobal("DL2 DLSS FG");
+                }
+
                 else if (folderLotf.ContainsKey(selectMod))
                 {
                     #region Clean Mods Lotf
