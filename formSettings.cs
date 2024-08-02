@@ -23,6 +23,7 @@ using System.Windows.Forms.Design;
 using System.Security.Cryptography;
 using Button = System.Windows.Forms.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Text.Json;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -675,6 +676,7 @@ namespace FSR3ModSetupUtilityEnhanced
             Debug.WriteLine(pathIni);
         }
 
+
         public void ReplaceIni()
         {
             if (folder_clean_ini.ContainsKey(selectMod) && folderFakeGpu.ContainsKey(selectMod))
@@ -682,6 +684,92 @@ namespace FSR3ModSetupUtilityEnhanced
                 string path_clean_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder_clean_ini[selectMod]);
                 string modified_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) + folderFakeGpu[selectMod]);
                 File.Copy(path_clean_ini, modified_ini, true);
+            }
+        }
+
+        public static void ConfigJson(string pathJson, Dictionary<string, bool> valuesJson, string iniMessage = null)
+        {
+            bool varConfigJson = false;
+
+            try
+            {
+                while (!varConfigJson)
+                {
+                    if (File.Exists(pathJson))
+                    {
+                        varConfigJson = true;
+                    }
+                    else
+                    {
+                        DialogResult varFolderIni = MessageBox.Show("Path not found, the path to the renderer.ini file is something like this: C:\\Users\\YourName\\AppData\\Local\\Remedy\\AlanWake2. Would you like to select the path manually?","Path Not Found",MessageBoxButtons.YesNo);
+
+                        if (varFolderIni == DialogResult.Yes)
+                        {
+                            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+                            {
+                                if (folderDialog.ShowDialog() == DialogResult.OK)
+                                {
+                                    string folderIni = folderDialog.SelectedPath;
+
+                                    if (File.Exists(Path.Combine(folderIni, "renderer.ini")))
+                                    {
+                                        varConfigJson = true;
+                                        pathJson = Path.Combine(folderIni, "renderer.ini");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("renderer.ini was not found in the folder. Please select the folder containing the renderer.ini file.","File Not Found",MessageBoxButtons.OK);
+                                    }
+                                }
+                                else
+                                {
+                                    varFolderIni = MessageBox.Show("No path was selected. Would you like to try selecting the path again?","Empty Path",MessageBoxButtons.YesNo);
+
+                                    if (varFolderIni == DialogResult.No)
+                                    {
+                                        MessageBox.Show("Post-processing effects were not removed", "Cancelled", MessageBoxButtons.OK);
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                }
+
+                if (varConfigJson)
+                {
+                    string pathIni = Path.Combine(pathJson, "..","..");
+                    string pathBackupIni = Path.GetFullPath(pathIni);
+                    if (File.Exists(pathJson))
+                    {
+                        File.Copy(pathJson, pathBackupIni + "\\renderer.ini");
+                    }
+
+                    string json = File.ReadAllText(pathJson);
+                    var data = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
+
+                    foreach (var entry in valuesJson)
+                    {
+                        if (data.ContainsKey(entry.Key))
+                        {
+                            data[entry.Key] = entry.Value;
+                        }
+                    }
+
+                    json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(pathJson, json);
+
+                    MessageBox.Show(iniMessage, "Success", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e);
+                MessageBox.Show("An error occurred in the Utility. Try closing and reopening it","Error",MessageBoxButtons.OK);
             }
         }
 
@@ -1624,15 +1712,38 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void aw2Fsr3()
         {
-            CopyFSR(folderAw2);
+            string pathIniAw2 = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "Remedy","AlanWake2","renderer.ini"
+            );
 
-            //Disable Nvidia Signature Checks
-            if (selectMod == "Alan Wake 2 FG RTX")
+            if (folderAw2.ContainsKey(selectMod))
             {
-                string path_aw2_over = @"mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
+                CopyFSR(folderAw2);
 
-                runReg(path_aw2_over);
+                //Disable Nvidia Signature Checks
+                if (selectMod == "Alan Wake 2 FG RTX")
+                {
+                    string path_aw2_over = @"mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
+
+                    runReg(path_aw2_over);
+                }
             }
+
+            DialogResult varAw2 = MessageBox.Show("Do you want to fix possible ghosting issues caused by the FSR3 mod?", "Fix Ghosting Aw2", MessageBoxButtons.YesNo);
+
+            if (varAw2 == DialogResult.Yes)
+            {
+               Dictionary<string, bool> valueRemovePos = new Dictionary<string, bool>
+               {
+                   { "m_bLensDistortion",false},
+                   { "m_bFilmGrain",false},
+                   { "m_bVignette",false}
+               };
+
+                ConfigJson(pathIniAw2,valueRemovePos, "Post-processing effects successfully removed");
+            }
+                
         }
 
         public void icrFsr3()
@@ -2123,9 +2234,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     eldenFsr3();
                 }
-                if (folderAw2.ContainsKey(selectMod))
+                if (gameSelected == "Alan Wake 2")
                 {
-                    aw2Fsr3();
+                   aw2Fsr3();
                 }
                 if (selectMod == "Optiscaler FSR 3.1/DLSS")
                 {
@@ -2267,6 +2378,11 @@ namespace FSR3ModSetupUtilityEnhanced
                             {
                                 string pathNvngxUni = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_uni_fsr3\\nvngx.dll";
                                 File.Copy(pathNvngxUni, selectFolder + "\\nvngx.dll", true);
+                            }
+                            else if (selectMod == "Uniscaler V3")
+                            {
+                                string pathNvngxV3 = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_uni_fsr3\\nvngx.dll";
+                                File.Copy(pathNvngxV3, selectFolder + "\\nvngx.dll", true);
                             }
                             else
                             {
@@ -2459,14 +2575,38 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     CleanupMod(del_rdr2_custom_files, rdr2_folder);
                 }
-                else if (folderAw2.ContainsKey(selectMod))
+                else if (gameSelected == "Alan Wake 2")
                 {
+                    if (folderAw2.ContainsKey(selectMod))
+                    {
                     CleanupMod(del_aw2, folderAw2);
                     #region RestoreNvidiaSignatureChecks
                     if (selectMod == "Alan Wake 2 FG RTX")
                     {
                         string path_aw2_en = @"mods\\FSR3_GOT\\DLSS FG\\RestoreNvidiaSignatureChecks.reg";
                         runReg(path_aw2_en);
+                    }
+                    #endregion
+                    }
+
+                    #region Restore Pos-Processing
+                    string modifiedIniAw2 = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Remedy", "AlanWake2", "renderer.ini"
+                    );
+
+                    string pathReplaceInAw2 = Path.Combine(modifiedIniAw2, "..", "..");
+
+                    if (File.Exists(Path.GetFullPath(pathReplaceInAw2 + "\\renderer.ini")))
+                    {
+                        DialogResult restoreini = MessageBox.Show("Do you want to restore post-processing effects?", "Restore", MessageBoxButtons.YesNo);
+
+                        if (restoreini == DialogResult.Yes)
+                        {
+                            File.Copy(pathReplaceInAw2 + "\\renderer.ini", modifiedIniAw2, true);
+
+                            MessageBox.Show("Post-processing effects successfully restored", "Sucess", MessageBoxButtons.OK);
+                        }
                     }
                     #endregion
                 }
