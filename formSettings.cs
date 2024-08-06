@@ -24,6 +24,7 @@ using System.Security.Cryptography;
 using Button = System.Windows.Forms.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Text.Json;
+using System.Linq.Expressions;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -121,6 +122,94 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             listMods.Items.Clear();
         }
+
+        #region Files Folder FSR 2.2
+        Dictionary<string, string[]> origins_2_2_folder = new Dictionary<string, string[]>
+         {
+             { "0.7.4", new string[] { "mods\\FSR2FSR3_0.7.4\\FSR2FSR3_220" } },
+             { "0.7.5", new string[] { "mods\\FSR2FSR3_0.7.5_hotfix\\FSR2FSR3_220" } },
+             { "0.7.6", new string[] { "mods\\FSR2FSR3_0.7.6\\FSR2FSR3_220" } },
+             { "0.8.0", new string[] { "mods\\FSR2FSR3_0.8.0\\FSR2FSR3_220" } },
+             { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_220" } },
+             { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_220" } },
+             { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_220"} },
+             { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_220" } },
+             { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_220" } },
+             { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_220" } },
+             { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_220\\FSR2FSR3_220" } },
+             { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
+             { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
+             { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
+             { "Uniscaler V3", new string[]{  "mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+             { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
+         };
+        #endregion
+
+        #region Folder FSR 2.1
+        Dictionary<string, string[]> origins_2_1_folder = new Dictionary<string, string[]>
+        {
+            { "0.7.4", new string[] { "mods\\FSR2FSR3_0.7.4\\FSR2FSR3_212" } },
+            { "0.7.5", new string[] { "mods\\FSR2FSR3_0.7.5_hotfix\\FSR2FSR3_212" } },
+            { "0.7.6", new string[] { "mods\\FSR2FSR3_0.7.6\\FSR2FSR3_212" } },
+            { "0.8.0", new string[] { "mods\\FSR2FSR3_0.8.0\\FSR2FSR3_212" } },
+            { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_210"} },
+            { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_210"} },
+            { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_210"} },
+            { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_210" } },
+            { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_210"} },
+            { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_210" } },
+            { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_210\\FSR2FSR3_210"} },
+            { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"} },
+            { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"} },
+            { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
+            { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+            { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
+        };
+        #endregion
+
+        #region Folder FSR 2.0
+        Dictionary<string, string[]> origins_2_0_folder = new Dictionary<string, string[]>
+        {
+            { "0.7.4", new string[] { "mods\\FSR2FSR3_0.7.4\\FSR2FSR3_201" } },
+            { "0.7.5", new string[] { "mods\\FSR2FSR3_0.7.5_hotfix\\FSR2FSR3_201" } },
+            { "0.7.6", new string[] { "mods\\FSR2FSR3_0.7.6\\FSR2FSR3_201" } },
+            { "0.8.0", new string[] { "mods\\FSR2FSR3_0.8.0\\FSR2FSR3_201" } },
+            { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_200"} },
+            { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_200"} },
+            { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_200"} },
+            { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_200" } },
+            { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_200"} },
+            { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_200"} },
+            { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_200\\FSR2FSR3_200"} },
+            { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"} },
+            { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"} },
+            { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"} },
+            { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+            { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
+        };
+        #endregion
+
+        #region Folder FSR SDK
+        Dictionary<string, string[]> origins_sdk_folder = new Dictionary<string, string[]>
+         {
+             { "0.7.4", new string[] { "mods\\FSR2FSR3_0.7.4\\FSR2FSR3_SDK" } },
+             { "0.7.5", new string[] { "mods\\FSR2FSR3_0.7.5_hotfix\\FSR2FSR3_SDK" } },
+             { "0.7.6", new string[] { "mods\\FSR2FSR3_0.7.6\\FSR2FSR3_SDK" } },
+             { "0.8.0", new string[] { "mods\\FSR2FSR3_0.8.0\\FSR2FSR3_SDK" } },
+             { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_SDK" } },
+             { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_SDK" } },
+             { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_SDK" } },
+             { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_SDK" } },
+             { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_SDK" } },
+             { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_SDK" } },
+             { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_SDK\\FSR2FSR3_SDK" } },
+             { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
+             { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
+             { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
+             { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+             { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
+         };
+        #endregion
 
         #region Fake Nvidia Gpu Toml File Path
         static Dictionary<string, string> folderFakeGpu = new Dictionary<string, string>()
@@ -281,6 +370,14 @@ namespace FSR3ModSetupUtilityEnhanced
         List<string> del_aw2 = new List<string>
         {
             "Uniscaler.asi","winmm.dll","winmm.ini","dlssg_to_fsr3_amd_is_better.dll","DisableNvidiaSignatureChecks.reg","RestoreNvidiaSignatureChecks.reg"
+        };
+        #endregion
+
+        #region Folder Ac Valhalla
+        Dictionary<string, string[]> folderValhalla = new Dictionary<string, string[]>
+        {
+            {"AC Valhalla FSR3 All GPU",new string []{"mods\\Ac_Valhalla_DLSS2"}},
+            {"Ac Valhalla Dlss (Only RTX)", new string []{ "mods\\acValhallaDlss" } }
         };
         #endregion
 
@@ -773,6 +870,68 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public async Task Backup(Dictionary<string, string[]>pathModFiles = null)
+        {
+            try
+            {
+
+                string backupFolder = Path.Combine(selectFolder, "Backup Files");
+
+                if (!Directory.Exists(backupFolder))
+                {
+                    Directory.CreateDirectory(backupFolder);
+                }
+
+                if (origins_2_2_folder.ContainsKey(selectMod) && !uniscaler_list.Contains(selectMod))
+                {
+                    if (File.Exists(selectFolder + "\\winmm.dll") || File.Exists(selectFolder + "\\winmm.ini"))
+                    {
+                        File.Copy(selectFolder + "\\winmm.dll", selectFolder + "\\Backup Files",true);
+                        File.Copy(selectFolder + "\\winmm.ini", selectFolder + "\\Backup Files",true);
+                    }
+                }
+  
+                if (pathModFiles.ContainsKey(selectMod))
+                {
+                    string[] pathBkMod = pathModFiles[selectMod];
+           
+                    var originFiles = Directory.GetFiles(selectFolder);
+
+                    foreach (var dir in pathBkMod)
+                    {
+                        if (Directory.Exists(dir))
+                        {
+                            var dcFiles = Directory.GetFiles(dir);
+
+                            var compFiles = dcFiles.Select(Path.GetFileName).Intersect(originFiles.Select(Path.GetFileName));
+
+                            if (!compFiles.Any())
+                            {
+                                MessageBox.Show("No identical files were found for backup. You can proceed with the mod installation", "No identical files",MessageBoxButtons.OK);
+                                Directory.Delete(selectFolder + "\\Backup Files");
+                                return;
+                            }
+
+                            foreach (var fileName in compFiles)
+                            {
+                                string scPath = Path.Combine(selectFolder, fileName);
+                                string destPath = Path.Combine(backupFolder, fileName);
+
+                                File.Copy(scPath, destPath, overwrite: true);
+                            }
+                        }
+                    }
+                    MessageBox.Show("Backup completed successfully.", "Sucess", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Backup could not be completed");
+                    return;
+                }
+            }
+            catch (Exception e) { }
+        }
+
         public void LoadEditorTomlForm()
         {
             if (formEditor == null)
@@ -902,6 +1061,41 @@ namespace FSR3ModSetupUtilityEnhanced
                     ShowErrorMessage("Select a mod version to proceed. (excluding specific versions, for exemple: Elden Ring FSR3");
                     return;
                 }
+            }
+
+            if (itemText == "Backup")
+            {
+
+                #region Backup dictionaries
+                var dcGames = new Dictionary<string, Dictionary<string, string[]>>
+                {
+                    { "folderAw2", folderAw2 },
+                    { "folderBdg3", folderBdg3 },
+                    { "folderDd2", folderDd2 },
+                    { "folderEldenRing", folderEldenRing },
+                    { "origins_2_2_folder",origins_2_2_folder },
+                    { "folderGtaV",folderGtaV },
+                    { "folderGot",folderGot },
+                    { "folderForza",folderForza },
+                    { "rdr2_folder",rdr2_folder },
+                    { "folderCb2077",folderCb2077 },
+                    { "folderPw",folderPw },
+                    { "folderJedi",folderJedi },
+                    { "folderTekken",folderTekken },
+                    { "folderIcr",folderIcr },
+                    { "folderValhalla",folderValhalla }
+                };
+                #endregion
+
+                foreach (var pathDc in dcGames)
+                {
+                    if (pathDc.Value.ContainsKey(selectMod))
+                    {
+                        Backup(pathDc.Value);
+                        break; 
+                    }
+                }
+
             }
 
             if (itemText == "Fake Nvidia Gpu" && selectMod != null)
@@ -1184,7 +1378,6 @@ namespace FSR3ModSetupUtilityEnhanced
                         string path_final = Path.GetFullPath(Path.Combine(exeDirectory, relativePath));
                         string path_fsr_initial = (path_final + "\\..\\..") + "\\FSR2FSR3_COMMON";
                         string path_fsr_common = Path.GetFullPath(path_fsr_initial);
-                        Debug.WriteLine(path_fsr_common);
                         if (Directory.Exists(path_final))
                         {
                             await CopyModsAsync(path_final, path_dest);
@@ -1245,113 +1438,27 @@ namespace FSR3ModSetupUtilityEnhanced
         public void fsr2_2()
         {
             string path_final;
-            #region Files Folder FSR 2.2
-            Dictionary<string, string[]> origins_2_2_folder = new Dictionary<string, string[]>
-            {
-                { "0.7.4", new string[] { "mods\\FSR2FSR3_0.7.4\\FSR2FSR3_220" } },
-                { "0.7.5", new string[] { "mods\\FSR2FSR3_0.7.5_hotfix\\FSR2FSR3_220" } },
-                { "0.7.6", new string[] { "mods\\FSR2FSR3_0.7.6\\FSR2FSR3_220" } },
-                { "0.8.0", new string[] { "mods\\FSR2FSR3_0.8.0\\FSR2FSR3_220" } },
-                { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_220" } },
-                { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_220" } },
-                { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_220"} },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_220" } },
-                { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_220" } },
-                { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_220" } },
-                { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_220\\FSR2FSR3_220" } },
-                { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
-                { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
-                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
-                { "Uniscaler V3", new string[]{  "mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
-                { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
-            };
-            #endregion
 
             CopyFSR(origins_2_2_folder);
         }
 
         public void fsr2_1()
         {
-            #region Folder FSR 2.1
-            Dictionary<string, string[]> origins_2_1_folder = new Dictionary<string, string[]>
-            {
-                { "0.7.4", new string[] { "mods\\FSR2FSR3_0.7.4\\FSR2FSR3_212" } },
-                { "0.7.5", new string[] { "mods\\FSR2FSR3_0.7.5_hotfix\\FSR2FSR3_212" } },
-                { "0.7.6", new string[] { "mods\\FSR2FSR3_0.7.6\\FSR2FSR3_212" } },
-                { "0.8.0", new string[] { "mods\\FSR2FSR3_0.8.0\\FSR2FSR3_212" } },
-                { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_210"} },
-                { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_210"} },
-                { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_210"} },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_210" } },
-                { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_210"} },
-                { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_210" } },
-                { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_210\\FSR2FSR3_210"} },
-                { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"} },
-                { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"} },
-                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
-                { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
-                { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
-            };
-            #endregion
             CopyFSR(origins_2_1_folder);
         }
 
         public void fsr_2_0()
         {
-            #region Folder FSR 2.0
-            Dictionary<string, string[]> origins_2_0_folder = new Dictionary<string, string[]>
-            {
-                { "0.7.4", new string[] { "mods\\FSR2FSR3_0.7.4\\FSR2FSR3_201" } },
-                { "0.7.5", new string[] { "mods\\FSR2FSR3_0.7.5_hotfix\\FSR2FSR3_201" } },
-                { "0.7.6", new string[] { "mods\\FSR2FSR3_0.7.6\\FSR2FSR3_201" } },
-                { "0.8.0", new string[] { "mods\\FSR2FSR3_0.8.0\\FSR2FSR3_201" } },
-                { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_200"} },
-                { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_200"} },
-                { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_200"} },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_200" } },
-                { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_200"} },
-                { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_200"} },
-                { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_200\\FSR2FSR3_200"} },
-                { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"} },
-                { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"} },
-                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"} },
-                { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
-                { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
-            };
-            #endregion
             CopyFSR(origins_2_0_folder);
         }
 
         public void fsr_sdk()
         {
-            #region Folder FSR SDK
-            Dictionary<string, string[]> origins_sdk_folder = new Dictionary<string, string[]>
-            {
-                { "0.7.4", new string[] { "mods\\FSR2FSR3_0.7.4\\FSR2FSR3_SDK" } },
-                { "0.7.5", new string[] { "mods\\FSR2FSR3_0.7.5_hotfix\\FSR2FSR3_SDK" } },
-                { "0.7.6", new string[] { "mods\\FSR2FSR3_0.7.6\\FSR2FSR3_SDK" } },
-                { "0.8.0", new string[] { "mods\\FSR2FSR3_0.8.0\\FSR2FSR3_SDK" } },
-                { "0.9.0", new string[] { "mods\\FSR2FSR3_0.9.0\\Generic FSR\\FSR2FSR3_SDK" } },
-                { "0.10.0", new string[] { "mods\\FSR2FSR3_0.10.0\\Generic FSR\\FSR2FSR3_SDK" } },
-                { "0.10.1", new string[] { "mods\\FSR2FSR3_0.10.1\\Generic FSR\\FSR2FSR3_SDK" } },
-                { "0.10.1h1", new string[] { "mods\\FSR2FSR3_0.10.1h1\\0.10.1h1\\Generic FSR\\FSR2FSR3_SDK" } },
-                { "0.10.2h1", new string[] { "mods\\FSR2FSR3_0.10.2h1\\Generic FSR\\FSR2FSR3_SDK" } },
-                { "0.10.3", new string[] { "mods\\FSR2FSR3_0.10.3\\Generic FSR\\FSR2FSR3_SDK" } },
-                { "0.10.4", new string[] { "mods\\FSR2FSR3_0.10.4\\FSR2FSR3_SDK\\FSR2FSR3_SDK" } },
-                { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
-                { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
-                { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
-                { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
-                { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
-            };
-            #endregion
             CopyFSR(origins_sdk_folder);
         }
 
         public void optiscaler_custom()
         {
-            CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
-
             #region Backup Files
             try
             {
@@ -1371,6 +1478,10 @@ namespace FSR3ModSetupUtilityEnhanced
                         string destBackupFolder = Path.Combine(backupFolderOpts, filesOptsName);
                         File.Copy(filesOpts, destBackupFolder, true);
                     }
+                    else
+                    {
+                        Directory.Delete(selectFolder + "Backup Optiscaler");
+                    }
                 }
 
                 File.Copy("mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", selectFolder + "\\nvngx.ini", true);
@@ -1384,6 +1495,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 Debug.WriteLine("An error occurred: " + ex.Message);
             }
             #endregion
+
+            CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
         }
 
         public void dlssGlobal()
@@ -1412,14 +1525,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void acValhallaDlss()
         {
-            if (selectMod == "Ac Valhalla Dlss (Only RTX)")
-            {
-                CopyFolder("mods\\acValhallaDlss");
-            }
-            else if (selectMod == "AC Valhalla FSR3 All GPU")
-            {
-                CopyFolder("mods\\Ac_Valhalla_DLSS2");
-            }
+            CopyFSR(folderValhalla);
         }
 
         public void jediFsr3()
@@ -1704,7 +1810,6 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             dlssGlobal();
         }
-
         public void tekkenFsr3()
         {
             CopyFSR(folderTekken);
@@ -2518,6 +2623,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         CleanupMod2(modCleanList, folderFakeGpu, "Mod Successfully Removed");
                     }
                 }
+                
                 if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
                 {
                     #region  Clean Optiscaler
@@ -2802,7 +2908,29 @@ namespace FSR3ModSetupUtilityEnhanced
                     }
                     #endregion
                 }
-                else if (selectMod == null && selectFolder == null)
+
+                if (Directory.Exists(selectFolder + "\\Backup Files"))
+                {
+                    DialogResult restoreOriginFiles = MessageBox.Show("A backup folder with the original game files was found. Do you want to restore these files? (This is highly recommended)", "Restore Files", MessageBoxButtons.YesNo);
+
+                    if (restoreOriginFiles == DialogResult.Yes)
+                    {
+                        foreach (string filesRestore in Directory.GetFiles(selectFolder + "\\Backup Files"))
+                        {
+                            string nameFileRestore = Path.GetFileName(filesRestore);
+
+                            string destFilesRestore = Path.Combine(selectFolder, nameFileRestore);
+
+                            File.Copy(filesRestore, destFilesRestore, true);
+                        }
+                    }
+
+                    Directory.Delete(selectFolder + "\\Backup Files");
+
+                    MessageBox.Show("The files have been successfully restored", "Sucess", MessageBoxButtons.OK);
+                }
+
+                if (selectMod == null && selectFolder == null)
                 {
                     MessageBox.Show("Please fill out the first 3 options, Select Game, Select Folder, and Mod Options.", "Error", MessageBoxButtons.OK);
                     return;

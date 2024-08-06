@@ -1066,7 +1066,7 @@
             AddOptionsSelect.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddOptionsSelect.ForeColor = Color.White;
             AddOptionsSelect.FormattingEnabled = true;
-            AddOptionsSelect.Items.AddRange(new object[] { "Toml Editor", "Fake Nvidia Gpu", "Nvapi Results", "Ue Compatibility Mode", "MacOS Crossover Support", "Auto Exposure", "Debug View", "Debug Tier Lines", "Off Frame Gen", "Disable Overlay", "Disable Console", "Ignore Ingame Fg", "Ignore Fg Resources", "Install lfz.sl.dlss", "Enable Signature Over", "Disable Signature Over", "Fps Limit" });
+            AddOptionsSelect.Items.AddRange(new object[] { "Toml Editor", "Backup", "Fake Nvidia Gpu", "Nvapi Results", "Ue Compatibility Mode", "MacOS Crossover Support", "Auto Exposure", "Debug View", "Debug Tier Lines", "Off Frame Gen", "Disable Overlay", "Disable Console", "Ignore Ingame Fg", "Ignore Fg Resources", "Install lfz.sl.dlss", "Enable Signature Over", "Disable Signature Over", "Fps Limit" });
             AddOptionsSelect.Location = new Point(3, 3);
             AddOptionsSelect.Name = "AddOptionsSelect";
             AddOptionsSelect.Size = new Size(275, 66);
