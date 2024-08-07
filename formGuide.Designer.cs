@@ -28,51 +28,158 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel1 = new Panel();
+            panel4 = new Panel();
+            richTextBox1 = new RichTextBox();
+            panelImage = new Panel();
+            button1 = new Button();
+            listBox1 = new ListBox();
             label1 = new Label();
-            flowLayoutPanel1.SuspendLayout();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            panel1.SuspendLayout();
+            panel4.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // panel1
             // 
-            flowLayoutPanel1.Anchor = AnchorStyles.Top;
-            flowLayoutPanel1.AutoSize = true;
-            flowLayoutPanel1.Controls.Add(label1);
-            flowLayoutPanel1.Location = new Point(254, 140);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(390, 80);
-            flowLayoutPanel1.TabIndex = 0;
+            panel1.Anchor = AnchorStyles.None;
+            panel1.AutoSize = true;
+            panel1.BackColor = Color.Gray;
+            panel1.Controls.Add(panel4);
+            panel1.Controls.Add(panelImage);
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(listBox1);
+            panel1.Location = new Point(72, 57);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1111, 550);
+            panel1.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.None;
+            panel4.BackColor = Color.DimGray;
+            panel4.Controls.Add(richTextBox1);
+            panel4.Location = new Point(219, 214);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(564, 203);
+            panel4.TabIndex = 4;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.BackColor = Color.DimGray;
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.Dock = DockStyle.Fill;
+            richTextBox1.Font = new Font("Segoe UI Variable Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            richTextBox1.ForeColor = Color.Gainsboro;
+            richTextBox1.Location = new Point(0, 0);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.ReadOnly = true;
+            richTextBox1.Size = new Size(564, 203);
+            richTextBox1.TabIndex = 0;
+            richTextBox1.Text = "";
+            // 
+            // panelImage
+            // 
+            panelImage.BackColor = Color.Gray;
+            panelImage.BackgroundImageLayout = ImageLayout.Stretch;
+            panelImage.Location = new Point(307, 37);
+            panelImage.Name = "panelImage";
+            panelImage.Size = new Size(351, 146);
+            panelImage.TabIndex = 3;
+            panelImage.Paint += panelImage_Paint;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Gray;
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderColor = Color.Silver;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Silver;
+            button1.Location = new Point(0, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(159, 32);
+            button1.TabIndex = 2;
+            button1.Text = "Games";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Items.AddRange(new object[] { "Initial Information", "Add-on Mods", "Optiscaler Method", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark" });
+            listBox1.Location = new Point(0, 37);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(159, 94);
+            listBox1.TabIndex = 0;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(3, 0);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Silver;
+            label1.Location = new Point(46, 2);
             label1.Name = "label1";
-            label1.Size = new Size(384, 65);
-            label1.TabIndex = 0;
-            label1.Text = "In development";
+            label1.Size = new Size(101, 40);
+            label1.TabIndex = 2;
+            label1.Text = "GUIDE";
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.None;
+            panel2.Controls.Add(label1);
+            panel2.Location = new Point(458, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(200, 48);
+            panel2.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(panel1);
+            panel3.Controls.Add(panel2);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1258, 486);
+            panel3.TabIndex = 4;
             // 
             // formGuide
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(800, 450);
-            Controls.Add(flowLayoutPanel1);
+            ClientSize = new Size(1258, 486);
+            Controls.Add(panel3);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formGuide";
             Text = "formGuide";
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
+            Load += formGuide_Load;
+            panel1.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel panel1;
         private Label label1;
+        private ListBox listBox1;
+        private Button button1;
+        private Panel panel2;
+        private Panel panel4;
+        private Panel panelImage;
+        private Panel panel3;
+        private RichTextBox richTextBox1;
     }
 }

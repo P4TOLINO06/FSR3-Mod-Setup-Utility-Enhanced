@@ -588,7 +588,7 @@
             optionsNvngx.ForeColor = Color.White;
             optionsNvngx.FormattingEnabled = true;
             optionsNvngx.Items.AddRange(new object[] { "Default", "NVNGX Version 1", "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG" });
-            optionsNvngx.Location = new Point(0, 3);
+            optionsNvngx.Location = new Point(3, 0);
             optionsNvngx.Name = "optionsNvngx";
             optionsNvngx.Size = new Size(163, 66);
             optionsNvngx.TabIndex = 7;
