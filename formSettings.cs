@@ -1394,25 +1394,28 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task CopyFolder(string pathFolder)
         {
-            foreach (string files_fsr in Directory.GetFiles(pathFolder))
+            Task.Run(async () =>
             {
-                string fileName = Path.GetFileName(files_fsr);
-                File.Copy(files_fsr, selectFolder + "\\" + fileName, true);
-            }
-            foreach (var subPath in Directory.GetDirectories(pathFolder, "*", SearchOption.AllDirectories))
-            {
-                string relativePath = subPath.Substring(pathFolder.Length + 1);
-                string fullPath = Path.Combine(selectFolder, relativePath);
-
-                Directory.CreateDirectory(fullPath);
-
-                foreach (string filePath in Directory.GetFiles(subPath))
+                foreach (string files_fsr in Directory.GetFiles(pathFolder))
                 {
-                    string relativeFilePath = filePath.Substring(subPath.Length + 1);
-                    string destFilePath = Path.Combine(fullPath, relativeFilePath);
-                    File.Copy(filePath, destFilePath, true);
+                    string fileName = Path.GetFileName(files_fsr);
+                    File.Copy(files_fsr, selectFolder + "\\" + fileName, true);
                 }
-            }
+                foreach (var subPath in Directory.GetDirectories(pathFolder, "*", SearchOption.AllDirectories))
+                {
+                    string relativePath = subPath.Substring(pathFolder.Length + 1);
+                    string fullPath = Path.Combine(selectFolder, relativePath);
+
+                    Directory.CreateDirectory(fullPath);
+
+                    foreach (string filePath in Directory.GetFiles(subPath))
+                    {
+                        string relativeFilePath = filePath.Substring(subPath.Length + 1);
+                        string destFilePath = Path.Combine(fullPath, relativeFilePath);
+                        File.Copy(filePath, destFilePath, true);
+                    }
+                }
+            });
         }
 
         public void runReg(string pathReg)
@@ -1457,42 +1460,44 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFSR(origins_sdk_folder);
         }
 
-        public void optiscaler_custom()
+        public async Task optiscaler_custom()
         {
             #region Backup Files
             try
             {
-                string backupFolderOpts = Path.Combine(selectFolder, "Backup Optiscaler");
-
-                if (!Directory.Exists(backupFolderOpts))
+                Task.Run(async () =>
                 {
-                    Directory.CreateDirectory(backupFolderOpts);
-                }
+                    string backupFolderOpts = Path.Combine(selectFolder, "Backup Optiscaler");
 
-                foreach (var filesOpts in Directory.GetFiles(selectFolder))
-                {
-                    string filesOptsName = Path.GetFileName(filesOpts);
-
-                    if (del_optiscaler_custom.Contains(filesOptsName))
+                    if (!Directory.Exists(backupFolderOpts))
                     {
-                        string destBackupFolder = Path.Combine(backupFolderOpts, filesOptsName);
-                        File.Copy(filesOpts, destBackupFolder, true);
+                        Directory.CreateDirectory(backupFolderOpts);
                     }
-                    else
-                    {
-                        Directory.Delete(selectFolder + "Backup Optiscaler");
-                    }
-                }
 
-                File.Copy("mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", selectFolder + "\\nvngx.ini", true);
-                runReg("mods\\Optiscaler FSR 3.1 Custom\\EnableSignatureOverride.reg");
-                runReg("mods\\Optiscaler FSR 3.1 Custom\\DisableNvidiaSignatureChecks.reg");
-                File.Copy("mods\\Optiscaler FSR 3.1 Custom\\nvngx.ini", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", true);
+                    foreach (var filesOpts in Directory.GetFiles(selectFolder))
+                    {
+                        string filesOptsName = Path.GetFileName(filesOpts);
+
+                        if (del_optiscaler_custom.Contains(filesOptsName))
+                        {
+                            string destBackupFolder = Path.Combine(backupFolderOpts, filesOptsName);
+                            File.Copy(filesOpts, destBackupFolder, true);
+                        }
+                        else
+                        {
+                            Directory.Delete(selectFolder + "Backup Optiscaler");
+                        }
+                    }
+
+                    File.Copy("mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", selectFolder + "\\nvngx.ini", true);
+                    runReg("mods\\Optiscaler FSR 3.1 Custom\\EnableSignatureOverride.reg");
+                    runReg("mods\\Optiscaler FSR 3.1 Custom\\DisableNvidiaSignatureChecks.reg");
+                    File.Copy("mods\\Optiscaler FSR 3.1 Custom\\nvngx.ini", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", true);
+                });
             }
 
             catch (Exception ex)
             {
-                Debug.WriteLine("An error occurred: " + ex.Message);
             }
             #endregion
 
@@ -1504,16 +1509,44 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathRtx = "mods\\DLSS_Global\\RTX";
             string pathAmd = "mods\\DLSS_Global\\AMD";
 
+
+            string backupFolderDlss = Path.Combine(selectFolder, "Backup Dlss");
+
             DialogResult gpuDlss = MessageBox.Show("Do you have a GPU starting from GTX 1660? (For other GPUs, select \"No\" (including AMD)).", "Dlss GPU", MessageBoxButtons.YesNo);
 
-            if (gpuDlss == DialogResult.Yes)
+            string pathGpu = gpuDlss == DialogResult.Yes ? pathRtx : pathAmd;
+
+            if (!Directory.Exists(backupFolderDlss))
             {
-                CopyFolder(pathRtx);
+                Directory.CreateDirectory(backupFolderDlss);
             }
-            else
+
+            var originFiles = Directory.GetFiles(selectFolder);
+            var dcFiles = Directory.GetFiles(pathGpu);
+
+            var dlssFileNames = originFiles.Select(Path.GetFileName).ToHashSet();
+            var dcFileNames = dcFiles.Select(Path.GetFileName).ToHashSet();
+
+            var commonFiles = dcFileNames.Intersect(dlssFileNames);
+
+            if (commonFiles.Any())
             {
-                CopyFolder(pathAmd);
+
+                if (!Directory.Exists(backupFolderDlss))
+                {
+                    Directory.CreateDirectory(backupFolderDlss);
+                }
+
+                foreach (var fileName in commonFiles)
+                {
+                    string filesBackup = Path.Combine(pathGpu, fileName);
+                    string pathUser = Path.Combine(backupFolderDlss, fileName);
+
+                    File.Copy(filesBackup, pathUser, overwrite: true);
+                }
             }
+
+            CopyFolder(pathGpu);
 
             runReg("mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
         }
@@ -2578,6 +2611,37 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public async Task RestoreBackup(string nameFolderBackup)
+        {
+            try
+            {
+                Task.Run(async () =>
+                {
+                    if (Directory.Exists(selectFolder + "\\" + nameFolderBackup))
+                    {
+                        DialogResult restoreOriginFiles = MessageBox.Show("A backup folder with the original game files was found. Do you want to restore these files? (This is highly recommended)", "Restore Files", MessageBoxButtons.YesNo);
+
+                        if (restoreOriginFiles == DialogResult.Yes)
+                        {
+                            foreach (string filesRestore in Directory.GetFiles(selectFolder + "\\" + nameFolderBackup))
+                            {
+                                string nameFileRestore = Path.GetFileName(filesRestore);
+
+                                string destFilesRestore = Path.Combine(selectFolder, nameFileRestore);
+
+                                File.Copy(filesRestore, destFilesRestore, true);
+                            }
+                        }
+                    }
+
+                    Directory.Delete(selectFolder + "\\" + nameFolderBackup, true);
+
+                    MessageBox.Show("The files have been successfully restored", "Sucess", MessageBoxButtons.OK);
+                });
+            }
+            catch { }
+        }
+
         public void CleanDlssGlobal(string modName)
         {
             if (File.Exists(selectFolder + "\\dlss_rtx.txt"))
@@ -2590,6 +2654,8 @@ namespace FSR3ModSetupUtilityEnhanced
             }
 
             runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
+
+            RestoreBackup("Backup Dlss");
         }
         private void buttonDel_Click(object sender, EventArgs e)
         {
@@ -2648,20 +2714,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanupMod3(del_optiscaler_custom, "Optiscaler FSR 3.1/DLSS");
                     runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
 
-                    #region Restore Files
-                    string backupOptiscalerFolder = selectFolder + "\\Backup Optiscaler";
-                    if (Directory.Exists(backupOptiscalerFolder))
-                    {
-                        foreach (string filesBackup in Directory.GetFiles(backupOptiscalerFolder))
-                        {
-                            string fileBackupName = Path.GetFileName(filesBackup);
-                            string restoreFilesPath = Path.Combine(selectFolder, fileBackupName);
-                            File.Copy(filesBackup, restoreFilesPath, true);
-                        }
-
-                        Directory.Delete(backupOptiscalerFolder, true);
-                    }
-                    #endregion
+                    RestoreBackup("Backup Optiscaler");
                 }
                 if (gameSelected == "Cyberpunk 2077")
                 {
@@ -2909,26 +2962,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
-                if (Directory.Exists(selectFolder + "\\Backup Files"))
-                {
-                    DialogResult restoreOriginFiles = MessageBox.Show("A backup folder with the original game files was found. Do you want to restore these files? (This is highly recommended)", "Restore Files", MessageBoxButtons.YesNo);
-
-                    if (restoreOriginFiles == DialogResult.Yes)
-                    {
-                        foreach (string filesRestore in Directory.GetFiles(selectFolder + "\\Backup Files"))
-                        {
-                            string nameFileRestore = Path.GetFileName(filesRestore);
-
-                            string destFilesRestore = Path.Combine(selectFolder, nameFileRestore);
-
-                            File.Copy(filesRestore, destFilesRestore, true);
-                        }
-                    }
-
-                    Directory.Delete(selectFolder + "\\Backup Files");
-
-                    MessageBox.Show("The files have been successfully restored", "Sucess", MessageBoxButtons.OK);
-                }
+                RestoreBackup("Backup Files");
 
                 if (selectMod == null && selectFolder == null)
                 {

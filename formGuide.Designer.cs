@@ -85,9 +85,9 @@
             // 
             panelImage.BackColor = Color.Gray;
             panelImage.BackgroundImageLayout = ImageLayout.Stretch;
-            panelImage.Location = new Point(307, 37);
+            panelImage.Location = new Point(288, 37);
             panelImage.Name = "panelImage";
-            panelImage.Size = new Size(351, 146);
+            panelImage.Size = new Size(423, 171);
             panelImage.TabIndex = 3;
             panelImage.Paint += panelImage_Paint;
             // 
@@ -112,7 +112,7 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Items.AddRange(new object[] { "Initial Information", "Add-on Mods", "Optiscaler Method", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark" });
+            listBox1.Items.AddRange(new object[] { "Initial Information", "Add-on Mods", "Optiscaler Method", "Optiscaler FSR 3.1/DLSS", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark", "A Plague Tale Requiem", "Assassin's Creed Valhalla", "Atomic Heart", "Baldur's Gate 3", "Blacktail", "Banishers Ghost of New Eden", "Bright Memory: Infinite", "Brothers a Tale of Two Sons", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss Rockay City", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Space Remake", "Dead Island 2", "Death Stranding Director's Cut", "Deathloop", "Dragons Dogma 2", "Dying Light 2", "Elden Ring" });
             listBox1.Location = new Point(0, 37);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(159, 94);
