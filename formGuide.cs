@@ -43,7 +43,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Method 3 (If none of the others work): Modified installation method if none of the other options work.\r\n"
             },
             {
-                "Optiscaler FSR 3.1/DLSS\r\n",
+                "Optiscaler FSR 3.1/DLSS",
                 "This mod may not work with all games, so it is recommended to perform tests.\r\n" +
                 "Select Optiscaler FSR 3.1/DLSS and install it.\r\n" +
                 "In the game, press the Insert key to open the menu. In the menu, select your preferred upscaler. You can also increase image sharpness by enabling the Sharpness option in the menu.\r\n" +
@@ -218,6 +218,193 @@ namespace FSR3ModSetupUtilityEnhanced
                 "• To remove Full Screen borders, select \"Full Screen\" in the game before installing the mod. If there is screen overflow after mod installation, select full screen -> window -> full screen.\r\n" +
                 "• Enable AntiAliasing and Motion Blur; this mod will skip the actual rendering of motion blur, so don't worry if you don't like motion blur. The game only needs it to render motion vectors."
             },
+            {
+                "Everspace 2",
+                "1 - Select a mod of your preference (0.10.3 is recommended)\r\n" +
+                "2 - Check Fake Nvidia Gpu and Nvapi Results.\r\n" +
+                "3 - Inside the game, select FSR or DLSS"
+            },
+            {
+                "Evil West",
+                "1 - Select a mod of your preference. (recommended 0.10.3)\r\n" +
+                "2 - Install, within the game, set post-processing to low and\r\n" +
+                "activate FSR."
+            },
+            {
+                "Fallout 4",
+                "Usage of the Sym Link:\r\n" +
+                "1 - In SymLink, click on add file and navigate to the root folder of the game. In the root folder, look\r\n" +
+                "for Data\\F4SE\\Plugins, within this folder select Fallout4Upscaler.dll.\r\n" +
+                "2 - In 'Destination Path' in the SymLink, paste the path of the 'mods' folder. Simply navigate to\r\n" +
+                "the mods folder and copy the path from the address bar of the file explorer, or you can navigate to\r\n" +
+                "the folder through the SymLink itself.\r\n" +
+                "3 - Click on Create symlinks.\r\n" +
+                "4 - Go back to the mods folder, go to View (w10) or Options (w11), and uncheck the box 'File\r\n" +
+                "name extensions.\r\n" +
+                "5 - Rename the file Fallout4Upscaler.dll in the mods folder to RDR2Upscaler.org.\r\n" +
+                "6 - Run the game launcher located in the root folder of the game, in the launcher set 'depth of\r\n" +
+                "field' to Low.\r\n" +
+                "7 - Run the game using the file f4se_loader.exe, also located in the root folder of the game.\r\n" +
+                "8 - In the game, press the 'END' key to open the mod menu, select DLSS for RTX and FSR3 for\r\n" +
+                "non-RTX."
+            },
+            {
+                "Fist Forged in Shadow Torch",
+                "1 - Select a mod of your choice. (0.10.3 is recommended)\r\n" +
+                "2 - Check the Fake Nvidia GPU box (AMD/GTX)"
+            },
+            {
+                "Flintlock: The Siege of Dawn",
+                "1 - Select the FSR 3.1/DLSS Optiscaler mod and install it.\r\n" +
+                "2 - In the game, select DLSS, press the Insert key to open\r\n" +
+                "the Optiscaler menu, in Upscalers select an upscaler of your\r\n" +
+                "preference. If you cannot see the menu, after installing the\r\n" +
+                "mod, select Optiscaler in the Utility and choose an upscaler\r\n" +
+                "in Upscaler Optiscaler and install."
+            },
+            {
+                "Fort Solis",
+                "1 - Select a mod of your preference. (0.10.3 is recommended)\r\n" +
+                "2 - Check the box for Fake Nvidia GPU (AMD/GTX) and the\r\n" +
+                "box for Nvapi Results (GTX). If DLSS is not available for AMD,\r\n" +
+                "check the Nvapi Results box.\r\n" +
+                "3 - In the game, select DLSS and Frame Generation."
+            },
+            {
+                "Forza Horizon 5",
+                "1 - Choose Horizon Forza 5 FSR3 and install it. In the\r\n" +
+                "confirmation window, select 'Yes' for RTX or 'No' for non-RTX.\r\n" +
+                "2 - For RTX, in-game, select DLSS and enable Frame\r\n" +
+                "Generation.\r\n" +
+                "3 - For other GPUs, select FSR and activate Frame\r\n" +
+                "Generation. You can use DLSS, but you will experience\r\n" +
+                "ghosting."
+            },
+            {
+                "F1 2022",
+                "1 - Choose a version of the mod you prefer (version 0.10.3 is\r\n" +
+                "recommended).\r\n" +
+                "2 - Select 'Default' in Nvngx and check the box 'Enable\r\n" +
+                "Signature Override.\r\n" +
+                "3 - Check the box 'Fake Nvidia GPU' (AMD Only).\r\n" +
+                "4 - Within the game, under AntiAliasing, select DLSS or FSR.\r\n" +
+                "• To fix the HUD flickering, select DLSS in AntiAliasing before\r\n" +
+                "starting the game. While playing, switch to TAA+FSR or TAA\r\n" +
+                "only."
+            },
+            {
+                "F1 2023",
+                "1 - Choose a version of the mod you prefer (version 0.10.3 is\r\n" +
+                "recommended).\r\n" +
+                "2 - Select 'Default' in Nvngx and check the box 'Enable\r\n" +
+                "Signature Override.\r\n" +
+                "3 - Check the box 'Fake Nvidia GPU' (AMD Only).\r\n" +
+                "4 - Inside the game, under AntiAliasing, select DLSS or FSR."
+            },
+            {
+                "GTA V",
+                "Single Player and Multiplayer\r\n" +
+                "1 - Select Dinput 8 and install. (only single player)\r\n" +
+                "2 - Open the game and disable MSAA and TXAA and select\r\n" +
+                "borderless window. If the mod doesn't work, disable FXAA.\r\n" +
+                "3 - Close the game and select GTA V FSR3 and install\r\n" +
+                "4 - Turn on Vsync, Nvidia (Vertical Sync), or AMD Adrenalin\r\n" +
+                "(Wait for Vertical Sync Update)\r\n" +
+                "5 - Press 'Home' to open the menu. If the mod is disabled,\r\n" +
+                "check 'Enable Frame Generation'."
+            },
+            {
+                "Ghost of Tsushima",
+                "1 - Select Ghost of Tsushima FG DLSS and install\r\n" +
+                "2 - In the game, select DLSS Frame Generation\r\n" +
+                "3 - If you encounter any issues related to DX12, select 'YES'\r\n" +
+                "in the 'DX12' window that will appear during the installation.\r\n" +
+                "First, test the mod without confirming this window.\r\n" +
+                "4 - If you are experiencing any issues with crashes, select\r\n" +
+                "'Yes' in the 'Crash Issues' window that will appear during\r\n" +
+                "the mod installation.\r\n" +
+
+                "FSR 3.1\r\n" +
+                "1 - Select Uniscaler FSR 3.1\r\n" +
+                "2 - For AMD/GTX users: Check the boxes: Fake Nvidia GPU, Nvapi\r\n" +
+                "Results, and Disable Signature Over.\r\n" +
+                "3 - Check the Nvngx box and select Default.\r\n" +
+                "4 - In the game, select DLSS; do not change to FSR as the\r\n" +
+                "game will crash."
+            },
+            {
+                "Ghostrunner 2",
+                "1 - Select a version of the mod of your choice (version 0.10.3\r\n" +
+                "is recommended)\r\n" +
+                "2 - To make the mod work, run it in DX12. To run it in DX12, right-click\r\n" +
+                "the game exe and create a shortcut, then right-click the shortcut\r\n" +
+                "again, go to 'Properties,' and at the end of 'Target' (outside the\r\n" +
+                "quotes), add -dx12 or go to your Steam library, select the game, go to\r\n" +
+                "Settings > Properties > Startup options, and enter -dx12.\r\n" +
+                "3 - Activate Fake Nvidia Gpu (AMD only)\r\n" +
+                "4 - Inside the game, set the frame limit to unlimited, activate DLSS first\r\n" +
+                "(disable other upscalers before) and then activate frame generation\r\n" +
+                "• To fix the flickering of the HUD, activate and deactivate frame\r\n" +
+                "generation again (no need to apply settings)."
+            },
+            {
+                "Hellblade: Senua's Sacrifice",
+                "1 - Select a version of the mod of your choice (version 0.10.3\r\n" +
+                "is recommended).\r\n" +
+                "2 - Select Fake Nvidia Gpu and UE Compatibility (AMD only),\r\n" +
+                "select Fake Nvidia Gpu and Nvapi Results (GTX only)."
+            },
+            {
+                "Hellblade 2",
+                "Only RTX\r\n" +
+                "1 - Select Hellblade 2 FSR3 and install it.\r\n" +
+                "2 - In the game, select Frame Generation.\r\n" +
+                "3 - This mod only works for RTX.\r\n\n" +
+                "All GPUs\r\n" +
+                "1 - Select Uniscaler V2 (you can also test with the other mods)\r\n" +
+                "2 - Check the box for Fake Nvidia GPU (AMD) and check the\r\nbox for UE compatibility mode (AMD and Nvidia)\r\n" +
+                "3 - In-game, select Frame Generation\r\n" +
+                "• If you can’t see the DLSS option in the game, select\r\n'YES' in the 'DLSS Fix' window during installation.\r\n\n" +
+                "• To remove the black bars, select the Engine.ini file folder in\r\n'Select Folder' (if the file is not found automatically), select\r\n'Remove Black Bars' in mod version, and install. (The path to\r\nthe engine.ini file is something like: C:\\Users\\YourName\\\r\nAppData\\Local\\Hellblade2\\Saved\\Config\\Windows or\r\nWinGDK)\r\n\n" +
+                "• If the bars are not removed, select 'Remove Black Bars Alt',\r\nthe removal of the black bars will be automatically performed if\r\nthe Engine.ini file is found. If it is not found, you need to select\r\nthe path in 'Select Folder' and press 'Install'.\r\n\n" +
+                "• To remove only the main effects, such as Lens Distortion,\r\nBlack Bars, and Chromatic Aberration, select Remove Post\r\nProcessing.\r\n\n" +
+                "• To remove all effects, select Remove All Post Processing\r\n(includes film grain).\r\n\n" +
+                "• To restore the Post Processing effects, simply select\r\n'Restore Post Processing', and the Engine.ini file will be replaced\r\nwith the default file.\r\n\n" +
+                "• If the Frame Generation is not visible, remove the black bars."
+            },
+            {
+                "High On Life",
+                "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
+                "2 - Enable Fake Nvidia Gpu. (only AMD and GTX)\r\n"
+            },
+            {
+                "Hogwarts Legacy",
+                "1 - Select a version of the mod of your choice (versions from 0.9.0\r\n" +
+                "onwards are recommended to fix UI flickering).\r\n" +
+                "2 - Enable the 'Enable Signature Override' checkbox if the mod\r\ndoesn't work.\r\n" +
+                "3 - Enable Fake Nvidia GPU (Only for AMD GPUs).\r\n" +
+                "4 - Select 'Default' in Nvngx.dll.\r\n"
+            },
+            {
+                "Hitman 3",
+                "1 - Select a mod of your preference. (0.10.3 is recommended\r\n" +
+                "but if it doesn’t work, try 0.10.2)\r\n" +
+                "2 - Check the box for Fake Nvidia GPU (AMD/GTX).\r\n" +
+                "3 - In the game, select FSR and Frame Generation. If Frame\r\n" +
+                "Generation is not available, you can check the Nvapi Results\r\n" +
+                "box or download the file EnableDLSSFrameGenerationHitmanIII.reg\r\n" +
+                "and run it. This will activate Frame Generation even if\r\n" +
+                "it is not available.\r\n"
+            },
+            {
+                "Horizon Forbidden West",
+                "1 - Select Horizon Forbidden West FSR3 or Optiscaler FSR 3.1/DLSS and install\r\n" +
+                "2 - Choose Xess or FSR on the initial setup screen, turn on Frame\r\n" +
+                "Generation, and do not select DLSS, otherwise the game will crash\r\n" +
+                "3 - In-game, select the Low quality preset, then adjust the settings as\r\n" +
+                "desired, but do not modify options below Hair Quality\r\n" +
+                "4 - Select Xess or FSR.\r\n"
+            },
         };
 
         #endregion
@@ -303,7 +490,24 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Deathloop","Df.png"},
                 {"Dragons Dogma 2","Dg2.png"},
                 {"Dying Light 2","Dl2.png"},
-                {"Elden Ring","Elden.png"}
+                {"Elden Ring","Elden.png"},
+                {"Everspace 2","Es2.png"},
+                {"Evil West","Ew.png"},
+                {"Fist Forged in Shadow Torch","Fist.png"},
+                {"Flintlock: The Siege of Dawn","Flint.png"},
+                {"Fort Solis","Fort.png"},
+                {"Forza Horizon 5","Forza.png"},
+                {"F1 2022","F1.png"},
+                {"F1 2023","F1_23.png"},
+                {"GTA V","GtaV.png"},
+                {"Ghost of Tsushima","GhostT.png"},
+                {"Ghostrunner 2","Ghost2.png"},
+                {"Hellblade: Senua's Sacrifice","Hell.png"},
+                {"Hellblade 2","Hell2.png"},
+                {"High On Life","Hol.png"},
+                {"Hitman 3","Hitman.png"},
+                {"Hogwarts Legacy","Hog.png"},
+                {"Horizon Forbidden West","HZDF.png"}
             };
             #endregion
 

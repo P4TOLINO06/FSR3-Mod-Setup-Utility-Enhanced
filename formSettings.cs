@@ -1259,7 +1259,7 @@ namespace FSR3ModSetupUtilityEnhanced
             pendingItems.Clear();
 
             buttonAddOn.Top = buttonNvngx.Top + 30;
-            panelAddOn2.Top = panelNvngx.Top + 35;
+            panelAddOn2.Top = panelNvngx.Top + 33;
             buttonAddUps.Top = buttonNvngx.Top + 30;
             panelAddOnUps.Top = panelNvngx.Top + 32;
             buttonFgMethod.Top = buttonAddOn.Top + 30;
@@ -2738,8 +2738,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     if (folderAw2.ContainsKey(selectMod))
                     {
-                    CleanupMod(del_aw2, folderAw2);
-                    #region RestoreNvidiaSignatureChecks
+                        CleanupMod(del_aw2, folderAw2);
+                        #region RestoreNvidiaSignatureChecks
                     if (selectMod == "Alan Wake 2 FG RTX")
                     {
                         string path_aw2_en = @"mods\\FSR3_GOT\\DLSS FG\\RestoreNvidiaSignatureChecks.reg";
@@ -2766,6 +2766,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
                             MessageBox.Show("Post-processing effects successfully restored", "Sucess", MessageBoxButtons.OK);
                         }
+
+                        File.Delete(pathReplaceInAw2 + "\\renderer.ini");
                     }
                     #endregion
                 }
@@ -3492,25 +3494,25 @@ namespace FSR3ModSetupUtilityEnhanced
                 panelAddOn2.Top = buttonAddOn.Top + 30;
 
                 buttonFgMethod.Top = panelAddOn2.Top;
-                panelFgMethod.Top = buttonAddOn.Top + 30;
+                panelFgMethod.Top = buttonAddOn.Top + 35;
             }
             else
             {
                 buttonAddOn.Top = panelNvngx.Top + 72;
                 panelAddOn2.Top = buttonAddOn.Top + 28;
 
-                buttonFgMethod.Top = panelAddOn2.Top + 3;
-                panelFgMethod.Top = buttonAddOn.Top;
+                buttonFgMethod.Top = panelAddOn2.Top + 2;
+                panelFgMethod.Top = buttonAddOn.Top + 62;
             }
 
             if (panelAddOn2.Visible == true)
             {
-                buttonFgMethod.Top = panelAddOn2.Top + 48;
-                panelFgMethod.Top = buttonAddOn.Top + 101;
+                buttonFgMethod.Top = panelAddOn2.Top + 52;
+                panelFgMethod.Top = buttonAddOn.Top + 104;
             }
             else
             {
-                panelFgMethod.Top = buttonAddOn.Top + 58;
+                panelFgMethod.Top = buttonAddOn.Top + 60;
             }
             ShowSubMenu(panelNvngx);
         }
@@ -3557,10 +3559,10 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             if (panelAddOn2.Visible == true && panelNvngx.Visible == true)
             {
-                buttonFgMethod.Top = panelAddOn2.Top + 3;
+                buttonFgMethod.Top = panelAddOn2.Top + 2;
                 panelFgMethod.Top = buttonAddOn.Top + 57;
             }
-            else if (panelAddOn2.Visible == true)
+            else if (panelAddOn2.Visible == true && panelNvngx.Visible == false)
             {
                 buttonFgMethod.Top = panelAddOn2.Top;
                 panelFgMethod.Top = buttonAddOn.Top + 57;
