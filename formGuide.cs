@@ -405,6 +405,73 @@ namespace FSR3ModSetupUtilityEnhanced
                 "desired, but do not modify options below Hair Quality\r\n" +
                 "4 - Select Xess or FSR.\r\n"
             },
+            {
+                "Icarus",
+                "1 - Select Icarus FSR3 in mod version.\r\n" +
+                "2 - If the option selected is RTX, confirm the window that appears.\r\n" +
+                "3 - In case you can't see Frame Generation in the game, select replace_dlss_fg in Mod Operates.\r\n" +
+                "4 - Start the game in DX12, if the game exe is in the destination folder where the mod was\r\n" +
+                "installed, a DX12 shortcut will be created on your Desktop. If the exe is not found, you\r\n" +
+                "need to create a shortcut and in the properties, at the end of Target, add -dx12 outside the\r\n" +
+                "quotes if there are any, don't forget to put a space between -dx12 and the path.\r\n" +
+                "5 - Run the game through the executable.\r\n"
+            },
+            {
+                "Judgment\r\n",
+                "1 - Select a mod of your preference. (0.10.3 is recommended)\r\n" +
+                "2 - In the game, select FSR 2.1\r\n"
+            },
+            {
+                "Jusant",
+                "1 - Select a mod of your preference (0.10.3 is recommended)\r\n" +
+                "2 - Check the box for Fake Nvidia GPU. If the mod doesn’t work, also check Nvapi Results (only for AMD and GTX) and select Default for Nvngx.dll\r\n" +
+                "3 - In-game, select DLSS and check the Frame Generation box.\r\n"
+            },
+            {
+                "Kena: Bridge of Spirits",
+                "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
+                "2 - Activate Fake Nvidia GPU and Nvapi Results (AMD only).\r\n"
+            },
+            {
+                "Layers of Fear",
+                "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
+                "2 - Check the box Fake Nvidia GPU (AMD/GTX).\r\n" +
+                "3 - If you don't notice Frame Generation, select Replace DLSS FG in 'Mod Operates'.\r\n" +
+                "4 - In the game, select Frame Generation and DLSS or FSR.\r\n"
+            },
+            {
+                "Lies of P",
+                "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
+                "2 - Activate Fake Nvidia Gpu and UE Compatibility Mode (AMD only).\r\n" +
+                "3 - To fix the flickering of the HUD, first select DLSS Quality,\r\n" +
+                "   then select FSR Quality (without disabling DLSS), then select DLSS again.\r\n"
+            },
+            {
+                "Loopmancer",
+                "1 - Select a mod of your preference (0.10.3 is recommended)\r\n" +
+                "2 - Check the box Fake Nvidia GPU. (AMD/GTX)\r\n" +
+                "3 - In the game, select DLSS or FSR\r\n"
+            },
+            {
+                "Lords of the Fallen",
+                "1 - Run the game through the launch.bat file. During the mod\ninstallation, you will be asked if you want to create a shortcut\nfor the .bat file on the desktop. If you don't want to, run the\n.bat file directly from the folder where the mod was installed.\r\n" +
+                "2 - In-game, enable Frame Generation and select FSR or DLSS.\r\n"
+            },
+            {
+                "Manor Lords",
+                "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
+                "2 - Check the Fake Nvidia GPU box. (Only for AMD/GTX).\r\n" +
+                "3 - In-game, select DLSS.\r\n"
+            },
+            {
+                "Martha Is Dead",
+                "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
+                "2 - Select Default in Nvngx\r\n" +
+                "3 - Execute Enable Signature Override\r\n" +
+                "4 - In Mod Operates, select 'Replace DLSS FG'\r\n" +
+                "5 - Activate Fake Nvidia Gpu (AMD only)\r\n" +
+                "• To fix the flickering on the Hud, set the screen mode to fullscreen (windowed), select FSR 1.0, turn off motion blur and depth of field, check Motion Blur and Depth of Field again after saving the settings. If they don't turn off, turn them off again.\r\n"
+            }
         };
 
         #endregion
@@ -507,8 +574,19 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"High On Life","Hol.png"},
                 {"Hitman 3","Hitman.png"},
                 {"Hogwarts Legacy","Hog.png"},
-                {"Horizon Forbidden West","HZDF.png"}
+                {"Horizon Forbidden West","HZDF.png"},
+                {"Icarus","Icarus.png"},
+                {"Judgment","Jud.png"},
+                {"Jusant","Jusant.png"},
+                {"Kena: Bridge of Spirits","KENA.png"},
+                {"Layers of Fear","Layers.png"},
+                {"Lies of P","Lop.png"},
+                {"Loopmancer","Loopmancer.png"},
+                {"Lords of the Fallen","Lotf.png"},
+                {"Manor Lords","Manor.png"},
+                {"Martha Is Dead","Martha.png"}
             };
+
             #endregion
 
             foreach (var guideName in gamesToAdd)

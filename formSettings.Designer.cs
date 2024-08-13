@@ -587,7 +587,7 @@
             optionsNvngx.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             optionsNvngx.ForeColor = Color.White;
             optionsNvngx.FormattingEnabled = true;
-            optionsNvngx.Items.AddRange(new object[] { "Default", "NVNGX Version 1", "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG" });
+            optionsNvngx.Items.AddRange(new object[] { "Default", "NVNGX Version 1", "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG", "Dlss 3.7.2", "Dlssg 3.7.2 FG", "Dlssd 3.7.2" });
             optionsNvngx.Location = new Point(3, 0);
             optionsNvngx.Name = "optionsNvngx";
             optionsNvngx.Size = new Size(163, 66);

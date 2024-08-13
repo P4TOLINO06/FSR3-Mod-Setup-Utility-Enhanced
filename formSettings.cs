@@ -621,6 +621,19 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
+        #region Folder Nvngx
+           Dictionary<string, string> folderNvngx = new Dictionary<string, string>
+            {
+                { "NVNGX Version 1", "mods\\Temp\\nvngx_global\\nvngx\\nvngx.ini" },
+                { "Xess 1.3", "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll" },
+                { "Dlss 3.7.0", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll" },
+                { "Dlss 3.7.0 FG", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll" },
+                { "Dlss 3.7.2", "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll"},
+                { "Dlssg 3.7.2 FG", "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll" },
+                { "Dlssd 3.7.2", "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll" }
+            };
+        #endregion
+
         #region Clean Dlss Global Files
         List<string> del_dlss_global_rtx = new List<string>
         {
@@ -2528,25 +2541,13 @@ namespace FSR3ModSetupUtilityEnhanced
                                 File.Copy(pathNvngx, selectFolder + "\\nvngx.dll", true);
                             }
                         }
-                        if (optNvngx.Contains("NVNGX Version 1"))
+                        foreach (var fileDll in folderNvngx)
                         {
-                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx.ini";
-                            File.Copy(pathNvngx, selectFolder + "\\nvngx.ini", true);
-                        }
-                        if (optNvngx.Contains("Xess 1.3"))
-                        {
-                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll";
-                            File.Copy(pathNvngx, selectFolder + "\\libxess.dll", true);
-                        }
-                        if (optNvngx.Contains("Dlss 3.7.0"))
-                        {
-                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll";
-                            File.Copy(pathNvngx, selectFolder + "\\nvngx_dlss.dll", true);
-                        }
-                        if (optNvngx.Contains("Dlss 3.7.0 FG"))
-                        {
-                            pathNvngx = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll";
-                            File.Copy(pathNvngx, selectFolder + "\\nvngx_dlssg.dll", true);
+                            if (optNvngx.Contains(fileDll.Key))
+                            {
+                                string fileName = Path.GetFileName(fileDll.Value);
+                                File.Copy(fileDll.Value, Path.Combine(selectFolder, fileName), true);
+                            }
                         }
                     }
                     foreach (string optDxgi in optionsDxgi.CheckedItems)
@@ -3523,12 +3524,11 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void ShowSelectedNvngx(object sender, EventArgs e)
         {
-            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG" };
+            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG", "Dlss 3.7.2", "Dlssg 3.7.2 FG", "Dlssd 3.7.2" };
             foreach (string opt in optNvngx)
             {
 
             }
-
         }
         private void optionsNvngx_ItemCheck(object sender, ItemCheckEventArgs e)
         {
