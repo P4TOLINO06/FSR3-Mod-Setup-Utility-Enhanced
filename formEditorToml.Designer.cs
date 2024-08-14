@@ -98,7 +98,7 @@
             // 
             toolStripMenuItem2.BackColor = Color.DarkGray;
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(110, 22);
+            toolStripMenuItem2.Size = new Size(180, 22);
             toolStripMenuItem2.Text = "Save";
             toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
@@ -106,7 +106,7 @@
             // 
             toolStripMenuItem3.BackColor = Color.DarkGray;
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(110, 22);
+            toolStripMenuItem3.Size = new Size(180, 22);
             toolStripMenuItem3.Text = "Reload";
             toolStripMenuItem3.Click += toolStripMenuItem3_Click;
             // 
@@ -114,14 +114,16 @@
             // 
             toolStripMenuItem4.BackColor = Color.DarkGray;
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(110, 22);
+            toolStripMenuItem4.Size = new Size(180, 22);
             toolStripMenuItem4.Text = "Exit";
             toolStripMenuItem4.Click += toolStripMenuItem4_Click;
             // 
             // labelToml
             // 
             labelToml.AutoSize = true;
+            labelToml.BackColor = Color.Transparent;
             labelToml.Font = new Font("Segoe UI Semibold", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelToml.ForeColor = Color.DimGray;
             labelToml.Location = new Point(0, 23);
             labelToml.Name = "labelToml";
             labelToml.Size = new Size(213, 50);

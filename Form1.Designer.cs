@@ -249,7 +249,7 @@
             Date.AutoSize = true;
             Date.BackColor = Color.Transparent;
             Date.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Date.ForeColor = SystemColors.ButtonShadow;
+            Date.ForeColor = Color.Gainsboro;
             Date.Location = new Point(619, 95);
             Date.Name = "Date";
             Date.Size = new Size(42, 20);
@@ -272,7 +272,7 @@
             DateOwLabel.AutoSize = true;
             DateOwLabel.BackColor = Color.Transparent;
             DateOwLabel.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DateOwLabel.ForeColor = Color.LightGray;
+            DateOwLabel.ForeColor = Color.Gainsboro;
             DateOwLabel.Location = new Point(3, 0);
             DateOwLabel.Name = "DateOwLabel";
             DateOwLabel.Size = new Size(306, 65);
@@ -297,7 +297,7 @@
             ClockLabel.BackColor = Color.Transparent;
             ClockLabel.FlatStyle = FlatStyle.Flat;
             ClockLabel.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ClockLabel.ForeColor = Color.LightGray;
+            ClockLabel.ForeColor = Color.Gainsboro;
             ClockLabel.Location = new Point(3, 0);
             ClockLabel.Name = "ClockLabel";
             ClockLabel.Size = new Size(168, 50);

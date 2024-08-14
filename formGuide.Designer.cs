@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button1 = new Button();
+            listBox1 = new ListBox();
             panel4 = new Panel();
             richTextBox1 = new RichTextBox();
             panelImage = new Panel();
-            button1 = new Button();
-            listBox1 = new ListBox();
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
@@ -46,16 +46,45 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.None;
-            panel1.AutoSize = true;
             panel1.BackColor = Color.Gray;
+            panel1.Controls.Add(listBox1);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panelImage);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(listBox1);
             panel1.Location = new Point(72, 57);
             panel1.Name = "panel1";
             panel1.Size = new Size(1111, 550);
             panel1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Gray;
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderColor = Color.Silver;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Silver;
+            button1.Location = new Point(3, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(177, 36);
+            button1.TabIndex = 2;
+            button1.Text = "Games";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.BackColor = Color.Silver;
+            listBox1.BorderStyle = BorderStyle.FixedSingle;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Items.AddRange(new object[] { "Initial Information", "Add-on Mods", "Optiscaler Method", "Optiscaler FSR 3.1/DLSS", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark", "A Plague Tale Requiem", "Assassin's Creed Valhalla", "Atomic Heart", "Baldur's Gate 3", "Blacktail", "Banishers Ghost of New Eden", "Bright Memory: Infinite", "Brothers a Tale of Two Sons", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss Rockay City", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Space Remake", "Dead Island 2", "Death Stranding Director's Cut", "Deathloop", "Dragons Dogma 2", "Dying Light 2", "Elden Ring", "Everspace 2", "Evil West", "Fist Forged in Shadow Torch", "Flintlock: The Siege of Dawn", "Fort Solis", "Forza Horizon 5", "F1 2022", "F1 2023", "GTA V", "Ghost of Tsushima", "Ghostrunner 2", "Hellblade: Senua's Sacrifice", "Hellblade 2", "High On Life", "Hitman 3", "Hogwarts Legacy", "Horizon Forbidden West", "Icarus", "Judgment", "Jusant", "Kena: Bridge of Spirits", "Layers of Fear", "Lies of P", "Loopmancer", "Lords of the Fallen", "Manor Lords", "Martha Is Dead", "Marvel's Guardians of the Galaxy", "Metro Exodus Enhanced", "Monster Hunter Rise", "Nobody Wants To Die", "Outpost Infinity Siege", "Pacific Drive", "Palworld", "Ratchet and Clank", "Rise of The Tomb Raider", "Ready or Not", "Red Dead Redemption 2", "Red Dead Redemption 2 MIX", "Red Dead Redemption Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam" });
+            listBox1.Location = new Point(3, 42);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(177, 92);
+            listBox1.TabIndex = 0;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // panel4
             // 
@@ -91,34 +120,6 @@
             panelImage.TabIndex = 3;
             panelImage.Paint += panelImage_Paint;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.Gray;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderColor = Color.Silver;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Silver;
-            button1.Location = new Point(0, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(159, 32);
-            button1.TabIndex = 2;
-            button1.Text = "Games";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Items.AddRange(new object[] { "Initial Information", "Add-on Mods", "Optiscaler Method", "Optiscaler FSR 3.1/DLSS", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark", "A Plague Tale Requiem", "Assassin's Creed Valhalla", "Atomic Heart", "Baldur's Gate 3", "Blacktail", "Banishers Ghost of New Eden", "Bright Memory: Infinite", "Brothers a Tale of Two Sons", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss Rockay City", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Space Remake", "Dead Island 2", "Death Stranding Director's Cut", "Deathloop", "Dragons Dogma 2", "Dying Light 2", "Elden Ring", "Everspace 2", "Evil West", "Fist Forged in Shadow Torch", "Flintlock: The Siege of Dawn", "Fort Solis", "Forza Horizon 5", "F1 2022", "F1 2023", "GTA V", "Ghost of Tsushima", "Ghostrunner 2", "Hellblade: Senua's Sacrifice", "Hellblade 2", "High On Life", "Hitman 3", "Hogwarts Legacy", "Horizon Forbidden West", "Icarus", "Judgment", "Jusant", "Kena: Bridge of Spirits", "Layers of Fear", "Lies of P", "Loopmancer", "Lords of the Fallen", "Manor Lords", "Martha Is Dead" });
-            listBox1.Location = new Point(0, 37);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(159, 94);
-            listBox1.TabIndex = 0;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -142,9 +143,9 @@
             // 
             // panel3
             // 
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel3.Controls.Add(panel1);
             panel3.Controls.Add(panel2);
-            panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(1258, 486);
@@ -166,7 +167,6 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             ResumeLayout(false);
         }
 

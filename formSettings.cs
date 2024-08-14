@@ -3302,7 +3302,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     mainPanelUpsRes.Left = newLabel5Left;
                     label6.Top = label3.Top + label3.Height + 70;
                     label6.Left = label3.Left;
-                    panelAddOn.Top = label3.Top + label3.Height + 130;
+                    panelAddOn.Top = label3.Top + label3.Height + 128;
                     panelAddOn.Left = label3.Left;
                     panel1.Location = new Point(10, 10);
                     panel1.Size = new Size(ClientSize.Width - 20, ClientSize.Height - 20);
@@ -3311,7 +3311,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     label5.Top = label3.Top + label3.Height + 70;
                     label5.Left = label3.Left;
-                    mainPanelUpsRes.Top = label3.Top + label3.Height + 130;
+                    mainPanelUpsRes.Top = label3.Top + label3.Height + 128;
                     mainPanelUpsRes.Left = label3.Left;
                     label6.Top = label5.Top + label5.Height - 52;
                     label6.Left = label5.Left + 511;

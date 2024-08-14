@@ -43,8 +43,10 @@
             // 
             // listGames
             // 
+            listGames.BackColor = Color.Silver;
             listGames.CausesValidation = false;
             listGames.Cursor = Cursors.Hand;
+            listGames.FlatStyle = FlatStyle.Flat;
             listGames.FormattingEnabled = true;
             listGames.IntegralHeight = false;
             listGames.Items.AddRange(new object[] { "Select FSR Version", "A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark", "Assassin's Creed Mirage", "Assassin's Creed Valhalla", "Atomic Heart", "Banishers: Ghosts of New Eden", "Blacktail", "Baldur's Gate 3", "Bright Memory: Infinite", "Brothers: A Tale of Two Sons Remake", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss: Rockay City", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Dead Space (2023)", "Death Stranding Director's Cut", "Deathloop", "Dragons Dogma 2", "Dying Light 2", "Elden Ring", "Everspace 2", "Evil West", "F1 2022", "F1 2023", "FIST: Forged In Shadow Torch", "Flintlock: The Siege Of Dawn", "Fort Solis", "Forza Horizon 5", "GTA V", "Ghostrunner 2", "Ghost of Tsushima", "Hellblade: Senua's Sacrifice", "Hellblade 2", "High On Life", "Hitman 3", "Horizon Forbidden West", "Horizon Zero Dawn", "Hogwarts Legacy", "Icarus", "Judgment", "Jusant", "Kena: Bridge of Spirits", "Layers of Fear", "Lies of P", "Lords of the Fallen", "Loopmancer", "Manor Lords", "Martha Is Dead", "Marvel's Guardians of the Galaxy", "Marvel's Spider-Man Miles Morales", "Marvel's Spider-Man Remastered", "Metro Exodus Enhanced Edition", "MOTO GP 24", "Monster Hunter Rise", "Nightingale", "Nobody Wants To Die", "Outpost: Infinity Siege", "Pacific Drive", "Palworld", "Ratchet & Clank - Rift Apart", "Ready or Not", "Red Dead Redemption 2", "Remnant II", "Returnal", "Ripout", "RoboCop: Rogue City", "Saints Row", "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Shadow of the Tomb Raider", "Smalland", "STAR WARS Jedi: Survivor", "Steelrising", "STARFIELD", "TEKKEN 8", "The Callisto Protocol", "The Chant", "The Invincible", "The Last of Us Part I", "The Medium", "The Outer Worlds: Spacer's Choice Edition", "The Thaumaturge", "The Witcher 3", "Uncharted Legacy of Thieves Collection", "Wanted: Dead" });
@@ -59,7 +61,9 @@
             // listFSR
             // 
             listFSR.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            listFSR.BackColor = Color.Silver;
             listFSR.Cursor = Cursors.Hand;
+            listFSR.FlatStyle = FlatStyle.Flat;
             listFSR.FormattingEnabled = true;
             listFSR.Items.AddRange(new object[] { "SDK", "2.0", "2.1", "2.2", "RDR2" });
             listFSR.Location = new Point(2, 3);
@@ -74,10 +78,10 @@
             labelSelectGame.BackColor = Color.Black;
             labelSelectGame.FlatStyle = FlatStyle.Flat;
             labelSelectGame.Font = new Font("Lucida Sans Unicode", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelSelectGame.ForeColor = Color.Ivory;
+            labelSelectGame.ForeColor = Color.Gainsboro;
             labelSelectGame.Location = new Point(3, 0);
             labelSelectGame.Name = "labelSelectGame";
-            labelSelectGame.Size = new Size(210, 49);
+            labelSelectGame.Size = new Size(210, 48);
             labelSelectGame.TabIndex = 2;
             labelSelectGame.Text = "SELECT GAME";
             labelSelectGame.TextAlign = ContentAlignment.MiddleCenter;

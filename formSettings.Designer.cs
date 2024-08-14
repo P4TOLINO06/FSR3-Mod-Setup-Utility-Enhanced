@@ -184,7 +184,7 @@
             buttonFg31.BackColor = Color.Gray;
             buttonFg31.FlatAppearance.BorderSize = 0;
             buttonFg31.FlatStyle = FlatStyle.Flat;
-            buttonFg31.ForeColor = Color.White;
+            buttonFg31.ForeColor = Color.Gainsboro;
             buttonFg31.Location = new Point(-3, 31);
             buttonFg31.Name = "buttonFg31";
             buttonFg31.Size = new Size(166, 31);
@@ -198,7 +198,7 @@
             buttonFg3.BackColor = Color.Gray;
             buttonFg3.FlatAppearance.BorderSize = 0;
             buttonFg3.FlatStyle = FlatStyle.Flat;
-            buttonFg3.ForeColor = Color.White;
+            buttonFg3.ForeColor = Color.Gainsboro;
             buttonFg3.Location = new Point(-3, 0);
             buttonFg3.Name = "buttonFg3";
             buttonFg3.Size = new Size(166, 31);
@@ -385,7 +385,7 @@
             buttonAddUps3.BackColor = Color.Gray;
             buttonAddUps3.FlatAppearance.BorderSize = 0;
             buttonAddUps3.FlatStyle = FlatStyle.Flat;
-            buttonAddUps3.ForeColor = Color.White;
+            buttonAddUps3.ForeColor = Color.Gainsboro;
             buttonAddUps3.Location = new Point(0, 0);
             buttonAddUps3.Name = "buttonAddUps3";
             buttonAddUps3.Size = new Size(148, 31);
@@ -399,7 +399,7 @@
             buttonAddUps2.BackColor = Color.Gray;
             buttonAddUps2.FlatAppearance.BorderSize = 0;
             buttonAddUps2.FlatStyle = FlatStyle.Flat;
-            buttonAddUps2.ForeColor = Color.White;
+            buttonAddUps2.ForeColor = Color.Gainsboro;
             buttonAddUps2.Location = new Point(0, 28);
             buttonAddUps2.Name = "buttonAddUps2";
             buttonAddUps2.Size = new Size(148, 31);
@@ -413,7 +413,7 @@
             buttonAddUps1.BackColor = Color.Gray;
             buttonAddUps1.FlatAppearance.BorderSize = 0;
             buttonAddUps1.FlatStyle = FlatStyle.Flat;
-            buttonAddUps1.ForeColor = Color.White;
+            buttonAddUps1.ForeColor = Color.Gainsboro;
             buttonAddUps1.Location = new Point(0, 58);
             buttonAddUps1.Name = "buttonAddUps1";
             buttonAddUps1.Size = new Size(148, 31);
@@ -494,10 +494,10 @@
             optionsAddOn.BackColor = Color.DimGray;
             optionsAddOn.BorderStyle = BorderStyle.None;
             optionsAddOn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            optionsAddOn.ForeColor = Color.White;
+            optionsAddOn.ForeColor = Color.Silver;
             optionsAddOn.FormattingEnabled = true;
             optionsAddOn.Items.AddRange(new object[] { "Optiscaler", "Tweak" });
-            optionsAddOn.Location = new Point(0, 0);
+            optionsAddOn.Location = new Point(0, 4);
             optionsAddOn.Name = "optionsAddOn";
             optionsAddOn.Size = new Size(156, 66);
             optionsAddOn.TabIndex = 7;
@@ -533,7 +533,7 @@
             optionsDxgi.BackColor = Color.DimGray;
             optionsDxgi.BorderStyle = BorderStyle.None;
             optionsDxgi.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            optionsDxgi.ForeColor = Color.White;
+            optionsDxgi.ForeColor = Color.Gainsboro;
             optionsDxgi.FormattingEnabled = true;
             optionsDxgi.Items.AddRange(new object[] { "Dxgi.dll", "D3D12.dll" });
             optionsDxgi.Location = new Point(3, 0);
@@ -563,6 +563,7 @@
             buttonNvngx.FlatAppearance.BorderSize = 0;
             buttonNvngx.FlatStyle = FlatStyle.Flat;
             buttonNvngx.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonNvngx.ForeColor = Color.Black;
             buttonNvngx.Location = new Point(0, 0);
             buttonNvngx.Name = "buttonNvngx";
             buttonNvngx.Size = new Size(163, 28);
@@ -585,7 +586,7 @@
             optionsNvngx.BackColor = Color.DimGray;
             optionsNvngx.BorderStyle = BorderStyle.None;
             optionsNvngx.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            optionsNvngx.ForeColor = Color.White;
+            optionsNvngx.ForeColor = Color.Gainsboro;
             optionsNvngx.FormattingEnabled = true;
             optionsNvngx.Items.AddRange(new object[] { "Default", "NVNGX Version 1", "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG", "Dlss 3.7.2", "Dlssg 3.7.2 FG", "Dlssd 3.7.2" });
             optionsNvngx.Location = new Point(3, 0);
@@ -610,7 +611,6 @@
             // label5
             // 
             label5.BackColor = Color.Gray;
-            label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
             label5.ImageAlign = ContentAlignment.TopLeft;
@@ -618,7 +618,7 @@
             label5.Name = "label5";
             label5.Size = new Size(496, 52);
             label5.TabIndex = 16;
-            label5.Text = "Resolution/Upscaler";
+            label5.Text = "Resolution | Upscaler";
             label5.TextAlign = ContentAlignment.TopCenter;
             // 
             // mainPanelUpsRes
@@ -650,7 +650,7 @@
             button2160.BackColor = Color.Gray;
             button2160.FlatAppearance.BorderSize = 0;
             button2160.FlatStyle = FlatStyle.Flat;
-            button2160.ForeColor = Color.White;
+            button2160.ForeColor = Color.Gainsboro;
             button2160.Location = new Point(0, 56);
             button2160.Name = "button2160";
             button2160.Size = new Size(163, 31);
@@ -664,7 +664,7 @@
             button1440.BackColor = Color.Gray;
             button1440.FlatAppearance.BorderSize = 0;
             button1440.FlatStyle = FlatStyle.Flat;
-            button1440.ForeColor = Color.White;
+            button1440.ForeColor = Color.Gainsboro;
             button1440.Location = new Point(0, 28);
             button1440.Name = "button1440";
             button1440.Size = new Size(163, 31);
@@ -678,7 +678,7 @@
             button1080.BackColor = Color.Gray;
             button1080.FlatAppearance.BorderSize = 0;
             button1080.FlatStyle = FlatStyle.Flat;
-            button1080.ForeColor = Color.White;
+            button1080.ForeColor = Color.Gainsboro;
             button1080.Location = new Point(0, 0);
             button1080.Name = "button1080";
             button1080.Size = new Size(163, 31);
@@ -729,7 +729,7 @@
             buttonNative.BackColor = Color.Gray;
             buttonNative.FlatAppearance.BorderSize = 0;
             buttonNative.FlatStyle = FlatStyle.Flat;
-            buttonNative.ForeColor = Color.White;
+            buttonNative.ForeColor = Color.Gainsboro;
             buttonNative.Location = new Point(0, 175);
             buttonNative.Name = "buttonNative";
             buttonNative.Size = new Size(123, 31);
@@ -743,7 +743,7 @@
             buttonUltraP.BackColor = Color.Gray;
             buttonUltraP.FlatAppearance.BorderSize = 0;
             buttonUltraP.FlatStyle = FlatStyle.Flat;
-            buttonUltraP.ForeColor = Color.White;
+            buttonUltraP.ForeColor = Color.Gainsboro;
             buttonUltraP.Location = new Point(0, 146);
             buttonUltraP.Name = "buttonUltraP";
             buttonUltraP.Size = new Size(123, 31);
@@ -757,7 +757,7 @@
             buttonPerf.BackColor = Color.Gray;
             buttonPerf.FlatAppearance.BorderSize = 0;
             buttonPerf.FlatStyle = FlatStyle.Flat;
-            buttonPerf.ForeColor = Color.White;
+            buttonPerf.ForeColor = Color.Gainsboro;
             buttonPerf.Location = new Point(0, 117);
             buttonPerf.Name = "buttonPerf";
             buttonPerf.Size = new Size(123, 31);
@@ -771,7 +771,7 @@
             buttonBalanced.BackColor = Color.Gray;
             buttonBalanced.FlatAppearance.BorderSize = 0;
             buttonBalanced.FlatStyle = FlatStyle.Flat;
-            buttonBalanced.ForeColor = Color.White;
+            buttonBalanced.ForeColor = Color.Gainsboro;
             buttonBalanced.Location = new Point(0, 86);
             buttonBalanced.Name = "buttonBalanced";
             buttonBalanced.Size = new Size(123, 31);
@@ -848,7 +848,7 @@
             buttonQ.BackColor = Color.Gray;
             buttonQ.FlatAppearance.BorderSize = 0;
             buttonQ.FlatStyle = FlatStyle.Flat;
-            buttonQ.ForeColor = Color.White;
+            buttonQ.ForeColor = Color.Gainsboro;
             buttonQ.Location = new Point(0, 56);
             buttonQ.Name = "buttonQ";
             buttonQ.Size = new Size(123, 31);
@@ -862,7 +862,7 @@
             buttonUltraQ.BackColor = Color.Gray;
             buttonUltraQ.FlatAppearance.BorderSize = 0;
             buttonUltraQ.FlatStyle = FlatStyle.Flat;
-            buttonUltraQ.ForeColor = Color.White;
+            buttonUltraQ.ForeColor = Color.Gainsboro;
             buttonUltraQ.Location = new Point(0, 28);
             buttonUltraQ.Name = "buttonUltraQ";
             buttonUltraQ.Size = new Size(123, 31);
@@ -876,7 +876,7 @@
             button7.BackColor = Color.Gray;
             button7.FlatAppearance.BorderSize = 0;
             button7.FlatStyle = FlatStyle.Flat;
-            button7.ForeColor = Color.White;
+            button7.ForeColor = Color.Gainsboro;
             button7.Location = new Point(0, 0);
             button7.Name = "button7";
             button7.Size = new Size(123, 31);
@@ -933,7 +933,7 @@
             modOpt5.BackColor = Color.Gray;
             modOpt5.FlatAppearance.BorderSize = 0;
             modOpt5.FlatStyle = FlatStyle.Flat;
-            modOpt5.ForeColor = Color.White;
+            modOpt5.ForeColor = Color.Gainsboro;
             modOpt5.Location = new Point(-2, 117);
             modOpt5.Name = "modOpt5";
             modOpt5.Size = new Size(168, 36);
@@ -946,7 +946,7 @@
             modOpt4.BackColor = Color.Gray;
             modOpt4.FlatAppearance.BorderSize = 0;
             modOpt4.FlatStyle = FlatStyle.Flat;
-            modOpt4.ForeColor = Color.White;
+            modOpt4.ForeColor = Color.Gainsboro;
             modOpt4.Location = new Point(-2, 82);
             modOpt4.Name = "modOpt4";
             modOpt4.Size = new Size(165, 36);
@@ -960,7 +960,7 @@
             modOpt3.BackColor = Color.Gray;
             modOpt3.FlatAppearance.BorderSize = 0;
             modOpt3.FlatStyle = FlatStyle.Flat;
-            modOpt3.ForeColor = Color.White;
+            modOpt3.ForeColor = Color.Gainsboro;
             modOpt3.Location = new Point(0, 56);
             modOpt3.Name = "modOpt3";
             modOpt3.Size = new Size(163, 31);
@@ -974,7 +974,7 @@
             modOpt2.BackColor = Color.Gray;
             modOpt2.FlatAppearance.BorderSize = 0;
             modOpt2.FlatStyle = FlatStyle.Flat;
-            modOpt2.ForeColor = Color.White;
+            modOpt2.ForeColor = Color.Gainsboro;
             modOpt2.Location = new Point(0, 28);
             modOpt2.Name = "modOpt2";
             modOpt2.Size = new Size(163, 31);
@@ -988,7 +988,7 @@
             modOpt1.BackColor = Color.Gray;
             modOpt1.FlatAppearance.BorderSize = 0;
             modOpt1.FlatStyle = FlatStyle.Flat;
-            modOpt1.ForeColor = Color.White;
+            modOpt1.ForeColor = Color.Gainsboro;
             modOpt1.Location = new Point(0, 0);
             modOpt1.Name = "modOpt1";
             modOpt1.Size = new Size(163, 31);
@@ -1042,7 +1042,7 @@
             label3.BackColor = Color.Gray;
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.Black;
+            label3.ForeColor = SystemColors.ControlText;
             label3.Location = new Point(53, 0);
             label3.Name = "label3";
             label3.Size = new Size(337, 52);
@@ -1064,7 +1064,7 @@
             AddOptionsSelect.BackColor = Color.DimGray;
             AddOptionsSelect.BorderStyle = BorderStyle.None;
             AddOptionsSelect.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            AddOptionsSelect.ForeColor = Color.White;
+            AddOptionsSelect.ForeColor = Color.Gainsboro;
             AddOptionsSelect.FormattingEnabled = true;
             AddOptionsSelect.Items.AddRange(new object[] { "Toml Editor", "Backup", "Fake Nvidia Gpu", "Nvapi Results", "Ue Compatibility Mode", "MacOS Crossover Support", "Auto Exposure", "Debug View", "Debug Tier Lines", "Off Frame Gen", "Disable Overlay", "Disable Console", "Ignore Ingame Fg", "Ignore Fg Resources", "Install lfz.sl.dlss", "Enable Signature Over", "Disable Signature Over", "Fps Limit" });
             AddOptionsSelect.Location = new Point(3, 3);
@@ -1120,7 +1120,7 @@
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
+            label1.ForeColor = Color.LightGray;
             label1.ImageAlign = ContentAlignment.BottomLeft;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
@@ -1130,6 +1130,9 @@
             // 
             // textBox1
             // 
+            textBox1.BackColor = Color.Silver;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.ForeColor = Color.Black;
             textBox1.Location = new Point(137, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(158, 23);
@@ -1138,6 +1141,7 @@
             // button1
             // 
             button1.Cursor = Cursors.Hand;
+            button1.ForeColor = Color.Black;
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.Location = new Point(301, 3);
             button1.Name = "button1";
@@ -1152,7 +1156,7 @@
             label2.BorderStyle = BorderStyle.FixedSingle;
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
+            label2.ForeColor = Color.LightGray;
             label2.Location = new Point(3, 29);
             label2.Name = "label2";
             label2.Size = new Size(128, 27);
@@ -1162,7 +1166,9 @@
             // 
             // listMods
             // 
+            listMods.BackColor = Color.Silver;
             listMods.Cursor = Cursors.Hand;
+            listMods.FlatStyle = FlatStyle.Flat;
             listMods.FormattingEnabled = true;
             listMods.Items.AddRange(new object[] { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0", "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3", "Uniscaler FSR 3.1", "Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS" });
             listMods.Location = new Point(137, 32);
