@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button1 = new Button();
             listBox1 = new ListBox();
+            button1 = new Button();
             panel4 = new Panel();
             richTextBox1 = new RichTextBox();
             panelImage = new Panel();
@@ -56,6 +56,19 @@
             panel1.Size = new Size(1111, 550);
             panel1.TabIndex = 1;
             // 
+            // listBox1
+            // 
+            listBox1.BackColor = Color.Silver;
+            listBox1.BorderStyle = BorderStyle.FixedSingle;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Items.AddRange(new object[] { "Initial Information", "Add-on Mods", "Optiscaler Method", "Optiscaler FSR 3.1/DLSS", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark", "A Plague Tale Requiem", "Assassin's Creed Valhalla", "Atomic Heart", "Baldur's Gate 3", "Black Myth: Wukong Bench Tool", "Blacktail", "Banishers Ghost of New Eden", "Bright Memory: Infinite", "Brothers a Tale of Two Sons", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss Rockay City", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Space Remake", "Dead Island 2", "Death Stranding Director's Cut", "Deathloop", "Dragons Dogma 2", "Dying Light 2", "Elden Ring", "Everspace 2", "Evil West", "Fist Forged in Shadow Torch", "Flintlock: The Siege of Dawn", "Fort Solis", "Forza Horizon 5", "F1 2022", "F1 2023", "GTA V", "Ghost of Tsushima", "Ghostrunner 2", "Hellblade: Senua's Sacrifice", "Hellblade 2", "High On Life", "Hitman 3", "Hogwarts Legacy", "Horizon Forbidden West", "Icarus", "Judgment", "Jusant", "Kena: Bridge of Spirits", "Layers of Fear", "Lies of P", "Loopmancer", "Lords of the Fallen", "Manor Lords", "Martha Is Dead", "Marvel's Guardians of the Galaxy", "Metro Exodus Enhanced", "Monster Hunter Rise", "Nobody Wants To Die", "Outpost Infinity Siege", "Pacific Drive", "Palworld", "Ratchet and Clank", "Rise of The Tomb Raider", "Ready or Not", "Red Dead Redemption 2", "Red Dead Redemption 2 MIX", "Red Dead Redemption Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam" });
+            listBox1.Location = new Point(3, 42);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(177, 92);
+            listBox1.TabIndex = 0;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
             // button1
             // 
             button1.BackColor = Color.Gray;
@@ -72,19 +85,6 @@
             button1.Text = "Games";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
-            // 
-            // listBox1
-            // 
-            listBox1.BackColor = Color.Silver;
-            listBox1.BorderStyle = BorderStyle.FixedSingle;
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Items.AddRange(new object[] { "Initial Information", "Add-on Mods", "Optiscaler Method", "Optiscaler FSR 3.1/DLSS", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark", "A Plague Tale Requiem", "Assassin's Creed Valhalla", "Atomic Heart", "Baldur's Gate 3", "Blacktail", "Banishers Ghost of New Eden", "Bright Memory: Infinite", "Brothers a Tale of Two Sons", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss Rockay City", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Space Remake", "Dead Island 2", "Death Stranding Director's Cut", "Deathloop", "Dragons Dogma 2", "Dying Light 2", "Elden Ring", "Everspace 2", "Evil West", "Fist Forged in Shadow Torch", "Flintlock: The Siege of Dawn", "Fort Solis", "Forza Horizon 5", "F1 2022", "F1 2023", "GTA V", "Ghost of Tsushima", "Ghostrunner 2", "Hellblade: Senua's Sacrifice", "Hellblade 2", "High On Life", "Hitman 3", "Hogwarts Legacy", "Horizon Forbidden West", "Icarus", "Judgment", "Jusant", "Kena: Bridge of Spirits", "Layers of Fear", "Lies of P", "Loopmancer", "Lords of the Fallen", "Manor Lords", "Martha Is Dead", "Marvel's Guardians of the Galaxy", "Metro Exodus Enhanced", "Monster Hunter Rise", "Nobody Wants To Die", "Outpost Infinity Siege", "Pacific Drive", "Palworld", "Ratchet and Clank", "Rise of The Tomb Raider", "Ready or Not", "Red Dead Redemption 2", "Red Dead Redemption 2 MIX", "Red Dead Redemption Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam" });
-            listBox1.Location = new Point(3, 42);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(177, 92);
-            listBox1.TabIndex = 0;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // panel4
             // 

@@ -103,6 +103,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - Press the END key to enter the mod menu, check the Frame Generation box to activate the mod; you can also adjust the Upscaler. (To activate Frame Generation, simply press the * key; you can also change the key in the mod menu.)"
             },
             {
+                "Black Myth: Wukong Bench Tool",
+                "RTX\n"+
+                "1 - Select 'RTX DLSS FG Wukong' and install.\r\n" +
+                "2 - In the game, select DLSS and Frame Generation.\r\n\r\n" +
+                "AMD/GTX\r\n" +
+                "1 - Select the 0.10.4 mod.\r\n" +
+                "2 - Check the box for Fake Nvidia GPU and Nvapi Results.\r\n" +
+                "3 - In the game, select DLSS and Frame Generation.\r\n" +
+                "4 - If you cannot see DLSS in the game, also check the Nvngx box, select Default, and install.\r\n"
+            },
+            {
                 "Blacktail",
                 "1 - Select a mod of your choice (0.10.3 is recommended).\r\n" +
                 "2 - Check the Fake Nvidia GPU box."
@@ -657,6 +668,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Assassin's Creed Valhalla","AcVal.png"},
                 {"Atomic Heart","Atomic.png"},
                 {"Baldur's Gate 3","Baldurs.png"},
+                {"Black Myth: Wukong Bench Tool","wukong.png" },
                 {"Blacktail","Black.png"},
                 {"Banishers Ghost of New Eden","Banishers.png"},
                 {"Bright Memory: Infinite","Bmi.png"},

@@ -25,6 +25,7 @@ using Button = System.Windows.Forms.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Text.Json;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -73,7 +74,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong Bench Tool" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -650,6 +651,13 @@ namespace FSR3ModSetupUtilityEnhanced
             "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg",
             "unins000.dat", "unins000.exe", "winmm.dll", "_nvngx.dll", "dlss_amd.txt"
 
+        };
+        #endregion
+
+        #region Clean DLSS To FSR
+        List<string> del_dlss_to_fsr = new List<string>
+        {
+            "dlssg_to_fsr3_amd_is_better.dll","version.dll"
         };
         #endregion
 
@@ -1335,7 +1343,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         }
 
-        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden", "Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
+        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong Bench Tool","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023", "FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead"};
 
@@ -1564,6 +1572,15 @@ namespace FSR3ModSetupUtilityEnhanced
             runReg("mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
         }
 
+        public void dlss_to_fsr()
+        {
+            string path_dlss_fsr = "mods\\DLSS_TO_FSR";
+
+            CopyFolder(path_dlss_fsr);
+
+            runReg("mods\\Temp\\disable signature override\\DisableSignatureOverride.reg");
+        }
+
         public void rdr2Fsr3()
         {
             CopyFSR(origins_rdr2_folder);
@@ -1628,6 +1645,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 catch { }
             }
             #endregion
+        }
+
+        public void wukongFsr3()
+        {
+            if (selectMod == "RTX DLSS FG Wukong")
+            {
+                dlss_to_fsr();
+            }
         }
 
         public async Task dd2Fsr3()
@@ -2462,6 +2487,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     dl2Fsr3();
                 }
+                if (gameSelected == "Black Myth: Wukong Bench Tool")
+                {
+                    wukongFsr3();
+                }
 
                 if (gameSelected == "Dragons Dogma 2")
                 {
@@ -2939,6 +2968,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 else if (selectMod == "DL2 DLSS FG")
                 {
                     CleanDlssGlobal("DL2 DLSS FG");
+                }
+                else if (gameSelected == "Black Myth: Wukong Bench Tool")
+                {
+                    CleanupMod3(del_dlss_to_fsr, "RTX DLSS FG Wukong");
                 }
 
                 else if (folderLotf.ContainsKey(selectMod))

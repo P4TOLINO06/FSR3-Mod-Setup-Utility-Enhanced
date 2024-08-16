@@ -65,6 +65,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Atomic Heart","Atomic.png"},
                     {"Baldur's Gate 3","BG3.png"},
                     {"Banishers: Ghosts of New Eden","Banishers.png" },
+                    {"Black Myth: Wukong Bench Tool","wukong.png"},
                     {"Blacktail","Black.png" },
                     {"Bright Memory: Infinite","Bmi.png"},
                     {"Brothers: A Tale of Two Sons Remake","Brothers.png" },
@@ -213,6 +214,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> flintList = new List<string> {"Optiscaler FSR 3.1/DLSS" };
             List<string> codList = new List<string> {"COD MW3 FSR3" };
             List<string> dl2List = new List<string> { "DL2 DLSS FG" };
+            List<string> wukongList = new List<string> { "RTX DLSS FG Wukong" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS"};
             #endregion;
@@ -238,7 +240,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 tekkenList,
                 flintList,
                 codList,
-                dl2List
+                dl2List,
+                wukongList
             };
             #endregion
 
@@ -330,6 +333,10 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Dying Light 2")
             {
                 formSettings.Instance.AddItemlistMods(dl2List);
+            }
+            else if (listGames.SelectedItem.ToString() == "Black Myth: Wukong Bench Tool")
+            {
+                formSettings.Instance.AddItemlistMods(wukongList);
             }
             else
             {
