@@ -85,6 +85,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Elden Ring","Elden.png"},
                     {"Everspace 2","Es2.png"},
                     {"Evil West","Ew.png"},
+                    {"Final Fantasy XVI","Ffxvi.png"},
                     {"F1 2022","F1.png"},
                     {"F1 2023","F1_23.png"},
                     {"FIST: Forged In Shadow Torch","Fist.png"},
@@ -93,6 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Forza Horizon 5","Forza.png"},
                     {"Ghost of Tsushima","GhostT.png"},
                     {"Ghostrunner 2","Ghost2.png"},
+                    {"Ghostwire: Tokyo","Ghostwire.png"},
                     {"GTA V","GtaV.png"},
                     {"Hellblade 2","Hell2.png" },
                     {"Hellblade: Senua's Sacrifice","Hell.png"},
@@ -215,6 +217,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> codList = new List<string> {"COD MW3 FSR3" };
             List<string> dl2List = new List<string> { "DL2 DLSS FG" };
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong" };
+            List<string> ffxviList = new List<string> { "FFXVI DLSS ALL GPU", "FFXVI DLSS RTX" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS"};
             #endregion;
@@ -241,7 +244,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 flintList,
                 codList,
                 dl2List,
-                wukongList
+                wukongList,
+                ffxviList
             };
             #endregion
 
@@ -337,6 +341,10 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Black Myth: Wukong Bench Tool")
             {
                 formSettings.Instance.AddItemlistMods(wukongList);
+            }
+            else if (listGames.SelectedItem.ToString() == "Final Fantasy XVI")
+            {
+                formSettings.Instance.AddItemlistMods(ffxviList);
             }
             else
             {

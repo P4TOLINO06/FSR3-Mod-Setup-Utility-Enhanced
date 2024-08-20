@@ -74,7 +74,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong Bench Tool" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong Bench Tool", "Final Fantasy XVI" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1344,7 +1344,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong Bench Tool","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
-            "Everspace 2", "Evil West", "F1 2022", "F1 2023", "FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
+            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "Uncharted Legacy of Thieves Collection" };
@@ -1876,10 +1876,20 @@ namespace FSR3ModSetupUtilityEnhanced
 
             dlssGlobal();
         }
-
         public void dl2Fsr3()
         {
             dlssGlobal();
+        }
+        public void ffxviFsr3()
+        {
+            if (selectMod == "FFXVI DLSS RTX")
+            {
+                dlss_to_fsr();
+            }
+            if (selectMod == "FFXVI DLSS ALL GPU")
+            {
+                dlssGlobal();
+            }
         }
         public void tekkenFsr3()
         {
@@ -1997,6 +2007,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 CopyFolder(pathNovaLut);
                 CopyFolder(pathHdReworked);
             }
+
+            DialogResult reshadeCyber = MessageBox.Show("Do you want to install Reshade Real Life 2.0? (It is necessary to install Reshade for this mod to work. Please refer to the Guide for installation instructions.)", "ReShade", MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == reshadeCyber)
+            {
+                CopyFolder("mods\\FSR3_CYBER2077\\mods\\V2.0 Real Life Reshade");
+            }
+
         }
         public void forzaFsr3()
         {
@@ -2483,6 +2501,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     codFsr3();
                 }
+                if (gameSelected == "Final Fantasy XVI")
+                {
+                    ffxviFsr3();
+                }
                 if (selectMod == "DL2 DLSS FG")
                 {
                     dl2Fsr3();
@@ -2563,6 +2585,11 @@ namespace FSR3ModSetupUtilityEnhanced
                             {
                                 string pathNvngxV3 = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_uni_fsr3\\nvngx.dll";
                                 File.Copy(pathNvngxV3, selectFolder + "\\nvngx.dll", true);
+                            }
+                            else if (selectMod == "0.10.4")
+                            {
+                                string pathNvngx0_10_4 = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_0_10_4\\nvngx.dll";
+                                File.Copy(pathNvngx0_10_4, selectFolder + "\\nvngx.dll", true);
                             }
                             else
                             {
@@ -2757,6 +2784,17 @@ namespace FSR3ModSetupUtilityEnhanced
                     if (Directory.Exists(selectFolder + "\\archive"))
                     {
                         Directory.Delete(selectFolder + "\\archive", true);
+                    }
+
+                    //Remove Reshade Real Life 2.0
+                    DialogResult removeReshade = MessageBox.Show("Do you want to remove the Reshade Real Life 2.0 mod?", "ReShade", MessageBoxButtons.YesNo);
+
+                    if (removeReshade == DialogResult.Yes)
+                    {
+                        if(File.Exists(selectFolder + "\\bin\\x64\\V2.0 Real Life Reshade.ini"))
+                        {
+                            File.Delete(selectFolder + "\\bin\\x64\\V2.0 Real Life Reshade.ini");
+                        }
                     }
                     #endregion
                 }
@@ -2968,6 +3006,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 else if (selectMod == "DL2 DLSS FG")
                 {
                     CleanDlssGlobal("DL2 DLSS FG");
+                }
+                else if (selectMod == "FFXVI DLSS ALL GPU")
+                {
+                    CleanDlssGlobal("FFXVI DLSS ALL GPU");
+                }
+                else if (selectMod == "FFXVI DLSS RTX")
+                {
+                    CleanupMod3(del_dlss_to_fsr, "FFXVI DLSS RTX");
                 }
                 else if (gameSelected == "Black Myth: Wukong Bench Tool")
                 {

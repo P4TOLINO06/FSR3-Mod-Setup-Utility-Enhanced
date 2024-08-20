@@ -292,6 +292,21 @@ namespace FSR3ModSetupUtilityEnhanced
                 "ghosting."
             },
             {
+                "Final Fantasy XVI",
+                "FFXVI DLSS RTX:\r\n" +
+                "1. Select \"FFXVI DLSS RTX\" and install it.\r\n" +
+                "2. In the game, select Frame Generation.\r\n\r\n" +
+
+                "FFXVI DLSS ALL GPU:\r\n" +
+                "1. Select \"FFXVI DLSS ALL GPU\", install it, and choose an option in the window that will appear.\r\n" +
+                "2. In the game, select Frame Generation.\r\n\r\n" +
+
+                "Optiscaler FSR 3.1/DLSS:\r\n" +
+                "1. Select Optiscaler FSR 3.1/DLSS and install it.\r\n" +
+                "2. In the game, press the Insert key and choose the Upscaler you want to use.\r\n" +
+                "3. Select Frame Generation.\r\n"
+            },
+            {
                 "F1 2022",
                 "1 - Choose a version of the mod you prefer (version 0.10.3 is\r\n" +
                 "recommended).\r\n" +
@@ -357,6 +372,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "(disable other upscalers before) and then activate frame generation\r\n" +
                 "• To fix the flickering of the HUD, activate and deactivate frame\r\n" +
                 "generation again (no need to apply settings)."
+            },
+            {
+                "Ghostwire: Tokyo",
+                "1- Select Uniscaler V3\r\n" +
+                "2 - Check the Fake Nvidia GPU box (AMD/GTX). If you can't see DLSS in the game, also check the Nvapi Results box.\r\n" +
+                "3 - Check the Nvngx.dll box and select Default, then check the Enable Signature Override box.\r\n" +
+                "4 - In the game, select DLSS to enable Frame Generation.\r\n" +
+                "5 - To fix the HUD glitch, switch between the upscalers (FSR, DLSS, etc.) until the HUD stops flickering.\r\n"
             },
             {
                 "Hellblade: Senua's Sacrifice",
@@ -693,11 +716,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Flintlock: The Siege of Dawn","Flint.png"},
                 {"Fort Solis","Fort.png"},
                 {"Forza Horizon 5","Forza.png"},
+                {"Final Fantasy XVI","Ffxvi2.png"},
                 {"F1 2022","F1.png"},
                 {"F1 2023","F1_23.png"},
                 {"GTA V","GtaV.png"},
                 {"Ghost of Tsushima","GhostT.png"},
                 {"Ghostrunner 2","Ghost2.png"},
+                {"Ghostwire: Tokyo","Ghostwire2.png"},
                 {"Hellblade: Senua's Sacrifice","Hell.png"},
                 {"Hellblade 2","Hell2.png"},
                 {"High On Life","Hol.png"},
