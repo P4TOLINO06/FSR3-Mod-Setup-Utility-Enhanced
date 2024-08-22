@@ -103,15 +103,29 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - Press the END key to enter the mod menu, check the Frame Generation box to activate the mod; you can also adjust the Upscaler. (To activate Frame Generation, simply press the * key; you can also change the key in the mod menu.)"
             },
             {
-                "Black Myth: Wukong Bench Tool",
-                "RTX\n"+
+                "Black Myth: Wukong",
+
+                "RTX:\r\n" +
                 "1 - Select 'RTX DLSS FG Wukong' and install.\r\n" +
                 "2 - In the game, select DLSS and Frame Generation.\r\n\r\n" +
-                "AMD/GTX\r\n" +
-                "1 - Select the 0.10.4 mod.\r\n" +
-                "2 - Check the box for Fake Nvidia GPU and Nvapi Results.\r\n" +
-                "3 - In the game, select DLSS and Frame Generation.\r\n" +
-                "4 - If you cannot see DLSS in the game, also check the Nvngx box, select Default, and install.\r\n"
+
+                "AMD/GTX DLSS FG:\r\n" +
+                "1 - Select Optiscaler FSR 3.1/DLSS and install it.\r\n" +
+                "2 - In the game, press the 'Insert' key to open the menu, and in the menu, select the upscaler you want to use.\r\n\r\n" +
+
+                "Graphic Preset:\r\n" +
+                "1 - Install the mod and the ReShade application.\r\n" +
+                "2 - In ReShade, select b1.exe, DirectX 10/11/12, click on 'Browse,' find the file Black Myth Wukong.ini (the path should look something like BlackMythWukong\\Black Myth Wukong.ini), select it, then click on 'Uncheck All' and 'Next.'\r\n" +
+                "3 - In the game, press the 'Insert' key to open the menu and check the options you want.\r\n\r\n" +
+
+                "Optimized Wukong:\r\n" +
+                "1 - Faster Loading Times - By tweaking async-related settings: AsyncLoadingThread, the mod allows assets to load in the background, reducing loading times and potentially eliminating loading pauses during gameplay.\r\n\r\n" +
+
+                "2 - Optimized CPU and GPU Utilization - By tweaking multi-core rendering (MultiCoreRendering) and multi-threaded shader compilation (MultiThreadedShaderCompile*), the mod allows the game to utilize the full potential of modern CPUs and GPUs. This can result in improved performance, higher frame rates, and more stable gameplay.\r\n\r\n" +
+
+                "3 - Enhanced Streaming and Level Loading - By tweaking various streaming variables (r.Streaming., s.LevelStreamingComponents*), the mod improves the efficiency of streaming assets and level loading. This can lead to faster streaming and reduced stuttering when moving through different areas of the game world.\r\n\r\n" +
+
+                "4 - Optimized Memory Management - By adjusting memory-related settings (MinBulkDataSizeForAsyncLoading & ForceGCAfterLevelStreamedOut*), the mod optimizes memory allocation and garbage collection. This can lead to more efficient memory usage, reduced memory-related stutters, and improved overall performance.\r\n"
             },
             {
                 "Blacktail",
@@ -691,7 +705,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Assassin's Creed Valhalla","AcVal.png"},
                 {"Atomic Heart","Atomic.png"},
                 {"Baldur's Gate 3","Baldurs.png"},
-                {"Black Myth: Wukong Bench Tool","wukong.png" },
+                {"Black Myth: Wukong","wukong.png" },
                 {"Blacktail","Black.png"},
                 {"Banishers Ghost of New Eden","Banishers.png"},
                 {"Bright Memory: Infinite","Bmi.png"},

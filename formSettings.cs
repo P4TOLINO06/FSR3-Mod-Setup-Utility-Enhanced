@@ -74,7 +74,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong Bench Tool", "Final Fantasy XVI" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1343,7 +1343,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         }
 
-        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong Bench Tool","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
+        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead"};
 
@@ -1649,9 +1649,62 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void wukongFsr3()
         {
+            string wukong_file_optimized = @"mods\FSR3_WUKONG\BMWK\BMWK - SPF\pakchunk99-Mods_CustomMod_P.pak";
+            string wukong_graphic_preset = @"mods\FSR3_WUKONG\Graphic Preset\Black Myth Wukong.ini";
+
             if (selectMod == "RTX DLSS FG Wukong")
             {
                 dlss_to_fsr();
+            }
+
+            DialogResult wukongStutter = MessageBox.Show("Do you want to enable Anti-Stutter - High CPU Priority? (prevents possible stuttering in the game)", "High CPU Priority", MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == wukongStutter)
+            {
+                runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Install High CPU Priority.reg");
+                File.Copy("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Anti-Stutter - Utility.txt", selectFolder + "\\Anti-Stutter - Utility.txt", true); //File used in mod uninstallation in Cleanup Mod
+            }
+
+            DialogResult wukongOptimized = MessageBox.Show("Do you want to install the optimization mod? (Faster Loading Times, Optimized CPU and GPU Utilization, etc. To check the other optimizations, see the guide).", "Optimized Wukong", MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == wukongOptimized)
+            {
+                string PathOptimized = Path.Combine(selectFolder, "..\\..\\Content\\Paks");
+                string fullPathOptimized = Path.GetFullPath(PathOptimized);
+                if (Path.Exists(fullPathOptimized))
+                {
+                    if (!Path.Exists(fullPathOptimized + "\\~mods"))
+                    {
+                        Directory.CreateDirectory(fullPathOptimized + "\\~mods");
+                    }
+
+                    File.Copy(wukong_file_optimized, fullPathOptimized + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak", true);
+
+                    MessageBox.Show("Preset applied successfully. To complete the installation, go to the game\'s page in your Steam library, click the gear icon \'Manage\' to the right of \'Achievements\', select \'Properties\', and in \'Launch Options\', enter -fileopenlog.", "Sucess", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Path \"b1\\Content\\Paks\" not found, please select the .exe path in \"Select Folder\". The path should look something like this: BlackMythWukong\\b1\\Binaries\\Win64", "Not Found", MessageBoxButtons.OK);
+                    Debug.WriteLine(fullPathOptimized);
+                }
+            }
+
+            DialogResult presetWukong = MessageBox.Show("Do you want to apply the Graphics Preset? (ReShade must be installed for the preset to work, check the guide for more information)", "Graphic Preset", MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == presetWukong)
+            {
+                string PathPreset = Path.Combine(selectFolder, "..\\..\\..");
+                string fullPathPreset = Path.GetFullPath(PathPreset);
+
+                if (File.Exists(fullPathPreset + "\\b1.exe"))
+                {
+                    File.Copy(wukong_graphic_preset, fullPathPreset + "\\Black Myth Wukong.ini",true);
+                }
+                else
+                {
+                    MessageBox.Show("File \"b1.exe\" not found, please select the .exe path in \"Select Folder\". The path should look something like this: BlackMythWukong\\b1\\Binaries\\Win64", "Not Found", MessageBoxButtons.OK);
+                    Debug.WriteLine(fullPathPreset + "\\b1.exe");
+                }
             }
         }
 
@@ -2509,7 +2562,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     dl2Fsr3();
                 }
-                if (gameSelected == "Black Myth: Wukong Bench Tool")
+                if (gameSelected == "Black Myth: Wukong")
                 {
                     wukongFsr3();
                 }
@@ -2688,12 +2741,10 @@ namespace FSR3ModSetupUtilityEnhanced
 
                                 File.Copy(filesRestore, destFilesRestore, true);
                             }
+                            MessageBox.Show("The files have been successfully restored", "Sucess", MessageBoxButtons.OK);
                         }
                     }
-
                     Directory.Delete(selectFolder + "\\" + nameFolderBackup, true);
-
-                    MessageBox.Show("The files have been successfully restored", "Sucess", MessageBoxButtons.OK);
                 });
             }
             catch { }
@@ -3015,9 +3066,36 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     CleanupMod3(del_dlss_to_fsr, "FFXVI DLSS RTX");
                 }
-                else if (gameSelected == "Black Myth: Wukong Bench Tool")
+                else if (gameSelected == "Black Myth: Wukong")
                 {
+                    string PathOptimizedDel = Path.Combine(selectFolder, "..\\..\\Content\\Paks");
+                    string fullPathOptimizedDel = Path.GetFullPath(PathOptimizedDel);
+
                     CleanupMod3(del_dlss_to_fsr, "RTX DLSS FG Wukong");
+
+                    #region Remove other mods
+                    if (File.Exists(fullPathOptimizedDel + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak"))
+                    {
+                        DialogResult delWukongOptimized = MessageBox.Show("Do you want to remove the optimization mod?", "Remove", MessageBoxButtons.YesNo);
+
+                        if (DialogResult.Yes == delWukongOptimized)
+                        {
+                            File.Delete(fullPathOptimizedDel + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak");
+                        }
+                    }
+
+                    if (File.Exists(selectFolder + "\\Anti-Stutter - Utility.txt"))
+                    {
+                        DialogResult delWukongAntiStutter = MessageBox.Show("Do you want to remove the Anti Stutter?", "Remove Anti Stutter", MessageBoxButtons.YesNo);
+
+                        if (DialogResult.Yes == delWukongAntiStutter)
+                        {
+                            runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Uninstall High CPU Priority.reg");
+
+                            File.Delete(selectFolder + "\\Anti-Stutter - Utility.txt");
+                        }
+                    }
+                    #endregion
                 }
 
                 else if (folderLotf.ContainsKey(selectMod))

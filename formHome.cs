@@ -65,7 +65,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Atomic Heart","Atomic.png"},
                     {"Baldur's Gate 3","BG3.png"},
                     {"Banishers: Ghosts of New Eden","Banishers.png" },
-                    {"Black Myth: Wukong Bench Tool","wukong.png"},
+                    {"Black Myth: Wukong","wukong.png"},
                     {"Blacktail","Black.png" },
                     {"Bright Memory: Infinite","Bmi.png"},
                     {"Brothers: A Tale of Two Sons Remake","Brothers.png" },
@@ -338,7 +338,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formSettings.Instance.AddItemlistMods(dl2List);
             }
-            else if (listGames.SelectedItem.ToString() == "Black Myth: Wukong Bench Tool")
+            else if (listGames.SelectedItem.ToString() == "Black Myth: Wukong")
             {
                 formSettings.Instance.AddItemlistMods(wukongList);
             }
