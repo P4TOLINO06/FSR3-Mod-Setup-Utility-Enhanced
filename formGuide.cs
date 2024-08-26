@@ -636,6 +636,31 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1 - Leave the game in DX12 and turn off Vsync/Triple Buffering.\r\n" +
                 "2 - In-game, if you have an RTX card, enable DLSS. If you don’t have an RTX card, disable any upscaler and turn on TAA. Press the 'END' key, select FSR3 in Upscaler Type, and check the box 'Enable Frame Generation.'\r\n" +
                 "3 - If a DLL error occurs, reinstall the mod and click 'YES' in the DLL file installation message box.\r\n"
+            },
+            {
+                "The Callisto Protocol",
+                "The Callisto Protocol Fsr3\r\n"+
+                "1 - Select The Callisto Protocol Fsr3.\r\n" +
+                "2 - Check the Fake Nvidia GPU box and install.\r\n\r\n" +
+
+                "Uniscaler V3\r\n" +
+                "1 - Select Uniscaler V3.\r\n" +
+                "2 - Check the Nvngx box and select Default.\r\n" +
+                "3 - Check the Enable Signature Over box.\r\n\r\n" +
+
+                "HUD Correction:\r\n" +
+                "Select FSR2 and start the campaign, play for a few seconds, and return to the menu. In the menu, select Temporal and return to the campaign.\r\n\r\n" +
+
+                "Real Life:\r\n" +
+                "Adds more detail to the world, making the wood effects stand out more, as well as the ground, lighting, walls, dirt marks, and skin.\r\n\r\n" +
+
+                "TCP:\r\n" +
+                "A ReShade config that implements duller colours, nearby sharpness, and distant depth of field blur to give a grittier and more cinematic style to emphasise the sci-fi horror atmosphere.\r\n\r\n" +
+
+                "1 - Install the ReShade application.\r\n" +
+                "2 - Select DirectX 10/11/12, click 'Browse,' and select the TCP.ini file that was installed in the destination folder chosen in the Utility.\r\n" +
+                "3 - Click 'Uncheck All,' and then click 'Next.'\r\n" +
+                "4 - Do the same for the Real Life mod."
             }
         };
 
@@ -767,7 +792,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Red Dead Redemption 2 MIX","Rdr2Mix.png"},
                 {"Red Dead Redemption Mix 2","Rdr2Mix2.png"},
                 {"Red Dead Redemption V2","Rdr2V2.png"},
-                {"RDR2 Non Steam","Rdr2NSteam.png"}
+                {"RDR2 Non Steam","Rdr2NSteam.png"},
+                {"The Callisto Protocol","Callisto2.png"}
             };
 
             #endregion
@@ -801,7 +827,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (listBox1.Visible)

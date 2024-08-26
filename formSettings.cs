@@ -1347,7 +1347,7 @@ namespace FSR3ModSetupUtilityEnhanced
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead"};
 
-        List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "Uncharted Legacy of Thieves Collection" };
+        List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
         List<string> fsr_2_0_opt = new List<string> { "Alone in the Dark", "Brothers: A Tale of Two Sons Remake", "Crime Boss: Rockay City", "Deathloop", "Dying Light 2", "Ghostrunner 2", "High On Life", "Jusant", "Layers of Fear", "Marvel's Guardians of the Galaxy", "Nightingale", "Rise of The Tomb Raider", "Shadow of the Tomb Raider", "The Outer Worlds: Spacer's Choice Edition", "The Witcher 3" };
 
@@ -1826,12 +1826,32 @@ namespace FSR3ModSetupUtilityEnhanced
         public void callistoFsr3()
         {
             string pathCallisto = "mods\\FSR3_Callisto\\FSR_Callisto";
+            string pathTcp = "mods\\FSR3_Callisto\\Reshade\\TCP Cinematic\\TCP.ini";
+            string pathRealLife = "mods\\FSR3_Callisto\\Reshade\\The Real Life\\The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini";
 
-            foreach (string filesCallisto in Directory.GetFiles(pathCallisto))
+            if (selectMod == "The Callisto Protocol FSR3")
             {
-                string fileName = Path.GetFileName(filesCallisto);
 
-                File.Copy(filesCallisto, selectFolder + "\\" + fileName, true);
+                foreach (string filesCallisto in Directory.GetFiles(pathCallisto))
+                {
+                    string fileName = Path.GetFileName(filesCallisto);
+
+                    File.Copy(filesCallisto, selectFolder + "\\" + fileName, true);
+                }
+            }
+
+            DialogResult callistoTcp = MessageBox.Show("Do you want to install the TCP mod? (It is necessary to install ReShade for this mod to work, check the guide in FSR GUIDE for more information about the mod.)", "TCP", MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == callistoTcp)
+            {
+                File.Copy(pathTcp, selectFolder + "\\TCP.ini",true);
+            }
+
+            DialogResult callistoRealLife = MessageBox.Show("Do you want to install the Real Life mod? (It is necessary to install ReShade for the mod to work, check the guide in FSR GUIDE for more information about the mod and how to install it.)", "Real Life", MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == callistoRealLife)
+            {
+                File.Copy(pathRealLife, selectFolder + "\\The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",true);
             }
         }
 
@@ -2493,7 +2513,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     acValhallaDlss();
                 }
-                if (selectMod == "The Callisto Protocol FSR3")
+                if (gameSelected == "The Callisto Protocol")
                 {
                     callistoFsr3();
                 }
@@ -2765,6 +2785,21 @@ namespace FSR3ModSetupUtilityEnhanced
 
             RestoreBackup("Backup Dlss");
         }
+
+        public void CleanupOthersMods(string modName, string fileName)
+        {
+            string filePath = Path.Combine(selectFolder, fileName);
+            if (File.Exists(filePath))
+            {
+                DialogResult result = MessageBox.Show($"Do you want to remove the {modName} mod?", $"Remove {modName}", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    File.Delete(filePath);
+                }
+            }
+        }
+
         private void buttonDel_Click(object sender, EventArgs e)
         {
             if (selectMod != null)
@@ -2847,6 +2882,14 @@ namespace FSR3ModSetupUtilityEnhanced
                             File.Delete(selectFolder + "\\bin\\x64\\V2.0 Real Life Reshade.ini");
                         }
                     }
+                    #endregion
+                }
+                if (gameSelected == "The Callisto Protocol")
+                {
+
+                    #region Remove others mods
+                    CleanupOthersMods("TCP", "TCP.ini");
+                    CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini");
                     #endregion
                 }
                 else if (rdr2_folder.ContainsKey(selectMod))
