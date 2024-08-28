@@ -26,6 +26,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Text.Json;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using System.Reflection.Metadata;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -1439,6 +1441,32 @@ namespace FSR3ModSetupUtilityEnhanced
             });
         }
 
+        #region CopyFolder2
+        private void CopyFolder2(string sourceDirectory, string destinationDirectory)
+        {
+            Directory.CreateDirectory(destinationDirectory);
+            foreach (string file in Directory.GetFiles(sourceDirectory))
+            {
+                string destFile = Path.Combine(destinationDirectory, Path.GetFileName(file));
+                File.Copy(file, destFile, true);
+            }
+        }
+        #endregion
+
+        #region CopyFilesCustom
+        private void CopyFilesCustom(string sourceFile, string destinationFile, string pathHelp)
+        {
+            if (File.Exists(sourceFile))
+            {
+                File.Copy(sourceFile, destinationFile, true);
+            }
+            else
+            {
+                MessageBox.Show($"Please select the .exe path in \"Select Folder\". The path should look something like this: {pathHelp}", "Not Found", MessageBoxButtons.OK);
+            }
+        }
+        #endregion
+
         public void runReg(string pathReg)
         {
             try
@@ -1647,22 +1675,32 @@ namespace FSR3ModSetupUtilityEnhanced
             #endregion
         }
 
+
+        private DialogResult ShowMessage(string message, string titleMessage)
+        {
+            return MessageBox.Show(message,titleMessage , MessageBoxButtons.YesNo);
+        }
+
         public void wukongFsr3()
         {
             string wukong_file_optimized = @"mods\FSR3_WUKONG\BMWK\BMWK - SPF\pakchunk99-Mods_CustomMod_P.pak";
-            string wukong_graphic_preset = @"mods\FSR3_WUKONG\Graphic Preset\Black Myth Wukong.ini";
+            string wukongGraphicPreset = @"mods\FSR3_WUKONG\Graphic Preset\Black Myth Wukong.ini";
+            string wukongUe4Map = @"mods\FSR3_WUKONG\Map\WukongUE4SS";
+            string wukongMap = @"mods\FSR3_WUKONG\Map\LogicMods";
+            string wukongHdr = @"mods\FSR3_WUKONG\HDR\Force_HDR_Mode_P.pak";
+            bool finalMessage = false;
+
+            string fullPathWukong = Path.GetFullPath(Path.Combine(selectFolder, @"..\..\..\"));
 
             if (selectMod == "RTX DLSS FG Wukong")
             {
                 dlss_to_fsr();
             }
 
-            DialogResult wukongStutter = MessageBox.Show("Do you want to enable Anti-Stutter - High CPU Priority? (prevents possible stuttering in the game)", "High CPU Priority", MessageBoxButtons.YesNo);
-
-            if (DialogResult.Yes == wukongStutter)
+            if (!Path.Exists(fullPathWukong + "\\b1\\Content\\Paks\\~mods"))
             {
-                runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Install High CPU Priority.reg");
-                File.Copy("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Anti-Stutter - Utility.txt", selectFolder + "\\Anti-Stutter - Utility.txt", true); //File used in mod uninstallation in Cleanup Mod
+
+                Directory.CreateDirectory(fullPathWukong + "\\b1\\Content\\Paks\\~mods");
             }
 
             DialogResult wukongOptimized = MessageBox.Show("Do you want to install the optimization mod? (Faster Loading Times, Optimized CPU and GPU Utilization, etc. To check the other optimizations, see the guide).", "Optimized Wukong", MessageBoxButtons.YesNo);
@@ -1678,33 +1716,60 @@ namespace FSR3ModSetupUtilityEnhanced
                         Directory.CreateDirectory(fullPathOptimized + "\\~mods");
                     }
 
-                    File.Copy(wukong_file_optimized, fullPathOptimized + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak", true);
-
-                    MessageBox.Show("Preset applied successfully. To complete the installation, go to the game\'s page in your Steam library, click the gear icon \'Manage\' to the right of \'Achievements\', select \'Properties\', and in \'Launch Options\', enter -fileopenlog.", "Sucess", MessageBoxButtons.OK);
+                    File.Copy(wukong_file_optimized, fullPathOptimized + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak", true);                
                 }
                 else
                 {
                     MessageBox.Show("Path \"b1\\Content\\Paks\" not found, please select the .exe path in \"Select Folder\". The path should look something like this: BlackMythWukong\\b1\\Binaries\\Win64", "Not Found", MessageBoxButtons.OK);
                     Debug.WriteLine(fullPathOptimized);
                 }
+                finalMessage = true;
             }
 
             DialogResult presetWukong = MessageBox.Show("Do you want to apply the Graphics Preset? (ReShade must be installed for the preset to work, check the guide for more information)", "Graphic Preset", MessageBoxButtons.YesNo);
 
             if (DialogResult.Yes == presetWukong)
             {
-                string PathPreset = Path.Combine(selectFolder, "..\\..\\..");
-                string fullPathPreset = Path.GetFullPath(PathPreset);
+                if (presetWukong == DialogResult.Yes)
+                {
+                    string pathPreset = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
+                    CopyFilesCustom(Path.Combine(wukongGraphicPreset), Path.Combine(pathPreset, "Black Myth Wukong.ini"), "BlackMythWukong\\b1\\Binaries\\Win64");
+                }
+            }
 
-                if (File.Exists(fullPathPreset + "\\b1.exe"))
+            DialogResult wukongStutter = MessageBox.Show("Do you want to enable Anti-Stutter - High CPU Priority? (prevents possible stuttering in the game)", "High CPU Priority", MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == wukongStutter)
+            {
+                runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Install Black Myth Wukong High Priority Processes.reg");
+                File.Copy("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Anti-Stutter - Utility.txt", selectFolder + "\\Anti-Stutter - Utility.txt", true); //File used in mod uninstallation in Cleanup Mod
+            }
+
+
+            DialogResult mapWukong = MessageBox.Show("Would you like to install the mini map?", "Mini Map",MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == mapWukong)
+            {
+                if (mapWukong == DialogResult.Yes)
                 {
-                    File.Copy(wukong_graphic_preset, fullPathPreset + "\\Black Myth Wukong.ini",true);
+                    CopyFolder(wukongUe4Map);
+                    string pathMap = Path.Combine(fullPathWukong, "b1", "Content", "Paks", "LogicMods");
+                    CopyFolder2(wukongMap, pathMap);
                 }
-                else
-                {
-                    MessageBox.Show("File \"b1.exe\" not found, please select the .exe path in \"Select Folder\". The path should look something like this: BlackMythWukong\\b1\\Binaries\\Win64", "Not Found", MessageBoxButtons.OK);
-                    Debug.WriteLine(fullPathPreset + "\\b1.exe");
-                }
+                finalMessage = true;
+            }
+
+            DialogResult hdrWukong = MessageBox.Show("Would you like to install the HDR correction?", "HDR", MessageBoxButtons.YesNo);
+
+            if (DialogResult.Yes == hdrWukong)
+            {
+                File.Copy(wukongHdr, Path.Combine(fullPathWukong, "b1", "Content", "Paks", "~mods", "Force_HDR_Mode_P.pak"),true);
+                finalMessage = true;
+            }
+
+            if (finalMessage)
+            {
+                MessageBox.Show("Preset applied successfully. To complete the installation, go to the game\'s page in your Steam library, click the gear icon \'Manage\' to the right of \'Achievements\', select \'Properties\', and in \'Launch Options\', enter -fileopenlog.", "Sucess", MessageBoxButtons.OK);
             }
         }
 
@@ -3133,10 +3198,27 @@ namespace FSR3ModSetupUtilityEnhanced
 
                         if (DialogResult.Yes == delWukongAntiStutter)
                         {
-                            runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Uninstall High CPU Priority.reg");
+                            runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Uninstall Black Myth Wukong High Priority Processes.reg");
 
                             File.Delete(selectFolder + "\\Anti-Stutter - Utility.txt");
                         }
+                    }
+
+                    if (File.Exists(fullPathOptimizedDel + "\\~mods\\Force_HDR_Mode_P.pak"))
+                    {
+                        DialogResult delHdr = MessageBox.Show("Do you want to remove the HDR correction?", "HDR", MessageBoxButtons.YesNo);
+
+                        if (DialogResult.Yes == delHdr)
+                        {
+                            File.Delete(fullPathOptimizedDel + "\\~mods\\Force_HDR_Mode_P.pak");
+                        }
+                    }
+
+                    if (File.Exists(selectFolder + "\\dwmapi.dll"))
+                    {
+                        File.Delete(selectFolder + "\\dwmapi.dll");
+                        Directory.Delete(selectFolder + "\\ue4ss",true);
+                        Directory.Delete(fullPathOptimizedDel + "\\LogicMods", true);
                     }
                     #endregion
                 }
