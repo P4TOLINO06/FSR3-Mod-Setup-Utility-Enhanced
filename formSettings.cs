@@ -76,7 +76,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -233,7 +233,8 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"},
-            {"The Callisto Protocol FSR3",@"\mods\Temp\FSR3_Callisto\enable_fake_gpu\\fsr2fsr3.config.toml"}
+            {"The Callisto Protocol FSR3",@"\mods\Temp\FSR3_Callisto\enable_fake_gpu\\fsr2fsr3.config.toml"},
+            {"FSR 3.1 Custom Wukong",@"\mods\Temp\Wukong_FSR31\enable_fake_gpu\\uniscaler.config.toml" }
         };
         #endregion
 
@@ -247,7 +248,8 @@ namespace FSR3ModSetupUtilityEnhanced
             "Uniscaler + Xess + Dlss",
             "Uniscaler V2",
             "Uniscaler V3",
-            "Uniscaler FSR 3.1"
+            "Uniscaler FSR 3.1",
+            "FSR 3.1 Custom Wukong"
         };
         #endregion
 
@@ -715,9 +717,9 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
-        #region Clean Ini File Folder
+        #region Clean Toml File Folder
 
-        Dictionary<string, string> folder_clean_ini = new Dictionary<string, string>
+        Dictionary<string, string> folder_clean_toml = new Dictionary<string, string>
         {
             { "0.7.4", "mods\\FSR2FSR3_0.7.4\\enable_fake_gpu\\fsr2fsr3.config.toml" },
             { "0.7.5", "mods\\FSR2FSR3_0.7.5_hotfix\\enable_fake_gpu\\fsr2fsr3.config.toml" },
@@ -733,6 +735,7 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler", "mods\\FSR2FSR3_Uniscaler\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler + Xess + Dlss", "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\enable_fake_gpu\\uniscaler.config.toml" },
             { "The Callisto Protocol FSR3", "mods\\FSR3_Callisto\\enable_fake_gpu\\fsr2fsr3.config.toml" },
+            {"FSR 3.1 Custom Wukong","mods\\FSR3_WUKONG\\WukongFSR31\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler V2", "mods\\FSR2FSR3_Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler V3", "mods\\FSR2FSR3_Uniscaler_V3\\enable_fake_gpu\\uniscaler.config.toml"},
             { "Uniscaler FSR 3.1","mods\\FSR2FSR3_Uniscaler_FSR3\\enable_fake_gpu\\uniscaler.config.toml"},
@@ -799,9 +802,9 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void ReplaceIni()
         {
-            if (folder_clean_ini.ContainsKey(selectMod) && folderFakeGpu.ContainsKey(selectMod))
+            if (folder_clean_toml.ContainsKey(selectMod) && folderFakeGpu.ContainsKey(selectMod))
             {
-                string path_clean_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder_clean_ini[selectMod]);
+                string path_clean_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, folder_clean_toml[selectMod]);
                 string modified_ini = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) + folderFakeGpu[selectMod]);
                 File.Copy(path_clean_ini, modified_ini, true);
             }
@@ -1347,7 +1350,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
-            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead"};
+            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
@@ -1688,6 +1691,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string wukongUe4Map = @"mods\FSR3_WUKONG\Map\WukongUE4SS";
             string wukongMap = @"mods\FSR3_WUKONG\Map\LogicMods";
             string wukongHdr = @"mods\FSR3_WUKONG\HDR\Force_HDR_Mode_P.pak";
+            string wukongFsrCustom = @"mods\FSR3_WUKONG\WukongFSR31\FSR31_Wukong";
             bool finalMessage = false;
 
             string fullPathWukong = Path.GetFullPath(Path.Combine(selectFolder, @"..\..\..\"));
@@ -1696,81 +1700,65 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 dlss_to_fsr();
             }
-
-            if (!Path.Exists(fullPathWukong + "\\b1\\Content\\Paks\\~mods"))
+            if (selectMod == "FSR 3.1 Custom Wukong")
             {
-
-                Directory.CreateDirectory(fullPathWukong + "\\b1\\Content\\Paks\\~mods");
+                CopyFolder(wukongFsrCustom);
             }
 
-            DialogResult wukongOptimized = MessageBox.Show("Do you want to install the optimization mod? (Faster Loading Times, Optimized CPU and GPU Utilization, etc. To check the other optimizations, see the guide).", "Optimized Wukong", MessageBoxButtons.YesNo);
-
-            if (DialogResult.Yes == wukongOptimized)
+            #region Others Mods
+            if (Path.Exists(fullPathWukong + "\\b1\\Binaries\\Win64"))
             {
-                string PathOptimized = Path.Combine(selectFolder, "..\\..\\Content\\Paks");
-                string fullPathOptimized = Path.GetFullPath(PathOptimized);
-                if (Path.Exists(fullPathOptimized))
+                string modsPath = Path.Combine(fullPathWukong, "b1", "Content", "Paks", "~mods");
+                if (!Path.Exists(modsPath)) Directory.CreateDirectory(modsPath);
+
+                string message, title;
+
+                if (MessageBox.Show(message = "Do you want to install the optimization mod? (Faster Loading Times, Optimized CPU and GPU Utilization, etc. To check the other optimizations, see the guide).", title = "Optimized Wukong", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    if (!Path.Exists(fullPathOptimized + "\\~mods"))
+                    string PathOptimized = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\Content\\Paks"));
+                    if (Path.Exists(PathOptimized))
                     {
-                        Directory.CreateDirectory(fullPathOptimized + "\\~mods");
+                        if (!Path.Exists(PathOptimized + "\\~mods")) Directory.CreateDirectory(PathOptimized + "\\~mods");
+                        File.Copy(wukong_file_optimized, PathOptimized + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak", true);
                     }
-
-                    File.Copy(wukong_file_optimized, fullPathOptimized + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak", true);                
+                    else
+                    {
+                        MessageBox.Show("Path \"b1\\Content\\Paks\" not found, please select the .exe path in \"Select Folder\". The path should look something like this: BlackMythWukong\\b1\\Binaries\\Win64", "Not Found", MessageBoxButtons.OK);
+                        Debug.WriteLine(PathOptimized);
+                    }
+                    finalMessage = true;
                 }
-                else
+
+                if (MessageBox.Show(message = "Do you want to apply the Graphics Preset? (ReShade must be installed for the preset to work, check the guide for more information)", title = "Graphic Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    CopyFilesCustom(Path.Combine(wukongGraphicPreset), Path.Combine(Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..")), "Black Myth Wukong.ini"), "BlackMythWukong\\b1\\Binaries\\Win64");
+
+                if (MessageBox.Show(message = "Do you want to enable Anti-Stutter - High CPU Priority? (prevents possible stuttering in the game)", title = "High CPU Priority", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    MessageBox.Show("Path \"b1\\Content\\Paks\" not found, please select the .exe path in \"Select Folder\". The path should look something like this: BlackMythWukong\\b1\\Binaries\\Win64", "Not Found", MessageBoxButtons.OK);
-                    Debug.WriteLine(fullPathOptimized);
+                    runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Install Black Myth Wukong High Priority Processes.reg");
+                    File.Copy("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Anti-Stutter - Utility.txt", selectFolder + "\\Anti-Stutter - Utility.txt", true);
                 }
-                finalMessage = true;
-            }
 
-            DialogResult presetWukong = MessageBox.Show("Do you want to apply the Graphics Preset? (ReShade must be installed for the preset to work, check the guide for more information)", "Graphic Preset", MessageBoxButtons.YesNo);
-
-            if (DialogResult.Yes == presetWukong)
-            {
-                if (presetWukong == DialogResult.Yes)
-                {
-                    string pathPreset = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
-                    CopyFilesCustom(Path.Combine(wukongGraphicPreset), Path.Combine(pathPreset, "Black Myth Wukong.ini"), "BlackMythWukong\\b1\\Binaries\\Win64");
-                }
-            }
-
-            DialogResult wukongStutter = MessageBox.Show("Do you want to enable Anti-Stutter - High CPU Priority? (prevents possible stuttering in the game)", "High CPU Priority", MessageBoxButtons.YesNo);
-
-            if (DialogResult.Yes == wukongStutter)
-            {
-                runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Install Black Myth Wukong High Priority Processes.reg");
-                File.Copy("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Anti-Stutter - Utility.txt", selectFolder + "\\Anti-Stutter - Utility.txt", true); //File used in mod uninstallation in Cleanup Mod
-            }
-
-
-            DialogResult mapWukong = MessageBox.Show("Would you like to install the mini map?", "Mini Map",MessageBoxButtons.YesNo);
-
-            if (DialogResult.Yes == mapWukong)
-            {
-                if (mapWukong == DialogResult.Yes)
+                if (MessageBox.Show(message = "Would you like to install the mini map?", title = "Mini Map", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     CopyFolder(wukongUe4Map);
-                    string pathMap = Path.Combine(fullPathWukong, "b1", "Content", "Paks", "LogicMods");
-                    CopyFolder2(wukongMap, pathMap);
+                    CopyFolder2(wukongMap, Path.Combine(fullPathWukong, "b1", "Content", "Paks", "LogicMods"));
+                    finalMessage = true;
                 }
-                finalMessage = true;
+
+                if (MessageBox.Show(message = "Would you like to install the HDR correction?", title = "HDR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(wukongHdr, modsPath + "\\Force_HDR_Mode_P.pak", true);
+                    finalMessage = true;
+                }
+
+                if (finalMessage)
+                    MessageBox.Show("Preset applied successfully. To complete the installation, go to the game's page in your Steam library, click the gear icon 'Manage' to the right of 'Achievements', select 'Properties', and in 'Launch Options', enter -fileopenlog.", "Success", MessageBoxButtons.OK);
             }
-
-            DialogResult hdrWukong = MessageBox.Show("Would you like to install the HDR correction?", "HDR", MessageBoxButtons.YesNo);
-
-            if (DialogResult.Yes == hdrWukong)
+            else
             {
-                File.Copy(wukongHdr, Path.Combine(fullPathWukong, "b1", "Content", "Paks", "~mods", "Force_HDR_Mode_P.pak"),true);
-                finalMessage = true;
+                MessageBox.Show("Path not found, please select the path: BlackMythWukong\\b1\\Binaries\\Win64 if you want to install additional mods (Mini Map, Anti Stuttering, etc.).", "Not Found", MessageBoxButtons.OK);
             }
-
-            if (finalMessage)
-            {
-                MessageBox.Show("Preset applied successfully. To complete the installation, go to the game\'s page in your Steam library, click the gear icon \'Manage\' to the right of \'Achievements\', select \'Properties\', and in \'Launch Options\', enter -fileopenlog.", "Sucess", MessageBoxButtons.OK);
-            }
+            #endregion
         }
 
         public async Task dd2Fsr3()
@@ -2029,6 +2017,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 dlssGlobal();
             }
         }
+
+        public void outlawsFsr3()
+        {
+            if (selectMod == "Outlaws DLSS RTX")
+            {
+                dlss_to_fsr();
+            }
+        }
+
         public void tekkenFsr3()
         {
             CopyFSR(folderTekken);
@@ -2651,6 +2648,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     wukongFsr3();
                 }
+                if (gameSelected == "Star Wars Outlaws")
+                {
+                    outlawsFsr3();
+                }
 
                 if (gameSelected == "Dragons Dogma 2")
                 {
@@ -2957,6 +2958,13 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini");
                     #endregion
                 }
+                if (gameSelected == "Star Wars Outlaws")
+                {
+                    if (selectMod == "Outlaws DLSS RTX")
+                    {
+                        CleanupMod3(del_dlss_to_fsr, "Outlaws DLSS RTX");
+                    }
+                }
                 else if (rdr2_folder.ContainsKey(selectMod))
                 {
                     CleanupMod(del_rdr2_custom_files, rdr2_folder);
@@ -3182,6 +3190,25 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanupMod3(del_dlss_to_fsr, "RTX DLSS FG Wukong");
 
                     #region Remove other mods
+
+                    if (selectMod == "FSR 3.1 Custom Wukong")
+                    {
+                        if (File.Exists(selectFolder + "\\libxess.dll"))
+                        {
+                            string[] filesFsrWukong = { "libxess.dll", "nvngx.dll", "amd_fidelityfx_vk.dll", "amd_fidelityfx_dx12.dll" };
+
+                            foreach (string fsrFilesWukong in Directory.GetFiles(selectFolder))
+                            {
+                                string wukongFsrName = Path.GetFileName(fsrFilesWukong);
+
+                                if (filesFsrWukong.Contains(wukongFsrName))
+                                {
+                                    File.Delete(fsrFilesWukong);
+                                }
+                            }
+                        }
+                    }
+
                     if (File.Exists(fullPathOptimizedDel + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak"))
                     {
                         DialogResult delWukongOptimized = MessageBox.Show("Do you want to remove the optimization mod?", "Remove", MessageBoxButtons.YesNo);

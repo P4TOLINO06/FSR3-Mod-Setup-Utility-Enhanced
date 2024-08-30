@@ -113,6 +113,12 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1 - Select Optiscaler FSR 3.1/DLSS and install it.\r\n" +
                 "2 - In the game, press the 'Insert' key to open the menu, and in the menu, select the upscaler you want to use.\r\n\r\n" +
 
+                "FSR 3.1 Custom Wukong:\r\n" +
+                "1 - Select FSR 3.1 Custom Wukong and install it.\r\n" +
+                "2 - Inside the game, select an upscaler and press the Insert key to open the menu.\r\n" +
+                "3 - In the menu, select the upscaler you want. (Xess works better in this game)\r\n" +
+                "4 - If you can't see DLSS in the game, check the \"Fake Nvidia GPU\" box and the \"Disable Signature Override\" box.\r\n\r\n"+
+
                 "Graphic Preset:\r\n" +
                 "1 - Install the mod and the ReShade application.\r\n" +
                 "2 - In ReShade, select b1.exe, DirectX 10/11/12, click on 'Browse,' find the file Black Myth Wukong.ini (the path should look something like BlackMythWukong\\Black Myth Wukong.ini), select it, then click on 'Uncheck All' and 'Next.'\r\n" +
@@ -638,6 +644,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - If a DLL error occurs, reinstall the mod and click 'YES' in the DLL file installation message box.\r\n"
             },
             {
+                "Star Wars Outlaws",
+                "RTX:\r\n" +
+                "1 - Select Star Wars DLSS RTX and install.\r\n" +
+                "2 - Inside the game, select DLSS and Frame Gen.\r\n\r\n" +
+
+                "All GPUs:\r\n" +
+                "1 - Select FSR 3.1/DLSS Optiscaler.\r\n" +
+                "2 - Inside the game, select an upscaler of your choice.\r\n" +
+                "3 - Press the Insert key to open the menu and select an upscaler of your choice."
+            },
+            {
                 "The Callisto Protocol",
                 "The Callisto Protocol Fsr3\r\n"+
                 "1 - Select The Callisto Protocol Fsr3.\r\n" +
@@ -793,6 +810,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Red Dead Redemption Mix 2","Rdr2Mix2.png"},
                 {"Red Dead Redemption V2","Rdr2V2.png"},
                 {"RDR2 Non Steam","Rdr2NSteam.png"},
+                {"Star Wars Outlaws","Outlaws2.png" },
                 {"The Callisto Protocol","Callisto2.png"}
             };
 
