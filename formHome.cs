@@ -204,7 +204,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
             List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss DD2", "FSR 3.1/DLSS DD2 ALL GPU", "FSR 3.1/DLSS DD2 NVIDIA" };
-            List<string> callistoList = new List<string> { "The Callisto Protocol FSR3","Uniscaler V3"};
+            List<string> callistoList = new List<string> { "The Callisto Protocol FSR3","0.10.4","Uniscaler V3"};
             List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
             List<string> cyberList = new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1/DLSS","Uniscaler FSR 3.1" };
             List<string> gotList = new List<string> { "Ghost of Tsushima FG DLSS","Optiscaler FSR 3.1/DLSS","Uniscaler FSR 3.1"};

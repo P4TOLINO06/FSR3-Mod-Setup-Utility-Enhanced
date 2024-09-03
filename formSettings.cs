@@ -74,7 +74,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void AddItemlistMods(List<string> items)
         {
-            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
+            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
 
@@ -103,6 +103,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     listMods.Items.Add(item);
                 }
+            }
+            if (listMods.Text != "")
+            {
+                listMods.Text = "";
             }
         }
         public void RemoveItemlistMods(List<string> items)
@@ -2020,9 +2024,25 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void outlawsFsr3()
         {
+            string presetOutlaws = "mods\\FSR3_Outlaws\\Preset\\Outlaws2.ini";
+            string varStutterOutlaws ="mods\\FSR3_Outlaws\\Anti_Stutter\\Anti_Sttuter.txt";
+
             if (selectMod == "Outlaws DLSS RTX")
             {
                 dlss_to_fsr();
+            }
+
+            if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
+            {
+                runReg("mods\\FSR3_Outlaws\\Anti_Stutter\\Install Star Wars Outlaws CPU Priority.reg");
+                File.Copy(varStutterOutlaws, selectFolder + "\\Anti_Sttuter.txt", true); //File used to remove the Anti-Stutter in 'Cleanup Mod'
+            }
+
+            if (MessageBox.Show("Do you want to install the Graphics Preset", "Graphics Preset", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
+            {
+                File.Copy(presetOutlaws, selectFolder + "\\Outlaws2.ini", true);
+
+                MessageBox.Show("To apply the graphics preset, see the Star Wars Outlaws guide in the Guide.", "Guide", MessageBoxButtons.OK);
             }
         }
 
@@ -2650,7 +2670,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
                 if (gameSelected == "Star Wars Outlaws")
                 {
-                    outlawsFsr3();
+                    outlawsFsr3();                 
                 }
 
                 if (gameSelected == "Dragons Dogma 2")
@@ -2964,6 +2984,19 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         CleanupMod3(del_dlss_to_fsr, "Outlaws DLSS RTX");
                     }
+
+                    #region Others Mods
+
+                    if (Path.Exists(selectFolder + "\\Anti_Sttuter.txt"))
+                    {
+                        if (MessageBox.Show("Do you want to remove the Anti Stutter? ", "Remove Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            runReg("mods\\FSR3_Outlaws\\Anti_Stutter\\Uninstall Star Wars Outlaws CPU Priority.reg");
+                            File.Delete(selectFolder + "\\Anti_Sttuter.txt");
+                        }
+                    }
+
+                    #endregion
                 }
                 else if (rdr2_folder.ContainsKey(selectMod))
                 {

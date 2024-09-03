@@ -652,13 +652,30 @@ namespace FSR3ModSetupUtilityEnhanced
                 "All GPUs:\r\n" +
                 "1 - Select FSR 3.1/DLSS Optiscaler.\r\n" +
                 "2 - Inside the game, select an upscaler of your choice.\r\n" +
-                "3 - Press the Insert key to open the menu and select an upscaler of your choice."
+                "3 - Press the Insert key to open the menu and select an upscaler of your choice.\r\n\r\n" +
+
+                "Graphic Preset:\n" +
+                "1 - Install the mod and the ReShade application.\n" +
+                "2 - In ReShade, select b1.exe, DirectX 10/11/12,\n" +
+                "   click on \"Browser,\" and find the file Outlaws2.ini (the path\n" +
+                "   should look something like Star Wars Outlaws\\Outlaws2.ini)\n" +
+                "   and select it, then click on \"Uncheck All\" and \"Next.\"\n" +
+                "3 - In the game, press the \"Insert\" key to open\n" +
+                "   the menu and check the options you want.\n"
             },
             {
                 "The Callisto Protocol",
                 "The Callisto Protocol Fsr3\r\n"+
                 "1 - Select The Callisto Protocol Fsr3.\r\n" +
                 "2 - Check the Fake Nvidia GPU box and install.\r\n\r\n" +
+
+                "0.10.4:\r\n" +
+                "1 - Select 0.10.4 and install it.\r\n" +
+                "2 - Inside the game, select FSR 2 and start the campaign.\r\n" +
+                "3 - If Frame Gen doesn't work, check the \"Nvngx.dll\" box and\r\n" +
+                "   select \"Default,\" then check the \"Enable Signature Override\"\r\n" +
+                "   box. For Epic Games users: if the mod doesn't work or some\r\n" +
+                "   bugs appear, check the \"Disable Overlay\" box.\r\n"+
 
                 "Uniscaler V3\r\n" +
                 "1 - Select Uniscaler V3.\r\n" +
