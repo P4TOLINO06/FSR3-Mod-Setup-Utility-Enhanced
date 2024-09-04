@@ -169,7 +169,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - In the game, select DLSS Frame Generation"
             },
             {
-                "Control", 
+                "Control",
                 "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
                 "2 - Check the Fake Nvidia GPU box. (AMD/GTX).\r\n" +
                 "3 - Check the Enable Signature Override box.\r\n" +
@@ -644,6 +644,62 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - If a DLL error occurs, reinstall the mod and click 'YES' in the DLL file installation message box.\r\n"
             },
             {
+                "Returnal",
+                "1 - Choose a version of the mod you prefer (version 0.10.3 is recommended).\r\n" +
+                "2 - Enable the \"Enable Signature Override\" checkbox if the mod doesn't work.\r\n" +
+                "3 - Select \"Default\" in Nvngx.dll.\n"
+            },
+            {
+                "Ripout",
+                "1 - Select a mod of your preference (0.10.3 is recommended).\n" +
+                "2 - Check the box Fake Nvidia GPU (AMD/GTX).\n" +
+                "3 - In the game, select DLSS and Frame Generation.\n"
+            },
+            {
+                "Saints Row",
+                "1 - Select a mod of your preference (0.10.3 is recommended).\n" +
+                "2 - Choose the path for the overlay, under Epic Games\n" +
+                "   Overlay, and select \"Disable.\"\n" +
+                "3 - Start the game in DX12.\n" +
+                "4 - Inside the game, select FSR.\n"
+            },
+            {
+                "Sackboy: A Big Adventure",
+                "1 - Select a version of the mod of your choice (version 0.10.3 is recommended).\n" +
+                "2 - Select the game folder that has the ending \"\\GingerBread\\Binaries\\Win64\".\n" +
+                "3 - Enable Fake Nvidia GPU (Only for AMD GPUs).\n" +
+                "4 - In \"Mod Operates\", select \"Replace DLSS FG\".\n" +
+                "5 - Select 'Default' in Nvngx.dll.\n" +
+                "6 - Enable the \"Enable Signature Override\" checkbox if the mod doesn’t work.\n"
+            },
+            {
+                "Shadow of the Tomb Raider",
+                "1 - Select the 'Uniscaler' option under 'Mod Version'.\n" +
+                "2 - AMD GPU users: Select 'XESS' under 'Mod Operates' | Nvidia GPU users: Select any of the 3 options under 'Mod Operates' (DLSS is recommended).\n" +
+                "3 - In the configuration window, disable 'AMD FidelityFX CAS' and select an option in XESS/DLSS.\n" +
+                "4 - Within the game, adjust the options as desired (you can reactivate AMD FidelityFX CAS).\n" +
+                "5 - To activate Frame Generation, select an option in XESS/DLSS, select an Anti-aliasing option if desired (Frame Generation will remain active).\n" +
+                "● Select 'Nvngx: Default' and enable 'Enable Signature Override' if the mod doesn't work (AMD GPU users only).\n\n" +
+                "Uniscaler V3\n" +
+                "1 - Select Uniscaler V3.\n" +
+                "2 - In Mod Operates, select XESS, and in Frame Gen Method, select FSR3.\n" +
+                "3 - If you don't have an RTX GPU, check the Nvngx.dll box and select Default.\n" +
+                "4 - In the game, turn off Anti-Aliasing and set XESS to Quality.\n" +
+                "5 - To fix the HUD error, go to settings after completing the step above, turn off XESS, and select SMAA in Anti-Aliasing.\n"
+            },
+            {
+                "Shadow Warrior 3",
+                "1 - Select a mod of your preference (0.10.3 is recommended).\n" +
+                "2 - Inside the game, select FSR. (You can use it with DLSS but there might be flickering).\n" +
+                "3 - Set Ambient Occlusion and Post Processing to Low.\n"
+            },
+            {
+                "Smalland",
+                "1 - Select a mod of your choice. (0.10.3 is recommended)\n" +
+                "2 - Check the Fake Nvidia GPU box. (AMD/GTX)\n" +
+                "3 - In the game, select DLSS\n"
+            },
+            {
                 "Star Wars Outlaws",
                 "RTX:\r\n" +
                 "1 - Select Star Wars DLSS RTX and install.\r\n" +
@@ -827,6 +883,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Red Dead Redemption Mix 2","Rdr2Mix2.png"},
                 {"Red Dead Redemption V2","Rdr2V2.png"},
                 {"RDR2 Non Steam","Rdr2NSteam.png"},
+                {"Returnal","Returnal2.png"},
+                {"Ripout","Ripout.png"},
+                {"Saints Row","SaintsRow2.png"},
+                {"Sackboy: A Big Adventure","Sackboy2.png"},
+                {"Shadow of the Tomb Raider","ShadowTomb2.png"},
+                {"Shadow Warrior 3","Shadow32.png"},
+                {"Smalland","Smalland.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
                 {"The Callisto Protocol","Callisto2.png"}
             };

@@ -254,7 +254,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (listGames.SelectedItem.ToString() == "Red Dead Redemption 2")
             {
-                formSettings.Instance.AddItemlistMods(rdr2B2List);
+                formSettings.Instance.AddItemlistMods(rdr2B2List, modsDefaultList);
             }
             else if(listGames.SelectedItem.ToString() == "Elden Ring")
             {
@@ -292,7 +292,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (listGames.SelectedItem.ToString() == "Cyberpunk 2077")
             {
-                formSettings.Instance.AddItemlistMods(cyberList);
+                formSettings.Instance.AddItemlistMods(cyberList, modsDefaultList);
             }
             else if (listGames.SelectedItem.ToString() == "Forza Horizon 5")
             {
@@ -339,19 +339,19 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (listGames.SelectedItem.ToString() == "Dying Light 2")
             {
-                formSettings.Instance.AddItemlistMods(dl2List);
+                formSettings.Instance.AddItemlistMods(dl2List, modsDefaultList);
             }
             else if (listGames.SelectedItem.ToString() == "Black Myth: Wukong")
             {
-                formSettings.Instance.AddItemlistMods(wukongList);
+                formSettings.Instance.AddItemlistMods(wukongList, modsDefaultList);
             }
             else if (listGames.SelectedItem.ToString() == "Final Fantasy XVI")
             {
-                formSettings.Instance.AddItemlistMods(ffxviList);
+                formSettings.Instance.AddItemlistMods(ffxviList, modsDefaultList);
             }
             else if (listGames.SelectedItem.ToString() == "Star Wars Outlaws")
             {
-                formSettings.Instance.AddItemlistMods(outlawsList);
+                formSettings.Instance.AddItemlistMods(outlawsList, modsDefaultList);
             }
             else
             {

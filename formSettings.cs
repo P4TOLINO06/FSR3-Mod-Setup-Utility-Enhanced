@@ -72,11 +72,11 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void AddItemlistMods(List<string> items)
+        public void AddItemlistMods(List<string> items,List<string>defaultMods = null)
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws" }; //Ignore the removal of the default mods (0.7.6 etc.) for the games on the list
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -99,9 +99,18 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (listMods != null && !listMods.Items.Contains(items) && gamesIgnore.Contains(gameSelected))
             {
+                listMods.Items.Clear();
                 foreach (var item in items)
                 {
                     listMods.Items.Add(item);
+                }
+
+                if (defaultMods != null)
+                {
+                    foreach (var defMods in defaultMods)
+                    {
+                        listMods.Items.Add(defMods);
+                    }
                 }
             }
             if (listMods.Text != "")
