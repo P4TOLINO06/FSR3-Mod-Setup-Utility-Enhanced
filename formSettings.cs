@@ -1774,6 +1774,18 @@ namespace FSR3ModSetupUtilityEnhanced
             #endregion
         }
 
+        public void gow4Fsr3()
+        {
+            if (selectMod == "Gow 4 FSR 3.1")
+            {
+                string var_gow4 = "mods\\FSR3_GOW4\\optiscaler.txt";
+
+                File.Copy(var_gow4, selectFolder + "\\optiscaler.txt",true);
+            }
+
+            MessageBox.Show("Check the God of War 4 guide on Guide to complete the installation. (If you do not follow the steps in the guide, the mod will not work).", "Guider", MessageBoxButtons.OK);
+        }
+
         public async Task dd2Fsr3()
         {
             #region CopyWinmm and delete shader.cache2
@@ -2681,6 +2693,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     outlawsFsr3();                 
                 }
+                if (gameSelected == "God Of War 4")
+                {
+                    gow4Fsr3();
+                }
 
                 if (gameSelected == "Dragons Dogma 2")
                 {
@@ -2935,12 +2951,15 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     if (File.Exists(selectFolder + "\\amd_fidelityfx_vk.dll"))
                     {
-                        foreach (var fileBackup in Directory.GetFiles(pathBackupFolder))
+                        if (Path.Exists(pathBackupFolder))
                         {
-                            string fileName = Path.GetFileName(fileBackup);
-                            File.Copy(fileBackup, Path.Combine(selectFolder, fileName), true);
+                            foreach (var fileBackup in Directory.GetFiles(pathBackupFolder))
+                            {
+                                string fileName = Path.GetFileName(fileBackup);
+                                File.Copy(fileBackup, Path.Combine(selectFolder, fileName), true);
+                            }
+                            Directory.Delete(pathBackupFolder, true);
                         }
-                        Directory.Delete(pathBackupFolder, true);
                     }
                     runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
                     #endregion
@@ -2981,10 +3000,24 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
                 if (gameSelected == "The Callisto Protocol")
                 {
-
                     #region Remove others mods
                     CleanupOthersMods("TCP", "TCP.ini");
                     CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini");
+                    #endregion
+                }
+                if (gameSelected == "God Of War 4")
+                {
+                    #region Del Files Optiscaler Gow 4
+                    if (File.Exists(selectFolder + "\\amd_fidelityfx_vk.dll"))
+                    {
+                        CleanupMod3(del_optiscaler, "Gow 4 FSR 3.1");
+
+                        runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
+                    }
+                    if (File.Exists(selectFolder + "\\optiscaler.txt"))
+                    {
+                        File.Delete(selectFolder + "\\optiscaler.txt");
+                    }
                     #endregion
                 }
                 if (gameSelected == "Star Wars Outlaws")

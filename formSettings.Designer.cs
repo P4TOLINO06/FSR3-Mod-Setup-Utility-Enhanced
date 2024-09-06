@@ -211,13 +211,13 @@
             // 
             panelAddOnUps.AutoScroll = true;
             panelAddOnUps.BackColor = Color.Transparent;
+            panelAddOnUps.Controls.Add(button5);
             panelAddOnUps.Controls.Add(buttonDlssVulkan);
             panelAddOnUps.Controls.Add(buttonFsr31Vulkan);
             panelAddOnUps.Controls.Add(buttonFsr22Vulkan);
             panelAddOnUps.Controls.Add(buttonDlssDx12);
             panelAddOnUps.Controls.Add(buttonFsr21Vulkan);
             panelAddOnUps.Controls.Add(buttonAddUps4);
-            panelAddOnUps.Controls.Add(button4);
             panelAddOnUps.Controls.Add(buttonDlssDX11);
             panelAddOnUps.Controls.Add(buttonAddUps7);
             panelAddOnUps.Controls.Add(panel3);
@@ -225,7 +225,7 @@
             panelAddOnUps.Controls.Add(buttonAddUps5);
             panelAddOnUps.Location = new Point(165, 127);
             panelAddOnUps.Name = "panelAddOnUps";
-            panelAddOnUps.Size = new Size(167, 94);
+            panelAddOnUps.Size = new Size(167, 124);
             panelAddOnUps.TabIndex = 23;
             // 
             // buttonDlssVulkan
@@ -233,7 +233,7 @@
             buttonDlssVulkan.BackColor = Color.Gray;
             buttonDlssVulkan.FlatAppearance.BorderSize = 0;
             buttonDlssVulkan.FlatStyle = FlatStyle.Flat;
-            buttonDlssVulkan.ForeColor = Color.White;
+            buttonDlssVulkan.ForeColor = Color.Gainsboro;
             buttonDlssVulkan.Location = new Point(0, 432);
             buttonDlssVulkan.Name = "buttonDlssVulkan";
             buttonDlssVulkan.Size = new Size(148, 31);
@@ -247,7 +247,7 @@
             buttonFsr31Vulkan.BackColor = Color.Gray;
             buttonFsr31Vulkan.FlatAppearance.BorderSize = 0;
             buttonFsr31Vulkan.FlatStyle = FlatStyle.Flat;
-            buttonFsr31Vulkan.ForeColor = Color.White;
+            buttonFsr31Vulkan.ForeColor = Color.Gainsboro;
             buttonFsr31Vulkan.Location = new Point(0, 401);
             buttonFsr31Vulkan.Name = "buttonFsr31Vulkan";
             buttonFsr31Vulkan.Size = new Size(148, 31);
@@ -261,7 +261,7 @@
             buttonFsr22Vulkan.BackColor = Color.Gray;
             buttonFsr22Vulkan.FlatAppearance.BorderSize = 0;
             buttonFsr22Vulkan.FlatStyle = FlatStyle.Flat;
-            buttonFsr22Vulkan.ForeColor = Color.White;
+            buttonFsr22Vulkan.ForeColor = Color.Gainsboro;
             buttonFsr22Vulkan.Location = new Point(0, 370);
             buttonFsr22Vulkan.Name = "buttonFsr22Vulkan";
             buttonFsr22Vulkan.Size = new Size(148, 31);
@@ -275,7 +275,7 @@
             buttonDlssDx12.BackColor = Color.Gray;
             buttonDlssDx12.FlatAppearance.BorderSize = 0;
             buttonDlssDx12.FlatStyle = FlatStyle.Flat;
-            buttonDlssDx12.ForeColor = Color.White;
+            buttonDlssDx12.ForeColor = Color.Gainsboro;
             buttonDlssDx12.Location = new Point(0, 308);
             buttonDlssDx12.Name = "buttonDlssDx12";
             buttonDlssDx12.Size = new Size(148, 31);
@@ -289,7 +289,7 @@
             buttonFsr21Vulkan.BackColor = Color.Gray;
             buttonFsr21Vulkan.FlatAppearance.BorderSize = 0;
             buttonFsr21Vulkan.FlatStyle = FlatStyle.Flat;
-            buttonFsr21Vulkan.ForeColor = Color.White;
+            buttonFsr21Vulkan.ForeColor = Color.Gainsboro;
             buttonFsr21Vulkan.Location = new Point(0, 339);
             buttonFsr21Vulkan.Name = "buttonFsr21Vulkan";
             buttonFsr21Vulkan.Size = new Size(148, 31);
@@ -303,7 +303,7 @@
             buttonAddUps4.BackColor = Color.Gray;
             buttonAddUps4.FlatAppearance.BorderSize = 0;
             buttonAddUps4.FlatStyle = FlatStyle.Flat;
-            buttonAddUps4.ForeColor = Color.White;
+            buttonAddUps4.ForeColor = Color.Gainsboro;
             buttonAddUps4.Location = new Point(0, 117);
             buttonAddUps4.Name = "buttonAddUps4";
             buttonAddUps4.Size = new Size(148, 36);
@@ -317,12 +317,12 @@
             button4.BackColor = Color.Gray;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(-3, 215);
+            button4.ForeColor = Color.Gainsboro;
+            button4.Location = new Point(0, 89);
             button4.Name = "button4";
             button4.Size = new Size(151, 31);
             button4.TabIndex = 15;
-            button4.Text = "Fsr 3.1 DX12";
+            button4.Text = "Fsr 3.1 DX11";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click_1;
             // 
@@ -331,7 +331,7 @@
             buttonDlssDX11.BackColor = Color.Gray;
             buttonDlssDX11.FlatAppearance.BorderSize = 0;
             buttonDlssDX11.FlatStyle = FlatStyle.Flat;
-            buttonDlssDX11.ForeColor = Color.White;
+            buttonDlssDX11.ForeColor = Color.Gainsboro;
             buttonDlssDX11.Location = new Point(0, 153);
             buttonDlssDX11.Name = "buttonDlssDX11";
             buttonDlssDX11.Size = new Size(148, 31);
@@ -345,7 +345,7 @@
             buttonAddUps7.BackColor = Color.Gray;
             buttonAddUps7.FlatAppearance.BorderSize = 0;
             buttonAddUps7.FlatStyle = FlatStyle.Flat;
-            buttonAddUps7.ForeColor = Color.White;
+            buttonAddUps7.ForeColor = Color.Gainsboro;
             buttonAddUps7.Location = new Point(0, 277);
             buttonAddUps7.Name = "buttonAddUps7";
             buttonAddUps7.Size = new Size(148, 31);
@@ -357,10 +357,10 @@
             // panel3
             // 
             panel3.BackColor = Color.Transparent;
-            panel3.Controls.Add(button5);
             panel3.Controls.Add(buttonAddUps3);
             panel3.Controls.Add(buttonAddUps2);
             panel3.Controls.Add(buttonAddUps1);
+            panel3.Controls.Add(button4);
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(148, 120);
@@ -371,12 +371,12 @@
             button5.BackColor = Color.Gray;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.ForeColor = Color.White;
-            button5.Location = new Point(0, 87);
+            button5.ForeColor = Color.Gainsboro;
+            button5.Location = new Point(0, 215);
             button5.Name = "button5";
-            button5.Size = new Size(148, 30);
+            button5.Size = new Size(148, 32);
             button5.TabIndex = 16;
-            button5.Text = "Fsr 3.1 DX11";
+            button5.Text = "Fsr 3.1 DX12";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click_1;
             // 
@@ -427,7 +427,7 @@
             buttonAddUps6.BackColor = Color.Gray;
             buttonAddUps6.FlatAppearance.BorderSize = 0;
             buttonAddUps6.FlatStyle = FlatStyle.Flat;
-            buttonAddUps6.ForeColor = Color.White;
+            buttonAddUps6.ForeColor = Color.Gainsboro;
             buttonAddUps6.Location = new Point(0, 184);
             buttonAddUps6.Name = "buttonAddUps6";
             buttonAddUps6.Size = new Size(148, 31);
@@ -441,7 +441,7 @@
             buttonAddUps5.BackColor = Color.Gray;
             buttonAddUps5.FlatAppearance.BorderSize = 0;
             buttonAddUps5.FlatStyle = FlatStyle.Flat;
-            buttonAddUps5.ForeColor = Color.White;
+            buttonAddUps5.ForeColor = Color.Gainsboro;
             buttonAddUps5.Location = new Point(0, 246);
             buttonAddUps5.Name = "buttonAddUps5";
             buttonAddUps5.Size = new Size(148, 31);

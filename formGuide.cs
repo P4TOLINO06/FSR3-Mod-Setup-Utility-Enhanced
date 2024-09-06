@@ -409,6 +409,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "select Fake Nvidia Gpu and Nvapi Results (GTX only)."
             },
             {
+                "God Of War 4",
+                "1 - Select \"Gow 4 FSR 3.1\".\n" + 
+                "2 - Click on Add-on, then Optiscaler, and select 'Method Default.'\n" +
+                "3 - In 'Add-on Upscaler,' choose 'fsr3.1 DX11' and install.\n" +
+                "4 - In the game, select DLSS (do not choose ultra quality, as it will not work).\n" +
+                "5 - Press the 'Insert' key to open the menu and select the desired upscaler (XESS is recommended).\n" +
+                "6 - If the menu does not appear, set the preferred upscaler in 'Add-on Upscaler' in the Utility and install again. (Select only the DX11 upscalers, such as fsr3.1 DX11, xess DX11, etc.)\n" +
+                "7 - If you don't see DLSS in the game, check 'Enable Signature Override' under 'Additional Settings.'"
+            },
+            {
                 "Hellblade 2",
                 "Only RTX\r\n" +
                 "1 - Select Hellblade 2 FSR3 and install it.\r\n" +
@@ -852,6 +862,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Ghost of Tsushima","GhostT.png"},
                 {"Ghostrunner 2","Ghost2.png"},
                 {"Ghostwire: Tokyo","Ghostwire2.png"},
+                {"God Of Warr 4","God Of War42.png"},
                 {"Hellblade: Senua's Sacrifice","Hell.png"},
                 {"Hellblade 2","Hell2.png"},
                 {"High On Life","Hol.png"},

@@ -95,6 +95,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Ghost of Tsushima","GhostT.png"},
                     {"Ghostrunner 2","Ghost2.png"},
                     {"Ghostwire: Tokyo","Ghostwire.png"},
+                    {"God Of War 4","Gow4.png"},
                     {"GTA V","GtaV.png"},
                     {"Hellblade 2","Hell2.png" },
                     {"Hellblade: Senua's Sacrifice","Hell.png"},
@@ -218,6 +219,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> codList = new List<string> {"COD MW3 FSR3" };
             List<string> dl2List = new List<string> { "DL2 DLSS FG" };
             List<string> outlawsList = new List<string> { "Outlaws DLSS RTX" };
+            List<string> gow4List = new List<string> { "Gow 4 FSR 3.1" };
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
             List<string> ffxviList = new List<string> { "FFXVI DLSS ALL GPU", "FFXVI DLSS RTX" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
@@ -248,7 +250,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 dl2List,
                 wukongList,
                 ffxviList,
-                outlawsList
+                outlawsList,
+                gow4List
             };
             #endregion
 
@@ -336,6 +339,11 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(codList);
+            }
+            else if (listGames.SelectedItem.ToString() == "God Of War 4")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(gow4List);
             }
             else if (listGames.SelectedItem.ToString() == "Dying Light 2")
             {
