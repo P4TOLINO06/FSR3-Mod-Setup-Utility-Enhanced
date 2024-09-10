@@ -657,7 +657,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll",
             "libxess.dll", "nvngx-wrapper.dll", "nvngx.ini", "unins000.dat",
-            "version.dll", "dlss_rtx.txt"
+            "version.dll", "dlss_rtx.txt","dlssg_to_fsr3_amd_is_better-3.0.dll","dlssg_to_fsr3.ini","amd_fidelityfx_vk.dll","amd_fidelityfx_dx12.dll"
 
         };
 
@@ -666,7 +666,7 @@ namespace FSR3ModSetupUtilityEnhanced
             "DisableNvidiaSignatureChecks.reg", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlss-finder.exe",
             "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "libxess.dll",
             "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg",
-            "unins000.dat", "unins000.exe", "winmm.dll", "_nvngx.dll", "dlss_amd.txt"
+            "unins000.dat", "unins000.exe", "winmm.dll", "_nvngx.dll", "dlss_amd.txt","dlss-enabler.dll","dlssg_to_fsr3_amd_is_better-3.0.dll","dlssg_to_fsr3.ini","amd_fidelityfx_vk.dll","amd_fidelityfx_dx12.dll"
 
         };
         #endregion
@@ -1363,7 +1363,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
-            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead"};
+            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
@@ -2031,6 +2031,56 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             dlssGlobal();
         }
+
+        public async void whmMarineFsr3()
+        {
+            string antiStutterMarine = "mods\\FSR3_Outlaws\\Anti_Stutter\\Install Star Wars Outlaws CPU Priority.reg";
+            string txtStutterMarine = "mods\\FSR3_SpaceMarine\\Anti_Stutter\\Marine_Anti_Stutter.txt";
+            string presetMarine = "mods\\FSR3_SpaceMarine\\Preset\\Warhammer 40000 Space Marine 2.ini";
+            string pathDxgiMarine = Path.Combine(selectFolder, "dxgi.dll");
+            string pathRenameDxgiMarine = Path.Combine(selectFolder, "d3d12.dll");
+            string pathFsr31MarineRtx = "mods\\FSR3_SpaceMarine\\FSR 3.1\\RTX";
+            string pathFsr31MarineAmd = "mods\\FSR3_SpaceMarine\\FSR 3.1\\AMD";
+            string backupMarine = Path.Combine(selectFolder,"Backup DXGI");
+
+            if (selectMod == "FSR 3.1 Space Marine")
+            {
+                if (Path.Exists(pathDxgiMarine))
+                {             
+                    if (!Path.Exists(backupMarine))
+                    {
+                        Directory.CreateDirectory(backupMarine);
+                    }
+
+                    File.Copy(pathDxgiMarine, Path.Combine(backupMarine,"dxgi.dll"), true);
+
+                    File.Move(pathDxgiMarine, pathRenameDxgiMarine,true);
+
+                }
+
+                if (MessageBox.Show("Do you have an RTX GPU?", "GPU", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFolder(pathFsr31MarineRtx);
+                }
+                else
+                {
+                    CopyFolder(pathFsr31MarineAmd);
+                }
+
+                if (MessageBox.Show("Do you want to install the Anti Stutter?","Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    runReg(antiStutterMarine);
+                    File.Copy(txtStutterMarine, Path.Combine(selectFolder, "Marine_Anti_Stutter.txt"),true);
+                }
+
+                if (MessageBox.Show("Do you have to install the Graphic Preset?, select the path similar to: client_pc\\root\\bin\\pc for the mod to work. (It is necessary to install ReShade for the preset to work. " +
+                    "See the guide in the Guide to learn how to install it.)", "Graphic Preset",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(presetMarine, Path.Combine(selectFolder, "Warhammer 40000 Space Marine 2.ini"), true);
+                }
+            }
+        }
+
         public void ffxviFsr3()
         {
             if (selectMod == "FFXVI DLSS RTX")
@@ -2685,6 +2735,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     dl2Fsr3();
                 }
+                if (gameSelected == "Warhammer: Space Marine 2")
+                {
+                    whmMarineFsr3();
+                }
                 if (gameSelected == "Black Myth: Wukong")
                 {
                     wukongFsr3();
@@ -3038,6 +3092,41 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
 
+                    #endregion
+                }
+                if (gameSelected == "Warhammer: Space Marine 2")
+                {
+                    #region Del Mods Warhammer: Space Marine 2
+                    if (selectMod == "FSR 3.1 Space Marine")
+                    {
+                        if (MessageBox.Show("Do you have an RTX GPU?","GPU",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            CleanupMod3(del_dlss_global_rtx, "FSR 3.1 Space Marine");
+                        }
+                        else
+                        {
+                            CleanupMod3(del_dlss_global_amd, "FSR 3.1 Space Marine");
+                        }  
+                        
+                        if (Path.Exists(selectFolder + "\\Backup DXGI\\dxgi.dll"))
+                        {
+                            File.Copy(selectFolder + "\\Backup DXGI\\dxgi.dll", selectFolder + "\\dxgi.dll", true);
+
+                           if (Path.Exists(selectFolder + "\\d3d12.dll"))
+                            {
+                                File.Delete(selectFolder + "\\d3d12.dll");
+                            }
+
+                            Directory.Delete(selectFolder + "\\Backup DXGI", true);
+                        }
+                    }
+                    if (Path.Exists(selectFolder + "\\Marine_Anti_Stutter.txt"))
+                    {
+                        if (MessageBox.Show("Do you want to remove the Anti Stutter?","Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            runReg("mods\\FSR3_Outlaws\\Anti_Stutter\\Uninstall Star Wars Outlaws CPU Priority.reg");
+                        }
+                    }
                     #endregion
                 }
                 else if (rdr2_folder.ContainsKey(selectMod))

@@ -761,6 +761,24 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Select DirectX 10/11/12, click 'Browse,' and select the TCP.ini file that was installed in the destination folder chosen in the Utility.\r\n" +
                 "3 - Click 'Uncheck All,' and then click 'Next.'\r\n" +
                 "4 - Do the same for the Real Life mod."
+            },
+            {
+                "Warhammer: Space Marine 2",
+                "1 - FSR 3.1 Space Marine:\n" +
+                "2 - Check the 'GPU' window during installation.\n" +
+                "3 - In-game, press the 'Insert' key to open the menu.\n" +
+                "4 - In the menu, select the upscaler of your choice.\n\n" +
+
+                "Uniscaler FSR 3.1:\n" +
+                "1 - Check the 'Fake NVIDIA GPU' box if you want to use DLSS.\n" +
+                "2 - Check the 'Enable Signature Over' box.\n" +
+                "3 - This mod does not have a HUD fix, as frame generation is activated along with the mod.\n\n" +
+
+                "Graphic Preset:\n" +
+                "1 - Install the mod and the ReShade application.\r\n" +
+                "2 - In ReShade, select SpaceMarine2.exe (or select the game .exe), DirectX 10/11/12, click on 'Browse,' find the fileWarhammer 40000 Space Marine 2.ini (the path should look something like client_pc\\root\\bin\\pc), select it, then click on 'Uncheck All' and 'Next.'\r\n" +
+                "3 - In the game, press the 'Insert' key to open the menu and check the options you want.\r\n" +
+                "4 -For the mod to work, you need to select the folder where the Warhammer 40000 Space Marine 2.ini file is located; the path is similar to client_pc\\root\\bin\\pc."
             }
         };
 
@@ -902,7 +920,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Shadow Warrior 3","Shadow32.png"},
                 {"Smalland","Smalland.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
-                {"The Callisto Protocol","Callisto2.png"}
+                {"The Callisto Protocol","Callisto2.png"},
+                {"Warhammer: Space Marine 2","SpaceMarine2.png"}
             };
 
             #endregion
