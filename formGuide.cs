@@ -763,6 +763,23 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - Do the same for the Real Life mod."
             },
             {
+                "The Casting Of Frank Stone",
+                "Optiscaler Frank Stone FG:\n" +
+                "1. Select 'Optiscaler Frank Stone FG', install it, and check the GPU window that appears.\n" +
+                "2. In the game, select DLSS and Frame Generation.\n" +
+                "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1.\n\n" +
+
+                "0.10.4:\n" +
+                "1. Select 0.10.4 and install it.\n" +
+                "2. In the game, select DLSS and Frame Generation.\n" +
+                "3. If you can't see DLSS in the game, click on 'Nvngx.dll' and then on 'Default.'\n\n" +
+
+                "Optiscaler FSR 3.1/DLSS:\n" +
+                "1. Select 'Optiscaler FSR 3.1/DLSS' and install it.\n" +
+                "2. In the game, select DLSS and Frame Generation.\n" +
+                "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1."
+            },
+            {
                 "Warhammer: Space Marine 2",
                 "1 - FSR 3.1 Space Marine:\n" +
                 "2 - Check the 'GPU' window during installation.\n" +
@@ -921,6 +938,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Smalland","Smalland.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
                 {"The Callisto Protocol","Callisto2.png"},
+                { "The Casting Of Frank Stone","FrankStone2.png" },
                 {"Warhammer: Space Marine 2","SpaceMarine2.png"}
             };
 

@@ -655,19 +655,16 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Dlss Global Files
         List<string> del_dlss_global_rtx = new List<string>
         {
-            "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll",
-            "libxess.dll", "nvngx-wrapper.dll", "nvngx.ini", "unins000.dat",
-            "version.dll", "dlss_rtx.txt","dlssg_to_fsr3_amd_is_better-3.0.dll","dlssg_to_fsr3.ini","amd_fidelityfx_vk.dll","amd_fidelityfx_dx12.dll"
-
+            "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log",
+            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "libxess.dll", "nvapi64-proxy.dll", "nvngx-wrapper.dll",
+            "nvngx.dll", "nvngx.ini", "unins000.dat","amd_fidelityfx_dx12.dll","version.dll"
         };
 
         List<string> del_dlss_global_amd = new List<string>
         {
-            "DisableNvidiaSignatureChecks.reg", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlss-finder.exe",
-            "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "libxess.dll",
-            "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg",
-            "unins000.dat", "unins000.exe", "winmm.dll", "_nvngx.dll", "dlss_amd.txt","dlss-enabler.dll","dlssg_to_fsr3_amd_is_better-3.0.dll","dlssg_to_fsr3.ini","amd_fidelityfx_vk.dll","amd_fidelityfx_dx12.dll"
-
+            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.log",
+            "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll",
+            "libxess.dll", "nvngx-wrapper.dll", "nvngx.ini", "unins000.dat", "version.dll","nvapi64-proxy.dll","dxgi.dll","dlss-enabler.dll"
         };
         #endregion
 
@@ -1363,7 +1360,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
-            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8", "The Chant", "The Invincible", "The Medium", "Wanted: Dead","Warhammer: Space Marine 2"};
+            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
@@ -1577,7 +1574,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             string backupFolderDlss = Path.Combine(selectFolder, "Backup Dlss");
 
-            DialogResult gpuDlss = MessageBox.Show("Do you have a GPU starting from GTX 1660? (For other GPUs, select \"No\" (including AMD)).", "Dlss GPU", MessageBoxButtons.YesNo);
+            DialogResult gpuDlss = MessageBox.Show("Do you have a RTX GPU? (For other GPUs, select \"No\" (including AMD)).", "Dlss GPU", MessageBoxButtons.YesNo);
 
             string pathGpu = gpuDlss == DialogResult.Yes ? pathRtx : pathAmd;
 
@@ -1689,6 +1686,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 catch { }
             }
             #endregion
+        }
+
+        public void frankStoneFSR3()
+        {
+            if (selectMod == "Optiscaler Frank Stone FG")
+            {
+                dlssGlobal();
+            }
         }
 
 
@@ -2739,6 +2744,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     whmMarineFsr3();
                 }
+                if (gameSelected == "The Casting Of Frank Stone")
+                {
+                    frankStoneFSR3();
+                }
                 if (gameSelected == "Black Myth: Wukong")
                 {
                     wukongFsr3();
@@ -3125,6 +3134,22 @@ namespace FSR3ModSetupUtilityEnhanced
                         if (MessageBox.Show("Do you want to remove the Anti Stutter?","Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             runReg("mods\\FSR3_Outlaws\\Anti_Stutter\\Uninstall Star Wars Outlaws CPU Priority.reg");
+                        }
+                    }
+                    #endregion
+                }
+                if (gameSelected == "The Casting Of Frank Stone")
+                {
+                    #region Del Mods Frank Stone
+                    if (selectMod == "Optiscaler Frank Stone FG")
+                    {
+                        if (MessageBox.Show("Do you have an RTX GPU?", "GPU", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            CleanupMod3(del_dlss_global_rtx, "Optiscaler Frank Stone FG");
+                        }
+                        else
+                        {
+                            CleanupMod3(del_dlss_global_amd, "Optiscaler Frank Stone FG");
                         }
                     }
                     #endregion

@@ -146,6 +146,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"TEKKEN 8","Tekken.png"},
                     {"The Callisto Protocol","Callisto.png"},
                     {"The Chant","Chant.png"},
+                    {"The Casting Of Frank Stone","FrankStone.png"},
                     {"The Invincible","Invicible.png"},
                     {"The Last of Us Part I","Tlou.png"},
                     {"The Medium","Medium.png"},
@@ -221,6 +222,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> dl2List = new List<string> { "DL2 DLSS FG" };
             List<string> outlawsList = new List<string> { "Outlaws DLSS RTX" };
             List<string> gow4List = new List<string> { "Gow 4 FSR 3.1" };
+            List<string> frankStoneList = new List<string> { "Optiscaler Frank Stone FG","0.10.4", "FSR 3.1/DLSS Optiscaler" };
             List<string> spacemarineList = new List<string> { "FSR 3.1 Space Marine","Uniscaler FSR 3.1", "Optiscaler FSR 3.1/DLSS" };
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
             List<string> ffxviList = new List<string> { "FFXVI DLSS ALL GPU", "FFXVI DLSS RTX" };
@@ -254,7 +256,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 ffxviList,
                 outlawsList,
                 gow4List,
-                spacemarineList
+                spacemarineList,
+                frankStoneList
             };
             #endregion
 
@@ -367,6 +370,10 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Star Wars Outlaws")
             {
                 formSettings.Instance.AddItemlistMods(outlawsList, modsDefaultList);
+            }
+            else if (listGames.SelectedItem.ToString() == "The Casting Of Frank Stone")
+            {
+                formSettings.Instance.AddItemlistMods(frankStoneList, modsDefaultList);
             }
             else
             {
