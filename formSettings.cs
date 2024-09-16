@@ -1634,9 +1634,44 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void jediFsr3()
         {
+            string jediPreset = "mods\\FSR3_Jedi\\Mods\\Jedi Preset\\STARWAR-ULTRA-REALISTA.ini";
+            string jediFixRt = "mods\\FSR3_Jedi\\Mods\\Jedi Fix RT\\pakchunk99-Mods_CustomMod_P.pak";
+            string jediAntiStutter = "mods\\FSR3_Jedi\\Mods\\Jedi Anti Stutter\\SWJS - FAI\\SWJSFAI.pak";
+            string jediIntroSkip = "mods\\FSR3_Jedi\\Mods\\Jedi Intro Skip\\Default_Startup.mp4";
+            string originFolderJedi = Path.GetFullPath(Path.Combine(selectFolder,"..\\..\\..\\SwGame"));
+
             if (selectMod == "DLSS Jedi")
             {
                 CopyFSR(folderJedi);
+            }
+
+            if (MessageBox.Show("Do you want to install Graphics Preset?","Graphic Preset",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                File.Copy(jediPreset, selectFolder + "\\STARWAR-ULTRA-REALISTA.ini",true);
+            }
+            if (Path.Exists(originFolderJedi + "\\Content\\Paks"))
+            {
+                if (MessageBox.Show("Do you want to install fix Ray Tracing?", "Fix RT", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(jediFixRt, originFolderJedi + "\\Content\\Paks\\pakchunk99-Mods_CustomMod_P.pak",true);
+                }
+
+                if (MessageBox.Show("Do you want to install Anti Stutter?", "Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(jediAntiStutter, originFolderJedi + "\\Content\\Paks\\SWJSFAI.pak",true);
+                }
+
+                if (Path.Exists(originFolderJedi + "\\Content\\Movies"))
+                {
+                    if (MessageBox.Show("Do you want to skip the game\'s initial intro?", "intro SKip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        File.Copy(jediIntroSkip, originFolderJedi + "\\Content\\Movies\\Default_Startup.mp4",true);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("If you want to install the other mods (Anti Stutter, Fix Rt, and Intro Skip), select the path to the game\\'s .exe file. The path should look like: Jedi Survivor\\SwGame\\Binaries\\Win64", "Path Not Found");
             }
         }
 
@@ -2703,7 +2738,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     lotfFsr3();
                 }
-                if (selectMod == "DLSS Jedi")
+                if (gameSelected == "STAR WARS Jedi: Survivor")
                 {
                     jediFsr3();
                 }
@@ -2960,9 +2995,9 @@ namespace FSR3ModSetupUtilityEnhanced
             RestoreBackup("Backup Dlss");
         }
 
-        public void CleanupOthersMods(string modName, string fileName)
+        public void CleanupOthersMods(string modName, string fileName,string destPath)
         {
-            string filePath = Path.Combine(selectFolder, fileName);
+            string filePath = Path.Combine(destPath, fileName);
             if (File.Exists(filePath))
             {
                 DialogResult result = MessageBox.Show($"Do you want to remove the {modName} mod?", $"Remove {modName}", MessageBoxButtons.YesNo);
@@ -3064,8 +3099,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "The Callisto Protocol")
                 {
                     #region Remove others mods
-                    CleanupOthersMods("TCP", "TCP.ini");
-                    CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini");
+                    CleanupOthersMods("TCP", "TCP.ini",selectFolder);
+                    CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",selectFolder);
                     #endregion
                 }
                 if (gameSelected == "God Of War 4")
@@ -3152,6 +3187,21 @@ namespace FSR3ModSetupUtilityEnhanced
                             CleanupMod3(del_dlss_global_amd, "Optiscaler Frank Stone FG");
                         }
                     }
+                    #endregion
+                }
+                if (gameSelected == "STAR WARS Jedi: Survivor")
+                {
+                    #region Cleanup others mods Jedi Survivor
+                    string rootPathJedi = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..\\SwGame"));
+
+                    if (selectMod == "DLSS Jedi")
+                    {
+                        CleanupMod(del_uni_files, folderJedi);
+                    }
+
+                    CleanupOthersMods("Fix RT", "pakchunk99-Mods_CustomMod_P.pak", rootPathJedi + "\\Content\\Paks");
+                    CleanupOthersMods("Anti Stutter", "SWJSFAI.pak", rootPathJedi + "\\Content\\Paks");
+                    CleanupOthersMods("Intro Skip", "Default_Startup.mp4", rootPathJedi + "\\Content\\Movies");
                     #endregion
                 }
                 else if (rdr2_folder.ContainsKey(selectMod))

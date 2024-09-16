@@ -710,6 +710,38 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - In the game, select DLSS\n"
             },
             {
+                "Star Wars Jedi: Survivor",
+                "DLSS Jedi (if you have RTX, use this mod if you want to use native DLSS):\n" +
+                "1. Check the box Fake Nvidia GPU (GTX and AMD), Nvapi Results (GTX and AMD), and UE Compatibility (AMD).\n" +
+                "2. If you can\'t see DLSS in-game, select \"DLSS\" under \"Mod Operates\".\n" +
+                "3. In-game, select DLSS 3 and Frame Gen.\n\n" +
+
+                "For All GPUs:\n" +
+                "1. Select a mod of your preference (recommended 0.10.3/0.10.4 or Uniscaler).\n" +
+                "2. Check the box Fake Nvidia GPU (GTX and AMD), Nvapi Results (GTX and AMD), and UE Compatibility (AMD).\n" +
+                "3. In-game, select FSR and Frame Gen.\n\n" +
+
+                "Others Mods:\n" +
+                "Intro Skip:\n" +
+                "Removes the initial intro when opening the game.\n\n" +
+
+                "Anti Stutter:\n" +
+                "1. Faster Loading Times.\n" +
+                "2. Enhanced Streaming and Level Loading.\n" +
+                "3. Optimized CPU and GPU Utilization.\n\n" +
+
+                "Fix RT:\n" +
+                "Fixes any crashes you experience with ray tracing enabled and also fixes occlusion culling. When you turn the camera and see white flashing at the corners of the screen, this resolves it and any crashes.\n\n" +
+
+                "Graphic Preset:\n" +
+                "1. Install ReShade.\n" +
+                "2. In ReShade, select Star Wars Jedi: Survivor.\n" +
+                "3. Select DirectX 10/11/12.\n" +
+                "4. Click \"Browse\" and locate the file STARWAR-ULTRA-REALISTA.ini that was installed in the destination folder selected in the Utility.\n" +
+                "5. Finish the installation and open the game.\n" +
+                "6. In the game, press the \"Home\" key to open the menu and select the graphic options you prefer."
+            },
+            {
                 "Star Wars Outlaws",
                 "RTX:\r\n" +
                 "1 - Select Star Wars DLSS RTX and install.\r\n" +
@@ -936,9 +968,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Shadow of the Tomb Raider","ShadowTomb2.png"},
                 {"Shadow Warrior 3","Shadow32.png"},
                 {"Smalland","Smalland.png"},
+                {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
                 {"The Callisto Protocol","Callisto2.png"},
-                { "The Casting Of Frank Stone","FrankStone2.png" },
+                {"The Casting Of Frank Stone","FrankStone2.png" },
                 {"Warhammer: Space Marine 2","SpaceMarine2.png"}
             };
 
