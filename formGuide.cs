@@ -104,34 +104,28 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Black Myth: Wukong",
+                "RTX:\n" +
+                "1. Select \"RTX DLSS FG Wukong\" and install.\n" +
+                "2. In the game, select DLSS and Frame Generation.\n\n" +
 
-                "RTX:\r\n" +
-                "1 - Select 'RTX DLSS FG Wukong' and install.\r\n" +
-                "2 - In the game, select DLSS and Frame Generation.\r\n\r\n" +
+                "AMD/GTX DLSS FG:\n" +
+                "1. Select Optiscaler FSR 3.1/DLSS and install it.\n" +
+                "2. In the game, press the \"Insert\" key to open the menu, and in the menu, select the upscaler you want to use.\n" +
+                "3. If an error occurs with the HUD, set the game to \"Windowed Mode\", then after a few seconds switch back to \"Borderless Windowed\".\n\n" +
 
-                "AMD/GTX DLSS FG:\r\n" +
-                "1 - Select Optiscaler FSR 3.1/DLSS and install it.\r\n" +
-                "2 - In the game, press the 'Insert' key to open the menu, and in the menu, select the upscaler you want to use.\r\n\r\n" +
+                "Graphic Preset:\n" +
+                "1. Install the mod and the ReShade application.\n" +
+                "2. In ReShade, select b1.exe, DirectX 10/11/12, click on \"Browser\", and find the file Black Myth Wukong.ini (the path should look something like BlackMythWukong\\Black Myth Wukong.ini) and select it, then click on \"Uncheck All\" and \"Next\".\n" +
+                "3. In the game, press the \"Insert\" key to open the menu and check the options you want.\n\n" +
 
-                "FSR 3.1 Custom Wukong:\r\n" +
-                "1 - Select FSR 3.1 Custom Wukong and install it.\r\n" +
-                "2 - Inside the game, select an upscaler and press the Insert key to open the menu.\r\n" +
-                "3 - In the menu, select the upscaler you want. (Xess works better in this game)\r\n" +
-                "4 - If you can't see DLSS in the game, check the \"Fake Nvidia GPU\" box and the \"Disable Signature Override\" box.\r\n\r\n"+
+                "Optimized Wukong:\n" +
+                "Faster Loading Times - By tweaking async-related settings: the mod allows assets to load in the background, reducing loading times and potentially eliminating loading pauses during gameplay.\n\n" +
 
-                "Graphic Preset:\r\n" +
-                "1 - Install the mod and the ReShade application.\r\n" +
-                "2 - In ReShade, select b1.exe, DirectX 10/11/12, click on 'Browse,' find the file Black Myth Wukong.ini (the path should look something like BlackMythWukong\\Black Myth Wukong.ini), select it, then click on 'Uncheck All' and 'Next.'\r\n" +
-                "3 - In the game, press the 'Insert' key to open the menu and check the options you want.\r\n\r\n" +
+                "Optimized CPU and GPU Utilization - By tweaking multi-core rendering: allows the game to utilize the full potential of modern CPUs and GPUs. This can result in improved performance, higher frame rates, and more stable gameplay.\n\n" +
 
-                "Optimized Wukong:\r\n" +
-                "1 - Faster Loading Times - By tweaking async-related settings: AsyncLoadingThread, the mod allows assets to load in the background, reducing loading times and potentially eliminating loading pauses during gameplay.\r\n\r\n" +
+                "Enhanced Streaming and Level Loading - By tweaking various streaming variables: the mod improves the efficiency of streaming assets and level loading. This can lead to faster streaming and reduced stuttering when moving through different areas of the game world.\n\n" +
 
-                "2 - Optimized CPU and GPU Utilization - By tweaking multi-core rendering (MultiCoreRendering) and multi-threaded shader compilation (MultiThreadedShaderCompile*), the mod allows the game to utilize the full potential of modern CPUs and GPUs. This can result in improved performance, higher frame rates, and more stable gameplay.\r\n\r\n" +
-
-                "3 - Enhanced Streaming and Level Loading - By tweaking various streaming variables (r.Streaming., s.LevelStreamingComponents*), the mod improves the efficiency of streaming assets and level loading. This can lead to faster streaming and reduced stuttering when moving through different areas of the game world.\r\n\r\n" +
-
-                "4 - Optimized Memory Management - By adjusting memory-related settings (MinBulkDataSizeForAsyncLoading & ForceGCAfterLevelStreamedOut*), the mod optimizes memory allocation and garbage collection. This can lead to more efficient memory usage, reduced memory-related stutters, and improved overall performance.\r\n"
+                "Optimized Memory Management - By adjusting memory-related settings: the mod optimizes memory allocation and garbage collection. This can lead to more efficient memory usage, reduced memory-related stutters, and improved overall performance."
             },
             {
                 "Blacktail",
@@ -184,11 +178,22 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Cyberpunk 2077",
-                "1 - Select a mod of your choice (Uniscaler is recommended).\r\n" +
-                "2 - Select Default in Nvngx.dll.\r\n" +
-                "3 - Check the box Enable Signature Override.\r\n" +
-                "4 - In-game, turn off Vsync, select DLSS (do not select auto as the game will crash), and turn on Frame Generation."
+                "1. Select a mod of your choice (Uniscaler is recommended).\n" +
+                "2. Select Default in Nvngx.dll.\n" +
+                "3. Check the box Enable Signature Override.\n" +
+                "4. In-game, turn off Vsync, select DLSS (do not select auto as the game will crash), and turn on Frame Generation.\n\n" +
+
+                "ReShade:\n" +
+                "1. Download and install ReShade.\n" +
+                "2. Select Cyberpunk2077.exe, DirectX 10/11/12, Update ReShade and Effects, and choose the V2.0 Real Life Reshade.ini.\n" +
+                "3. Select check all effects (you can also use \"Uncheck all\" and \"Check all\" to select everything at once).\n" +
+                "4. Install the mod using the Utility.\n\n" +
+
+                "1. After completing the steps above, open the game for the first time. If a \"Menu\" (Ultra+) appears, select a key to open this \"Menu.\"\n" +
+                "2. Select DLSS, Frame Gen, and restart the game.\n" +
+                "3. After reopening the game, press the \"Insert\" key to open the FSR 3.1 mod menu, \"Home\" to open the ReShade menu (select the options you prefer), and the key you selected to open the \"Menu\" (Ultra+)."
             },
+
             {
                 "Dakar Desert Rally",
                 "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +

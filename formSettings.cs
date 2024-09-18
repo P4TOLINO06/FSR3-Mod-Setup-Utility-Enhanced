@@ -1466,6 +1466,25 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         #endregion
 
+        #region CopyFolder3
+        private void CopyFolder3(string sourceDirectory, string destinationDirectory)
+        {
+            Directory.CreateDirectory(destinationDirectory);
+            foreach (string file in Directory.GetFiles(sourceDirectory))
+            {
+                string destFile = Path.Combine(destinationDirectory, Path.GetFileName(file));
+                File.Copy(file, destFile, true);
+            }
+
+
+            foreach (string subDirectory in Directory.GetDirectories(sourceDirectory))
+            {
+                string destSubDirectory = Path.Combine(destinationDirectory, Path.GetFileName(subDirectory));
+                CopyFolder3(subDirectory, destSubDirectory);
+            }
+        }
+        #endregion
+
         #region CopyFilesCustom
         private void CopyFilesCustom(string sourceFile, string destinationFile, string pathHelp)
         {
@@ -1745,6 +1764,8 @@ namespace FSR3ModSetupUtilityEnhanced
             string wukongMap = @"mods\FSR3_WUKONG\Map\LogicMods";
             string wukongHdr = @"mods\FSR3_WUKONG\HDR\Force_HDR_Mode_P.pak";
             string wukongFsrCustom = @"mods\FSR3_WUKONG\WukongFSR31\FSR31_Wukong";
+            string wukongCacheEnviroment = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string wukongCache = Path.Combine(wukongCacheEnviroment, "AppData");
             bool finalMessage = false;
 
             string fullPathWukong = Path.GetFullPath(Path.Combine(selectFolder, @"..\..\..\"));
@@ -1756,6 +1777,16 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod == "FSR 3.1 Custom Wukong")
             {
                 CopyFolder(wukongFsrCustom);
+            }
+            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            {
+                if (Path.Exists(wukongCache + "\\Local\\b1\\Saved\\D3DDriverByteCodeBlob_V4098_D5686_S372641794_R220.ushaderprecache"))
+                {
+                    if (MessageBox.Show("Do you want to clear the game cache? (it may prevent possible texture errors caused by the mod)", "Cache",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        File.Delete(wukongCache + "\\Local\\b1\\Saved\\D3DDriverByteCodeBlob_V4098_D5686_S372641794_R220.ushaderprecache");
+                    }
+                }
             }
 
             #region Others Mods
@@ -2258,27 +2289,47 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         public async Task cyberFsr3()
         {
-            CopyFSR(folderCb2077);
+            #region Path Mods
+            List<string> pathModsCb2077 = new List<string>
+            {
+                @"mods\\FSR3_CYBER2077\\mods\\CET",
+                @"mods\\FSR3_CYBER2077\\mods\\Cyberpunk UltraPlus",
+                @"mods\\FSR3_CYBER2077\\mods\\Nova_LUT_2-1",
+                @"mods\\FSR3_CYBER2077\\mods\\Cyberpunk 2077 HD Reworked"
+            };
 
             string path_cb2077_over = @"mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
-            runReg(path_cb2077_over);
+            string pathNovaLut = "mods\\FSR3_CYBER2077\\mods\\Nova_LUT_2-1";
+            string pathHdReworked = "mods\\FSR3_CYBER2077\\mods\\Cyberpunk 2077 HD Reworked";
+            string originPathCb2077 = Path.GetFullPath(Path.Combine(selectFolder, "..\\.."));
+            #endregion
 
-            DialogResult varMods = MessageBox.Show("Do you want to install Nova LUT 2-1 and HD Reworked for Cyberpunk 2077?", "Install Mods", MessageBoxButtons.YesNo);
-
-            if (DialogResult.Yes == varMods)
+            if (selectMod == "RTX DLSS FG CB2077")
             {
-                string pathNovaLut = "mods\\FSR3_CYBER2077\\mods\\Nova_LUT_2-1";
-                string pathHdReworked = "mods\\FSR3_CYBER2077\\mods\\Cyberpunk 2077 HD Reworked";
-
-                CopyFolder(pathNovaLut);
-                CopyFolder(pathHdReworked);
+                CopyFSR(folderCb2077);
+                runReg(path_cb2077_over);
             }
 
-            DialogResult reshadeCyber = MessageBox.Show("Do you want to install Reshade Real Life 2.0? (It is necessary to install Reshade for this mod to work. Please refer to the Guide for installation instructions.)", "ReShade", MessageBoxButtons.YesNo);
-
-            if (DialogResult.Yes == reshadeCyber)
+            if (Path.Exists(originPathCb2077 + "\\bin"))
             {
-                CopyFolder("mods\\FSR3_CYBER2077\\mods\\V2.0 Real Life Reshade");
+
+                if (MessageBox.Show("Do you want to install Nova LUT 2-1 and HD Reworked for Cyberpunk 2077?", "Install Mods", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    foreach (string modsPathCb2077 in pathModsCb2077)
+                    {
+                        CopyFolder3(modsPathCb2077, originPathCb2077);
+                    };
+                }
+
+                if ( MessageBox.Show("Do you want to install Reshade Real Life 2.0? (It is necessary to install Reshade for this mod to work. Please refer to the Guide for installation instructions.)", "ReShade", MessageBoxButtons.YesNo)== DialogResult.Yes)
+                {
+                    CopyFolder3("mods\\FSR3_CYBER2077\\mods\\V2.0 Real Life Reshade", originPathCb2077);
+                }
+            }
+            else
+            {
+                MessageBox.Show("If you want to install the other mods (Nova Lut, Real Life and Ultra Realistic Textures), select the path to the .exe, it should be something like: Cyberpunk 2077/bin/x64", "Others Mods", MessageBoxButtons.OK);
             }
 
         }
@@ -3074,24 +3125,38 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Cyberpunk 2077")
                 {
                     #region Remove Files Cyberpunk
+                    string rootPathCb2077 = Path.GetFullPath(Path.Combine(selectFolder, "..\\.."));
+                    string[] modsNameCb2077 = ["HD Reworked Project.archive", "#####-NovaLUT-2.archive", "version.dll", "global.ini"]; 
+
                     if (selectMod == "RTX DLSS FG CB2077")
                     {
                         CleanupMod(del_cb2077_fsr3, folderCb2077);
                     }
                     //Remove the folder with HD Rework and Nova Lut
-                    if (Directory.Exists(selectFolder + "\\archive"))
+                    if (File.Exists(rootPathCb2077 + "\\archive\\pc\\mod\\HD Reworked Project.archive"))
                     {
-                        Directory.Delete(selectFolder + "\\archive", true);
+                       if (MessageBox.Show("Would you like to remove the HD Reworked,Nova Lut 2-1 mods and Cyberpunk UltraPlus?", "Mods",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            foreach (string modsRemoveCb2077 in modsNameCb2077)
+                            {
+                                File.Delete(rootPathCb2077 + "\\archive\\pc\\mod\\" + modsRemoveCb2077);
+                                File.Delete(rootPathCb2077 + "\\bin\\x64\\" + modsRemoveCb2077);
+
+                                if (Directory.Exists(rootPathCb2077 + "\\bin\\x64\\plugins"))
+                                {
+                                    Directory.Delete(rootPathCb2077 + "\\bin\\x64\\plugins", true);
+                                }
+                            }
+                        }
                     }
 
-                    //Remove Reshade Real Life 2.0
-                    DialogResult removeReshade = MessageBox.Show("Do you want to remove the Reshade Real Life 2.0 mod?", "ReShade", MessageBoxButtons.YesNo);
-
-                    if (removeReshade == DialogResult.Yes)
+                    //Remove Real Life Reshade
+                    if (File.Exists(rootPathCb2077 + "\\bin\\x64\\V2.0 Real Life Reshade.ini"))
                     {
-                        if(File.Exists(selectFolder + "\\bin\\x64\\V2.0 Real Life Reshade.ini"))
+                        if (MessageBox.Show("Would you like to remove the V2.0 Real Life Reshade?","Mods",MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            File.Delete(selectFolder + "\\bin\\x64\\V2.0 Real Life Reshade.ini");
+                            File.Delete(rootPathCb2077 + "\\bin\\x64\\V2.0 Real Life Reshade.ini");
+                            Directory.Delete(rootPathCb2077 + "\\bin\\x64\\reshade-shaders",true);
                         }
                     }
                     #endregion
