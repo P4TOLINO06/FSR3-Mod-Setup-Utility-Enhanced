@@ -178,6 +178,13 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Cyberpunk 2077",
+                "Uniscaler FSR 3.1:\n" +
+                "1. Select Uniscaler FSR 3.1.\n" +
+                "2. If you have an RTX GPU and want to use the real DLSS, select DLSS under \"Mod Operates\". If you don't have an RTX GPU and can't see DLSS in the game, Click on Nvngx.dll and select \"Default\". You can also use XESS instead of FSR 3.1 by selecting XESS under \"Mod Operates\".\n" +
+                "3. Check the box \"Enable Signature Over\".\n" +
+                "4. In the game, choose an upscaler and frame generation option.\n\n" +
+
+                "All Uniscalers:\n"+ 
                 "1. Select a mod of your choice (Uniscaler is recommended).\n" +
                 "2. Select Default in Nvngx.dll.\n" +
                 "3. Check the box Enable Signature Override.\n" +

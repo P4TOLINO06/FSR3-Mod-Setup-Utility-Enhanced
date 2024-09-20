@@ -220,7 +220,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> flintList = new List<string> {"Optiscaler FSR 3.1/DLSS" };
             List<string> codList = new List<string> {"COD MW3 FSR3" };
             List<string> dl2List = new List<string> { "DL2 DLSS FG" };
-            List<string> outlawsList = new List<string> { "Outlaws DLSS RTX" };
+            List<string> outlawsList = new List<string> { "Outlaws DLSS RTX", "Outlaws FG All GPU" };
             List<string> gow4List = new List<string> { "Gow 4 FSR 3.1" };
             List<string> frankStoneList = new List<string> { "Optiscaler Frank Stone FG","0.10.4", "FSR 3.1/DLSS Optiscaler" };
             List<string> spacemarineList = new List<string> { "FSR 3.1 Space Marine","Uniscaler FSR 3.1", "Optiscaler FSR 3.1/DLSS" };

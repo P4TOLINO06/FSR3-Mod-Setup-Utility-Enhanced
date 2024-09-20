@@ -657,14 +657,14 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log",
             "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "libxess.dll", "nvapi64-proxy.dll", "nvngx-wrapper.dll",
-            "nvngx.dll", "nvngx.ini", "unins000.dat","amd_fidelityfx_dx12.dll","version.dll"
+            "nvngx.dll", "nvngx.ini", "unins000.dat","amd_fidelityfx_dx12.dll","version.dll","dlss_rtx.txt"
         };
 
         List<string> del_dlss_global_amd = new List<string>
         {
             "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.log",
             "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll",
-            "libxess.dll", "nvngx-wrapper.dll", "nvngx.ini", "unins000.dat", "version.dll","nvapi64-proxy.dll","dxgi.dll","dlss-enabler.dll"
+            "libxess.dll", "nvngx-wrapper.dll", "nvngx.ini", "unins000.dat", "version.dll","nvapi64-proxy.dll","dxgi.dll","dlss-enabler.dll","dlss_amd.txt"
         };
         #endregion
 
@@ -1588,7 +1588,9 @@ namespace FSR3ModSetupUtilityEnhanced
         public void dlssGlobal()
         {
             string pathRtx = "mods\\DLSS_Global\\RTX";
+            string pathVarRtx = "mods\\DLSS_Global\\VarTxt\\RTX\\dlss_rtx.txt";
             string pathAmd = "mods\\DLSS_Global\\AMD";
+            string pathVarAmd = "mods\\DLSS_Global\\VarTxt\\AMD\\dlss_amd.txt";
 
 
             string backupFolderDlss = Path.Combine(selectFolder, "Backup Dlss");
@@ -1628,6 +1630,15 @@ namespace FSR3ModSetupUtilityEnhanced
             }
 
             CopyFolder(pathGpu);
+
+            if (gpuDlss == DialogResult.Yes) 
+            {
+                File.Copy(pathVarRtx, selectFolder + "\\dlss_rtx.txt",true);
+            }
+            else
+            {
+                File.Copy(pathVarAmd, selectFolder + "\\dlss_amd.txt",true);
+            }
 
             runReg("mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
         }
@@ -2173,14 +2184,18 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 dlss_to_fsr();
             }
+            if (selectMod == "Outlaws FG All GPU")
+            {
+                dlssGlobal();
+            }
 
-            if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
+            if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 runReg("mods\\FSR3_Outlaws\\Anti_Stutter\\Install Star Wars Outlaws CPU Priority.reg");
                 File.Copy(varStutterOutlaws, selectFolder + "\\Anti_Sttuter.txt", true); //File used to remove the Anti-Stutter in 'Cleanup Mod'
             }
 
-            if (MessageBox.Show("Do you want to install the Graphics Preset", "Graphics Preset", MessageBoxButtons.YesNo) == DialogResult.Yes) ;
+            if (MessageBox.Show("Do you want to install the Graphics Preset", "Graphics Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 File.Copy(presetOutlaws, selectFolder + "\\Outlaws2.ini", true);
 
@@ -3188,6 +3203,10 @@ namespace FSR3ModSetupUtilityEnhanced
                     if (selectMod == "Outlaws DLSS RTX")
                     {
                         CleanupMod3(del_dlss_to_fsr, "Outlaws DLSS RTX");
+                    }
+                    if (selectMod == "Outlaws FG All GPU")
+                    {
+                        CleanDlssGlobal("Outlaws FG All GPU");
                     }
 
                     #region Others Mods
