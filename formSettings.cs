@@ -1359,7 +1359,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
-            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
+            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
@@ -1469,7 +1469,11 @@ namespace FSR3ModSetupUtilityEnhanced
         #region CopyFolder3
         private void CopyFolder3(string sourceDirectory, string destinationDirectory)
         {
-            Directory.CreateDirectory(destinationDirectory);
+            if (!Path.Exists(destinationDirectory))
+            {
+                Directory.CreateDirectory(destinationDirectory);
+            }
+
             foreach (string file in Directory.GetFiles(sourceDirectory))
             {
                 string destFile = Path.Combine(destinationDirectory, Path.GetFileName(file));
@@ -1866,6 +1870,61 @@ namespace FSR3ModSetupUtilityEnhanced
             }
 
             MessageBox.Show("Check the God of War 4 guide on Guide to complete the installation. (If you do not follow the steps in the guide, the mod will not work).", "Guider", MessageBoxButtons.OK);
+        }
+
+        public void gowRagFsr3()
+        {
+            #region Others Mods Gow Rag
+            string gowRagAntiStutter = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Anti-Stutter GoW Ragnarok\\Install GoWR High CPU Priority.reg";
+            string gowRagAntiStutterVar = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Anti-Stutter GoW Ragnarok\\Anti_Stutter.txt";
+            string gowRagPreset = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\ReShade\\God of War Ragnarök.ini";
+            string gowRagIntroSkip = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Intro Skip";
+            string gowRagIntroPath = Path.Combine(selectFolder, "exec\\cinematics");
+            string gowRag3050_2060 = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Unlock Vram\\GTX 1060 3050 6GB\\dxgi.dll";
+            string gowRagVram6gb = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Unlock Vram\\6GB VRAM\\dxgi.dll";
+            string gowRegVramVar = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Unlock Vram\\Vram.txt";
+
+            if (selectMod == "Others Mods Gow Rag")
+            {
+                if (Path.Exists(gowRagIntroPath))
+                {
+                    if (MessageBox.Show("Do you want to install the Anti Stutter?","Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        runReg(gowRagAntiStutter);
+
+                        File.Copy(gowRagAntiStutterVar, selectFolder + "\\Anti_Stutter.txt",true);
+                    }
+
+                    if (MessageBox.Show("Do you want to install the Graphics Preset?","Preset",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        File.Copy(gowRagPreset, selectFolder + "\\God of War Ragnarök.ini",true);
+                    }
+
+                    if (MessageBox.Show("Do you want to install the Intro Skip?","intro Skip",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFolder3(gowRagIntroSkip, selectFolder);
+                    }
+
+                    if (MessageBox.Show("Do you want to install the VRAM Unlocker?","VRAM Fix",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (MessageBox.Show("Do you have a 3050 or 1060 GPU?. If the game doesn\'t work, select the opposite option (if you selected \'yes\' the first time, select \'no\' so a different file will be installed)","GPU",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            File.Copy(gowRag3050_2060, selectFolder + "\\dxgi.dll",true);
+                        }
+                        else
+                        {
+                            File.Copy(gowRagVram6gb, selectFolder + "\\dxgi.dll", true);
+                        }
+
+                        File.Copy(gowRegVramVar, selectFolder + "\\Vram.txt",true);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("If you want to install the other mods (Anti Stutterr, Graphic Preset, etc.), select the path to the .exe, something like: God of War Ragnarök\\GoWR.exe", "Path Not Found");
+                }
+            }
+            #endregion
         }
 
         public async Task dd2Fsr3()
@@ -2861,6 +2920,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     gow4Fsr3();
                 }
+                if (gameSelected == "God of War Ragnarök")
+                {
+                    gowRagFsr3();
+                }
 
                 if (gameSelected == "Dragons Dogma 2")
                 {
@@ -3061,18 +3124,24 @@ namespace FSR3ModSetupUtilityEnhanced
             RestoreBackup("Backup Dlss");
         }
 
-        public void CleanupOthersMods(string modName, string fileName,string destPath)
+        public bool CleanupOthersMods(string modName, string fileName,string destPath,string regPath = null)
         {
             string filePath = Path.Combine(destPath, fileName);
             if (File.Exists(filePath))
             {
-                DialogResult result = MessageBox.Show($"Do you want to remove the {modName} mod?", $"Remove {modName}", MessageBoxButtons.YesNo);
-
-                if (result == DialogResult.Yes)
+                if (MessageBox.Show($"Do you want to remove the {modName} mod?", $"Remove {modName}", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     File.Delete(filePath);
+
+                    if (regPath != null)
+                    {
+                        runReg(regPath);
+                    }
+
+                    return true;
                 }
             }
+            return false;
         }
 
         private void buttonDel_Click(object sender, EventArgs e)
@@ -3195,6 +3264,51 @@ namespace FSR3ModSetupUtilityEnhanced
                     if (File.Exists(selectFolder + "\\optiscaler.txt"))
                     {
                         File.Delete(selectFolder + "\\optiscaler.txt");
+                    }
+                    #endregion
+                }
+                if (gameSelected == "God of War Ragnarök")
+                {
+                    #region Remove others mods Gow Rag
+                    try
+                    {
+                        string gowRagDisableAntiStutter = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Anti-Stutter GoW Ragnarok\\Uninstall GoWR High CPU Priority.reg";
+                        string[] gowRagIntroFiles = { "pss_studios.bk2", "pss_studios_30.bk2", "pss_studios_4k_30.bk2" };
+
+                        if (Path.Exists(Path.Combine(selectFolder, "exec")))
+                        {
+                            if (File.Exists(Path.Combine(selectFolder, "Anti_Stutter.txt")))
+                            {
+                                CleanupOthersMods("Anti Stutter", "Anti_Stutter.txt", selectFolder, gowRagDisableAntiStutter);
+                            }
+
+                            if (File.Exists(Path.Combine(selectFolder, "Vram.txt")))
+                            {
+                                if (CleanupOthersMods("VRAM", "dxgi.dll", selectFolder))
+                                {
+                                     File.Delete(Path.Combine(selectFolder, "Vram.txt"));
+                                }
+                            }
+
+                            if (File.Exists(Path.Combine(selectFolder, "exec\\cinematics\\pss_studios.bk2")))
+                            {
+                                if (MessageBox.Show("Do you want to remove the Intro Skip?", "Intro Skip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                {
+                                    foreach (string introFile in gowRagIntroFiles)
+                                    {
+                                        string filesIntro = Path.Combine(selectFolder, "exec\\cinematics\\" + introFile);
+                                        if (File.Exists(filesIntro))
+                                        {
+                                            File.Delete(filesIntro);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Could not remove the mod. Please close all folders related to the game and try again", "Error");
                     }
                     #endregion
                 }

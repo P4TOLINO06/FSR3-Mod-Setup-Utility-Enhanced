@@ -96,6 +96,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Ghostrunner 2","Ghost2.png"},
                     {"Ghostwire: Tokyo","Ghostwire.png"},
                     {"God Of War 4","Gow4.png"},
+                    {"God of War Ragnarök","GowRag2.png"},
                     {"GTA V","GtaV.png"},
                     {"Hellblade 2","Hell2.png" },
                     {"Hellblade: Senua's Sacrifice","Hell.png"},
@@ -222,6 +223,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> dl2List = new List<string> { "DL2 DLSS FG" };
             List<string> outlawsList = new List<string> { "Outlaws DLSS RTX", "Outlaws FG All GPU" };
             List<string> gow4List = new List<string> { "Gow 4 FSR 3.1" };
+            List<string> gowRagList = new List<string> { "Uniscaler FSR 3.1","Others Mods Gow Rag" };
             List<string> frankStoneList = new List<string> { "Optiscaler Frank Stone FG","0.10.4", "FSR 3.1/DLSS Optiscaler" };
             List<string> spacemarineList = new List<string> { "FSR 3.1 Space Marine","Uniscaler FSR 3.1", "Optiscaler FSR 3.1/DLSS" };
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
@@ -350,6 +352,11 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formSettings.Instance.ClearListMods();
                 formSettings.Instance.AddItemlistMods(gow4List);
+            }
+            else if (listGames.SelectedItem.ToString() == "God of War Ragnarök")
+            {
+                formSettings.Instance.ClearListMods();
+                formSettings.Instance.AddItemlistMods(gowRagList);
             }
             else if (listGames.SelectedItem.ToString() == "Warhammer: Space Marine 2")
             {

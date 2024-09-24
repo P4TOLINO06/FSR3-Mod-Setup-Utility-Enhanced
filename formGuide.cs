@@ -414,13 +414,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 "5 - To fix the HUD glitch, switch between the upscalers (FSR, DLSS, etc.) until the HUD stops flickering.\r\n"
             },
             {
-                "Hellblade: Senua's Sacrifice",
-                "1 - Select a version of the mod of your choice (version 0.10.3\r\n" +
-                "is recommended).\r\n" +
-                "2 - Select Fake Nvidia Gpu and UE Compatibility (AMD only),\r\n" +
-                "select Fake Nvidia Gpu and Nvapi Results (GTX only)."
-            },
-            {
                 "God Of War 4",
                 "1 - Select \"Gow 4 FSR 3.1\".\n" + 
                 "2 - Click on Add-on, then Optiscaler, and select 'Method Default.'\n" +
@@ -429,6 +422,33 @@ namespace FSR3ModSetupUtilityEnhanced
                 "5 - Press the 'Insert' key to open the menu and select the desired upscaler (XESS is recommended).\n" +
                 "6 - If the menu does not appear, set the preferred upscaler in 'Add-on Upscaler' in the Utility and install again. (Select only the DX11 upscalers, such as fsr3.1 DX11, xess DX11, etc.)\n" +
                 "7 - If you don't see DLSS in the game, check 'Enable Signature Override' under 'Additional Settings.'"
+            },
+            {
+                "God of War Ragnarök",
+                "DLSS FG ALL GPU:\n" +
+                "1. Select Uniscaler FSR 3.1.\n" +
+                "2. Select FSR3 in \"Mod Operates\" (if you can\'t see DLSS in the game, select FSR3 in \"Frame Gen Method\" as well).\n" +
+                "3. Check the \"Enable Signature Over\" box.\n" +
+                "4. If you still can\'t see DLSS in the game, check the Nvngx.dll box, select \"Default,\" and reinstall the mod.\n" +
+                "5. The game may freeze for a few seconds when selecting DLSS FG.\n\n" +
+
+                "Unlock VRAM:\n" +
+                "Removes the error for GPUs with less than 6GB of VRAM.\n\n" +
+
+                "Anti Stutter:\n" +
+                "Prevents possible game stuttering and optimizes CPU/GPU usage.\n\n" +
+
+                "ReShade:\n" +
+                "1. Download and install ReShade.\n" +
+                "2. Select GoWR.exe, DirectX 10/11/12, Update ReShade and Effects and choose the God of War Ragnarök.ini. (The .ini is in the selected folder in the Utility).\n" +
+                "3. Select check all effects (you can also use \"Uncheck all\" and \"Check all\" to select everything at once)."
+            },
+            {
+                "Hellblade: Senua's Sacrifice",
+                "1 - Select a version of the mod of your choice (version 0.10.3\r\n" +
+                "is recommended).\r\n" +
+                "2 - Select Fake Nvidia Gpu and UE Compatibility (AMD only),\r\n" +
+                "select Fake Nvidia Gpu and Nvapi Results (GTX only)."
             },
             {
                 "Hellblade 2",
@@ -941,7 +961,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Ghost of Tsushima","GhostT.png"},
                 {"Ghostrunner 2","Ghost2.png"},
                 {"Ghostwire: Tokyo","Ghostwire2.png"},
-                {"God Of Warr 4","God Of War42.png"},
+                {"God Of War 4","Gow42.png"},
+                {"God of War Ragnarök","GowRag.png"},
                 {"Hellblade: Senua's Sacrifice","Hell.png"},
                 {"Hellblade 2","Hell2.png"},
                 {"High On Life","Hol.png"},
