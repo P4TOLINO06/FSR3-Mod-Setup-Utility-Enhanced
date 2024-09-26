@@ -1360,7 +1360,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
-            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium", "Wanted: Dead","Warhammer: Space Marine 2"};
+            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
@@ -1499,6 +1499,25 @@ namespace FSR3ModSetupUtilityEnhanced
             else
             {
                 MessageBox.Show($"Please select the .exe path in \"Select Folder\". The path should look something like this: {pathHelp}", "Not Found", MessageBoxButtons.OK);
+            }
+        }
+        #endregion
+
+        #region BackupDxgi
+        public void BackupDxgi(string renameFile, string pathDxgi,string fileName)
+        {
+            if (File.Exists(pathDxgi))
+            {
+                string backupFolderDxgi = Path.Combine(selectFolder, "BackupDxgi");
+
+                if (!Path.Exists(backupFolderDxgi))
+                {
+                    Directory.CreateDirectory(backupFolderDxgi);
+                }
+
+                File.Copy(pathDxgi, backupFolderDxgi + "\\" + fileName , true );
+
+                File.Move(pathDxgi,selectFolder + "\\" + renameFile,true);
             }
         }
         #endregion
@@ -2224,6 +2243,12 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void ffxviFsr3()
         {
+
+            string ffxviAntiStutter = "mods\\FSR3_FFVXI\\Anti Stutter\\Final Fantasy XVI High Priority Processes-7-2-1726663253\\Install Final Fantasy XVI High Priority Processes.reg";
+            string ffsxiVarAntiStutter = "mods\\FSR3_FFVXI\\Anti Stutter\\Anti_Stutter.txt";
+            string ffxviFix = "mods\\FSR3_FFVXI\\FFXVIFix";
+            string ffxviPreset = "mods\\FSR3_FFVXI\\ReShade";
+
             if (selectMod == "FFXVI DLSS RTX")
             {
                 dlss_to_fsr();
@@ -2231,6 +2256,40 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod == "FFXVI DLSS ALL GPU")
             {
                 dlssGlobal();
+            }
+
+            if (!File.Exists(Path.Combine(selectFolder, "d3d12.dll")))
+            {
+                BackupDxgi("d3d12.dll", selectFolder + "\\dxgi.dll","dxgi.dll");
+            }
+
+
+            if (selectMod == "Others Mods FFXVI")
+                {
+                if (Path.Exists(Path.Combine(selectFolder, "ffxvi.exe")))
+                {
+                    if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        runReg(ffxviAntiStutter);
+                        File.Copy(ffsxiVarAntiStutter, selectFolder + "\\Anti_Stutter.txt",true);
+                    }
+
+                    if (MessageBox.Show("Do you want to install the fixes mod? (It unlocks FPS in cutscenes, adds ultrawide support, etc. See all fixes in the Guide)","FFXVI FIX",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFolder(ffxviFix);
+                    }
+
+                    if (MessageBox.Show("Do you want to install the Graphics Preset?", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFolder(ffxviPreset);
+
+                        MessageBox.Show("Check the FINAL FANTASY XVI guide to complete the installation. (If you do not follow the steps in the guide, the mod will not work).", "Guide", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("If you want to install the other mods (Anti Stutterr, Graphic Preset, etc.), select the path to the .exe, something like: FINAL FANTASY XVI\\ffxvi.exe", "Path Not Found");
+                }
             }
         }
 
@@ -3402,6 +3461,58 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanupOthersMods("Intro Skip", "Default_Startup.mp4", rootPathJedi + "\\Content\\Movies");
                     #endregion
                 }
+                if (gameSelected == "Final Fantasy XVI")
+                {
+                    #region Cleanup Mods FFXVI
+                    if (selectMod == "FFXVI DLSS ALL GPU")
+                    {
+                        CleanDlssGlobal("FFXVI DLSS ALL GPU");
+                    }
+                    else if (selectMod == "FFXVI DLSS RTX")
+                    {
+                        CleanupMod3(del_dlss_to_fsr, "FFXVI DLSS RTX");
+                    }
+                    #endregion
+
+                    #region Cleanup Others Mods FFXVI
+
+                    string ffxviDisableAntiStutter = "mods\\FSR3_FFVXI\\Anti Stutter\\Final Fantasy XVI High Priority\\Uninstall Final Fantasy XVI High Priority Processes.reg";
+                    string[] ffxviFixList = { "UltimateASILoader_LICENSE.md", "FFXVIFix.ini", "FFXVIFix.asi", "EXTRACT_TO_GAME_FOLDER", "dinput8.dll" };
+
+                    CleanupOthersMods("Anti_Stutter.txt", "Anti_Stutter.txt", selectFolder, ffxviDisableAntiStutter);
+
+                    if (File.Exists(Path.Combine(selectFolder, "UltimateASILoader_LICENSE.md")))
+                    {
+                        if (MessageBox.Show("Do you want to remove the FFXVI FIX?","Remove FFXVI FIx",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            foreach(string ffxviFixFiles in Directory.GetFiles(selectFolder))
+                            {
+                                string ffxviFixName = Path.GetFileName(ffxviFixFiles);
+
+                                if (ffxviFixList.Contains(ffxviFixName))
+                                {
+                                    string removeFfxviFixFiles = Path.Combine(selectFolder, ffxviFixName);
+
+                                    File.Delete(removeFfxviFixFiles);
+                                }
+                            }
+                        }
+                    }
+
+                    if (File.Exists(Path.Combine(selectFolder,"BackupDxgi\\dxgi.dll")))
+                    {
+                        File.Copy(Path.Combine(selectFolder, "BackupDxgi\\dxgi.dll"), selectFolder + "\\dxgi.dll",true);
+
+                        Directory.Delete(Path.Combine(selectFolder, "BackupDxgi"),true);
+
+                        if (File.Exists(Path.Combine(selectFolder, "d3d12.dll")))
+                        {
+                            File.Delete(Path.Combine(selectFolder, "d3d12.dll"));
+                        }
+                    }
+
+                    #endregion
+                }
                 else if (rdr2_folder.ContainsKey(selectMod))
                 {
                     CleanupMod(del_rdr2_custom_files, rdr2_folder);
@@ -3610,14 +3721,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 else if (selectMod == "DL2 DLSS FG")
                 {
                     CleanDlssGlobal("DL2 DLSS FG");
-                }
-                else if (selectMod == "FFXVI DLSS ALL GPU")
-                {
-                    CleanDlssGlobal("FFXVI DLSS ALL GPU");
-                }
-                else if (selectMod == "FFXVI DLSS RTX")
-                {
-                    CleanupMod3(del_dlss_to_fsr, "FFXVI DLSS RTX");
                 }
                 else if (gameSelected == "Black Myth: Wukong")
                 {

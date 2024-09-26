@@ -145,6 +145,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"STARFIELD","Starfield.png"},
                     {"Steelrising","Steelrising.png"},
                     {"TEKKEN 8","Tekken.png"},
+                    {"Test Drive Unlimited Solar Crown","TestSolar.png"},
                     {"The Callisto Protocol","Callisto.png"},
                     {"The Chant","Chant.png"},
                     {"The Casting Of Frank Stone","FrankStone.png"},
@@ -152,7 +153,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"The Last of Us Part I","Tlou.png"},
                     {"The Medium","Medium.png"},
                     {"The Outer Worlds: Spacer's Choice Edition","Outer.png"},
-                    { "The Thaumaturge","Thaumaturge.png"},
+                    {"The Thaumaturge","Thaumaturge.png"},
                     {"The Witcher 3","Witcher.png"},
                     {"Uncharted Legacy of Thieves Collection","Uncharted.png"},
                     {"Wanted: Dead","Wanted.png"},
@@ -227,7 +228,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> frankStoneList = new List<string> { "Optiscaler Frank Stone FG","0.10.4", "FSR 3.1/DLSS Optiscaler" };
             List<string> spacemarineList = new List<string> { "FSR 3.1 Space Marine","Uniscaler FSR 3.1", "Optiscaler FSR 3.1/DLSS" };
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
-            List<string> ffxviList = new List<string> { "FFXVI DLSS ALL GPU", "FFXVI DLSS RTX" };
+            List<string> ffxviList = new List<string> { "FFXVI DLSS ALL GPU", "FFXVI DLSS RTX","Others Mods FFXVI" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS"};
             #endregion;

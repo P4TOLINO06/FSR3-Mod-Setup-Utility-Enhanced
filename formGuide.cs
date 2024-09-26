@@ -184,7 +184,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. Check the box \"Enable Signature Over\".\n" +
                 "4. In the game, choose an upscaler and frame generation option.\n\n" +
 
-                "All Uniscalers:\n"+ 
+                "All Uniscalers:\n"+
                 "1. Select a mod of your choice (Uniscaler is recommended).\n" +
                 "2. Select Default in Nvngx.dll.\n" +
                 "3. Check the box Enable Signature Override.\n" +
@@ -325,18 +325,38 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Final Fantasy XVI",
-                "FFXVI DLSS RTX:\r\n" +
-                "1. Select \"FFXVI DLSS RTX\" and install it.\r\n" +
-                "2. In the game, select Frame Generation.\r\n\r\n" +
+                "FFXVI DLSS ALL GPU:\n" +
+                "1. Select FFXVI ALL GPU.\n" +
+                "2. Check the \"GPU\" box that will appear during installation.\n" +
+                "3. In-game, press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select the upscaler you prefer.\n\n" +
 
-                "FFXVI DLSS ALL GPU:\r\n" +
-                "1. Select \"FFXVI DLSS ALL GPU\", install it, and choose an option in the window that will appear.\r\n" +
-                "2. In the game, select Frame Generation.\r\n\r\n" +
+                "Anti Stutter:\n" +
+                "Prevents possible crashes during the game and optimizes CPU/GPU usage.\n\n" +
 
-                "Optiscaler FSR 3.1/DLSS:\r\n" +
-                "1. Select Optiscaler FSR 3.1/DLSS and install it.\r\n" +
-                "2. In the game, press the Insert key and choose the Upscaler you want to use.\r\n" +
-                "3. Select Frame Generation.\r\n"
+                "FFXVI FIX:\n" +
+                "General:\n" +
+                "Adjust gameplay FOV, camera distance, and camera horizontal position.\n" +
+                "JXL screenshot quality option and fixes hitching while taking screenshots.\n" +
+                "Allow the use of motion blur + frame generation.\n" +
+                "Disable depth of field.\n" +
+                "Enable background audio.\n" +
+                "Lock cursor to game window.\n\n" +
+
+                "Performance:\n" +
+                "Disable 30FPS cap in cutscenes/photo mode or set your own framerate limit.\n" +
+                "Allow frame generation in cutscenes.\n" +
+                "Disable graphics debugger checks.\n\n" +
+
+                "Ultrawide/narrower:\n" +
+                "Remove pillarboxing/letterboxing.\n" +
+                "Fixed HUD scaling with configurable HUD size.\n" +
+                "Fixed FOV scaling at <16:9.\n\n" +
+
+                "ReShade:\n" +
+                "1. Download and install ReShade.\n" +
+                "2. Select ffxvi.exe, DirectX 10/11/12, Update ReShade and Effects, and choose the FINAL FANTASY XVI.ini. (The .ini is in the selected folder in the Utility).\n" +
+                "3. Select check all effects (you can also use \"Uncheck all\" and \"Check"
             },
             {
                 "F1 2022",
@@ -415,7 +435,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "God Of War 4",
-                "1 - Select \"Gow 4 FSR 3.1\".\n" + 
+                "1 - Select \"Gow 4 FSR 3.1\".\n" +
                 "2 - Click on Add-on, then Optiscaler, and select 'Method Default.'\n" +
                 "3 - In 'Add-on Upscaler,' choose 'fsr3.1 DX11' and install.\n" +
                 "4 - In the game, select DLSS (do not choose ultra quality, as it will not work).\n" +
@@ -794,6 +814,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 "   the menu and check the options you want.\n"
             },
             {
+              "Test Drive Unlimited Solar Crown",
+              "1. Select Uniscaler FSR 3.1.\n" +
+              "2. Check the box \"Enable Signature Over.\"\n" +
+              "3. In-game, select DLSS FG.\n" +
+              "4. If you can't see DLSS in the game, check the \"Nvngx.dll\" box, select \"Default,\" and install again."
+            },
+            {
                 "The Callisto Protocol",
                 "The Callisto Protocol Fsr3\r\n"+
                 "1 - Select The Callisto Protocol Fsr3.\r\n" +
@@ -1003,6 +1030,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Smalland","Smalland.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
+                {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
                 {"The Callisto Protocol","Callisto2.png"},
                 {"The Casting Of Frank Stone","FrankStone2.png" },
                 {"Warhammer: Space Marine 2","SpaceMarine2.png"}
