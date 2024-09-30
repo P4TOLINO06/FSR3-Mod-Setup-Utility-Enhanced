@@ -502,6 +502,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - Select 'Default' in Nvngx.dll.\r\n"
             },
             {
+                "Horizon Zero Dawn",
+                "Optiscaler Custom HZD & FSR 3.1/DLSS Optiscaler:\n" +
+                "1. Select Optiscaler Custom HZD or FSR 3.1/DLSS Optiscaler.\n" +
+                "2. Check the \"Enable Signature Over\" box.\n" +
+                "3. In the game, press the \"Insert\" key to open the mod menu.\n" +
+                "4. In the menu, select the Upscaler of your choice.\n" +
+                "5. (For FSR 3.1/DLSS Optiscaler), if you cannot open the menu, select the desired upscaler in \"Upscaler Optiscaler\" and reinstall the mod."
+            },
+            {
                 "Hitman 3",
                 "1 - Select a mod of your preference. (0.10.3 is recommended\r\n" +
                 "but if it doesn’t work, try 0.10.2)\r\n" +
@@ -765,17 +774,18 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Star Wars Jedi: Survivor",
                 "DLSS Jedi (if you have RTX, use this mod if you want to use native DLSS):\n" +
                 "1. Check the box Fake Nvidia GPU (GTX and AMD), Nvapi Results (GTX and AMD), and UE Compatibility (AMD).\n" +
-                "2. If you can\'t see DLSS in-game, select \"DLSS\" under \"Mod Operates\".\n" +
+                "2. If you can't see DLSS in-game, select \"DLSS\" under \"Mod Operates\".\n" +
                 "3. In-game, select DLSS 3 and Frame Gen.\n\n" +
 
-                "For All GPUs:\n" +
-                "1. Select a mod of your preference (recommended 0.10.3/0.10.4 or Uniscaler).\n" +
-                "2. Check the box Fake Nvidia GPU (GTX and AMD), Nvapi Results (GTX and AMD), and UE Compatibility (AMD).\n" +
-                "3. In-game, select FSR and Frame Gen.\n\n" +
+                "ALL GPUs:\n" +
+                "1. Select Uniscaler FSR 3.1.\n" +
+                "2. Check the \"Enable Signature Over\" box.\n" +
+                "3. If you cannot see DLSS in the game, check the Nvngx.dll box, select Default, and reinstall the mod.\n" +
+                "4. If you have an RTX GPU and want to use native DLSS, select DLSS in \"Mod Operates.\" Other GPUs can use FSR 3.1/XESS.\n" +
+                "5. In the game, select DLSS FG.\n\n" +
 
                 "Others Mods:\n" +
-                "Intro Skip:\n" +
-                "Removes the initial intro when opening the game.\n\n" +
+                "Intro Skip: Removes the initial intro when opening the game.\n\n" +
 
                 "Anti Stutter:\n" +
                 "1. Faster Loading Times.\n" +
@@ -996,6 +1006,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Hitman 3","Hitman.png"},
                 {"Hogwarts Legacy","Hog.png"},
                 {"Horizon Forbidden West","HZDF.png"},
+                {"Horizon Zero Dawn","Hzd2.png" },
                 {"Icarus","Icarus.png"},
                 {"Judgment","Jud.png"},
                 {"Jusant","Jusant.png"},

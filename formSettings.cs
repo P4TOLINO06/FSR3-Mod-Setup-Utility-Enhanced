@@ -76,7 +76,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1784,7 +1784,6 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-
         private DialogResult ShowMessage(string message, string titleMessage)
         {
             return MessageBox.Show(message,titleMessage , MessageBoxButtons.YesNo);
@@ -2476,6 +2475,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 runReg(pathRegFz5);
             }
         }
+
+        public void hzdFsr3()
+        {
+            string pathOptiscalerCustomHzd = "mods\\FSR3_HZD\\Optiscaler_Custom_HZD"; 
+
+            if (selectMod == "Optiscaler Custom HZD")
+            {
+                CopyFolder(pathOptiscalerCustomHzd);
+            }
+        }
+
         public async Task gotFsr3()
         {
             #region Copy files using only the path as a parameter
@@ -2909,6 +2919,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Forza Horizon 5")
                 {
                     forzaFsr3();
+                }
+                if (gameSelected == "Horizon Zero Dawn")
+                {
+                    hzdFsr3();
                 }
                 if (gameSelected == "Ghost of Tsushima")
                 {
@@ -3428,6 +3442,14 @@ namespace FSR3ModSetupUtilityEnhanced
                             runReg("mods\\FSR3_Outlaws\\Anti_Stutter\\Uninstall Star Wars Outlaws CPU Priority.reg");
                         }
                     }
+                    #endregion
+                }
+                if (gameSelected == "Horizon Zero Dawn")
+                {
+                    #region Del Others Mods Hzd
+
+                        CleanupMod3(del_optiscaler, "Optiscaler Custom HZD");
+
                     #endregion
                 }
                 if (gameSelected == "The Casting Of Frank Stone")
