@@ -157,6 +157,7 @@ namespace FSR3ModSetupUtilityEnhanced
              { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
              { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
              { "Uniscaler V3", new string[]{  "mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+             { "Uniscaler V4", new string[]{  "mods\\FSR2FSR3_Uniscaler_V4\\Uni_V4\\Uni_Mod"}},
              { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
          };
         #endregion
@@ -178,7 +179,8 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"} },
             { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"} },
             { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
-            { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+            { "Uniscaler V3", new string[]{  "mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+            { "Uniscaler V4", new string[]{  "mods\\FSR2FSR3_Uniscaler_V4\\Uni_V4\\Uni_Mod"}},
             { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
         };
         #endregion
@@ -200,7 +202,8 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"} },
             { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"} },
             { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"} },
-            { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+            { "Uniscaler V3", new string[]{  "mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+            { "Uniscaler V4", new string[]{  "mods\\FSR2FSR3_Uniscaler_V4\\Uni_V4\\Uni_Mod"}},
             { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
         };
         #endregion
@@ -222,7 +225,8 @@ namespace FSR3ModSetupUtilityEnhanced
              { "Uniscaler", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
              { "Uniscaler + Xess + Dlss", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
              { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
-             { "Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+             { "Uniscaler V3", new string[]{  "mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+             { "Uniscaler V4", new string[]{  "mods\\FSR2FSR3_Uniscaler_V4\\Uni_V4\\Uni_Mod"}},
              { "Uniscaler FSR 3.1",new string[]{ "mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
          };
         #endregion
@@ -245,6 +249,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler V4",@"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"},
             {"The Callisto Protocol FSR3",@"\mods\Temp\FSR3_Callisto\enable_fake_gpu\\fsr2fsr3.config.toml"},
             {"FSR 3.1 Custom Wukong",@"\mods\Temp\Wukong_FSR31\enable_fake_gpu\\uniscaler.config.toml" }
@@ -261,6 +266,7 @@ namespace FSR3ModSetupUtilityEnhanced
             "Uniscaler + Xess + Dlss",
             "Uniscaler V2",
             "Uniscaler V3",
+            "Uniscaler V4",
             "Uniscaler FSR 3.1",
             "FSR 3.1 Custom Wukong"
         };
@@ -294,6 +300,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Uniscaler + Xess + Dlss", @"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V3", @"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+                { "Uniscaler V4", @"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
                 { "Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"}
             };
         #endregion
@@ -308,6 +315,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Uniscaler + Xess + Dlss", @"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+                { "Uniscaler V4",@"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
                 { "Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"}
             };
         #endregion
@@ -319,6 +327,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Uniscaler + Xess + Dlss", @"mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V3",@"mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+                { "Uniscaler V4",@"mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
                 { "Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"}
             };
         #endregion
@@ -328,6 +337,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             {"Uniscaler V2",@"mods\\Temp\\Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml"},
             {"Uniscaler V3",@"mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler V4",@"mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"}
         };
         #endregion
@@ -336,6 +346,7 @@ namespace FSR3ModSetupUtilityEnhanced
         Dictionary<string, string> folder_uniscalerV3 = new Dictionary<string, string>
         {
             {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler V4",@"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"}
         };
         #endregion
@@ -344,6 +355,7 @@ namespace FSR3ModSetupUtilityEnhanced
         Dictionary<string, string> uniscaler_fsr31 = new Dictionary<string, string>
             {
                 { "Uniscaler FSR 3.1", @"\mods\\Temp\\Uniscaler_FSR31\\enable_fake_gpu\\uniscaler.config.toml" },
+                { "Uniscaler V4",@"\mods\\Temp\\Uniscaler_V4\\enable_fake_gpu\\uniscaler.config.toml"},
             };
         #endregion
 
@@ -519,6 +531,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler + Xess + Dlss", new string[] {"mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"}},
             {"Uniscaler V2", new string[] {"mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"}},
             {"Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
+            {"Uniscaler V4", new string[]{"mods\\FSR2FSR3_Uniscaler_V4\\Uni_V4\\Uni_Mod"}},
             {"Uniscaler FSR 3.1",new string[]{"mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
         };
 
@@ -655,16 +668,17 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Dlss Global Files
         List<string> del_dlss_global_rtx = new List<string>
         {
-            "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log",
-            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "libxess.dll", "nvapi64-proxy.dll", "nvngx-wrapper.dll",
-            "nvngx.dll", "nvngx.ini", "unins000.dat","amd_fidelityfx_dx12.dll","version.dll","dlss_rtx.txt"
+            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better-3.0.dll",
+            "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.log", "libxess.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "unins000.dat", "winmm.dll"
+
         };
 
         List<string> del_dlss_global_amd = new List<string>
         {
-            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.log",
-            "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll",
-            "libxess.dll", "nvngx-wrapper.dll", "nvngx.ini", "unins000.dat", "version.dll","nvapi64-proxy.dll","dxgi.dll","dlss-enabler.dll","dlss_amd.txt"
+            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log",
+            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.ini", "fakenvapi.log", "libxess.dll", "nvapi64.dll", "nvngx-wrapper.dll",
+            "nvngx.dll", "nvngx.ini", "nvngx_dlss.dll", "nvngx_dlssg.dll", "unins000.dat"
+
         };
         #endregion
 
@@ -691,6 +705,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Uniscaler + Xess + Dlss", @"mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V2", @"mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+                { "Uniscaler V4",@"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
                 { "Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"}
             };
         #endregion
@@ -745,9 +760,10 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler", "mods\\FSR2FSR3_Uniscaler\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler + Xess + Dlss", "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\enable_fake_gpu\\uniscaler.config.toml" },
             { "The Callisto Protocol FSR3", "mods\\FSR3_Callisto\\enable_fake_gpu\\fsr2fsr3.config.toml" },
-            {"FSR 3.1 Custom Wukong","mods\\FSR3_WUKONG\\WukongFSR31\\enable_fake_gpu\\uniscaler.config.toml" },
+            { "FSR 3.1 Custom Wukong","mods\\FSR3_WUKONG\\WukongFSR31\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler V2", "mods\\FSR2FSR3_Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler V3", "mods\\FSR2FSR3_Uniscaler_V3\\enable_fake_gpu\\uniscaler.config.toml"},
+            { "Uniscaler V4", "mods\\FSR2FSR3_Uniscaler_V4\\enable_fake_gpu\\uniscaler.config.toml"},
             { "Uniscaler FSR 3.1","mods\\FSR2FSR3_Uniscaler_FSR3\\enable_fake_gpu\\uniscaler.config.toml"},
             { "Uni Custom Miles", "mods\\FSR2FSR3_Miles\\uni_miles_toml" }
         };
@@ -768,6 +784,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler V4",@"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"},
             {"The Callisto Protocol FSR3",@"\mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"},
             {"Uni Custom Miles", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml"},
@@ -1403,7 +1420,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string path_dest = selectFolder;
             string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string selectedVersion = listMods.SelectedItem as string;
-            string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uniscaler FSR 3.1" };
+            string[] uniscalerVersion = { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3","Uniscaler V4", "Uniscaler FSR 3.1" };
 
             if (selectedVersion != null)
             {
@@ -1774,14 +1791,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 catch { }
             }
             #endregion
-        }
-
-        public void frankStoneFSR3()
-        {
-            if (selectMod == "Optiscaler Frank Stone FG")
-            {
-                dlssGlobal();
-            }
         }
 
         private DialogResult ShowMessage(string message, string titleMessage)
@@ -2186,10 +2195,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
             dlssGlobal();
         }
-        public void dl2Fsr3()
-        {
-            dlssGlobal();
-        }
 
         public async void whmMarineFsr3()
         {
@@ -2252,10 +2257,6 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 dlss_to_fsr();
             }
-            if (selectMod == "FFXVI DLSS ALL GPU")
-            {
-                dlssGlobal();
-            }
 
             if (!File.Exists(Path.Combine(selectFolder, "d3d12.dll")))
             {
@@ -2300,10 +2301,6 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod == "Outlaws DLSS RTX")
             {
                 dlss_to_fsr();
-            }
-            if (selectMod == "Outlaws FG All GPU")
-            {
-                dlssGlobal();
             }
 
             if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -2884,6 +2881,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     fsrRdr2Build02();
                 }
+
+                if (selectMod == "FSR 3.1/DLSS FG Custom")
+                {
+                    dlssGlobal();
+                }
+                if (selectMod == "Optiscaler FSR 3.1/DLSS")
+                {
+                    optiscaler_custom();
+                }
                 if (folderEldenRing.ContainsKey(selectMod) || selectMod == "Unlock FPS Elden")
                 {
                     eldenFsr3();
@@ -2891,10 +2897,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Alan Wake 2")
                 {
                    aw2Fsr3();
-                }
-                if (selectMod == "Optiscaler FSR 3.1/DLSS")
-                {
-                    optiscaler_custom();
                 }
                 if (selectMod == "Ac Valhalla Dlss (Only RTX)")
                 {
@@ -2969,17 +2971,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     ffxviFsr3();
                 }
-                if (selectMod == "DL2 DLSS FG")
-                {
-                    dl2Fsr3();
-                }
                 if (gameSelected == "Warhammer: Space Marine 2")
                 {
                     whmMarineFsr3();
-                }
-                if (gameSelected == "The Casting Of Frank Stone")
-                {
-                    frankStoneFSR3();
                 }
                 if (gameSelected == "Black Myth: Wukong")
                 {
@@ -3060,7 +3054,7 @@ namespace FSR3ModSetupUtilityEnhanced
                                 }
                                 catch { }
                             }
-                            if (selectMod == "Uniscaler FSR 3.1")
+                            if (selectMod == "Uniscaler FSR 3.1" || selectMod == "Uniscaler V4")
                             {
                                 string pathNvngxUni = "mods\\Temp\\nvngx_global\\nvngx\\nvngx_uni_fsr3\\nvngx.dll";
                                 File.Copy(pathNvngxUni, selectFolder + "\\nvngx.dll", true);
@@ -3279,6 +3273,10 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     RestoreBackup("Backup Optiscaler");
                 }
+                if (selectMod == "FSR 3.1/DLSS FG Custom")
+                {
+                    CleanDlssGlobal("FSR 3.1/DLSS FG Custom");
+                }
                 if (gameSelected == "Cyberpunk 2077")
                 {
                     #region Remove Files Cyberpunk
@@ -3321,8 +3319,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "The Callisto Protocol")
                 {
                     #region Remove others mods
+
                     CleanupOthersMods("TCP", "TCP.ini",selectFolder);
                     CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",selectFolder);
+                   
                     #endregion
                 }
                 if (gameSelected == "God Of War 4")
@@ -3391,10 +3391,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         CleanupMod3(del_dlss_to_fsr, "Outlaws DLSS RTX");
                     }
-                    if (selectMod == "Outlaws FG All GPU")
-                    {
-                        CleanDlssGlobal("Outlaws FG All GPU");
-                    }
 
                     #region Others Mods
 
@@ -3452,22 +3448,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     #endregion
                 }
-                if (gameSelected == "The Casting Of Frank Stone")
-                {
-                    #region Del Mods Frank Stone
-                    if (selectMod == "Optiscaler Frank Stone FG")
-                    {
-                        if (MessageBox.Show("Do you have an RTX GPU?", "GPU", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            CleanupMod3(del_dlss_global_rtx, "Optiscaler Frank Stone FG");
-                        }
-                        else
-                        {
-                            CleanupMod3(del_dlss_global_amd, "Optiscaler Frank Stone FG");
-                        }
-                    }
-                    #endregion
-                }
                 if (gameSelected == "STAR WARS Jedi: Survivor")
                 {
                     #region Cleanup others mods Jedi Survivor
@@ -3486,11 +3466,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Final Fantasy XVI")
                 {
                     #region Cleanup Mods FFXVI
-                    if (selectMod == "FFXVI DLSS ALL GPU")
-                    {
-                        CleanDlssGlobal("FFXVI DLSS ALL GPU");
-                    }
-                    else if (selectMod == "FFXVI DLSS RTX")
+                    if (selectMod == "FFXVI DLSS RTX")
                     {
                         CleanupMod3(del_dlss_to_fsr, "FFXVI DLSS RTX");
                     }
@@ -3740,10 +3716,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     CleanDlssGlobal("COD MW3 FSR3");
                 }
-                else if (selectMod == "DL2 DLSS FG")
-                {
-                    CleanDlssGlobal("DL2 DLSS FG");
-                }
                 else if (gameSelected == "Black Myth: Wukong")
                 {
                     string PathOptimizedDel = Path.Combine(selectFolder, "..\\..\\Content\\Paks");
@@ -3854,7 +3826,7 @@ namespace FSR3ModSetupUtilityEnhanced
         //Config Resolution/Mod Operates
         #region Unlock Mod Operates
         List<string> unlock_mod_operates_list = new List<string> { "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4" };
-        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uniscaler FSR 3.1", "Uni Custom Miles", "Dlss Jedi" };
+        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uniscaler V4", "Uniscaler FSR 3.1", "Uni Custom Miles", "Dlss Jedi" };
         #endregion
 
         #region UniResolutionCustom
@@ -3892,6 +3864,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Uniscaler + Xess + Dlss", @"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V2", @"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
                 { "Uniscaler V3", @"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+                { "Uniscaler V4", @"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
                 { "Uniscaler FSR 3.1",@"mods\\Temp\\Uniscaler_FSR31\\enable_fake_gpu\\uniscaler.config.toml"}
             };
         #endregion
@@ -4017,7 +3990,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 modOpt4.Visible = false;
                 modOpt5.Visible = false;
             }
-            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3" && selectMod != "Uniscaler FSR 3.1")
+            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3" && selectMod != "Uniscaler V4" && selectMod != "Uniscaler FSR 3.1")
             {
                 modOpt1.Text = "FSR3";
                 modOpt2.Text = "DLSS";
@@ -4037,7 +4010,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 modOpt3.Visible = true;
                 modOpt5.Visible = false;
             }
-            else if (selectMod == "Uniscaler FSR 3.1")
+            else if (selectMod == "Uniscaler FSR 3.1" || selectMod == "Uniscaler V4")
             {
                 modOpt1.Text = "None";
                 modOpt2.Text = "FSR3";
@@ -4092,11 +4065,11 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 ConfigToml("mode", "\"default\"", folder_mod_operates, "general");
             }
-            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3" && selectMod != "Uniscaler FSR 3.1")
+            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3" && selectMod != "Uniscaler FSR 3.1" && selectMod != "Uniscaler V4")
             {
                 ConfigToml("upscaler", "\"fsr3\"", folder_mod_operates, "general");
             }
-            else if (selectMod == "Uniscaler V3" || selectMod == "Uniscaler FSR 3.1")
+            else if (selectMod == "Uniscaler V3" || selectMod == "Uniscaler V4" || selectMod == "Uniscaler FSR 3.1")
             {
                 ConfigToml("upscaler", "\"none\"", folder_mod_operates, "general");
             }
@@ -4109,11 +4082,11 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 ConfigToml("mode", "\"enable_upscaling_only\"", folder_mod_operates, "general");
             }
-            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3" && selectMod != "Uniscaler FSR 3.1")
+            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3" && selectMod != "Uniscaler V4" && selectMod != "Uniscaler FSR 3.1")
             {
                 ConfigToml("upscaler", "\"dlss\"", folder_mod_operates, "general");
             }
-            else if (selectMod == "Uniscaler V3" || selectMod == "Uniscaler FSR 3.1")
+            else if (selectMod == "Uniscaler V3" || selectMod == "Uniscaler V4" || selectMod == "Uniscaler FSR 3.1")
             {
                 ConfigToml("upscaler", "\"fsr3\"", folder_mod_operates, "general");
             }
@@ -4125,11 +4098,11 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 ConfigToml("mode", "\"use_game_upscaling\"", folder_mod_operates, "general");
             }
-            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3" && selectMod != "Uniscaler FSR 3.1")
+            else if (uniscaler_list.Contains(selectMod) && selectMod != "Uniscaler V3" && selectMod != "Uniscaler V4" && selectMod != "Uniscaler FSR 3.1")
             {
                 ConfigToml("upscaler", "\"xess\"", folder_mod_operates, "general");
             }
-            else if (selectMod == "Uniscaler V3" || selectMod == "Uniscaler FSR 3.1")
+            else if (selectMod == "Uniscaler V3" || selectMod == "Uniscaler V4" || selectMod == "Uniscaler FSR 3.1")
             {
                 ConfigToml("upscaler", "\"dlss\"", folder_mod_operates, "general");
             }
@@ -4140,7 +4113,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 ConfigToml("mode", "\"replace_dlss_fg\"", folder_mod_operates, "general");
             }
-            else if (selectMod == "Uniscaler V3" || selectMod == "Uniscaler FSR 3.1")
+            else if (selectMod == "Uniscaler V3" || selectMod == "Uniscaler V4" || selectMod == "Uniscaler FSR 3.1")
             {
                 ConfigToml("upscaler", "\"xess\"", folder_mod_operates, "general");
             }
@@ -4148,7 +4121,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void modOpt5_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Uniscaler FSR 3.1")
+            if (selectMod == "Uniscaler FSR 3.1" || selectMod == "Uniscaler V4")
             {
                 ConfigToml("upscaler", "\"fsr3_1\"", folder_mod_operates, "general");
             }
@@ -4638,26 +4611,26 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonFg3_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Uniscaler FSR 3.1")
+            if (selectMod == "Uniscaler FSR 3.1" || selectMod == "Uniscaler V4")
             {
-                ConfigToml("frame_generator", "fsr3", uniscaler_fsr31, "general");
+                ConfigToml("frame_generator", "\"fsr3\"", uniscaler_fsr31, "general");
             }
             else
             {
-                MessageBox.Show("Select Uniscaler FSR 3.1 to proceed", "Uniscaler FSR 3.1", MessageBoxButtons.OK);
+                MessageBox.Show("Select Uniscaler FSR 3.1 or Uniscaler V4 to proceed", "Uniscaler", MessageBoxButtons.OK);
                 return;
             }
         }
 
         private void buttonFg31_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Uniscaler FSR 3.1")
+            if (selectMod == "Uniscaler FSR 3.1" || selectMod == "Uniscaler V4")
             {
-                ConfigToml("frame_generator", "fsr3_1", uniscaler_fsr31, "general");
+                ConfigToml("frame_generator", "\"fsr3_1\"", uniscaler_fsr31, "general");
             }
             else
             {
-                MessageBox.Show("Select Uniscaler FSR 3.1 to proceed", "Uniscaler FSR 3.1", MessageBoxButtons.OK);
+                MessageBox.Show("Select Uniscaler FSR 3.1 or Uniscaler V4 to proceed", "Uniscaler", MessageBoxButtons.OK);
                 return;
             }
         }

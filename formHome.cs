@@ -221,17 +221,16 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> forzaList = new List<string> { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU", "Optiscaler FSR 3.1/DLSS" };
             List<string> flintList = new List<string> {"Optiscaler FSR 3.1/DLSS" };
             List<string> codList = new List<string> {"COD MW3 FSR3" };
-            List<string> dl2List = new List<string> { "DL2 DLSS FG" };
-            List<string> outlawsList = new List<string> { "Outlaws DLSS RTX", "Outlaws FG All GPU" };
-            List<string> gow4List = new List<string> { "Gow 4 FSR 3.1" };
+            List<string> outlawsList = new List<string> { "Outlaws DLSS RTX", "FSR 3.1/DLSS FG Custom" };
+            List<string> gow4List = new List<string> { "Gow 4 FSR 3.1", "FSR 3.1/DLSS FG Custom" };
             List<string> gowRagList = new List<string> { "Uniscaler FSR 3.1","Others Mods Gow Rag" };
-            List<string> frankStoneList = new List<string> { "Optiscaler Frank Stone FG","0.10.4", "Optiscaler FSR 3.1/DLSS" };
-            List<string> spacemarineList = new List<string> { "FSR 3.1 Space Marine","Uniscaler FSR 3.1", "Optiscaler FSR 3.1/DLSS" };
+            List<string> frankStoneList = new List<string> { "0.10.4", "Optiscaler FSR 3.1/DLSS" };
+            List<string> spacemarineList = new List<string> { "FSR 3.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1/DLSS" };
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
-            List<string> ffxviList = new List<string> { "FFXVI DLSS ALL GPU", "FFXVI DLSS RTX","Others Mods FFXVI" };
-            List<string> hzdList = new List<string> { "Optiscaler Custom HZD"};
+            List<string> ffxviList = new List<string> {"FFXVI DLSS RTX","Others Mods FFXVI" };
+            List<string> hzdList = new List<string> { "FSR 3.1/DLSS FG Custom" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
-                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS"};
+                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS","FSR 3.1/DLSS FG Custom"};
             #endregion;
 
             #region List To Remove
@@ -255,7 +254,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 tekkenList,
                 flintList,
                 codList,
-                dl2List,
                 wukongList,
                 ffxviList,
                 outlawsList,
@@ -363,10 +361,6 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Warhammer: Space Marine 2")
             {
                 formSettings.Instance.AddItemlistMods(spacemarineList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Dying Light 2")
-            {
-                formSettings.Instance.AddItemlistMods(dl2List, modsDefaultList);
             }
             else if (listGames.SelectedItem.ToString() == "Black Myth: Wukong")
             {

@@ -42,6 +42,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler + Xess + Dlss",@"\mods\Temp\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V2",@"\mods\Temp\Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+            {"Uniscaler V4",@"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"},
             {"The Callisto Protocol FSR3",@"\mods\Temp\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"},
             {"FSR 3.1 Custom Wukong",@"\mods\Temp\Wukong_FSR31\enable_fake_gpu\uniscaler.config.toml" }
@@ -65,6 +66,7 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler + Xess + Dlss", @"mods\FSR2FSR3_Uniscaler_Xess_Dlss\enable_fake_gpu\uniscaler.config.toml" },
             { "Uniscaler V2", @"mods\FSR2FSR3_Uniscaler_V2\enable_fake_gpu\uniscaler.config.toml" },
             { "Uniscaler V3", @"mods\FSR2FSR3_Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
+            { "Uniscaler V4", @"mods\FSR2FSR3_Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
             { "Uniscaler FSR 3.1",@"\mods\FSR2FSR3_Uniscaler_FSR3\enable_fake_gpu\\uniscaler.config.toml"},
             { "The Callisto Protocol FSR3", @"mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml" },
             { "Uni Custom Miles", @"mods\FSR2FSR3_Miles\uni_miles_toml" },

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
@@ -248,10 +250,12 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Enable Fake Nvidia GPU (only for AMD and GTX).\r\n" +
                 "3 - In the game, select any upscaler and activate Frame Generation.\r\n" +
                 "4 - If you experience any flickering or ghosting, go to Video > Advanced Settings and decrease the Lod Range Multiplier.\r\n\r\n"+
-                "DL2 DLSS FG\r\n" +
-                "1 - Select DL2 DLSS FG and install it.\r\n" +
+                "FSR 3.1/DLSS FG Custom\r\n" +
+                "1 - Select FSR 3.1/DLSS FG Custom and install it.\r\n" +
                 "2 - Select Frame Generation within the game.\r\n" +
-                "3 - This mod cannot fix the HUD error, but you can reduce it slightly by decreasing the HUD size and enabling motion blur."
+                "3 - Press the \"Insert\" key to open the menu.\n\r" +
+                "4 - In the menu, select the upscaler you prefer.\n\r" +
+                "5 - This mod cannot fix the HUD error, but you can reduce it slightly by decreasing the HUD size and enabling motion blur."
             },
             {
                 "Elden Ring",
@@ -325,8 +329,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Final Fantasy XVI",
-                "FFXVI DLSS ALL GPU:\n" +
-                "1. Select FFXVI ALL GPU.\n" +
+                "FSR 3.1/DLSS FG Custom:\n" +
+                "1. Select FSR 3.1/DLSS FG Custom.\n" +
                 "2. Check the \"GPU\" box that will appear during installation.\n" +
                 "3. In-game, press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, select the upscaler you prefer.\n\n" +
@@ -503,8 +507,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Horizon Zero Dawn",
-                "Optiscaler Custom HZD & FSR 3.1/DLSS Optiscaler:\n" +
-                "1. Select Optiscaler Custom HZD or FSR 3.1/DLSS Optiscaler.\n" +
+                "Optiscaler Custom HZD, FSR 3.1/DLSS Optiscaler & FSR 3.1/DLSS FG Custom:\n" +
+                "1. Select Optiscaler Custom HZD, FSR 3.1/DLSS Optiscaler or FSR 3.1/DLSS FG Custom.\n" +
                 "2. Check the \"Enable Signature Over\" box.\n" +
                 "3. In the game, press the \"Insert\" key to open the mod menu.\n" +
                 "4. In the menu, select the Upscaler of your choice.\n" +
@@ -865,8 +869,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "The Casting Of Frank Stone",
-                "Optiscaler Frank Stone FG:\n" +
-                "1. Select 'Optiscaler Frank Stone FG', install it, and check the GPU window that appears.\n" +
+                "FSR 3.1/DLSS FG Custom:\n" +
+                "1. Select 'FSR 3.1/DLSS FG Custom', install it, and check the GPU window that appears.\n" +
                 "2. In the game, select DLSS and Frame Generation.\n" +
                 "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1.\n\n" +
 
@@ -882,7 +886,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Warhammer: Space Marine 2",
-                "1 - FSR 3.1 Space Marine:\n" +
+                "1 - FSR 3.1/DLSS FG Custom:\n" +
                 "2 - Check the 'GPU' window during installation.\n" +
                 "3 - In-game, press the 'Insert' key to open the menu.\n" +
                 "4 - In the menu, select the upscaler of your choice.\n\n" +
