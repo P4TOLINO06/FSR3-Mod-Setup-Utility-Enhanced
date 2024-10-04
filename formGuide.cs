@@ -217,11 +217,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Death Stranding Director's Cut",
-                "1 - Select a mod of your preference (0.10.3 or Uniscaler is recommended).\r\n" +
-                "2 - Check the box for Fake Nvidia GPU (AMD/GTX).\r\n" +
-                "3 - Inside the game, select DLSS or FSR.\r\n" +
-                "4 - If you encounter problems related to DX12, select D3D12 in Dxgi.dll.\r\n" +
-                "5 - The mod only works on the Director's Cut version."
+                "Before installing the mod, open the game and disable FidelityFx Cas.\n" +
+                "1. Select Unicaler V4.\n" +
+                "2. Check the box for \"Enable Signature Over\", check the \"Nvngx.dll\" box, and select \"Default\".\n" +
+                "3. In the game, enable FidelityFx Cas if you want more FPS (the mod is activated automatically when installed, but FidelityFx Cas provides a slight FPS boost).\n" +
+                "4. If you want even more FPS, check the \"Fake Nvidia GPU\" box and reinstall the mod (this option may not work for some GPUs, so test it).\n" +
+                "This game does not support ReShade and the mod together, so you will need to uninstall ReShade if you use it for the mod to work."
             },
             {
                 "Dead Space Remake",
@@ -886,10 +887,11 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Warhammer: Space Marine 2",
-                "1 - FSR 3.1/DLSS FG Custom:\n" +
-                "2 - Check the 'GPU' window during installation.\n" +
-                "3 - In-game, press the 'Insert' key to open the menu.\n" +
-                "4 - In the menu, select the upscaler of your choice.\n\n" +
+                 "FSR 3.1/DLSS FG Custom / Optiscaler:\n" +
+                "1. Select FSR 3.1/DLSS FG Custom and install it.\n" +
+                "2. In the game, press the \"Insert\" key to open the menu.\n" +
+                "3. In the menu, select Frame Generation and an upscaler of your choice.\n" +
+                "4. To fix the HUD bug, select Hud Fix FG in the menu.\n\n" +
 
                 "Uniscaler FSR 3.1:\n" +
                 "1 - Check the 'Fake NVIDIA GPU' box if you want to use DLSS.\n" +

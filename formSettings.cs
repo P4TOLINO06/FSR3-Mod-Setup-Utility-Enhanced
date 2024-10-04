@@ -2622,7 +2622,7 @@ namespace FSR3ModSetupUtilityEnhanced
             screenMethod.Icon = screenMethodIcon;
 
             Button buttonMethod0 = new Button();
-            buttonMethod0.Text = "Default (For test)";
+            buttonMethod0.Text = "Default";
             buttonMethod0.Location = new System.Drawing.Point(50, 10);
             buttonMethod0.Size = new Size(220, 30); ;
             buttonMethod0.Click += buttonMethod0_Click;
