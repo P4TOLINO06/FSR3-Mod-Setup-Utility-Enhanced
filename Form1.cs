@@ -27,7 +27,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             if (sidebar_Expand)
             {
-                sidebar.Width -= 10;
+                sidebar.Width -= 15;
                 if (sidebar.Width == sidebar.MinimumSize.Width)
                 {
                     sidebar_Expand = false;
@@ -36,7 +36,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else
             {
-                sidebar.Width += 10;
+                sidebar.Width += 15;
                 if (sidebar.Width == sidebar.MaximumSize.Width)
                 {
                     sidebar_Expand = true;

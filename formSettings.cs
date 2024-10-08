@@ -669,14 +669,14 @@ namespace FSR3ModSetupUtilityEnhanced
         List<string> del_dlss_global_rtx = new List<string>
         {
             "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better-3.0.dll",
-            "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.log", "libxess.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "unins000.dat", "winmm.dll"
+            "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.log", "libxess.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "unins000.dat", "winmm.dll","dlss-enabler.dll","dlss_rtx.txt"
 
         };
 
         List<string> del_dlss_global_amd = new List<string>
         {
             "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log",
-            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.ini", "fakenvapi.log", "libxess.dll", "nvapi64.dll", "nvngx-wrapper.dll",
+            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.ini", "fakenvapi.log", "libxess.dll", "nvapi64.dll", "nvngx-wrapper.dll","dlss_amd.txt",
             "nvngx.dll", "nvngx.ini", "nvngx_dlss.dll", "nvngx_dlssg.dll", "unins000.dat"
 
         };
@@ -731,7 +731,7 @@ namespace FSR3ModSetupUtilityEnhanced
         List<string> del_optiscaler_custom = new List<string>
         {
         "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "DisableNvidiaSignatureChecks.reg", "DisableSignatureOverride.reg", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlss-finder.exe", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll",
-        "dxgi.dll", "EnableSignatureOverride.reg", "libxess.dll", "licenses", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg", "unins000.dat", "unins000.exe", "version.dll", "_nvngx.dll"
+        "dxgi.dll", "EnableSignatureOverride.reg", "libxess.dll", "licenses", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg", "unins000.dat", "unins000.exe", "version.dll", "_nvngx.dll","dlss-enabler.dll","dlssg_to_fsr3_amd_is_better-3.0.dll"
         };
         #endregion
 
@@ -824,6 +824,14 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathIni = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, path);
             IniEditor2.ConfigIni2(key, value, pathIni, section);
             Debug.WriteLine(pathIni);
+        }
+
+        public void ConfigIni3(Dictionary<string, string> keyValuePairs, string path, string? section = null)
+        {
+            string pathIni3 = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, path);
+            IniEditor3 iniEditor3 = new IniEditor3(pathIni3);
+
+            iniEditor3.ConfigIni3(keyValuePairs, section);
         }
 
 
@@ -1377,7 +1385,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
-            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium", "Wanted: Dead","Warhammer: Space Marine 2"};
+            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
@@ -1520,6 +1528,30 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         #endregion
 
+        #region CopyFilesCustom2
+        private void CopyFilesCustom2(string sourceDir, string destinationDir, string pathHelp)
+        {
+            if (Directory.Exists(sourceDir))
+            {
+                string[] files = Directory.GetFiles(sourceDir);
+
+                foreach (string file in files)
+                {
+                    string fileName = Path.GetFileName(file);
+
+                    string destFile = Path.Combine(destinationDir, fileName);
+
+                    File.Copy(file, destFile, true);
+                }
+            }
+            else
+            {
+                MessageBox.Show(pathHelp, "Not Found", MessageBoxButtons.OK);
+            }
+        }
+
+        #endregion
+
         #region BackupDxgi
         public void BackupDxgi(string renameFile, string pathDxgi,string fileName)
         {
@@ -1632,10 +1664,9 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathAmd = "mods\\DLSS_Global\\AMD";
             string pathVarAmd = "mods\\DLSS_Global\\VarTxt\\AMD\\dlss_amd.txt";
 
-
             string backupFolderDlss = Path.Combine(selectFolder, "Backup Dlss");
 
-            DialogResult gpuDlss = MessageBox.Show("Do you have a RTX GPU? (For other GPUs, select \"No\" (including AMD)).", "Dlss GPU", MessageBoxButtons.YesNo);
+            DialogResult gpuDlss = MessageBox.Show("Do you have a RTX GPU?.", "Dlss GPU", MessageBoxButtons.YesNo);
 
             string pathGpu = gpuDlss == DialogResult.Yes ? pathRtx : pathAmd;
 
@@ -1650,16 +1681,10 @@ namespace FSR3ModSetupUtilityEnhanced
             var dlssFileNames = originFiles.Select(Path.GetFileName).ToHashSet();
             var dcFileNames = dcFiles.Select(Path.GetFileName).ToHashSet();
 
-            var commonFiles = dcFileNames.Intersect(dlssFileNames);
+            var commonFiles = dcFileNames.Intersect(dlssFileNames).ToList();
 
             if (commonFiles.Any())
             {
-
-                if (!Directory.Exists(backupFolderDlss))
-                {
-                    Directory.CreateDirectory(backupFolderDlss);
-                }
-
                 foreach (var fileName in commonFiles)
                 {
                     string filesBackup = Path.Combine(pathGpu, fileName);
@@ -1671,14 +1696,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
             CopyFolder(pathGpu);
 
-            if (gpuDlss == DialogResult.Yes) 
-            {
-                File.Copy(pathVarRtx, selectFolder + "\\dlss_rtx.txt",true);
-            }
-            else
-            {
-                File.Copy(pathVarAmd, selectFolder + "\\dlss_amd.txt",true);
-            }
+            string pathVarToCopy = gpuDlss == DialogResult.Yes ? pathVarRtx : pathVarAmd;
+            File.Copy(pathVarToCopy, Path.Combine(selectFolder, gpuDlss == DialogResult.Yes ? "dlss_rtx.txt" : "dlss_amd.txt"), true);
 
             runReg("mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
         }
@@ -2194,6 +2213,64 @@ namespace FSR3ModSetupUtilityEnhanced
             MessageBox.Show("Do not use the mod in multiplayer, otherwise you may be banned. We are not responsible for any bans", "Ban", MessageBoxButtons.OK);
 
             dlssGlobal();
+        }
+
+        public void sh2Fsr3()
+        {
+            string unlockCutsceneFpsSh2 = "mods\\FSR3_SH2\\Unlock Cutscene Fps";
+            string varNativeFsr3Sh2 = "mods\\FSR3_SH2\\Var\\NativeFSR3.txt";
+            string varPostProcessingSh2 = "mods\\FSR3_SH2\\Var\\PostProcessing.txt";
+            string appDataSh2 = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string pathFolderEngineSh2 = Path.Combine(appDataSh2, "SilentHill2\\Saved\\Config\\Windows");
+            string pathEngineIniSh2 = Path.Combine(appDataSh2, "SilentHill2\\Saved\\Config\\Windows\\Engine.ini");
+            var postProcessingSh2 = new Dictionary<string, string>
+            {
+                {"r.SceneColorFringe.Max", "0"},
+                {"r.SceneColorFringeQuality", "0"},
+                {"r.motionblurquality", "0"},
+                {"r.Distortion", "0"},
+                {"r.DisableDistortion", "1"}
+            };
+
+            if (Path.Exists(pathEngineIniSh2))
+            {
+                if (selectMod == "FSR3 FG Native SH2")
+                {
+                    if (MessageBox.Show("Do you want to install the Native FSR3 FG?","Native FS3",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        ConfigIni("r.FidelityFX.FI.Enabled", "1", pathEngineIniSh2, "SystemSettings");
+                    }
+                    File.Copy(varNativeFsr3Sh2, pathFolderEngineSh2 + "\\NativeFSR3.txt",true);
+
+                    Debug.WriteLine(pathEngineIniSh2);
+                }
+
+                if (selectMod == "Others Mods Sh2")
+                {
+                    if (MessageBox.Show("Do you want to remove Post Processing Effects, such as Motion Blur, Distortion, etc.? Check Silent 2 guide in the Guide to see all the effects", "Post Processing", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        ConfigIni3(postProcessingSh2, pathEngineIniSh2, "SystemSettings");
+                        File.Copy(varPostProcessingSh2, pathFolderEngineSh2 + "\\PostProcessing.txt", true);
+                    }
+
+                    if (MessageBox.Show("Do you want to install the Unlock Cutscene Fps?","Unlock Fps",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFilesCustom2(unlockCutsceneFpsSh2, selectFolder, "Engine.ini file not found, please check the path C:\\Users\\YourName\\AppData\\Local\\SilentHill2\\Saved\\Config\\Windows and see if the file exists. If it doesn\'t, open the game for a few seconds and try reinstalling the mod.");
+                    }
+                }
+
+                if (selectMod == "FSR 3.1/DLSS FG Custom" || selectMod == "Optiscaler FSR 3.1/DLSS")
+                {
+                    if (Path.Exists(Path.Combine(pathFolderEngineSh2, "NativeFSR3.txt")))
+                    {
+                        ConfigIni2("r.FidelityFX.FI.Enabled", "0", pathEngineIniSh2, "SystemSettings");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Engine.ini file not found, please check the path C:\\Users\\YourName\\AppData\\Local\\SilentHill2\\Saved\\Config\\Windows and see if the file exists. If it doesn\'t, open the game for a few seconds and try reinstalling the mod.", "Not Found", MessageBoxButtons.OK);
+            }
         }
 
         public async void whmMarineFsr3()
@@ -2979,6 +3056,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     wukongFsr3();
                 }
+                if (gameSelected == "Silent Hill 2")
+                {
+                    sh2Fsr3();
+                }
                 if (gameSelected == "Star Wars Outlaws")
                 {
                     outlawsFsr3();                 
@@ -3191,6 +3272,7 @@ namespace FSR3ModSetupUtilityEnhanced
             RestoreBackup("Backup Dlss");
         }
 
+        #region Cleanup Others Mods
         public bool CleanupOthersMods(string modName, string fileName,string destPath,string regPath = null)
         {
             string filePath = Path.Combine(destPath, fileName);
@@ -3210,6 +3292,43 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             return false;
         }
+        #endregion
+
+        #region Cleanup Others Mods 2
+        public bool CleanupOthersMods2(string modName, string[] fileNames, string destPath, string messageOtMods, string regPath = null)
+        {
+            bool filesRemoved = false;
+            List<string> filesToRemove = new List<string>();
+
+            foreach (string fileName in fileNames)
+            {
+                string filePath = Path.Combine(destPath, fileName);
+                if (File.Exists(filePath))
+                {
+                    filesToRemove.Add(filePath);
+                }
+            }
+
+            if (filesToRemove.Count > 0)
+            {
+                if (MessageBox.Show(messageOtMods, $"Remove {modName}", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    foreach (string filePath in filesToRemove)
+                    {
+                        File.Delete(filePath);
+                        filesRemoved = true;
+
+                        if (regPath != null)
+                        {
+                            runReg(regPath);
+                        }
+                    }
+                }
+            }
+
+            return filesRemoved;
+        }
+        #endregion
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
@@ -3266,6 +3385,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     CleanupMod2(del_optiscaler, folderFakeGpu, "Mod Successfully Removed");
                 }
+
                 if (selectMod == "Optiscaler FSR 3.1/DLSS")
                 {
                     CleanupMod3(del_optiscaler_custom, "Optiscaler FSR 3.1/DLSS");
@@ -3273,10 +3393,12 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     RestoreBackup("Backup Optiscaler");
                 }
+
                 if (selectMod == "FSR 3.1/DLSS FG Custom")
                 {
                     CleanDlssGlobal("FSR 3.1/DLSS FG Custom");
                 }
+
                 if (gameSelected == "Cyberpunk 2077")
                 {
                     #region Remove Files Cyberpunk
@@ -3316,6 +3438,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     }
                     #endregion
                 }
+
                 if (gameSelected == "The Callisto Protocol")
                 {
                     #region Remove others mods
@@ -3325,6 +3448,7 @@ namespace FSR3ModSetupUtilityEnhanced
                    
                     #endregion
                 }
+
                 if (gameSelected == "God Of War 4")
                 {
                     #region Del Files Optiscaler Gow 4
@@ -3340,6 +3464,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     }
                     #endregion
                 }
+
                 if (gameSelected == "God of War Ragnarök")
                 {
                     #region Remove others mods Gow Rag
@@ -3385,6 +3510,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     }
                     #endregion
                 }
+
                 if (gameSelected == "Star Wars Outlaws")
                 {
                     if (selectMod == "Outlaws DLSS RTX")
@@ -3405,8 +3531,10 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     #endregion
                 }
+
                 if (gameSelected == "Warhammer: Space Marine 2")
                 {
+                    
                     #region Del Mods Warhammer: Space Marine 2
                     if (selectMod == "FSR 3.1 Space Marine")
                     {
@@ -3440,6 +3568,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     }
                     #endregion
                 }
+
                 if (gameSelected == "Horizon Zero Dawn")
                 {
                     #region Del Others Mods Hzd
@@ -3448,6 +3577,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     #endregion
                 }
+
                 if (gameSelected == "STAR WARS Jedi: Survivor")
                 {
                     #region Cleanup others mods Jedi Survivor
@@ -3463,6 +3593,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanupOthersMods("Intro Skip", "Default_Startup.mp4", rootPathJedi + "\\Content\\Movies");
                     #endregion
                 }
+
                 if (gameSelected == "Final Fantasy XVI")
                 {
                     #region Cleanup Mods FFXVI
@@ -3511,6 +3642,54 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     #endregion
                 }
+
+                if (gameSelected == "Silent Hill 2")
+                {
+                    #region Cleanup Others Mods Sh2
+                    try
+                    {
+                        string pathAppDataSh2 = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                        string folderEngineIniSh2 = Path.Combine(pathAppDataSh2, "SilentHill2\\Saved\\Config\\Windows");
+                        string defaultEngineIniSh2 = "mods\\FSR3_SH2\\Engine_ini\\Default\\Engine.ini";
+                        string[] removeUnlockFpsSh2 = { "SilentHill2RemakeFPSRose.asi", "dsound.dll" };
+                        string[] restorePostProcessingSh2 = { "Engine.ini", "PostProcessing.txt" };
+
+                        CleanupOthersMods2("Others Mods Sh2", removeUnlockFpsSh2, selectFolder, "Do you want to remove the Unlock Cutscene Fps?");
+
+                        if (Path.Exists(Path.Combine(folderEngineIniSh2, "Engine.ini")))
+                        {
+
+                            if (File.Exists(Path.Combine(folderEngineIniSh2, "PostProcessing.txt")))
+                            {
+                                if (CleanupOthersMods2("Others Mods Sh2", restorePostProcessingSh2, folderEngineIniSh2, "Do you want to restore the Post Processing Effects?"))
+                                {
+                                    File.Copy(defaultEngineIniSh2, folderEngineIniSh2 + "\\Engine.ini", true);
+                                }
+
+                                if (File.Exists(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt")))
+                                {
+                                    File.Delete(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt"));                     
+                                }
+                            }
+
+                            if (File.Exists(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt")))
+                            {
+                                if (MessageBox.Show("Do you want to remove the Native FSR3 FG?", "Native FSR3 FG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                {
+                                    File.Delete(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt"));
+                                    File.Copy(defaultEngineIniSh2, folderEngineIniSh2 + "\\Engine.ini", true);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error clearing Silent Hill 2 mods files, please try again or do it manually", "Silent Hill2");
+                        Debug.WriteLine(ex);
+                    }
+                    #endregion
+                }
+
                 else if (rdr2_folder.ContainsKey(selectMod))
                 {
                     CleanupMod(del_rdr2_custom_files, rdr2_folder);

@@ -139,6 +139,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Satisfactory","SatsF.png"},
                     {"Shadow of the Tomb Raider","ShadowTomb.png"},
                     {"Shadow Warrior 3","Shadow3.png"},
+                    {"Silent Hill 2","Sh2.png"},
                     {"Smalland","Smalland.png"},
                     {"STAR WARS Jedi: Survivor","JedSurvivor.png"},
                     {"Star Wars Outlaws","Outlaws.png"},
@@ -229,6 +230,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
             List<string> ffxviList = new List<string> {"FFXVI DLSS RTX","Others Mods FFXVI" };
             List<string> hzdList = new List<string> { "FSR 3.1/DLSS FG Custom" };
+            List<string> sh2List = new List<string> { "FSR 3.1/DLSS FG Custom","Optiscaler FSR 3.1/DLSS", "FSR3 FG Native SH2", "Others Mods Sh2" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1/DLSS","FSR 3.1/DLSS FG Custom"};
             #endregion;
@@ -259,7 +261,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 outlawsList,
                 gow4List,
                 spacemarineList,
-                frankStoneList
+                frankStoneList,
+                sh2List
             };
             #endregion
 
@@ -381,6 +384,10 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Horizon Zero Dawn")
             {
                 formSettings.Instance.AddItemlistMods(hzdList,modsDefaultList);
+            }
+            else if (listGames.SelectedItem.ToString() == "Silent Hill 2")
+            {
+                formSettings.Instance.AddItemlistMods(sh2List, modsDefaultList);
             }
             else
             {

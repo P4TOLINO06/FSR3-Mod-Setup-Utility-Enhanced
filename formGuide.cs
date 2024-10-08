@@ -770,6 +770,28 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - Set Ambient Occlusion and Post Processing to Low.\n"
             },
             {
+              "Silent Hill 2",
+              "FSR 3.1/DLSS FG Custom / FSR 3.1/DLSS OptiScaler:\n" +
+              "1. Select the FSR 3.1/DLSS mod.\n" +
+              "2. Check the \"GPU\" window that will appear.\n" +
+              "3. In-game, select DLSS before starting the campaign.\n" +
+              "4. During the campaign, press the \"Insert\" key to open the menu.\n" +
+              "5. In the menu, select the desired upscaler, check the Frame Gen and Hud Fix boxes.\n\n" +
+
+              "FSR3 Native:\n" +
+              "1. Select FSR3 FG Native SH2 and install it.\n" +
+              "2. In-game, select FSR 3.0 before starting the campaign.\n\n" +
+
+              "Others Mods Sh2:\n" +
+              "Unlock FPS Cutscenes:\n" +
+              "Removes the 30fps lock from cutscenes.\n\n" +
+
+              "Post-Processing:\n" +
+              "Scene Color Fringe\n" +
+              "Motion blur\n" +
+              "Distortion"
+            },
+            {
                 "Smalland",
                 "1 - Select a mod of your choice. (0.10.3 is recommended)\n" +
                 "2 - Check the Fake Nvidia GPU box. (AMD/GTX)\n" +
@@ -1045,6 +1067,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Shadow of the Tomb Raider","ShadowTomb2.png"},
                 {"Shadow Warrior 3","Shadow32.png"},
                 {"Smalland","Smalland.png"},
+                {"Silent Hill 2","Sh22.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
