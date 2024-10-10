@@ -731,7 +731,8 @@ namespace FSR3ModSetupUtilityEnhanced
         List<string> del_optiscaler_custom = new List<string>
         {
         "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "DisableNvidiaSignatureChecks.reg", "DisableSignatureOverride.reg", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlss-finder.exe", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll",
-        "dxgi.dll", "EnableSignatureOverride.reg", "libxess.dll", "licenses", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg", "unins000.dat", "unins000.exe", "version.dll", "_nvngx.dll","dlss-enabler.dll","dlssg_to_fsr3_amd_is_better-3.0.dll"
+        "dxgi.dll", "EnableSignatureOverride.reg", "libxess.dll", "licenses", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg", "unins000.dat", "unins000.exe", "version.dll", "_nvngx.dll","dlss-enabler.dll",
+            "dlssg_to_fsr3_amd_is_better-3.0.dll","fakenvapi.ini","fakenvapi.log","nvapi64.dll"
         };
         #endregion
 
@@ -1385,7 +1386,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
-            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium", "Wanted: Dead","Warhammer: Space Marine 2"};
+            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
@@ -1517,7 +1518,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region CopyFilesCustom
         private void CopyFilesCustom(string sourceFile, string destinationFile, string pathHelp)
         {
-            if (File.Exists(sourceFile))
+            if (Path.Exists(sourceFile))
             {
                 File.Copy(sourceFile, destinationFile, true);
             }
@@ -1529,7 +1530,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region CopyFilesCustom2
-        private void CopyFilesCustom2(string sourceDir, string destinationDir, string pathHelp)
+        private void CopyFilesCustom2(string sourceDir, string destinationDir, string pathHelp = null)
         {
             if (Directory.Exists(sourceDir))
             {
@@ -1546,7 +1547,10 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else
             {
-                MessageBox.Show(pathHelp, "Not Found", MessageBoxButtons.OK);
+                if (pathHelp != null)
+                {
+                    MessageBox.Show(pathHelp, "Not Found", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -1839,7 +1843,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 CopyFolder(wukongFsrCustom);
             }
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 if (Path.Exists(wukongCache + "\\Local\\b1\\Saved\\D3DDriverByteCodeBlob_V4098_D5686_S372641794_R220.ushaderprecache"))
                 {
@@ -2217,12 +2221,22 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void sh2Fsr3()
         {
-            string unlockCutsceneFpsSh2 = "mods\\FSR3_SH2\\Unlock Cutscene Fps";
-            string varNativeFsr3Sh2 = "mods\\FSR3_SH2\\Var\\NativeFSR3.txt";
-            string varPostProcessingSh2 = "mods\\FSR3_SH2\\Var\\PostProcessing.txt";
+            string rootPathSh2 = Path.GetFullPath(Path.Combine(selectFolder, @"..\..\.."));
+            string modsPathSh2 = @"mods\FSR3_SH2";
+            string rayReconstructionDllSh2 = Path.Combine(modsPathSh2, @"RayReconstruction\nvngx_dlssd.dll");
+            string rayReconstructionIniSh2 = Path.Combine(modsPathSh2, @"RayReconstruction\Engine.ini");
+            string introSkipSh2 = Path.Combine(modsPathSh2, @"Intro_Skip\LoadingScreen.bk2");
+            string fsr31CustomRtxSh2 = @"mods\DLSS_Global\RTX_Custom";
+            string antiStutterSh2 = Path.Combine(modsPathSh2, @"Anti_Stutter\Install Silent Hill 2 Remake High Priority Processes.reg");
+            string varAntiStutterSh2 = Path.Combine(modsPathSh2, @"Anti_Stutter\AntiStutter.txt");
+            string dlssPathSh2 = Path.Combine(rootPathSh2, @"SHProto\Plugins\DLSS\Binaries\ThirdParty\Win64");
+            string unlockCutsceneFpsSh2 = Path.Combine(modsPathSh2, @"Unlock Cutscene Fps");
+            string varNativeFsr3Sh2 = Path.Combine(modsPathSh2, @"Var\NativeFSR3.txt");
+            string varPostProcessingSh2 = Path.Combine(modsPathSh2, @"Var\PostProcessing.txt");
             string appDataSh2 = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string pathFolderEngineSh2 = Path.Combine(appDataSh2, "SilentHill2\\Saved\\Config\\Windows");
-            string pathEngineIniSh2 = Path.Combine(appDataSh2, "SilentHill2\\Saved\\Config\\Windows\\Engine.ini");
+            string pathFolderEngineSh2 = Path.Combine(appDataSh2, @"SilentHill2\Saved\Config\Windows");
+            string pathEngineIniSh2 = Path.Combine(appDataSh2, @"SilentHill2\Saved\Config\Windows\Engine.ini");
+            string messagePathExeSh2 = "SHProto\\Binaries\\Win64";
             var postProcessingSh2 = new Dictionary<string, string>
             {
                 {"r.SceneColorFringe.Max", "0"},
@@ -2232,38 +2246,79 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"r.DisableDistortion", "1"}
             };
 
-            if (Path.Exists(pathEngineIniSh2))
+            if (selectMod == "FSR 3.1.1/DLSS FG RTX Custom")
             {
-                if (selectMod == "FSR3 FG Native SH2")
-                {
-                    if (MessageBox.Show("Do you want to install the Native FSR3 FG?","Native FS3",MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        ConfigIni("r.FidelityFX.FI.Enabled", "1", pathEngineIniSh2, "SystemSettings");
-                    }
-                    File.Copy(varNativeFsr3Sh2, pathFolderEngineSh2 + "\\NativeFSR3.txt",true);
+                CopyFolder(fsr31CustomRtxSh2);
+            }
 
-                    Debug.WriteLine(pathEngineIniSh2);
+            if (selectMod == "Others Mods Sh2")
+            {
+                // Anti Stutter
+                if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    runReg(antiStutterSh2);
+                    File.Copy(varAntiStutterSh2, selectFolder + "\\AntiStutter.txt", true);
                 }
 
-                if (selectMod == "Others Mods Sh2")
+                // Intro Skip
+                if (Path.Exists(Path.Combine(rootPathSh2, "SHProto.exe")))
                 {
+                    if (MessageBox.Show("Do you want to install the Intro Skip?", "Intro Skip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFilesCustom(introSkipSh2, Path.Combine(rootPathSh2, @"SHProto\Content\Movies\LoadingScreen.bk2"), messagePathExeSh2);
+                    }
+                }
+
+                // Unlock Cutscene FPS
+                if (MessageBox.Show("Do you want to install the Unlock Cutscene Fps?", "Unlock Fps", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFilesCustom2(unlockCutsceneFpsSh2, selectFolder, "Engine.ini file not found, please check the path C:\\Users\\YourName\\AppData\\Local\\SilentHill2\\Saved\\Config\\Windows and see if the file exists. If it doesn\'t, open the game for a few seconds and try reinstalling the mod.");
+                }
+
+                if (Path.Exists(pathEngineIniSh2))
+                {
+                    // Ray Reconstruction
+                    if (Path.Exists(dlssPathSh2))
+                    {
+                        if (MessageBox.Show("Do you want to install the Ray Reconstruction?", "Reconstruction", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            CopyFilesCustom(rayReconstructionDllSh2, Path.Combine(dlssPathSh2, "nvngx_dlssd.dll"), messagePathExeSh2);
+                            CopyFilesCustom(rayReconstructionIniSh2, Path.Combine(pathFolderEngineSh2,"Engine.ini"), messagePathExeSh2);
+                        }
+                    }
+
+                    // Post Processing Effects
                     if (MessageBox.Show("Do you want to remove Post Processing Effects, such as Motion Blur, Distortion, etc.? Check Silent 2 guide in the Guide to see all the effects", "Post Processing", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         ConfigIni3(postProcessingSh2, pathEngineIniSh2, "SystemSettings");
                         File.Copy(varPostProcessingSh2, pathFolderEngineSh2 + "\\PostProcessing.txt", true);
                     }
-
-                    if (MessageBox.Show("Do you want to install the Unlock Cutscene Fps?","Unlock Fps",MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        CopyFilesCustom2(unlockCutsceneFpsSh2, selectFolder, "Engine.ini file not found, please check the path C:\\Users\\YourName\\AppData\\Local\\SilentHill2\\Saved\\Config\\Windows and see if the file exists. If it doesn\'t, open the game for a few seconds and try reinstalling the mod.");
-                    }
                 }
-
-                if (selectMod == "FSR 3.1/DLSS FG Custom" || selectMod == "Optiscaler FSR 3.1/DLSS")
+                else
                 {
-                    if (Path.Exists(Path.Combine(pathFolderEngineSh2, "NativeFSR3.txt")))
+                    MessageBox.Show("Engine.ini not found. To install the other mods, check if the file is located in C:\\Users\\YourName\\AppData\\Local\\SilentHill2\\Saved\\Config\\Windows. If it's not there, open the game for a few seconds and reinstall.", "Not Found", MessageBoxButtons.OK);
+                }        
+            }
+
+            if (selectMod == "FSR 3.1.1/DLSS FG Custom" || selectMod == "Optiscaler FSR 3.1.1/DLSS")
+            {
+                if (Path.Exists(Path.Combine(pathFolderEngineSh2, "NativeFSR3.txt")))
+                {
+                    ConfigIni2("r.FidelityFX.FI.Enabled", "0", pathEngineIniSh2, "SystemSettings");
+
+                    MessageBox.Show("Native FSR3 FG was removed, it is necessary for the mod to work", "FSR 3.1/DLSS");
+                }
+            }
+
+            if (Path.Exists(pathEngineIniSh2))
+            {
+                if (selectMod == "FSR3 FG Native SH2")
+                {
+                    if (MessageBox.Show("Do you want to install the Native FSR3 FG?", "Native FS3", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        ConfigIni2("r.FidelityFX.FI.Enabled", "0", pathEngineIniSh2, "SystemSettings");
+                        ConfigIni("r.FidelityFX.FI.Enabled", "1", pathEngineIniSh2, "SystemSettings");
+                        File.Copy(varNativeFsr3Sh2, Path.Combine(pathFolderEngineSh2, "NativeFSR3.txt"), true);
+                        Debug.WriteLine(pathFolderEngineSh2);
                     }
                 }
             }
@@ -2823,7 +2878,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 if (e.NewValue == CheckState.Checked)
                 {
-                    if (selectMod != "Optiscaler FSR 3.1/DLSS")
+                    if (selectMod != "Optiscaler FSR 3.1.1/DLSS")
                     {
                         InstallMethod();
                     }
@@ -2959,11 +3014,11 @@ namespace FSR3ModSetupUtilityEnhanced
                     fsrRdr2Build02();
                 }
 
-                if (selectMod == "FSR 3.1/DLSS FG Custom")
+                if (selectMod == "FSR 3.1.1/DLSS FG Custom")
                 {
                     dlssGlobal();
                 }
-                if (selectMod == "Optiscaler FSR 3.1/DLSS")
+                if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
                 {
                     optiscaler_custom();
                 }
@@ -3182,7 +3237,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     foreach (string optAddOn in optionsAddOn.CheckedItems)
                     {
                         string pathAddOn;
-                        if (optAddOn == "Optiscaler" && selectMod != "Optiscaler FSR 3.1/DLSS")
+                        if (optAddOn == "Optiscaler" && selectMod != "Optiscaler FSR 3.1.1/DLSS")
                         {
 
                             pathAddOn = "mods\\Addons_mods\\OptiScaler";
@@ -3386,17 +3441,17 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanupMod2(del_optiscaler, folderFakeGpu, "Mod Successfully Removed");
                 }
 
-                if (selectMod == "Optiscaler FSR 3.1/DLSS")
+                if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
                 {
-                    CleanupMod3(del_optiscaler_custom, "Optiscaler FSR 3.1/DLSS");
+                    CleanupMod3(del_optiscaler_custom, "Optiscaler FSR 3.1.1/DLSS");
                     runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
 
                     RestoreBackup("Backup Optiscaler");
                 }
 
-                if (selectMod == "FSR 3.1/DLSS FG Custom")
+                if (selectMod == "FSR 3.1.1/DLSS FG Custom")
                 {
-                    CleanDlssGlobal("FSR 3.1/DLSS FG Custom");
+                    CleanDlssGlobal("FSR 3.1.1/DLSS FG Custom");
                 }
 
                 if (gameSelected == "Cyberpunk 2077")
@@ -3648,37 +3703,52 @@ namespace FSR3ModSetupUtilityEnhanced
                     #region Cleanup Others Mods Sh2
                     try
                     {
+                        string pathSh2 = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
                         string pathAppDataSh2 = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                         string folderEngineIniSh2 = Path.Combine(pathAppDataSh2, "SilentHill2\\Saved\\Config\\Windows");
+                        string engineIniSh2 = Path.Combine(folderEngineIniSh2, "Engine.ini");
                         string defaultEngineIniSh2 = "mods\\FSR3_SH2\\Engine_ini\\Default\\Engine.ini";
+                        string removeAntiStutterSh2 = "mods\\FSR3_SH2\\Anti_Stutter\\Uninstall Silent Hill 2 Remake High Priority Processes.reg";
+                        string pathMoviesSh2 = Path.Combine(pathSh2, "SHProto\\Content\\Movies");
+                        string pathDlssDllSh2 = Path.Combine(pathSh2, "SHProto\\Plugins\\DLSS\\Binaries\\ThirdParty\\Win64");
                         string[] removeUnlockFpsSh2 = { "SilentHill2RemakeFPSRose.asi", "dsound.dll" };
                         string[] restorePostProcessingSh2 = { "Engine.ini", "PostProcessing.txt" };
+                        string[] rtxCustomFilesSh2 = {"amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler.dll", "dxgi.dll", "libxess.dll", "nvngx.ini"
+ };
+
+                        if (CleanupOthersMods("Ray Reconstruction", "nvngx_dlssd.dll", pathDlssDllSh2))
+                        {
+                            if (Path.Exists(engineIniSh2))
+                            {
+                                File.Delete(engineIniSh2);
+                                File.Copy(defaultEngineIniSh2,engineIniSh2);
+                            }
+                        }
+
+                        CleanupOthersMods("Intro Skip", "LoadingScreen.bk2", pathMoviesSh2);
+
+                        CleanupOthersMods("Anti Stutter", "AntiStutter.txt", selectFolder, removeAntiStutterSh2);
+
+                        CleanupOthersMods2("FSR 3.1.1/DLSS FG RTX Custom", rtxCustomFilesSh2, selectFolder, "Do you want to remove the FSR 3.1.1/DLSS FG RTX Custom?");
 
                         CleanupOthersMods2("Others Mods Sh2", removeUnlockFpsSh2, selectFolder, "Do you want to remove the Unlock Cutscene Fps?");
 
-                        if (Path.Exists(Path.Combine(folderEngineIniSh2, "Engine.ini")))
+
+                        if (Path.Exists(engineIniSh2))
                         {
 
                             if (File.Exists(Path.Combine(folderEngineIniSh2, "PostProcessing.txt")))
                             {
                                 if (CleanupOthersMods2("Others Mods Sh2", restorePostProcessingSh2, folderEngineIniSh2, "Do you want to restore the Post Processing Effects?"))
                                 {
-                                    File.Copy(defaultEngineIniSh2, folderEngineIniSh2 + "\\Engine.ini", true);
-                                }
-
-                                if (File.Exists(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt")))
-                                {
-                                    File.Delete(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt"));                     
-                                }
+                                    File.Copy(defaultEngineIniSh2, engineIniSh2, true);
+                                }                         
                             }
 
-                            if (File.Exists(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt")))
+                            if (File.Exists(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt")) && MessageBox.Show("Do you want to remove the Native FSR3 FG?", "Native FSR3 FG", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
-                                if (MessageBox.Show("Do you want to remove the Native FSR3 FG?", "Native FSR3 FG", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                                {
-                                    File.Delete(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt"));
-                                    File.Copy(defaultEngineIniSh2, folderEngineIniSh2 + "\\Engine.ini", true);
-                                }
+                                ConfigIni("r.FidelityFX.FI.Enabled", "0", engineIniSh2, "SystemSettings");
+                                File.Delete(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt"));
                             }
                         }
                     }
@@ -4599,7 +4669,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         private void buttonAddUps_Click(object sender, EventArgs e)
         {
-            if (optionsAddOn.CheckedItems.Contains("Optiscaler") || selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (optionsAddOn.CheckedItems.Contains("Optiscaler") || selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ShowSubMenu(panelAddOnUps);
             }
@@ -4612,7 +4682,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonAddUps1_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4624,7 +4694,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonAddUps2_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4636,7 +4706,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonAddUps3_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4648,7 +4718,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonAddUps4_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4660,7 +4730,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx11Upscaler", "fsr31_12 ", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4672,7 +4742,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonDlssDX11_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx11Upscaler", "dlss", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4684,7 +4754,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonAddUps5_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx12Upscaler", "fsr22", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4695,7 +4765,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         private void button5_Click_1(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx12Upscaler", "fsr31", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4706,7 +4776,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         private void buttonAddUps6_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx12Upscaler", "fsr21", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4718,7 +4788,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonAddUps7_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx12Upscaler", "xess", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4730,7 +4800,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonDlssDx12_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("Dx12Upscaler", "dlss", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4742,7 +4812,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonFsr21Vulkan_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("VulkanUpscaler", "fsr21", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4754,7 +4824,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonFsr22Vulkan_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("VulkanUpscaler", "fsr22", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4766,7 +4836,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonFsr31Vulkan_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("VulkanUpscaler", "fsr31", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }
@@ -4778,7 +4848,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void buttonDlssVulkan_Click(object sender, EventArgs e)
         {
-            if (selectMod == "Optiscaler FSR 3.1/DLSS")
+            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
             {
                 ConfigIni("VulkanUpscaler", "dlss", "mods\\Temp\\Optiscaler FG 3.1\\nvngx.ini", "Upscalers");
             }

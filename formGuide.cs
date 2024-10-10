@@ -45,9 +45,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Method 3 (If none of the others work): Modified installation method if none of the other options work.\r\n"
             },
             {
-                "Optiscaler FSR 3.1/DLSS",
+                "Optiscaler FSR 3.1.1/DLSS",
                 "This mod may not work with all games, so it is recommended to perform tests.\r\n" +
-                "Select Optiscaler FSR 3.1/DLSS and install it.\r\n" +
+                "Select Optiscaler FSR 3.1.1/DLSS and install it.\r\n" +
                 "In the game, press the Insert key to open the menu. In the menu, select your preferred upscaler. You can also increase image sharpness by enabling the Sharpness option in the menu.\r\n" +
                 "If the menu does not appear, during the mod installation, check the Optiscaler box and select the desired upscaler under Add-on Upscaler, then install."
             },
@@ -67,8 +67,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - In the game, select DLSS and enable Frame Generation if it is not enabled by default.\r\n"+
                 "3 - Do not switch to FSR as the game will crash.\r\n"+
                 "4 - It is also possible to use other versions of the mod, except Alan Wake 2 FG RTX.\r\n\r\n"+
-                "Optiscaler FSR 3.1/DLSS\r\n" +
-                "1 - Select Optiscaler FSR 3.1/DLSS.\r\n"+
+                "Optiscaler FSR 3.1.1/DLSS\r\n" +
+                "1 - Select Optiscaler FSR 3.1.1/DLSS.\r\n"+
                 "2 - In-game, press the Insert key to open the menu and select your preferred upscaler.\r\n"+
                 "3 - If the menu does not appear, you can select the upscaler during installation. Choose Optiscaler and under Addon Upscaler, select your preferred upscaler."
             },
@@ -111,7 +111,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. In the game, select DLSS and Frame Generation.\n\n" +
 
                 "AMD/GTX DLSS FG:\n" +
-                "1. Select Optiscaler FSR 3.1/DLSS and install it.\n" +
+                "1. Select Optiscaler FSR 3.1.1/DLSS and install it.\n" +
                 "2. In the game, press the \"Insert\" key to open the menu, and in the menu, select the upscaler you want to use.\n" +
                 "3. If an error occurs with the HUD, set the game to \"Windowed Mode\", then after a few seconds switch back to \"Borderless Windowed\".\n\n" +
 
@@ -251,8 +251,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Enable Fake Nvidia GPU (only for AMD and GTX).\r\n" +
                 "3 - In the game, select any upscaler and activate Frame Generation.\r\n" +
                 "4 - If you experience any flickering or ghosting, go to Video > Advanced Settings and decrease the Lod Range Multiplier.\r\n\r\n"+
-                "FSR 3.1/DLSS FG Custom\r\n" +
-                "1 - Select FSR 3.1/DLSS FG Custom and install it.\r\n" +
+                "FSR 3.1.1/DLSS FG Custom\r\n" +
+                "1 - Select FSR 3.1.1/DLSS FG Custom and install it.\r\n" +
                 "2 - Select Frame Generation within the game.\r\n" +
                 "3 - Press the \"Insert\" key to open the menu.\n\r" +
                 "4 - In the menu, select the upscaler you prefer.\n\r" +
@@ -330,8 +330,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Final Fantasy XVI",
-                "FSR 3.1/DLSS FG Custom:\n" +
-                "1. Select FSR 3.1/DLSS FG Custom.\n" +
+                "FSR 3.1.1/DLSS FG Custom:\n" +
+                "1. Select FSR 3.1.1/DLSS FG Custom.\n" +
                 "2. Check the \"GPU\" box that will appear during installation.\n" +
                 "3. In-game, press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, select the upscaler you prefer.\n\n" +
@@ -508,8 +508,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Horizon Zero Dawn",
-                "Optiscaler Custom HZD, FSR 3.1/DLSS Optiscaler & FSR 3.1/DLSS FG Custom:\n" +
-                "1. Select Optiscaler Custom HZD, FSR 3.1/DLSS Optiscaler or FSR 3.1/DLSS FG Custom.\n" +
+                "Optiscaler Custom HZD, FSR 3.1/DLSS Optiscaler & FSR 3.1.1/DLSS FG Custom:\n" +
+                "1. Select Optiscaler Custom HZD, FSR 3.1/DLSS Optiscaler or FSR 3.1.1/DLSS FG Custom.\n" +
                 "2. Check the \"Enable Signature Over\" box.\n" +
                 "3. In the game, press the \"Insert\" key to open the mod menu.\n" +
                 "4. In the menu, select the Upscaler of your choice.\n" +
@@ -528,7 +528,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Horizon Forbidden West",
-                "1 - Select Horizon Forbidden West FSR3 or Optiscaler FSR 3.1/DLSS and install\r\n" +
+                "1 - Select Horizon Forbidden West FSR3 or Optiscaler FSR 3.1.1/DLSS and install\r\n" +
                 "2 - Choose Xess or FSR on the initial setup screen, turn on Frame\r\n" +
                 "Generation, and do not select DLSS, otherwise the game will crash\r\n" +
                 "3 - In-game, select the Low quality preset, then adjust the settings as\r\n" +
@@ -771,7 +771,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
               "Silent Hill 2",
-              "FSR 3.1/DLSS FG Custom / FSR 3.1/DLSS OptiScaler:\n" +
+              "FSR 3.1.1/DLSS FG Custom / FSR 3.1/DLSS OptiScaler:\n" +
               "1. Select the FSR 3.1/DLSS mod.\n" +
               "2. Check the \"GPU\" window that will appear.\n" +
               "3. In-game, select DLSS before starting the campaign.\n" +
@@ -892,8 +892,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "The Casting Of Frank Stone",
-                "FSR 3.1/DLSS FG Custom:\n" +
-                "1. Select 'FSR 3.1/DLSS FG Custom', install it, and check the GPU window that appears.\n" +
+                "FSR 3.1.1/DLSS FG Custom:\n" +
+                "1. Select 'FSR 3.1.1/DLSS FG Custom', install it, and check the GPU window that appears.\n" +
                 "2. In the game, select DLSS and Frame Generation.\n" +
                 "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1.\n\n" +
 
@@ -902,15 +902,24 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. In the game, select DLSS and Frame Generation.\n" +
                 "3. If you can't see DLSS in the game, click on 'Nvngx.dll' and then on 'Default.'\n\n" +
 
-                "Optiscaler FSR 3.1/DLSS:\n" +
-                "1. Select 'Optiscaler FSR 3.1/DLSS' and install it.\n" +
+                "Optiscaler FSR 3.1.1/DLSS:\n" +
+                "1. Select 'Optiscaler FSR 3.1.1/DLSS' and install it.\n" +
                 "2. In the game, select DLSS and Frame Generation.\n" +
                 "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1."
             },
             {
+              "Until Dawn",
+              "FSR 3.1.1/DLSS FG Custom / Optiscaler:\n" +
+              "1. Select FSR 3.1.1/DLSS FG Custom or Optiscaler and install it.\n" +
+              "2. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+              "3. In the menu, select Frame Generation and an upscaler of your choice.\n" +
+              "4. To fix the HUD bug, select Hud Fix FG in the menu.\n" +
+              "5. You can also use the game's Frame Generation after selecting an upscaler in the menu."
+            },
+            {
                 "Warhammer: Space Marine 2",
-                 "FSR 3.1/DLSS FG Custom / Optiscaler:\n" +
-                "1. Select FSR 3.1/DLSS FG Custom and install it.\n" +
+                 "FSR 3.1.1/DLSS FG Custom / Optiscaler:\n" +
+                "1. Select FSR 3.1.1/DLSS FG Custom and install it.\n" +
                 "2. In the game, press the \"Insert\" key to open the menu.\n" +
                 "3. In the menu, select Frame Generation and an upscaler of your choice.\n" +
                 "4. To fix the HUD bug, select Hud Fix FG in the menu.\n\n" +
@@ -987,7 +996,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Achilles Legends Untold","Aut.png"},
                 {"Alan Wake 2","AW2.png"},
                 {"Optiscaler Method","Opti.png"},
-                {"Optiscaler FSR 3.1/DLSS","Opti.png"},
+                {"Optiscaler FSR 3.1.1/DLSS","Opti.png"},
                 {"Add-on Mods","Addon.png" },
                 {"Alone in the Dark","Alone.png"},
                 {"A Plague Tale Requiem","Requiem.png"},
@@ -1073,6 +1082,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
                 {"The Callisto Protocol","Callisto2.png"},
                 {"The Casting Of Frank Stone","FrankStone2.png" },
+                {"Until Dawn","Until2.png" },
                 {"Warhammer: Space Marine 2","SpaceMarine2.png"}
             };
 
