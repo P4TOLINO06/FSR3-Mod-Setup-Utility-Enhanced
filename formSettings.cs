@@ -76,7 +76,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1556,6 +1556,25 @@ namespace FSR3ModSetupUtilityEnhanced
 
         #endregion
 
+        #region CopyFilesCustom3
+        private void CopyFilesCustom3(string sourceFile, string destDir, string messageNotFound, string regPath = null)
+        {
+            if (Path.Exists(sourceFile))
+            {
+                File.Copy(sourceFile, destDir, true);
+
+                if (regPath != null)
+                {
+                    runReg(regPath);
+                }
+            }
+            else
+            {
+                MessageBox.Show(messageNotFound, "Not Found", MessageBoxButtons.OK);
+            }
+        }
+        #endregion
+
         #region BackupDxgi
         public void BackupDxgi(string renameFile, string pathDxgi,string fileName)
         {
@@ -2219,10 +2238,45 @@ namespace FSR3ModSetupUtilityEnhanced
             dlssGlobal();
         }
 
+        public void untilFsr3()
+        {
+            string pathDocumentsUd = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string pathEngineUd = Path.Combine(pathDocumentsUd, "My Games\\Bates\\Saved\\Config\\Windows\\Engine.ini");
+            string antiStutterUd = "mods\\FSR3_UD\\Anti Stutter\\Install UD High CPU Priority.reg";
+            string varAntiStutterUd = "mods\\FSR3_SH2\\Anti_Stutter\\AntiStutter.txt";
+            string varPostProcessingUd = "mods\\FSR3_SH2\\Var\\PostProcessing.txt";
+
+            if (selectMod == "Others Mods UD")
+            {
+               // Anti Strtter
+               if (MessageBox.Show("Do you want to install the Anti Stutter?","Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFilesCustom3(varAntiStutterUd, Path.Combine(selectFolder, "AntiStutter.txt"), "Path not found. Please try again", antiStutterUd);
+                }
+
+               // Post Processing
+               if (Path.Exists(pathEngineUd))
+               {
+                    if (MessageBox.Show("Do you want to disable Depth of Field?","Depth of Field",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        ConfigIni("r.DepthOfFieldQuality", "0", pathEngineUd, "SystemSettings");
+                        File.Copy(varPostProcessingUd, Path.Combine(selectFolder, "PostProcessing.txt"), true);
+
+                        MessageBox.Show("Depth of Field Successfully removed", "Depth of Field", MessageBoxButtons.OK);
+                    }
+               }
+                else
+                {
+                    MessageBox.Show("Path not found. The path to the Engine.ini file is something like this: Documents\\My Games\\Bates\\Saved\\Config\\Windows.", "Not Found", MessageBoxButtons.OK);
+                }
+            }
+        }
+
         public void sh2Fsr3()
         {
             string rootPathSh2 = Path.GetFullPath(Path.Combine(selectFolder, @"..\..\.."));
             string modsPathSh2 = @"mods\FSR3_SH2";
+            string dx12DllSh2 = "mods\\FSR3_SH2\\DX12DLL\\D3D12.dll";
             string rayReconstructionDllSh2 = Path.Combine(modsPathSh2, @"RayReconstruction\nvngx_dlssd.dll");
             string rayReconstructionIniSh2 = Path.Combine(modsPathSh2, @"RayReconstruction\Engine.ini");
             string introSkipSh2 = Path.Combine(modsPathSh2, @"Intro_Skip\LoadingScreen.bk2");
@@ -2315,10 +2369,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (selectMod == "FSR3 FG Native SH2")
                 {
                     if (MessageBox.Show("Do you want to install the Native FSR3 FG?", "Native FS3", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
+                    {   
+                        if (MessageBox.Show("Do you have an RX 500/5000 or GTX GPU?", "GPU", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            File.Copy(dx12DllSh2, Path.Combine(selectFolder, "DXD12.dll"),true);
+                        }
                         ConfigIni("r.FidelityFX.FI.Enabled", "1", pathEngineIniSh2, "SystemSettings");
                         File.Copy(varNativeFsr3Sh2, Path.Combine(pathFolderEngineSh2, "NativeFSR3.txt"), true);
-                        Debug.WriteLine(pathFolderEngineSh2);
                     }
                 }
             }
@@ -3115,6 +3172,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     sh2Fsr3();
                 }
+                if (gameSelected == "Until Dawn")
+                {
+                    untilFsr3();
+                }
                 if (gameSelected == "Star Wars Outlaws")
                 {
                     outlawsFsr3();                 
@@ -3747,6 +3808,11 @@ namespace FSR3ModSetupUtilityEnhanced
 
                             if (File.Exists(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt")) && MessageBox.Show("Do you want to remove the Native FSR3 FG?", "Native FSR3 FG", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
+                                if (Path.Exists(Path.Combine(selectFolder,"DXD12.dll")) && MessageBox.Show("Do you have an RX 500/5000 or GTX?","GPU",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                {
+                                    File.Delete(Path.Combine(selectFolder, "DXD12.dll"));
+                                }
+
                                 ConfigIni("r.FidelityFX.FI.Enabled", "0", engineIniSh2, "SystemSettings");
                                 File.Delete(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt"));
                             }
@@ -3756,6 +3822,44 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         MessageBox.Show("Error clearing Silent Hill 2 mods files, please try again or do it manually", "Silent Hill2");
                         Debug.WriteLine(ex);
+                    }
+                    #endregion
+                }
+
+                if (gameSelected == "Until Dawn")
+                {
+                    #region Cleanup Others Mods Until Dawn
+                    try
+                    {
+                        string documentsPathUd = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                        string enginePathUd = Path.Combine(documentsPathUd, "My Games\\Bates\\Saved\\Config\\Windows\\Engine.ini");
+                        string removeAntiStutterUd = "mods\\FSR3_UD\\Anti Stutter\\Uninstall UD High CPU Priority.reg";
+
+                        // Remove Anti Stutter
+                        CleanupOthersMods("Anti Stutter", "AntiStutter.txt", selectFolder, removeAntiStutterUd);
+
+                        // Enable Depth of Field
+                        if (Path.Exists(Path.Combine(selectFolder, "PostProcessing.txt")))
+                        {
+                            if (Path.Exists(enginePathUd))
+                            {
+                                if (MessageBox.Show("Do you want to enable Depth of Field?","Depth of Field",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                {
+                                    ConfigIni("r.DepthOfFieldQuality", "1", enginePathUd, "SystemSettings");
+                                    File.Delete(Path.Combine(selectFolder, "PostProcessing.txt"));
+
+                                    MessageBox.Show("Depth of field activated successfully", "Depth of Field");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Path not found. The path to the Engine.ini file is something like this: Documents\\My Games\\Bates\\Saved\\Config\\Windows.","Not Found");
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error clearing Until Dawn mods files, please try again or do it manually", "Error");
                     }
                     #endregion
                 }

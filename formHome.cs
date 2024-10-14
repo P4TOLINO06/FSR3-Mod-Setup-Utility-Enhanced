@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -232,6 +233,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> ffxviList = new List<string> {"FFXVI DLSS RTX","Others Mods FFXVI" };
             List<string> hzdList = new List<string> { "FSR 3.1.1/DLSS FG Custom" };
             List<string> sh2List = new List<string> { "FSR 3.1.1/DLSS FG Custom","Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG RTX Custom", "FSR3 FG Native SH2", "Others Mods Sh2" };
+            List<string> untilList = new List<string> { "Others Mods UD" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
             #endregion;
@@ -263,7 +265,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 gow4List,
                 spacemarineList,
                 frankStoneList,
-                sh2List
+                sh2List,
+                untilList
             };
             #endregion
 
@@ -389,6 +392,11 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Silent Hill 2")
             {
                 formSettings.Instance.AddItemlistMods(sh2List, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Until Dawn")
+            {
+                formSettings.Instance.AddItemlistMods(untilList, modsDefaultList);
             }
             else
             {

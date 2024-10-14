@@ -782,6 +782,11 @@ namespace FSR3ModSetupUtilityEnhanced
               "1. Select FSR3 FG Native SH2 and install it.\n" +
               "2. In-game, select FSR 3.0 before starting the campaign.\n\n" +
 
+              "RX 500/5000 and GTX Native FSR3 FG:\n" +
+              "1 - Select Native FSR3 FG and install it.\r\n" +
+              "2 - Select 'Yes' in the 'GPU' window that will appear.\r\n" +
+              "3 - This is required only for the Native FSR3 FG mod.\r\n\r\n"+
+
               "Others Mods Sh2:\n" +
               "Unlock FPS Cutscenes:\n" +
               "Removes the 30fps lock from cutscenes.\n\n" +
