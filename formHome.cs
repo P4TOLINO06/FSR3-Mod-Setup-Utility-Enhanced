@@ -232,7 +232,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
             List<string> ffxviList = new List<string> {"FFXVI DLSS RTX","Others Mods FFXVI" };
             List<string> hzdList = new List<string> { "FSR 3.1.1/DLSS FG Custom" };
-            List<string> sh2List = new List<string> { "FSR 3.1.1/DLSS FG Custom","Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG RTX Custom", "FSR3 FG Native SH2", "Others Mods Sh2" };
+            List<string> sh2List = new List<string> { "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG RTX Custom", "Ultra Plus Complete", "Ultra Plus Optimized", "FSR3 FG Native SH2", "FSR3 FG Native SH2 + Optimization", "Others Mods Sh2" };
             List<string> untilList = new List<string> { "Others Mods UD" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};

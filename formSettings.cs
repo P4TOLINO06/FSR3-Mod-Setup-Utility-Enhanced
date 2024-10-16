@@ -2277,6 +2277,10 @@ namespace FSR3ModSetupUtilityEnhanced
             string rootPathSh2 = Path.GetFullPath(Path.Combine(selectFolder, @"..\..\.."));
             string modsPathSh2 = @"mods\FSR3_SH2";
             string dx12DllSh2 = "mods\\FSR3_SH2\\DX12DLL\\D3D12.dll";
+            string pathUltraPlusOptimized = "mods\\FSR3_SH2\\Ultra Plus\\Optimized";
+            string pathUltraPlusComplete = "mods\\FSR3_SH2\\Ultra Plus\\Normal";
+            string pathEngineUltraPlus = "mods\\FSR3_SH2\\Ultra Plus\\Engine.ini";
+            string pathFsr3FgOptimized = "mods\\FSR3_SH2\\FSR3 Native Optimized\\Engine.ini";
             string rayReconstructionDllSh2 = Path.Combine(modsPathSh2, @"RayReconstruction\nvngx_dlssd.dll");
             string rayReconstructionIniSh2 = Path.Combine(modsPathSh2, @"RayReconstruction\Engine.ini");
             string introSkipSh2 = Path.Combine(modsPathSh2, @"Intro_Skip\LoadingScreen.bk2");
@@ -2287,6 +2291,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string unlockCutsceneFpsSh2 = Path.Combine(modsPathSh2, @"Unlock Cutscene Fps");
             string varNativeFsr3Sh2 = Path.Combine(modsPathSh2, @"Var\NativeFSR3.txt");
             string varPostProcessingSh2 = Path.Combine(modsPathSh2, @"Var\PostProcessing.txt");
+            string varFsr3FgOpt = "mods\\FSR3_SH2\\FSR3 Native Optimized\\NativeFSR3Opt.txt";
             string appDataSh2 = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string pathFolderEngineSh2 = Path.Combine(appDataSh2, @"SilentHill2\Saved\Config\Windows");
             string pathEngineIniSh2 = Path.Combine(appDataSh2, @"SilentHill2\Saved\Config\Windows\Engine.ini");
@@ -2303,6 +2308,27 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod == "FSR 3.1.1/DLSS FG RTX Custom")
             {
                 CopyFolder(fsr31CustomRtxSh2);
+            }
+
+            // Ultra Plus
+            if (selectMod.Contains("Ultra Plus Complete") || selectMod.Contains("Ultra Plus Optimized"))
+            {
+                if (Path.Exists(pathEngineIniSh2))
+                {
+                    string sourcePathSh2;
+                    if (selectMod == "Ultra Plus Optimized")
+                    {
+                        sourcePathSh2 = pathUltraPlusOptimized;
+                    }
+                    else
+                    {
+                        sourcePathSh2 = pathUltraPlusComplete;
+                    }
+
+                    CopyFolder3(sourcePathSh2, rootPathSh2);
+                    File.Copy(pathEngineUltraPlus, Path.Combine(pathFolderEngineSh2, "Engine.ini"), true);
+                    MessageBox.Show("Check the Silent Hill 2 guide to see how to activate Ultra Plus", "Guide");
+                }
             }
 
             if (selectMod == "Others Mods Sh2")
@@ -2337,7 +2363,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         if (MessageBox.Show("Do you want to install the Ray Reconstruction?", "Reconstruction", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             CopyFilesCustom(rayReconstructionDllSh2, Path.Combine(dlssPathSh2, "nvngx_dlssd.dll"), messagePathExeSh2);
-                            CopyFilesCustom(rayReconstructionIniSh2, Path.Combine(pathFolderEngineSh2,"Engine.ini"), messagePathExeSh2);
+                            CopyFilesCustom(rayReconstructionIniSh2, Path.Combine(pathFolderEngineSh2, "Engine.ini"), messagePathExeSh2);
                         }
                     }
 
@@ -2351,7 +2377,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 else
                 {
                     MessageBox.Show("Engine.ini not found. To install the other mods, check if the file is located in C:\\Users\\YourName\\AppData\\Local\\SilentHill2\\Saved\\Config\\Windows. If it's not there, open the game for a few seconds and reinstall.", "Not Found", MessageBoxButtons.OK);
-                }        
+                }
             }
 
             if (selectMod == "FSR 3.1.1/DLSS FG Custom" || selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -2364,24 +2390,30 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
 
-            if (Path.Exists(pathEngineIniSh2))
+            if (selectMod.Contains("FSR3 FG Native SH2") || selectMod.Contains("FSR3 FG Native SH2 + Optimization"))
             {
-                if (selectMod == "FSR3 FG Native SH2")
+                if (Path.Exists(pathEngineIniSh2))
                 {
-                    if (MessageBox.Show("Do you want to install the Native FSR3 FG?", "Native FS3", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {   
-                        if (MessageBox.Show("Do you have an RX 500/5000 or GTX GPU?", "GPU", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            File.Copy(dx12DllSh2, Path.Combine(selectFolder, "DXD12.dll"),true);
-                        }
+                    if (MessageBox.Show("Do you have an RX 500/5000 or GTX GPU?", "GPU", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        File.Copy(dx12DllSh2, Path.Combine(selectFolder, "DXD12.dll"), true);
+                    }
+
+                    if (selectMod == "FSR3 FG Native SH2")
+                    {
                         ConfigIni("r.FidelityFX.FI.Enabled", "1", pathEngineIniSh2, "SystemSettings");
                         File.Copy(varNativeFsr3Sh2, Path.Combine(pathFolderEngineSh2, "NativeFSR3.txt"), true);
                     }
+                    else
+                    {
+                        File.Copy(pathFsr3FgOptimized, Path.Combine(pathFolderEngineSh2, "Engine.ini"), true);
+                        File.Copy(varFsr3FgOpt, Path.Combine(pathFolderEngineSh2, "NativeFSR3Opt.txt"), true);
+                    }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Engine.ini file not found, please check the path C:\\Users\\YourName\\AppData\\Local\\SilentHill2\\Saved\\Config\\Windows and see if the file exists. If it doesn\'t, open the game for a few seconds and try reinstalling the mod.", "Not Found", MessageBoxButtons.OK);
+                else
+                {
+                    MessageBox.Show("Engine.ini file not found, please check the path C:\\Users\\YourName\\AppData\\Local\\SilentHill2\\Saved\\Config\\Windows and see if the file exists. If it doesn\'t, open the game for a few seconds and try reinstalling the mod.", "Not Found", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -3772,10 +3804,22 @@ namespace FSR3ModSetupUtilityEnhanced
                         string removeAntiStutterSh2 = "mods\\FSR3_SH2\\Anti_Stutter\\Uninstall Silent Hill 2 Remake High Priority Processes.reg";
                         string pathMoviesSh2 = Path.Combine(pathSh2, "SHProto\\Content\\Movies");
                         string pathDlssDllSh2 = Path.Combine(pathSh2, "SHProto\\Plugins\\DLSS\\Binaries\\ThirdParty\\Win64");
+                        string pathContentSh2 = Path.Combine(pathSh2, "SHProto\\Content\\Paks");
                         string[] removeUnlockFpsSh2 = { "SilentHill2RemakeFPSRose.asi", "dsound.dll" };
                         string[] restorePostProcessingSh2 = { "Engine.ini", "PostProcessing.txt" };
                         string[] rtxCustomFilesSh2 = {"amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler.dll", "dxgi.dll", "libxess.dll", "nvngx.ini"
  };
+
+                        if (selectMod.Contains("Ultra Plus Complete") || selectMod.Contains("Ultra Plus Optimized"))
+                        {
+                            CleanupOthersMods("Ultra Plus Complete", "~UltraPlus_v0.8.0_P.pak", pathContentSh2);
+                            CleanupOthersMods("Ultra Plus Optimized","~UltraPlus_v1.0.4_P.pak", pathContentSh2);
+                            
+                            if (Path.Exists(folderEngineIniSh2))
+                            {
+                                File.Copy(defaultEngineIniSh2, Path.Combine(folderEngineIniSh2, "Engine.ini"),true);
+                            }
+                        }
 
                         if (CleanupOthersMods("Ray Reconstruction", "nvngx_dlssd.dll", pathDlssDllSh2))
                         {
@@ -3797,13 +3841,20 @@ namespace FSR3ModSetupUtilityEnhanced
 
                         if (Path.Exists(engineIniSh2))
                         {
-
+                            // Post Processing
                             if (File.Exists(Path.Combine(folderEngineIniSh2, "PostProcessing.txt")))
                             {
                                 if (CleanupOthersMods2("Others Mods Sh2", restorePostProcessingSh2, folderEngineIniSh2, "Do you want to restore the Post Processing Effects?"))
                                 {
                                     File.Copy(defaultEngineIniSh2, engineIniSh2, true);
                                 }                         
+                            }
+
+                            // FSR3 FG Native SH2 and FSR3 FG Native SH2 + Optimization
+                            if (File.Exists(Path.Combine(folderEngineIniSh2, "NativeFSR3Opt.txt")) && MessageBox.Show("Do you want to remove the Native FSR3 FG + Optimization?", "Native FSR3 FG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                File.Copy(defaultEngineIniSh2, engineIniSh2, true);
+                                File.Delete(Path.Combine(folderEngineIniSh2, "NativeFSR3Opt.txt"));
                             }
 
                             if (File.Exists(Path.Combine(folderEngineIniSh2, "NativeFSR3.txt")) && MessageBox.Show("Do you want to remove the Native FSR3 FG?", "Native FSR3 FG", MessageBoxButtons.YesNo) == DialogResult.Yes)

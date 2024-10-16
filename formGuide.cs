@@ -787,6 +787,24 @@ namespace FSR3ModSetupUtilityEnhanced
               "2 - Select 'Yes' in the 'GPU' window that will appear.\r\n" +
               "3 - This is required only for the Native FSR3 FG mod.\r\n\r\n"+
 
+              "Ultra Plus\n"+
+              "1 - Install the mod and open the game.\r\n" +
+              "2 - In the game, select a graphic preset from the game itself: low/medium/high/epic.\r\n" +
+              "3 - Select FSR3 to use the native Frame Gen. If you don't see a change in FPS, go back to the Utility and install 'FSR3 FG Native SH2.'\r\n" +
+              "4 - To get the full performance from the mod, select Xess Ultra Quality. (This option is very demanding, and you may experience a significant FPS drop.)\r\n" +
+              "5 - Lock the game's FPS to half of your monitor's Hz minus 2, for example (60Hz, lock at 28), or lock it to the average FPS you get in the game.\r\n" +
+              "6 - This mod works with FSR 3.1.1/DLSS (Optiscaler or Custom); just install and follow the FSR 3.1.1/DLSS guide above.\r\n\r\n"+
+
+              "Ultra Plus Optimized\n"+
+              "It is recommended for RX 500/5000 and GTX users.\r\n" +
+              "Includes some graphical optimizations.\r\n\r\n"+
+
+              "Ultra Plus Complete\n"+
+              "This is the standard version of the mod with all available modifications.\r\n\r\n"+
+
+              "Some of the modifications\n"+
+              "Reduces black spots, improves Ray Tracing quality, enhances anisotropic filtering, reduces hair pixelation caused by MSAA.\r\n\r\n"+
+
               "Others Mods Sh2:\n" +
               "Unlock FPS Cutscenes:\n" +
               "Removes the 30fps lock from cutscenes.\n\n" +
