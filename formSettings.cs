@@ -76,7 +76,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -2276,6 +2276,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             string rootPathSh2 = Path.GetFullPath(Path.Combine(selectFolder, @"..\..\.."));
             string modsPathSh2 = @"mods\FSR3_SH2";
+            string rtxFgSh2 = "mods\\FSR3_SH2\\RTX_FG";
             string dx12DllSh2 = "mods\\FSR3_SH2\\DX12DLL\\D3D12.dll";
             string pathUltraPlusOptimized = "mods\\FSR3_SH2\\Ultra Plus\\Optimized";
             string pathUltraPlusComplete = "mods\\FSR3_SH2\\Ultra Plus\\Normal";
@@ -2309,6 +2310,13 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 CopyFolder(fsr31CustomRtxSh2);
             }
+
+            // DLSS FG RTX
+            if (selectMod == "DLSS FG RTX")
+            {
+                CopyFolder(rtxFgSh2);
+            }
+            
 
             // Ultra Plus
             if (selectMod.Contains("Ultra Plus Complete") || selectMod.Contains("Ultra Plus Optimized"))
@@ -2413,6 +2421,38 @@ namespace FSR3ModSetupUtilityEnhanced
                 else
                 {
                     MessageBox.Show("Engine.ini file not found, please check the path C:\\Users\\YourName\\AppData\\Local\\SilentHill2\\Saved\\Config\\Windows and see if the file exists. If it doesn\'t, open the game for a few seconds and try reinstalling the mod.", "Not Found", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        public void hogLegacyFsr3()
+        {
+            string hlPreset = "mods\\FSR3_HL\\Preset\\Hogwarts Legacy Real Life DARKER HOGWARTS Reshade.txt";
+            string hlAntiStutter = "mods\\FSR3_HL\\Anti Stutter\\Install Hogwarts Legacy CPU Priority.reg";
+            string hlVarAntiStutter = "mods\\FSR3_SH2\\Anti_Stutter\\AntiStutter.txt";
+            string hlD13D12Dll = "d3d12.dll";
+            string hlD3D12DllPath = Path.Combine(selectFolder, hlD13D12Dll);
+            string hlDxgiDllPath = Path.Combine(selectFolder, "dxgi.dll");
+
+            if (selectMod == "Others Mods HL")
+            {
+                // Graphics Preset
+                if (MessageBox.Show("Do you want to install the Graphics Preset? See the guide to learn how to complete the installation.", "Preset",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(hlPreset, Path.Combine(selectFolder,"Hogwarts Legacy Real Life DARKER HOGWARTS Reshade.txt"), true);
+
+                    if (File.Exists(hlDxgiDllPath))
+                    {
+                        File.Copy(hlDxgiDllPath, Path.Combine(selectFolder, "dxgi.txt"), true);
+
+                        File.Move(hlDxgiDllPath, hlD3D12DllPath);
+                    }
+                }
+
+                // Anti Stutter
+                if (MessageBox.Show("Do you want to install the Anti Stutter?","Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFilesCustom3(hlVarAntiStutter, Path.Combine(selectFolder, "AntiStutter.txt"), "File Not Found", hlAntiStutter);
                 }
             }
         }
@@ -3208,6 +3248,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     untilFsr3();
                 }
+                if (gameSelected == "Hogwarts Legacy")
+                {
+                    hogLegacyFsr3();
+                }
                 if (gameSelected == "Star Wars Outlaws")
                 {
                     outlawsFsr3();                 
@@ -3807,8 +3851,20 @@ namespace FSR3ModSetupUtilityEnhanced
                         string pathContentSh2 = Path.Combine(pathSh2, "SHProto\\Content\\Paks");
                         string[] removeUnlockFpsSh2 = { "SilentHill2RemakeFPSRose.asi", "dsound.dll" };
                         string[] restorePostProcessingSh2 = { "Engine.ini", "PostProcessing.txt" };
-                        string[] rtxCustomFilesSh2 = {"amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler.dll", "dxgi.dll", "libxess.dll", "nvngx.ini"
- };
+                        string[] rtxCustomFilesSh2 = {"amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler.dll", "dxgi.dll", "libxess.dll", "nvngx.ini" };
+                        string[] delDlssSh2 = { "dxgi.dll", "ReShade.ini", "SH2UpscalerPreset.ini" };
+
+                        if (selectMod == "DLSS FG RTX")
+                        {
+                            if (CleanupOthersMods2("DLSS FG RTX", delDlssSh2, selectFolder, "Do you want to remove the DLSS FG RTX?"))
+                            {
+                                if (Path.Exists(Path.Combine(selectFolder,"mods")) && Path.Exists(Path.Combine(selectFolder, "reshade-shaders")))
+                                {
+                                    Directory.Delete(Path.Combine(selectFolder, "mods"),true);
+                                    Directory.Delete(Path.Combine(selectFolder, "reshade-shaders"),true);
+                                }
+                            }
+                        }
 
                         if (selectMod.Contains("Ultra Plus Complete") || selectMod.Contains("Ultra Plus Optimized"))
                         {
@@ -3912,6 +3968,33 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         MessageBox.Show("Error clearing Until Dawn mods files, please try again or do it manually", "Error");
                     }
+                    #endregion
+                }
+
+                if (gameSelected == "Hogwarts Legacy")
+                {
+                    #region Cleanup Others Mods Hogwarts Legacy
+                    string removeAntiStutterHl = "mods\\FSR3_HL\\Anti Stutter\\Uninstall Hogwarts Legacy CPU Priority.reg";
+                    string pathD3D12Hl = Path.Combine(selectFolder, "d3d12.dll");
+                    string pathDxgiHl = Path.Combine(selectFolder, "dxgi.txt");
+
+                    // Anti Stutter
+                    CleanupOthersMods("Anti Stutter", "AntiStutter.txt", selectFolder, removeAntiStutterHl);
+
+                    if (Path.Exists(Path.Combine(selectFolder, "Hogwarts Legacy Real Life DARKER HOGWARTS Reshade.txt")))
+                    {
+                        if (MessageBox.Show("Do you want to remove the Graphic Preset file and restore the dxgi.dll file? To completely remove the Preset, it's necessary to remove the remaining files via ReShade.","Preset",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            File.Delete(Path.Combine(selectFolder, "Hogwarts Legacy Real Life DARKER HOGWARTS Reshade.txt"));
+
+                            if (Path.Exists(pathDxgiHl) && Path.Exists(pathD3D12Hl))
+                            {
+                                File.Delete(pathD3D12Hl);
+                                File.Move(pathDxgiHl, Path.Combine(selectFolder,"dxgi.dll"),true);
+                            }
+                        }
+                    }
+
                     #endregion
                 }
 

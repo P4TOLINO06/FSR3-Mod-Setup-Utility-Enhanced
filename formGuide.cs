@@ -504,7 +504,22 @@ namespace FSR3ModSetupUtilityEnhanced
                 "onwards are recommended to fix UI flickering).\r\n" +
                 "2 - Enable the 'Enable Signature Override' checkbox if the mod\r\ndoesn't work.\r\n" +
                 "3 - Enable Fake Nvidia GPU (Only for AMD GPUs).\r\n" +
-                "4 - Select 'Default' in Nvngx.dll.\r\n"
+                "4 - Select 'Default' in Nvngx.dll.\r\n\n"+
+
+                "FSR 3.1.1/DLSS FG Custom / FSR 3.1.1/DLSS Optiscaler" +
+                "1 - Select the FSR 3.1/DLSS mod.\r\n" +
+                "2 - Check the 'GPU' window that will appear.\r\n" +
+                "3 - In-game, select DLSS before starting the campaign.\r\n" +
+                "4 - During the campaign, press the 'Insert' key to open the menu.\r\n" +
+                "5 - In the menu, select the desired upscaler, check the Frame Gen and Hud Fix boxes.\r\n\r\n"+
+
+                "ReShade Installation"+
+                "1 - Install ReShade.\r\n" +
+                "2 - Inside ReShade, select the game's .exe and click next.\r\n" +
+                "3 - Select DX 10/11/12 and click next.\r\n" +
+                "4 - Click 'Browse' and locate the file 'Hogwarts Legacy Real Life DARKER HOGWARTS Reshade.txt' that was installed in the folder selected in the Utility and click next.\r\n" +
+                "5 - In the game, press the 'Home' key to open the menu and select the options you prefer.\r\n" +
+                "6 - Install the Preset first and then the FSR3 mod if you plan to use it.\r\n\r\n"
             },
             {
                 "Horizon Zero Dawn",
@@ -786,6 +801,11 @@ namespace FSR3ModSetupUtilityEnhanced
               "1 - Select Native FSR3 FG and install it.\r\n" +
               "2 - Select 'Yes' in the 'GPU' window that will appear.\r\n" +
               "3 - This is required only for the Native FSR3 FG mod.\r\n\r\n"+
+
+              "DLSS FG RTX\n"+
+              "1 - Select DLSS FG RTX and install.\r\n" +
+              "2 - In the game, select DLSS and press the 'Home' key to open the menu.\r\n" +
+              "3 - Press '*' to enable FG or enable it through the menu.\r\n\r\n"+
 
               "Ultra Plus\n"+
               "1 - Install the mod and open the game.\r\n" +
