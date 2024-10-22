@@ -87,6 +87,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - To fix hub flickering, enable DLSS and Frame Generation and play for a few seconds, then disable DLSS and leave only Frame Generation enabled."
             },
             {
+                "A Quiet Place: The Road Ahead",
+                "1 - Select an FSR 3.1.1/DLSS mod and install it.\r\n" +
+                "2 - In the game, select DLSS.\r\n" +
+                "3 - Press the 'Insert' key to open the menu.\r\n" +
+                "4 - Select an upscaler of your choice.\r\n" +
+                "5 - Check the Frame Gen and Hud Fix boxes.\r\n" +
+                "6 - If you can't see DLSS, enable Hardware Acceleration in Graphics Settings on Windows.\r\n\r\n"
+            },
+            {
                 "Assassin's Creed Valhalla",
                 "1 - Press the \"End\" key to open the Frame Gen menu or the\r\n" +
                 "\"Home\" key to open the main menu.\r\n" +
@@ -807,6 +816,14 @@ namespace FSR3ModSetupUtilityEnhanced
               "2 - In the game, select DLSS and press the 'Home' key to open the menu.\r\n" +
               "3 - Press '*' to enable FG or enable it through the menu.\r\n\r\n"+
 
+              "ReShade Installation"+
+              "1 - Install ReShade.\r\n" +
+              "2 - Inside ReShade, select the game's .exe and click next.\r\n" +
+              "3 - Select DX 10/11/12 and click next.\r\n" +
+              "4 - Click 'Browse' and locate the file 'Silent hill dark.ini' that was installed in the folder selected in the Utility and click next.\r\n" +
+              "5 - In the game, press the 'Home' key to open the menu and select the options you prefer.\r\n" +
+              "6 - Install the Preset first and then the FSR3 mod if you plan to use it.\r\n\r\n" +
+
               "Ultra Plus\n"+
               "1 - Install the mod and open the game.\r\n" +
               "2 - In the game, select a graphic preset from the game itself: low/medium/high/epic.\r\n" +
@@ -1043,6 +1060,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Add-on Mods","Addon.png" },
                 {"Alone in the Dark","Alone.png"},
                 {"A Plague Tale Requiem","Requiem.png"},
+                {"A Quiet Place: The Road Ahead","QuietPlace2.png"},
                 {"Assassin's Creed Valhalla","AcVal.png"},
                 {"Atomic Heart","Atomic.png"},
                 {"Baldur's Gate 3","Baldurs.png"},

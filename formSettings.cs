@@ -2238,6 +2238,17 @@ namespace FSR3ModSetupUtilityEnhanced
             dlssGlobal();
         }
 
+        public void quietPlaceFsr3()
+        {
+            string optiscalerQuietPlace = "mods\\Addons_mods\\OptiScaler";
+
+            if (selectMod == "FSR 3.1.1/DLSS Quiet Place")
+            {
+                CopyFolder(optiscalerQuietPlace);
+                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
+            }
+        }
+
         public void untilFsr3()
         {
             string pathDocumentsUd = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -2284,6 +2295,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathFsr3FgOptimized = "mods\\FSR3_SH2\\FSR3 Native Optimized\\Engine.ini";
             string rayReconstructionDllSh2 = Path.Combine(modsPathSh2, @"RayReconstruction\nvngx_dlssd.dll");
             string rayReconstructionIniSh2 = Path.Combine(modsPathSh2, @"RayReconstruction\Engine.ini");
+            string presetSh2 = "mods\\FSR3_SH2\\Preset\\Silent hill dark.ini";
             string introSkipSh2 = Path.Combine(modsPathSh2, @"Intro_Skip\LoadingScreen.bk2");
             string fsr31CustomRtxSh2 = @"mods\DLSS_Global\RTX_Custom";
             string antiStutterSh2 = Path.Combine(modsPathSh2, @"Anti_Stutter\Install Silent Hill 2 Remake High Priority Processes.reg");
@@ -2355,6 +2367,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         CopyFilesCustom(introSkipSh2, Path.Combine(rootPathSh2, @"SHProto\Content\Movies\LoadingScreen.bk2"), messagePathExeSh2);
                     }
+                }
+
+                // Graphics Preset
+                if (MessageBox.Show("Do you want to install the Graphics Preset?`It is recommended to view the guide before proceeding with the installation","Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(presetSh2, Path.Combine(selectFolder, "Silent hill dark.ini"), true);
                 }
 
                 // Unlock Cutscene FPS
@@ -3248,6 +3266,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     untilFsr3();
                 }
+                if (gameSelected == "A Quiet Place: The Road Ahead")
+                {
+                    quietPlaceFsr3();
+                }
                 if (gameSelected == "Hogwarts Legacy")
                 {
                     hogLegacyFsr3();
@@ -3890,10 +3912,11 @@ namespace FSR3ModSetupUtilityEnhanced
 
                         CleanupOthersMods("Anti Stutter", "AntiStutter.txt", selectFolder, removeAntiStutterSh2);
 
+                        CleanupOthersMods("Graphics Preset", "Silent hill dark.ini", selectFolder);
+
                         CleanupOthersMods2("FSR 3.1.1/DLSS FG RTX Custom", rtxCustomFilesSh2, selectFolder, "Do you want to remove the FSR 3.1.1/DLSS FG RTX Custom?");
 
                         CleanupOthersMods2("Others Mods Sh2", removeUnlockFpsSh2, selectFolder, "Do you want to remove the Unlock Cutscene Fps?");
-
 
                         if (Path.Exists(engineIniSh2))
                         {
@@ -3967,6 +3990,17 @@ namespace FSR3ModSetupUtilityEnhanced
                     catch
                     {
                         MessageBox.Show("Error clearing Until Dawn mods files, please try again or do it manually", "Error");
+                    }
+                    #endregion
+                }
+
+                if (gameSelected == "A Quiet Place: The Road Ahead")
+                {
+                    #region Cleanup Mods A Quiet Place: The Road Ahead
+                    if (selectMod == "FSR 3.1.1/DLSS Quiet Place")
+                    {
+                        CleanupMod3(del_optiscaler, "FSR 3.1.1/DLSS Quiet Place");
+                        runReg("mods\\Temp\\disable signature override\\DisableSignatureOverride.reg");
                     }
                     #endregion
                 }
