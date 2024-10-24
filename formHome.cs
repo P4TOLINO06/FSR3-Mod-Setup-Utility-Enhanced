@@ -213,7 +213,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
             List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss DD2", "FSR 3.1/DLSS DD2 ALL GPU", "FSR 3.1/DLSS DD2 NVIDIA" };
-            List<string> callistoList = new List<string> { "The Callisto Protocol FSR3","0.10.4","Uniscaler V3"};
+            List<string> callistoList = new List<string> { "The Callisto Protocol FSR3", "FSR 3.1.1/DLSS Callisto","0.10.4","Uniscaler V3"};
             List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
             List<string> cyberList = new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1" };
             List<string> gotList = new List<string> { "Ghost of Tsushima FG DLSS","Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1"};
@@ -237,6 +237,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> sh2List = new List<string> { "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG RTX Custom", "DLSS FG RTX","Ultra Plus Complete", "Ultra Plus Optimized", "FSR3 FG Native SH2", "FSR3 FG Native SH2 + Optimization", "Others Mods Sh2" };
             List<string> untilList = new List<string> { "Others Mods UD" };
             List<string> quietPlacelList = new List<string> { "FSR 3.1.1/DLSS Quiet Place", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" };
+            List<string> metroList = new List<string> { "Others Mods Metro" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
             #endregion;
@@ -271,7 +272,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 sh2List,
                 untilList,
                 hlList,
-                quietPlacelList
+                quietPlacelList,
+                metroList
             };
             #endregion
 
@@ -412,6 +414,11 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "A Quiet Place: The Road Ahead")
             {
                 formSettings.Instance.AddItemlistMods(quietPlacelList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Metro Exodus Enhanced Edition")
+            {
+                formSettings.Instance.AddItemlistMods(metroList, modsDefaultList);
             }
 
             else

@@ -76,7 +76,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -644,6 +644,14 @@ namespace FSR3ModSetupUtilityEnhanced
 
         };
         #endregion
+
+        #region Clean Callisto Optiscaler Custom
+        List<string> del_callisto_custom = new List<string>
+        {
+             "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlsstweaks.ini", "DLSSTweaksConfig.exe", "dxgi.dll",
+             "FSRBridge.asi", "libxess.dll", "nvngx.dll", "nvngx.ini","winmm.dll", "winmm.ini"
+        };
+        #endregion;
 
         #region Folder Tekken
         Dictionary<string, string[]> folderTekken = new Dictionary<string, string[]>
@@ -2116,6 +2124,13 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathCallisto = "mods\\FSR3_Callisto\\FSR_Callisto";
             string pathTcp = "mods\\FSR3_Callisto\\Reshade\\TCP Cinematic\\TCP.ini";
             string pathRealLife = "mods\\FSR3_Callisto\\Reshade\\The Real Life\\The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini";
+            string optiscalerCallisto = "mods\\FSR3_Callisto\\Optiscaler";
+
+            if (selectMod == "FSR 3.1.1/DLSS Callisto")
+            {
+                CopyFolder(optiscalerCallisto);
+                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
+            }
 
             if (selectMod == "The Callisto Protocol FSR3")
             {
@@ -2247,6 +2262,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 CopyFolder(optiscalerQuietPlace);
                 runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
             }
+        }
+
+        public void metroFsr3()
+        {
+            string presetMetro = "mods\\FSR3_Metro\\Preset\\DefinitiveEdition.ini";
+
+            if (selectMod == "Others Mods Metro")
+            {
+                if (MessageBox.Show("Do you want to install the Graphics Preset?", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(presetMetro, Path.Combine(selectFolder, "DefinitiveEdition.ini"), true);
+                }
+            }
+
         }
 
         public void untilFsr3()
@@ -3266,6 +3295,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     untilFsr3();
                 }
+                if (gameSelected == "Metro Exodus Enhanced Edition")
+                {
+                    metroFsr3();
+                }
                 if (gameSelected == "A Quiet Place: The Road Ahead")
                 {
                     quietPlaceFsr3();
@@ -3660,6 +3693,20 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanupOthersMods("TCP", "TCP.ini",selectFolder);
                     CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",selectFolder);
                    
+
+                    if (selectMod == "FSR 3.1.1/DLSS Callisto")
+                    {
+                        CleanupMod3(del_callisto_custom, "FSR 3.1.1/DLSS Callisto");
+                    }
+                    #endregion
+                }
+
+                if (gameSelected == "Metro Exodus Enhanced Edition")
+                {
+                    #region Remove Others Mods Metro
+
+                    CleanupOthersMods("Graphics Preset", "DefinitiveEdition.ini", selectFolder);
+
                     #endregion
                 }
 

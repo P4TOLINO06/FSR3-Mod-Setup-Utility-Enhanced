@@ -583,8 +583,17 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Kena: Bridge of Spirits",
+                "Default Mods\r\n"+
                 "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
-                "2 - Activate Fake Nvidia GPU and Nvapi Results (AMD only).\r\n"
+                "2 - Activate Fake Nvidia GPU and Nvapi Results (AMD only).\r\n\r\n"+
+
+                "FSR 3.1.1/DLSS\r\n" +
+                "1 - Select an FSR 3.1.1/DLSS mod and install it.\r\n" +
+                "2 - Check the 'Disable Signature Over' box.\r\n" +
+                "3 - In the game, select DLSS.\r\n" +
+                "4 - Press the 'Insert' key to open the menu.\r\n" +
+                "5 - Select an Upscaler of your choice, check the 'Frame Gen' and 'Hud Fix' boxes.\r\n" +
+                "6 - If you cannot see DLSS in the game, go back to the Utility and check the 'Enable Signature Over' box.\r\n\r\n"
             },
             {
                 "Layers of Fear",
@@ -637,10 +646,27 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Metro Exodus Enhanced",
+                "Uniscaler\r\n"+
                 "1 - Select Uniscaler.\r\n" +
                 "2 - Check the boxes for Fake Nvidia GPU (AMD/GTX) and Nvapi Results (GTX). If the DLSS option is not available for AMD GPU, check the Nvapi Results box.\r\n" +
                 "3 - In Nvngx.dll, select Default and check the box Enable Signature Override.\r\n" +
-                "4 - In the game, select DLSS.\r\n"
+                "4 - In the game, select DLSS.\r\n\r\n" +
+
+                 "FSR 3.1.1/DLSS\r\n" +
+                 "1 - Select an FSR 3.1.1/DLSS mod and install it.\r\n" +
+                 "2 - Check the 'Enable Signature Over' box.\r\n" +
+                 "3 - In the game, select DLSS.\r\n" +
+                 "4 - Press the 'Insert' key to open the menu.\r\n" +
+                 "5 - Select an Upscaler of your choice, check the 'Frame Gen' and 'Hud Fix' boxes.\r\n" +
+                 "6 - If you cannot see DLSS in the game, go back to the Utility and check the 'Disable Signature Over' box.\r\n\r\n" +
+
+                 "ReShade Installation\r\n" +
+                 "1 - Install ReShade.\r\n" +
+                 "2 - Inside ReShade, select the game's .exe and click next.\r\n" +
+                 "3 - Select DX 10/11/12 and click next.\r\n" +
+                 "4 - Click 'Browse' and locate the file 'DefinitiveEdition.ini' that was installed in the folder selected in the Utility and click next.\r\n" +
+                 "5 - In the game, press the 'Home' key to open the menu and select the options you prefer.\r\n" +
+                 "6 - Install the Preset first and then the FSR3 mod if you plan to use it.\r\n\r\n"
             },
             {
                 "Monster Hunter Rise",
@@ -919,24 +945,29 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "The Callisto Protocol",
+
                 "The Callisto Protocol Fsr3\r\n"+
                 "1 - Select The Callisto Protocol Fsr3.\r\n" +
                 "2 - Check the Fake Nvidia GPU box and install.\r\n\r\n" +
 
+                "Optiscaler Callisto\r\n" +
+                "1 - Select FSR 3.1.1/DLSS Callisto and install it.\r\n" +
+                "2 - In the game, select FSR 2 (which will act as DLSS for the mod to work).\r\n" +
+                "3 - Press the 'Insert' key to open the menu.\r\n" +
+                "4 - Select the Upscaler of your choice.\r\n" +
+                "5 - Check the 'Frame Gen' and 'Hud Fix + Extended' boxes.\r\n\r\n" +
+
                 "0.10.4:\r\n" +
                 "1 - Select 0.10.4 and install it.\r\n" +
                 "2 - Inside the game, select FSR 2 and start the campaign.\r\n" +
-                "3 - If Frame Gen doesn't work, check the \"Nvngx.dll\" box and\r\n" +
-                "   select \"Default,\" then check the \"Enable Signature Override\"\r\n" +
-                "   box. For Epic Games users: if the mod doesn't work or some\r\n" +
-                "   bugs appear, check the \"Disable Overlay\" box.\r\n"+
+                "3 - If Frame Gen doesn't work, check the \"Nvngx.dll box andselect Default, then check the Enable Signature Override box. For Epic Games users: if the mod doesn't work or some bugs appear, check the \"Disable Overlay\" box.\r\n\r\n"+
 
                 "Uniscaler V3\r\n" +
                 "1 - Select Uniscaler V3.\r\n" +
                 "2 - Check the Nvngx box and select Default.\r\n" +
                 "3 - Check the Enable Signature Over box.\r\n\r\n" +
 
-                "HUD Correction:\r\n" +
+                "HUD Correction (FSR 3.1.1/DLSS is not necessary.) \r\n" +
                 "Select FSR2 and start the campaign, play for a few seconds, and return to the menu. In the menu, select Temporal and return to the campaign.\r\n\r\n" +
 
                 "Real Life:\r\n" +
