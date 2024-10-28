@@ -209,7 +209,7 @@ namespace FSR3ModSetupUtilityEnhanced
             #region Games List
             List<string> rdr2B2List = new List<string> { "RDR2 Build_2", "RDR2 Build_4", "RDR2 Mix", "RDR2 Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam FSR3", "RDR2 FSR 3.1 FG" };
             List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat","Unlock FPS Elden" };
-            List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1" };
+            List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1", "Others Mods AW2" };
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
             List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss DD2", "FSR 3.1/DLSS DD2 ALL GPU", "FSR 3.1/DLSS DD2 NVIDIA" };

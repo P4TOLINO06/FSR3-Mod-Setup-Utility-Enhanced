@@ -909,12 +909,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (varConfigJson)
                 {
-                    string pathIni = Path.Combine(pathJson, "..","..");
-                    string pathBackupIni = Path.GetFullPath(pathIni);
-                    if (File.Exists(pathJson))
-                    {
-                        File.Copy(pathJson, pathBackupIni + "\\renderer.ini");
-                    }
 
                     string json = File.ReadAllText(pathJson);
                     var data = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
@@ -1579,6 +1573,21 @@ namespace FSR3ModSetupUtilityEnhanced
             else
             {
                 MessageBox.Show(messageNotFound, "Not Found", MessageBoxButtons.OK);
+            }
+        }
+        #endregion
+
+        #region CopyFilesCustom4
+        private void CopyFilesCustom4(string sourceFile, string destDir, string regPath = null)
+        {
+            if (Path.Exists(sourceFile))
+            {
+                File.Copy(sourceFile, destDir, true);
+
+                if (regPath != null)
+                {
+                    runReg(regPath);
+                }
             }
         }
         #endregion
@@ -2632,10 +2641,25 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void aw2Fsr3()
         {
-            string pathIniAw2 = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "Remedy","AlanWake2","renderer.ini"
-            );
+            string appDataAw2 = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string pathDxgiAw2 = Path.Combine(selectFolder, "dxgi.dll");
+            string pathFolderIniAw2 = Path.Combine(appDataAw2, "Remedy\\AlanWake2");
+            string pathIniAw2 = Path.Combine(pathFolderIniAw2, "renderer.ini");
+            string pathBackupIniAw2 = Path.GetFullPath(Path.Combine(pathFolderIniAw2, ".."));
+            string presetAw2 = "mods\\FSR3_AW2\\Preset\\Realistic Reshade.ini";
+            string rtNormalAw2 = "mods\\FSR3_AW2\\RT\\Normal\\renderer.ini";
+            string rtUltraAw2 = "mods\\FSR3_AW2\\RT\\Ultra\\renderer.ini";
+            string varRtAw2 = "mods\\FSR3_AW2\\RT\\Var\\VarRT.txt";
+            string antiStutterAw2 = "mods\\FSR3_AW2\\Anti Stutter\\Install Alan Wake 2 CPU Priority.reg";
+            string varAntiStutterAw2 = "mods\\FSR3_SH2\\Anti_Stutter\\AntiStutter.txt";
+            string varPostProcessingAw2 = "mods\\FSR3_AW2\\Var Post Processing\\VarPost.txt";
+
+            Dictionary<string, bool> valueRemovePosAw2 = new Dictionary<string, bool>
+               {
+                   { "m_bLensDistortion",false},
+                   { "m_bFilmGrain",false},
+                   { "m_bVignette",false}
+               };
 
             if (folderAw2.ContainsKey(selectMod))
             {
@@ -2648,22 +2672,65 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     runReg(path_aw2_over);
                 }
-            }
+            } 
 
-            DialogResult varAw2 = MessageBox.Show("Do you want to fix possible ghosting issues caused by the FSR3 mod?", "Fix Ghosting Aw2", MessageBoxButtons.YesNo);
-
-            if (varAw2 == DialogResult.Yes)
+            if (selectMod == "Others Mods AW2")
             {
-               Dictionary<string, bool> valueRemovePos = new Dictionary<string, bool>
-               {
-                   { "m_bLensDistortion",false},
-                   { "m_bFilmGrain",false},
-                   { "m_bVignette",false}
-               };
+                // Anti stutter
+                if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFilesCustom4(varAntiStutterAw2, Path.Combine(selectFolder, "AntiStutter.txt"), antiStutterAw2);
+                }
 
-                ConfigJson(pathIniAw2,valueRemovePos, "Post-processing effects successfully removed");
+                // Preset
+                if (MessageBox.Show("Do you want to install the Realistic preset? ReShade is required for the mod to work. See the guide for installation instructions.\nif you are going to use the FSR3 FG mod, it is recommended to install the preset first.", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFilesCustom4(presetAw2, Path.Combine(selectFolder, "Realistic Reshade.ini"));
+
+                    if (File.Exists(pathDxgiAw2)) // Rename the dxgi file so that the FG mods work
+                    {
+                        File.Copy(pathDxgiAw2, Path.Combine(selectFolder, "dxgi.txt"), true);
+                        File.Move(pathDxgiAw2, Path.Combine(selectFolder, "D3D12.dll"), true);
+                    }
+                }
+
+                // Control RT
+                if (Path.Exists(pathIniAw2))
+                {
+
+                    if (MessageBox.Show("Do you want to unlock Ray Tracing from the game Control in Alan Wake 2? If you want to install Ultra Ray Tracing, just select \"No\" and then select \"Yes\" in the next window (This is the Standard version)", "RT", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFilesCustom4(pathIniAw2, Path.Combine(pathBackupIniAw2, "renderer.ini"));
+                        CopyFilesCustom4(varRtAw2, Path.Combine(selectFolder, "VarRT.txt"));
+                        CopyFilesCustom4(rtNormalAw2, Path.Combine(pathFolderIniAw2, "renderer.ini"));
+                    }
+
+                    if (MessageBox.Show("Do you want to install Ultra Ray Tracing from the game Control in Alan Wake 2?", "RT", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (!Path.Exists(Path.Combine(pathBackupIniAw2, "renderer.ini")))
+                        {
+                            CopyFilesCustom4(pathIniAw2, Path.Combine(pathBackupIniAw2, "renderer.ini"));
+                        }
+
+                        CopyFilesCustom4(varRtAw2, Path.Combine(selectFolder, "VarRT.txt"));
+                        CopyFilesCustom4(rtUltraAw2, Path.Combine(pathFolderIniAw2, "renderer.ini"));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("If you want to install Ray Tracing from the game Control for Alan Wake 2, please check if the path C:\\Users\\USER_NAME\\AppData\\Local\\Remedy\\AlanWake2 exists and try again.", "Not Found", MessageBoxButtons.OK);
+                }
+
+                if (MessageBox.Show("Do you want to fix possible ghosting issues caused by the FSR3 mod?", "Fix Ghosting Aw2", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (!Path.Exists(Path.Combine(pathBackupIniAw2, "renderer.ini")))
+                    {
+                        CopyFilesCustom4(pathIniAw2, Path.Combine(pathBackupIniAw2, "renderer.ini"));
+                    }
+
+                    ConfigJson(pathIniAw2, valueRemovePosAw2, "Post-processing effects successfully removed");
+                }
             }
-                
         }
 
         public void icrFsr3()
@@ -4079,46 +4146,85 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
-                else if (rdr2_folder.ContainsKey(selectMod))
+                if (gameSelected == "Alan Wake 2")
                 {
-                    CleanupMod(del_rdr2_custom_files, rdr2_folder);
-                }
-                else if (gameSelected == "Alan Wake 2")
-                {
+                    #region Paths AW2
+                    string path_aw2_en = @"mods\\FSR3_GOT\\DLSS FG\\RestoreNvidiaSignatureChecks.reg";
+                    string aw2AppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                    string aw2FolderIni = Path.Combine(aw2AppData, "Remedy\\AlanWake2");
+                    string aw2BackupFolder = Path.GetFullPath(Path.Combine(aw2FolderIni, ".."));
+                    string modifiedIniAw2 = Path.Combine(aw2FolderIni, "renderer.ini");
+                    string removeAntiStutterAw2 = "mods\\FSR3_AW2\\Anti Stutter\\Uninstall Alan Wake 2 CPU Priority.reg";
+                    #endregion
+
+                    #region Cleanup Default Mods Aw2
                     if (folderAw2.ContainsKey(selectMod))
                     {
                         CleanupMod(del_aw2, folderAw2);
+
                         #region RestoreNvidiaSignatureChecks
-                    if (selectMod == "Alan Wake 2 FG RTX")
-                    {
-                        string path_aw2_en = @"mods\\FSR3_GOT\\DLSS FG\\RestoreNvidiaSignatureChecks.reg";
-                        runReg(path_aw2_en);
+                        if (selectMod == "Alan Wake 2 FG RTX")
+                        {
+                            runReg(path_aw2_en);
+                        }
+                        #endregion
                     }
                     #endregion
+
+                    #region Cleanup Othres ModsAW2
+
+                    //Anti Stutter
+                    CleanupOthersMods("Anti Stutter", "AntiStutter.txt", selectFolder, removeAntiStutterAw2);
+
+
+                    // Preset
+                    if (Path.Exists(Path.Combine(selectFolder, "Realistic Reshade.ini")))
+                    {
+                        if (MessageBox.Show("Do you want to remove the Realistc Preset? To completely uninstall, it is necessary to remove the ReShade files", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            File.Delete(Path.Combine(selectFolder, "Realistic Reshade.ini"));
+
+                            if (Path.Exists(Path.Combine(selectFolder, "D3D12.dll")) && Path.Exists(Path.Combine(selectFolder, "dxgi.txt")))
+                            {
+                                File.Delete(Path.Combine(selectFolder, "D3D12.dll"));
+                                File.Move(Path.Combine(selectFolder, "dxgi.txt"), Path.Combine(selectFolder, "dxgi.dll"), true);
+                            }
+                        }
                     }
 
-                    #region Restore Pos-Processing
-                    string modifiedIniAw2 = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    "Remedy", "AlanWake2", "renderer.ini"
-                    );
-
-                    string pathReplaceInAw2 = Path.Combine(modifiedIniAw2, "..", "..");
-
-                    if (File.Exists(Path.GetFullPath(pathReplaceInAw2 + "\\renderer.ini")))
+                    // Control RT
+                    if (File.Exists(Path.Combine(aw2BackupFolder, "renderer.ini")) && Path.Exists(Path.Combine(selectFolder, "VarRT.txt")))
                     {
-                        DialogResult restoreini = MessageBox.Show("Do you want to restore post-processing effects?", "Restore", MessageBoxButtons.YesNo);
-
-                        if (restoreini == DialogResult.Yes)
+                        if (MessageBox.Show("Do you want to remove the Control RT?", "RT", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            File.Copy(pathReplaceInAw2 + "\\renderer.ini", modifiedIniAw2, true);
+                            CopyFilesCustom4(Path.Combine(aw2BackupFolder, "renderer.ini"), Path.Combine(aw2FolderIni, "renderer.ini"));
+
+                            File.Delete(Path.Combine(aw2BackupFolder, "renderer.ini"));
+                            File.Delete(Path.Combine(selectFolder, "VarRT.txt"));
+                        }
+                     }
+
+                    // Post Processing
+                    if (File.Exists(Path.Combine(aw2BackupFolder, "renderer.ini")) && Path.Exists(Path.Combine(selectFolder, "VarPost.txt")))
+                    {
+
+                        if (MessageBox.Show("Do you want to restore post-processing effects?", "Restore", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            CopyFilesCustom4(Path.Combine(aw2BackupFolder, "renderer.ini"), Path.Combine(aw2FolderIni, "renderer.ini"));
 
                             MessageBox.Show("Post-processing effects successfully restored", "Sucess", MessageBoxButtons.OK);
                         }
 
-                        File.Delete(pathReplaceInAw2 + "\\renderer.ini");
+                        File.Delete(Path.Combine(aw2BackupFolder, "renderer.ini"));
+                        File.Delete(Path.Combine(selectFolder, "VarPost.txt"));
                     }
                     #endregion
+
+                }
+
+                else if (rdr2_folder.ContainsKey(selectMod))
+                {
+                    CleanupMod(del_rdr2_custom_files, rdr2_folder);
                 }
                 else if (selectMod == "Ac Valhalla Dlss (Only RTX)")
                 {

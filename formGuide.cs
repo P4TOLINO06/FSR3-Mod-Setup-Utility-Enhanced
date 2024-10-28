@@ -63,14 +63,24 @@ namespace FSR3ModSetupUtilityEnhanced
                 "RTX\r\n 1 - Select Alan Wake 2 FG RTX and install it.\r\n"+
                 "2 - In the game, select DLSS and enable Frame Generation.\r\n"+
                 "3 - It is also possible to use other versions of the mod.\r\n\r\n"+
+
                 "AMD/GTX\r\n 1 - Select Alan Wake 2 Uniscaler Custom and install it.\r\n"+
                 "2 - In the game, select DLSS and enable Frame Generation if it is not enabled by default.\r\n"+
                 "3 - Do not switch to FSR as the game will crash.\r\n"+
                 "4 - It is also possible to use other versions of the mod, except Alan Wake 2 FG RTX.\r\n\r\n"+
+
                 "Optiscaler FSR 3.1.1/DLSS\r\n" +
                 "1 - Select Optiscaler FSR 3.1.1/DLSS.\r\n"+
                 "2 - In-game, press the Insert key to open the menu and select your preferred upscaler.\r\n"+
-                "3 - If the menu does not appear, you can select the upscaler during installation. Choose Optiscaler and under Addon Upscaler, select your preferred upscaler."
+                "3 - If the menu does not appear, you can select the upscaler during installation. Choose Optiscaler and under Addon Upscaler, select your preferred upscaler.\r\n\r\n" +
+
+                "Preset\r\n" +  
+                "1 - Install ReShade.\r\n" +
+                "2 - Inside ReShade, select the game's .exe and click next.\r\n" +
+                "3 - Select DX 10/11/12 and click next.\r\n" +
+                "4 - Click 'Browse' and locate the file 'Realistic Reshade.ini' that was installed in the folder selected in the Utility and click next.\r\n" +
+                "5 - In the game, press the 'Home' key to open the menu and select the options you prefer.\r\n" +
+                "6 - Install the Preset first and then the FSR3 mod if you plan to use it.\r\n\r\n"
             },
             {
                 "Alone in the Dark",
