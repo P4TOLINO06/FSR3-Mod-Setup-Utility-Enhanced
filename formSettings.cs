@@ -76,7 +76,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1386,9 +1386,9 @@ namespace FSR3ModSetupUtilityEnhanced
 
         }
 
-        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
+        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Crysis 3 Remastered","Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
-            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Wanted: Dead","Warhammer: Space Marine 2"};
+            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Unknown 9: Awakening", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
@@ -1653,7 +1653,7 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFSR(origins_sdk_folder);
         }
 
-        public async Task optiscaler_custom()
+        private async Task optiscaler_custom()
         {
             #region Backup Files
             try
@@ -1697,7 +1697,27 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
         }
 
-        public void dlssGlobal()
+        private async Task optiscalerFsrDlss()
+        {
+            string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
+            string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
+
+            if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")))
+            {
+                await CopyFolder(pathOptiscaler);
+
+                await Task.Delay((500));
+
+                File.Move(Path.Combine(selectFolder, "nvngx.dll"), Path.Combine(selectFolder, "dxgi.dll"), true);
+                File.Move(Path.Combine(selectFolder, "nvngx_dlss.dll"), Path.Combine(selectFolder, "nvngx.dll"), true);
+            }
+            else
+            {
+                await CopyFolder(pathOptiscalerDlss);
+            }
+        }
+
+        private void dlssGlobal()
         {
             string pathRtx = "mods\\DLSS_Global\\RTX";
             string pathVarRtx = "mods\\DLSS_Global\\VarTxt\\RTX\\dlss_rtx.txt";
@@ -1742,7 +1762,7 @@ namespace FSR3ModSetupUtilityEnhanced
             runReg("mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
         }
 
-        public void dlss_to_fsr()
+        private void dlss_to_fsr()
         {
             string path_dlss_fsr = "mods\\DLSS_TO_FSR";
 
@@ -1750,6 +1770,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
             runReg("mods\\Temp\\disable signature override\\DisableSignatureOverride.reg");
         }
+
+        
 
         public void rdr2Fsr3()
         {
@@ -2260,6 +2282,14 @@ namespace FSR3ModSetupUtilityEnhanced
             MessageBox.Show("Do not use the mod in multiplayer, otherwise you may be banned. We are not responsible for any bans", "Ban", MessageBoxButtons.OK);
 
             dlssGlobal();
+        }
+
+        public void lopFsr3()
+        {
+            if (selectMod == "FSR 3.1.1/DLSS LOP")
+            {
+                optiscalerFsrDlss();
+            }
         }
 
         public void quietPlaceFsr3()
@@ -2850,11 +2880,10 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void hzdFsr3()
         {
-            string pathOptiscalerCustomHzd = "mods\\FSR3_HZD\\Optiscaler_Custom_HZD"; 
 
             if (selectMod == "Optiscaler Custom HZD")
             {
-                CopyFolder(pathOptiscalerCustomHzd);
+                optiscalerFsrDlss();
             }
         }
 
@@ -3281,6 +3310,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     callistoFsr3();
                 }
+                if (gameSelected == "Lies of P")
+                {
+                    lopFsr3();
+                }
                 if (folderBdg3.ContainsKey(selectMod))
                 {
                     bdg3Fsr3();
@@ -3644,6 +3677,57 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         #endregion
 
+        #region Cleanup Optiscaler FSR DLSS
+        public void CleanupOptiscalerFsrDlss(List<string> modList, string modName, bool removeDxgi = false, string searchFolderName = null)
+        {
+            try
+            {
+                if (selectMod == modName && MessageBox.Show($"Do you want to remove the {modName}?","Cleanup",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    string nvngxPath = Path.Combine(selectFolder, "nvngx.dll");
+                    string nvngxDlssPath = Path.Combine(selectFolder, "nvngx_dlss.dll");
+
+                    if (File.Exists(nvngxPath))
+                    {
+                        File.Move(nvngxPath, nvngxDlssPath, true); // Reverts the original nvngx_dlss.dll file
+                    }
+
+                    if (removeDxgi)
+                    {
+                        string dxgiPath = Path.Combine(selectFolder, "dxgi.dll");
+                        if (File.Exists(dxgiPath))
+                        {
+                            File.Delete(dxgiPath);
+                        }
+                    }
+
+                    foreach (var item in Directory.GetFiles(selectFolder))
+                    {
+                        string fileName = Path.GetFileName(item);
+                        if (modList.Contains(fileName))
+                        {
+                            File.Delete(item);
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(searchFolderName))
+                    {
+                        string modsPath = Path.Combine(selectFolder, searchFolderName);
+                        if (Directory.Exists(modsPath))
+                        {
+                            Directory.Delete(modsPath, true);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error clearing Callisto mods files, please try again or do it manually.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Debug.WriteLine(ex);
+            }
+        }
+        #endregion
+
         private void buttonDel_Click(object sender, EventArgs e)
         {
             if (selectMod != null)
@@ -3766,6 +3850,11 @@ namespace FSR3ModSetupUtilityEnhanced
                         CleanupMod3(del_callisto_custom, "FSR 3.1.1/DLSS Callisto");
                     }
                     #endregion
+                }
+
+                if (gameSelected  == "Lies of P")
+                {
+                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.1/DLSS LOP", true);
                 }
 
                 if (gameSelected == "Metro Exodus Enhanced Edition")
@@ -3901,7 +3990,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     #region Del Others Mods Hzd
 
-                        CleanupMod3(del_optiscaler, "Optiscaler Custom HZD");
+                        CleanupOptiscalerFsrDlss(del_optiscaler, "Optiscaler Custom HZD", false);
 
                     #endregion
                 }

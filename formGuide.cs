@@ -198,6 +198,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - In the game, turn off Anti-Aliasing and select DLSS as the upscaler."
             },
             {
+                "Crysis 3 Remastered",
+                "1 - Select an FSR 3.1.1/DLSS mod.\r\n" +
+                "2 - Check the 'GPU' box that will appear during installation (Only FSR 3.1.1/DLSS Custom).\r\n" +
+                "3 - In-game, press the 'Insert' key to open the menu.\r\n" +
+                "4 - In the menu, select the upscaler you prefer.\r\n\r\n"
+            },
+            {
                 "Cyberpunk 2077",
                 "Uniscaler FSR 3.1:\n" +
                 "1. Select Uniscaler FSR 3.1.\n" +
@@ -616,8 +623,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Lies of P",
                 "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
                 "2 - Activate Fake Nvidia Gpu and UE Compatibility Mode (AMD only).\r\n" +
-                "3 - To fix the flickering of the HUD, first select DLSS Quality,\r\n" +
-                "   then select FSR Quality (without disabling DLSS), then select DLSS again.\r\n"
+                "3 - To fix the flickering of the HUD, first select DLSS Quality, then select FSR Quality (without disabling DLSS), then select DLSS again.\r\n\r\n"+
+
+                "FSR 3.1.1/DLSS LOP\r\n"+
+                "1 - Select an FSR 3.1.1/DLSS LOP mod and install it.\r\n" +
+                "2 - Check the 'Enable Signature Over' box.\r\n" +
+                "3 - In the game, select DLSS.\r\n" +
+                "4 - Press the 'Insert' key to open the menu.\r\n" +
+                "5 - Select an Upscaler of your choice, check the 'Frame Gen' and 'Hud Fix' boxes.\r\n" +
+                "6 - If you cannot see DLSS in the game, go back to the Utility and check the 'Disable Signature Over' box."
             },
             {
                 "Loopmancer",
@@ -888,63 +902,63 @@ namespace FSR3ModSetupUtilityEnhanced
               "Distortion"
             },
             {
-                "Smalland",
-                "1 - Select a mod of your choice. (0.10.3 is recommended)\n" +
-                "2 - Check the Fake Nvidia GPU box. (AMD/GTX)\n" +
-                "3 - In the game, select DLSS\n"
+              "Smalland",
+              "1 - Select a mod of your choice. (0.10.3 is recommended)\n" +
+              "2 - Check the Fake Nvidia GPU box. (AMD/GTX)\n" +
+              "3 - In the game, select DLSS\n"
             },
             {
-                "Star Wars Jedi: Survivor",
-                "DLSS Jedi (if you have RTX, use this mod if you want to use native DLSS):\n" +
-                "1. Check the box Fake Nvidia GPU (GTX and AMD), Nvapi Results (GTX and AMD), and UE Compatibility (AMD).\n" +
-                "2. If you can't see DLSS in-game, select \"DLSS\" under \"Mod Operates\".\n" +
-                "3. In-game, select DLSS 3 and Frame Gen.\n\n" +
+              "Star Wars Jedi: Survivor",
+              "DLSS Jedi (if you have RTX, use this mod if you want to use native DLSS):\n" +
+              "1. Check the box Fake Nvidia GPU (GTX and AMD), Nvapi Results (GTX and AMD), and UE Compatibility (AMD).\n" +
+              "2. If you can't see DLSS in-game, select \"DLSS\" under \"Mod Operates\".\n" +
+              "3. In-game, select DLSS 3 and Frame Gen.\n\n" +
 
-                "ALL GPUs:\n" +
-                "1. Select Uniscaler FSR 3.1.\n" +
-                "2. Check the \"Enable Signature Over\" box.\n" +
-                "3. If you cannot see DLSS in the game, check the Nvngx.dll box, select Default, and reinstall the mod.\n" +
-                "4. If you have an RTX GPU and want to use native DLSS, select DLSS in \"Mod Operates.\" Other GPUs can use FSR 3.1/XESS.\n" +
-                "5. In the game, select DLSS FG.\n\n" +
+              "ALL GPUs:\n" +
+              "1. Select Uniscaler FSR 3.1.\n" +
+              "2. Check the \"Enable Signature Over\" box.\n" +
+              "3. If you cannot see DLSS in the game, check the Nvngx.dll box, select Default, and reinstall the mod.\n" +
+              "4. If you have an RTX GPU and want to use native DLSS, select DLSS in \"Mod Operates.\" Other GPUs can use FSR 3.1/XESS.\n" +
+              "5. In the game, select DLSS FG.\n\n" +
 
-                "Others Mods:\n" +
-                "Intro Skip: Removes the initial intro when opening the game.\n\n" +
+              "Others Mods:\n" +
+              "Intro Skip: Removes the initial intro when opening the game.\n\n" +
 
-                "Anti Stutter:\n" +
-                "1. Faster Loading Times.\n" +
-                "2. Enhanced Streaming and Level Loading.\n" +
-                "3. Optimized CPU and GPU Utilization.\n\n" +
+              "Anti Stutter:\n" +
+              "1. Faster Loading Times.\n" +
+              "2. Enhanced Streaming and Level Loading.\n" +
+              "3. Optimized CPU and GPU Utilization.\n\n" +
 
-                "Fix RT:\n" +
-                "Fixes any crashes you experience with ray tracing enabled and also fixes occlusion culling. When you turn the camera and see white flashing at the corners of the screen, this resolves it and any crashes.\n\n" +
+              "Fix RT:\n" +
+              "Fixes any crashes you experience with ray tracing enabled and also fixes occlusion culling. When you turn the camera and see white flashing at the corners of the screen, this resolves it and any crashes.\n\n" +
 
-                "Graphic Preset:\n" +
-                "1. Install ReShade.\n" +
-                "2. In ReShade, select Star Wars Jedi: Survivor.\n" +
-                "3. Select DirectX 10/11/12.\n" +
-                "4. Click \"Browse\" and locate the file STARWAR-ULTRA-REALISTA.ini that was installed in the destination folder selected in the Utility.\n" +
-                "5. Finish the installation and open the game.\n" +
-                "6. In the game, press the \"Home\" key to open the menu and select the graphic options you prefer."
+              "Graphic Preset:\n" +
+              "1. Install ReShade.\n" +
+              "2. In ReShade, select Star Wars Jedi: Survivor.\n" +
+              "3. Select DirectX 10/11/12.\n" +
+              "4. Click \"Browse\" and locate the file STARWAR-ULTRA-REALISTA.ini that was installed in the destination folder selected in the Utility.\n" +
+              "5. Finish the installation and open the game.\n" +
+              "6. In the game, press the \"Home\" key to open the menu and select the graphic options you prefer."
             },
             {
-                "Star Wars Outlaws",
-                "RTX:\r\n" +
-                "1 - Select Star Wars DLSS RTX and install.\r\n" +
-                "2 - Inside the game, select DLSS and Frame Gen.\r\n\r\n" +
+              "Star Wars Outlaws",
+              "RTX:\r\n" +
+              "1 - Select Star Wars DLSS RTX and install.\r\n" +
+              "2 - Inside the game, select DLSS and Frame Gen.\r\n\r\n" +
 
-                "All GPUs:\r\n" +
-                "1 - Select FSR 3.1/DLSS Optiscaler.\r\n" +
-                "2 - Inside the game, select an upscaler of your choice.\r\n" +
-                "3 - Press the Insert key to open the menu and select an upscaler of your choice.\r\n\r\n" +
+              "All GPUs:\r\n" +
+              "1 - Select FSR 3.1/DLSS Optiscaler.\r\n" +
+              "2 - Inside the game, select an upscaler of your choice.\r\n" +
+              "3 - Press the Insert key to open the menu and select an upscaler of your choice.\r\n\r\n" +
 
-                "Graphic Preset:\n" +
-                "1 - Install the mod and the ReShade application.\n" +
-                "2 - In ReShade, select b1.exe, DirectX 10/11/12,\n" +
-                "   click on \"Browser,\" and find the file Outlaws2.ini (the path\n" +
-                "   should look something like Star Wars Outlaws\\Outlaws2.ini)\n" +
-                "   and select it, then click on \"Uncheck All\" and \"Next.\"\n" +
-                "3 - In the game, press the \"Insert\" key to open\n" +
-                "   the menu and check the options you want.\n"
+              "Graphic Preset:\n" +
+              "1 - Install the mod and the ReShade application.\n" +
+              "2 - In ReShade, select b1.exe, DirectX 10/11/12,\n" +
+              "   click on \"Browser,\" and find the file Outlaws2.ini (the path\n" +
+              "   should look something like Star Wars Outlaws\\Outlaws2.ini)\n" +
+              "   and select it, then click on \"Uncheck All\" and \"Next.\"\n" +
+              "3 - In the game, press the \"Insert\" key to open\n" +
+              "   the menu and check the options you want.\n"
             },
             {
               "Test Drive Unlimited Solar Crown",
@@ -954,59 +968,67 @@ namespace FSR3ModSetupUtilityEnhanced
               "4. If you can't see DLSS in the game, check the \"Nvngx.dll\" box, select \"Default,\" and install again."
             },
             {
-                "The Callisto Protocol",
+              "The Callisto Protocol",
 
-                "The Callisto Protocol Fsr3\r\n"+
-                "1 - Select The Callisto Protocol Fsr3.\r\n" +
-                "2 - Check the Fake Nvidia GPU box and install.\r\n\r\n" +
+              "The Callisto Protocol Fsr3\r\n"+
+              "1 - Select The Callisto Protocol Fsr3.\r\n" +
+              "2 - Check the Fake Nvidia GPU box and install.\r\n\r\n" +
 
-                "Optiscaler Callisto\r\n" +
-                "1 - Select FSR 3.1.1/DLSS Callisto and install it.\r\n" +
-                "2 - In the game, select FSR 2 (which will act as DLSS for the mod to work).\r\n" +
-                "3 - Press the 'Insert' key to open the menu.\r\n" +
-                "4 - Select the Upscaler of your choice.\r\n" +
-                "5 - Check the 'Frame Gen' and 'Hud Fix + Extended' boxes.\r\n\r\n" +
+              "Optiscaler Callisto\r\n" +
+              "1 - Select FSR 3.1.1/DLSS Callisto and install it.\r\n" +
+              "2 - In the game, select FSR 2 (which will act as DLSS for the mod to work).\r\n" +
+              "3 - Press the 'Insert' key to open the menu.\r\n" +
+              "4 - Select the Upscaler of your choice.\r\n" +
+              "5 - Check the 'Frame Gen' and 'Hud Fix + Extended' boxes.\r\n\r\n" +
 
-                "0.10.4:\r\n" +
-                "1 - Select 0.10.4 and install it.\r\n" +
-                "2 - Inside the game, select FSR 2 and start the campaign.\r\n" +
-                "3 - If Frame Gen doesn't work, check the \"Nvngx.dll box andselect Default, then check the Enable Signature Override box. For Epic Games users: if the mod doesn't work or some bugs appear, check the \"Disable Overlay\" box.\r\n\r\n"+
+              "0.10.4:\r\n" +
+              "1 - Select 0.10.4 and install it.\r\n" +
+              "2 - Inside the game, select FSR 2 and start the campaign.\r\n" +
+              "3 - If Frame Gen doesn't work, check the \"Nvngx.dll box andselect Default, then check the Enable Signature Override box. For Epic Games users: if the mod doesn't work or some bugs appear, check the \"Disable Overlay\" box.\r\n\r\n"+
 
-                "Uniscaler V3\r\n" +
-                "1 - Select Uniscaler V3.\r\n" +
-                "2 - Check the Nvngx box and select Default.\r\n" +
-                "3 - Check the Enable Signature Over box.\r\n\r\n" +
+              "Uniscaler V3\r\n" +
+              "1 - Select Uniscaler V3.\r\n" +
+              "2 - Check the Nvngx box and select Default.\r\n" +
+              "3 - Check the Enable Signature Over box.\r\n\r\n" +
 
-                "HUD Correction (FSR 3.1.1/DLSS is not necessary.) \r\n" +
-                "Select FSR2 and start the campaign, play for a few seconds, and return to the menu. In the menu, select Temporal and return to the campaign.\r\n\r\n" +
+              "HUD Correction (FSR 3.1.1/DLSS is not necessary.) \r\n" +
+              "Select FSR2 and start the campaign, play for a few seconds, and return to the menu. In the menu, select Temporal and return to the campaign.\r\n\r\n" +
 
-                "Real Life:\r\n" +
-                "Adds more detail to the world, making the wood effects stand out more, as well as the ground, lighting, walls, dirt marks, and skin.\r\n\r\n" +
+              "Real Life:\r\n" +
+              "Adds more detail to the world, making the wood effects stand out more, as well as the ground, lighting, walls, dirt marks, and skin.\r\n\r\n" +
 
-                "TCP:\r\n" +
-                "A ReShade config that implements duller colours, nearby sharpness, and distant depth of field blur to give a grittier and more cinematic style to emphasise the sci-fi horror atmosphere.\r\n\r\n" +
+              "TCP:\r\n" +
+              "A ReShade config that implements duller colours, nearby sharpness, and distant depth of field blur to give a grittier and more cinematic style to emphasise the sci-fi horror atmosphere.\r\n\r\n" +
 
-                "1 - Install the ReShade application.\r\n" +
-                "2 - Select DirectX 10/11/12, click 'Browse,' and select the TCP.ini file that was installed in the destination folder chosen in the Utility.\r\n" +
-                "3 - Click 'Uncheck All,' and then click 'Next.'\r\n" +
-                "4 - Do the same for the Real Life mod."
+              "1 - Install the ReShade application.\r\n" +
+              "2 - Select DirectX 10/11/12, click 'Browse,' and select the TCP.ini file that was installed in the destination folder chosen in the Utility.\r\n" +
+              "3 - Click 'Uncheck All,' and then click 'Next.'\r\n" +
+              "4 - Do the same for the Real Life mod."
             },
             {
-                "The Casting Of Frank Stone",
-                "FSR 3.1.1/DLSS FG Custom:\n" +
-                "1. Select 'FSR 3.1.1/DLSS FG Custom', install it, and check the GPU window that appears.\n" +
-                "2. In the game, select DLSS and Frame Generation.\n" +
-                "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1.\n\n" +
+              "The Casting Of Frank Stone",
+              "FSR 3.1.1/DLSS FG Custom:\n" +
+              "1. Select 'FSR 3.1.1/DLSS FG Custom', install it, and check the GPU window that appears.\n" +
+              "2. In the game, select DLSS and Frame Generation.\n" +
+              "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1.\n\n" +
 
-                "0.10.4:\n" +
-                "1. Select 0.10.4 and install it.\n" +
-                "2. In the game, select DLSS and Frame Generation.\n" +
-                "3. If you can't see DLSS in the game, click on 'Nvngx.dll' and then on 'Default.'\n\n" +
+              "0.10.4:\n" +
+              "1. Select 0.10.4 and install it.\n" +
+              "2. In the game, select DLSS and Frame Generation.\n" +
+              "3. If you can't see DLSS in the game, click on 'Nvngx.dll' and then on 'Default.'\n\n" +
 
-                "Optiscaler FSR 3.1.1/DLSS:\n" +
-                "1. Select 'Optiscaler FSR 3.1.1/DLSS' and install it.\n" +
-                "2. In the game, select DLSS and Frame Generation.\n" +
-                "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1."
+              "Optiscaler FSR 3.1.1/DLSS:\n" +
+              "1. Select 'Optiscaler FSR 3.1.1/DLSS' and install it.\n" +
+              "2. In the game, select DLSS and Frame Generation.\n" +
+              "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1."
+            },
+            {
+              "Unknown 9: Awakening",
+              "1 - Select Uniscaler V4 and install it.\r\n" +
+              "2 - In the game, select an option under Upscaling Quality.\r\n" +
+              "3 - Check the box 'Enable Signature Override.'\r\n" +
+              "4 - You can also select XESS in 'Mod Operates'; it has better quality, but it's optional.\r\n" +
+              "5 - This game does not yet have a fix for the HUD.\r\n\r\n"
             },
             {
               "Until Dawn",
@@ -1018,23 +1040,23 @@ namespace FSR3ModSetupUtilityEnhanced
               "5. You can also use the game's Frame Generation after selecting an upscaler in the menu."
             },
             {
-                "Warhammer: Space Marine 2",
-                 "FSR 3.1.1/DLSS FG Custom / Optiscaler:\n" +
-                "1. Select FSR 3.1.1/DLSS FG Custom and install it.\n" +
-                "2. In the game, press the \"Insert\" key to open the menu.\n" +
-                "3. In the menu, select Frame Generation and an upscaler of your choice.\n" +
-                "4. To fix the HUD bug, select Hud Fix FG in the menu.\n\n" +
+              "Warhammer: Space Marine 2",
+              "FSR 3.1.1/DLSS FG Custom / Optiscaler:\n" +
+              "1. Select FSR 3.1.1/DLSS FG Custom and install it.\n" +
+              "2. In the game, press the \"Insert\" key to open the menu.\n" +
+              "3. In the menu, select Frame Generation and an upscaler of your choice.\n" +
+              "4. To fix the HUD bug, select Hud Fix FG in the menu.\n\n" +
 
-                "Uniscaler FSR 3.1:\n" +
-                "1 - Check the 'Fake NVIDIA GPU' box if you want to use DLSS.\n" +
-                "2 - Check the 'Enable Signature Over' box.\n" +
-                "3 - This mod does not have a HUD fix, as frame generation is activated along with the mod.\n\n" +
+              "Uniscaler FSR 3.1:\n" +
+              "1 - Check the 'Fake NVIDIA GPU' box if you want to use DLSS.\n" +
+              "2 - Check the 'Enable Signature Over' box.\n" +
+              "3 - This mod does not have a HUD fix, as frame generation is activated along with the mod.\n\n" +
 
-                "Graphic Preset:\n" +
-                "1 - Install the mod and the ReShade application.\r\n" +
-                "2 - In ReShade, select SpaceMarine2.exe (or select the game .exe), DirectX 10/11/12, click on 'Browse,' find the fileWarhammer 40000 Space Marine 2.ini (the path should look something like client_pc\\root\\bin\\pc), select it, then click on 'Uncheck All' and 'Next.'\r\n" +
-                "3 - In the game, press the 'Insert' key to open the menu and check the options you want.\r\n" +
-                "4 -For the mod to work, you need to select the folder where the Warhammer 40000 Space Marine 2.ini file is located; the path is similar to client_pc\\root\\bin\\pc."
+              "Graphic Preset:\n" +
+              "1 - Install the mod and the ReShade application.\r\n" +
+              "2 - In ReShade, select SpaceMarine2.exe (or select the game .exe), DirectX 10/11/12, click on 'Browse,' find the fileWarhammer 40000 Space Marine 2.ini (the path should look something like client_pc\\root\\bin\\pc), select it, then click on 'Uncheck All' and 'Next.'\r\n" +
+              "3 - In the game, press the 'Insert' key to open the menu and check the options you want.\r\n" +
+              "4 -For the mod to work, you need to select the folder where the Warhammer 40000 Space Marine 2.ini file is located; the path is similar to client_pc\\root\\bin\\pc."
             }
         };
 
@@ -1115,6 +1137,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Cod MW3","mw3.png"},
                 {"Control","Control.png"},
                 {"Crime Boss Rockay City","Rockay.png"},
+                {"Crysis 3 Remastered","Crysis2.png"},
                 {"Cyberpunk 2077","Cyber.png"},
                 {"Dakar Desert Rally","Dakar.png"},
                 {"Dead Space Remake","DeadSpace.png"},
@@ -1184,6 +1207,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
                 {"The Callisto Protocol","Callisto2.png"},
                 {"The Casting Of Frank Stone","FrankStone2.png" },
+                {"Unknown 9: Awakening","Unknown92.png" },
                 {"Until Dawn","Until2.png" },
                 {"Warhammer: Space Marine 2","SpaceMarine2.png"}
             };

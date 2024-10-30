@@ -76,6 +76,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Cod MW3","mw3.png"},
                     {"Control","Control.png"},
                     {"Crime Boss: Rockay City","Rockay.png"},
+                    {"Crysis 3 Remastered", "Crysis.png"},
                     {"Cyberpunk 2077","Cyber.png"},
                     {"Dakar Desert Rally","Dakar.png"},
                     {"Dead Island 2","Dead2.png"},
@@ -159,6 +160,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"The Thaumaturge","Thaumaturge.png"},
                     {"The Witcher 3","Witcher.png"},
                     {"Uncharted Legacy of Thieves Collection","Uncharted.png"},
+                    {"Unknown 9: Awakening","Unknown9.png"},
                     {"Until Dawn","Until.png"},
                     {"Wanted: Dead","Wanted.png"},
                     {"Warhammer: Space Marine 2","SpaceMarine.png" }
@@ -232,12 +234,13 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> spacemarineList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1.1/DLSS" };
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
             List<string> ffxviList = new List<string> {"FFXVI DLSS RTX","Others Mods FFXVI" };
-            List<string> hzdList = new List<string> { "FSR 3.1.1/DLSS FG Custom" };
+            List<string> hzdList = new List<string> { "Optiscaler Custom HZD" };
             List<string> hlList = new List<string> { "Others Mods HL" };
             List<string> sh2List = new List<string> { "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG RTX Custom", "DLSS FG RTX","Ultra Plus Complete", "Ultra Plus Optimized", "FSR3 FG Native SH2", "FSR3 FG Native SH2 + Optimization", "Others Mods Sh2" };
             List<string> untilList = new List<string> { "Others Mods UD" };
             List<string> quietPlacelList = new List<string> { "FSR 3.1.1/DLSS Quiet Place", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" };
             List<string> metroList = new List<string> { "Others Mods Metro" };
+            List<string> lopList = new List<string> { "FSR 3.1.1/DLSS LOP" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
             #endregion;
@@ -273,7 +276,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 untilList,
                 hlList,
                 quietPlacelList,
-                metroList
+                metroList,
+                lopList
             };
             #endregion
 
@@ -419,6 +423,11 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Metro Exodus Enhanced Edition")
             {
                 formSettings.Instance.AddItemlistMods(metroList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Lies of P")
+            {
+                formSettings.Instance.AddItemlistMods(lopList, modsDefaultList);
             }
 
             else
