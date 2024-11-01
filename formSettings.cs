@@ -76,7 +76,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -2317,6 +2317,53 @@ namespace FSR3ModSetupUtilityEnhanced
 
         }
 
+        public void rdr1Fsr3()
+        {
+            string antiStutterRdr1 = "mods\\FSR3_RDR1\\Anti Stutter\\RDR_PerformanceBoostENABLE.reg";
+            string varAntiStutterRdr1 = "mods\\FSR3_SH2\\Anti_Stutter\\AntiStutter.txt";
+            string textureRdr1 = "mods\\FSR3_RDR1\\4x Texture\\vfx.rpf";
+            string presetRdr1 = "mods\\FSR3_RDR1\\Preset\\Red Dead Redemption.ini";
+
+            if (selectMod.Contains("FSR 3.1.1/DLSS Optiscaler") || selectMod.Contains("FSR 3.1.1/DLSS FG Custom"))
+            {
+                runReg("mods\\Temp\\NvidiaChecks\\DisableNvidiaSignatureChecks.reg");
+
+                if (MessageBox.Show("Do you want to enable Nvidia Signature Checks.reg", "Enable", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    runReg("mods\\Temp\\NvidiaChecks\\RestoreNvidiaSignatureChecks.reg");
+                }
+            }
+
+            if (selectMod == "Others Mods RDR")
+            {
+                // Anti Stutter
+                if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFilesCustom4(varAntiStutterRdr1, Path.Combine(selectFolder, "AntiStutter.txt"), antiStutterRdr1);
+                }
+
+                // Preset
+                if (MessageBox.Show("Do you want to install the Graphics Preset? ReShade is required to complete the mod installation. See the guide for instructions on how to install it.", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(presetRdr1, Path.Combine(selectFolder, "Red Dead Redemption 1.ini"), true);
+                }
+
+                // 4x Texture
+                if (File.Exists(Path.Combine(selectFolder, "game\\vfx.rpf")))
+                {
+                    if (MessageBox.Show("Do you want to install the 4x Texture? Improves the texture to 4x its resolution.", "Texture", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        File.Move(Path.Combine(selectFolder, "game\\vfx.rpf"), Path.Combine(selectFolder, "game\\vfx.txt"),true); // Create a backup of the vfx.rpf file and copy the vfx.rpf from the mod
+                        File.Copy(textureRdr1, Path.Combine(selectFolder, "game\\vfx.rpf"),true);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Folder not found. Select the correct path if you want to install the 4x texture mod. The path is similar to common\\Red Dead Redemption 1", "Not Found", MessageBoxButtons.OK);
+                }
+            }
+        }
+
         public void untilFsr3()
         {
             string pathDocumentsUd = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -3395,6 +3442,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     untilFsr3();
                 }
+                if (gameSelected == "Red Dead Redemption")
+                {
+                    rdr1Fsr3();
+                }
                 if (gameSelected == "Metro Exodus Enhanced Edition")
                 {
                     metroFsr3();
@@ -3992,6 +4043,38 @@ namespace FSR3ModSetupUtilityEnhanced
 
                         CleanupOptiscalerFsrDlss(del_optiscaler, "Optiscaler Custom HZD", false);
 
+                    #endregion
+                }
+
+                if (gameSelected == "Red Dead Redemption")
+                {
+                    #region Del Others Mods Red Dead Redemption
+                    try
+                    {
+                        string removeAntiStutterRdr1 = "mods\\FSR3_RDR1\\Anti Stutter\\RDR_PerformanceBoostDISABLE.reg";
+
+                        if (selectMod == "Others Mods RDR")
+                        {
+                            // Anti Stutter
+                            CleanupOthersMods("Anti Stutter", "AntiStutter.txt", selectFolder, removeAntiStutterRdr1);
+
+                            // Preset
+                            if (Path.Exists(Path.Combine(selectFolder, "Red Dead Redemption 1.ini")) && MessageBox.Show("Do you want to remove the Graphics Preset? It is necessary to remove the ReShade files to completely uninstall it", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                File.Delete(Path.Combine(selectFolder, "Red Dead Redemption 1.ini"));
+                            }
+
+                            // 4x Texture
+                            if (Path.Exists(Path.Combine(selectFolder, "game\\vfx.txt")) && MessageBox.Show("Do you want to remove the 4x Texture?", "Texture", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                File.Move(Path.Combine(selectFolder, "game\\vfx.txt"), Path.Combine(selectFolder, "game\\vfx.rpf"), true);
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error clearing Red Dead Redemption files, please try again or do it manually", "Error", MessageBoxButtons.OK);
+                    }
                     #endregion
                 }
 

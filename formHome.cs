@@ -131,6 +131,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Palworld","Palworld.png"},
                     {"Ratchet & Clank - Rift Apart","Ratchet.png"},
                     {"Ready or Not","Ready.png"},
+                    {"Red Dead Redemption","Rdr1.png"},
                     {"Red Dead Redemption 2","RDR2.png"},
                     {"Remnant II","Remnant2.png"},
                     {"Returnal","Returnal.png"},
@@ -241,6 +242,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> quietPlacelList = new List<string> { "FSR 3.1.1/DLSS Quiet Place", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" };
             List<string> metroList = new List<string> { "Others Mods Metro" };
             List<string> lopList = new List<string> { "FSR 3.1.1/DLSS LOP" };
+            List<string> rdrList = new List<string> { "Others Mods RDR" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
             #endregion;
@@ -277,7 +279,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 hlList,
                 quietPlacelList,
                 metroList,
-                lopList
+                lopList,
+                rdrList
             };
             #endregion
 
@@ -428,6 +431,11 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Lies of P")
             {
                 formSettings.Instance.AddItemlistMods(lopList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Red Dead Redemption")
+            {
+                formSettings.Instance.AddItemlistMods(rdrList, modsDefaultList);
             }
 
             else

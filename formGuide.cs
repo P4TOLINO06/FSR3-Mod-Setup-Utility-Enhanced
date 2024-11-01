@@ -743,6 +743,24 @@ namespace FSR3ModSetupUtilityEnhanced
                 "After launching the game again, you need to set Anti-Aliasing back to High or Epic to activate the mod before playing the character.\r\n"
             },
             {
+                "Red Dead Redemption",
+                "Frame Generation\r\n" +
+                "1 - Select an FSR 3.1.1/DLSS mod (FSR 3.1.1/DLSS Custom is recommended) and install it.\r\n" +
+                "2 - In the game, disable Vsync, triple buffering, and enable Nvidia Reflex and Frame Generation.\r\n" +
+                "3 - During the installation, a window labeled 'Enable' will appear. Only check 'Yes' if the mod does not work.\r\n" +
+                "4 - If you are using Frame Generation with ReShade, press the 'Home' key and uncheck the 'MXAO' and 'SSR' options. This will remove the game glitches.\r\n\r\n" +
+
+                "Preset\r\n" +
+                "1 - Install ReShade.\r\n" +
+                "2 - In ReShade, select 'RDR.exe'.\r\n" +
+                "3 - Select DirectX 10/11/12.\r\n" +
+                "4 - Click 'Browse' and locate the file 'Red Dead Redemption.ini' that was installed in the destination folder selected in the Utility.\r\n" +
+                "5 - Finish the installation and open the game.\r\n" +
+                "6 - In the game, press the 'Home' key to open the menu and select the graphic options you prefer.\r\n" +
+                "7 - It is recommended to use version 6.3.1 as the newer versions cause significant FPS loss.\r\n\r\n"
+            },
+
+            {
                 "Red Dead Redemption 2",
                 "● RDR2_Build_2\r\n" +
                 "1 - Launch the game, go to settings, turn off Triple buffering + V-sync, unlock\r\n" +
@@ -760,35 +778,31 @@ namespace FSR3ModSetupUtilityEnhanced
                 "change from DLSS to FSR3.\r\n\n" +
                 "3 - Check again with the toggle 'Enable UI Hud Fix' On or Off. If you see UI\r\n" +
                 "flickering when turning 'Enable UI Hud Fix' Off, that means the mod works.\r\n\n" +
-                "Other versions of the mod install normally, but may experience flickering on the HUD.\r\n"
-            },
-            {
-                "Red Dead Redemption 2 MIX",
+                "Other versions of the mod install normally, but may experience flickering on the HUD.\r\n\r\n" +
+
+                "Red Dead Redemption 2 MIX\r\n"+
                 "1 - Set the game to DX12 in advanced options.\r\n" +
                 "2 - Turn off Triple Buffering and Vsync, and set the game to Full Screen.\r\n" +
                 "3 - Select the RDR2 Mix mod and install it.\r\n" +
                 "4 - You don’t need to use any upscaler, as Frame Generation is automatically activated.\r\n" +
                 "However, if you want to use an upscaler, when installing, check the 'Addon Mods' box,\r\n" +
-                "select 'Optiscaler,' and below in DX11 select 'FSR 2.1 DX11,' and in DX12 select 'FSR 2.1 DX12.'\r\n"
-            },
-            {
-                "Red Dead Redemption Mix 2",
+                "select 'Optiscaler,' and below in DX11 select 'FSR 2.1 DX11,' and in DX12 select 'FSR 2.1 DX12.'\r\n\r\n" +
+
+                "Red Dead Redemption Mix 2\r\n"+
                 "1 - Set the game to DX12.\r\n" +
                 "2 - Turn off Triple Buffering, Vsync, and disable any upscaler;\r\n" +
                 "leave it on TAA.\r\n" +
                 "3 - It’s not necessary to activate any upscaler for the mod to work,\r\n" +
-                "but if you want to use one, refer to the RDR2 Mix guide.\r\n"
-            },
-            {
-                "Red Dead Redemption V2",
+                "but if you want to use one, refer to the RDR2 Mix guide.\r\n\r\n" +
+
+                 "Red Dead Redemption V2\r\n" +
                 "1 - Turn off Vsync, Triple Buffering, and set the game to DX12.\r\n" +
                 "2 - Install the mod.\r\n" +
                 "3 - In-game, press the 'END' key and select an upscaler.\r\n" +
                 "If you want to use native resolution, check the Native Resolution box below the upscaler, and restart the game.\r\n" +
-                "(FSR3 Upscaling or FSR 2 is recommended; you can also try others, but they may not work.)\r\n"
-            },
-            {
-                "RDR2 Non Steam",
+                "(FSR3 Upscaling or FSR 2 is recommended; you can also try others, but they may not work.)\r\n\r\n" +
+
+                "RDR2 Non Steam\r\n" +
                 "1 - Leave the game in DX12 and turn off Vsync/Triple Buffering.\r\n" +
                 "2 - In-game, if you have an RTX card, enable DLSS. If you don’t have an RTX card, disable any upscaler and turn on TAA. Press the 'END' key, select FSR3 in Upscaler Type, and check the box 'Enable Frame Generation.'\r\n" +
                 "3 - If a DLL error occurs, reinstall the mod and click 'YES' in the DLL file installation message box.\r\n"
@@ -1189,11 +1203,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Ratchet and Clank","Ratchet.png"},
                 {"Rise of The Tomb Raider","Rtb.png"},
                 {"Ready or Not","Ready.png"},
+                {"Red Dead Redemption","Rdr12.png"},
                 {"Red Dead Redemption 2","RDR2.png"},
-                {"Red Dead Redemption 2 MIX","Rdr2Mix.png"},
-                {"Red Dead Redemption Mix 2","Rdr2Mix2.png"},
-                {"Red Dead Redemption V2","Rdr2V2.png"},
-                {"RDR2 Non Steam","Rdr2NSteam.png"},
                 {"Returnal","Returnal2.png"},
                 {"Ripout","Ripout.png"},
                 {"Saints Row","SaintsRow2.png"},
