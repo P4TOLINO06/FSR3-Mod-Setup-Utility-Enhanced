@@ -76,7 +76,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -667,7 +667,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Xess 1.3", "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll" },
                 { "Dlss 3.7.0", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll" },
                 { "Dlss 3.7.0 FG", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll" },
-                { "Dlss 3.7.2", "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll"},
+                { "Dlss 3.7.20", "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll"},
                 { "Dlssg 3.7.2 FG", "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll" },
                 { "Dlssd 3.7.2", "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll" }
             };
@@ -1387,7 +1387,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Crysis 3 Remastered","Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
-            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
+            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Horizon Zero Dawn Remastered", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Unknown 9: Awakening", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
@@ -2323,6 +2323,8 @@ namespace FSR3ModSetupUtilityEnhanced
             string varAntiStutterRdr1 = "mods\\FSR3_SH2\\Anti_Stutter\\AntiStutter.txt";
             string textureRdr1 = "mods\\FSR3_RDR1\\4x Texture\\vfx.rpf";
             string presetRdr1 = "mods\\FSR3_RDR1\\Preset\\Red Dead Redemption.ini";
+            string introSkipRdr1 = "mods\\FSR3_RDR1\\Intro Skip";
+            string ds4ButtonsRdr1 = "mods\\FSR3_RDR1\\DS4";
 
             if (selectMod.Contains("FSR 3.1.1/DLSS Optiscaler") || selectMod.Contains("FSR 3.1.1/DLSS FG Custom"))
             {
@@ -2346,6 +2348,25 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (MessageBox.Show("Do you want to install the Graphics Preset? ReShade is required to complete the mod installation. See the guide for instructions on how to install it.", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     File.Copy(presetRdr1, Path.Combine(selectFolder, "Red Dead Redemption 1.ini"), true);
+                }
+
+                if (Path.Exists(Path.Combine(selectFolder, "game")))
+                {
+                    // Intro Skip
+                    if (MessageBox.Show("Do you want to install the Intro Skip?", "Intro Skip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFolder(introSkipRdr1);
+                    }
+
+                    // DS4 Buttons
+                    if (MessageBox.Show("Would you like to install DS4 Buttons? It changes the in-game buttons to DualShock 4 buttons.", "DS4", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFolder(ds4ButtonsRdr1);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("To install the other mods (Intro Skip and DS4 Buttons), select the correct path to the .exe file, and look for the .exe in the path \"Red Dead Redemption\\\\RDR.exe\".", "Not Found", MessageBoxButtons.OK);
                 }
 
                 // 4x Texture
@@ -2934,6 +2955,28 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void hzdRemFsr3()
+        {
+            string optiscalerHzdRem = "mods\\FSR3_HZD_Remastered\\Optiscaler";
+            string xessHzdRem = "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll";
+            string dlssHzdRem = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
+
+            if (selectMod == "FSR 3.1.2 HZD Rem")
+            {
+                CopyFolder(optiscalerHzdRem);
+                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
+            }
+
+            if (selectMod == "Others Mods HZD Rem")
+            {
+                if (MessageBox.Show("Do you want to update the game's upscalers? Xess 1.3.1 and DLSS 3.7.20 will be installed", "Upscalers", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(xessHzdRem, Path.Combine(selectFolder, "libxess.dll"), true);
+                    File.Copy(dlssHzdRem, Path.Combine(selectFolder, "nvngx_dlss.dll"), true);
+                }
+            }
+        }
+
         public async Task gotFsr3()
         {
             #region Copy files using only the path as a parameter
@@ -3381,6 +3424,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     hzdFsr3();
                 }
+                if (gameSelected == "Horizon Zero Dawn Remastered")
+                {
+                    hzdRemFsr3();
+                }
                 if (gameSelected == "Ghost of Tsushima")
                 {
                     gotFsr3();
@@ -3729,7 +3776,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region Cleanup Optiscaler FSR DLSS
-        public void CleanupOptiscalerFsrDlss(List<string> modList, string modName, bool removeDxgi = false, string searchFolderName = null)
+        public bool CleanupOptiscalerFsrDlss(List<string> modList, string modName, bool removeDxgi = false, string searchFolderName = null)
         {
             try
             {
@@ -3769,6 +3816,7 @@ namespace FSR3ModSetupUtilityEnhanced
                             Directory.Delete(modsPath, true);
                         }
                     }
+                    return true;
                 }
             }
             catch (Exception ex)
@@ -3776,6 +3824,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 MessageBox.Show("Error clearing Callisto mods files, please try again or do it manually.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Debug.WriteLine(ex);
             }
+            return false;
         }
         #endregion
 
@@ -4046,6 +4095,28 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
+                if (gameSelected == "Horizon Zero Dawn Remastered")
+                {
+                    #region Cleanup Others Mods Hzd Rem
+                    try
+                    {
+                        if (CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2 HZD Rem", false))
+                        {
+                            runReg("mods\\Temp\\disable signature override\\DisableSignatureOverride.reg");
+
+                            if (File.Exists(Path.Combine(selectFolder, "nvgx.dll")))
+                            {
+                                File.Delete(Path.Combine(selectFolder, "nvgx.dll"));
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error clearing Horizon Zero Dawn Remastered files, please try again or do it manually", "Error");
+                    }
+                    #endregion
+                }
+
                 if (gameSelected == "Red Dead Redemption")
                 {
                     #region Del Others Mods Red Dead Redemption
@@ -4056,7 +4127,13 @@ namespace FSR3ModSetupUtilityEnhanced
                         if (selectMod == "Others Mods RDR")
                         {
                             // Anti Stutter
-                            CleanupOthersMods("Anti Stutter", "AntiStutter.txt", selectFolder, removeAntiStutterRdr1);
+                            CleanupOthersMods("Anti Stutter","AntiStutter.txt", selectFolder, removeAntiStutterRdr1);
+
+                            // Intro Skip
+                            CleanupOthersMods("Intro Skip", "tune_d11generic.rpf", Path.Combine(selectFolder, "game"));
+
+                            //DS4 Buttons
+                            CleanupOthersMods("DS4 Buttons", "fonts.rpf", Path.Combine(selectFolder, "game"));
 
                             // Preset
                             if (Path.Exists(Path.Combine(selectFolder, "Red Dead Redemption 1.ini")) && MessageBox.Show("Do you want to remove the Graphics Preset? It is necessary to remove the ReShade files to completely uninstall it", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -5214,7 +5291,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void ShowSelectedNvngx(object sender, EventArgs e)
         {
-            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG", "Dlss 3.7.2", "Dlssg 3.7.2 FG", "Dlssd 3.7.2" };
+            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG", "Dlss 3.7.20", "Dlssg 3.7.2 FG", "Dlssd 3.7.2" };
             foreach (string opt in optNvngx)
             {
 

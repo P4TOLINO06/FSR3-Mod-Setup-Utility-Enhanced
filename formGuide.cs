@@ -557,6 +557,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "5. (For FSR 3.1/DLSS Optiscaler), if you cannot open the menu, select the desired upscaler in \"Upscaler Optiscaler\" and reinstall the mod."
             },
             {
+                "Horizon Zero Dawn Remastered",
+                "FSR 3.1.2 HZD Rem\r\n" +
+                "1 - Select FSR 3.1.2 HZD Rem and install.\r\n" +
+                "2 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
+                "3 - In the menu, select FSR 3.1.2.\r\n\r\n"
+            },
+
+            {
                 "Hitman 3",
                 "1 - Select a mod of your preference. (0.10.3 is recommended\r\n" +
                 "but if it doesn’t work, try 0.10.2)\r\n" +
@@ -1183,6 +1191,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Hogwarts Legacy","Hog.png"},
                 {"Horizon Forbidden West","HZDF.png"},
                 {"Horizon Zero Dawn","Hzd2.png" },
+                {"Horizon Zero Dawn Remastered","HzdRem2.png"},
                 {"Icarus","Icarus.png"},
                 {"Judgment","Jud.png"},
                 {"Jusant","Jusant.png"},
