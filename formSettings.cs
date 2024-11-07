@@ -71,12 +71,28 @@ namespace FSR3ModSetupUtilityEnhanced
                 return instance;
             }
         }
+        static async Task<string[]> RunPowerShellCommandAsync(string command)
+        {
+            using (var process = Process.Start(new ProcessStartInfo("powershell", $"-Command {command}")
+            {
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            }))
+            {
+                return await Task.Run(() =>
+                {
+                    return process?.StandardOutput.ReadToEnd().Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();
+                });
+            }
+        }
 
         public void AddItemlistMods(List<string> items,List<string>defaultMods = null)
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -676,16 +692,18 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Dlss Global Files
         List<string> del_dlss_global_rtx = new List<string>
         {
-            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better-3.0.dll",
-            "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.log", "libxess.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "unins000.dat", "winmm.dll","dlss-enabler.dll","dlss_rtx.txt"
+            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log",
+            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.log", "nvngx-wrapper.dll",
+            "nvngx.ini", "unins000.dat"
+
 
         };
 
         List<string> del_dlss_global_amd = new List<string>
         {
-            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log",
-            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.ini", "fakenvapi.log", "libxess.dll", "nvapi64.dll", "nvngx-wrapper.dll","dlss_amd.txt",
-            "nvngx.dll", "nvngx.ini", "nvngx_dlss.dll", "nvngx_dlssg.dll", "unins000.dat"
+            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log",
+            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.ini", "fakenvapi.log", "libxess.dll",
+            "nvapi64.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "unins000.dat"
 
         };
         #endregion
@@ -929,7 +947,6 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             catch (Exception e)
             {
-                Debug.Write(e);
                 MessageBox.Show("An error occurred in the Utility. Try closing and reopening it","Error",MessageBoxButtons.OK);
             }
         }
@@ -1386,7 +1403,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         }
 
-        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Crysis 3 Remastered","Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dying Light 2",
+        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Crysis 3 Remastered","Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dragon Age: Veilguard", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Horizon Zero Dawn Remastered", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Unknown 9: Awakening", "Wanted: Dead","Warhammer: Space Marine 2"};
 
@@ -1716,48 +1733,55 @@ namespace FSR3ModSetupUtilityEnhanced
                 await CopyFolder(pathOptiscalerDlss);
             }
         }
+        static async Task<string> GetActiveGpu()
+        {
+            try
+            {
+                var gpuInfo = (await RunPowerShellCommandAsync("Get-CimInstance -ClassName Win32_VideoController | Select-Object Caption, DriverDate, DriverVersion, AdapterRAM"))
+                    .Skip(2).Where(line => !string.IsNullOrWhiteSpace(line)).ToList();
+
+                var gpuUsages = (await RunPowerShellCommandAsync("Get-CimInstance -ClassName Win32_PerfFormattedData_Counters_GPUUsage | Select-Object GPUTime"))
+                    .Skip(2).Where(line => !string.IsNullOrWhiteSpace(line))
+                    .Select(line => int.TryParse(line.Trim(), out var usage) ? usage : 0).ToList();
+
+                if (!gpuInfo.Any()) return null;
+                if (gpuInfo.Count == 1) return gpuInfo[0].ToLower();
+
+                return gpuInfo[gpuUsages.IndexOf(gpuUsages.Max())].ToLower();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task varCopyGpu(string pathRtx, string pathAmd)
+        {
+            string gpuName = await GetActiveGpu();
+
+            await Task.Run(() =>
+            {
+
+                if (gpuName?.Contains("nvidia") == true || (gpuName is null && MessageBox.Show("Do you have an Nvidia GPU?", "GPU", MessageBoxButtons.YesNo) == DialogResult.Yes))
+                {
+                    CopyFolder(pathRtx);
+                }
+                else
+                {
+                    CopyFolder(pathAmd);
+                }
+
+                runReg("mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
+            });
+        }
 
         private void dlssGlobal()
         {
             string pathRtx = "mods\\DLSS_Global\\RTX";
-            string pathVarRtx = "mods\\DLSS_Global\\VarTxt\\RTX\\dlss_rtx.txt";
             string pathAmd = "mods\\DLSS_Global\\AMD";
-            string pathVarAmd = "mods\\DLSS_Global\\VarTxt\\AMD\\dlss_amd.txt";
 
-            string backupFolderDlss = Path.Combine(selectFolder, "Backup Dlss");
 
-            DialogResult gpuDlss = MessageBox.Show("Do you have a RTX GPU?.", "Dlss GPU", MessageBoxButtons.YesNo);
-
-            string pathGpu = gpuDlss == DialogResult.Yes ? pathRtx : pathAmd;
-
-            if (!Directory.Exists(backupFolderDlss))
-            {
-                Directory.CreateDirectory(backupFolderDlss);
-            }
-
-            var originFiles = Directory.GetFiles(selectFolder);
-            var dcFiles = Directory.GetFiles(pathGpu);
-
-            var dlssFileNames = originFiles.Select(Path.GetFileName).ToHashSet();
-            var dcFileNames = dcFiles.Select(Path.GetFileName).ToHashSet();
-
-            var commonFiles = dcFileNames.Intersect(dlssFileNames).ToList();
-
-            if (commonFiles.Any())
-            {
-                foreach (var fileName in commonFiles)
-                {
-                    string filesBackup = Path.Combine(pathGpu, fileName);
-                    string pathUser = Path.Combine(backupFolderDlss, fileName);
-
-                    File.Copy(filesBackup, pathUser, overwrite: true);
-                }
-            }
-
-            CopyFolder(pathGpu);
-
-            string pathVarToCopy = gpuDlss == DialogResult.Yes ? pathVarRtx : pathVarAmd;
-            File.Copy(pathVarToCopy, Path.Combine(selectFolder, gpuDlss == DialogResult.Yes ? "dlss_rtx.txt" : "dlss_amd.txt"), true);
+            varCopyGpu(pathRtx, pathAmd);
 
             runReg("mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
         }
@@ -1854,7 +1878,10 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task bdg3Fsr3()
         {
-            CopyFSR(folderBdg3);
+            await Task.Run(() =>
+            {
+                CopyFSR(folderBdg3);
+            });
 
             #region Copy ini file for mods folder Baldur's Gate 3 FSR3 V3 
             if (selectMod == "Baldur's Gate 3 FSR3 V3")
@@ -2385,6 +2412,36 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void dgVeilFsr3()
+        {
+            string amdDgVeil = "mods\\DLSS_Global\\For games that have native FG\\AMD";
+            string rtxDgVeil = "mods\\DLSS_Global\\For games that have native FG\\RTX";
+            string antiStutterDgVeil = "mods\\FSR3_Dg_Veil\\Anti Stutter\\Install DATV High CPU Priority.reg";
+            string varAntiStutterDgVeil = "mods\\FSR3_SH2\\Anti_Stutter\\AntiStutter.txt";
+            string removePurpleFilterDgVeil = "mods\\FSR3_Dg_Veil\\Remove_Purple_Tones";
+
+            if (selectMod == "FSR 3.1.2/DLSS DG Veil")
+            {
+                varCopyGpu(rtxDgVeil, amdDgVeil);
+            }
+
+            if (selectMod == "Others Mods DG Veil")
+            {
+                // Anti Stutter
+
+                if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Sttuter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFilesCustom4(varAntiStutterDgVeil, Path.Combine(selectFolder, "AntiStutter.txt"), antiStutterDgVeil);
+                }
+
+                // Remove Purple Filter
+                if (MessageBox.Show("Do you want to remove the purple color filter from the game?", "Purple Filter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFolder(removePurpleFilterDgVeil);
+                }
+            }
+        }
+
         public void untilFsr3()
         {
             string pathDocumentsUd = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -2392,6 +2449,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string antiStutterUd = "mods\\FSR3_UD\\Anti Stutter\\Install UD High CPU Priority.reg";
             string varAntiStutterUd = "mods\\FSR3_SH2\\Anti_Stutter\\AntiStutter.txt";
             string varPostProcessingUd = "mods\\FSR3_SH2\\Var\\PostProcessing.txt";
+
 
             if (selectMod == "Others Mods UD")
             {
@@ -3489,6 +3547,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     untilFsr3();
                 }
+                if (gameSelected == "Dragon Age: Veilguard")
+                {
+                    dgVeilFsr3();
+                }
                 if (gameSelected == "Red Dead Redemption")
                 {
                     rdr1Fsr3();
@@ -3701,13 +3763,15 @@ namespace FSR3ModSetupUtilityEnhanced
             catch { }
         }
 
-        public void CleanDlssGlobal(string modName)
+        public async Task CleanDlssGlobal(string modName)
         {
-            if (File.Exists(selectFolder + "\\dlss_rtx.txt"))
+            string gpuNameDlssGlobal = await GetActiveGpu(); 
+
+            if (gpuNameDlssGlobal?.Contains("nvidia") == true || (gpuNameDlssGlobal is null && MessageBox.Show("Do you have an Nvidia GPU?", "GPU", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
                 CleanupMod3(del_dlss_global_rtx, modName);
             }
-            else if (File.Exists(selectFolder + "\\dlss_amd.txt"))
+            else
             {
                 CleanupMod3(del_dlss_global_amd, modName);
             }
@@ -4214,6 +4278,31 @@ namespace FSR3ModSetupUtilityEnhanced
                         if (File.Exists(Path.Combine(selectFolder, "d3d12.dll")))
                         {
                             File.Delete(Path.Combine(selectFolder, "d3d12.dll"));
+                        }
+                    }
+
+                    #endregion
+                }
+
+                if (gameSelected == "Dragon Age: Veilguard")
+                {
+                    #region Cleanup Others Mods Dg Veil
+                    string removeAntiStutterDgVeil = "mods\\FSR3_Dg_Veil\\Anti Stutter\\Uninstall DATV High CPU Priority.reg";
+                    string[] restorePurpleFilter = { "ReShade.ini", "dxgi.dll", "Dark_Fantasy_LUT.ini" };
+
+                    if (selectMod == "FSR 3.1.2/DLSS DG Veil")
+                    {
+                        CleanDlssGlobal("FSR 3.1.2/DLSS DG Veil");
+                    }
+
+                    if (selectMod == "Others Mods DG Veil")
+                    {
+
+                        CleanupOthersMods("Others Mods DG Veil", "AntiStutter.txt", selectFolder, removeAntiStutterDgVeil);
+
+                        if (CleanupOthersMods2("Others Mods DG Veil", restorePurpleFilter, selectFolder, "Do you want to restore the Purple Filter?"))
+                        {
+                            Directory.Delete(Path.Combine(selectFolder, "reshade-shaders"), true);
                         }
                     }
 

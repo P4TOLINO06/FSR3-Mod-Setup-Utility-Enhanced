@@ -263,6 +263,12 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Activate Fake Nvidia GPU and Nvapi Results (Only for AMD and GTX)."
             },
             {
+                "Dragon Age: Veilguard",
+                "1 - Select FSR 3.1.1/DLSS FG DG Veil and install it.\r\n" +
+                "2 - In the game, press the 'Insert' key to open the menu.\r\n" +
+                "3 - In the menu, select 'FSR 3x' under 'Upscalers,' then select 'FSR 3.1.2' right below.\r\n\r\n"
+            },
+            {
                 "Dragons Dogma 2",
                 "1 - Select Deput8 in Mod Select and install.\r\n" +
                 "2 - Open the game after Deput8 is installed, a \"REFramework\" menu will appear. Click on it, go to Settings and Menu Key, click on Menu Key, and select the preferred key (the key is used to open and close the menu).\r\n" +
@@ -1166,6 +1172,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Dead Island 2","Dead2.png"},
                 {"Death Stranding Director's Cut","Ds.png"},
                 {"Deathloop","Df.png"},
+                {"Dragon Age: Veilguard","DgVeil2.png"},
                 {"Dragons Dogma 2","Dg2.png"},
                 {"Dying Light 2","Dl2.png"},
                 {"Elden Ring","Elden.png"},
