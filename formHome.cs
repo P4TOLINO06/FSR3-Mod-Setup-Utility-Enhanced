@@ -166,7 +166,8 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Unknown 9: Awakening","Unknown9.png"},
                     {"Until Dawn","Until.png"},
                     {"Wanted: Dead","Wanted.png"},
-                    {"Warhammer: Space Marine 2","SpaceMarine.png" }
+                    {"Warhammer: Space Marine 2","SpaceMarine.png"},
+                    {"Watch Dogs Legion","Legion.png"}
             };
             #endregion
 
@@ -247,6 +248,8 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> rdrList = new List<string> { "Others Mods RDR" };
             List<string> hzdRemList = new List<string> { "FSR 3.1.2 HZD Rem", "Others Mods HZD Rem" };
             List<string> dgVeilList = new List<string> { "FSR 3.1.2/DLSS DG Veil", "Others Mods DG Veil" };
+            List<string> dl2List = new List<string> { "FSR 3.1.2 Custom DL2" };
+            List<string> requiemList = new List<string> { "FSR 3.1.1 Custom Requiem" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
             #endregion;
@@ -286,7 +289,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 lopList,
                 rdrList,
                 hzdRemList,
-                dgVeilList
+                dgVeilList,
+                dl2List,
+                requiemList
             };
             #endregion
 
@@ -452,6 +457,16 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Dragon Age: Veilguard")
             {
                 formSettings.Instance.AddItemlistMods(dgVeilList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "A Plague Tale Requiem")
+            {
+                formSettings.Instance.AddItemlistMods(requiemList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Dying Light 2")
+            {
+                formSettings.Instance.AddItemlistMods(dl2List, modsDefaultList);
             }
 
             else

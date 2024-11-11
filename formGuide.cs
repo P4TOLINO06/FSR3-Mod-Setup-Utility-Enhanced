@@ -92,9 +92,15 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "A Plague Tale Requiem",
+                "Default Mods\r\n"+
                 "1 - Select a mod of your choice (0.10.3 is recommended).\r\n"+
                 "2 - Check the box for Fake Nvidia GPU (AMD/GTX) and Nvapi Results (GTX). (If the mod doesn't work for AMD, also check Nvapi Results).\r\n"+
-                "3 - To fix hub flickering, enable DLSS and Frame Generation and play for a few seconds, then disable DLSS and leave only Frame Generation enabled."
+                "3 - To fix hub flickering, enable DLSS and Frame Generation and play for a few seconds, then disable DLSS and leave only Frame Generation enabled.\r\n\r\n"+
+
+                "FSR 3.1.1 Custom Requiem\r\n"+
+                "1 - Select FSR 3.1.1 Requiem and install.\r\n" +
+                "2 - In the game, press the 'Insert' key to open the menu.\r\n" +
+                "3 - In the menu, select an Upscaler, check 'Frame Gen' and 'Hud Fix' boxes.\r\n\r\n"
             },
             {
                 "A Quiet Place: The Road Ahead",
@@ -279,16 +285,24 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Dying Light 2",
+                "Default Mods\n"+
                 "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
                 "2 - Enable Fake Nvidia GPU (only for AMD and GTX).\r\n" +
                 "3 - In the game, select any upscaler and activate Frame Generation.\r\n" +
                 "4 - If you experience any flickering or ghosting, go to Video > Advanced Settings and decrease the Lod Range Multiplier.\r\n\r\n"+
+               
                 "FSR 3.1.1/DLSS FG Custom\r\n" +
                 "1 - Select FSR 3.1.1/DLSS FG Custom and install it.\r\n" +
                 "2 - Select Frame Generation within the game.\r\n" +
-                "3 - Press the \"Insert\" key to open the menu.\n\r" +
-                "4 - In the menu, select the upscaler you prefer.\n\r" +
-                "5 - This mod cannot fix the HUD error, but you can reduce it slightly by decreasing the HUD size and enabling motion blur."
+                "3 - Press the \"Insert\" key to open the menu.\r\n" +
+                "4 - In the menu, select the upscaler you prefer.\r\n" +
+                "5 - This mod cannot fix the HUD error, but you can reduce it slightly by decreasing the HUD size and enabling motion blur.\r\n\r\n"+
+
+                "FSR 3.1.2\r\n"+
+                "1 - Select the FSR 3.1.2 DL2 Custom and install.\r\n" +
+                "2 - In the game, select FSR 2 and press the 'Insert' key to open the menu.\r\n" +
+                "3 - In the menu, select FSR 3.x and select FSR 2.3.2 right below.\r\n" +
+                "4 - Check the 'Hud Fix' box to remove glitches.\r\n\r\n"
             },
             {
                 "Elden Ring",
@@ -1085,7 +1099,15 @@ namespace FSR3ModSetupUtilityEnhanced
               "2 - In ReShade, select SpaceMarine2.exe (or select the game .exe), DirectX 10/11/12, click on 'Browse,' find the fileWarhammer 40000 Space Marine 2.ini (the path should look something like client_pc\\root\\bin\\pc), select it, then click on 'Uncheck All' and 'Next.'\r\n" +
               "3 - In the game, press the 'Insert' key to open the menu and check the options you want.\r\n" +
               "4 -For the mod to work, you need to select the folder where the Warhammer 40000 Space Marine 2.ini file is located; the path is similar to client_pc\\root\\bin\\pc."
-            }
+            },
+            {
+                "Watch Dogs Legion",
+                "1 - Select the FSR 3.1.1/DLSS Optiscaler FG Custom and install.\r\n" +
+                "2 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
+                "3 - In the menu, select an Upscaler, check 'Frame Gen' and 'Fix HUD' boxes.\r\n" +
+                "4 - To install DLSS 3.7.20, click the 'Nvngx.dll' button and select 'DLSS 3.7.20'.\r\n\r\n"
+            },
+
         };
 
         #endregion
@@ -1236,7 +1258,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"The Casting Of Frank Stone","FrankStone2.png" },
                 {"Unknown 9: Awakening","Unknown92.png" },
                 {"Until Dawn","Until2.png" },
-                {"Warhammer: Space Marine 2","SpaceMarine2.png"}
+                {"Warhammer: Space Marine 2","SpaceMarine2.png"},
+                {"Watch Dogs Legion","Legion2.png"}
             };
 
             #endregion

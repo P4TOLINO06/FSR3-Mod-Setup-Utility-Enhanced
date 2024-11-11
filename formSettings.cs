@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1778,10 +1778,19 @@ namespace FSR3ModSetupUtilityEnhanced
         private void dlssGlobal()
         {
             string pathRtx = "mods\\DLSS_Global\\RTX";
+            string pathRtxReshade = "mods\\DLSS_Global\\RTX_Reshade";
             string pathAmd = "mods\\DLSS_Global\\AMD";
+            string pathAmdReshade = "mods\\DLSS_Global\\AMD_Reshade";
 
-
-            varCopyGpu(pathRtx, pathAmd);
+            if (Path.Exists(Path.Combine(selectFolder, "reshade-shaders")))
+            {
+                varCopyGpu(pathRtxReshade, pathAmdReshade);
+            }
+            else
+            {
+                varCopyGpu(pathRtx, pathAmd);
+            }
+            
 
             runReg("mods\\FSR3_LOTF\\RTX\\LOTF_DLLS_3_RTX\\DisableNvidiaSignatureChecks.reg");
         }
@@ -2766,6 +2775,24 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void dl2Fsr3()
+        {
+            string customDl2 = "mods\\FSR3_DL2\\Custom_FSR";
+            
+            if (selectMod == "FSR 3.1.2 Custom DL2")
+            {
+                CopyFolder(customDl2);
+            }
+        }
+
+        public void requiemFsr3()
+        {
+            if (selectMod == "FSR 3.1.1 Custom Requiem")
+            {
+                optiscalerFsrDlss();
+            }
+        }
+
         public void outlawsFsr3()
         {
             string presetOutlaws = "mods\\FSR3_Outlaws\\Preset\\Outlaws2.ini";
@@ -3547,6 +3574,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     untilFsr3();
                 }
+                if (gameSelected == "Dying Light 2")
+                {
+                    dl2Fsr3();
+                }
+                if(gameSelected == "A Plague Tale Requiem")
+                {
+                    requiemFsr3();
+                }
                 if (gameSelected == "Dragon Age: Veilguard")
                 {
                     dgVeilFsr3();
@@ -3776,6 +3811,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 CleanupMod3(del_dlss_global_amd, modName);
             }
 
+            if (Path.Exists(Path.Combine(selectFolder, "reshade-shaders")) && Path.Exists(Path.Combine(selectFolder, "d3d12.dll")))
+            {
+                File.Delete(Path.Combine(selectFolder, "d3d12.dll"));
+            }
+
             runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
 
             RestoreBackup("Backup Dlss");
@@ -3836,6 +3876,39 @@ namespace FSR3ModSetupUtilityEnhanced
             }
 
             return filesRemoved;
+        }
+        #endregion
+
+        #region Cleanup Others Mods 3
+        public void CleanupOthersMods3(string modName, string[] fileNames, string destPath, string delFolder = null)
+        {
+            bool filesRemoved = false;
+            List<string> filesToRemove = new List<string>();
+
+            foreach (string fileName in fileNames)
+            {
+                string filePath = Path.Combine(destPath, fileName);
+                if (File.Exists(filePath))
+                {
+                    filesToRemove.Add(filePath);
+                }
+            }
+
+            if (filesToRemove.Count > 0)
+            {
+                foreach (string filePath in filesToRemove)
+                {
+                    File.Delete(filePath);
+                    filesRemoved = true;
+                }
+            }
+
+            if (delFolder is not null && Path.Exists(Path.Combine(destPath,delFolder)))
+            {
+                Directory.Delete(Path.Combine(destPath, delFolder), true);
+            }
+
+            MessageBox.Show("Mod removed successfully", "Sucess");
         }
         #endregion
 
@@ -4026,6 +4099,32 @@ namespace FSR3ModSetupUtilityEnhanced
                     #region Remove Others Mods Metro
 
                     CleanupOthersMods("Graphics Preset", "DefinitiveEdition.ini", selectFolder);
+
+                    #endregion
+                }
+
+                if (gameSelected == "A Plague Tale Requiem")
+                {
+                    #region Remove Custom Mods Requiem
+                    if (selectMod == "FSR 3.1.1 Custom Requiem")
+                    {
+                        CleanupMod3(del_optiscaler, "FSR 3.1.1 Custom Requiem");
+                    }
+                    #endregion
+                }
+
+                if (gameSelected == "Dying Light 2")
+                {
+                    #region Remove Custom Mod Dl2
+                    string[] del_custom_dl2 = {
+                        "amd_fidelityfx_vk.dll", "dxgi.dll", "nvngx.dll",
+                        "nvngx.ini", "Uniscaler.asi", "uniscaler.config.toml", "winmm.dll", "winmm.ini"
+                    };
+
+                    if (selectMod == "FSR 3.1.2 Custom DL2")
+                    {
+                        CleanupOthersMods3("FSR 3.1.2 Custom DL2", del_custom_dl2, selectFolder, "uniscaler");
+                    }
 
                     #endregion
                 }
