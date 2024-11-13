@@ -88,11 +88,11 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void AddItemlistMods(List<string> items,List<string>defaultMods = null)
+        public void AddItemlistMods(List<string> items, List<string> defaultMods = null)
         {
-            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden"};
+            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI","Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -677,7 +677,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region Folder Nvngx
-           Dictionary<string, string> folderNvngx = new Dictionary<string, string>
+        Dictionary<string, string> folderNvngx = new Dictionary<string, string>
             {
                 { "NVNGX Version 1", "mods\\Temp\\nvngx_global\\nvngx\\nvngx.ini" },
                 { "Xess 1.3", "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll" },
@@ -762,8 +762,16 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
+        #region Clean Optiscaler Custom Files 2
+        List<string> del_optiscaler_custom_2 = new List<string>
+        { 
+            "amd_fidelityfx_dx12.dll", "dxgi.dll", "nvngx.dll", "nvngx.ini",
+            "Uniscaler.asi", "uniscaler.config.toml", "winmm.dll", "winmm.ini"
+        };
+    #endregion
+
         #region Clean Uniscaler Default
-        List<string> del_uni_files = new List<string>
+    List<string> del_uni_files = new List<string>
         {
             "Uniscaler.asi","winmm.dll","winmm.ini","uniscaler.config.toml"
         };
@@ -2192,6 +2200,12 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathTcp = "mods\\FSR3_Callisto\\Reshade\\TCP Cinematic\\TCP.ini";
             string pathRealLife = "mods\\FSR3_Callisto\\Reshade\\The Real Life\\The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini";
             string optiscalerCallisto = "mods\\FSR3_Callisto\\Optiscaler";
+            string fsrCustomCallisto = "mods\\FSR3_DL2\\Custom_FSR";
+
+            if (selectMod == "FSR 3.1.2/DLSS Custom Callisto")
+            {
+                CopyFolder2(fsrCustomCallisto, selectFolder);
+            }
 
             if (selectMod == "FSR 3.1.1/DLSS Callisto")
             {
@@ -2675,6 +2689,47 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     CopyFilesCustom3(hlVarAntiStutter, Path.Combine(selectFolder, "AntiStutter.txt"), "File Not Found", hlAntiStutter);
                 }
+            }
+        }
+
+        public bool drrFsr3()
+        {
+            string dlssToFsrDrr = "mods\\FSR3_DRR\\FSR3FG\\Dlss_to_Fsr";
+            string dinputDrr = "mods\\FSR3_DRR\\FSR3FG\\Dinput\\dinput8.dll";
+            string dlssDrr = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
+            string pathPluginsDrr = Path.Combine(selectFolder, "reframework\\plugins");
+
+            if (selectMod == "Dinput8 DRR")
+            {
+                File.Copy(dinputDrr, Path.Combine(selectFolder, "dinput8.dll"),true);
+            }
+
+            if (selectMod == "FSR 3.1 FG DRR")
+            {
+                if (Path.Exists(Path.Combine(selectFolder, "reframework\\plugins")) && Path.Exists(Path.Combine(selectFolder, "dinput8.dll")))
+                {
+                    CopyFolder2(dlssToFsrDrr, Path.Combine(selectFolder, "reframework\\plugins"));
+                    File.Copy(dlssDrr, Path.Combine(selectFolder, "nvngx_dlss.dll"),true);
+                }
+                else
+                {
+                    MessageBox.Show("First, install the \"Dinput8 DRR\" before installing the main mod. See the Dead Rising guide in the Guide to learn how to install the mod.", "Not Found");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void srFsr3()
+        {
+            string tcpSr = "mods\\FSR3_SR\\TCP";
+            string optiscalerSr = "mods\\Addons_mods\\Optiscaler DLSS";
+
+            if (selectMod == "FSR 3.1.2/DLSS Custom SR")
+            {
+                CopyFolder2(tcpSr, selectFolder);
+                CopyFolder2(optiscalerSr, selectFolder);
+                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
             }
         }
 
@@ -3582,6 +3637,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     requiemFsr3();
                 }
+                if (gameSelected == "Dead Rising Remaster")
+                {
+                    if (!drrFsr3())
+                    {
+                        return;
+                    }
+                }
+                if (gameSelected == "Saints Row")
+                {
+                    srFsr3();
+                }
                 if (gameSelected == "Dragon Age: Veilguard")
                 {
                     dgVeilFsr3();
@@ -3880,7 +3946,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region Cleanup Others Mods 3
-        public void CleanupOthersMods3(string modName, string[] fileNames, string destPath, string delFolder = null)
+        public void CleanupOthersMods3(string modName, string[] fileNames, string destPath, bool viewMessage = true ,string delFolder = null)
         {
             bool filesRemoved = false;
             List<string> filesToRemove = new List<string>();
@@ -3908,7 +3974,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 Directory.Delete(Path.Combine(destPath, delFolder), true);
             }
 
-            MessageBox.Show("Mod removed successfully", "Sucess");
+            if (!viewMessage)
+            {
+                MessageBox.Show("Mod removed successfully", "Sucess");
+            }
+            
         }
         #endregion
 
@@ -4079,13 +4149,11 @@ namespace FSR3ModSetupUtilityEnhanced
                     #region Remove others mods
 
                     CleanupOthersMods("TCP", "TCP.ini",selectFolder);
-                    CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",selectFolder);
-                   
+                    CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",selectFolder); 
 
-                    if (selectMod == "FSR 3.1.1/DLSS Callisto")
-                    {
-                        CleanupMod3(del_callisto_custom, "FSR 3.1.1/DLSS Callisto");
-                    }
+                    CleanupMod3(del_callisto_custom, "FSR 3.1.1/DLSS Callisto");
+
+                    CleanupMod3(del_optiscaler_custom_2, "FSR 3.1.2/DLSS Custom Callisto");
                     #endregion
                 }
 
@@ -4123,7 +4191,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     if (selectMod == "FSR 3.1.2 Custom DL2")
                     {
-                        CleanupOthersMods3("FSR 3.1.2 Custom DL2", del_custom_dl2, selectFolder, "uniscaler");
+                        CleanupOthersMods3("FSR 3.1.2 Custom DL2", del_custom_dl2, selectFolder, true, "uniscaler");
                     }
 
                     #endregion
@@ -4553,6 +4621,33 @@ namespace FSR3ModSetupUtilityEnhanced
                         CleanupMod3(del_optiscaler, "FSR 3.1.1/DLSS Quiet Place");
                         runReg("mods\\Temp\\disable signature override\\DisableSignatureOverride.reg");
                     }
+                    #endregion
+                }
+
+                if (gameSelected ==  "Dead Rising Remaster")
+                {
+                    #region Cleanup Custom Mos Drr
+                    string[] delDlssFgDrr = { "dlssg_to_fsr3_amd_is_better.dll", "version.dll" };
+                    if (Path.Exists(Path.Combine(selectFolder, "reframework\\plugins\\dlssg_to_fsr3_amd_is_better.dll")))
+                    {
+                        CleanupOthersMods3("FSR 3.1 FG DRR", delDlssFgDrr, Path.Combine(selectFolder, "reframework\\plugins"), false);
+
+                        if (Path.Exists(Path.Combine(selectFolder, "dinput8.dll")))
+                        {
+                            File.Delete(Path.Combine(selectFolder, "dinput8.dll"));
+                        }
+                    }            
+                    #endregion
+                }
+
+                if (gameSelected == "Saints Row")
+                {
+                    #region Cleanup Custom Mods SR
+                    string[] delTcpSr = { "dlsstweaks.ini", "DLSSTweaksConfig.exe", "FSRBridge.asi", "winmm.dll", "winmm.ini", "nvngx.dll" };
+                    
+                    CleanupMod3(del_optiscaler_custom_2, "FSR 3.1.2/DLSS Custom SR");
+                    CleanupOthersMods3("FSR 3.1.2/DLSS Custom SR", delTcpSr, selectFolder, false);
+                    
                     #endregion
                 }
 

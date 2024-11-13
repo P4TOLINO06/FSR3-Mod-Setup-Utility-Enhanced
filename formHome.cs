@@ -80,6 +80,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Cyberpunk 2077","Cyber.png"},
                     {"Dakar Desert Rally","Dakar.png"},
                     {"Dead Island 2","Dead2.png"},
+                    {"Dead Rising Remaster","Drr.png"},
                     {"Dead Space (2023)","DeadSpace.png"},
                     {"Death Stranding Director's Cut","Ds.png"},
                     {"Deathloop","Df.png"},
@@ -219,7 +220,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
             List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss DD2", "FSR 3.1/DLSS DD2 ALL GPU", "FSR 3.1/DLSS DD2 NVIDIA" };
-            List<string> callistoList = new List<string> { "The Callisto Protocol FSR3", "FSR 3.1.1/DLSS Callisto","0.10.4","Uniscaler V3"};
+            List<string> callistoList = new List<string> { "The Callisto Protocol FSR3", "FSR 3.1.1/DLSS Callisto", "FSR 3.1.2/DLSS Custom Callisto", "0.10.4","Uniscaler V3"};
             List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
             List<string> cyberList = new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1" };
             List<string> gotList = new List<string> { "Ghost of Tsushima FG DLSS","Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1"};
@@ -250,6 +251,8 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> dgVeilList = new List<string> { "FSR 3.1.2/DLSS DG Veil", "Others Mods DG Veil" };
             List<string> dl2List = new List<string> { "FSR 3.1.2 Custom DL2" };
             List<string> requiemList = new List<string> { "FSR 3.1.1 Custom Requiem" };
+            List<string> drrList = new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" };
+            List<string> srList = new List<string> { "FSR 3.1.2/DLSS Custom SR" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
             #endregion;
@@ -291,7 +294,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 hzdRemList,
                 dgVeilList,
                 dl2List,
-                requiemList
+                requiemList,
+                drrList,
+                srList
             };
             #endregion
 
@@ -467,6 +472,16 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Dying Light 2")
             {
                 formSettings.Instance.AddItemlistMods(dl2List, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Dead Rising Remaster")
+            {
+                formSettings.Instance.AddItemlistMods(drrList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Saints Row")
+            {
+                formSettings.Instance.AddItemlistMods(srList, modsDefaultList);
             }
 
             else

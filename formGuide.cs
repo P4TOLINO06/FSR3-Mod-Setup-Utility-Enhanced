@@ -248,6 +248,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - It's not necessary to activate an upscaler for this game for the mod to work, so enable it if you want."
             },
             {
+                "Dead Rising Remaster",
+                "1 - Select Dinput8 DRR and install.\r\n" +
+                "2 - Open the game until the 'Re Framework' menu appears, once it appears, close the game and return to the Utility.\r\n" +
+                "3 - Select FSR 3.1 FG DRR and install.\r\n" +
+                "4 - In the game, select DLSS and Frame Gen.\r\n" +
+                "5 - The mod already includes DLSS 3.7.20.\r\n\r\n"
+            },
+
+            {
                 "Death Stranding Director's Cut",
                 "Before installing the mod, open the game and disable FidelityFx Cas.\n" +
                 "1. Select Unicaler V4.\n" +
@@ -849,11 +858,17 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Saints Row",
+                "Default Mods\n"+
                 "1 - Select a mod of your preference (0.10.3 is recommended).\n" +
-                "2 - Choose the path for the overlay, under Epic Games\n" +
-                "   Overlay, and select \"Disable.\"\n" +
+                "2 - Choose the path for the overlay, under Epic Games Overlay, and select \"Disable.\"\n" +
                 "3 - Start the game in DX12.\n" +
-                "4 - Inside the game, select FSR.\n"
+                "4 - Inside the game, select FSR.\n\n"+
+
+                 "FSR 3.1.2/DLSS Custom SR\n"+
+                "1 - Select FSR 3.1.2/DLSS Custom SR and install.\r\n" +
+                "2 - Check the 'Enable Signature Over' box.\r\n" +
+                "3 - In the game, select FSR 2 and press the 'Insert' key to open the menu.\r\n" +
+                "4 - In the menu, check the 'Frame Gen' and 'Hud Fix' boxes, increase 'Hud Fix' until the HUD is corrected."
             },
             {
                 "Sackboy: A Big Adventure",
@@ -1015,6 +1030,13 @@ namespace FSR3ModSetupUtilityEnhanced
               "The Callisto Protocol Fsr3\r\n"+
               "1 - Select The Callisto Protocol Fsr3.\r\n" +
               "2 - Check the Fake Nvidia GPU box and install.\r\n\r\n" +
+
+              "FSR 3.1.2/DLSS Custom Callisto\n" +
+              "1 - Select FSR 3.1.2/DLSS Custom Callisto and install.\r\n" +
+              "2 - Check the 'Enable Signature Over' box.\r\n" +
+              "3 - In the game, select FSR 2 and press the 'Insert' key to open the menu.\r\n" +
+              "4 - In the menu, check the 'Frame Gen' and 'Fix Hud' boxes, select 2 in 'Fix Hud'.\r\n" +
+              "5 - Disable MSI Afterburner.\r\n\r\n" +
 
               "Optiscaler Callisto\r\n" +
               "1 - Select FSR 3.1.1/DLSS Callisto and install it.\r\n" +
@@ -1192,6 +1214,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Dakar Desert Rally","Dakar.png"},
                 {"Dead Space Remake","DeadSpace.png"},
                 {"Dead Island 2","Dead2.png"},
+                {"Dead Rising Remaster","Drr2.png"},
                 {"Death Stranding Director's Cut","Ds.png"},
                 {"Deathloop","Df.png"},
                 {"Dragon Age: Veilguard","DgVeil2.png"},
