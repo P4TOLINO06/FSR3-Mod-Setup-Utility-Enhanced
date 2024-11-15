@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -683,7 +683,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Xess 1.3", "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll" },
                 { "Dlss 3.7.0", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll" },
                 { "Dlss 3.7.0 FG", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll" },
-                { "Dlss 3.7.20", "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll"},
+                { "Dlss 3.8.10", "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll"},
                 { "Dlssg 3.7.2 FG", "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll" },
                 { "Dlssd 3.7.2", "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll" }
             };
@@ -2375,6 +2375,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string presetRdr1 = "mods\\FSR3_RDR1\\Preset\\Red Dead Redemption.ini";
             string introSkipRdr1 = "mods\\FSR3_RDR1\\Intro Skip";
             string ds4ButtonsRdr1 = "mods\\FSR3_RDR1\\DS4";
+            string unlockFpsRdr1 = "mods\\FSR3_RDR1\\Unlock FPS";
 
             if (selectMod.Contains("FSR 3.1.1/DLSS Optiscaler") || selectMod.Contains("FSR 3.1.1/DLSS FG Custom"))
             {
@@ -2398,6 +2399,12 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (MessageBox.Show("Do you want to install the Graphics Preset? ReShade is required to complete the mod installation. See the guide for instructions on how to install it.", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     File.Copy(presetRdr1, Path.Combine(selectFolder, "Red Dead Redemption 1.ini"), true);
+                }
+
+                // Unlock FPS
+                if (MessageBox.Show("Do you want to install the Unlock FPS?", "Unlock FPS", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFolder(unlockFpsRdr1);
                 }
 
                 if (Path.Exists(Path.Combine(selectFolder, "game")))
@@ -2690,6 +2697,28 @@ namespace FSR3ModSetupUtilityEnhanced
                     CopyFilesCustom3(hlVarAntiStutter, Path.Combine(selectFolder, "AntiStutter.txt"), "File Not Found", hlAntiStutter);
                 }
             }
+        }
+
+        public void gtaTrilogyFsr3()
+        {
+            string optiscalerGta = "mods\\FSR3_Gta_Trilogy\\Optiscaler_GTA";
+            string dlssGta = "mods\\FSR3_Gta_Trilogy\\DLSS\\nvngx.dll";
+            string pathDefaultDlssGta = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..\\Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64\\nvngx_dlss.dll"));
+        
+            if (selectMod == "FSR 3.1.2/DLSS Custom GTA")
+            {
+                CopyFolder(optiscalerGta);
+
+                if (Path.Exists(pathDefaultDlssGta))
+                {
+                    File.Copy(pathDefaultDlssGta, Path.Combine(selectFolder, "nvngx.dll"), true);
+                }
+                else
+                {
+                    File.Copy(dlssGta, Path.Combine(selectFolder, "nvngx.dll"),true);
+                }
+            }
+
         }
 
         public bool drrFsr3()
@@ -3109,7 +3138,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (selectMod == "Others Mods HZD Rem")
             {
-                if (MessageBox.Show("Do you want to update the game's upscalers? Xess 1.3.1 and DLSS 3.7.20 will be installed", "Upscalers", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to update the game's upscalers? Xess 1.3.1 and DLSS 3.8.10 will be installed", "Upscalers", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     File.Copy(xessHzdRem, Path.Combine(selectFolder, "libxess.dll"), true);
                     File.Copy(dlssHzdRem, Path.Combine(selectFolder, "nvngx_dlss.dll"), true);
@@ -3637,6 +3666,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     requiemFsr3();
                 }
+                if (gameSelected == "GTA Trilogy")
+                {
+                    gtaTrilogyFsr3();
+                }
                 if (gameSelected == "Dead Rising Remaster")
                 {
                     if (!drrFsr3())
@@ -3974,7 +4007,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 Directory.Delete(Path.Combine(destPath, delFolder), true);
             }
 
-            if (!viewMessage)
+            if (viewMessage)
             {
                 MessageBox.Show("Mod removed successfully", "Sucess");
             }
@@ -4350,10 +4383,11 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (gameSelected == "Red Dead Redemption")
                 {
-                    #region Del Others Mods Red Dead Redemption
+                    #region Cleanup Others Mods Red Dead Redemption
                     try
                     {
                         string removeAntiStutterRdr1 = "mods\\FSR3_RDR1\\Anti Stutter\\RDR_PerformanceBoostDISABLE.reg";
+                        string[] delUnlockFpsRdr = { "dinput8.dll", "SUWSF.asi", "SUWSF.ini" };
 
                         if (selectMod == "Others Mods RDR")
                         {
@@ -4365,6 +4399,9 @@ namespace FSR3ModSetupUtilityEnhanced
 
                             //DS4 Buttons
                             CleanupOthersMods("DS4 Buttons", "fonts.rpf", Path.Combine(selectFolder, "game"));
+
+                            // Unlock FPS 
+                            CleanupOthersMods3("Unlock FPS", delUnlockFpsRdr, selectFolder, false);
 
                             // Preset
                             if (Path.Exists(Path.Combine(selectFolder, "Red Dead Redemption 1.ini")) && MessageBox.Show("Do you want to remove the Graphics Preset? It is necessary to remove the ReShade files to completely uninstall it", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -4383,6 +4420,22 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         MessageBox.Show("Error clearing Red Dead Redemption files, please try again or do it manually", "Error", MessageBoxButtons.OK);
                     }
+                    #endregion
+                }
+
+                if (gameSelected == "TEKKEN 8")
+                {
+                    #region Cleanup Unlock FPS Tekken 8
+                    string[] delUnlockFpsTekken8 = { "TekkenOverlay.exe", "Tekken8Overlay.dll", "Tekken7Overlay.dll" };
+
+                    CleanupOthersMods3("Unlock FPS Tekken 8", delUnlockFpsTekken8, selectFolder);
+                    #endregion
+                }
+
+                if (gameSelected == "GTA Trilogy")
+                {
+                    #region Del Custom Mod GTA Trilogy
+                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2/DLSS Custom GTA", true);
                     #endregion
                 }
 
@@ -5574,7 +5627,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void ShowSelectedNvngx(object sender, EventArgs e)
         {
-            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG", "Dlss 3.7.20", "Dlssg 3.7.2 FG", "Dlssd 3.7.2" };
+            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG", "Dlss 3.8.10", "Dlssg 3.7.2 FG", "Dlssd 3.7.2" };
             foreach (string opt in optNvngx)
             {
 

@@ -440,6 +440,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - Inside the game, under AntiAliasing, select DLSS or FSR."
             },
             {
+                "GTA Trilogy",
+                "FSR 3.1.2/DLSS Custom GTA\r\n" +
+                "1 - Select FSR 3.1.2/DLSS Custom GTA and install.\r\n" +
+                "2 - Check the 'Enable Signature Over' box.\r\n" +
+                "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
+                "4 - In the menu, select an upscaler, check 'Frame Gen' and 'Fix Hud', then select 2 in 'Fix Hud'.\r\n" +
+                "5 - The installation method is the same for the three GTA versions.\r\n\r\n"
+            },
+            {
                 "GTA V",
                 "Single Player and Multiplayer\r\n" +
                 "1 - Select Dinput 8 and install. (only single player)\r\n" +
@@ -487,11 +496,19 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Ghostwire: Tokyo",
+                "Default Mod\r\n"+
                 "1- Select Uniscaler V3\r\n" +
                 "2 - Check the Fake Nvidia GPU box (AMD/GTX). If you can't see DLSS in the game, also check the Nvapi Results box.\r\n" +
                 "3 - Check the Nvngx.dll box and select Default, then check the Enable Signature Override box.\r\n" +
                 "4 - In the game, select DLSS to enable Frame Generation.\r\n" +
-                "5 - To fix the HUD glitch, switch between the upscalers (FSR, DLSS, etc.) until the HUD stops flickering.\r\n"
+                "5 - To fix the HUD glitch, switch between the upscalers (FSR, DLSS, etc.) until the HUD stops flickering.\r\n\r\n"+
+
+                "FSR 3.1.1/DLSS FG Custom\r\n"+
+                "1 - Select FSR 3.1.1/DLSS FG Custom and install.\r\n" +
+                "2 - Check the 'Enable Signature' box.\r\n" +
+                "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
+                "4 - In the menu, select 'FSR 3x' and right below select 'FSR 3.1.1', check 'Frame Gen' and 'Hud Fix'.\r\n" +
+                "5 - Disable all FPS Overlay. If your game is from Epic Games, select 'Auto Search' in 'Epic Games Overlay' and click 'Disable'.\r\n\r\n"
             },
             {
                 "God Of War 4",
@@ -1230,6 +1247,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Final Fantasy XVI","Ffxvi2.png"},
                 {"F1 2022","F1.png"},
                 {"F1 2023","F1_23.png"},
+                {"GTA Trilogy","GtaTrilogy2.png"},
                 {"GTA V","GtaV.png"},
                 {"Ghost of Tsushima","GhostT.png"},
                 {"Ghostrunner 2","Ghost2.png"},

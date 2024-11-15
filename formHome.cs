@@ -102,6 +102,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Ghostwire: Tokyo","Ghostwire.png"},
                     {"God Of War 4","Gow4.png"},
                     {"God of War Ragnarök","GowRag2.png"},
+                    {"GTA Trilogy","GtaTrilogy.png"},
                     {"GTA V","GtaV.png"},
                     {"Hellblade 2","Hell2.png" },
                     {"Hellblade: Senua's Sacrifice","Hell.png"},
@@ -253,6 +254,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> requiemList = new List<string> { "FSR 3.1.1 Custom Requiem" };
             List<string> drrList = new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" };
             List<string> srList = new List<string> { "FSR 3.1.2/DLSS Custom SR" };
+            List<string> gtaTrilogyList = new List<string> { "FSR 3.1.2/DLSS Custom GTA" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
             #endregion;
@@ -296,7 +298,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 dl2List,
                 requiemList,
                 drrList,
-                srList
+                srList,
+                gtaTrilogyList
             };
             #endregion
 
@@ -482,6 +485,11 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Saints Row")
             {
                 formSettings.Instance.AddItemlistMods(srList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "GTA Trilogy")
+            {
+                formSettings.Instance.AddItemlistMods(gtaTrilogyList, modsDefaultList);
             }
 
             else

@@ -49,10 +49,11 @@
             listGames.FlatStyle = FlatStyle.Flat;
             listGames.FormattingEnabled = true;
             listGames.IntegralHeight = false;
-            listGames.Items.AddRange(new object[] { "Select FSR Version", "A Plague Tale Requiem", "A Quiet Place: The Road Ahead", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark", "Assassin's Creed Mirage", "Assassin's Creed Valhalla", "Atomic Heart", "Banishers: Ghosts of New Eden", "Black Myth: Wukong", "Blacktail", "Baldur's Gate 3", "Bright Memory: Infinite", "Brothers: A Tale of Two Sons Remake", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss: Rockay City", "Crysis 3 Remastered", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Dead Rising Remaster", "Dead Space (2023)", "Death Stranding Director's Cut", "Deathloop", "Dragon Age: Veilguard", "Dragons Dogma 2", "Dying Light 2", "Elden Ring", "Everspace 2", "Evil West", "Final Fantasy XVI", "F1 2022", "F1 2023", "FIST: Forged In Shadow Torch", "Flintlock: The Siege Of Dawn", "Fort Solis", "Forza Horizon 5", "GTA V", "Ghostrunner 2", "Ghostwire: Tokyo", "Ghost of Tsushima", "God Of War 4", "God of War Ragnarök", "Hellblade: Senua's Sacrifice", "Hellblade 2", "High On Life", "Hitman 3", "Horizon Forbidden West", "Horizon Zero Dawn", "Horizon Zero Dawn Remastered", "Hogwarts Legacy", "Icarus", "Judgment", "Jusant", "Kena: Bridge of Spirits", "Layers of Fear", "Lies of P", "Lords of the Fallen", "Loopmancer", "Manor Lords", "Martha Is Dead", "Marvel's Guardians of the Galaxy", "Marvel's Spider-Man Miles Morales", "Marvel's Spider-Man Remastered", "Metro Exodus Enhanced Edition", "MOTO GP 24", "Monster Hunter Rise", "Nightingale", "Nobody Wants To Die", "Outpost: Infinity Siege", "Pacific Drive", "Palworld", "Ratchet & Clank - Rift Apart", "Ready or Not", "Red Dead Redemption", "Red Dead Redemption 2", "Remnant II", "Returnal", "Ripout", "RoboCop: Rogue City", "Saints Row", "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Shadow of the Tomb Raider", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor", "Star Wars Outlaws", "Steelrising", "STARFIELD", "TEKKEN 8", "Test Drive Unlimited Solar Crown", "The Callisto Protocol", "The Chant", "The Casting Of Frank Stone", "The Invincible", "The Last of Us Part I", "The Medium", "The Outer Worlds: Spacer's Choice Edition", "The Thaumaturge", "The Witcher 3", "Uncharted Legacy of Thieves Collection", "Unknown 9: Awakening", "Until Dawn", "Wanted: Dead", "Warhammer: Space Marine 2", "Watch Dogs Legion" });
-            listGames.Location = new Point(3, 3);
+            listGames.Items.AddRange(new object[] { "Select FSR Version", "A Plague Tale Requiem", "A Quiet Place: The Road Ahead", "Achilles Legends Untold", "Alan Wake 2", "Alone in the Dark", "Assassin's Creed Mirage", "Assassin's Creed Valhalla", "Atomic Heart", "Banishers: Ghosts of New Eden", "Black Myth: Wukong", "Blacktail", "Baldur's Gate 3", "Bright Memory: Infinite", "Brothers: A Tale of Two Sons Remake", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss: Rockay City", "Crysis 3 Remastered", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Dead Rising Remaster", "Dead Space (2023)", "Death Stranding Director's Cut", "Deathloop", "Dragon Age: Veilguard", "Dragons Dogma 2", "Dying Light 2", "Elden Ring", "Everspace 2", "Evil West", "Final Fantasy XVI", "F1 2022", "F1 2023", "FIST: Forged In Shadow Torch", "Flintlock: The Siege Of Dawn", "Fort Solis", "Forza Horizon 5", "GTA Trilogy", "GTA V", "Ghostrunner 2", "Ghostwire: Tokyo", "Ghost of Tsushima", "God Of War 4", "God of War Ragnarök", "Hellblade: Senua's Sacrifice", "Hellblade 2", "High On Life", "Hitman 3", "Horizon Forbidden West", "Horizon Zero Dawn", "Horizon Zero Dawn Remastered", "Hogwarts Legacy", "Icarus", "Judgment", "Jusant", "Kena: Bridge of Spirits", "Layers of Fear", "Lies of P", "Lords of the Fallen", "Loopmancer", "Manor Lords", "Martha Is Dead", "Marvel's Guardians of the Galaxy", "Marvel's Spider-Man Miles Morales", "Marvel's Spider-Man Remastered", "Metro Exodus Enhanced Edition", "MOTO GP 24", "Monster Hunter Rise", "Nightingale", "Nobody Wants To Die", "Outpost: Infinity Siege", "Pacific Drive", "Palworld", "Ratchet & Clank - Rift Apart", "Ready or Not", "Red Dead Redemption", "Red Dead Redemption 2", "Remnant II", "Returnal", "Ripout", "RoboCop: Rogue City", "Saints Row", "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Shadow of the Tomb Raider", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor", "Star Wars Outlaws", "Steelrising", "STARFIELD", "TEKKEN 8", "Test Drive Unlimited Solar Crown", "The Callisto Protocol", "The Chant", "The Casting Of Frank Stone", "The Invincible", "The Last of Us Part I", "The Medium", "The Outer Worlds: Spacer's Choice Edition", "The Thaumaturge", "The Witcher 3", "Uncharted Legacy of Thieves Collection", "Unknown 9: Awakening", "Until Dawn", "Wanted: Dead", "Warhammer: Space Marine 2", "Watch Dogs Legion" });
+            listGames.Location = new Point(5, 6);
+            listGames.Margin = new Padding(5, 6, 5, 6);
             listGames.Name = "listGames";
-            listGames.Size = new Size(210, 23);
+            listGames.Size = new Size(357, 38);
             listGames.TabIndex = 1;
             listGames.SelectedIndexChanged += buttonSelectGame_Click;
             listGames.Enter += listGames_Enter;
@@ -66,9 +67,10 @@
             listFSR.FlatStyle = FlatStyle.Flat;
             listFSR.FormattingEnabled = true;
             listFSR.Items.AddRange(new object[] { "SDK", "2.0", "2.1", "2.2", "RDR2" });
-            listFSR.Location = new Point(2, 3);
+            listFSR.Location = new Point(3, 6);
+            listFSR.Margin = new Padding(5, 6, 5, 6);
             listFSR.Name = "listFSR";
-            listFSR.Size = new Size(52, 23);
+            listFSR.Size = new Size(86, 38);
             listFSR.TabIndex = 3;
             listFSR.Visible = false;
             listFSR.SelectedIndexChanged += listFSR_SelectedIndexChanged;
@@ -79,9 +81,10 @@
             labelSelectGame.FlatStyle = FlatStyle.Flat;
             labelSelectGame.Font = new Font("Lucida Sans Unicode", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelSelectGame.ForeColor = Color.Gainsboro;
-            labelSelectGame.Location = new Point(3, 0);
+            labelSelectGame.Location = new Point(5, 0);
+            labelSelectGame.Margin = new Padding(5, 0, 5, 0);
             labelSelectGame.Name = "labelSelectGame";
-            labelSelectGame.Size = new Size(210, 48);
+            labelSelectGame.Size = new Size(360, 96);
             labelSelectGame.TabIndex = 2;
             labelSelectGame.Text = "SELECT GAME";
             labelSelectGame.TextAlign = ContentAlignment.MiddleCenter;
@@ -96,8 +99,9 @@
             panelBG.Controls.Add(flowLayoutPanel1);
             panelBG.Dock = DockStyle.Fill;
             panelBG.Location = new Point(0, 0);
+            panelBG.Margin = new Padding(5, 6, 5, 6);
             panelBG.Name = "panelBG";
-            panelBG.Size = new Size(951, 450);
+            panelBG.Size = new Size(1630, 900);
             panelBG.TabIndex = 2;
             // 
             // panelSelectFSR
@@ -106,9 +110,10 @@
             panelSelectFSR.AutoSize = true;
             panelSelectFSR.BackColor = Color.Transparent;
             panelSelectFSR.Controls.Add(listFSR);
-            panelSelectFSR.Location = new Point(608, 52);
+            panelSelectFSR.Location = new Point(1042, 104);
+            panelSelectFSR.Margin = new Padding(5, 6, 5, 6);
             panelSelectFSR.Name = "panelSelectFSR";
-            panelSelectFSR.Size = new Size(54, 29);
+            panelSelectFSR.Size = new Size(93, 88);
             panelSelectFSR.TabIndex = 6;
             panelSelectFSR.Visible = false;
             // 
@@ -118,9 +123,10 @@
             panel1.AutoSize = true;
             panel1.BackColor = Color.Black;
             panel1.Controls.Add(listGames);
-            panel1.Location = new Point(386, 52);
+            panel1.Location = new Point(662, 104);
+            panel1.Margin = new Padding(5, 6, 5, 6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(216, 29);
+            panel1.Size = new Size(370, 88);
             panel1.TabIndex = 5;
             // 
             // flowLayoutPanel1
@@ -130,20 +136,22 @@
             flowLayoutPanel1.BackColor = Color.Black;
             flowLayoutPanel1.BackgroundImageLayout = ImageLayout.None;
             flowLayoutPanel1.Controls.Add(labelSelectGame);
-            flowLayoutPanel1.Location = new Point(386, 3);
+            flowLayoutPanel1.Location = new Point(662, 6);
+            flowLayoutPanel1.Margin = new Padding(5, 6, 5, 6);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(216, 49);
+            flowLayoutPanel1.Size = new Size(370, 98);
             flowLayoutPanel1.TabIndex = 4;
             // 
             // formHome
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(951, 450);
+            ClientSize = new Size(1630, 900);
             Controls.Add(panelBG);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5, 6, 5, 6);
             Name = "formHome";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
