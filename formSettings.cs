@@ -90,7 +90,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void AddItemlistMods(List<string> items, List<string> defaultMods = null)
         {
-            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat", "Unlock FPS Elden" };
+            List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
@@ -381,7 +381,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Disable Anti Cheat", new string[] {@"mods\Elden_Ring_FSR3\ToggleAntiCheat" } },
             {"Elden Ring FSR3", new string[] {@"mods\Elden_Ring_FSR3\EldenRing_FSR3" } },
             {"Elden Ring FSR3 V2", new string[] {@"mods\Elden_Ring_FSR3\EldenRing_FSR3 v2" } },
-            {"Elden Ring FSR3 V3", new string[]{@"mods\Elden_Ring_FSR3\EldenRing_FSR3 v3"}},
+            {"FSR 3.1.2/DLSS FG Custom Elden", new string[]{@"mods\Elden_Ring_FSR3\EldenRing_FSR3 v3"}},
             {"Unlock FPS Elden", new string[]{@"mods\\Elden_Ring_FSR3\\Unlock_Fps"}}
         };
         #endregion
@@ -2285,13 +2285,31 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void eldenFsr3()
+        public async Task eldenFsr3()
         {
-            CopyFSR(folderEldenRing);
+            string updateDlssElden = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
+            string updateFsrElden = "mods\\Temp\\FSR_Update\\amd_fidelityfx_dx12.dll";
+
+            if (folderEldenRing.ContainsKey(selectMod))
+            {
+                CopyFSR(folderEldenRing);
+            }
+
+            await Task.Delay((2000));
 
             if (selectMod == "Umlock FPS Elden")
             {
                 CopyFolder("mods\\Elden_Ring_FSR3\\Unlock_Fps");
+            }
+
+            if (selectMod == "FSR 3.1.2/DLSS FG Custom Elden")
+            {
+                if (Path.Exists(Path.Combine(selectFolder, "ERSS2\\bin")))
+                {
+                    File.Copy(updateFsrElden, Path.Combine(selectFolder, "ERSS2\\bin\\amd_fidelityfx_dx12.dll"), true);
+                    File.Copy(updateDlssElden, Path.Combine(selectFolder, "ERSS2\\bin\\nvngx_dlss.dll"), true);
+                }
+
             }
         }
 
@@ -2696,6 +2714,43 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     CopyFilesCustom3(hlVarAntiStutter, Path.Combine(selectFolder, "AntiStutter.txt"), "File Not Found", hlAntiStutter);
                 }
+            }
+        }
+
+        public void acMirageFsr3()
+        {
+            string introSkipAcMirage = "mods\\FSR3_Ac_Mirage\\Intro_skip";
+
+            if (selectMod == "FSR 3.1.2/DLSS Custom Mirage")
+            {
+                optiscalerFsrDlss();
+            }
+
+            if (selectMod == "Others Mods Mirage")
+            {
+                if (Path.Exists(Path.Combine(selectFolder, "videos")))
+                {
+                    // Intro Skip
+                    if (MessageBox.Show("Do you want to install the Intro Skip?", "Intro Skip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {      
+                        Directory.CreateDirectory(Path.Combine(selectFolder, "Backup Ac Mirage"));
+                        CopyFolder3(Path.Combine(selectFolder, "videos"), Path.Combine(selectFolder, "Backup Ac Mirage"));
+                        CopyFolder(introSkipAcMirage);
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("If you want to install the Intro Skip, select the game\'s .exe folder", "Not Found");
+                }
+            }
+        }
+
+        public void awRemasterFsr3()
+        {
+            if (selectMod == "FSR 3.1.2/DLSS Custom AW Remaster")
+            {
+                optiscalerFsrDlss();
             }
         }
 
@@ -3553,7 +3608,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     optiscaler_custom();
                 }
-                if (folderEldenRing.ContainsKey(selectMod) || selectMod == "Unlock FPS Elden")
+                if (gameSelected == "Elden Ring")
                 {
                     eldenFsr3();
                 }
@@ -3670,13 +3725,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     gtaTrilogyFsr3();
                 }
-                if (gameSelected == "Dead Rising Remaster")
-                {
-                    if (!drrFsr3())
-                    {
-                        return;
-                    }
-                }
                 if (gameSelected == "Saints Row")
                 {
                     srFsr3();
@@ -3705,6 +3753,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     outlawsFsr3();                 
                 }
+                if (gameSelected == "Alan Wake Remastered")
+                {
+                    awRemasterFsr3();
+                }
+                if (gameSelected == "Assassin's Creed Mirage")
+                {
+                    acMirageFsr3();
+                }
+
                 if (gameSelected == "God Of War 4")
                 {
                     gow4Fsr3();
@@ -3712,6 +3769,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "God of War Ragnarök")
                 {
                     gowRagFsr3();
+                }
+
+                if (gameSelected == "Dead Rising Remaster")
+                {
+                    if (!drrFsr3())
+                    {
+                        return;
+                    }
                 }
 
                 if (gameSelected == "Dragons Dogma 2")
@@ -4704,6 +4769,36 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
+                if (gameSelected == "Alan Wake Remastered")
+                {
+                    #region Cleanup Mod Custom Aw Remastered
+                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2/DLSS Custom AW Remaster");
+                    #endregion
+                }
+
+                if (gameSelected == "Assassin's Creed Mirage")
+                {
+                    #region Cleanup Mod Custom Ac Mirage
+                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2/DLSS Custom Mirage", true);
+
+                    try
+                    {
+                        if (Path.Exists(Path.Combine(selectFolder, "Backup Ac Mirage")))
+                        {
+                            if (MessageBox.Show("Do you want to remove the Intro Skip", "Intro Skip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                CopyFolder2(Path.Combine(selectFolder, "Backup Ac Mirage"), Path.Combine(selectFolder, "videos"));
+                                Directory.Delete(Path.Combine(selectFolder, "Backup Ac Mirage"), true);
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error clearing Assassin\'s Creed Mirage mods files, please try again or do it manuall", "Error");
+                    }
+                    #endregion
+                }
+
                 if (gameSelected == "Hogwarts Legacy")
                 {
                     #region Cleanup Others Mods Hogwarts Legacy
@@ -4937,10 +5032,9 @@ namespace FSR3ModSetupUtilityEnhanced
                             MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
                         }
                     }
-                    else if (selectMod == "Elden Ring FSR3 V3")
+                    else if (selectMod == "FSR 3.1.2/DLSS FG Custom Elden")
                     {
                         CleanupMod(del_elden_custom, folderEldenRing);
-                        Directory.Delete(selectFolder + "\\ERSS2",true);
                     }
                     else
                     {

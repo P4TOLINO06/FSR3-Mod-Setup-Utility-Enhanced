@@ -60,6 +60,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"A Plague Tale Requiem","APTL.png"},
                     {"A Quiet Place: The Road Ahead","QuietPlace.png"},
                     {"Achilles Legends Untold","Achilles.png"},
+                    {"Alan Wake Remastered","AwRemaster.png"},
                     {"Alan Wake 2","AW2.png"},
                     {"Alone in the Dark","Alone.png"},
                     {"Assassin's Creed Mirage","Ac.png"},
@@ -216,7 +217,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             #region Games List
             List<string> rdr2B2List = new List<string> { "RDR2 Build_2", "RDR2 Build_4", "RDR2 Mix", "RDR2 Mix 2", "Red Dead Redemption V2", "RDR2 Non Steam FSR3", "RDR2 FSR 3.1 FG" };
-            List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2", "Elden Ring FSR3 V3", "Disable Anti Cheat","Unlock FPS Elden" };
+            List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat","Unlock FPS Elden" };
             List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1", "Others Mods AW2" };
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
@@ -255,6 +256,8 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> drrList = new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" };
             List<string> srList = new List<string> { "FSR 3.1.2/DLSS Custom SR" };
             List<string> gtaTrilogyList = new List<string> { "FSR 3.1.2/DLSS Custom GTA" };
+            List<string> awRemasterList = new List<string> { "FSR 3.1.2/DLSS Custom AW Remaster" };
+            List<string> acMirageList = new List<string> { "FSR 3.1.2/DLSS Custom Mirage", "Others Mods Mirage" };
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
             #endregion;
@@ -299,7 +302,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 requiemList,
                 drrList,
                 srList,
-                gtaTrilogyList
+                gtaTrilogyList,
+                awRemasterList,
+                acMirageList
             };
             #endregion
 
@@ -490,6 +495,16 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "GTA Trilogy")
             {
                 formSettings.Instance.AddItemlistMods(gtaTrilogyList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Assassin's Creed Mirage")
+            {
+                formSettings.Instance.AddItemlistMods(acMirageList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Alan Wake Remastered")
+            {
+                formSettings.Instance.AddItemlistMods(awRemasterList, modsDefaultList);
             }
 
             else

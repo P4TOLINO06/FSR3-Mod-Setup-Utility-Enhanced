@@ -59,6 +59,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - In-game, select DLSS."
             },
             {
+                "Alan Wake Remastered",
+                "FSR 3.1.2/DLSS Custom AW Remaster\r\n" +
+                "1 - Select FSR 3.1.2/DLSS Custom AW Remaster and install.\r\n" +
+                "2 - Check the Enable Signature Over box.\r\n" +
+                "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
+                "4 - In the menu, select FSR 3x and FSR 3.1.2 right below; if you have an Nvidia GPU, select DLSS.\r\n" +
+                "5 - Check the Frame Gen and Hud Fix boxes; in Hud Fix, select 2.\r\n\r\n"
+            },
+            {
                 "Alan Wake 2",
                 "RTX\r\n 1 - Select Alan Wake 2 FG RTX and install it.\r\n"+
                 "2 - In the game, select DLSS and enable Frame Generation.\r\n"+
@@ -110,6 +119,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - Select an upscaler of your choice.\r\n" +
                 "5 - Check the Frame Gen and Hud Fix boxes.\r\n" +
                 "6 - If you can't see DLSS, enable Hardware Acceleration in Graphics Settings on Windows.\r\n\r\n"
+            },
+            {
+                "Assassin\'s Creed Mirage",
+                "FSR 3.1.2/DLSS Mirage\r\n"+
+                "1 - Select FSR 3.1.2/DLSS Mirage and install.\r\n"+
+                "2 - Check the Enable Signature Over box.\r\n" +
+                "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
+                "4 - In the menu, select FSR 3x and FSR 3.1.2 right below; if you have an Nvidia GPU, select DLSS to use DLSS 3.8.10.\r\n" +
+                "5 - Check the Frame Gen and Hud Fix boxes; in Hud Fix, select 2.\r\n" +
+                "6 - If you are using ReShade, select FSR 3.1.1/DLSS FG Custom and follow the steps above."
             },
             {
                 "Assassin's Creed Valhalla",
@@ -315,11 +334,18 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Elden Ring",
+                "Default Mod\r\n"+
                 "1 - Select \"Disable AntiCheat\" in the Select Mod and choose \"Yes\" in the anticheat deactivation confirmation window. Select the folder where the game exe is located, otherwise, it will not be possible to deactivate the anticheat. (Steam Only)\r\n" +
                 "2 - Select \"Elden Ring FSR3\" in Select Mod and install it.\r\n" +
                 "3 - Inside the game, press the \"Home\" key to open the mod menu. In \"Upscale Type,\" select the Upscaler according to your GPU (DLSS RTX or FSR3 non-RTX), then check the box \"Enable Frame Generation\" below.\r\n" +
                 "• To remove Full Screen borders, select \"Full Screen\" in the game before installing the mod. If there is screen overflow after mod installation, select full screen -> window -> full screen.\r\n" +
-                "• Enable AntiAliasing and Motion Blur; this mod will skip the actual rendering of motion blur, so don't worry if you don't like motion blur. The game only needs it to render motion vectors."
+                "• Enable AntiAliasing and Motion Blur; this mod will skip the actual rendering of motion blur, so don't worry if you don't like motion blur. The game only needs it to render motion vectors.\r\n\r\n"+
+
+                "FSR 3.1.2/DLSS FG Custom Elden\r\n"+
+                "1 - Select FSR 3.1.2/DLSS FG Custom Elden and install.\r\n" +
+                "2 - For Steam users, add the following command in 'Launch Options' before starting the game: cmd /c start eldenring.exe & rem %command%\r\n" +
+                "3 - In the game, press the 'Home' key to open the menu.\r\n" +
+                "4 - In the menu, select 'Frame Gen' and an 'Upscaler'."
             },
             {
                 "Everspace 2",
@@ -1206,7 +1232,9 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 {"Initial Information","Sett.png"},
                 {"Achilles Legends Untold","Aut.png"},
+                {"Alan Wake Remastered", "AwRemaster2.png"},
                 {"Alan Wake 2","AW2.png"},
+                {"Assassin\'s Creed Mirage","AcMirage2.png"},
                 {"Optiscaler Method","Opti.png"},
                 {"Optiscaler FSR 3.1.1/DLSS","Opti.png"},
                 {"Add-on Mods","Addon.png" },
