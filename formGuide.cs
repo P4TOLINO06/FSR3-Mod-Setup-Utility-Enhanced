@@ -128,7 +128,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
                 "4 - In the menu, select FSR 3x and FSR 3.1.2 right below; if you have an Nvidia GPU, select DLSS to use DLSS 3.8.10.\r\n" +
                 "5 - Check the Frame Gen and Hud Fix boxes; in Hud Fix, select 2.\r\n" +
-                "6 - If you are using ReShade, select FSR 3.1.1/DLSS FG Custom and follow the steps above."
+                "6 - If you are using ReShade, select FSR 3.1.1/DLSS FG Custom and follow the steps above.\r\n\r\n" +
+
+                "Preset\r\n" +
+                "1. Install ReShade.\r\n" +
+                "2. In ReShade, select the game’s .exe and click next.\r\n" +
+                "3. Select DX 10/11/12 and click next.\r\n" +
+                "4. Click \"Browse\" and locate the file ACMirage lighting and package.ini that was installed in the folder selected in the Utility and click Next.\r\n" +
+                "5. In the game, press the Home key to open the menu and select the options you prefer.\r\n" +
+                "6. Install the Preset first and then the FSR3 mod if you plan to use it."
             },
             {
                 "Assassin's Creed Valhalla",
@@ -304,12 +312,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Dragons Dogma 2",
-                "1 - Select Deput8 in Mod Select and install.\r\n" +
-                "2 - Open the game after Deput8 is installed, a \"REFramework\" menu will appear. Click on it, go to Settings and Menu Key, click on Menu Key, and select the preferred key (the key is used to open and close the menu).\r\n" +
-                "3 - Close the game, in Utility select Uniscaler_DD2 in Mod Version and install (it is recommended to select \"Yes\" when the message to delete the shader file appears).\r\n" +
-                "4 - Inside the game, select FSR3 to enable the mod.\r\n" +
-                "• It is recommended to turn off any type of upscaler before opening the game with the mod.\r\n" +
-                "• To fix the HUD, select Dynamic Resolution and turn off FSR3 (after turning it on for the first time), this will slightly decrease the FPS."
+                "Dinput8 DD2 and FSR 3.1.1/DLSS FG Custom\r\n" +
+                "1 - Select Dinput8 DD2 in Mod Select and install.\r\n" +
+                "2 - Open the game after Dinput8 is installed. A 'REFramework' menu will appear. Click on it, go to Settings and Menu Key, click on Menu Key, and select the preferred key (the key is used to open and close the menu).\r\n" +
+                "3 - Close the game, in Utility select FSR 3.1.1/DLSS FG Custom and install (it is recommended to select 'Yes' when the message to delete the shader file appears).\r\n" +
+                "4 - In the game, select DLSS and Frame Gen.\r\n" +
+                "5 - It is possible that the game will crash the first 2 or 3 times after the mod is installed, so just close the game and open it again."
             },
             {
                 "Dying Light 2",
@@ -699,6 +707,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - If you don't notice Frame Generation, select Replace DLSS FG in 'Mod Operates'.\r\n" +
                 "4 - In the game, select Frame Generation and DLSS or FSR.\r\n"
             },
+            {
+                "Lego Horizon Adventures",
+                "1. Select the FSR 3.1.1/DLSS FG Custom and install.\r\n" +
+                "2. In the game, select DLSS and Frame Gen.\r\n" +
+                "3. If you want to use FSR 3.1.2, press the \"Insert\" key and select FSR 3x."
+            },
+
             {
                 "Lies of P",
                 "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
@@ -1295,6 +1310,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Jusant","Jusant.png"},
                 {"Kena: Bridge of Spirits","KENA.png"},
                 {"Layers of Fear","Layers.png"},
+                {"Lego Horizon Adventures","LegoHzd2.png"},
                 {"Lies of P","Lop.png"},
                 {"Loopmancer","Loopmancer.png"},
                 {"Lords of the Fallen","Lotf.png"},

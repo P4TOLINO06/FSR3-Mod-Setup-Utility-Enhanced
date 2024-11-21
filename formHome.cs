@@ -118,6 +118,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Jusant","Jusant.png"},
                     {"Kena: Bridge of Spirits","KENA.png"},
                     {"Layers of Fear","Layers.png"},
+                    {"Lego Horizon Adventures","LegoHzd.png"},
                     {"Lies of P","Lop.png"},
                     {"Loopmancer","Loopmancer.png"},
                     {"Lords of the Fallen","Lotf.png"},
@@ -221,7 +222,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1", "Others Mods AW2" };
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
             List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
-            List<string> dd2List = new List<string> { "Dinput8", "Uniscaler_DD2", "Uniscaler V2", "Uniscaler V3", "Uniscaler + Xess + Dlss DD2", "FSR 3.1/DLSS DD2 ALL GPU", "FSR 3.1/DLSS DD2 NVIDIA" };
+            List<string> dd2List = new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom"};
             List<string> callistoList = new List<string> { "The Callisto Protocol FSR3", "FSR 3.1.1/DLSS Callisto", "FSR 3.1.2/DLSS Custom Callisto", "0.10.4","Uniscaler V3"};
             List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
             List<string> cyberList = new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1" };
@@ -258,6 +259,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> gtaTrilogyList = new List<string> { "FSR 3.1.2/DLSS Custom GTA" };
             List<string> awRemasterList = new List<string> { "FSR 3.1.2/DLSS Custom AW Remaster" };
             List<string> acMirageList = new List<string> { "FSR 3.1.2/DLSS Custom Mirage", "Others Mods Mirage" };
+            List<string> legoHzdList = new List<string> { "Others Mods Lego HZD"};
             var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
             #endregion;
@@ -304,7 +306,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 srList,
                 gtaTrilogyList,
                 awRemasterList,
-                acMirageList
+                acMirageList,
+                legoHzdList
             };
             #endregion
 
@@ -505,6 +508,11 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Alan Wake Remastered")
             {
                 formSettings.Instance.AddItemlistMods(awRemasterList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Lego Horizon Adventures")
+            {
+                formSettings.Instance.AddItemlistMods(legoHzdList, modsDefaultList);
             }
 
             else

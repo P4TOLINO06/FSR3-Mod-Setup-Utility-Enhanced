@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -440,60 +440,6 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Baldur's Gate 3 FSR3", new string[] { "mods\\FSR3_BDG" } },
             { "Baldur's Gate 3 FSR3 V2", new string[] { "mods\\FSR3_BDG", "mods\\FSR3_BDG_2" } },
             { "Baldur's Gate 3 FSR3 V3", new string[] { "mods\\FSR3_BDG", "mods\\FSR3_BDG_2" } }
-        };
-        #endregion
-
-        #region Folder DD2
-        Dictionary<string, string[]> folderDd2 = new Dictionary<string, string[]>
-        {
-            { "Dinput8", new string[] { "mods\\FSR3_DD2\\dinput" } },
-            { "Uniscaler_DD2", new string[] { "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod" } },
-            { "Uniscaler + Xess + Dlss DD2", new string[] { "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod" } },
-            { "Uniscaler V2", new string[] { "mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod" } },
-            { "Uniscaler V3", new string[]{  "mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
-        };
-        #endregion
-
-        #region Clean DD2 FSR3
-        List<string> del_dd2Fsr3 = new List<string>
-        {
-            "dinput8.dll","Uniscaler.asi","winmm.dll","winmm.ini","uniscaler.config.toml"
-        };
-
-        List<string> del_dd2_all_gpu = new List<string>
-        {
-        "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "DELETE_OPENVR_API_DLL_IF_YOU_WANT_TO_USE_OPENXR",
-        "dinput8.dll", "DisableNvidiaSignatureChecks.reg", "DisableSignatureOverride.reg", "dlss-enabler-upscaler.dll",
-        "dlss-enabler.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "EnableSignatureOverride.reg",
-        "libxess.dll", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "openvr_api.dll",
-        "openxr_loader.dll", "reframework_revision.txt", "RestoreNvidiaSignatureChecks.reg", "unins000.dat", "_nvngx.dll"
-        };
-
-        List<string> del_dd2_nv = new List<string>
-        {
-            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "DELETE_OPENVR_API_DLL_IF_YOU_WANT_TO_USE_OPENXR",
-            "dinput8.dll", "DisableSignatureOverride.reg", "dlss-enabler-upscaler.dll", "dlss-enabler.dll",
-            "dlss-enabler.log", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll",
-            "EnableSignatureOverride.reg", "libxess.dll", "nvngx-wrapper.dll", "nvngx.dll",
-            "nvngx.ini", "openvr_api.dll", "openxr_loader.dll", "reframework_revision.txt",
-            "unins000.dat", "unins000.exe"
-        };
-
-        #endregion
-
-        #region Backup DD2
-        List<string> bkup_dd2_all = new List<string>
-        {
-            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dinput8.dll", "dxgi.dll",
-            "libxess.dll", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll",
-            "nvngx.ini", "openvr_api.dll", "openxr_loader.dll", "_nvngx.dll"
-        };
-
-        List<string> bkup_dd2_nv = new List<string>
-        {
-            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dinput8.dll", "dxgi.dll",
-            "libxess.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "openvr_api.dll", "openxr_loader.dll",
-            "unins000.dat"
         };
         #endregion
 
@@ -1160,7 +1106,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     { "folderAw2", folderAw2 },
                     { "folderBdg3", folderBdg3 },
-                    { "folderDd2", folderDd2 },
                     { "folderEldenRing", folderEldenRing },
                     { "origins_2_2_folder",origins_2_2_folder },
                     { "folderGtaV",folderGtaV },
@@ -1412,7 +1357,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Crysis 3 Remastered","Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dragon Age: Veilguard", "Dying Light 2",
-            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Horizon Zero Dawn Remastered", "Kena: Bridge of Spirits", "Lies of P", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
+            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Horizon Zero Dawn Remastered", "Kena: Bridge of Spirits", "Lies of P", "Lego Horizon Adventures", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Unknown 9: Awakening", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
@@ -2079,119 +2024,26 @@ namespace FSR3ModSetupUtilityEnhanced
             #endregion
         }
 
-        public async Task dd2Fsr3()
+        public void dd2Fsr3()
         {
-            #region CopyWinmm and delete shader.cache2
-            void CopyWinmm()
-            {
-                if (selectMod != "FSR 3.1/DLSS DD2 NVIDIA" || selectMod != "FSR 3.1/DLSS DD2 ALL GPU")
-                {
-                    if (Directory.Exists(selectFolder + "\\_storage_"))
-                    {
-                        string pathWinmm = "mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod\\winmm.dll";
-                        File.Copy(pathWinmm, selectFolder + "\\_storage_\\winmm.dll", true);
-                    }
-                }
+            string dinputDd2 = "mods\\FSR3_DD2\\dinput";
 
-                if (File.Exists(selectFolder + "\\shader.cache2"))
-                {
-                    DialogResult varCache = MessageBox.Show("Do you want to delete the shader.cache2 file ? Not deleting this file may result in bugs and game crashes.", "Shader Cache", MessageBoxButtons.YesNo);
-                    if (varCache == DialogResult.Yes)
-                    {
-                        File.Delete(selectFolder + "\\shader.cache2");
-                    }
-                }
-            }
-            #endregion
-
-            if (selectMod != "Dinput8" && File.Exists(selectFolder + "\\dinput8.dll"))
+            if (selectMod == "Dinput8 DD2")
             {
-                CopyFSR(folderDd2);
-                CopyWinmm();
+                CopyFolder(dinputDd2);
             }
-            else if (selectMod == "Dinput8")
+            else
             {
-                CopyFSR(folderDd2);
-            }
-            if (selectMod != "FSR 3.1/DLSS DD2 NVIDIA" && selectMod != "FSR 3.1/DLSS DD2 ALL GPU")
-            {
-                if (!File.Exists(selectFolder + "\\dinput8.dll"))
-                {
-                    MessageBox.Show("Install \"Dinput8\" before installing the main mod", "Dinput8", MessageBoxButtons.OK);
-                    return;
-                }
+                MessageBox.Show("If you haven\'t installed the dinput8.dll file, check the DD2 guide in the FSR Guide for installation instructions. It is required for the mod to work", "Guide", MessageBoxButtons.OK);
             }
 
-            #region FSR 3.1/DLSS DD2 NVIDIA and FSR 3.1/DLSS DD2 ALL GPU
-            if (selectMod == "FSR 3.1/DLSS DD2 ALL GPU")
+            if (Path.Exists(Path.Combine(selectFolder, "shader.cache2")))
             {
-                if (!Directory.Exists(selectFolder + "\\BackupDD2"))
+                if (MessageBox.Show("Do you want to remove the sharder_cache2? It is necessary for the mod to work", "Cache", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Directory.CreateDirectory(selectFolder + "\\BackupDD2");
+                    File.Delete(Path.Combine(selectFolder, "shader.cache2"));
                 }
-
-                foreach(string dd2Bkup in Directory.GetFiles(selectFolder))
-                {
-                    string dd2FileName = Path.GetFileName(dd2Bkup);
-
-                    if (bkup_dd2_all.Contains(dd2FileName))
-                    {
-                        string fullPathDd2 = Path.Combine(selectFolder,"BackupDD2\\" + dd2FileName);
-
-                        File.Copy(dd2Bkup, fullPathDd2, true); 
-                    }
-                }
-
-                DialogResult fsr31_dd2 = MessageBox.Show("Would you like to use FSR 3.1? The game might have some graphical bugs", "FSR 3.1", MessageBoxButtons.YesNo);
-
-                if (fsr31_dd2 == DialogResult.Yes)
-                {
-                    ConfigIni2("Dx12Upscaler","fsr31", "mods\\Temp\\Optiscaler_DD2\\nvngx.ini", "Upscalers");
-                }
-                else
-                {
-                    ConfigIni2("Dx12Upscaler", "xess", "mods\\Temp\\Optiscaler_DD2\\nvngx.ini", "Upscalers");
-                }
-
-                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\Optiscaler_DD2");
-                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\Re_Framework");
-                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\DD2_DLSS");
-
-                File.Copy("mods\\Temp\\Optiscaler_DD2\\nvngx.ini", selectFolder + "\\nvngx.ini",true);
-                File.Copy("mods\\FSR2FSR3_DD2_FSR31\\Optiscaler_DD2\\nvngx.ini", "mods\\Temp\\Optiscaler_DD2\\nvngx.ini",true);
-
-                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
-                runReg("mods\\FSR2FSR3_DD2_FSR31\\DD2_DLSS\\DisableNvidiaSignatureChecks.reg");
             }
-
-            if (selectMod == "FSR 3.1/DLSS DD2 NVIDIA")
-            {
-
-                if (!Directory.Exists(selectFolder + "\\BackupDD2"))
-                {
-                    Directory.CreateDirectory(selectFolder + "\\BackupDD2");
-                }
-
-                foreach (string dd2Bkup in Directory.GetFiles(selectFolder))
-                {
-                    string dd2FileName = Path.GetFileName(dd2Bkup);
-
-                    if (bkup_dd2_nv.Contains(dd2FileName))
-                    {
-                        string fullPathDd2 = Path.Combine(selectFolder, "BackupDD2\\" + dd2FileName);
-
-                        File.Copy(dd2Bkup, fullPathDd2, true);
-                    }
-                }
-
-                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\Optiscaler_DD2");
-                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\Re_Framework");
-                CopyFolder("mods\\FSR2FSR3_DD2_FSR31\\DD2_NVIDIA");
-
-                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
-                runReg("mods\\FSR2FSR3_DD2_FSR31\\DD2_DLSS\\DisableNvidiaSignatureChecks.reg");
-            }
-            #endregion
         }
 
         public void callistoFsr3()
@@ -2717,9 +2569,36 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void legoHorizonFsr3()
+        {
+            string introSkipLegoHzd = "mods\\FSR3_Lego_HZD\\Intro_Skip";
+            string rootPathLegoHzd = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
+
+            if (selectMod == "Others Mods Lego HZD")
+            {
+                // Intro Skip
+                if (Path.Exists(Path.Combine(rootPathLegoHzd, "Glow\\Content\\Movies")))
+                {
+                    if (MessageBox.Show("Do you want to install the Intro Skip?", "Intro Skip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Directory.CreateDirectory(Path.Combine(rootPathLegoHzd, "Backup Lego HZD\\Movies"));
+
+                        CopyFolder2(Path.Combine(rootPathLegoHzd, "Glow\\Content\\Movies"), Path.Combine(rootPathLegoHzd, "Backup Lego HZD\\Movies"));
+
+                        CopyFolder3(introSkipLegoHzd, Path.Combine(rootPathLegoHzd, "Glow\\Content"));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("To install the Intro Skip, select the folder containing the .exe file. The .exe file name is similar to \"game name-Win64-Shipping.exe\".", "Not Found");
+                }
+            }
+        }
+
         public void acMirageFsr3()
         {
             string introSkipAcMirage = "mods\\FSR3_Ac_Mirage\\Intro_skip";
+            string presetAcMirage = "mods\\FSR3_Ac_Mirage\\ReShade\\ACMirage lighting and package.ini";
 
             if (selectMod == "FSR 3.1.2/DLSS Custom Mirage")
             {
@@ -2728,9 +2607,9 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (selectMod == "Others Mods Mirage")
             {
+                // Intro Skip
                 if (Path.Exists(Path.Combine(selectFolder, "videos")))
                 {
-                    // Intro Skip
                     if (MessageBox.Show("Do you want to install the Intro Skip?", "Intro Skip", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {      
                         Directory.CreateDirectory(Path.Combine(selectFolder, "Backup Ac Mirage"));
@@ -2742,6 +2621,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 else
                 {
                     MessageBox.Show("If you want to install the Intro Skip, select the game\'s .exe folder", "Not Found");
+                }
+
+                // Preset
+
+                if (MessageBox.Show("Do you want to install the Graphics Preset? See the game guide in FSR Guide to see how to complete the installation of the Preset", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(presetAcMirage, Path.Combine(selectFolder, "ACMirage lighting and package.ini"));
                 }
             }
         }
@@ -3753,6 +3639,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     outlawsFsr3();                 
                 }
+                if (gameSelected == "Lego Horizon Adventures")
+                {
+                    legoHorizonFsr3();
+                }
                 if (gameSelected == "Alan Wake Remastered")
                 {
                     awRemasterFsr3();
@@ -3761,7 +3651,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     acMirageFsr3();
                 }
-
+                if (gameSelected == "Dragons Dogma 2")
+                {
+                    dd2Fsr3();
+                }
                 if (gameSelected == "God Of War 4")
                 {
                     gow4Fsr3();
@@ -3776,18 +3669,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     if (!drrFsr3())
                     {
                         return;
-                    }
-                }
-
-                if (gameSelected == "Dragons Dogma 2")
-                {
-                    dd2Fsr3();
-                    if (selectMod != "FSR 3.1/DLSS DD2 NVIDIA" && selectMod != "FSR 3.1/DLSS DD2 ALL GPU")
-                    {
-                        if (!File.Exists(selectFolder + "\\dinput8.dll"))
-                        {
-                            return;
-                        }
                     }
                 }
 
@@ -4569,6 +4450,37 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
+                if (gameSelected == "Lego Horizon Adventures")
+                {
+                    #region Cleanup Others Mods Lego HZD
+                    string rootLegoHzd = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
+
+                    try
+                    {
+                        if (Path.Exists(Path.Combine(rootLegoHzd, "Backup Lego HZD")))
+                        {
+                            if (Path.Exists(Path.Combine(rootLegoHzd, "Glow\\Content\\Movies")))
+                            {
+                                if (MessageBox.Show("Do you want to remove the Intro Skip?", "Intro Skip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                {
+                                    Directory.Delete(Path.Combine(rootLegoHzd, "Glow\\Content\\Movies"), true);
+                                    CopyFolder3(Path.Combine(rootLegoHzd, "Backup Lego HZD"), Path.Combine(rootLegoHzd, "Glow\\Content"));
+                                    Directory.Delete(Path.Combine(rootLegoHzd, "Backup Lego HZD"), true);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("To remove the Intro Skip, select the folder containing the .exe file. The .exe file name is similar to \"game name-Win64-Shipping.exe\"", "Exe", MessageBoxButtons.OK);
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error clearing Lego Horizon Adventures mods files, please try again or do it manually", "Error");
+                    }
+                    #endregion
+                }
+
                 if (gameSelected == "Dragon Age: Veilguard")
                 {
                     #region Cleanup Others Mods Dg Veil
@@ -4826,6 +4738,15 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
+                if (gameSelected == "Dragons Dogma 2")
+                {
+                    #region Cleanup Others Mods DD2
+                    string[] remove_dinput8_dd2 = { "openvr_api.dll", "openxr_loader.dll", "DELETE_OPENVR_API_DLL_IF_YOU_WANT_TO_USE_OPENXR", "dinput8.dll", "reframework_revision.txt" };
+
+                    CleanupOthersMods3("Dinput 8", remove_dinput8_dd2, selectFolder, false, "reframework");
+                    #endregion
+                }
+
                 if (gameSelected == "Alan Wake 2")
                 {
                     #region Paths AW2
@@ -4909,71 +4830,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 else if (selectMod == "Ac Valhalla Dlss (Only RTX)")
                 {
                     CleanupMod3(del_valhalla, "Ac Valhalla Dlss (Only RTX)");
-                }
-                else if (gameSelected == "Dragons Dogma 2")
-                {
-                    if (folderDd2.ContainsKey(selectMod))
-                    {
-                        CleanupMod(del_dd2Fsr3, folderDd2);
-                    }
-                    #region FSR 3.1/DLSS DD2 NVIDIA and FSR 3.1/DLSS DD2 ALL GPU
-                    else if (selectMod == "FSR 3.1/DLSS DD2 ALL GPU")
-                    {
-                        CleanupMod3(del_dd2_all_gpu, "FSR 3.1/DLSS DD2 ALL GPU");
-                        Directory.Delete(selectFolder + "\\reframework",true);
-
-                        if (Directory.Exists(selectFolder + "\\BackupDD2"))
-                        {
-                            DialogResult backupDd2 = MessageBox.Show("A backup of the original game files was found. Do you want to restore them after deleting the mod? (This is highly recommended)", "Backup DD2", MessageBoxButtons.YesNo);
-
-                            if(backupDd2 == DialogResult.Yes)
-                            {
-                                foreach(string originFilesDD2 in Directory.GetFiles(selectFolder + "\\BackupDD2"))
-                                {
-                                    string originFileNameDD2 = Path.GetFileName(originFilesDD2);
-
-                                    if (bkup_dd2_all.Contains(originFileNameDD2))
-                                    {
-                                       
-                                        string destFileDD2 = Path.Combine(selectFolder, originFileNameDD2);
-
-                                        File.Copy(originFilesDD2, destFileDD2, true);                                     
-                                    }
-                                }
-                                Directory.Delete(selectFolder + "\\BackupDD2",true);
-                                MessageBox.Show("Files restored successfully", "Sucess", MessageBoxButtons.OK);
-                            }
-                        }
-                    }
-                    else if (selectMod == "FSR 3.1/DLSS DD2 NVIDIA")
-                    {
-                        CleanupMod3(del_dd2_nv, "FSR 3.1/DLSS DD2 NVIDIA");
-                        Directory.Delete(selectFolder + "\\reframework",true);
-
-                        if (Directory.Exists(selectFolder + "\\BackupDD2"))
-                        {
-                            DialogResult backupDd2 = MessageBox.Show("A backup of the original game files was found. Do you want to restore them after deleting the mod? (This is highly recommended)", "Backup DD2", MessageBoxButtons.YesNo);
-
-                            if (backupDd2 == DialogResult.Yes)
-                            {
-                                foreach (string originFilesDD2 in Directory.GetFiles(selectFolder + "\\BackupDD2"))
-                                {
-                                    string originFileNameDD2 = Path.GetFileName(originFilesDD2);
-
-                                    if (bkup_dd2_nv.Contains(originFileNameDD2))
-                                    {
-
-                                        string destFileDD2 = Path.Combine(selectFolder, originFileNameDD2);
-
-                                        File.Copy(originFilesDD2, destFileDD2, true);
-                                    }
-                                }
-                                Directory.Delete(selectFolder + "\\BackupDD2",true);
-                                MessageBox.Show("Files restored successfully", "Sucess", MessageBoxButtons.OK);
-                            }
-                        }
-                    }
-                    #endregion
                 }
                 else if (folderPw.ContainsKey(selectMod))
                 {
