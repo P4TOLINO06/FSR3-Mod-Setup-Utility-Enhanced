@@ -854,53 +854,23 @@ namespace FSR3ModSetupUtilityEnhanced
                 "6 - In the game, press the 'Home' key to open the menu and select the graphic options you prefer.\r\n" +
                 "7 - It is recommended to use version 6.3.1 as the newer versions cause significant FPS loss.\r\n\r\n"
             },
-
             {
                 "Red Dead Redemption 2",
-                "● RDR2_Build_2\r\n" +
-                "1 - Launch the game, go to settings, turn off Triple buffering + V-sync, unlock\r\n" +
-                "advanced settings, and change API to DX12. Then restart the game, turn on DLSS (RTX) or FSR2 (non-RTX) (Required settings before playing the game).\r\n\n" +
-                "• Attention, don't install another version of the Reshade app after using this mod.\r\n\n" +
-                "If your game still does not open after turning off Afterburner and Rivatuner, try\r\n" +
-                "setting 'Run this program as administrator' and 'Run this program in compatibility\r\n" +
-                "mode for Windows 7' in the Compatibility tab of the Properties in the right\r\n" +
-                "mouse menu.\r\n\n" +
-                "2 - While playing, press the hotkey 'End' to go to the mod menu \r\n" +
-                "(don't set anything in the lobby (main game menu before playing),\r\n" +
-                "if you turn Frame Generation On or Off, it may cause an ERR_GFX_STATE error),\r\n" +
-                "set DLSS (RTX) or FSR3 (non-RTX), and toggle Frame Generation Off and On again.\r\n" +
-                "If you have a black screen, check Upscale Type in the menu mod again,\r\n" +
-                "change from DLSS to FSR3.\r\n\n" +
-                "3 - Check again with the toggle 'Enable UI Hud Fix' On or Off. If you see UI\r\n" +
-                "flickering when turning 'Enable UI Hud Fix' Off, that means the mod works.\r\n\n" +
-                "Other versions of the mod install normally, but may experience flickering on the HUD.\r\n\r\n" +
+                "FSR 3.1.2/DLSS FG Custom RDR2\r\n"+
+                "1. Disable Vsync, Triple Buffering, select Borderless Windowed, and run in DirectX 12.\n" +
+                "2. Select FSR 3.1.2/DLSS FG Custom RDR2 and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen and HUD Fix boxes.\n" +
+                "6. If you want to use FSR 3.1.2, select FSR 3x in \"Upscalers.\"\n" +
+                "7. Close MSI Afterburner, or the game may crash.\n\n" +
 
-                "Red Dead Redemption 2 MIX\r\n"+
-                "1 - Set the game to DX12 in advanced options.\r\n" +
-                "2 - Turn off Triple Buffering and Vsync, and set the game to Full Screen.\r\n" +
-                "3 - Select the RDR2 Mix mod and install it.\r\n" +
-                "4 - You don’t need to use any upscaler, as Frame Generation is automatically activated.\r\n" +
-                "However, if you want to use an upscaler, when installing, check the 'Addon Mods' box,\r\n" +
-                "select 'Optiscaler,' and below in DX11 select 'FSR 2.1 DX11,' and in DX12 select 'FSR 2.1 DX12.'\r\n\r\n" +
-
-                "Red Dead Redemption Mix 2\r\n"+
-                "1 - Set the game to DX12.\r\n" +
-                "2 - Turn off Triple Buffering, Vsync, and disable any upscaler;\r\n" +
-                "leave it on TAA.\r\n" +
-                "3 - It’s not necessary to activate any upscaler for the mod to work,\r\n" +
-                "but if you want to use one, refer to the RDR2 Mix guide.\r\n\r\n" +
-
-                 "Red Dead Redemption V2\r\n" +
-                "1 - Turn off Vsync, Triple Buffering, and set the game to DX12.\r\n" +
-                "2 - Install the mod.\r\n" +
-                "3 - In-game, press the 'END' key and select an upscaler.\r\n" +
-                "If you want to use native resolution, check the Native Resolution box below the upscaler, and restart the game.\r\n" +
-                "(FSR3 Upscaling or FSR 2 is recommended; you can also try others, but they may not work.)\r\n\r\n" +
-
-                "RDR2 Non Steam\r\n" +
-                "1 - Leave the game in DX12 and turn off Vsync/Triple Buffering.\r\n" +
-                "2 - In-game, if you have an RTX card, enable DLSS. If you don’t have an RTX card, disable any upscaler and turn on TAA. Press the 'END' key, select FSR3 in Upscaler Type, and check the box 'Enable Frame Generation.'\r\n" +
-                "3 - If a DLL error occurs, reinstall the mod and click 'YES' in the DLL file installation message box.\r\n"
+                "Red Dead Redemption 2 MIX\r\n" +
+                "1. Set the game to DX12 in advanced options.\n" +
+                "2. Turn off Triple Buffering and Vsync, and set the game to Full Screen.\n" +
+                "3. Select the RDR2 Mix mod and install it.\n" +
+                "4. You don\'t need to use any upscaler, as Frame Generation is automatically activated.\n" +
+                "However, if you want to use an upscaler, when installing, check the Addon Mods box, select Optiscaler, and below in DX11 select FSR 2.1 DX11, and in DX12 select FSR 2.1 DX12."
             },
             {
                 "Returnal",
@@ -1022,6 +992,16 @@ namespace FSR3ModSetupUtilityEnhanced
               "2 - Check the Fake Nvidia GPU box. (AMD/GTX)\n" +
               "3 - In the game, select DLSS\n"
             },
+            {
+              "S.T.A.L.K.E.R. 2",
+              "Preset\n" +
+              "1. Install ReShade\n" +
+              "2. Inside ReShade, select the game’s .exe and click next\n" +
+              "3. Select DX 10/11/12 and click next\n" +
+              "4. Click \"Browse\" and locate the file Stalker2 REAL LIFE.ini that was installed in the folder selected in the Utility and click Next\n" +
+              "5. In the game, press the Home key to open the menu and select the options you prefer"
+            },
+
             {
               "Star Wars Jedi: Survivor",
               "DLSS Jedi (if you have RTX, use this mod if you want to use native DLSS):\n" +
@@ -1336,6 +1316,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Shadow Warrior 3","Shadow32.png"},
                 {"Smalland","Smalland.png"},
                 {"Silent Hill 2","Sh22.png"},
+                {"S.T.A.L.K.E.R. 2","Stalker2.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},

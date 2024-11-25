@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Red Dead Redemption 2", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -463,50 +463,6 @@ namespace FSR3ModSetupUtilityEnhanced
             "winmm.dll", "fsr2fsr3.config.toml", "FSR2FSR3.asi", "fsr2fsr3.log"
         };
 
-        #endregion
-
-        #region Folder RDR2
-        Dictionary<string, string[]> origins_rdr2_folder = new Dictionary<string, string[]>
-        {
-            {"0.9.0", new string[] {"mods\\FSR2FSR3_0.9.0\\Red Dead Redemption 2",
-                                    "mods\\FSR2FSR3_0.9.0\\FSR2FSR3_COMMON"}},
-
-            {"0.10.0", new string[] {"mods\\FSR2FSR3_0.10.0\\FSR2FSR3_COMMON",
-                                     "mods\\FSR2FSR3_0.10.0\\Red Dead Redemption 2"}},
-
-            {"0.10.1", new string[] {"mods\\FSR2FSR3_0.10.1\\FSR2FSR3_COMMON",
-                                     "mods\\FSR2FSR3_0.10.1\\Red Dead Redemption 2"}},
-
-            {"0.10.1h1", new string[] {"mods\\FSR2FSR3_0.10.1h1\\FSR2FSR3_COMMON",
-                                       "mods\\FSR2FSR3_0.10.1h1\\Red Dead Redemption 2"}},
-
-            {"0.10.2h1", new string[] {"mods\\FSR2FSR3_0.10.2h1\\FSR2FSR3_COMMON",
-                                       "mods\\FSR2FSR3_0.10.2h1\\Red Dead Redemption 2"}},
-
-            {"0.10.3", new string[] {"mods\\FSR2FSR3_0.10.3\\FSR2FSR3_COMMON",
-                                     "mods\\FSR2FSR3_0.10.3\\Red Dead Redemption 2"}},
-
-            {"0.10.4", new string[] {"mods\\FSR2FSR3_0.10.4\\Red Dead Redemption 2\\FSR2FSR3_COMMON",
-                                     "mods\\FSR2FSR3_0.10.4\\Red Dead Redemption 2\\RDR2_FSR"}},
-
-            {"Uniscaler", new string[] {"mods\\FSR2FSR3_Uniscaler\\Uniscaler_4\\Uniscaler mod"}},
-            {"Uniscaler + Xess + Dlss", new string[] {"mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\Uniscaler_mod\\Uniscaler_mod"}},
-            {"Uniscaler V2", new string[] {"mods\\FSR2FSR3_Uniscaler_V2\\Uni_V2\\Uni_Mod"}},
-            {"Uniscaler V3", new string[]{"mods\\FSR2FSR3_Uniscaler_V3\\Uni_V3\\Uni_Mod"}},
-            {"Uniscaler V4", new string[]{"mods\\FSR2FSR3_Uniscaler_V4\\Uni_V4\\Uni_Mod"}},
-            {"Uniscaler FSR 3.1",new string[]{"mods\\FSR2FSR3_Uniscaler_FSR3\\Uniscaler_FSR31"}}
-        };
-
-        Dictionary<string, string[]> rdr2_folder = new Dictionary<string, string[]>
-        {
-            { "RDR2 Build_2", new string[] { "mods\\Red_Dead_Redemption_2_Build02" } },
-            { "RDR2 Build_4", new string[] { "mods\\RDR2Upscaler-FSR3Build04" } },
-            { "RDR2 Mix", new string[] { "mods\\RDR2_FSR3_mix" } },
-            { "RDR2 Mix 2", new string[] { "mods\\RDR2_FSR3_mix" } },
-            { "Red Dead Redemption V2", new string[] { "mods\\RDR2_FSR3_V2" } },
-            { "RDR2 Non Steam FSR3", new string[] { "mods\\FSR3_RDR2_Non_Steam\\RDR2_FSR3" } },
-            { "RDR2 FSR 3.1 FG",new string[]{"mods\\RDR2_FSR3_1" } }
-        };
         #endregion
 
         #region Clean Cyberpunk Files
@@ -1111,7 +1067,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     { "folderGtaV",folderGtaV },
                     { "folderGot",folderGot },
                     { "folderForza",folderForza },
-                    { "rdr2_folder",rdr2_folder },
                     { "folderCb2077",folderCb2077 },
                     { "folderPw",folderPw },
                     { "folderJedi",folderJedi },
@@ -1374,8 +1329,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> fsr_sct_sdk = new List<string> { "SDK" };
 
-        public List<string> fsr_sct_rdr2 = new List<string> { "RDR2", "Red Dead Redemption 2" };
-
         public static async Task CopyModsAsync(string sourcePath, string destPath)
         {
             foreach (var file in Directory.EnumerateFiles(sourcePath))
@@ -1416,7 +1369,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         {
                             await CopyModsAsync(path_final, path_dest);
 
-                            if (uniscalerVersion.All(uniscalerVersion => !selectedVersion.Contains(uniscalerVersion) && !rdr2_folder.ContainsKey(selectMod) && !folderEldenRing.ContainsKey(selectMod)))
+                            if (uniscalerVersion.All(uniscalerVersion => !selectedVersion.Contains(uniscalerVersion) && !folderEldenRing.ContainsKey(selectMod)))
                             {
                                 await CopyModsAsync(path_fsr_common, path_dest);
                             }
@@ -1667,12 +1620,12 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
         }
 
-        private async Task optiscalerFsrDlss()
+        private async Task optiscalerFsrDlss(string copydlss = null)
         {
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
 
-            if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")))
+            if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")) && copydlss != null)
             {
                 await CopyFolder(pathOptiscaler);
 
@@ -1759,9 +1712,27 @@ namespace FSR3ModSetupUtilityEnhanced
 
         
 
-        public void rdr2Fsr3()
+        public async Task rdr2Fsr3()
         {
-            CopyFSR(origins_rdr2_folder);
+            string iniOptiscalerRdr2 = "mods\\FSR3_RDR2\\Optiscaler";
+            string rdr2Mix = "mods\\RDR2_FSR3_mix";
+
+            string gpuName = await GetActiveGpu();
+
+            if (selectMod == "FSR 3.1.2/DLSS FG Custom RDR2")
+            {
+                optiscalerFsrDlss("true");
+
+                if (gpuName.Contains("amd"))
+                {
+                    CopyFolder(iniOptiscalerRdr2);
+                }
+            }
+
+            if (selectMod == "RDR2 Mix")
+            {
+                CopyFolder(rdr2Mix);
+            }
         }
 
         public void acValhallaDlss()
@@ -2088,52 +2059,6 @@ namespace FSR3ModSetupUtilityEnhanced
             if (DialogResult.Yes == callistoRealLife)
             {
                 File.Copy(pathRealLife, selectFolder + "\\The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",true);
-            }
-        }
-
-        public async Task fsrRdr2Build02()
-        {
-
-            if (selectMod == "RDR2 Non Steam FSR3")
-            {
-                string path_dll = "mods\\FSR3_RDR2_Non_Steam\\RDR2_DLL";
-                string[] dll_files = Directory.GetFiles(path_dll);
-                DialogResult var_rdr2_non_steam = MessageBox.Show("Do you want to copy the DLL files? Some users may receive a DLL error when running the game with the mod. (Only select \'Yes\' if you have received the error)", "DLL", MessageBoxButtons.YesNo);
-
-                if (var_rdr2_non_steam == DialogResult.Yes)
-                {
-                    foreach (string dll_file in dll_files)
-                    {
-                        string dll_name = Path.GetFileName(dll_file);
-                        string full_path_dll = Path.Combine(selectFolder, dll_name);
-                        File.Copy(dll_file, full_path_dll, true);
-                    }
-                }
-            }
-
-            CopyFSR(rdr2_folder);
-
-            try
-            {
-                await Task.Delay((2000));
-                {
-                    string path_ini = "mods\\Temp\\RDR2_FSR3\\rdr2_mix2_ini\\RDR2Upscaler.ini";
-
-                    if (selectMod == "RDR2 Mix 2")
-                    {
-                        Directory.CreateDirectory(selectFolder + "\\mods");
-
-                        File.Copy(path_ini, selectFolder + "\\mods\\RDR2Upscaler.ini", true);
-                    }
-                    if (selectMod == "RDR2 FSR 3.1 FG")
-                    {
-                        CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
             }
         }
 
@@ -2565,6 +2490,42 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (MessageBox.Show("Do you want to install the Anti Stutter?","Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     CopyFilesCustom3(hlVarAntiStutter, Path.Combine(selectFolder, "AntiStutter.txt"), "File Not Found", hlAntiStutter);
+                }
+            }
+        }
+
+        public void stalkerFsr3()
+        {
+            string rootFolderStalker = Path.GetFullPath(Path.Combine(selectFolder, "..\\.."));
+            string antiStutterStalker = "mods\\FSR3_Stalker2\\Anti Stutter";
+            string presetStalker = "mods\\FSR3_Stalker2\\Preset";
+            string updateUpscalersStalker = "mods\\FSR3_Stalker2\\Update_Upscalers";
+
+            if (selectMod == "Others Mods Stalker 2")
+            {
+                if (Path.Exists(Path.Combine(rootFolderStalker, "Content\\Paks")))
+                {
+                    // Anti Stutter
+                    if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Sutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFolder2(antiStutterStalker, Path.Combine(rootFolderStalker, "Content\\Paks\\~mods"));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("To install the Anti Stutter, select the path to the .exe file. The path looks like Stalker2\\\\Binaries\\\\Win64\".", "Not Found", MessageBoxButtons.OK);
+                }
+
+                // Preset
+                if (MessageBox.Show("Do you want to install the Graphics Preset? Check the guide in FSR Guide to see how to perform the complete installation", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFolder(presetStalker);
+                }
+
+                // Update Upscalers
+                if (MessageBox.Show("Do you want to update the upscalers? The latest version of all upscalers will be installed", "Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFolder(updateUpscalersStalker);
                 }
             }
         }
@@ -3182,7 +3143,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
 
-                    string[] folderModsReshade = { "Red Dead Redemption 2", "Dragons Dogma 2 ", "Palworld" };
+                    string[] folderModsReshade = {"Dragons Dogma 2 ", "Palworld" };
                     if (folderModsReshade.Contains(gameSelected)) //Check to delete the 'mods'/'reshade' folder, some FSR3 mods have a 'mods'/'reshade' folder by default
                     {
                         if (Directory.Exists(selectFolder + "\\mods"))
@@ -3476,16 +3437,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     fsr_sdk();
                 }
 
-                else if ((fsr_sct_rdr2.Contains(gameSelected) && origins_rdr2_folder.ContainsKey(selectMod)) || (fsr_sct_rdr2.Contains(fsrSelected) && origins_rdr2_folder.ContainsKey(selectMod)))
-                {
-                    rdr2Fsr3();
-                }
-
-                else if ((fsr_sct_rdr2.Contains(gameSelected) && rdr2_folder.ContainsKey(selectMod) || fsr_sct_rdr2.Contains(fsrSelected) && rdr2_folder.ContainsKey(selectMod)))
-                {
-                    fsrRdr2Build02();
-                }
-
                 if (selectMod == "FSR 3.1.1/DLSS FG Custom")
                 {
                     dlssGlobal();
@@ -3642,6 +3593,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Lego Horizon Adventures")
                 {
                     legoHorizonFsr3();
+                }
+                if (gameSelected == "Stalker 2")
+                {
+                    stalkerFsr3();
+                }
+                if (gameSelected == "Red Dead Redemption 2")
+                {
+                    rdr2Fsr3();
                 }
                 if (gameSelected == "Alan Wake Remastered")
                 {
@@ -4327,6 +4286,15 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
+                if (gameSelected == "Stalker 2")
+                {
+                    #region Cleanup Others Mods Stalker 2
+                    string rootstalker = Path.GetFullPath(Path.Combine(selectFolder, "..\\.."));
+
+                    CleanupOthersMods("Anti Stutter", "~S2optimizedTweaksBASE_v1.31_P.pak", Path.Combine(rootstalker, "Content\\Paks\\~mods"));
+                    #endregion
+                }
+
                 if (gameSelected == "Red Dead Redemption")
                 {
                     #region Cleanup Others Mods Red Dead Redemption
@@ -4366,6 +4334,15 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         MessageBox.Show("Error clearing Red Dead Redemption files, please try again or do it manually", "Error", MessageBoxButtons.OK);
                     }
+                    #endregion
+                }
+
+                if (gameSelected == "Red Dead Redemption 2")
+                {
+                    #region Cleanup Others Mods Rdr2
+                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2/DLSS FG Custom RDR2", true);
+
+                    CleanupMod3(del_rdr2_custom_files, "RDR2 Mix");
                     #endregion
                 }
 
@@ -4823,10 +4800,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 }
 
-                else if (rdr2_folder.ContainsKey(selectMod))
-                {
-                    CleanupMod(del_rdr2_custom_files, rdr2_folder);
-                }
                 else if (selectMod == "Ac Valhalla Dlss (Only RTX)")
                 {
                     CleanupMod3(del_valhalla, "Ac Valhalla Dlss (Only RTX)");
