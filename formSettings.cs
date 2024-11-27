@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1312,8 +1312,8 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Crysis 3 Remastered","Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dragon Age: Veilguard", "Dying Light 2",
-            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Horizon Zero Dawn Remastered", "Kena: Bridge of Spirits", "Lies of P", "Lego Horizon Adventures", "Loopmancer", "Manor Lords", "Metro Exodus Enhanced Edition", "Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
-            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Unknown 9: Awakening", "Wanted: Dead","Warhammer: Space Marine 2"};
+            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Horizon Zero Dawn Remastered", "Kena: Bridge of Spirits", "Lies of P", "Lego Horizon Adventures", "Loopmancer", "Manor Lords","Marvel's Avengers", "Metro Exodus Enhanced Edition", "Microsoft Flight Simulator 24","Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
+            "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STalker 2" ,"STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Unknown 9: Awakening", "Wanted: Dead","Warhammer: Space Marine 2"};
 
         List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
@@ -1632,7 +1632,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 await Task.Delay((500));
 
                 File.Move(Path.Combine(selectFolder, "nvngx.dll"), Path.Combine(selectFolder, "dxgi.dll"), true);
-                File.Move(Path.Combine(selectFolder, "nvngx_dlss.dll"), Path.Combine(selectFolder, "nvngx.dll"), true);
+                File.Copy(Path.Combine(selectFolder, "nvngx_dlss.dll"), Path.Combine(selectFolder, "nvngx.dll"), true);
             }
             else
             {
@@ -1719,14 +1719,9 @@ namespace FSR3ModSetupUtilityEnhanced
 
             string gpuName = await GetActiveGpu();
 
-            if (selectMod == "FSR 3.1.2/DLSS FG Custom RDR2")
+            if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)" && gpuName.Contains("amd"))
             {
-                optiscalerFsrDlss("true");
-
-                if (gpuName.Contains("amd"))
-                {
-                    CopyFolder(iniOptiscalerRdr2);
-                }
+                CopyFolder(iniOptiscalerRdr2);
             }
 
             if (selectMod == "RDR2 Mix")
@@ -2128,15 +2123,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
             dlssGlobal();
         }
-
-        public void lopFsr3()
-        {
-            if (selectMod == "FSR 3.1.1/DLSS LOP")
-            {
-                optiscalerFsrDlss();
-            }
-        }
-
         public void quietPlaceFsr3()
         {
             string optiscalerQuietPlace = "mods\\Addons_mods\\OptiScaler";
@@ -2172,7 +2158,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string ds4ButtonsRdr1 = "mods\\FSR3_RDR1\\DS4";
             string unlockFpsRdr1 = "mods\\FSR3_RDR1\\Unlock FPS";
 
-            if (selectMod.Contains("FSR 3.1.1/DLSS Optiscaler") || selectMod.Contains("FSR 3.1.1/DLSS FG Custom"))
+            if (selectMod.Contains("FSR 3.1.1/DLSS Optiscaler") || selectMod.Contains("FSR 3.1.2/DLSS FG Custom") || selectMod.Contains("FSR 3.1.2/DLSS FG (Only Optiscaler)"))
             {
                 runReg("mods\\Temp\\NvidiaChecks\\DisableNvidiaSignatureChecks.reg");
 
@@ -2425,7 +2411,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
 
-            if (selectMod == "FSR 3.1.1/DLSS FG Custom" || selectMod == "Optiscaler FSR 3.1.1/DLSS")
+            if (selectMod == "FSR 3.1.2/DLSS FG Custom" || selectMod == "Optiscaler FSR 3.1.1/DLSS" || selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
             {
                 if (Path.Exists(Path.Combine(pathFolderEngineSh2, "NativeFSR3.txt")))
                 {
@@ -2500,6 +2486,13 @@ namespace FSR3ModSetupUtilityEnhanced
             string antiStutterStalker = "mods\\FSR3_Stalker2\\Anti Stutter";
             string presetStalker = "mods\\FSR3_Stalker2\\Preset";
             string updateUpscalersStalker = "mods\\FSR3_Stalker2\\Update_Upscalers";
+            string dlssFgStalker = "mods\\FSR3_Stalker2\\FG DLSS";
+
+            if (selectMod == "DLSS FG (Only Nvidia)")
+            {
+                CopyFolder(dlssFgStalker);
+                runReg("mods\\Temp\\NvidiaChecks\\DisableNvidiaSignatureChecks.reg");
+            }
 
             if (selectMod == "Others Mods Stalker 2")
             {
@@ -2556,15 +2549,22 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public async Task flightSimulator24Fsr3()
+        {
+            string nvapiFlight24 = "mods\\FSR3_Flight_Simulator24\\Amd";
+
+            string gpuName = await GetActiveGpu();
+
+            if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)" && gpuName.Contains("amd"))
+            {
+                CopyFolder(nvapiFlight24);
+            }
+        }
+
         public void acMirageFsr3()
         {
             string introSkipAcMirage = "mods\\FSR3_Ac_Mirage\\Intro_skip";
             string presetAcMirage = "mods\\FSR3_Ac_Mirage\\ReShade\\ACMirage lighting and package.ini";
-
-            if (selectMod == "FSR 3.1.2/DLSS Custom Mirage")
-            {
-                optiscalerFsrDlss();
-            }
 
             if (selectMod == "Others Mods Mirage")
             {
@@ -2590,14 +2590,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     File.Copy(presetAcMirage, Path.Combine(selectFolder, "ACMirage lighting and package.ini"));
                 }
-            }
-        }
-
-        public void awRemasterFsr3()
-        {
-            if (selectMod == "FSR 3.1.2/DLSS Custom AW Remaster")
-            {
-                optiscalerFsrDlss();
             }
         }
 
@@ -2768,14 +2760,6 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod == "FSR 3.1.2 Custom DL2")
             {
                 CopyFolder(customDl2);
-            }
-        }
-
-        public void requiemFsr3()
-        {
-            if (selectMod == "FSR 3.1.1 Custom Requiem")
-            {
-                optiscalerFsrDlss();
             }
         }
 
@@ -3014,15 +2998,6 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string pathRegFz5 = @"mods\\FSR3_FH\RTX\\DisableNvidiaSignatureChecks.reg";
                 runReg(pathRegFz5);
-            }
-        }
-
-        public void hzdFsr3()
-        {
-
-            if (selectMod == "Optiscaler Custom HZD")
-            {
-                optiscalerFsrDlss();
             }
         }
 
@@ -3437,9 +3412,13 @@ namespace FSR3ModSetupUtilityEnhanced
                     fsr_sdk();
                 }
 
-                if (selectMod == "FSR 3.1.1/DLSS FG Custom")
+                if (selectMod == "FSR 3.1.2/DLSS FG Custom")
                 {
                     dlssGlobal();
+                }
+                if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+                {
+                    optiscalerFsrDlss();
                 }
                 if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
                 {
@@ -3461,10 +3440,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     callistoFsr3();
                 }
-                if (gameSelected == "Lies of P")
-                {
-                    lopFsr3();
-                }
                 if (folderBdg3.ContainsKey(selectMod))
                 {
                     bdg3Fsr3();
@@ -3480,10 +3455,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Forza Horizon 5")
                 {
                     forzaFsr3();
-                }
-                if (gameSelected == "Horizon Zero Dawn")
-                {
-                    hzdFsr3();
                 }
                 if (gameSelected == "Horizon Zero Dawn Remastered")
                 {
@@ -3550,13 +3521,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     untilFsr3();
                 }
+                if (gameSelected == "Microsoft Flight Simulator 24")
+                {
+                    flightSimulator24Fsr3();
+                }
                 if (gameSelected == "Dying Light 2")
                 {
                     dl2Fsr3();
-                }
-                if(gameSelected == "A Plague Tale Requiem")
-                {
-                    requiemFsr3();
                 }
                 if (gameSelected == "GTA Trilogy")
                 {
@@ -3601,10 +3572,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Red Dead Redemption 2")
                 {
                     rdr2Fsr3();
-                }
-                if (gameSelected == "Alan Wake Remastered")
-                {
-                    awRemasterFsr3();
                 }
                 if (gameSelected == "Assassin's Creed Mirage")
                 {
@@ -4037,9 +4004,14 @@ namespace FSR3ModSetupUtilityEnhanced
                     RestoreBackup("Backup Optiscaler");
                 }
 
-                if (selectMod == "FSR 3.1.1/DLSS FG Custom")
+                if (selectMod == "FSR 3.1.2/DLSS FG Custom")
                 {
-                    CleanDlssGlobal("FSR 3.1.1/DLSS FG Custom");
+                    CleanDlssGlobal("FSR 3.1.2/DLSS FG Custom");
+                }
+
+                if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+                {
+                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2/DLSS FG (Only Optiscaler)", true);
                 }
 
                 if (gameSelected == "Cyberpunk 2077")
@@ -4093,11 +4065,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     CleanupMod3(del_optiscaler_custom_2, "FSR 3.1.2/DLSS Custom Callisto");
                     #endregion
-                }
-
-                if (gameSelected  == "Lies of P")
-                {
-                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.1/DLSS LOP", true);
                 }
 
                 if (gameSelected == "Metro Exodus Enhanced Edition")
@@ -4255,15 +4222,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
-                if (gameSelected == "Horizon Zero Dawn")
-                {
-                    #region Del Others Mods Hzd
-
-                        CleanupOptiscalerFsrDlss(del_optiscaler, "Optiscaler Custom HZD", false);
-
-                    #endregion
-                }
-
                 if (gameSelected == "Horizon Zero Dawn Remastered")
                 {
                     #region Cleanup Others Mods Hzd Rem
@@ -4290,8 +4248,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     #region Cleanup Others Mods Stalker 2
                     string rootstalker = Path.GetFullPath(Path.Combine(selectFolder, "..\\.."));
+                    string removeWinmmStalker = Path.Combine(selectFolder, "winmm.dll");
 
                     CleanupOthersMods("Anti Stutter", "~S2optimizedTweaksBASE_v1.31_P.pak", Path.Combine(rootstalker, "Content\\Paks\\~mods"));
+
+                    if (CleanupOptiscalerFsrDlss(del_optiscaler_custom, "DLSS FG (Only Nvidia)", true))
+                    {
+                        if (Path.Exists(removeWinmmStalker)) File.Delete(removeWinmmStalker);
+                    }
                     #endregion
                 }
 
@@ -4340,7 +4304,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Red Dead Redemption 2")
                 {
                     #region Cleanup Others Mods Rdr2
-                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2/DLSS FG Custom RDR2", true);
 
                     CleanupMod3(del_rdr2_custom_files, "RDR2 Mix");
                     #endregion
@@ -4658,17 +4621,9 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
-                if (gameSelected == "Alan Wake Remastered")
-                {
-                    #region Cleanup Mod Custom Aw Remastered
-                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2/DLSS Custom AW Remaster");
-                    #endregion
-                }
-
                 if (gameSelected == "Assassin's Creed Mirage")
                 {
                     #region Cleanup Mod Custom Ac Mirage
-                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2/DLSS Custom Mirage", true);
 
                     try
                     {

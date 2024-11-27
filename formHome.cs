@@ -124,11 +124,13 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Lords of the Fallen","Lotf.png"},
                     {"Manor Lords","Manor.png"},
                     {"Martha Is Dead","Martha.png"},
+                    {"Marvel's Avengers","Avengers.png"},
                     {"Marvel's Guardians of the Galaxy","Got.png"},
                     {"Marvel's Spider-Man Miles Morales","Miles.png"},
                     {"Marvel's Spider-Man Remastered","Spider.png"},
                     {"Metro Exodus Enhanced Edition","Metro.png"},
                     {"Monster Hunter Rise","Mrise.png"},
+                    {"Microsoft Flight Simulator 24","FlightSimulator24.png"},
                     {"MOTO GP 24","Moto.png"},
                     {"Nightingale","Night.png"},
                     {"Nobody Wants To Die","Nobody.png"},
@@ -243,27 +245,25 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> spacemarineList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1.1/DLSS" };
             List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
             List<string> ffxviList = new List<string> {"FFXVI DLSS RTX","Others Mods FFXVI" };
-            List<string> hzdList = new List<string> { "Optiscaler Custom HZD" };
             List<string> hlList = new List<string> { "Others Mods HL" };
             List<string> sh2List = new List<string> { "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG RTX Custom", "DLSS FG RTX","Ultra Plus Complete", "Ultra Plus Optimized", "FSR3 FG Native SH2", "FSR3 FG Native SH2 + Optimization", "Others Mods Sh2" };
             List<string> untilList = new List<string> { "Others Mods UD" };
             List<string> quietPlacelList = new List<string> { "FSR 3.1.1/DLSS Quiet Place", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" };
             List<string> metroList = new List<string> { "Others Mods Metro" };
-            List<string> lopList = new List<string> { "FSR 3.1.1/DLSS LOP" };
             List<string> rdrList = new List<string> { "Others Mods RDR" };
             List<string> hzdRemList = new List<string> { "FSR 3.1.2 HZD Rem", "Others Mods HZD Rem" };
             List<string> dgVeilList = new List<string> { "FSR 3.1.2/DLSS DG Veil", "Others Mods DG Veil" };
             List<string> dl2List = new List<string> { "FSR 3.1.2 Custom DL2" };
-            List<string> requiemList = new List<string> { "FSR 3.1.1 Custom Requiem" };
             List<string> drrList = new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" };
             List<string> srList = new List<string> { "FSR 3.1.2/DLSS Custom SR" };
             List<string> gtaTrilogyList = new List<string> { "FSR 3.1.2/DLSS Custom GTA" };
-            List<string> awRemasterList = new List<string> { "FSR 3.1.2/DLSS Custom AW Remaster" };
-            List<string> acMirageList = new List<string> { "FSR 3.1.2/DLSS Custom Mirage", "Others Mods Mirage" };
+            List<string> awRemasterList = new List<string> { "FSR 3.1.2/DLSS FG (Only Optiscaler)" };
+            List<string> acMirageList = new List<string> { "Others Mods Mirage" };
             List<string> legoHzdList = new List<string> { "Others Mods Lego HZD" };
-            List<string> stalker2List = new List<string> { "Others Mods Stalker 2" };
-            var modsDefaultList = new List<string> { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
-                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS","FSR 3.1.1/DLSS FG Custom"};
+            List<string> stalker2List = new List<string> { "Others Mods Stalker 2", "DLSS FG (Only Nvidia)" };
+            List<string> flight2024List = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" };
+            var modsDefaultList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
+                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
             #endregion;
 
             #region List To Remove
@@ -298,12 +298,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 hlList,
                 quietPlacelList,
                 metroList,
-                lopList,
                 rdrList,
                 hzdRemList,
                 dgVeilList,
                 dl2List,
-                requiemList,
                 drrList,
                 srList,
                 gtaTrilogyList,
@@ -429,10 +427,6 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formSettings.Instance.AddItemlistMods(frankStoneList, modsDefaultList);
             }
-            else if (listGames.SelectedItem.ToString() == "Horizon Zero Dawn")
-            {
-                formSettings.Instance.AddItemlistMods(hzdList,modsDefaultList);
-            }
             else if (listGames.SelectedItem.ToString() == "Silent Hill 2")
             {
                 formSettings.Instance.AddItemlistMods(sh2List, modsDefaultList);
@@ -458,11 +452,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 formSettings.Instance.AddItemlistMods(metroList, modsDefaultList);
             }
 
-            else if (listGames.SelectedItem.ToString() == "Lies of P")
-            {
-                formSettings.Instance.AddItemlistMods(lopList, modsDefaultList);
-            }
-
             else if (listGames.SelectedItem.ToString() == "Red Dead Redemption")
             {
                 formSettings.Instance.AddItemlistMods(rdrList, modsDefaultList);
@@ -476,11 +465,6 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Dragon Age: Veilguard")
             {
                 formSettings.Instance.AddItemlistMods(dgVeilList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "A Plague Tale Requiem")
-            {
-                formSettings.Instance.AddItemlistMods(requiemList, modsDefaultList);
             }
 
             else if (listGames.SelectedItem.ToString() == "Dying Light 2")

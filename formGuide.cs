@@ -60,8 +60,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Alan Wake Remastered",
-                "FSR 3.1.2/DLSS Custom AW Remaster\r\n" +
-                "1 - Select FSR 3.1.2/DLSS Custom AW Remaster and install.\r\n" +
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\r\n" +
+                "1 - Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\r\n" +
                 "2 - Check the Enable Signature Over box.\r\n" +
                 "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
                 "4 - In the menu, select FSR 3x and FSR 3.1.2 right below; if you have an Nvidia GPU, select DLSS.\r\n" +
@@ -106,8 +106,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Check the box for Fake Nvidia GPU (AMD/GTX) and Nvapi Results (GTX). (If the mod doesn't work for AMD, also check Nvapi Results).\r\n"+
                 "3 - To fix hub flickering, enable DLSS and Frame Generation and play for a few seconds, then disable DLSS and leave only Frame Generation enabled.\r\n\r\n"+
 
-                "FSR 3.1.1 Custom Requiem\r\n"+
-                "1 - Select FSR 3.1.1 Requiem and install.\r\n" +
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\r\n"+
+                "1 - Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\r\n" +
                 "2 - In the game, press the 'Insert' key to open the menu.\r\n" +
                 "3 - In the menu, select an Upscaler, check 'Frame Gen' and 'Hud Fix' boxes.\r\n\r\n"
             },
@@ -122,13 +122,13 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Assassin\'s Creed Mirage",
-                "FSR 3.1.2/DLSS Mirage\r\n"+
-                "1 - Select FSR 3.1.2/DLSS Mirage and install.\r\n"+
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\r\n"+
+                "1 - Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\r\n"+
                 "2 - Check the Enable Signature Over box.\r\n" +
                 "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
                 "4 - In the menu, select FSR 3x and FSR 3.1.2 right below; if you have an Nvidia GPU, select DLSS to use DLSS 3.8.10.\r\n" +
                 "5 - Check the Frame Gen and Hud Fix boxes; in Hud Fix, select 2.\r\n" +
-                "6 - If you are using ReShade, select FSR 3.1.1/DLSS FG Custom and follow the steps above.\r\n\r\n" +
+                "6 - If you are using ReShade, select FSR 3.1.2/DLSS FG Custom and follow the steps above.\r\n\r\n" +
 
                 "Preset\r\n" +
                 "1. Install ReShade.\r\n" +
@@ -312,10 +312,10 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Dragons Dogma 2",
-                "Dinput8 DD2 and FSR 3.1.1/DLSS FG Custom\r\n" +
+                "Dinput8 DD2 and FSR 3.1.2/DLSS FG Custom\r\n" +
                 "1 - Select Dinput8 DD2 in Mod Select and install.\r\n" +
                 "2 - Open the game after Dinput8 is installed. A 'REFramework' menu will appear. Click on it, go to Settings and Menu Key, click on Menu Key, and select the preferred key (the key is used to open and close the menu).\r\n" +
-                "3 - Close the game, in Utility select FSR 3.1.1/DLSS FG Custom and install (it is recommended to select 'Yes' when the message to delete the shader file appears).\r\n" +
+                "3 - Close the game, in Utility select FSR 3.1.2/DLSS FG Custom and install (it is recommended to select 'Yes' when the message to delete the shader file appears).\r\n" +
                 "4 - In the game, select DLSS and Frame Gen.\r\n" +
                 "5 - It is possible that the game will crash the first 2 or 3 times after the mod is installed, so just close the game and open it again."
             },
@@ -327,8 +327,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - In the game, select any upscaler and activate Frame Generation.\r\n" +
                 "4 - If you experience any flickering or ghosting, go to Video > Advanced Settings and decrease the Lod Range Multiplier.\r\n\r\n"+
                
-                "FSR 3.1.1/DLSS FG Custom\r\n" +
-                "1 - Select FSR 3.1.1/DLSS FG Custom and install it.\r\n" +
+                "FSR 3.1.2/DLSS FG Custom\r\n" +
+                "1 - Select FSR 3.1.2/DLSS FG Custom and install it.\r\n" +
                 "2 - Select Frame Generation within the game.\r\n" +
                 "3 - Press the \"Insert\" key to open the menu.\r\n" +
                 "4 - In the menu, select the upscaler you prefer.\r\n" +
@@ -419,8 +419,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Final Fantasy XVI",
-                "FSR 3.1.1/DLSS FG Custom:\n" +
-                "1. Select FSR 3.1.1/DLSS FG Custom.\n" +
+                "FSR 3.1.2/DLSS FG Custom:\n" +
+                "1. Select FSR 3.1.2/DLSS FG Custom.\n" +
                 "2. Check the \"GPU\" box that will appear during installation.\n" +
                 "3. In-game, press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, select the upscaler you prefer.\n\n" +
@@ -537,8 +537,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - In the game, select DLSS to enable Frame Generation.\r\n" +
                 "5 - To fix the HUD glitch, switch between the upscalers (FSR, DLSS, etc.) until the HUD stops flickering.\r\n\r\n"+
 
-                "FSR 3.1.1/DLSS FG Custom\r\n"+
-                "1 - Select FSR 3.1.1/DLSS FG Custom and install.\r\n" +
+                "FSR 3.1.2/DLSS FG Custom\r\n"+
+                "1 - Select FSR 3.1.2/DLSS FG Custom and install.\r\n" +
                 "2 - Check the 'Enable Signature' box.\r\n" +
                 "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
                 "4 - In the menu, select 'FSR 3x' and right below select 'FSR 3.1.1', check 'Frame Gen' and 'Hud Fix'.\r\n" +
@@ -612,7 +612,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - Enable Fake Nvidia GPU (Only for AMD GPUs).\r\n" +
                 "4 - Select 'Default' in Nvngx.dll.\r\n\n"+
 
-                "FSR 3.1.1/DLSS FG Custom / FSR 3.1.1/DLSS Optiscaler" +
+                "FSR 3.1.2/DLSS FG Custom / FSR 3.1.1/DLSS Optiscaler" +
                 "1 - Select the FSR 3.1/DLSS mod.\r\n" +
                 "2 - Check the 'GPU' window that will appear.\r\n" +
                 "3 - In-game, select DLSS before starting the campaign.\r\n" +
@@ -629,8 +629,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Horizon Zero Dawn",
-                "Optiscaler Custom HZD, FSR 3.1/DLSS Optiscaler & FSR 3.1.1/DLSS FG Custom:\n" +
-                "1. Select Optiscaler Custom HZD, FSR 3.1/DLSS Optiscaler or FSR 3.1.1/DLSS FG Custom.\n" +
+                "FSR 3.1.2/DLSS FG (Only Optiscaler), FSR 3.1/DLSS Optiscaler & FSR 3.1.2/DLSS FG Custom:\n" +
+                "1. FSR 3.1.2/DLSS FG (Only Optiscaler), FSR 3.1/DLSS Optiscaler or FSR 3.1.2/DLSS FG Custom.\n" +
                 "2. Check the \"Enable Signature Over\" box.\n" +
                 "3. In the game, press the \"Insert\" key to open the mod menu.\n" +
                 "4. In the menu, select the Upscaler of your choice.\n" +
@@ -709,7 +709,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Lego Horizon Adventures",
-                "1. Select the FSR 3.1.1/DLSS FG Custom and install.\r\n" +
+                "1. Select the FSR 3.1.2/DLSS FG Custom and install.\r\n" +
                 "2. In the game, select DLSS and Frame Gen.\r\n" +
                 "3. If you want to use FSR 3.1.2, press the \"Insert\" key and select FSR 3x."
             },
@@ -720,8 +720,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Activate Fake Nvidia Gpu and UE Compatibility Mode (AMD only).\r\n" +
                 "3 - To fix the flickering of the HUD, first select DLSS Quality, then select FSR Quality (without disabling DLSS), then select DLSS again.\r\n\r\n"+
 
-                "FSR 3.1.1/DLSS LOP\r\n"+
-                "1 - Select an FSR 3.1.1/DLSS LOP mod and install it.\r\n" +
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\r\n"+
+                "1 - Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install it.\r\n" +
                 "2 - Check the 'Enable Signature Over' box.\r\n" +
                 "3 - In the game, select DLSS.\r\n" +
                 "4 - Press the 'Insert' key to open the menu.\r\n" +
@@ -755,6 +755,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "• To fix the flickering on the Hud, set the screen mode to fullscreen (windowed), select FSR 1.0, turn off motion blur and depth of field, check Motion Blur and Depth of Field again after saving the settings. If they don't turn off, turn them off again.\r\n"
             },
             {
+                "Marvel's Avengers",
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and start the campaign.\n" +
+                "4. Press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check Frame gen and Hud Fix boxes."
+            },
+            {
                 "Marvel's Guardians of the Galaxy",
                 "1 - Select a version of the mod of your choice (it is recommended 0.10.3 onwards or Uniscaler)\r\n" +
                 "2 - Select the folder where the game's exe is located (something like gotg.exe)\r\n" +
@@ -786,6 +794,13 @@ namespace FSR3ModSetupUtilityEnhanced
                  "4 - Click 'Browse' and locate the file 'DefinitiveEdition.ini' that was installed in the folder selected in the Utility and click next.\r\n" +
                  "5 - In the game, press the 'Home' key to open the menu and select the options you prefer.\r\n" +
                  "6 - Install the Preset first and then the FSR3 mod if you plan to use it.\r\n\r\n"
+            },
+            {
+                "Microsoft Flight Simulator 24",
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check Frame gen and Hud Fix boxes."
             },
             {
                 "Monster Hunter Rise",
@@ -930,7 +945,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
               "Silent Hill 2",
-              "FSR 3.1.1/DLSS FG Custom / FSR 3.1/DLSS OptiScaler:\n" +
+              "FSR 3.1.2/DLSS FG Custom / FSR 3.1/DLSS OptiScaler:\n" +
               "1. Select the FSR 3.1/DLSS mod.\n" +
               "2. Check the \"GPU\" window that will appear.\n" +
               "3. In-game, select DLSS before starting the campaign.\n" +
@@ -1109,8 +1124,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
               "The Casting Of Frank Stone",
-              "FSR 3.1.1/DLSS FG Custom:\n" +
-              "1. Select 'FSR 3.1.1/DLSS FG Custom', install it, and check the GPU window that appears.\n" +
+              "FSR 3.1.2/DLSS FG Custom:\n" +
+              "1. Select 'FSR 3.1.2/DLSS FG Custom', install it, and check the GPU window that appears.\n" +
               "2. In the game, select DLSS and Frame Generation.\n" +
               "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1.\n\n" +
 
@@ -1134,8 +1149,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
               "Until Dawn",
-              "FSR 3.1.1/DLSS FG Custom / Optiscaler:\n" +
-              "1. Select FSR 3.1.1/DLSS FG Custom or Optiscaler and install it.\n" +
+              "FSR 3.1.2/DLSS FG Custom / Optiscaler:\n" +
+              "1. Select FSR 3.1.2/DLSS FG Custom or Optiscaler and install it.\n" +
               "2. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
               "3. In the menu, select Frame Generation and an upscaler of your choice.\n" +
               "4. To fix the HUD bug, select Hud Fix FG in the menu.\n" +
@@ -1143,8 +1158,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
               "Warhammer: Space Marine 2",
-              "FSR 3.1.1/DLSS FG Custom / Optiscaler:\n" +
-              "1. Select FSR 3.1.1/DLSS FG Custom and install it.\n" +
+              "FSR 3.1.2/DLSS FG Custom / Optiscaler:\n" +
+              "1. Select FSR 3.1.2/DLSS FG Custom and install it.\n" +
               "2. In the game, press the \"Insert\" key to open the menu.\n" +
               "3. In the menu, select Frame Generation and an upscaler of your choice.\n" +
               "4. To fix the HUD bug, select Hud Fix FG in the menu.\n\n" +
@@ -1296,7 +1311,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Lords of the Fallen","Lotf.png"},
                 {"Manor Lords","Manor.png"},
                 {"Martha Is Dead","Martha.png"},
+                {"Marvel's Avengers","Avengers2.png"},
                 {"Marvel's Guardians of the Galaxy","Got.png"},
+                {"Microsoft Flight Simulator 24","FlightSimulator242.png"},
                 {"Metro Exodus Enhanced","Metro.png"},
                 {"Monster Hunter Rise","Mrise.png"},
                 {"Nobody Wants To Die","Nobody.png"},
