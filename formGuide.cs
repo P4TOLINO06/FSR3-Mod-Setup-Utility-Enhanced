@@ -270,9 +270,15 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Dead Island 2",
+                "Default Mod\n"+
                 "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
                 "2 - If it doesn't work with the default files, enable Enable Signature Override. If it still doesn't work, check the box lfz.sl.dlss.\r\n" +
-                "3 - It's not necessary to activate an upscaler for this game for the mod to work, so enable it if you want."
+                "3 - It's not necessary to activate an upscaler for this game for the mod to work, so enable it if you want.\n\n" +
+
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" + 
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. In the game, select FSR 2 and press the \"Insert\" key to open the menu.\n" +
+                "3. In the menu, select FSR 3x, check the Frame Gen and Hud fix boxes."
             },
             {
                 "Dead Rising Remaster",
@@ -885,13 +891,26 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. Turn off Triple Buffering and Vsync, and set the game to Full Screen.\n" +
                 "3. Select the RDR2 Mix mod and install it.\n" +
                 "4. You don\'t need to use any upscaler, as Frame Generation is automatically activated.\n" +
-                "However, if you want to use an upscaler, when installing, check the Addon Mods box, select Optiscaler, and below in DX11 select FSR 2.1 DX11, and in DX12 select FSR 2.1 DX12."
+                "However, if you want to use an upscaler, when installing, check the Addon Mods box, select Optiscaler, and below in DX11 select FSR 2.1 DX11, and in DX12 select FSR 2.1 DX12.\n\n" +
+
+                "RDR2 FG Custom\n" +
+                "1. Select an upscaler, disable Triple Buffering, Vsync, and set the game to DX12 before installing the mod.\n" +
+                "2. Select RDR2 Custom FG and install.\n" +
+                "3. In the game, press the \"END\" key to open the menu.\n" +
+                "4. In the menu, select Frame Gen."
             },
             {
                 "Returnal",
+                "Deafault Mod\n" +
                 "1 - Choose a version of the mod you prefer (version 0.10.3 is recommended).\r\n" +
                 "2 - Enable the \"Enable Signature Override\" checkbox if the mod doesn't work.\r\n" +
-                "3 - Select \"Default\" in Nvngx.dll.\n"
+                "3 - Select \"Default\" in Nvngx.dll.\n\n" +
+
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "1. FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen and Hud Fix boxes."
             },
             {
                 "Ripout",

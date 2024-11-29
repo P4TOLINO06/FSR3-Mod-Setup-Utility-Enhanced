@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -545,6 +545,12 @@ namespace FSR3ModSetupUtilityEnhanced
             "ReShade.ini", "PalworldUpscalerPreset.ini", "d3dcompiler_47.dll", "d3d12.dll",
             "nvngx.dll"
         };
+        #endregion
+
+        #region Clean TCP
+
+        string[] delTcp = { "dlsstweaks.ini", "DLSSTweaksConfig.exe", "FSRBridge.asi", "winmm.dll", "winmm.ini", "nvngx.dll", "EnableNvidiaSigOverride.reg", "DisableNvidiaSigOverride.reg", "winmm.ini", "winmm.dll" };
+
         #endregion
 
         #region Folder Icarus
@@ -1716,6 +1722,8 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             string iniOptiscalerRdr2 = "mods\\FSR3_RDR2\\Optiscaler";
             string rdr2Mix = "mods\\RDR2_FSR3_mix";
+            string rdr2FgCustom = "mods\\FSR3_RDR2\\RDR2 FG Custom\\FG";
+            string rdr2AmdIni = "mods\\FSR3_RDR2\\RDR2 FG Custom\\Amd Ini\\RDR2Upscaler.ini";
 
             string gpuName = await GetActiveGpu();
 
@@ -1727,6 +1735,16 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod == "RDR2 Mix")
             {
                 CopyFolder(rdr2Mix);
+            }
+
+            if (selectMod == "RDR2 FG Custom")
+            {
+                CopyFolder(rdr2FgCustom);
+
+                if (gpuName.Contains("amd") && Path.Exists(Path.Combine(selectFolder, "mods")))
+                {
+                    File.Copy(rdr2AmdIni, Path.Combine(selectFolder, "mods\\RDR2Upscaler.ini"), true);
+                }
             }
         }
 
@@ -2519,6 +2537,76 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (MessageBox.Show("Do you want to update the upscalers? The latest version of all upscalers will be installed", "Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     CopyFolder(updateUpscalersStalker);
+                }
+            }
+        }
+
+        public async Task returnalFsr3()
+        {
+            string rootPathReturnal = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
+            string pathDefaultFolderDlssReturnal = Path.Combine(rootPathReturnal, "Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64");
+            string pathDefaultDlssReturnal = Path.Combine(pathDefaultFolderDlssReturnal, "nvngx_dlss.dll");
+            string pathDlssReturnal = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
+            string pathNvapiReturnal = "mods\\FSR3_Flight_Simulator24\\Amd";
+
+            try
+            {
+                if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+                {
+                    if (Path.Exists(pathDefaultDlssReturnal))
+                    {
+                        await Task.Delay(1000);
+                        File.Copy(pathDefaultDlssReturnal, Path.Combine(selectFolder, "nvngx.dll"), true);
+
+                        if (MessageBox.Show("Do you want to install nvapi.dll? Select \"Yes\" only if you are an AMD user and DLSS does not appear in the game after installing the mod.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            CopyFolder(pathNvapiReturnal);
+                        }
+                    }
+                }
+
+                if (selectMod == "Others Mods Returnal")
+                {
+                    // Update DLSS
+                    if (Path.Exists(pathDefaultFolderDlssReturnal))
+                    {
+                        if (MessageBox.Show("Do you want to update DLSS? DLSS 3.8.10 will be installed", "DLSS", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            File.Copy(pathDlssReturnal, Path.Combine(pathDefaultFolderDlssReturnal, "nvngx_dlss.dll"), true);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("If you want to install the other Returnal mods, select the .exe folder; it should be something like \"Returnal\\\\Binaries\\\\Win64\".", "EXE", MessageBoxButtons.OK);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+        }
+
+        public void di2Fsr3()
+        {
+            string pathTcpDi2 = "mods\\FSR3_DI2\\TCP";
+
+            if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+            {
+                CopyFolder(pathTcpDi2);
+                runReg("mods\\FSR3_DI2\\TCP\\EnableNvidiaSigOverride.reg");
+            }
+        }
+
+        public void tlouFs3()
+        {
+            string dlssUpdateTlou = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
+
+            if (selectMod == "Others Mods Tlou")
+            {
+                if (MessageBox.Show("Do you want to update DLSS? DLSS 3.8.10 will be installed.", "DLSS", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(dlssUpdateTlou, Path.Combine(selectFolder, "nvngx_dlss.dll"), true);
                 }
             }
         }
@@ -3569,6 +3657,18 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     stalkerFsr3();
                 }
+                if (gameSelected == "Returnal")
+                {
+                    returnalFsr3();
+                }
+                if (gameSelected == "Dead Island 2")
+                {
+                    di2Fsr3();
+                }
+                if (gameSelected == "The Last of Us Part I")
+                {
+                    tlouFs3();
+                }
                 if (gameSelected == "Red Dead Redemption 2")
                 {
                     rdr2Fsr3();
@@ -4306,6 +4406,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     #region Cleanup Others Mods Rdr2
 
                     CleanupMod3(del_rdr2_custom_files, "RDR2 Mix");
+                    CleanupMod3(del_rdr2_custom_files, "RDR2 FG Custom");
                     #endregion
                 }
 
@@ -4417,6 +4518,27 @@ namespace FSR3ModSetupUtilityEnhanced
                     catch
                     {
                         MessageBox.Show("Error clearing Lego Horizon Adventures mods files, please try again or do it manually", "Error");
+                    }
+                    #endregion
+                }
+
+                if (gameSelected == "Dead Island 2")
+                {
+                    #region Cleanup Others Mods DI2
+                    if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+                    {
+                       CleanupOthersMods3("FSR 3.1.2/DLSS FG (Only Optiscaler)", delTcp, selectFolder);
+                       runReg("mods\\FSR3_DI2\\TCP\\DisableNvidiaSigOverride.reg");
+                    }
+                    #endregion
+                }
+
+                if (gameSelected == "Returnal")
+                {
+                    #region Cleanup Others Mods Returnal
+                    if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)" && Path.Exists(Path.Combine(selectFolder, "nvapi64.dll")))
+                    {
+                        File.Delete(Path.Combine(selectFolder, "nvapi64.dll"));
                     }
                     #endregion
                 }
@@ -4613,10 +4735,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Saints Row")
                 {
                     #region Cleanup Custom Mods SR
-                    string[] delTcpSr = { "dlsstweaks.ini", "DLSSTweaksConfig.exe", "FSRBridge.asi", "winmm.dll", "winmm.ini", "nvngx.dll" };
                     
                     CleanupMod3(del_optiscaler_custom_2, "FSR 3.1.2/DLSS Custom SR");
-                    CleanupOthersMods3("FSR 3.1.2/DLSS Custom SR", delTcpSr, selectFolder, false);
+                    CleanupOthersMods3("FSR 3.1.2/DLSS Custom SR", delTcp, selectFolder, false);
                     
                     #endregion
                 }

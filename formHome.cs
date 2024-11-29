@@ -220,7 +220,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
 
             #region Games List
-            List<string> rdr2B2List = new List<string> { "FSR 3.1.2/DLSS FG Custom RDR2", "RDR2 Mix", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" };
+            List<string> rdr2B2List = new List<string> { "FSR 3.1.2/DLSS FG Custom RDR2", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" };
             List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat","Unlock FPS Elden" };
             List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1", "Others Mods AW2" };
             List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
@@ -262,6 +262,8 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> legoHzdList = new List<string> { "Others Mods Lego HZD" };
             List<string> stalker2List = new List<string> { "Others Mods Stalker 2", "DLSS FG (Only Nvidia)" };
             List<string> flight2024List = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" };
+            List<string> returnalList = new List<string> { "Others Mods Returnal" };
+            List<string> tlouList = new List<string> { "Others Mods Tlou" };
             var modsDefaultList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
             #endregion;
@@ -308,7 +310,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 awRemasterList,
                 acMirageList,
                 legoHzdList,
-                stalker2List
+                stalker2List,
+                tlouList,
+                returnalList
             };
             #endregion
 
@@ -505,6 +509,16 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Stalker 2")
             {
                 formSettings.Instance.AddItemlistMods(stalker2List, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Returnal")
+            {
+                formSettings.Instance.AddItemlistMods(returnalList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "The Last of Us Part I")
+            {
+                formSettings.Instance.AddItemlistMods(tlouList, modsDefaultList);
             }
 
             else
