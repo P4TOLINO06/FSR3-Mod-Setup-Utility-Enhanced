@@ -291,6 +291,14 @@ namespace FSR3ModSetupUtilityEnhanced
 
             {
                 "Death Stranding Director's Cut",
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n"+
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, disable Depth of Field, Motion Blur, and TAA.\n" +
+                "4. Select DLSS and press the Insert key to open the menu.\n" +
+                "5. In the menu, enable Frame Gen, HUD Fix, and FG Extended.\n\n"+
+
+                "Uniscaler V4\n" +
                 "Before installing the mod, open the game and disable FidelityFx Cas.\n" +
                 "1. Select Unicaler V4.\n" +
                 "2. Check the box for \"Enable Signature Over\", check the \"Nvngx.dll\" box, and select \"Default\".\n" +
@@ -943,12 +951,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Shadow of the Tomb Raider",
-                "1 - Select the 'Uniscaler' option under 'Mod Version'.\n" +
-                "2 - AMD GPU users: Select 'XESS' under 'Mod Operates' | Nvidia GPU users: Select any of the 3 options under 'Mod Operates' (DLSS is recommended).\n" +
-                "3 - In the configuration window, disable 'AMD FidelityFX CAS' and select an option in XESS/DLSS.\n" +
-                "4 - Within the game, adjust the options as desired (you can reactivate AMD FidelityFX CAS).\n" +
-                "5 - To activate Frame Generation, select an option in XESS/DLSS, select an Anti-aliasing option if desired (Frame Generation will remain active).\n" +
-                "● Select 'Nvngx: Default' and enable 'Enable Signature Override' if the mod doesn't work (AMD GPU users only).\n\n" +
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" + 
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, Select DLSS and press the Insert key to open the menu.\n" +
+                "4. In the menu, enable Frame Gen, HUD Fix, and FG Extended.\n\n" +
+
                 "Uniscaler V3\n" +
                 "1 - Select Uniscaler V3.\n" +
                 "2 - In Mod Operates, select XESS, and in Frame Gen Method, select FSR3.\n" +

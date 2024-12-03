@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -657,7 +657,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Optiscaler Files
         List<string> del_optiscaler = new List<string>
         {
-            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg", "amd_fidelityfx_vk.dll", "amd_fidelityfx_dx12.dll"
+            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg"
         };
         #endregion
 
@@ -1630,6 +1630,9 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
+            string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider" };
+            string gpuName = "amd";
 
             if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")) && copydlss != null)
             {
@@ -1643,6 +1646,33 @@ namespace FSR3ModSetupUtilityEnhanced
             else
             {
                 await CopyFolder(pathOptiscalerDlss);
+            }
+
+            if (gpuName.Contains("amd") && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes) 
+            {
+                CopyFolder(nvapiAmd);
+            }
+        }
+
+        public void UpdateUpscalers(string destPath)
+        {
+            var pathUpscalers = new List<string>
+            {
+                "mods\\Temp\\FSR_Update\\amd_fidelityfx_dx12.dll",
+                "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll",
+                "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll"
+            };
+
+            if (MessageBox.Show("Do you want to update the upscalers? The latest version of all upscalers will be installed", "Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                foreach (var upscalersFiles in pathUpscalers)
+                {
+                    string upscalerName = Path.GetFileName(upscalersFiles);
+
+                    string destinationUpscaler = Path.Combine(destPath, upscalerName);
+
+                    File.Copy(upscalersFiles, destinationUpscaler, overwrite: true);
+                }
             }
         }
         static async Task<string> GetActiveGpu()
@@ -2598,6 +2628,22 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void spiderFsr3()
+        {
+            if (selectMod == "Others Mods Spider")
+            {
+                UpdateUpscalers(selectFolder);
+            }
+        }
+
+        public void shadowTombFsr3()
+        {
+            if (selectMod == "Others Mods Shadow Tomb")
+            {
+                UpdateUpscalers(selectFolder);
+            }
+        }
+
         public void tlouFs3()
         {
             string dlssUpdateTlou = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
@@ -2634,18 +2680,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     MessageBox.Show("To install the Intro Skip, select the folder containing the .exe file. The .exe file name is similar to \"game name-Win64-Shipping.exe\".", "Not Found");
                 }
-            }
-        }
-
-        public async Task flightSimulator24Fsr3()
-        {
-            string nvapiFlight24 = "mods\\FSR3_Flight_Simulator24\\Amd";
-
-            string gpuName = await GetActiveGpu();
-
-            if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)" && gpuName.Contains("amd"))
-            {
-                CopyFolder(nvapiFlight24);
             }
         }
 
@@ -3609,10 +3643,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     untilFsr3();
                 }
-                if (gameSelected == "Microsoft Flight Simulator 24")
-                {
-                    flightSimulator24Fsr3();
-                }
                 if (gameSelected == "Dying Light 2")
                 {
                     dl2Fsr3();
@@ -3664,6 +3694,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Dead Island 2")
                 {
                     di2Fsr3();
+                }
+                if (gameSelected.Contains("Marvel\'s Spider-Man Remastered") || gameSelected.Contains("Marvel\'s Spider-Man Miles Morales"))
+                {
+                    spiderFsr3();
+                }
+                if (gameSelected == "Shadow of the Tomb Raider")
+                {
+                    shadowTombFsr3();
                 }
                 if (gameSelected == "The Last of Us Part I")
                 {
@@ -4112,6 +4150,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
                 {
                     CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.2/DLSS FG (Only Optiscaler)", true);
+
+                    if (Path.Exists(Path.Combine(selectFolder, "nvapi64.dll")))
+                    {
+                        File.Delete(Path.Combine(selectFolder, "nvapi64.dll"));
+                    }
                 }
 
                 if (gameSelected == "Cyberpunk 2077")
