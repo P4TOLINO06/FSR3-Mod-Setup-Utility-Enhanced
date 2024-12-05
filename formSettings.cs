@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1631,8 +1631,8 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider" };
-            string gpuName = "amd";
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider" };
+            string gpuName = await GetActiveGpu();
 
             if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")) && copydlss != null)
             {
@@ -1654,16 +1654,26 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void UpdateUpscalers(string destPath)
+        public void UpdateUpscalers(string destPath, bool onlyDlss = false)
         {
+            string pathOnlyDlss = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
             var pathUpscalers = new List<string>
             {
                 "mods\\Temp\\FSR_Update\\amd_fidelityfx_dx12.dll",
                 "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll",
-                "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll"
+                "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll",
+                "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll"
             };
 
-            if (MessageBox.Show("Do you want to update the upscalers? The latest version of all upscalers will be installed", "Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (onlyDlss)
+            {
+                if (MessageBox.Show("Do you want to update DLSS? DLSS 3.8.10 will be installed", "DLSS", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    File.Copy(pathOnlyDlss, Path.Combine(destPath, "nvngx_dlss.dll"), true);
+                }
+            }
+
+            else if (MessageBox.Show("Do you want to update the upscalers? The latest version of all upscalers will be installed", "Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 foreach (var upscalersFiles in pathUpscalers)
                 {
@@ -2617,6 +2627,23 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void gkFsr3()
+        {
+            string rootPathGK = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
+            string pathDlssGk = Path.Combine(rootPathGK, "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64");
+
+            if (selectMod == "Others Mods GK")
+            {
+                if (Path.Exists(pathDlssGk))
+                {
+                    UpdateUpscalers(pathDlssGk, true);
+                }
+                else
+                {
+                    MessageBox.Show("To update DLSS, select the .exe path. The path looks like \"Mercury\\Binaries\\Win64\"", "Exe", MessageBoxButtons.OK);
+                }
+            }
+        }
         public void di2Fsr3()
         {
             string pathTcpDi2 = "mods\\FSR3_DI2\\TCP";
@@ -3171,12 +3198,6 @@ namespace FSR3ModSetupUtilityEnhanced
             runReg(regGot);
 
             #region Additional mods
-            DialogResult dx12_got = MessageBox.Show("Do you want to install the DX12 files? These files fix issues related to DX12. (Only confirm if you have encountered a DX12 related error)", "DX12", MessageBoxButtons.YesNo);
-            if (dx12_got == DialogResult.Yes)
-            {
-                string pathDx12Got = "mods\\FSR3_GOT\\Fix_DX12";
-                CopyFiles(pathDx12Got);
-            }
             try
             {
                 if (MessageBox.Show("Would you like to remove the post-processing effects? (Film grain, Mouse Smoothing, etc.)", "Remove Post Processing", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -3694,6 +3715,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Dead Island 2")
                 {
                     di2Fsr3();
+                }
+                if (gameSelected == "Gotham Knights")
+                {
+                    gkFsr3();
                 }
                 if (gameSelected.Contains("Marvel\'s Spider-Man Remastered") || gameSelected.Contains("Marvel\'s Spider-Man Miles Morales"))
                 {

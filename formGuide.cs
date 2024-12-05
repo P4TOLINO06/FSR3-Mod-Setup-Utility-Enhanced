@@ -589,6 +589,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. Select check all effects (you can also use \"Uncheck all\" and \"Check all\" to select everything at once)."
             },
             {
+                "Gotham Knights",
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the \"Enable Signature Over\" box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the \"Frame Gen\" and \"Hud Fix\" boxes.\n" +
+                "5. If you want to update DLSS, select \"Others Mods GK\" and install it. Select the .exe folder (Mercury\\Binaries\\Win64); otherwise, it will not be possible to update DLSS."
+            },
+            {
                 "Hellblade: Senua's Sacrifice",
                 "1 - Select a version of the mod of your choice (version 0.10.3\r\n" +
                 "is recommended).\r\n" +
@@ -921,6 +930,21 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. In the menu, check the Frame Gen and Hud Fix boxes."
             },
             {
+                "Rise of The Tomb Raider",
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler).\n" +
+                "2. Check the \"Enable Signature Over\" box.\n" +
+                "3. To update DLSS in the game, check the \"Nvngx.dll\" box and select DLSS 3.8.10.\n" +
+                "4. Open the game, in the configuration menu that appears when the game starts, select DX12 and DLSS if available (if DLSS does not appear in this menu, select it within the game).\n" +
+                "5. In the game, press the \"Insert\" key to open the menu.\n" +
+                "6. In the menu, check the \"Frame Gen,\" \"Hud Fix,\" and \"FG Extended\" boxes.\n\n" +
+                
+                "Others Mods\n" +
+                "1 - Select a version of the mod of your choice (it is recommended 0.10.3 onwards or Uniscaler).\n" +
+                "2 - Select the folder where the game\'s exe is located (something like ROTTR.exe).\n" +
+                "3 - Activate Fake Nvidia GPU (if you don\'t have Rtx 3xxx/4xxx series)."
+            },
+            {
                 "Ripout",
                 "1 - Select a mod of your preference (0.10.3 is recommended).\n" +
                 "2 - Check the box Fake Nvidia GPU (AMD/GTX).\n" +
@@ -1167,6 +1191,21 @@ namespace FSR3ModSetupUtilityEnhanced
               "3. If you want to use FSR 3.1, press the 'Insert' key to open the menu and select FSR 3.1."
             },
             {
+               "The Witcher 3",
+               "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+               "1. Install the mod in the \"x64_dx12\" folder.\n" +
+               "2. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+               "3. Check the Enable Signature Over box.\n" +
+               "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+               "5. In the menu, check the Frame Gen and FG Hud fix. If you want to use FSR 3.1.2, select FSR 3x in \"Upscales.\"\n" +
+               "6. For RTX users, this mod is not compatible with RT; if you want to use RT, use the Uniscaler V4 mod.\n\n" +
+
+               "Uniscaler V4\n" + 
+               "1. Select Uniscaler V4 and install.\n" +
+               "2. For AMD/GTX users: Check the boxes \"Fake Nvidia GPU\" and \"Enable Signature Over.\"\n" +
+               "3. In the game, select DLSS and Frame Gen boxes."
+            },
+            {
               "Unknown 9: Awakening",
               "1 - Select Uniscaler V4 and install it.\r\n" +
               "2 - In the game, select an option under Upscaling Quality.\r\n" +
@@ -1319,6 +1358,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Ghostwire: Tokyo","Ghostwire2.png"},
                 {"God Of War 4","Gow42.png"},
                 {"God of War Ragnarök","GowRag.png"},
+                {"Gotham Knights","Gk2.png"},
                 {"Hellblade: Senua's Sacrifice","Hell.png"},
                 {"Hellblade 2","Hell2.png"},
                 {"High On Life","Hol.png"},
@@ -1366,6 +1406,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
                 {"The Callisto Protocol","Callisto2.png"},
                 {"The Casting Of Frank Stone","FrankStone2.png" },
+                {"The Witcher 3","Tw32.png"},
                 {"Unknown 9: Awakening","Unknown92.png" },
                 {"Until Dawn","Until2.png" },
                 {"Warhammer: Space Marine 2","SpaceMarine2.png"},

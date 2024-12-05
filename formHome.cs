@@ -103,6 +103,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Ghostwire: Tokyo","Ghostwire.png"},
                     {"God Of War 4","Gow4.png"},
                     {"God of War Ragnarök","GowRag2.png"},
+                    {"Gotham Knights","Gk.png"},
                     {"GTA Trilogy","GtaTrilogy.png"},
                     {"GTA V","GtaV.png"},
                     {"Hellblade 2","Hell2.png" },
@@ -266,6 +267,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> tlouList = new List<string> { "Others Mods Tlou" };
             List<string> spiderList = new List<string> { "Others Mods Spider" };
             List<string> shadowTombList = new List<string> { "Others Mods Shadow Tomb" };
+            List<string> gkList = new List<string> { "Others Mods GK" };
             var modsDefaultList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
             #endregion;
@@ -531,6 +533,11 @@ namespace FSR3ModSetupUtilityEnhanced
             else if (listGames.SelectedItem.ToString() == "Shadow of the Tomb Raider")
             {
                 formSettings.Instance.AddItemlistMods(shadowTombList, modsDefaultList);
+            }
+
+            else if (listGames.SelectedItem.ToString() == "Gotham Knights")
+            {
+                formSettings.Instance.AddItemlistMods(gkList, modsDefaultList);
             }
 
             else

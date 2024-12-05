@@ -168,7 +168,7 @@
             panelAddOn.Location = new Point(1198, 110);
             panelAddOn.Margin = new Padding(5, 6, 5, 6);
             panelAddOn.Name = "panelAddOn";
-            panelAddOn.Size = new Size(562, 1222);
+            panelAddOn.Size = new Size(574, 1222);
             panelAddOn.TabIndex = 18;
             // 
             // panelFgMethod
@@ -498,7 +498,7 @@
             buttonAddUps.Location = new Point(283, 204);
             buttonAddUps.Margin = new Padding(5, 6, 5, 6);
             buttonAddUps.Name = "buttonAddUps";
-            buttonAddUps.Size = new Size(279, 56);
+            buttonAddUps.Size = new Size(286, 56);
             buttonAddUps.TabIndex = 22;
             buttonAddUps.Text = "Add-On Upscaler";
             buttonAddUps.UseVisualStyleBackColor = false;
@@ -553,7 +553,7 @@
             panelDxgi.Location = new Point(290, 60);
             panelDxgi.Margin = new Padding(5, 6, 5, 6);
             panelDxgi.Name = "panelDxgi";
-            panelDxgi.Size = new Size(279, 84);
+            panelDxgi.Size = new Size(279, 88);
             panelDxgi.TabIndex = 19;
             // 
             // optionsDxgi
@@ -567,7 +567,7 @@
             optionsDxgi.Location = new Point(5, 0);
             optionsDxgi.Margin = new Padding(5, 6, 5, 6);
             optionsDxgi.Name = "optionsDxgi";
-            optionsDxgi.Size = new Size(267, 78);
+            optionsDxgi.Size = new Size(267, 117);
             optionsDxgi.TabIndex = 7;
             // 
             // buttonDxgi
@@ -580,7 +580,7 @@
             buttonDxgi.Location = new Point(283, 0);
             buttonDxgi.Margin = new Padding(5, 6, 5, 6);
             buttonDxgi.Name = "buttonDxgi";
-            buttonDxgi.Size = new Size(279, 56);
+            buttonDxgi.Size = new Size(286, 56);
             buttonDxgi.TabIndex = 18;
             buttonDxgi.Text = "Dxgi..dll";
             buttonDxgi.UseVisualStyleBackColor = false;
@@ -624,7 +624,7 @@
             optionsNvngx.Location = new Point(5, 0);
             optionsNvngx.Margin = new Padding(5, 6, 5, 6);
             optionsNvngx.Name = "optionsNvngx";
-            optionsNvngx.Size = new Size(279, 117);
+            optionsNvngx.Size = new Size(279, 156);
             optionsNvngx.TabIndex = 7;
             optionsNvngx.ItemCheck += optionsNvngx_ItemCheck;
             // 
@@ -1140,7 +1140,7 @@
             AddOptionsSelect.Location = new Point(5, 6);
             AddOptionsSelect.Margin = new Padding(5, 6, 5, 6);
             AddOptionsSelect.Name = "AddOptionsSelect";
-            AddOptionsSelect.Size = new Size(471, 117);
+            AddOptionsSelect.Size = new Size(471, 156);
             AddOptionsSelect.TabIndex = 6;
             AddOptionsSelect.SelectedIndexChanged += AddOptionsSelect_SelectedIndexChanged;
             // 
