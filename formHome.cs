@@ -161,6 +161,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Steelrising","Steelrising.png"},
                     {"TEKKEN 8","Tekken.png"},
                     {"Test Drive Unlimited Solar Crown","TestSolar.png"},
+                    {"The Ascent","Ascent.png"},
                     {"The Callisto Protocol","Callisto.png"},
                     {"The Chant","Chant.png"},
                     {"The Casting Of Frank Stone","FrankStone.png"},
@@ -220,331 +221,74 @@ namespace FSR3ModSetupUtilityEnhanced
                 listFSR.Visible = false;
             }
 
-            #region Games List
-            List<string> rdr2B2List = new List<string> { "FSR 3.1.2/DLSS FG Custom RDR2", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" };
-            List<string> EldenList = new List<string> { "Elden Ring FSR3","Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat","Unlock FPS Elden" };
-            List<string> Aw2List = new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1", "Others Mods AW2" };
-            List<string> AcValhallaList = new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" };
-            List<string> bdg3List = new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" };
-            List<string> dd2List = new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom"};
-            List<string> callistoList = new List<string> { "The Callisto Protocol FSR3", "FSR 3.1.1/DLSS Callisto", "FSR 3.1.2/DLSS Custom Callisto", "0.10.4","Uniscaler V3"};
-            List<string> gtavList = new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" };
-            List<string> cyberList = new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1" };
-            List<string> gotList = new List<string> { "Ghost of Tsushima FG DLSS","Optiscaler FSR 3.1.1/DLSS","Uniscaler FSR 3.1"};
-            List<string> pwList = new List<string> { "Palworld FG Build03" };
-            List<string> jediList = new List<string> { "DLSS Jedi" };
-            List<string> tekkenList = new List<string> { "Unlock FPS Tekken 8" };
-            List<string> icarusiList = new List<string> { "RTX DLSS FG ICR", "FSR3 FG ICR All GPU" };
-            List<string> lotfList = new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" };
-            List<string> forzaList = new List<string> { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU", "Optiscaler FSR 3.1.1/DLSS" };
-            List<string> flintList = new List<string> {"Optiscaler FSR 3.1.1/DLSS" };
-            List<string> codList = new List<string> {"COD MW3 FSR3" };
-            List<string> outlawsList = new List<string> { "Outlaws DLSS RTX", "FSR 3.1.1/DLSS FG Custom" };
-            List<string> gow4List = new List<string> { "Gow 4 FSR 3.1", "FSR 3.1.1/DLSS FG Custom" };
-            List<string> gowRagList = new List<string> { "Uniscaler FSR 3.1","Others Mods Gow Rag" };
-            List<string> frankStoneList = new List<string> { "0.10.4", "Optiscaler FSR 3.1.1/DLSS" };
-            List<string> spacemarineList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1.1/DLSS" };
-            List<string> wukongList = new List<string> { "RTX DLSS FG Wukong","FSR 3.1 Custom Wukong"};
-            List<string> ffxviList = new List<string> {"FFXVI DLSS RTX","Others Mods FFXVI" };
-            List<string> hlList = new List<string> { "Others Mods HL" };
-            List<string> sh2List = new List<string> { "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG RTX Custom", "DLSS FG RTX","Ultra Plus Complete", "Ultra Plus Optimized", "FSR3 FG Native SH2", "FSR3 FG Native SH2 + Optimization", "Others Mods Sh2" };
-            List<string> untilList = new List<string> { "Others Mods UD" };
-            List<string> quietPlacelList = new List<string> { "FSR 3.1.1/DLSS Quiet Place", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" };
-            List<string> metroList = new List<string> { "Others Mods Metro" };
-            List<string> rdrList = new List<string> { "Others Mods RDR" };
-            List<string> hzdRemList = new List<string> { "FSR 3.1.2 HZD Rem", "Others Mods HZD Rem" };
-            List<string> dgVeilList = new List<string> { "FSR 3.1.2/DLSS DG Veil", "Others Mods DG Veil" };
-            List<string> dl2List = new List<string> { "FSR 3.1.2 Custom DL2" };
-            List<string> drrList = new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" };
-            List<string> srList = new List<string> { "FSR 3.1.2/DLSS Custom SR" };
-            List<string> gtaTrilogyList = new List<string> { "FSR 3.1.2/DLSS Custom GTA" };
-            List<string> awRemasterList = new List<string> { "FSR 3.1.2/DLSS FG (Only Optiscaler)" };
-            List<string> acMirageList = new List<string> { "Others Mods Mirage" };
-            List<string> legoHzdList = new List<string> { "Others Mods Lego HZD" };
-            List<string> stalker2List = new List<string> { "Others Mods Stalker 2", "DLSS FG (Only Nvidia)" };
-            List<string> flight2024List = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" };
-            List<string> returnalList = new List<string> { "Others Mods Returnal" };
-            List<string> tlouList = new List<string> { "Others Mods Tlou" };
-            List<string> spiderList = new List<string> { "Others Mods Spider" };
-            List<string> shadowTombList = new List<string> { "Others Mods Shadow Tomb" };
-            List<string> gkList = new List<string> { "Others Mods GK" };
+            #region Game List
+
             var modsDefaultList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
-            #endregion;
 
-            #region List To Remove
-            List<List<string>> listToRemove = new List<List<string>> 
+            var gamesModsConfig = new Dictionary<string, List<string>>
             {
-                rdr2B2List,
-                EldenList,
-                Aw2List,
-                AcValhallaList,
-                bdg3List,
-                dd2List,
-                callistoList,
-                gtavList,
-                cyberList,
-                forzaList,
-                gotList,
-                lotfList,
-                pwList,
-                jediList,
-                icarusiList,
-                tekkenList,
-                flintList,
-                codList,
-                wukongList,
-                ffxviList,
-                outlawsList,
-                gow4List,
-                spacemarineList,
-                frankStoneList,
-                sh2List,
-                untilList,
-                hlList,
-                quietPlacelList,
-                metroList,
-                rdrList,
-                hzdRemList,
-                dgVeilList,
-                dl2List,
-                drrList,
-                srList,
-                gtaTrilogyList,
-                awRemasterList,
-                acMirageList,
-                legoHzdList,
-                stalker2List,
-                tlouList,
-                returnalList
+                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.2/DLSS FG Custom RDR2", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
+                { "Alan Wake 2", new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1", "Others Mods AW2" } },
+                { "Assassin's Creed Valhalla", new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" } },
+                { "Baldur's Gate 3", new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" } },
+                { "Dragons Dogma 2", new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom" } },
+                { "The Callisto Protocol", new List<string> { "The Callisto Protocol FSR3", "FSR 3.1.1/DLSS Callisto", "FSR 3.1.2/DLSS Custom Callisto", "0.10.4", "Uniscaler V3" } },
+                { "GTA V", new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" } },
+                { "Cyberpunk 2077", new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
+                { "Ghost of Tsushima", new List<string> { "Ghost of Tsushima FG DLSS", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
+                { "Lords of the Fallen", new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" } },
+                { "Palworld", new List<string> { "Palworld FG Build03" } },
+                { "STAR WARS Jedi: Survivor", new List<string> { "DLSS Jedi" } },
+                { "Icarus", new List<string> { "RTX DLSS FG ICR", "FSR3 FG ICR All GPU" } },
+                { "TEKKEN 8", new List<string> { "Unlock FPS Tekken 8" } },
+                { "Flintlock: The Siege Of Dawn", new List<string> { "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Cod MW3", new List<string> { "COD MW3 FSR3" } },
+                { "God Of War 4", new List<string> { "Gow 4 FSR 3.1", "FSR 3.1.1/DLSS FG Custom" } },
+                { "God of War Ragnarök", new List<string> { "Uniscaler FSR 3.1", "Others Mods Gow Rag" } },
+                { "Warhammer: Space Marine 2", new List<string> { "FSR 3.1.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Black Myth: Wukong", new List<string> { "RTX DLSS FG Wukong", "FSR 3.1 Custom Wukong" } },
+                { "Final Fantasy XVI", new List<string> { "FFXVI DLSS RTX", "Others Mods FFXVI" } },
+                { "Forza Horizon 5", new List<string>  { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Star Wars Outlaws", new List<string> { "Outlaws DLSS RTX", "FSR 3.1.1/DLSS FG Custom" } },
+                { "The Casting Of Frank Stone", new List<string> { "0.10.4", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Silent Hill 2", new List<string> { "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG RTX Custom", "DLSS FG RTX", "Ultra Plus Complete", "Ultra Plus Optimized", "FSR3 FG Native SH2", "FSR3 FG Native SH2 + Optimization", "Others Mods Sh2" } },
+                { "Until Dawn", new List<string> { "Others Mods UD" } },
+                { "Hogwarts Legacy", new List<string> { "Others Mods HL" } },
+                { "A Quiet Place: The Road Ahead", new List<string> { "FSR 3.1.1/DLSS Quiet Place", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Metro Exodus Enhanced Edition", new List<string> { "Others Mods Metro" } },
+                { "Red Dead Redemption", new List<string> { "Others Mods RDR" } },
+                { "Horizon Zero Dawn Remastered", new List<string> { "FSR 3.1.2 HZD Rem", "Others Mods HZD Rem" } },
+                { "Dragon Age: Veilguard", new List<string> { "FSR 3.1.2/DLSS DG Veil", "Others Mods DG Veil" } },
+                { "Dying Light 2", new List<string> { "FSR 3.1.2 Custom DL2" } },
+                { "Dead Rising Remaster", new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" } },
+                { "Saints Row", new List<string> { "FSR 3.1.2/DLSS Custom SR" } },
+                { "GTA Trilogy", new List<string> { "FSR 3.1.2/DLSS Custom GTA" } },
+                { "Assassin's Creed Mirage", new List<string> { "Others Mods Mirage" } },
+                { "Alan Wake Remastered", new List<string> { "FSR 3.1.2/DLSS FG (Only Optiscaler)" } },
+                { "Lego Horizon Adventures", new List<string> { "Others Mods Lego HZD" } },
+                { "Stalker 2", new List<string> { "Others Mods Stalker 2", "DLSS FG (Only Nvidia)" } },
+                { "Returnal", new List<string> { "Others Mods Returnal" } },
+                { "The Last of Us Part I", new List<string> { "Others Mods Tlou" } },
+                { "Marvel\\'s Spider-Man Miles Morales", new List<string> { "Others Mods Spider" } },
+                { "Marvel\\'s Spider-Man Remastered", new List<string> { "Others Mods Spider" } },
+                { "Microsoft Flight Simulator 24", new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Shadow of the Tomb Raider", new List<string> { "Others Mods Shadow Tomb" } },
+                { "Gotham Knights", new List<string> { "Others Mods GK" } }
             };
             #endregion
 
-            if (listGames.SelectedItem.ToString() == "Red Dead Redemption 2")
-            {
-                formSettings.Instance.AddItemlistMods(rdr2B2List, modsDefaultList);
-            }
-            else if(listGames.SelectedItem.ToString() == "Elden Ring")
+            if (gamesModsConfig.ContainsKey(gamesSelected))
             {
                 formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(EldenList);
+                formSettings.Instance.AddItemlistMods(gamesModsConfig[gamesSelected], modsDefaultList);
             }
-            else if(listGames.SelectedItem.ToString() == "Alan Wake 2")
-            {
-                formSettings.Instance.AddItemlistMods(Aw2List);
-            }
-            else if (listGames.SelectedItem.ToString() == "Assassin's Creed Valhalla")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(AcValhallaList);
-            }
-            else if(listGames.SelectedItem.ToString() == "Baldur's Gate 3")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(bdg3List);
-            }
-            else if(listGames.SelectedItem.ToString() == "Dragons Dogma 2")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(dd2List);
-            }
-            else if (listGames.SelectedItem.ToString() == "The Callisto Protocol")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(callistoList);
-            }
-            else if (listGames.SelectedItem.ToString() == "GTA V")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(gtavList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Cyberpunk 2077")
-            {
-                formSettings.Instance.AddItemlistMods(cyberList, modsDefaultList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Forza Horizon 5")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(forzaList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Ghost of Tsushima")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(gotList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Lords of the Fallen")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(lotfList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Palworld")
-            {
-                formSettings.Instance.AddItemlistMods(pwList);
-            }
-            else if (listGames.SelectedItem.ToString() == "STAR WARS Jedi: Survivor")
-            {
-                formSettings.Instance.AddItemlistMods(jediList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Icarus")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(icarusiList);
-            }
-            else if (listGames.SelectedItem.ToString() == "TEKKEN 8")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(tekkenList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Flintlock: The Siege Of Dawn")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(flintList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Cod MW3")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(codList);
-            }
-            else if (listGames.SelectedItem.ToString() == "God Of War 4")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(gow4List);
-            }
-            else if (listGames.SelectedItem.ToString() == "God of War Ragnarök")
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(gowRagList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Warhammer: Space Marine 2")
-            {
-                formSettings.Instance.AddItemlistMods(spacemarineList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Black Myth: Wukong")
-            {
-                formSettings.Instance.AddItemlistMods(wukongList, modsDefaultList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Final Fantasy XVI")
-            {
-                formSettings.Instance.AddItemlistMods(ffxviList, modsDefaultList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Star Wars Outlaws")
-            {
-                formSettings.Instance.AddItemlistMods(outlawsList, modsDefaultList);
-            }
-            else if (listGames.SelectedItem.ToString() == "The Casting Of Frank Stone")
-            {
-                formSettings.Instance.AddItemlistMods(frankStoneList, modsDefaultList);
-            }
-            else if (listGames.SelectedItem.ToString() == "Silent Hill 2")
-            {
-                formSettings.Instance.AddItemlistMods(sh2List, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Until Dawn")
-            {
-                formSettings.Instance.AddItemlistMods(untilList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Hogwarts Legacy")
-            {
-                formSettings.Instance.AddItemlistMods(hlList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "A Quiet Place: The Road Ahead")
-            {
-                formSettings.Instance.AddItemlistMods(quietPlacelList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Metro Exodus Enhanced Edition")
-            {
-                formSettings.Instance.AddItemlistMods(metroList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Red Dead Redemption")
-            {
-                formSettings.Instance.AddItemlistMods(rdrList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Horizon Zero Dawn Remastered")
-            {
-                formSettings.Instance.AddItemlistMods(hzdRemList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Dragon Age: Veilguard")
-            {
-                formSettings.Instance.AddItemlistMods(dgVeilList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Dying Light 2")
-            {
-                formSettings.Instance.AddItemlistMods(dl2List, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Dead Rising Remaster")
-            {
-                formSettings.Instance.AddItemlistMods(drrList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Saints Row")
-            {
-                formSettings.Instance.AddItemlistMods(srList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "GTA Trilogy")
-            {
-                formSettings.Instance.AddItemlistMods(gtaTrilogyList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Assassin's Creed Mirage")
-            {
-                formSettings.Instance.AddItemlistMods(acMirageList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Alan Wake Remastered")
-            {
-                formSettings.Instance.AddItemlistMods(awRemasterList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Lego Horizon Adventures")
-            {
-                formSettings.Instance.AddItemlistMods(legoHzdList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Stalker 2")
-            {
-                formSettings.Instance.AddItemlistMods(stalker2List, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Returnal")
-            {
-                formSettings.Instance.AddItemlistMods(returnalList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "The Last of Us Part I")
-            {
-                formSettings.Instance.AddItemlistMods(tlouList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Marvel\\'s Spider-Man Miles Morales" || listGames.SelectedItem.ToString() == "Marvel\'s Spider-Man Miles Morales")
-            {
-                formSettings.Instance.AddItemlistMods(spiderList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Shadow of the Tomb Raider")
-            {
-                formSettings.Instance.AddItemlistMods(shadowTombList, modsDefaultList);
-            }
-
-            else if (listGames.SelectedItem.ToString() == "Gotham Knights")
-            {
-                formSettings.Instance.AddItemlistMods(gkList, modsDefaultList);
-            }
-
             else
             {
-                foreach (var lists in listToRemove) 
+                foreach (var lists in modsDefaultList)
                 {
-                    formSettings.Instance.RemoveItemlistMods(lists);
+                    formSettings.Instance.RemoveItemlistMods(modsDefaultList);
                 }
                 formSettings.Instance.AddItemlistMods(modsDefaultList);
             }
@@ -560,44 +304,11 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        private void formHome_Resize(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listGames_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mainSelectGame_Enter(object sender, EventArgs e)
-        {
-        }
-
-        private void listGames_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mainSelectGame_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void listFSR_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedFsr = listFSR.SelectedItem.ToString();
             formSettings.fsrSelected = selectedFsr;
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
         }
     }
 }

@@ -711,17 +711,16 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Kena: Bridge of Spirits",
-                "Default Mods\r\n"+
-                "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
-                "2 - Activate Fake Nvidia GPU and Nvapi Results (AMD only).\r\n\r\n"+
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "1. Open the game and select DX12 in the Settings.\n" +
+                "2. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen and Hud Fix boxes.\n\n"+
 
-                "FSR 3.1.1/DLSS\r\n" +
-                "1 - Select an FSR 3.1.1/DLSS mod and install it.\r\n" +
-                "2 - Check the 'Disable Signature Over' box.\r\n" +
-                "3 - In the game, select DLSS.\r\n" +
-                "4 - Press the 'Insert' key to open the menu.\r\n" +
-                "5 - Select an Upscaler of your choice, check the 'Frame Gen' and 'Hud Fix' boxes.\r\n" +
-                "6 - If you cannot see DLSS in the game, go back to the Utility and check the 'Enable Signature Over' box.\r\n\r\n"
+                "Others Mods\r\n"+
+                "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
+                "2 - Activate Fake Nvidia GPU and Nvapi Results (AMD only)."
             },
             {
                 "Layers of Fear",
@@ -990,6 +989,15 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Shadow Warrior 3",
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the insert key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "Steam: Library > Game > Gear icon to the right of Achievements > Properties > Launch Options, add -dx12.\n" +
+                "Others: Go to the game's .exe > Properties and add -dx12 after the .exe.\n\n" +
+
+                "Others Mods\n" +
                 "1 - Select a mod of your preference (0.10.3 is recommended).\n" +
                 "2 - Inside the game, select FSR. (You can use it with DLSS but there might be flickering).\n" +
                 "3 - Set Ambient Occlusion and Post Processing to Low.\n"
@@ -1127,6 +1135,13 @@ namespace FSR3ModSetupUtilityEnhanced
               "2. Check the box \"Enable Signature Over.\"\n" +
               "3. In-game, select DLSS FG.\n" +
               "4. If you can't see DLSS in the game, check the \"Nvngx.dll\" box, select \"Default,\" and install again."
+            },
+            {
+                "The Ascent",
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the insert key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen and Hud Fix boxes; if the HUD is not fully corrected, also check the FG Extended box."
             },
             {
               "The Callisto Protocol",
@@ -1404,6 +1419,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
+                {"The Ascent","Ascent2.png"},
                 {"The Callisto Protocol","Callisto2.png"},
                 {"The Casting Of Frank Stone","FrankStone2.png" },
                 {"The Witcher 3","Tw32.png"},
