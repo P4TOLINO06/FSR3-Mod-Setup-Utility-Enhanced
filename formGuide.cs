@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Design;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -27,11 +28,11 @@ namespace FSR3ModSetupUtilityEnhanced
         private Dictionary<string, string> guideTexts = new Dictionary<string, string>
         {
             {
-                "Initial Information", "1 - When selecting the game folder, look for the game's .exe file. Some games have the full name .exe or abbreviated, while others have the .exe file in the game folder but within subfolders with the ending Binaries\\Win64, and the .exe usually ends with Win64-Shipping, for example: TheCallistoProtocol-Win64-Shipping.\r\n" +
-                      "2 - It is recommended to read the guide before installing the mod. Some games do not have a guide because you only need to install the mod, while others, like Fallout 4 for example, have extra steps for installation.\r\n" +
-                      "If something is done incorrectly, the mod will not work.\r\n" +
-                      "3 - Some games may not work for certain users after installing the mod. It is recommended to select Default in NVGX and enable Signature Override if the mod does not work with the default files.\r\n" +
-                      "4 - Games that don't have numbers in 'Fsr' you don't need to check any option, just install the mod."
+                "Initial Information",
+                "1 - When selecting the game folder, look for the game's .exe file. Some games have the full name .exe or abbreviated, while others have the .exe file in the game folder but within subfolders with the ending Binaries\\Win64, and the .exe usually ends with Win64-Shipping, for example: TheCallistoProtocol-Win64-Shipping.\r\n" +
+                "2 - It is recommended to read the guide before installing the mod. Some games do not have a guide because you only need to install the mod, while others, like Fallout 4 for example, have extra steps for installation.\r\n" +
+                "If something is done incorrectly, the mod will not work.\r\n" +
+                "3 - Some games may not work for certain users after installing the mod. It is recommended to check the Enable Signature Override if the mod does not work with the default files.\r\n"
             },
             {
                 "Add-on Mods","OptiScaler\r\nIs drop-in DLSS2 to XeSS/FSR2 replacement for games. OptiScaler implements all necessary API methods of DLSS2 & NVAPI to act as a man in the middle. So from games perspective it’s using DLSS2 but actually using OptiScaler and calls are interpreted/redirected to XeSS & FSR2.\r\n\r\n"+
@@ -39,10 +40,11 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Optiscaler Method","Installation Method for Optiscaler\r\n" +
-                "Method Default: Default installation method. (Recommended for testing).\r\n"+
+                "Method Default: Default installation method.\r\n"+
                 "Method 1 (RTX/RX 6000-7000): Installation method for RTX and RX 6xxx/7xxx series GPUs.\r\n"+
                 "Method 2 (GTX/Old AMD): Installation method for older GPUs such as GTX and RX 5000 and below.\r\n"+
-                "Method 3 (If none of the others work): Modified installation method if none of the other options work.\r\n"
+                "Method 3 (If none of the others work): Modified installation method if none of the other options work.\r\n" +
+                "Follow the guide only if you are installing the standard Optiscaler; mods that already include Optiscaler (such as FSR 3.1.2/DLSS) do not require it."
             },
             {
                 "Optiscaler FSR 3.1.1/DLSS",
@@ -50,6 +52,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Select Optiscaler FSR 3.1.1/DLSS and install it.\r\n" +
                 "In the game, press the Insert key to open the menu. In the menu, select your preferred upscaler. You can also increase image sharpness by enabling the Sharpness option in the menu.\r\n" +
                 "If the menu does not appear, during the mod installation, check the Optiscaler box and select the desired upscaler under Add-on Upscaler, then install."
+            },
+            {
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)",
+                "1. Run the game in DX12 or the mod will not work.\n" +
+                "2. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen and Hud Fix boxes. If necessary, check the \"Extended FG\" box.\n" +
+                "6. Some games have additional steps; it is recommended to check the guide for the game you are installing the mod for."
             },
             {
                 "Achilles Legends Untold",
@@ -83,7 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - In-game, press the Insert key to open the menu and select your preferred upscaler.\r\n"+
                 "3 - If the menu does not appear, you can select the upscaler during installation. Choose Optiscaler and under Addon Upscaler, select your preferred upscaler.\r\n\r\n" +
 
-                "Preset\r\n" +  
+                "Preset\r\n" +
                 "1 - Install ReShade.\r\n" +
                 "2 - Inside ReShade, select the game's .exe and click next.\r\n" +
                 "3 - Select DX 10/11/12 and click next.\r\n" +
@@ -275,7 +286,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - If it doesn't work with the default files, enable Enable Signature Override. If it still doesn't work, check the box lfz.sl.dlss.\r\n" +
                 "3 - It's not necessary to activate an upscaler for this game for the mod to work, so enable it if you want.\n\n" +
 
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" + 
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
                 "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. In the game, select FSR 2 and press the \"Insert\" key to open the menu.\n" +
                 "3. In the menu, select FSR 3x, check the Frame Gen and Hud fix boxes."
@@ -340,7 +351,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Enable Fake Nvidia GPU (only for AMD and GTX).\r\n" +
                 "3 - In the game, select any upscaler and activate Frame Generation.\r\n" +
                 "4 - If you experience any flickering or ghosting, go to Video > Advanced Settings and decrease the Lod Range Multiplier.\r\n\r\n"+
-               
+
                 "FSR 3.1.2/DLSS FG Custom\r\n" +
                 "1 - Select FSR 3.1.2/DLSS FG Custom and install it.\r\n" +
                 "2 - Select Frame Generation within the game.\r\n" +
@@ -851,6 +862,14 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Palworld",
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "5. Not recommended to utilize the mod in online mode.\n\n" +
+
+                "Others Mods\n" +
                 "For standard mods (0.10+ and Uniscaler), simply enable the Fake Nvidia GPU (for AMD and GTX) and UE Compatibility mode (for AMD) and set the game to DX12. Throughout the guide, it will be explained how to do this.\r\n" +
                 "1. Select Palworld Build03 and locate the game folder with the ending binaries/win64 and see if the executable with the ending Win64-shipping.exe is present.\r\n" +
                 "2. Install, confirm the GPU selection window that will appear.\r\n" +
@@ -937,7 +956,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. Open the game, in the configuration menu that appears when the game starts, select DX12 and DLSS if available (if DLSS does not appear in this menu, select it within the game).\n" +
                 "5. In the game, press the \"Insert\" key to open the menu.\n" +
                 "6. In the menu, check the \"Frame Gen,\" \"Hud Fix,\" and \"FG Extended\" boxes.\n\n" +
-                
+
                 "Others Mods\n" +
                 "1 - Select a version of the mod of your choice (it is recommended 0.10.3 onwards or Uniscaler).\n" +
                 "2 - Select the folder where the game\'s exe is located (something like ROTTR.exe).\n" +
@@ -974,7 +993,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Shadow of the Tomb Raider",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" + 
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
                 "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, Select DLSS and press the Insert key to open the menu.\n" +
@@ -1065,6 +1084,15 @@ namespace FSR3ModSetupUtilityEnhanced
               "1 - Select a mod of your choice. (0.10.3 is recommended)\n" +
               "2 - Check the Fake Nvidia GPU box. (AMD/GTX)\n" +
               "3 - In the game, select DLSS\n"
+            },
+            {
+                "Spider Man/Miles",
+                "FSR 3.1.2/DLSS FG (Only Optiscaler):\n" +
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. When launching the game, select DLSS in the initial settings menu. If that’s not possible, select it in-game.\n" +
+                "4. In the game, press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen and Hud Fix boxes."
             },
             {
               "S.T.A.L.K.E.R. 2",
@@ -1215,7 +1243,7 @@ namespace FSR3ModSetupUtilityEnhanced
                "5. In the menu, check the Frame Gen and FG Hud fix. If you want to use FSR 3.1.2, select FSR 3x in \"Upscales.\"\n" +
                "6. For RTX users, this mod is not compatible with RT; if you want to use RT, use the Uniscaler V4 mod.\n\n" +
 
-               "Uniscaler V4\n" + 
+               "Uniscaler V4\n" +
                "1. Select Uniscaler V4 and install.\n" +
                "2. For AMD/GTX users: Check the boxes \"Fake Nvidia GPU\" and \"Enable Signature Over.\"\n" +
                "3. In the game, select DLSS and Frame Gen boxes."
@@ -1282,6 +1310,10 @@ namespace FSR3ModSetupUtilityEnhanced
             panel2.Left = panel1.Left + (panel1.Width - panel2.Width) / 2;
             panel2.Top = panel1.Top - panel2.Height - 5;
 
+            //Exit Button
+            panel5.Top = panel1.Top - panel5.Height;
+            panel5.Left = panel1.Right - panel5.Width + 3;
+
             richTextBox1.Enter += (sender, e) => //Remove the insertion cursor
             {
                 richTextBox1.Parent.Focus();
@@ -1328,6 +1360,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Assassin\'s Creed Mirage","AcMirage2.png"},
                 {"Optiscaler Method","Opti.png"},
                 {"Optiscaler FSR 3.1.1/DLSS","Opti.png"},
+                {"FSR 3.1.2/DLSS FG (Only Optiscaler)","Opti.png"},
                 {"Add-on Mods","Addon.png" },
                 {"Alone in the Dark","Alone.png"},
                 {"A Plague Tale Requiem","Requiem.png"},
@@ -1414,6 +1447,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Shadow of the Tomb Raider","ShadowTomb2.png"},
                 {"Shadow Warrior 3","Shadow32.png"},
                 {"Smalland","Smalland.png"},
+                {"Spider Man/Miles","Spider2.png"},
                 {"Silent Hill 2","Sh22.png"},
                 {"S.T.A.L.K.E.R. 2","Stalker2.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
@@ -1459,6 +1493,15 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 }
             }
+
+            if (listBox1.SelectedItem != null && listBox1.SelectedItem.ToString() == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+            {
+                buttonVideo.Visible = true;
+            }
+            else
+            {
+                buttonVideo.Visible = false;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1469,6 +1512,41 @@ namespace FSR3ModSetupUtilityEnhanced
             else
             {
                 listBox1.Visible = true;
+            }
+        }
+
+        private void buttonVideo_Click(object sender, EventArgs e)
+        {
+
+            if (listBox1.SelectedItem != null && listBox1.SelectedItem.ToString() == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+            {
+                buttonExit.Visible = true;
+
+                webView21.Dock = DockStyle.Fill;
+                string tutorialVideo = "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n";
+                webView21.Source = new Uri(tutorialVideo);
+                webView21.Visible = true;
+            }
+            else
+            {
+                buttonExit.Visible = false;
+                webView21.Visible = false;
+            }
+        }
+
+        private async void buttonExit_Click(object sender, EventArgs e)
+        {
+            string pauseVideoGuide = "var video = document.querySelector('video'); if (video) video.pause();";
+            await webView21.CoreWebView2.ExecuteScriptAsync(pauseVideoGuide);
+            webView21.Visible = false;
+            buttonExit.Visible = false;
+        }
+
+        private void webView21_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
+        {
+            if (!e.IsSuccess)
+            {
+                MessageBox.Show("The video could not be loaded. Please check your internet connection or try again later.", "Error loading video", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -592,8 +592,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Dlss 3.7.0", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll" },
                 { "Dlss 3.7.0 FG", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll" },
                 { "Dlss 3.8.10", "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll"},
-                { "Dlssg 3.7.2 FG", "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll" },
-                { "Dlssd 3.7.2", "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll" }
+                { "Dlssg 3.8.1", "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll" },
+                { "Dlssd 3.7.20", "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll" }
             };
         #endregion
 
@@ -1654,9 +1654,11 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void UpdateUpscalers(string destPath, bool onlyDlss = false)
+        public void UpdateUpscalers(string destPath, bool onlyDlss = false, bool copyDlssd = false)
         {
             string pathOnlyDlss = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
+            string pathDlssd = "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll";
+
             var pathUpscalers = new List<string>
             {
                 "mods\\Temp\\FSR_Update\\amd_fidelityfx_dx12.dll",
@@ -1682,6 +1684,11 @@ namespace FSR3ModSetupUtilityEnhanced
                     string destinationUpscaler = Path.Combine(destPath, upscalerName);
 
                     File.Copy(upscalersFiles, destinationUpscaler, overwrite: true);
+                }
+
+                if (copyDlssd)
+                {
+                    File.Copy(pathDlssd, Path.Combine(destPath, "nvngx_dlssd.dll"), true);
                 }
             }
         }
@@ -2659,7 +2666,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             if (selectMod == "Others Mods Spider")
             {
-                UpdateUpscalers(selectFolder);
+                UpdateUpscalers(selectFolder, false, true);
             }
         }
 
@@ -5694,7 +5701,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void ShowSelectedNvngx(object sender, EventArgs e)
         {
-            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG", "Dlss 3.8.10", "Dlssg 3.7.2 FG", "Dlssd 3.7.2" };
+            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG", "Dlss 3.8.10", "Dlssg 3.8.1", "Dlssd 3.7.20" };
             foreach (string opt in optNvngx)
             {
 

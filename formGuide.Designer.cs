@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            buttonVideo = new Button();
             listBox1 = new ListBox();
             button1 = new Button();
             panel4 = new Panel();
@@ -37,16 +39,22 @@
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
+            panel5 = new Panel();
+            buttonExit = new Button();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.Gray;
+            panel1.Controls.Add(webView21);
+            panel1.Controls.Add(buttonVideo);
             panel1.Controls.Add(listBox1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(panel4);
@@ -57,13 +65,44 @@
             panel1.Size = new Size(1905, 1100);
             panel1.TabIndex = 1;
             // 
+            // webView21
+            // 
+            webView21.AllowExternalDrop = true;
+            webView21.CreationProperties = null;
+            webView21.DefaultBackgroundColor = Color.White;
+            webView21.Location = new Point(1414, 568);
+            webView21.Name = "webView21";
+            webView21.Size = new Size(131, 40);
+            webView21.TabIndex = 6;
+            webView21.ZoomFactor = 1D;
+            webView21.NavigationCompleted += webView21_NavigationCompleted;
+            // 
+            // buttonVideo
+            // 
+            buttonVideo.BackColor = Color.Gray;
+            buttonVideo.BackgroundImageLayout = ImageLayout.None;
+            buttonVideo.Cursor = Cursors.Hand;
+            buttonVideo.FlatAppearance.BorderColor = Color.Silver;
+            buttonVideo.FlatStyle = FlatStyle.Flat;
+            buttonVideo.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonVideo.ForeColor = Color.Silver;
+            buttonVideo.Location = new Point(1602, 0);
+            buttonVideo.Margin = new Padding(5, 6, 5, 6);
+            buttonVideo.Name = "buttonVideo";
+            buttonVideo.Size = new Size(303, 72);
+            buttonVideo.TabIndex = 5;
+            buttonVideo.Text = "Video Guide";
+            buttonVideo.UseVisualStyleBackColor = false;
+            buttonVideo.Visible = false;
+            buttonVideo.Click += buttonVideo_Click;
+            // 
             // listBox1
             // 
             listBox1.BackColor = Color.Silver;
             listBox1.BorderStyle = BorderStyle.FixedSingle;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 30;
-            listBox1.Items.AddRange(new object[] { "Initial Information", "Add-on Mods", "Optiscaler Method", "Optiscaler FSR 3.1.1/DLSS", "Achilles Legends Untold", "Alan Wake Remastered", "Alan Wake 2", "Alone in the Dark", "A Plague Tale Requiem", "A Quiet Place: The Road Ahead", "Assassin's Creed Mirage", "Assassin's Creed Valhalla", "Atomic Heart", "Baldur's Gate 3", "Black Myth: Wukong", "Blacktail", "Banishers Ghost of New Eden", "Bright Memory: Infinite", "Brothers a Tale of Two Sons", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss Rockay City", "Crysis 3 Remastered", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Space Remake", "Dead Island 2", "Dead Rising Remaster", "Death Stranding Director's Cut", "Deathloop", "Dragon Age: Veilguard", "Dragons Dogma 2", "Dying Light 2", "Elden Ring", "Everspace 2", "Evil West", "Fist Forged in Shadow Torch", "Flintlock: The Siege of Dawn", "Fort Solis", "Forza Horizon 5", "Final Fantasy XVI", "F1 2022", "F1 2023", "Ghost of Tsushima", "Ghostrunner 2", "Ghostwire: Tokyo", "God Of War 4", "God of War Ragnarök", "Gotham Knights", "GTA Trilogy", "GTA V", "Hellblade: Senua's Sacrifice", "Hellblade 2", "High On Life", "Hitman 3", "Hogwarts Legacy", "Horizon Forbidden West", "Horizon Zero Dawn", "Horizon Zero Dawn Remastered", "Icarus", "Judgment", "Jusant", "Kena: Bridge of Spirits", "Layers of Fear", "Lies of P", "Lego Horizon Adventures", "Loopmancer", "Lords of the Fallen", "Manor Lords", "Martha Is Dead", "Marvel's Avengers", "Marvel's Guardians of the Galaxy", "Metro Exodus Enhanced", "Microsoft Flight Simulator 24", "Monster Hunter Rise", "Nobody Wants To Die", "Outpost Infinity Siege", "Pacific Drive", "Palworld", "Ratchet and Clank", "Rise of The Tomb Raider", "Ready or Not", "Red Dead Redemption", "Red Dead Redemption 2", "Returnal", "Ripout", "Saints Row", "Sackboy: A Big Adventure", "Shadow of the Tomb Raider", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "S.T.A.L.K.E.R. 2", "Star Wars Jedi: Survivor", "Star Wars Outlaws", "Test Drive Unlimited Solar Crown", "The Ascent", "The Callisto Protocol", "The Casting Of Frank Stone", "The Witcher 3", "Unknown 9: Awakening", "Until Dawn", "Warhammer: Space Marine 2", "Watch Dogs Legion" });
+            listBox1.Items.AddRange(new object[] { "Initial Information", "Add-on Mods", "Optiscaler Method", "Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Achilles Legends Untold", "Alan Wake Remastered", "Alan Wake 2", "Alone in the Dark", "A Plague Tale Requiem", "A Quiet Place: The Road Ahead", "Assassin's Creed Mirage", "Assassin's Creed Valhalla", "Atomic Heart", "Baldur's Gate 3", "Black Myth: Wukong", "Blacktail", "Banishers Ghost of New Eden", "Bright Memory: Infinite", "Brothers a Tale of Two Sons", "Chernobylite", "Cod Black Ops Cold War", "Cod MW3", "Control", "Crime Boss Rockay City", "Crysis 3 Remastered", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Space Remake", "Dead Island 2", "Dead Rising Remaster", "Death Stranding Director's Cut", "Deathloop", "Dragon Age: Veilguard", "Dragons Dogma 2", "Dying Light 2", "Elden Ring", "Everspace 2", "Evil West", "Fist Forged in Shadow Torch", "Flintlock: The Siege of Dawn", "Fort Solis", "Forza Horizon 5", "Final Fantasy XVI", "F1 2022", "F1 2023", "Ghost of Tsushima", "Ghostrunner 2", "Ghostwire: Tokyo", "God Of War 4", "God of War Ragnarök", "Gotham Knights", "GTA Trilogy", "GTA V", "Hellblade: Senua's Sacrifice", "Hellblade 2", "High On Life", "Hitman 3", "Hogwarts Legacy", "Horizon Forbidden West", "Horizon Zero Dawn", "Horizon Zero Dawn Remastered", "Icarus", "Judgment", "Jusant", "Kena: Bridge of Spirits", "Layers of Fear", "Lies of P", "Lego Horizon Adventures", "Loopmancer", "Lords of the Fallen", "Manor Lords", "Martha Is Dead", "Marvel's Avengers", "Marvel's Guardians of the Galaxy", "Metro Exodus Enhanced", "Microsoft Flight Simulator 24", "Monster Hunter Rise", "Nobody Wants To Die", "Outpost Infinity Siege", "Pacific Drive", "Palworld", "Ratchet and Clank", "Rise of The Tomb Raider", "Ready or Not", "Red Dead Redemption", "Red Dead Redemption 2", "Returnal", "Ripout", "Saints Row", "Sackboy: A Big Adventure", "Shadow of the Tomb Raider", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "Spider Man/Miles", "S.T.A.L.K.E.R. 2", "Star Wars Jedi: Survivor", "Star Wars Outlaws", "Test Drive Unlimited Solar Crown", "The Ascent", "The Callisto Protocol", "The Casting Of Frank Stone", "The Witcher 3", "Unknown 9: Awakening", "Until Dawn", "Warhammer: Space Marine 2", "Watch Dogs Legion" });
             listBox1.Location = new Point(5, 84);
             listBox1.Margin = new Padding(5, 6, 5, 6);
             listBox1.Name = "listBox1";
@@ -152,6 +191,7 @@
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel1);
             panel3.Controls.Add(panel2);
             panel3.Location = new Point(0, 0);
@@ -159,6 +199,34 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(2157, 972);
             panel3.TabIndex = 4;
+            // 
+            // panel5
+            // 
+            panel5.Anchor = AnchorStyles.None;
+            panel5.Controls.Add(buttonExit);
+            panel5.Location = new Point(1725, 18);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(308, 87);
+            panel5.TabIndex = 4;
+            // 
+            // buttonExit
+            // 
+            buttonExit.BackColor = Color.Gray;
+            buttonExit.BackgroundImageLayout = ImageLayout.None;
+            buttonExit.Cursor = Cursors.Hand;
+            buttonExit.FlatAppearance.BorderColor = Color.Silver;
+            buttonExit.FlatStyle = FlatStyle.Flat;
+            buttonExit.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonExit.ForeColor = Color.Silver;
+            buttonExit.Location = new Point(0, 6);
+            buttonExit.Margin = new Padding(5, 6, 5, 6);
+            buttonExit.Name = "buttonExit";
+            buttonExit.Size = new Size(303, 72);
+            buttonExit.TabIndex = 6;
+            buttonExit.Text = "Exit";
+            buttonExit.UseVisualStyleBackColor = false;
+            buttonExit.Visible = false;
+            buttonExit.Click += buttonExit_Click;
             // 
             // formGuide
             // 
@@ -173,10 +241,12 @@
             Text = "formGuide";
             Load += formGuide_Load;
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             panel4.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
+            panel5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -191,5 +261,9 @@
         private Panel panelImage;
         private Panel panel3;
         private RichTextBox richTextBox1;
+        private Button buttonVideo;
+        private Panel panel5;
+        private Button buttonExit;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
     }
 }
