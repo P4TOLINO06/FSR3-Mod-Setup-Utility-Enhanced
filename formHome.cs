@@ -115,6 +115,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Horizon Zero Dawn","Hzd.png"},
                     {"Horizon Zero Dawn Remastered","HzdRem.png"},
                     {"Icarus","Icarus.png"},
+                    {"Indiana Jones and the Great Circle","Indy.png"},
                     {"Judgment","Jud.png"},
                     {"Jusant","Jusant.png"},
                     {"Kena: Bridge of Spirits","KENA.png"},
@@ -236,7 +237,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Dragons Dogma 2", new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom" } },
                 { "The Callisto Protocol", new List<string> { "The Callisto Protocol FSR3", "FSR 3.1.1/DLSS Callisto", "FSR 3.1.2/DLSS Custom Callisto", "0.10.4", "Uniscaler V3" } },
                 { "GTA V", new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" } },
-                { "Cyberpunk 2077", new List<string> { "RTX DLSS FG CB2077", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
+                { "Cyberpunk 2077", new List<string> { "Others Mods 2077", "RTX DLSS FG CB2077", "FSR 3.1.2/XESS FG 2077", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Ghost of Tsushima", new List<string> { "Ghost of Tsushima FG DLSS", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Lords of the Fallen", new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" } },
                 { "Palworld", new List<string> { "Palworld FG Build03" } },
@@ -275,7 +276,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Marvel\\'s Spider-Man Remastered", new List<string> { "Others Mods Spider" } },
                 { "Microsoft Flight Simulator 24", new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Shadow of the Tomb Raider", new List<string> { "Others Mods Shadow Tomb" } },
-                { "Gotham Knights", new List<string> { "Others Mods GK" } }
+                { "Gotham Knights", new List<string> { "Others Mods GK" } },
+                { "Indiana Jones and the Great Circle", new List<string> { "Others Mods Indy"} }
             };
             #endregion
 

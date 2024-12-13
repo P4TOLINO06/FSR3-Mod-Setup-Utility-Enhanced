@@ -250,6 +250,11 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Cyberpunk 2077",
+                "FSR 3.1.2/XESS FG\n" +
+                "1. Select FSR 3.1.2/XESS FG and install.\n" +
+                "2. In the game, select DLSS and DLSS Frame Gen.\n" +
+                "3. It is recommended to install the \"FG Ghost Fix\" along with the mod. Select \"Others Mods 2077\" to install.\n\n" +
+
                 "Uniscaler FSR 3.1:\n" +
                 "1. Select Uniscaler FSR 3.1.\n" +
                 "2. If you have an RTX GPU and want to use the real DLSS, select DLSS under \"Mod Operates\". If you don't have an RTX GPU and can't see DLSS in the game, Click on Nvngx.dll and select \"Default\". You can also use XESS instead of FSR 3.1 by selecting XESS under \"Mod Operates\".\n" +
@@ -708,6 +713,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "need to create a shortcut and in the properties, at the end of Target, add -dx12 outside the\r\n" +
                 "quotes if there are any, don't forget to put a space between -dx12 and the path.\r\n" +
                 "5 - Run the game through the executable.\r\n"
+            },
+            {
+                "Indiana Jones and the Great Circle",
+                "1. Install ReShade.\n" +
+                "2. In the ReShade, select the game’s .exe and click next.\n" +
+                "3. Select DX 10/11/12 and click next.\n" +
+                "4. Click \"Browse\" and locate the file TheGreatCircle.ini that was installed in the folder selected in the Utility and click Next.\n" +
+                "5. In the game, press the Home key to open the menu and select the options you prefer.\n"
             },
             {
                 "Judgment\r\n",
@@ -1249,6 +1262,20 @@ namespace FSR3ModSetupUtilityEnhanced
                "3. In the game, select DLSS and Frame Gen boxes."
             },
             {
+                "Uncharted Legacy Of Thieves",
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen and Hud Fix boxes.\n" +
+                "5. Close Afterburner, or the game will crash.\n\n" +
+
+                "Others Mods\n" +
+                "1. Select a mod of your preference (0.10.3 is recommended).\n" +
+                "2. Run the game using the u4-l.exe executable. The game may crash the first time, so just run it again.\n" +
+                "3. Inside the game, select FSR."
+            },
+            {
               "Unknown 9: Awakening",
               "1 - Select Uniscaler V4 and install it.\r\n" +
               "2 - In the game, select an option under Upscaling Quality.\r\n" +
@@ -1416,6 +1443,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Horizon Zero Dawn","Hzd2.png" },
                 {"Horizon Zero Dawn Remastered","HzdRem2.png"},
                 {"Icarus","Icarus.png"},
+                {"Indiana Jones and the Great Circle","Indy2.png"},
                 {"Judgment","Jud.png"},
                 {"Jusant","Jusant.png"},
                 {"Kena: Bridge of Spirits","KENA.png"},
@@ -1457,6 +1485,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"The Callisto Protocol","Callisto2.png"},
                 {"The Casting Of Frank Stone","FrankStone2.png" },
                 {"The Witcher 3","Tw32.png"},
+                {"Uncharted Legacy Of Thieves","Uncharted2.png"},
                 {"Unknown 9: Awakening","Unknown92.png" },
                 {"Until Dawn","Until2.png" },
                 {"Warhammer: Space Marine 2","SpaceMarine2.png"},

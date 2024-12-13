@@ -600,7 +600,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Dlss Global Files
         List<string> del_dlss_global_rtx = new List<string>
         {
-            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log",
+            "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log","nvapi64-proxy",
             "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.log", "nvngx-wrapper.dll",
             "nvngx.ini", "unins000.dat"
 
@@ -609,8 +609,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
         List<string> del_dlss_global_amd = new List<string>
         {
-            "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log",
-            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.ini", "fakenvapi.log", "libxess.dll",
+            "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log","nvapi64-proxy.dll",
+            "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.ini", "fakenvapi.log",
             "nvapi64.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "unins000.dat"
 
         };
@@ -1582,6 +1582,20 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFSR(origins_sdk_folder);
         }
 
+        public bool HandlePrompt(string windowTitle, string windowMessage, Action<bool> actionFunc = null)
+        {
+            var result = MessageBox.Show(windowMessage, windowTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            bool userChoice = (result == DialogResult.Yes);
+
+            if (userChoice && actionFunc != null)
+            {
+                actionFunc(userChoice);
+            }
+
+            return userChoice;
+        }
+
         private async Task optiscaler_custom()
         {
             #region Backup Files
@@ -1631,8 +1645,9 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider" };
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection" };
             string gpuName = await GetActiveGpu();
+            string[] gpusVar = { "amd", "intel", "gtx" };
 
             if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")) && copydlss != null)
             {
@@ -1648,7 +1663,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 await CopyFolder(pathOptiscalerDlss);
             }
 
-            if (gpuName.Contains("amd") && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes) 
+            if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes) 
             {
                 CopyFolder(nvapiAmd);
             }
@@ -2545,6 +2560,42 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void indyFsr3()
+        {
+            string smoothReshadeIndy = "mods\\FSR3_Indy\\Others Mods\\Reshade\\Normal\\TheGreatCircle smooth.ini";
+            string normalReshadeIndy = "mods\\FSR3_Indy\\Others Mods\\Reshade\\Smooth\\TheGreatCircle .ini";
+            string introSkipIndy = "mods\\FSR3_Indy\\Others Mods\\Intro Skip";
+
+            // Intro SKip
+            HandlePrompt(
+                "Intro SKip",
+                "Do you want to install the Intro Skip? Select the root folder of the game, Indiana Jones and the Great Circle.",
+                _ =>
+                {
+                    CopyFolder(introSkipIndy);
+                }
+            );
+
+            // Reshade
+            HandlePrompt(
+                "Smooth",
+                "Do you want to install Reshade (this is the smooth version; to install the full version, select \"No\" and choose \"Yes\" in the next window)? Check the FSR Guide for the full installation instructions.",
+                _ =>
+                {
+                    File.Copy(smoothReshadeIndy, Path.Combine(selectFolder, "TheGreatCircle smooth.ini"), true);
+                }
+            );
+
+            HandlePrompt(
+                "Full",
+                "Do you want to install the full version Reshade?",
+                _ =>
+                {
+                    File.Copy(normalReshadeIndy, Path.Combine(selectFolder, "TheGreatCircle .ini"), true);
+                }
+            );
+        }
+
         public void stalkerFsr3()
         {
             string rootFolderStalker = Path.GetFullPath(Path.Combine(selectFolder, "..\\.."));
@@ -3114,7 +3165,13 @@ namespace FSR3ModSetupUtilityEnhanced
             string path_cb2077_over = @"mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
             string pathNovaLut = "mods\\FSR3_CYBER2077\\mods\\Nova_LUT_2-1";
             string pathHdReworked = "mods\\FSR3_CYBER2077\\mods\\Cyberpunk 2077 HD Reworked";
+            string pathGhostFix2077 = "mods\\FSR3_CYBER2077\\mods\\FrameGen Ghosting Fix";
+            string pathDisableVignette2077 = "mods\\FSR3_CYBER2077\\mods\\Disable Vignette and Sharpening";
+            string pathXessNvngx2077 = "mods\\FSR3_CYBER2077\\Xess_FSR_FG\\XESS Upscaler\\nvngx.ini";
+            string pathFgAmd2077 = "mods\\FSR3_CYBER2077\\Xess_FSR_FG\\AMD";
+            string pathFgNvidia2077 = "mods\\FSR3_CYBER2077\\Xess_FSR_FG\\Nvidia";
             string originPathCb2077 = Path.GetFullPath(Path.Combine(selectFolder, "..\\.."));
+            string gpuName = await GetActiveGpu();
             #endregion
 
             if (selectMod == "RTX DLSS FG CB2077")
@@ -3123,26 +3180,77 @@ namespace FSR3ModSetupUtilityEnhanced
                 runReg(path_cb2077_over);
             }
 
-            if (Path.Exists(originPathCb2077 + "\\bin"))
+            if (selectMod == "FSR 3.1.2/XESS FG 2077")
             {
-
-                if (MessageBox.Show("Do you want to install Nova LUT 2-1 and HD Reworked for Cyberpunk 2077?", "Install Mods", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (gpuName.Contains("amd") || gpuName.Contains("intel"))
                 {
-
-                    foreach (string modsPathCb2077 in pathModsCb2077)
-                    {
-                        CopyFolder3(modsPathCb2077, originPathCb2077);
-                    };
+                    CopyFolder(pathFgAmd2077);
+                }
+                else
+                {
+                    CopyFolder(pathFgNvidia2077);
                 }
 
-                if ( MessageBox.Show("Do you want to install Reshade Real Life 2.0? (It is necessary to install Reshade for this mod to work. Please refer to the Guide for installation instructions.)", "ReShade", MessageBoxButtons.YesNo)== DialogResult.Yes)
+                if (MessageBox.Show("Do you want to use XESS as the upscaler? The default is FSR 3.1.2.","XESS/FSR", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    CopyFolder3("mods\\FSR3_CYBER2077\\mods\\V2.0 Real Life Reshade", originPathCb2077);
+                    File.Copy(pathXessNvngx2077, Path.Combine(selectFolder, "nvngx.ini"), true);
                 }
             }
-            else
+
+            if (selectMod == "Others Mods 2077")
             {
-                MessageBox.Show("If you want to install the other mods (Nova Lut, Real Life and Ultra Realistic Textures), select the path to the .exe, it should be something like: Cyberpunk 2077/bin/x64", "Others Mods", MessageBoxButtons.OK);
+                UpdateUpscalers(selectFolder, false, true);
+
+                if (Path.Exists(originPathCb2077 + "\\bin"))
+                {
+
+                    // Nova Lut
+                    HandlePrompt(
+                        "Nova Lut",
+                        "Do you want to install Nova LUT 2-1 and HD Reworked for Cyberpunk 2077?",
+                        _ =>
+                        {
+                            foreach (string modsPathCb2077 in pathModsCb2077)
+                            {
+                                CopyFolder3(modsPathCb2077, originPathCb2077);
+                            };
+                        }
+                    );
+
+                    // Real Life 2.0
+                    HandlePrompt(
+                        "Real Life 2.0",
+                        "Do you want to install Reshade Real Life 2.0? (It is necessary to install Reshade for this mod to work. Please refer to the Guide for installation instructions.)",
+                        _ =>
+                        {
+                            CopyFolder3("mods\\FSR3_CYBER2077\\mods\\V2.0 Real Life Reshade", originPathCb2077);
+                        }
+                    );
+
+                    // FG Ghost Fix
+                    HandlePrompt(
+                        "FG Ghost Fix",
+                        "Do you want to install the FG Ghost Fix? Only if you are using the FSR 3.1.2/XESS FG 2077 mod.",
+                        _ =>
+                        {
+                            CopyFolder3(pathGhostFix2077, originPathCb2077);
+                        }
+                    );
+
+                    // Disable Vignette
+                    HandlePrompt(
+                        "Disable Vignette",
+                        "Do you want to remove the vignette from the game? This mod removes the black vignette that appears in the corners of the screen.",
+                        _ =>
+                        {
+                            CopyFolder3(pathDisableVignette2077, originPathCb2077);
+                        }
+                    );
+                }
+                else
+                {
+                    MessageBox.Show("If you want to install the others mods (Nova Lut, Real Life and Ultra Realistic Textures), select the path to the .exe, it should be something like: Cyberpunk 2077/bin/x64", "Others Mods", MessageBoxButtons.OK);
+                }
             }
 
         }
@@ -3675,6 +3783,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     dl2Fsr3();
                 }
+                if (gameSelected == "Indiana Jones and the Great Circle")
+                {
+                    indyFsr3();
+                }
                 if (gameSelected == "GTA Trilogy")
                 {
                     gtaTrilogyFsr3();
@@ -4110,7 +4222,7 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         #endregion
 
-        private void buttonDel_Click(object sender, EventArgs e)
+        private async void buttonDel_Click(object sender, EventArgs e)
         {
             if (selectMod != null)
             {
@@ -4193,13 +4305,33 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     #region Remove Files Cyberpunk
                     string rootPathCb2077 = Path.GetFullPath(Path.Combine(selectFolder, "..\\.."));
-                    string[] modsNameCb2077 = ["HD Reworked Project.archive", "#####-NovaLUT-2.archive", "version.dll", "global.ini"]; 
+                    string[] modsNameCb2077 = ["HD Reworked Project.archive", "#####-NovaLUT-2.archive", "version.dll", "global.ini"];
+                    string gpuName = await GetActiveGpu();
 
                     if (selectMod == "RTX DLSS FG CB2077")
                     {
                         CleanupMod(del_cb2077_fsr3, folderCb2077);
                     }
-                    //Remove the folder with HD Rework and Nova Lut
+
+                    if (selectMod == "FSR 3.1.2/XESS FG 2077")
+                    {
+                        if  (gpuName.Contains("amd") || gpuName.Contains("intel"))
+                        {
+                            CleanupMod3(del_dlss_global_amd, "FSR 3.1.2/XESS FG 2077");
+                        }
+                        else
+                        {
+                            CleanupMod3(del_dlss_global_rtx, "FSR 3.1.2/XESS FG 2077");
+                        }
+                    }
+
+                    // Enable Viganette
+                    CleanupOthersMods("Disable Vignette", "DisableVignetteAndSharpening.archive", Path.Combine(rootPathCb2077, "archive\\pc\\mod"));
+
+                    //FG Ghost Fix
+                    CleanupOthersMods("FG Ghost Fix", "framegenghostingfix_16_9.archive", Path.Combine(rootPathCb2077, "archive\\pc\\mod"));
+
+                    // Remove the folder with HD Rework and Nova Lut
                     if (File.Exists(rootPathCb2077 + "\\archive\\pc\\mod\\HD Reworked Project.archive"))
                     {
                        if (MessageBox.Show("Would you like to remove the HD Reworked,Nova Lut 2-1 mods and Cyberpunk UltraPlus?", "Mods",MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -4863,6 +4995,15 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
 
+                    #endregion
+                }
+
+                if (gameSelected == "Indiana Jones and the Great Circle")
+                {
+                    #region Cleanup Others Mods Indiana Jones and the Great Circle
+
+                    CleanupOthersMods("Intro Skip", "boot_sequence_pc.bk2", Path.Combine(selectFolder, "base\\video\\boot_sequence"));
+                   
                     #endregion
                 }
 
