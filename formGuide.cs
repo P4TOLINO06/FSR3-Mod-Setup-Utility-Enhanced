@@ -170,8 +170,9 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 "Black Myth: Wukong",
                 "RTX:\n" +
-                "1. Select \"RTX DLSS FG Wukong\" and install.\n" +
-                "2. In the game, select DLSS and Frame Generation.\n\n" +
+                "1. Select \"DLSS FG (ALL GPUs) Wukong\" and install.\n" +
+                "2. In the game, select DLSS and Frame Generation.\n" +
+                "3. This mod fixes issues related to using the Somersault Cloud.\n\n" +
 
                 "AMD/GTX DLSS FG:\n" +
                 "1. Select Optiscaler FSR 3.1.1/DLSS and install it.\n" +
@@ -1171,6 +1172,15 @@ namespace FSR3ModSetupUtilityEnhanced
               "   the menu and check the options you want.\n"
             },
             {
+                "Suicide Squad: Kill the Justice League",
+                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "1. Select the .exe path. (Stones\\Binaries\\Win64).\n" +
+                "2. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "5. The game may crash the first time the mod is installed."
+            },
+            {
               "Test Drive Unlimited Solar Crown",
               "1. Select Uniscaler FSR 3.1.\n" +
               "2. Check the box \"Enable Signature Over.\"\n" +
@@ -1480,6 +1490,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"S.T.A.L.K.E.R. 2","Stalker2.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
+                {"Suicide Squad: Kill the Justice League","Sskjl2.png"},
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
                 {"The Ascent","Ascent2.png"},
                 {"The Callisto Protocol","Callisto2.png"},

@@ -160,6 +160,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Star Wars Outlaws","Outlaws.png"},
                     {"STARFIELD","Starfield.png"},
                     {"Steelrising","Steelrising.png"},
+                    {"Suicide Squad: Kill the Justice League","Sskjl.png"},
                     {"TEKKEN 8","Tekken.png"},
                     {"Test Drive Unlimited Solar Crown","TestSolar.png"},
                     {"The Ascent","Ascent.png"},
@@ -248,8 +249,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Cod MW3", new List<string> { "COD MW3 FSR3" } },
                 { "God Of War 4", new List<string> { "Gow 4 FSR 3.1", "FSR 3.1.1/DLSS FG Custom" } },
                 { "God of War Ragnarök", new List<string> { "Uniscaler FSR 3.1", "Others Mods Gow Rag" } },
-                { "Warhammer: Space Marine 2", new List<string> { "FSR 3.1.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1.1/DLSS" } },
-                { "Black Myth: Wukong", new List<string> { "RTX DLSS FG Wukong", "FSR 3.1 Custom Wukong" } },
+                { "Warhammer: Space Marine 2", new List<string> { "Others Mods Space Marine", "FSR 3.1.3/DLSS FG Marine", "FSR 3.1.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Black Myth: Wukong", new List<string> { "Others Mods Wukong", "DLSS FG (ALL GPUs) Wukong", "FSR 3.1 Custom Wukong" } },
                 { "Final Fantasy XVI", new List<string> { "FFXVI DLSS RTX", "Others Mods FFXVI" } },
                 { "Forza Horizon 5", new List<string>  { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Star Wars Outlaws", new List<string> { "Outlaws DLSS RTX", "FSR 3.1.1/DLSS FG Custom" } },
@@ -277,7 +278,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Microsoft Flight Simulator 24", new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Shadow of the Tomb Raider", new List<string> { "Others Mods Shadow Tomb" } },
                 { "Gotham Knights", new List<string> { "Others Mods GK" } },
-                { "Indiana Jones and the Great Circle", new List<string> { "Others Mods Indy"} }
+                { "Indiana Jones and the Great Circle", new List<string> { "Others Mods Indy"} },
+                { "Suicide Squad: Kill the Justice League", new List<string> { "Others Mods SSKJL", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } }
             };
             #endregion
 

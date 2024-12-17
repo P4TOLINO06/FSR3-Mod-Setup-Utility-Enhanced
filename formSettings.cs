@@ -657,7 +657,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Optiscaler Files
         List<string> del_optiscaler = new List<string>
         {
-            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg"
+            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg","winmm.dll"
         };
         #endregion
 
@@ -1645,7 +1645,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection" };
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League" };
             string gpuName = await GetActiveGpu();
             string[] gpusVar = { "amd", "intel", "gtx" };
 
@@ -1669,14 +1669,14 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void UpdateUpscalers(string destPath, bool onlyDlss = false, bool copyDlssd = false)
+        public void UpdateUpscalers(string destPath, bool onlyDlss = false, bool copyDlssd = false, bool copyDlssDlssD = false, bool copyFsrDlss = false)
         {
             string pathOnlyDlss = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
             string pathDlssd = "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll";
+            string pathFsr = "mods\\Temp\\FSR_Update";
 
             var pathUpscalers = new List<string>
             {
-                "mods\\Temp\\FSR_Update\\amd_fidelityfx_dx12.dll",
                 "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll",
                 "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll",
                 "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll"
@@ -1684,14 +1684,44 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (onlyDlss)
             {
-                if (MessageBox.Show("Do you want to update DLSS? DLSS 3.8.10 will be installed", "DLSS", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                HandlePrompt(
+                "DLSS",
+                "Do you want to update DLSS? DLSS 3.8.10 will be installed",
+                _ =>
                 {
                     File.Copy(pathOnlyDlss, Path.Combine(destPath, "nvngx_dlss.dll"), true);
-                }
+                });
+            }
+
+            else if (copyDlssDlssD)
+            {
+                HandlePrompt(
+                "DLSS/DLSSD",
+                "Do you want to update DLSS/DLSSD? DLSS 3.8.1 and DLSSD 3.7.20 will be installed.",
+                _ =>
+                {
+                    File.Copy(pathDlssd, Path.Combine(destPath, "nvngx_dlssd.dll"), true);
+                    File.Copy(pathOnlyDlss, Path.Combine(destPath, "nvngx_dlss.dll"), true);
+                });          
+            }
+
+            else if (copyFsrDlss)
+            {
+                HandlePrompt(
+                "FSR/DLSS",
+                "Do you want to update DLSS/FSR? DLSS 3.8.1 and FSR 3.1.3 will be installed..",
+                _ =>
+                {
+                    CopyFolder3(pathFsr, destPath);
+                    File.Copy(pathOnlyDlss, Path.Combine(destPath, "nvngx_dlss.dll"), true);
+                });
             }
 
             else if (MessageBox.Show("Do you want to update the upscalers? The latest version of all upscalers will be installed", "Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+
+                CopyFolder3("mods\\Temp\\FSR_Update", destPath);
+
                 foreach (var upscalersFiles in pathUpscalers)
                 {
                     string upscalerName = Path.GetFileName(upscalersFiles);
@@ -1926,9 +1956,9 @@ namespace FSR3ModSetupUtilityEnhanced
             string wukongCache = Path.Combine(wukongCacheEnviroment, "AppData");
             bool finalMessage = false;
 
-            string fullPathWukong = Path.GetFullPath(Path.Combine(selectFolder, @"..\..\..\"));
+            string fullPathWukong = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
 
-            if (selectMod == "RTX DLSS FG Wukong")
+            if (selectMod == "DLSS FG (ALL GPUs) Wukong")
             {
                 dlss_to_fsr();
             }
@@ -1948,57 +1978,87 @@ namespace FSR3ModSetupUtilityEnhanced
             }
 
             #region Others Mods
-            if (Path.Exists(fullPathWukong + "\\b1\\Binaries\\Win64"))
+            if (selectMod == "Others Mods Wukong")
             {
-                string modsPath = Path.Combine(fullPathWukong, "b1", "Content", "Paks", "~mods");
-                if (!Path.Exists(modsPath)) Directory.CreateDirectory(modsPath);
 
-                string message, title;
-
-                if (MessageBox.Show(message = "Do you want to install the optimization mod? (Faster Loading Times, Optimized CPU and GPU Utilization, etc. To check the other optimizations, see the guide).", title = "Optimized Wukong", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (Path.Exists(Path.Combine(fullPathWukong, "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64")))
                 {
-                    string PathOptimized = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\Content\\Paks"));
-                    if (Path.Exists(PathOptimized))
+                    UpdateUpscalers(Path.Combine(fullPathWukong, "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"), false, false, true);
+                }
+                else
+                {
+                    MessageBox.Show("To update DLSS, select the path to the .exe (BlackMythWukong\\b1\\Binaries\\Win64).", "DLSS", MessageBoxButtons.OK);
+                }
+
+                if (Path.Exists(fullPathWukong + "\\b1\\Binaries\\Win64"))
+                {
+                    string modsPath = Path.Combine(fullPathWukong, "b1", "Content", "Paks", "~mods");
+                    if (!Path.Exists(modsPath)) Directory.CreateDirectory(modsPath);
+
+                    string message, title;
+
+                    if (MessageBox.Show(message = "Do you want to install the optimization mod? (Faster Loading Times, Optimized CPU and GPU Utilization, etc. To check the other optimizations, see the guide).", title = "Optimized Wukong", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        if (!Path.Exists(PathOptimized + "\\~mods")) Directory.CreateDirectory(PathOptimized + "\\~mods");
-                        File.Copy(wukong_file_optimized, PathOptimized + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak", true);
+                        string PathOptimized = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\Content\\Paks"));
+                        if (Path.Exists(PathOptimized))
+                        {
+                            if (!Path.Exists(PathOptimized + "\\~mods")) Directory.CreateDirectory(PathOptimized + "\\~mods");
+                            File.Copy(wukong_file_optimized, PathOptimized + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak", true);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Path \"b1\\Content\\Paks\" not found, please select the .exe path in \"Select Folder\". The path should look something like this: BlackMythWukong\\b1\\Binaries\\Win64", "Not Found", MessageBoxButtons.OK);
+                        }
+                        finalMessage = true;
                     }
-                    else
+
+                    // Preset
+                    HandlePrompt(
+                    "Preset",
+                    "Do you want to apply the Graphics Preset? (ReShade must be installed for the preset to work, check the guide for more information).",
+                    _ =>
                     {
-                        MessageBox.Show("Path \"b1\\Content\\Paks\" not found, please select the .exe path in \"Select Folder\". The path should look something like this: BlackMythWukong\\b1\\Binaries\\Win64", "Not Found", MessageBoxButtons.OK);
-                        Debug.WriteLine(PathOptimized);
+                        CopyFilesCustom(Path.Combine(wukongGraphicPreset), Path.Combine(Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..")), "Black Myth Wukong.ini"), "BlackMythWukong\\b1\\Binaries\\Win64");
+                    });
+
+                    // Anti Stutter
+                    HandlePrompt(
+                    "Anti Stutter",
+                    "Do you want to enable Anti-Stutter - High CPU Priority? (prevents possible stuttering in the game)",
+                    _ =>
+                    {
+                        runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Install Black Myth Wukong High Priority Processes.reg");
+                        File.Copy("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Anti-Stutter - Utility.txt", selectFolder + "\\Anti-Stutter - Utility.txt", true);
+                    });
+
+                    // Mini Map
+                    HandlePrompt(
+                    "Mani Map",
+                    "Would you like to install the mini map?",
+                    _ =>
+                    {
+                        CopyFolder(wukongUe4Map);
+                        CopyFolder2(wukongMap, Path.Combine(fullPathWukong, "b1", "Content", "Paks", "LogicMods"));
+                        finalMessage = true;
+                    });
+
+                    // HDR Correction 
+                    HandlePrompt(
+                    "HDR",
+                    "Would you like to install the HDR correction?",
+                    _ =>
+                    {
+                        File.Copy(wukongHdr, modsPath + "\\Force_HDR_Mode_P.pak", true);
+                        finalMessage = true;
+                    });
+
+                    if (finalMessage)
+                        MessageBox.Show("To complete the installation, go to the game's page in your Steam library, click the gear icon 'Manage' to the right of 'Achievements', select 'Properties', and in 'Launch Options', enter -fileopenlog.", "Success", MessageBoxButtons.OK);
                     }
-                    finalMessage = true;
-                }
-
-                if (MessageBox.Show(message = "Do you want to apply the Graphics Preset? (ReShade must be installed for the preset to work, check the guide for more information)", title = "Graphic Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    CopyFilesCustom(Path.Combine(wukongGraphicPreset), Path.Combine(Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..")), "Black Myth Wukong.ini"), "BlackMythWukong\\b1\\Binaries\\Win64");
-
-                if (MessageBox.Show(message = "Do you want to enable Anti-Stutter - High CPU Priority? (prevents possible stuttering in the game)", title = "High CPU Priority", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                else
                 {
-                    runReg("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Install Black Myth Wukong High Priority Processes.reg");
-                    File.Copy("mods\\FSR3_WUKONG\\HIGH CPU Priority\\Anti-Stutter - Utility.txt", selectFolder + "\\Anti-Stutter - Utility.txt", true);
+                    MessageBox.Show("Path not found, please select the path: BlackMythWukong\\b1\\Binaries\\Win64 if you want to install additional mods (Mini Map, Anti Stuttering, etc.).", "Not Found", MessageBoxButtons.OK);
                 }
-
-                if (MessageBox.Show(message = "Would you like to install the mini map?", title = "Mini Map", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    CopyFolder(wukongUe4Map);
-                    CopyFolder2(wukongMap, Path.Combine(fullPathWukong, "b1", "Content", "Paks", "LogicMods"));
-                    finalMessage = true;
-                }
-
-                if (MessageBox.Show(message = "Would you like to install the HDR correction?", title = "HDR", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    File.Copy(wukongHdr, modsPath + "\\Force_HDR_Mode_P.pak", true);
-                    finalMessage = true;
-                }
-
-                if (finalMessage)
-                    MessageBox.Show("Preset applied successfully. To complete the installation, go to the game's page in your Steam library, click the gear icon 'Manage' to the right of 'Achievements', select 'Properties', and in 'Launch Options', enter -fileopenlog.", "Success", MessageBoxButtons.OK);
-            }
-            else
-            {
-                MessageBox.Show("Path not found, please select the path: BlackMythWukong\\b1\\Binaries\\Win64 if you want to install additional mods (Mini Map, Anti Stuttering, etc.).", "Not Found", MessageBoxButtons.OK);
             }
             #endregion
         }
@@ -2140,7 +2200,7 @@ namespace FSR3ModSetupUtilityEnhanced
         public async Task eldenFsr3()
         {
             string updateDlssElden = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
-            string updateFsrElden = "mods\\Temp\\FSR_Update\\amd_fidelityfx_dx12.dll";
+            string updateFsrElden = "mods\\Temp\\FSR_Update";
 
             if (folderEldenRing.ContainsKey(selectMod))
             {
@@ -2158,7 +2218,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 if (Path.Exists(Path.Combine(selectFolder, "ERSS2\\bin")))
                 {
-                    File.Copy(updateFsrElden, Path.Combine(selectFolder, "ERSS2\\bin\\amd_fidelityfx_dx12.dll"), true);
+                    CopyFolder3(updateFsrElden, Path.Combine(selectFolder, "ERSS2\\bin"));
                     File.Copy(updateDlssElden, Path.Combine(selectFolder, "ERSS2\\bin\\nvngx_dlss.dll"), true);
                 }
 
@@ -2528,6 +2588,59 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public async Task sskjlFsr3()
+        {
+            string rootPathSskjl = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
+            string pathDxgiSskjl = Path.Combine(selectFolder, "dxgi.dll");
+            string pathNvngxSskjl = Path.Combine(selectFolder, "nvngx.dll");
+            string pathFolderDlssSskjl = Path.Combine(rootPathSskjl, "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64");
+            string pathDisableEac = "mods\\FSR3_SSKJL\\Disable_EAC\\EAC Bypass";
+            string gpuName = await GetActiveGpu();
+
+            try
+            {
+                if (selectMod == "Others Mods SSKJL")
+                {
+                    if (Path.Exists(pathFolderDlssSskjl))
+                    {
+                        UpdateUpscalers(pathFolderDlssSskjl, true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("To update DLSS, select the path to the .exe (Stones\\Binaries\\Win64).", "DLSS", MessageBoxButtons.OK);
+                    }
+                }
+
+                if (selectMod == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+                {
+                    await Task.Delay(1000);
+                    if (Path.Exists(pathDxgiSskjl))
+                    {
+                        File.Move(pathDxgiSskjl, Path.Combine(selectFolder, "winmm.dll"), true); // Necessary to rename the file so it won't be replaced by the Disable EAC files.
+                    }
+
+                    if (Path.Exists(pathNvngxSskjl) && gpuName.Contains("rtx"))
+                    {
+                        File.Delete(pathNvngxSskjl);
+                    }
+
+                    // Backup EAC
+                    if (Path.Exists(Path.Combine(rootPathSskjl, "EasyAntiCheat")))
+                    {
+                        CopyFolder3(Path.Combine(rootPathSskjl, "EasyAntiCheat"), Path.Combine(rootPathSskjl, "Backup EAC\\EasyAntiCheat"));
+                        File.Copy(Path.Combine(rootPathSskjl, "start_protected_game.exe"), Path.Combine(rootPathSskjl, "Backup EAC\\start_protected_game.exe"), true);
+                    }
+
+                    // Disable EAC
+                    CopyFolder3(pathDisableEac, rootPathSskjl);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+        }
         public void hogLegacyFsr3()
         {
             string hlPreset = "mods\\FSR3_HL\\Preset\\Hogwarts Legacy Real Life DARKER HOGWARTS Reshade.txt";
@@ -2873,23 +2986,29 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathFsr31MarineRtx = "mods\\FSR3_SpaceMarine\\FSR 3.1\\RTX";
             string pathFsr31MarineAmd = "mods\\FSR3_SpaceMarine\\FSR 3.1\\AMD";
             string backupMarine = Path.Combine(selectFolder,"Backup DXGI");
+            string gpuName = await GetActiveGpu();
+
+            if (selectMod == "FSR 3.1.3/DLSS FG Marine")
+            {
+                dlssGlobal();
+            }
 
             if (selectMod == "FSR 3.1 Space Marine")
             {
                 if (Path.Exists(pathDxgiMarine))
-                {             
+                {
                     if (!Path.Exists(backupMarine))
                     {
                         Directory.CreateDirectory(backupMarine);
                     }
 
-                    File.Copy(pathDxgiMarine, Path.Combine(backupMarine,"dxgi.dll"), true);
+                    File.Copy(pathDxgiMarine, Path.Combine(backupMarine, "dxgi.dll"), true);
 
-                    File.Move(pathDxgiMarine, pathRenameDxgiMarine,true);
+                    File.Move(pathDxgiMarine, pathRenameDxgiMarine, true);
 
                 }
 
-                if (MessageBox.Show("Do you have an RTX GPU?", "GPU", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (gpuName.Contains("nvidia"))
                 {
                     CopyFolder(pathFsr31MarineRtx);
                 }
@@ -2897,15 +3016,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     CopyFolder(pathFsr31MarineAmd);
                 }
+            }
 
-                if (MessageBox.Show("Do you want to install the Anti Stutter?","Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (selectMod == "Others Mods Space Marine")
+            {
+                UpdateUpscalers(selectFolder, false, false, false, true);
+
+                if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     runReg(antiStutterMarine);
-                    File.Copy(txtStutterMarine, Path.Combine(selectFolder, "Marine_Anti_Stutter.txt"),true);
+                    File.Copy(txtStutterMarine, Path.Combine(selectFolder, "Marine_Anti_Stutter.txt"), true);
                 }
 
                 if (MessageBox.Show("Do you have to install the Graphic Preset?, select the path similar to: client_pc\\root\\bin\\pc for the mod to work. (It is necessary to install ReShade for the preset to work. " +
-                    "See the guide in the Guide to learn how to install it.)", "Graphic Preset",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "See the guide in the Guide to learn how to install it.)", "Graphic Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     File.Copy(presetMarine, Path.Combine(selectFolder, "Warhammer 40000 Space Marine 2.ini"), true);
                 }
@@ -3815,6 +3939,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     hogLegacyFsr3();
                 }
+                if (gameSelected == "Suicide Squad: Kill the Justice League")
+                {
+                    sskjlFsr3();
+                }
                 if (gameSelected == "Star Wars Outlaws")
                 {
                     outlawsFsr3();                 
@@ -4492,13 +4620,46 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
+                if (gameSelected == "Suicide Squad: Kill the Justice League")
+                {
+                    try
+                    {
+                        string sskjlRootPath = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
+
+                        if (Path.Exists(Path.Combine(sskjlRootPath, "Backup EAC")))
+                        {
+                            if (MessageBox.Show("Do you want to enable EAC (Easy Anti-Cheat)?", "EAC", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Directory.Delete(Path.Combine(sskjlRootPath, "EasyAntiCheat"), true);
+                                CopyFolder3(Path.Combine(sskjlRootPath, "Backup EAC"), sskjlRootPath);
+                            }
+                            Directory.Delete(Path.Combine(sskjlRootPath, "Backup EAC"), true);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error clearing Suicide Squad: Kill the Justice League mods files, please try again or do it manually", "Error", MessageBoxButtons.OK);
+                    }
+                }
+
                 if (gameSelected == "Warhammer: Space Marine 2")
                 {
-                    
                     #region Del Mods Warhammer: Space Marine 2
+
+                    string gpuName = await GetActiveGpu();
+
+                    if (gpuName.Contains("nvidia"))
+                    {
+                        CleanupMod3(del_dlss_global_rtx, "FSR 3.1.3/DLSS FG Marine");
+                    }
+                    else
+                    {
+                        CleanupMod3(del_dlss_global_amd, "FSR 3.1.3/DLSS FG Marine");
+                    }
+
                     if (selectMod == "FSR 3.1 Space Marine")
                     {
-                        if (MessageBox.Show("Do you have an RTX GPU?","GPU",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (gpuName.Contains("nvidia"))
                         {
                             CleanupMod3(del_dlss_global_rtx, "FSR 3.1 Space Marine");
                         }
@@ -5195,7 +5356,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     string PathOptimizedDel = Path.Combine(selectFolder, "..\\..\\Content\\Paks");
                     string fullPathOptimizedDel = Path.GetFullPath(PathOptimizedDel);
 
-                    CleanupMod3(del_dlss_to_fsr, "RTX DLSS FG Wukong");
+                    CleanupMod3(del_dlss_to_fsr, "DLSS FG (ALL GPUs) Wukong");
 
                     #region Remove other mods
 
