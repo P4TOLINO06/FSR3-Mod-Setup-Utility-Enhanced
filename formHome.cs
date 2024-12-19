@@ -40,12 +40,55 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 if (selectGame.Equals(gameName))
                 {
-                    string backgroundPicture = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "Images\\Wallpaper", imageName);
+                    // Construir o caminho completo da imagem
+                    string backgroundPicture = Path.Combine(
+                        Path.GetDirectoryName(Application.ExecutablePath)!,
+                        "Images\\Wallpaper",
+                        imageName
+                    );
 
-                    panelBackgroundG = Image.FromFile(backgroundPicture);
-                    panelBG.Invalidate();
+                    if (File.Exists(backgroundPicture))
+                    {
+                        try
+                        {
+                            // Redimensionar a imagem com base na resolução do monitor
+                            Image resizedImage = ResizeImageForScreen(backgroundPicture);
 
+                            // Atualizar o painel de fundo
+                            panelBackgroundG = resizedImage;
+                            panelBG.Invalidate(); // Redesenha o painel com a nova imagem
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Erro ao carregar ou redimensionar a imagem: {ex.Message}",
+                                            "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"A imagem '{imageName}' não foi encontrada no caminho esperado.",
+                                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
+            }
+        }
+        private Image ResizeImageForScreen(string imagePath)
+        {
+            using (Image originalImage = Image.FromFile(imagePath))
+            {
+                var screenWidth = Screen.PrimaryScreen.Bounds.Width;
+                var screenHeight = Screen.PrimaryScreen.Bounds.Height;
+
+                Bitmap resizedImage = new Bitmap(screenWidth, screenHeight);
+
+                using (Graphics graphics = Graphics.FromImage(resizedImage))
+                {
+                    graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+                    graphics.DrawImage(originalImage, 0, 0, screenWidth, screenHeight);
+                }
+
+                return resizedImage;
             }
         }
 
@@ -144,6 +187,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Red Dead Redemption","Rdr1.png"},
                     {"Red Dead Redemption 2","RDR2.png"},
                     {"Remnant II","Remnant2.png"},
+                    {"Resident Evil 4 Remake","Re4.png"},
                     {"Returnal","Returnal.png"},
                     {"Ripout","Ripout.png"},
                     {"Rise of The Tomb Raider","Rtb.png"},
@@ -182,7 +226,7 @@ namespace FSR3ModSetupUtilityEnhanced
             };
             #endregion
 
-            foreach (var gameName in gamesToAdd)
+            foreach(var gameName in gamesToAdd)
             {
                 path_images.Add(gameName.Key, gameName.Value);
             }
@@ -193,13 +237,14 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string? selectedGame = gameGet.ToString();
 
-                if (path_images.ContainsKey(selectedGame))
+                if (!string.IsNullOrEmpty(selectedGame) && path_images.ContainsKey(selectedGame))
                 {
                     string imagePath = path_images[selectedGame];
 
                     searchImage(imagePath, selectedGame);
                 }
             }
+
             string gamesSelected = null;
             formSettings.gameSelected = gamesSelected;
 
@@ -212,6 +257,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 formSettings.gameSelected = gamesSelected;
             }
+
             if (gamesSelected == "Select FSR Version")
             {
                 panelSelectFSR.Visible = true;
@@ -225,20 +271,20 @@ namespace FSR3ModSetupUtilityEnhanced
 
             #region Game List
 
-            var modsDefaultList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
+            var modsDefaultList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
 
             var gamesModsConfig = new Dictionary<string, List<string>>
             {
-                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.2/DLSS FG Custom RDR2", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
-                { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.2/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
+                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.3/DLSS FG Custom RDR2", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
                 { "Alan Wake 2", new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1", "Others Mods AW2" } },
                 { "Assassin's Creed Valhalla", new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" } },
                 { "Baldur's Gate 3", new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" } },
                 { "Dragons Dogma 2", new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom" } },
-                { "The Callisto Protocol", new List<string> { "The Callisto Protocol FSR3", "FSR 3.1.1/DLSS Callisto", "FSR 3.1.2/DLSS Custom Callisto", "0.10.4", "Uniscaler V3" } },
+                { "The Callisto Protocol", new List<string> { "The Callisto Protocol FSR3", "FSR 3.1.1/DLSS Callisto", "FSR 3.1.3/DLSS Custom Callisto", "0.10.4", "Uniscaler V3" } },
                 { "GTA V", new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" } },
-                { "Cyberpunk 2077", new List<string> { "Others Mods 2077", "RTX DLSS FG CB2077", "FSR 3.1.2/XESS FG 2077", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
+                { "Cyberpunk 2077", new List<string> { "Others Mods 2077", "RTX DLSS FG CB2077", "FSR 3.1.3/XESS FG 2077", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Ghost of Tsushima", new List<string> { "Ghost of Tsushima FG DLSS", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Lords of the Fallen", new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" } },
                 { "Palworld", new List<string> { "Palworld FG Build03" } },
@@ -261,25 +307,26 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "A Quiet Place: The Road Ahead", new List<string> { "FSR 3.1.1/DLSS Quiet Place", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Metro Exodus Enhanced Edition", new List<string> { "Others Mods Metro" } },
                 { "Red Dead Redemption", new List<string> { "Others Mods RDR" } },
-                { "Horizon Zero Dawn Remastered", new List<string> { "FSR 3.1.2 HZD Rem", "Others Mods HZD Rem" } },
-                { "Dragon Age: Veilguard", new List<string> { "FSR 3.1.2/DLSS DG Veil", "Others Mods DG Veil" } },
-                { "Dying Light 2", new List<string> { "FSR 3.1.2 Custom DL2" } },
+                { "Horizon Zero Dawn Remastered", new List<string> { "FSR 3.1.3 HZD Rem", "Others Mods HZD Rem" } },
+                { "Dragon Age: Veilguard", new List<string> { "FSR 3.1.3/DLSS DG Veil", "Others Mods DG Veil" } },
+                { "Dying Light 2", new List<string> { "FSR 3.1.3 Custom DL2" } },
                 { "Dead Rising Remaster", new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" } },
-                { "Saints Row", new List<string> { "FSR 3.1.2/DLSS Custom SR" } },
-                { "GTA Trilogy", new List<string> { "FSR 3.1.2/DLSS Custom GTA" } },
+                { "Saints Row", new List<string> { "FSR 3.1.3/DLSS Custom SR" } },
+                { "GTA Trilogy", new List<string> { "FSR 3.1.3/DLSS Custom GTA" } },
                 { "Assassin's Creed Mirage", new List<string> { "Others Mods Mirage" } },
-                { "Alan Wake Remastered", new List<string> { "FSR 3.1.2/DLSS FG (Only Optiscaler)" } },
+                { "Alan Wake Remastered", new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
                 { "Lego Horizon Adventures", new List<string> { "Others Mods Lego HZD" } },
                 { "Stalker 2", new List<string> { "Others Mods Stalker 2", "DLSS FG (Only Nvidia)" } },
                 { "Returnal", new List<string> { "Others Mods Returnal" } },
                 { "The Last of Us Part I", new List<string> { "Others Mods Tlou" } },
                 { "Marvel\\'s Spider-Man Miles Morales", new List<string> { "Others Mods Spider" } },
                 { "Marvel\\'s Spider-Man Remastered", new List<string> { "Others Mods Spider" } },
-                { "Microsoft Flight Simulator 24", new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Microsoft Flight Simulator 24", new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Shadow of the Tomb Raider", new List<string> { "Others Mods Shadow Tomb" } },
                 { "Gotham Knights", new List<string> { "Others Mods GK" } },
                 { "Indiana Jones and the Great Circle", new List<string> { "Others Mods Indy"} },
-                { "Suicide Squad: Kill the Justice League", new List<string> { "Others Mods SSKJL", "FSR 3.1.2/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } }
+                { "Suicide Squad: Kill the Justice League", new List<string> { "Others Mods SSKJL", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Resident Evil 4 Remake", new List<string> { "FSR 3.1.3/DLSS RE4" } }
             };
             #endregion
 

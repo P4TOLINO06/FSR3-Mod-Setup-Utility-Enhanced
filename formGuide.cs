@@ -251,6 +251,11 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Cyberpunk 2077",
+                 "RTX DLSS FG\n" +
+                "1. Select RTX DLSS FG and install.\n" +
+                "2. It is recommended to install the \"FG Ghost Fix\" along with the mod, select \"Others Mods 2077\" to install.\n" +
+                "3. In the game, select DLSS and DLSS Frame Gen.\n\n" +
+
                 "FSR 3.1.2/XESS FG\n" +
                 "1. Select FSR 3.1.2/XESS FG and install.\n" +
                 "2. In the game, select DLSS and DLSS Frame Gen.\n" +
@@ -949,6 +954,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. In the menu, select Frame Gen."
             },
             {
+                "Resident Evil 4 Remake", 
+                "1. Select the game root folder (RESIDENT EVIL 4 BIOHAZARD RE4).\n" +
+                "2. Disable FSR in the game.\n" +
+                "3. Select FSR 3.1.3/DLSS RE4 Remake and install.\n" +
+                "4. In the game, close the \"ReFramework\" window and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select an upscaler. It is recommended to choose the upscaler before entering the campaign, as the cursor may get stuck, and you will need to navigate the menu options using the arrow keys.\n" +
+                "6. Do not select the game's native FSR, or the game may crash.\n" +
+                "7. The game HUD might experience slight flickering."
+            },
+            {
                 "Returnal",
                 "Deafault Mod\n" +
                 "1 - Choose a version of the mod you prefer (version 0.10.3 is recommended).\r\n" +
@@ -1304,6 +1319,11 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
               "Warhammer: Space Marine 2",
+              "FSR 3.1.3/DLSS FG Marine\n" +
+              "1. Select FSR 3.1.3/DLSS FG Marine and install.\n" +
+              "2. In the game, select DLSS, Frame Gen, and press the \"Insert\" key to open the menu.\n" +
+              "3. In the menu, select FSR 3x to use the FSR 3.1.3.\n\n" +
+
               "FSR 3.1.2/DLSS FG Custom / Optiscaler:\n" +
               "1. Select FSR 3.1.2/DLSS FG Custom and install it.\n" +
               "2. In the game, press the \"Insert\" key to open the menu.\n" +
@@ -1333,6 +1353,13 @@ namespace FSR3ModSetupUtilityEnhanced
 
         #endregion
 
+        #region Guide Links
+        Dictionary<string, string> guideLinks = new Dictionary<string, string>
+        {
+            { "FSR 3.1.2/DLSS FG (Only Optiscaler)", "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" },
+            { "Resident Evil 4 Remake", "https://www.youtube.com/embed/B28ntG0ef4E?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+        };
+        #endregion
         private void formGuide_Load(object sender, EventArgs e)
         {
             panel1.Left = (panel3.Width - panel1.Width) / 2;
@@ -1478,6 +1505,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Ready or Not","Ready.png"},
                 {"Red Dead Redemption","Rdr12.png"},
                 {"Red Dead Redemption 2","RDR2.png"},
+                {"Resident Evil 4 Remake","Re42.png"},
                 {"Returnal","Returnal2.png"},
                 {"Ripout","Ripout.png"},
                 {"Saints Row","SaintsRow2.png"},
@@ -1534,7 +1562,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
 
-            if (listBox1.SelectedItem != null && listBox1.SelectedItem.ToString() == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+            if (listBox1.SelectedItem != null && guideLinks.TryGetValue(listBox1.SelectedItem.ToString(), out string videoLink))
             {
                 buttonVideo.Visible = true;
             }
@@ -1558,12 +1586,13 @@ namespace FSR3ModSetupUtilityEnhanced
         private void buttonVideo_Click(object sender, EventArgs e)
         {
 
-            if (listBox1.SelectedItem != null && listBox1.SelectedItem.ToString() == "FSR 3.1.2/DLSS FG (Only Optiscaler)")
+            if (listBox1.SelectedItem != null && guideLinks.TryGetValue(listBox1.SelectedItem.ToString(), out string videoLink))
             {
+
                 buttonExit.Visible = true;
 
                 webView21.Dock = DockStyle.Fill;
-                string tutorialVideo = "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n";
+                string tutorialVideo = videoLink;
                 webView21.Source = new Uri(tutorialVideo);
                 webView21.Visible = true;
             }
