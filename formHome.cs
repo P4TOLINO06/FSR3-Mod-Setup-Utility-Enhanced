@@ -40,7 +40,6 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 if (selectGame.Equals(gameName))
                 {
-                    // Construir o caminho completo da imagem
                     string backgroundPicture = Path.Combine(
                         Path.GetDirectoryName(Application.ExecutablePath)!,
                         "Images\\Wallpaper",
@@ -51,23 +50,14 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         try
                         {
-                            // Redimensionar a imagem com base na resolução do monitor
                             Image resizedImage = ResizeImageForScreen(backgroundPicture);
 
-                            // Atualizar o painel de fundo
                             panelBackgroundG = resizedImage;
-                            panelBG.Invalidate(); // Redesenha o painel com a nova imagem
+                            panelBG.Invalidate();
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show($"Erro ao carregar ou redimensionar a imagem: {ex.Message}",
-                                            "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show($"A imagem '{imageName}' não foi encontrada no caminho esperado.",
-                                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -197,6 +187,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Satisfactory","SatsF.png"},
                     {"Shadow of the Tomb Raider","ShadowTomb.png"},
                     {"Shadow Warrior 3","Shadow3.png"},
+                    {"Sifu","Sifu.png"},
                     {"Silent Hill 2","Sh2.png"},
                     {"Smalland","Smalland.png"},
                     {"Stalker 2","Stalker.png"},
@@ -294,7 +285,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Flintlock: The Siege Of Dawn", new List<string> { "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Cod MW3", new List<string> { "COD MW3 FSR3" } },
                 { "God Of War 4", new List<string> { "Gow 4 FSR 3.1", "FSR 3.1.1/DLSS FG Custom" } },
-                { "God of War Ragnarök", new List<string> { "Uniscaler FSR 3.1", "Others Mods Gow Rag" } },
+                { "God of War Ragnarök", new List<string> { "Others Mods Gow Rag", "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR", "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Warhammer: Space Marine 2", new List<string> { "Others Mods Space Marine", "FSR 3.1.3/DLSS FG Marine", "FSR 3.1.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Black Myth: Wukong", new List<string> { "Others Mods Wukong", "DLSS FG (ALL GPUs) Wukong", "FSR 3.1 Custom Wukong" } },
                 { "Final Fantasy XVI", new List<string> { "FFXVI DLSS RTX", "Others Mods FFXVI" } },
@@ -325,8 +316,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Shadow of the Tomb Raider", new List<string> { "Others Mods Shadow Tomb" } },
                 { "Gotham Knights", new List<string> { "Others Mods GK" } },
                 { "Indiana Jones and the Great Circle", new List<string> { "Others Mods Indy"} },
-                { "Suicide Squad: Kill the Justice League", new List<string> { "Others Mods SSKJL", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
-                { "Resident Evil 4 Remake", new List<string> { "FSR 3.1.3/DLSS RE4" } }
+                { "Suicide Squad: Kill the Justice League", new List<string> { "Others Mods SSKJL", "c", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Resident Evil 4 Remake", new List<string> { "FSR 3.1.3/DLSS RE4" } },
+                { "Sifu", new List<string> { "Others Mods Sifu", "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS"}}
             };
             #endregion
 

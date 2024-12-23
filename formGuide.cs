@@ -599,6 +599,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. If you still can\'t see DLSS in the game, check the Nvngx.dll box, select \"Default,\" and reinstall the mod.\n" +
                 "5. The game may freeze for a few seconds when selecting DLSS FG.\n\n" +
 
+                "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR\n" + 
+                "1. Select FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. If you want to update the game's upscalers, it is recommended to do so before installing the mod. Simply select \"Others Mods Gow Rag\" to update.\n" +
+                "4. Check the \"AMD Anti Lag 2\" option that appears during installation.\n" +
+                "5. In the game, select \"Reflex\" under \"Latency Reduction\".\n" +
+                "6. Press the Insert key to open the menu.\n" +
+                "7. In the menu, select FSR 3x to use FSR 3.1.3. If you want to use Frame Generation (FG), check the Frame Gen and Hud Fix boxes.\n\n" +
+
                 "Unlock VRAM:\n" +
                 "Removes the error for GPUs with less than 6GB of VRAM.\n\n" +
 
@@ -1051,62 +1060,74 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - Set Ambient Occlusion and Post Processing to Low.\n"
             },
             {
-              "Silent Hill 2",
-              "FSR 3.1.2/DLSS FG Custom / FSR 3.1/DLSS OptiScaler:\n" +
-              "1. Select the FSR 3.1/DLSS mod.\n" +
-              "2. Check the \"GPU\" window that will appear.\n" +
-              "3. In-game, select DLSS before starting the campaign.\n" +
-              "4. During the campaign, press the \"Insert\" key to open the menu.\n" +
-              "5. In the menu, select the desired upscaler, check the Frame Gen and Hud Fix boxes.\n\n" +
+                "Silent Hill 2",
+                "FSR 3.1.2/DLSS FG Custom / FSR 3.1/DLSS OptiScaler:\n" +
+                "1. Select the FSR 3.1/DLSS mod.\n" +
+                "2. Check the \"GPU\" window that will appear.\n" +
+                "3. In-game, select DLSS before starting the campaign.\n" +
+                "4. During the campaign, press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select the desired upscaler, check the Frame Gen and Hud Fix boxes.\n\n" +
 
-              "FSR3 Native:\n" +
-              "1. Select FSR3 FG Native SH2 and install it.\n" +
-              "2. In-game, select FSR 3.0 before starting the campaign.\n\n" +
+                "FSR3 Native:\n" +
+                "1. Select FSR3 FG Native SH2 and install it.\n" +
+                "2. In-game, select FSR 3.0 before starting the campaign.\n\n" +
 
-              "RX 500/5000 and GTX Native FSR3 FG:\n" +
-              "1 - Select Native FSR3 FG and install it.\r\n" +
-              "2 - Select 'Yes' in the 'GPU' window that will appear.\r\n" +
-              "3 - This is required only for the Native FSR3 FG mod.\r\n\r\n"+
+                "RX 500/5000 and GTX Native FSR3 FG:\n" +
+                "1 - Select Native FSR3 FG and install it.\r\n" +
+                "2 - Select 'Yes' in the 'GPU' window that will appear.\r\n" +
+                "3 - This is required only for the Native FSR3 FG mod.\r\n\r\n"+
 
-              "DLSS FG RTX\n"+
-              "1 - Select DLSS FG RTX and install.\r\n" +
-              "2 - In the game, select DLSS and press the 'Home' key to open the menu.\r\n" +
-              "3 - Press '*' to enable FG or enable it through the menu.\r\n\r\n"+
+                "DLSS FG RTX\n"+
+                "1 - Select DLSS FG RTX and install.\r\n" +
+                "2 - In the game, select DLSS and press the 'Home' key to open the menu.\r\n" +
+                "3 - Press '*' to enable FG or enable it through the menu.\r\n\r\n"+
 
-              "ReShade Installation"+
-              "1 - Install ReShade.\r\n" +
-              "2 - Inside ReShade, select the game's .exe and click next.\r\n" +
-              "3 - Select DX 10/11/12 and click next.\r\n" +
-              "4 - Click 'Browse' and locate the file 'Silent hill dark.ini' that was installed in the folder selected in the Utility and click next.\r\n" +
-              "5 - In the game, press the 'Home' key to open the menu and select the options you prefer.\r\n" +
-              "6 - Install the Preset first and then the FSR3 mod if you plan to use it.\r\n\r\n" +
+                "ReShade Installation"+
+                "1 - Install ReShade.\r\n" +
+                "2 - Inside ReShade, select the game's .exe and click next.\r\n" +
+                "3 - Select DX 10/11/12 and click next.\r\n" +
+                "4 - Click 'Browse' and locate the file 'Silent hill dark.ini' that was installed in the folder selected in the Utility and click next.\r\n" +
+                "5 - In the game, press the 'Home' key to open the menu and select the options you prefer.\r\n" +
+                "6 - Install the Preset first and then the FSR3 mod if you plan to use it.\r\n\r\n" +
 
-              "Ultra Plus\n"+
-              "1 - Install the mod and open the game.\r\n" +
-              "2 - In the game, select a graphic preset from the game itself: low/medium/high/epic.\r\n" +
-              "3 - Select FSR3 to use the native Frame Gen. If you don't see a change in FPS, go back to the Utility and install 'FSR3 FG Native SH2.'\r\n" +
-              "4 - To get the full performance from the mod, select Xess Ultra Quality. (This option is very demanding, and you may experience a significant FPS drop.)\r\n" +
-              "5 - Lock the game's FPS to half of your monitor's Hz minus 2, for example (60Hz, lock at 28), or lock it to the average FPS you get in the game.\r\n" +
-              "6 - This mod works with FSR 3.1.1/DLSS (Optiscaler or Custom); just install and follow the FSR 3.1.1/DLSS guide above.\r\n\r\n"+
+                "Ultra Plus\n"+
+                "1 - Install the mod and open the game.\r\n" +
+                "2 - In the game, select a graphic preset from the game itself: low/medium/high/epic.\r\n" +
+                "3 - Select FSR3 to use the native Frame Gen. If you don't see a change in FPS, go back to the Utility and install 'FSR3 FG Native SH2.'\r\n" +
+                "4 - To get the full performance from the mod, select Xess Ultra Quality. (This option is very demanding, and you may experience a significant FPS drop.)\r\n" +
+                "5 - Lock the game's FPS to half of your monitor's Hz minus 2, for example (60Hz, lock at 28), or lock it to the average FPS you get in the game.\r\n" +
+                "6 - This mod works with FSR 3.1.1/DLSS (Optiscaler or Custom); just install and follow the FSR 3.1.1/DLSS guide above.\r\n\r\n"+
 
-              "Ultra Plus Optimized\n"+
-              "It is recommended for RX 500/5000 and GTX users.\r\n" +
-              "Includes some graphical optimizations.\r\n\r\n"+
+                "Ultra Plus Optimized\n"+
+                "It is recommended for RX 500/5000 and GTX users.\r\n" +
+                "Includes some graphical optimizations.\r\n\r\n"+
 
-              "Ultra Plus Complete\n"+
-              "This is the standard version of the mod with all available modifications.\r\n\r\n"+
+                "Ultra Plus Complete\n"+
+                "This is the standard version of the mod with all available modifications.\r\n\r\n"+
 
-              "Some of the modifications\n"+
-              "Reduces black spots, improves Ray Tracing quality, enhances anisotropic filtering, reduces hair pixelation caused by MSAA.\r\n\r\n"+
+                "Some of the modifications\n"+
+                "Reduces black spots, improves Ray Tracing quality, enhances anisotropic filtering, reduces hair pixelation caused by MSAA.\r\n\r\n"+
 
-              "Others Mods Sh2:\n" +
-              "Unlock FPS Cutscenes:\n" +
-              "Removes the 30fps lock from cutscenes.\n\n" +
+                "Others Mods Sh2:\n" +
+                "Unlock FPS Cutscenes:\n" +
+                "Removes the 30fps lock from cutscenes.\n\n" +
 
-              "Post-Processing:\n" +
-              "Scene Color Fringe\n" +
-              "Motion blur\n" +
-              "Distortion"
+                "Post-Processing:\n" +
+                "Scene Color Fringe\n" +
+                "Motion blur\n" +
+                "Distortion"
+            },
+                        {
+                "Sifu",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "Steam: Library > Game > Gear icon to the right of Achievements > Properties > Launch Options, add -dx12.\n" +
+                "Others: Go to the game's .exe > Properties and add -dx12 after the .exe.\n\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the Insert key to open the menu.\n" +
+                "4. In the menu, select FSR 3x and apply. Check the Frame Gen, Hud Fix, and FG Extended boxes. If you are an RTX user, you can select DLSS again if desired.\n" +
+                "5. The step above is required for the FG + Hud Fix to work. You can try enabling Hud Fix directly, but the game will likely crash.\n" +
+                "6. If you want to update the game's upscalers, it is recommended to do so before installing the mod. Simply select \"Others Mods Sifu\" to update.\n"
             },
             {
               "Smalland",
@@ -1357,7 +1378,8 @@ namespace FSR3ModSetupUtilityEnhanced
         Dictionary<string, string> guideLinks = new Dictionary<string, string>
         {
             { "FSR 3.1.2/DLSS FG (Only Optiscaler)", "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" },
-            { "Resident Evil 4 Remake", "https://www.youtube.com/embed/B28ntG0ef4E?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Resident Evil 4 Remake", "https://www.youtube.com/embed/B28ntG0ef4E?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Sifu", "https://www.youtube.com/embed/-of2RI4jxSA?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1514,6 +1536,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Shadow Warrior 3","Shadow32.png"},
                 {"Smalland","Smalland.png"},
                 {"Spider Man/Miles","Spider2.png"},
+                {"Sifu","Sifu2.png"},
                 {"Silent Hill 2","Sh22.png"},
                 {"S.T.A.L.K.E.R. 2","Stalker2.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},

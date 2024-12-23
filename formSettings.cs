@@ -657,7 +657,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Optiscaler Files
         List<string> del_optiscaler = new List<string>
         {
-            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg","winmm.dll"
+            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg","winmm.dll","nvapi64.dll"
         };
         #endregion
 
@@ -1640,7 +1640,7 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
         }
 
-        private async Task optiscalerFsrDlss(string copydlss = null)
+        private async Task optiscalerFsrDlss(bool copynvapi = true)
         {
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
@@ -1649,7 +1649,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string gpuName = await GetActiveGpu();
             string[] gpusVar = { "amd", "intel", "gtx" };
 
-            if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")) && copydlss != null)
+            if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")))
             {
                 await CopyFolder(pathOptiscaler);
 
@@ -1663,9 +1663,12 @@ namespace FSR3ModSetupUtilityEnhanced
                 await CopyFolder(pathOptiscalerDlss);
             }
 
-            if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes) 
+            if (copynvapi)
             {
-                CopyFolder(nvapiAmd);
+                if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFolder(nvapiAmd);
+                }
             }
         }
 
@@ -2086,9 +2089,24 @@ namespace FSR3ModSetupUtilityEnhanced
             string gowRag3050_2060 = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Unlock Vram\\GTX 1060 3050 6GB\\dxgi.dll";
             string gowRagVram6gb = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Unlock Vram\\6GB VRAM\\dxgi.dll";
             string gowRegVramVar = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Unlock Vram\\Vram.txt";
+            string gowRagNvapi = "mods\\Addons_mods\\Nvapi AMD";
+
+            if (selectMod == "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR")
+            {
+                HandlePrompt(
+                    "AMD Anti Lag 2",
+                    "Do you want to use AMD Anti Lag 2? (Check the FSR Guide for instructions on how to enable AMD Anti Lag 2.)",
+                    _ =>
+                    {
+                        optiscalerFsrDlss(false);
+                        CopyFolder(gowRagNvapi);
+                    }
+                );
+            }
 
             if (selectMod == "Others Mods Gow Rag")
             {
+                UpdateUpscalers(selectFolder);
                 if (Path.Exists(gowRagIntroPath))
                 {
                     if (MessageBox.Show("Do you want to install the Anti Stutter?","Anti Stutter",MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -2805,6 +2823,14 @@ namespace FSR3ModSetupUtilityEnhanced
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+            }
+        }
+
+        public void sifuFsr3()
+        {
+            if (selectMod == "Others Mods Sifu")
+            {
+                UpdateUpscalers(selectFolder, true);
             }
         }
 
@@ -3981,6 +4007,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     gkFsr3();
                 }
+                if (gameSelected == "Sifu")
+                {
+                    sifuFsr3();
+                }
                 if (gameSelected.Contains("Marvel\'s Spider-Man Remastered") || gameSelected.Contains("Marvel\'s Spider-Man Miles Morales"))
                 {
                     spiderFsr3();
@@ -4574,6 +4604,11 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         string gowRagDisableAntiStutter = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Anti-Stutter GoW Ragnarok\\Uninstall GoWR High CPU Priority.reg";
                         string[] gowRagIntroFiles = { "pss_studios.bk2", "pss_studios_30.bk2", "pss_studios_4k_30.bk2" };
+
+                        if (selectMod == "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR")
+                        {
+                            CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR", true);
+                        }
 
                         if (Path.Exists(Path.Combine(selectFolder, "exec")))
                         {
