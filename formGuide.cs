@@ -54,9 +54,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 "If the menu does not appear, during the mod installation, check the Optiscaler box and select the desired upscaler under Add-on Upscaler, then install."
             },
             {
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)",
                 "1. Run the game in DX12 or the mod will not work.\n" +
-                "2. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "3. Check the Enable Signature Over box.\n" +
                 "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "5. In the menu, check the Frame Gen and Hud Fix boxes. If necessary, check the \"Extended FG\" box.\n" +
@@ -71,8 +71,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Alan Wake Remastered",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\r\n" +
-                "1 - Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\r\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\r\n" +
+                "1 - Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\r\n" +
                 "2 - Check the Enable Signature Over box.\r\n" +
                 "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
                 "4 - In the menu, select FSR 3x and FSR 3.1.2 right below; if you have an Nvidia GPU, select DLSS.\r\n" +
@@ -117,8 +117,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Check the box for Fake Nvidia GPU (AMD/GTX) and Nvapi Results (GTX). (If the mod doesn't work for AMD, also check Nvapi Results).\r\n"+
                 "3 - To fix hub flickering, enable DLSS and Frame Generation and play for a few seconds, then disable DLSS and leave only Frame Generation enabled.\r\n\r\n"+
 
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\r\n"+
-                "1 - Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\r\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\r\n"+
+                "1 - Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\r\n" +
                 "2 - In the game, press the 'Insert' key to open the menu.\r\n" +
                 "3 - In the menu, select an Upscaler, check 'Frame Gen' and 'Hud Fix' boxes.\r\n\r\n"
             },
@@ -133,8 +133,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Assassin\'s Creed Mirage",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\r\n"+
-                "1 - Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\r\n"+
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\r\n"+
+                "1 - Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\r\n"+
                 "2 - Check the Enable Signature Over box.\r\n" +
                 "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
                 "4 - In the menu, select FSR 3x and FSR 3.1.2 right below; if you have an Nvidia GPU, select DLSS to use DLSS 3.8.10.\r\n" +
@@ -297,8 +297,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - If it doesn't work with the default files, enable Enable Signature Override. If it still doesn't work, check the box lfz.sl.dlss.\r\n" +
                 "3 - It's not necessary to activate an upscaler for this game for the mod to work, so enable it if you want.\n\n" +
 
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. In the game, select FSR 2 and press the \"Insert\" key to open the menu.\n" +
                 "3. In the menu, select FSR 3x, check the Frame Gen and Hud fix boxes."
             },
@@ -313,8 +313,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
             {
                 "Death Stranding Director's Cut",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n"+
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n"+
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, disable Depth of Field, Motion Blur, and TAA.\n" +
                 "4. Select DLSS and press the Insert key to open the menu.\n" +
@@ -599,8 +599,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. If you still can\'t see DLSS in the game, check the Nvngx.dll box, select \"Default,\" and reinstall the mod.\n" +
                 "5. The game may freeze for a few seconds when selecting DLSS FG.\n\n" +
 
-                "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR\n" + 
-                "1. Select FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR and install.\n" +
+                "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. If you want to update the game's upscalers, it is recommended to do so before installing the mod. Simply select \"Others Mods Gow Rag\" to update.\n" +
                 "4. Check the \"AMD Anti Lag 2\" option that appears during installation.\n" +
@@ -621,8 +621,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Gotham Knights",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the \"Enable Signature Over\" box.\n" +
                 "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, check the \"Frame Gen\" and \"Hud Fix\" boxes.\n" +
@@ -683,8 +683,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Horizon Zero Dawn",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler), FSR 3.1/DLSS Optiscaler & FSR 3.1.2/DLSS FG Custom:\n" +
-                "1. FSR 3.1.2/DLSS FG (Only Optiscaler), FSR 3.1/DLSS Optiscaler or FSR 3.1.2/DLSS FG Custom.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler), FSR 3.1/DLSS Optiscaler & FSR 3.1.2/DLSS FG Custom:\n" +
+                "1. FSR 3.1.3/DLSS FG (Only Optiscaler), FSR 3.1/DLSS Optiscaler or FSR 3.1.2/DLSS FG Custom.\n" +
                 "2. Check the \"Enable Signature Over\" box.\n" +
                 "3. In the game, press the \"Insert\" key to open the mod menu.\n" +
                 "4. In the menu, select the Upscaler of your choice.\n" +
@@ -731,6 +731,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Indiana Jones and the Great Circle",
+                "Indy FG (Only RTX)\n" +
+                "1. Select \"Indy FG (Only RTX)\" and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS FG.\n\n" +
+
+                "Reshade\n" +
                 "1. Install ReShade.\n" +
                 "2. In the ReShade, select the game’s .exe and click next.\n" +
                 "3. Select DX 10/11/12 and click next.\n" +
@@ -750,9 +756,9 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Kena: Bridge of Spirits",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "1. Open the game and select DX12 in the Settings.\n" +
-                "2. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "3. Check the Enable Signature Over box.\n" +
                 "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "5. In the menu, check the Frame Gen and Hud Fix boxes.\n\n"+
@@ -781,8 +787,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Activate Fake Nvidia Gpu and UE Compatibility Mode (AMD only).\r\n" +
                 "3 - To fix the flickering of the HUD, first select DLSS Quality, then select FSR Quality (without disabling DLSS), then select DLSS again.\r\n\r\n"+
 
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\r\n"+
-                "1 - Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install it.\r\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\r\n"+
+                "1 - Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install it.\r\n" +
                 "2 - Check the 'Enable Signature Over' box.\r\n" +
                 "3 - In the game, select DLSS.\r\n" +
                 "4 - Press the 'Insert' key to open the menu.\r\n" +
@@ -817,7 +823,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Marvel's Avengers",
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, select DLSS and start the campaign.\n" +
                 "4. Press the \"Insert\" key to open the menu.\n" +
@@ -858,7 +864,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Microsoft Flight Simulator 24",
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, check Frame gen and Hud Fix boxes."
@@ -890,8 +896,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Palworld",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
@@ -904,6 +910,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. To run the game in DX12, simply confirm the window that appears after confirming the GPU selection. Make sure the mentioned exe is in the selected folder. Alternatively, you can ignore the window and do it manually, by creating a shortcut and adding '-dx12' after the quotes in the 'Target' field.\r\n" +
                 "4. Run the game through the shortcut.\r\n" +
                 "• Currently, the mod only works on Steam versions and alternative versions with Steam files.\r\n"
+            },
+            {
+                "Path of Exile II",
+                "The consequences of using this mod in online games are unknown, use at your own risk.\n\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. Select Nvidia Reflex to use AMD Anti Lag 2.\n" +
+                "5. In the menu, check the Frame Gen and Hud Fix boxes."
             },
             {
                 "Ratchet and Clank",
@@ -979,16 +994,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Enable the \"Enable Signature Override\" checkbox if the mod doesn't work.\r\n" +
                 "3 - Select \"Default\" in Nvngx.dll.\n\n" +
 
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
-                "1. FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, select DLSS and press \"Insert\" key to open the menu.\n" +
                 "4. In the menu, check the Frame Gen and Hud Fix boxes."
             },
             {
                 "Rise of The Tomb Raider",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler).\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler).\n" +
                 "2. Check the \"Enable Signature Over\" box.\n" +
                 "3. To update DLSS in the game, check the \"Nvngx.dll\" box and select DLSS 3.8.10.\n" +
                 "4. Open the game, in the configuration menu that appears when the game starts, select DX12 and DLSS if available (if DLSS does not appear in this menu, select it within the game).\n" +
@@ -1031,8 +1046,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Shadow of the Tomb Raider",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, Select DLSS and press the Insert key to open the menu.\n" +
                 "4. In the menu, enable Frame Gen, HUD Fix, and FG Extended.\n\n" +
@@ -1046,8 +1061,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Shadow Warrior 3",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, select DLSS and press the insert key to open the menu.\n" +
                 "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
@@ -1137,8 +1152,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Spider Man/Miles",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler):\n" +
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler):\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. When launching the game, select DLSS in the initial settings menu. If that’s not possible, select it in-game.\n" +
                 "4. In the game, press the \"Insert\" key to open the menu.\n" +
@@ -1209,9 +1224,9 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Suicide Squad: Kill the Justice League",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "1. Select the .exe path. (Stones\\Binaries\\Win64).\n" +
-                "2. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
                 "5. The game may crash the first time the mod is installed."
@@ -1225,7 +1240,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "The Ascent",
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, select DLSS and press the insert key to open the menu.\n" +
                 "4. In the menu, check the Frame Gen and Hud Fix boxes; if the HUD is not fully corrected, also check the FG Extended box."
@@ -1294,9 +1309,9 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                "The Witcher 3",
-               "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
+               "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                "1. Install the mod in the \"x64_dx12\" folder.\n" +
-               "2. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+               "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                "3. Check the Enable Signature Over box.\n" +
                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                "5. In the menu, check the Frame Gen and FG Hud fix. If you want to use FSR 3.1.2, select FSR 3x in \"Upscales.\"\n" +
@@ -1309,8 +1324,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Uncharted Legacy Of Thieves",
-                "FSR 3.1.2/DLSS FG (Only Optiscaler)\n" +
-                "1. Select FSR 3.1.2/DLSS FG (Only Optiscaler) and install.\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, check the Frame Gen and Hud Fix boxes.\n" +
@@ -1377,7 +1392,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Guide Links
         Dictionary<string, string> guideLinks = new Dictionary<string, string>
         {
-            { "FSR 3.1.2/DLSS FG (Only Optiscaler)", "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" },
+            { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" },
             { "Resident Evil 4 Remake", "https://www.youtube.com/embed/B28ntG0ef4E?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Sifu", "https://www.youtube.com/embed/-of2RI4jxSA?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
@@ -1446,7 +1461,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Assassin\'s Creed Mirage","AcMirage2.png"},
                 {"Optiscaler Method","Opti.png"},
                 {"Optiscaler FSR 3.1.1/DLSS","Opti.png"},
-                {"FSR 3.1.2/DLSS FG (Only Optiscaler)","Opti.png"},
+                {"FSR 3.1.3/DLSS FG (Only Optiscaler)","Opti.png"},
                 {"Add-on Mods","Addon.png" },
                 {"Alone in the Dark","Alone.png"},
                 {"A Plague Tale Requiem","Requiem.png"},
@@ -1522,6 +1537,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Outpost Infinity Siege","Outpost.png"},
                 {"Pacific Drive","Pacific.png"},
                 {"Palworld","Palworld.png"},
+                {"Path of Exile II","POE22.png"},
                 {"Ratchet and Clank","Ratchet.png"},
                 {"Rise of The Tomb Raider","Rtb.png"},
                 {"Ready or Not","Ready.png"},

@@ -708,7 +708,6 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler V3", "mods\\FSR2FSR3_Uniscaler_V3\\enable_fake_gpu\\uniscaler.config.toml"},
             { "Uniscaler V4", "mods\\FSR2FSR3_Uniscaler_V4\\enable_fake_gpu\\uniscaler.config.toml"},
             { "Uniscaler FSR 3.1","mods\\FSR2FSR3_Uniscaler_FSR3\\enable_fake_gpu\\uniscaler.config.toml"},
-            { "Uni Custom Miles", "mods\\FSR2FSR3_Miles\\uni_miles_toml" }
         };
 
         #endregion
@@ -730,7 +729,6 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler V4",@"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"},
             {"The Callisto Protocol FSR3",@"\mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"},
-            {"Uni Custom Miles", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml"},
             {"Dlss Jedi", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml"}
         };
         #endregion
@@ -1646,6 +1644,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League" };
+            string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "Path of Exile II" };
             string gpuName = await GetActiveGpu();
             string[] gpusVar = { "amd", "intel", "gtx" };
 
@@ -1653,7 +1652,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 await CopyFolder(pathOptiscaler);
 
-                await Task.Delay((500));
+                await Task.Delay(500);
 
                 File.Move(Path.Combine(selectFolder, "nvngx.dll"), Path.Combine(selectFolder, "dxgi.dll"), true);
                 File.Copy(Path.Combine(selectFolder, "nvngx_dlss.dll"), Path.Combine(selectFolder, "nvngx.dll"), true);
@@ -1663,7 +1662,12 @@ namespace FSR3ModSetupUtilityEnhanced
                 await CopyFolder(pathOptiscalerDlss);
             }
 
-            if (copynvapi)
+            if (gamesToUseAntiLag2.Contains(gameSelected) && MessageBox.Show($"Do you want to use AMD Anti Lag 2? Check the {gameSelected} guide in FSR Guide to see how to enable it.", "Anti Lag 2", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                CopyFolder(nvapiAmd);
+            }
+
+            else if (copynvapi)
             {
                 if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
@@ -1740,6 +1744,54 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
         }
+
+        public void gamesToUpdateUpscalers()
+        {
+            #region Mods/Paths
+            Dictionary<string, string> gamesToUpdateDlss = new Dictionary<string, string>
+            {
+                { "Others Mods Sifu", selectFolder },
+                { "Others Mods Shadow Tomb", selectFolder },
+                { "Others Mods Tlou", selectFolder },
+                { "Others Mods POEII", Path.Combine(selectFolder, "Streamline") },
+                { "Others Mods GK", Path.GetFullPath(Path.Combine(selectFolder, @"..\\..\\..", @"Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64")) }
+            };
+
+            Dictionary<string, string> gamesToUpdateDlssd = new Dictionary<string, string>
+            {
+                { "Others Mods Spider", selectFolder }
+            };
+            #endregion
+
+            if (gamesToUpdateDlss.ContainsKey(selectMod))
+            {
+                string pathDlss = gamesToUpdateDlss[selectMod];
+
+                if (Path.Exists(pathDlss))
+                {
+                    UpdateUpscalers(pathDlss, true);
+                }
+                else
+                {
+                    MessageBox.Show("To update DLSS, select the .exe path", "DLSS");
+                }
+            }
+
+            else if (gamesToUpdateDlssd.ContainsKey(selectMod))
+            {
+                string pathDlssd = gamesToUpdateDlssd[selectMod];
+
+                if (Path.Exists(pathDlssd))
+                {
+                    UpdateUpscalers(pathDlssd, false, true);
+                }
+                else
+                {
+                    MessageBox.Show("To update DLSSD, select the .exe path", "DLSSD");
+                }
+            }
+        }
+
         static async Task<string> GetActiveGpu()
         {
             try
@@ -2089,20 +2141,6 @@ namespace FSR3ModSetupUtilityEnhanced
             string gowRag3050_2060 = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Unlock Vram\\GTX 1060 3050 6GB\\dxgi.dll";
             string gowRagVram6gb = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Unlock Vram\\6GB VRAM\\dxgi.dll";
             string gowRegVramVar = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Unlock Vram\\Vram.txt";
-            string gowRagNvapi = "mods\\Addons_mods\\Nvapi AMD";
-
-            if (selectMod == "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR")
-            {
-                HandlePrompt(
-                    "AMD Anti Lag 2",
-                    "Do you want to use AMD Anti Lag 2? (Check the FSR Guide for instructions on how to enable AMD Anti Lag 2.)",
-                    _ =>
-                    {
-                        optiscalerFsrDlss(false);
-                        CopyFolder(gowRagNvapi);
-                    }
-                );
-            }
 
             if (selectMod == "Others Mods Gow Rag")
             {
@@ -2706,35 +2744,67 @@ namespace FSR3ModSetupUtilityEnhanced
             string smoothReshadeIndy = "mods\\FSR3_Indy\\Others Mods\\Reshade\\Normal\\TheGreatCircle smooth.ini";
             string normalReshadeIndy = "mods\\FSR3_Indy\\Others Mods\\Reshade\\Smooth\\TheGreatCircle .ini";
             string introSkipIndy = "mods\\FSR3_Indy\\Others Mods\\Intro Skip";
+            string fgIndy = "mods\\FSR3_Indy\\FG\\Mod";
+            string configFilePathIndy = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), @"Saved Games\MachineGames\TheGreatCircle\base");
+            string configFileIndy = "mods\\FSR3_Indy\\FG\\Config File\\TheGreatCircleConfig.local";
+            string oldConfigFileIndy = Path.Combine(configFilePathIndy, "TheGreatCircleConfig.local");
 
-            // Intro SKip
-            HandlePrompt(
-                "Intro SKip",
-                "Do you want to install the Intro Skip? Select the root folder of the game, Indiana Jones and the Great Circle.",
-                _ =>
-                {
-                    CopyFolder(introSkipIndy);
-                }
-            );
+            if (selectMod == "Indy FG (Only RTX)")
+            {
+                CopyFolder(fgIndy);
 
-            // Reshade
-            HandlePrompt(
-                "Smooth",
-                "Do you want to install Reshade (this is the smooth version; to install the full version, select \"No\" and choose \"Yes\" in the next window)? Check the FSR Guide for the full installation instructions.",
-                _ =>
+                if (Path.Exists(oldConfigFileIndy))
                 {
-                    File.Copy(smoothReshadeIndy, Path.Combine(selectFolder, "TheGreatCircle smooth.ini"), true);
+                    File.Move(oldConfigFileIndy, Path.Combine(configFilePathIndy, "TheGreatCircleConfig.txt"), true);
+                    File.Copy(configFileIndy, Path.Combine(configFilePathIndy, "TheGreatCircleConfig.local"), true);
                 }
-            );
+                else
+                {
+                    File.Copy(configFileIndy, Path.Combine(selectFolder, "TheGreatCircleConfig.local"), true);
+                    MessageBox.Show("The file TheGreatCircleConfig.local was not found. Please check if it exists (C:\\Users\\YourName\\Saved Games\\MachineGames\\TheGreatCircle\\base). If it doesn\'t exist, open the game to have the file created. You can also manually copy the file to this path. The TheGreatCircleConfig.local file is in the folder selected in the Utility.", "Not Found", MessageBoxButtons.OK);
+                }
+            }
 
-            HandlePrompt(
-                "Full",
-                "Do you want to install the full version Reshade?",
-                _ =>
+            if (selectMod == "Others Mods Indy")
+            {
+                if (Path.Exists(Path.Combine(selectFolder, "streamline")))
                 {
-                    File.Copy(normalReshadeIndy, Path.Combine(selectFolder, "TheGreatCircle .ini"), true);
+                    UpdateUpscalers(Path.Combine(selectFolder, "streamline"), true);
                 }
-            );
+                else
+                {
+                    MessageBox.Show("If you want to update the DLSS, select the game\'s root folder.", "DLSS");
+                }
+
+                // Intro SKip
+                HandlePrompt(
+                    "Intro SKip",
+                    "Do you want to install the Intro Skip? Select the root folder of the game, Indiana Jones and the Great Circle.",
+                    _ =>
+                    {
+                        CopyFolder(introSkipIndy);
+                    }
+                );
+
+                // Reshade
+                HandlePrompt(
+                    "Smooth",
+                    "Do you want to install Reshade (this is the smooth version; to install the full version, select \"No\" and choose \"Yes\" in the next window)? Check the FSR Guide for the full installation instructions.",
+                    _ =>
+                    {
+                        File.Copy(smoothReshadeIndy, Path.Combine(selectFolder, "TheGreatCircle smooth.ini"), true);
+                    }
+                );
+
+                HandlePrompt(
+                    "Full",
+                    "Do you want to install the full version Reshade?",
+                    _ =>
+                    {
+                        File.Copy(normalReshadeIndy, Path.Combine(selectFolder, "TheGreatCircle .ini"), true);
+                    }
+                );
+            }
         }
 
         public void stalkerFsr3()
@@ -2826,31 +2896,6 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void sifuFsr3()
-        {
-            if (selectMod == "Others Mods Sifu")
-            {
-                UpdateUpscalers(selectFolder, true);
-            }
-        }
-
-        public void gkFsr3()
-        {
-            string rootPathGK = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
-            string pathDlssGk = Path.Combine(rootPathGK, "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64");
-
-            if (selectMod == "Others Mods GK")
-            {
-                if (Path.Exists(pathDlssGk))
-                {
-                    UpdateUpscalers(pathDlssGk, true);
-                }
-                else
-                {
-                    MessageBox.Show("To update DLSS, select the .exe path. The path looks like \"Mercury\\Binaries\\Win64\"", "Exe", MessageBoxButtons.OK);
-                }
-            }
-        }
         public void di2Fsr3()
         {
             string pathTcpDi2 = "mods\\FSR3_DI2\\TCP";
@@ -2859,35 +2904,6 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 CopyFolder(pathTcpDi2);
                 runReg("mods\\FSR3_DI2\\TCP\\EnableNvidiaSigOverride.reg");
-            }
-        }
-
-        public void spiderFsr3()
-        {
-            if (selectMod == "Others Mods Spider")
-            {
-                UpdateUpscalers(selectFolder, false, true);
-            }
-        }
-
-        public void shadowTombFsr3()
-        {
-            if (selectMod == "Others Mods Shadow Tomb")
-            {
-                UpdateUpscalers(selectFolder);
-            }
-        }
-
-        public void tlouFs3()
-        {
-            string dlssUpdateTlou = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
-
-            if (selectMod == "Others Mods Tlou")
-            {
-                if (MessageBox.Show("Do you want to update DLSS? DLSS 3.8.10 will be installed.", "DLSS", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    File.Copy(dlssUpdateTlou, Path.Combine(selectFolder, "nvngx_dlss.dll"), true);
-                }
             }
         }
 
@@ -3764,9 +3780,10 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region Cleanup Mod 3
-        public void CleanupMod3(List<string> ListClean, string modName)
+        public bool CleanupMod3(List<string> ListClean, string modName)
         {
             string[] DelFiles = Directory.GetFiles(selectFolder);
+            bool deletedAnyFile = false;
             try
             {
                 if (selectMod == modName)
@@ -3778,6 +3795,7 @@ namespace FSR3ModSetupUtilityEnhanced
                         if (ListClean.Contains(DelFileName))
                         {
                             File.Delete(filesDestFolder);
+                            deletedAnyFile = true;
                         }
                     }
 
@@ -3796,6 +3814,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 MessageBox.Show("Please close the game or any other folders related to the game.", "Error", MessageBoxButtons.OK);
             }
+            return deletedAnyFile;
         }
         #endregion
 
@@ -4003,26 +4022,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     di2Fsr3();
                 }
-                if (gameSelected == "Gotham Knights")
-                {
-                    gkFsr3();
-                }
-                if (gameSelected == "Sifu")
-                {
-                    sifuFsr3();
-                }
-                if (gameSelected.Contains("Marvel\'s Spider-Man Remastered") || gameSelected.Contains("Marvel\'s Spider-Man Miles Morales"))
-                {
-                    spiderFsr3();
-                }
-                if (gameSelected == "Shadow of the Tomb Raider")
-                {
-                    shadowTombFsr3();
-                }
-                if (gameSelected == "The Last of Us Part I")
-                {
-                    tlouFs3();
-                }
                 if (gameSelected == "Red Dead Redemption 2")
                 {
                     rdr2Fsr3();
@@ -4060,6 +4059,8 @@ namespace FSR3ModSetupUtilityEnhanced
                         return;
                     }
                 }
+
+                gamesToUpdateUpscalers();
 
                 selectMod = listMods.SelectedItem as string;
 
@@ -4604,11 +4605,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         string gowRagDisableAntiStutter = "mods\\FSR3_GOW_RAG\\God of War Ragnarök\\Anti-Stutter GoW Ragnarok\\Uninstall GoWR High CPU Priority.reg";
                         string[] gowRagIntroFiles = { "pss_studios.bk2", "pss_studios_30.bk2", "pss_studios_4k_30.bk2" };
-
-                        if (selectMod == "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR")
-                        {
-                            CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR", true);
-                        }
 
                         if (Path.Exists(Path.Combine(selectFolder, "exec")))
                         {
@@ -5222,6 +5218,24 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     #region Cleanup Others Mods Indiana Jones and the Great Circle
 
+                    string indyConfigFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), @"Saved Games\MachineGames\TheGreatCircle\base");
+                    string indyOldConfigPath = Path.Combine(indyConfigFilePath, "TheGreatCircleConfig.txt");
+
+                    if (selectMod == "Indy FG (Only RTX)")
+                    {
+                        if (CleanupMod3(del_dlss_to_fsr, "Indy FG (Only RTX)"))
+                        {
+                            if (File.Exists(Path.Combine(selectFolder, "dbghelp.dll"))) File.Delete(Path.Combine(selectFolder, "dbghelp.dll"));
+
+                            if (Path.Exists(indyOldConfigPath))
+                            {
+                                File.Delete(Path.Combine(indyConfigFilePath, "TheGreatCircleConfig.local"));
+                                File.Move(indyOldConfigPath, Path.Combine(indyConfigFilePath, "TheGreatCircleConfig.local"));
+                            }
+
+                        }
+                    }
+
                     CleanupOthersMods("Intro Skip", "boot_sequence_pc.bk2", Path.Combine(selectFolder, "base\\video\\boot_sequence"));
                    
                     #endregion
@@ -5520,7 +5534,7 @@ namespace FSR3ModSetupUtilityEnhanced
         //Config Resolution/Mod Operates
         #region Unlock Mod Operates
         List<string> unlock_mod_operates_list = new List<string> { "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4" };
-        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uniscaler V4", "Uniscaler FSR 3.1", "Uni Custom Miles", "Dlss Jedi" };
+        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uniscaler V4", "Uniscaler FSR 3.1", "Dlss Jedi" };
         #endregion
 
         #region UniResolutionCustom
