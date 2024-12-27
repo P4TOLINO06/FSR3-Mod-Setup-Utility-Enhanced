@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -391,12 +391,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             "_steam_appid.txt", "_winhttp.dll", "anti_cheat_toggler_config.ini", "anti_cheat_toggler_mod_list.txt",
             "start_game_in_offline_mode.exe", "toggle_anti_cheat.exe", "ReShade.ini", "EldenRingUpscalerPreset.ini",
-            "dxgi.dll", "d3dcompiler_47.dll"
-        };
-
-        List<string> del_elden_custom = new List<string>
-        {
-            "ERSS2.dll", "dxgi.dll"
+            "dxgi.dll", "d3dcompiler_47.dll","EldenRingUpscaler.dll"
         };
 
         #endregion
@@ -1643,8 +1638,8 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League" };
-            string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "Path of Exile II" };
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising" };
+            string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "Path of Exile II", "Hitman 3" };
             string gpuName = await GetActiveGpu();
             string[] gpusVar = { "amd", "intel", "gtx" };
 
@@ -1753,13 +1748,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Sifu", selectFolder },
                 { "Others Mods Shadow Tomb", selectFolder },
                 { "Others Mods Tlou", selectFolder },
+                { "Others Mods Steel", selectFolder },
                 { "Others Mods POEII", Path.Combine(selectFolder, "Streamline") },
+                { "Others Mods MShell" , Path.GetFullPath(Path.Combine(selectFolder, @"..\\..\\..\\", @"Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
                 { "Others Mods GK", Path.GetFullPath(Path.Combine(selectFolder, @"..\\..\\..", @"Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64")) }
             };
 
             Dictionary<string, string> gamesToUpdateDlssd = new Dictionary<string, string>
             {
                 { "Others Mods Spider", selectFolder }
+            };
+
+            Dictionary<string, string> gamesToUpdateFsrDlss = new Dictionary<string, string>
+            {
+                { "Others Mods Hitman 3", selectFolder }
             };
             #endregion
 
@@ -1788,6 +1790,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 else
                 {
                     MessageBox.Show("To update DLSSD, select the .exe path", "DLSSD");
+                }
+            }
+
+            else if (gamesToUpdateFsrDlss.ContainsKey(selectMod))
+            {
+                string pathFsrDlss = gamesToUpdateFsrDlss[selectMod];
+
+                if (Path.Exists(pathFsrDlss))
+                {
+                    UpdateUpscalers(pathFsrDlss, false, false, false, true);
+                }
+                else
+                {
+                    MessageBox.Show("To update FSR/DLSS, select the .exe path", "FSR/DLSS");
                 }
             }
         }
@@ -2265,7 +2281,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             await Task.Delay((2000));
 
-            if (selectMod == "Umlock FPS Elden")
+            if (selectMod == "Unlock FPS Elden")
             {
                 CopyFolder("mods\\Elden_Ring_FSR3\\Unlock_Fps");
             }
@@ -5374,27 +5390,44 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
                 else if (folderEldenRing.ContainsKey(selectMod) || selectMod == "Unlock FPS Elden")
                 {
-                    #region Del Mods Elden Ring
-                    if (File.Exists(selectFolder + "\\UnlockFps.txt"))
+                    #region Del Others Mods Elden Ring
+                    string[] del_elden_custom =
                     {
-                        DialogResult delUlcFps = MessageBox.Show("Do you want to remove the Unlock FPS mod?", "Unlock FPS Elden", MessageBoxButtons.YesNo);
+                        "dxgi.dll","ERSS-FG.dll"
+                    };
 
-                        if (delUlcFps == DialogResult.Yes)
-                        {
-                            File.Delete(selectFolder + "\\UnlockFps.txt");
-                            File.Delete(selectFolder + "\\mods\\UnlockTheFps.dll");
-                            Directory.Delete(selectFolder + "\\mods\\UnlockTheFps",true);
-                            MessageBox.Show("Mod Successfully Removed", "Success", MessageBoxButtons.OK);
-                        }
-                    }
-                    else if (selectMod == "FSR 3.1.3/DLSS FG Custom Elden")
+                    string[] delOthersModsElden = { "mods\\EldenRingUpscaler.ini", "mods\\RDR2Upscaler.dll", "mods\\RDR2Upscaler.org" };
+
+                    string[] filesToDelete =
                     {
-                        CleanupMod(del_elden_custom, folderEldenRing);
+                        "UnlockFps.txt",
+                        "mods\\UnlockTheFps.dll",
+                        "dinput8.dll",
+                        "mod_loader_config.ini"
+                    };
+
+                    if (File.Exists(Path.Combine(selectFolder, "UnlockFps.txt")))
+                    {
+                        HandlePrompt(
+                        "Unlock FPS Elden",
+                        "Do you want to remove the Unlock FPS mod?",
+                        _ =>
+                        {
+                            CleanupOthersMods3("Unlock FPS", filesToDelete, selectFolder, false, Path.Combine(selectFolder, "mods\\UnlockTheFps"));
+                        });
+                    }
+
+                    if (selectMod == "FSR 3.1.3/DLSS FG Custom Elden")
+                    {
+                        CleanupOthersMods3("FSR 3.1.2/DLSS FG Custom Elden", del_elden_custom, selectFolder, true, "ERSS2");
                     }
                     else
                     {
                         CleanupMod(del_elden, folderEldenRing);
-                        Directory.Delete(selectFolder + "\\reshade-shaders", true);
+                        CleanupOthersMods3("", delOthersModsElden, selectFolder, false, "mods\\UpscalerBasePlugin");
+
+                        if (Directory.Exists(Path.Combine(selectFolder, "reshade-shaders"))) Directory.Delete(Path.Combine(selectFolder, "reshade-shaders"), true);
+
                     }
                     #endregion
                 }

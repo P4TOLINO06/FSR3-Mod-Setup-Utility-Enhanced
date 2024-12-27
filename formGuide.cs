@@ -378,18 +378,25 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Elden Ring",
+                "FSR 3.1.3/DLSS FG Custom Elden\r\n"+
+                "1. Select FSR 3.1.3/DLSS FG Custom Elden and install.\r\n" +
+                "2. For Steam users, add the following command in 'Launch Options' before starting the game: cmd /c start eldenring.exe & rem %command%\r\n" +
+                "3. In the game, press the 'Home' key to open the menu.\r\n" +
+                "4. In the menu, select 'Frame Gen' and an 'Upscaler'.\n\n" +
+
                 "Default Mod\r\n"+
-                "1 - Select \"Disable AntiCheat\" in the Select Mod and choose \"Yes\" in the anticheat deactivation confirmation window. Select the folder where the game exe is located, otherwise, it will not be possible to deactivate the anticheat. (Steam Only)\r\n" +
-                "2 - Select \"Elden Ring FSR3\" in Select Mod and install it.\r\n" +
-                "3 - Inside the game, press the \"Home\" key to open the mod menu. In \"Upscale Type,\" select the Upscaler according to your GPU (DLSS RTX or FSR3 non-RTX), then check the box \"Enable Frame Generation\" below.\r\n" +
+                "1. Select \"Disable AntiCheat\" in the Select Mod and choose \"Yes\" in the anticheat deactivation confirmation window. Select the folder where the game exe is located, otherwise, it will not be possible to deactivate the anticheat. (Steam Only)\r\n" +
+                "2. Select \"Elden Ring FSR3\" in Select Mod and install it.\r\n" +
+                "3. Inside the game, press the \"Home\" key to open the mod menu. In \"Upscale Type,\" select the Upscaler according to your GPU (DLSS RTX or FSR3 non-RTX), then check the box \"Enable Frame Generation\" below.\r\n" +
                 "• To remove Full Screen borders, select \"Full Screen\" in the game before installing the mod. If there is screen overflow after mod installation, select full screen -> window -> full screen.\r\n" +
                 "• Enable AntiAliasing and Motion Blur; this mod will skip the actual rendering of motion blur, so don't worry if you don't like motion blur. The game only needs it to render motion vectors.\r\n\r\n"+
 
-                "FSR 3.1.2/DLSS FG Custom Elden\r\n"+
-                "1 - Select FSR 3.1.2/DLSS FG Custom Elden and install.\r\n" +
-                "2 - For Steam users, add the following command in 'Launch Options' before starting the game: cmd /c start eldenring.exe & rem %command%\r\n" +
-                "3 - In the game, press the 'Home' key to open the menu.\r\n" +
-                "4 - In the menu, select 'Frame Gen' and an 'Upscaler'."
+                "Unlock FPS (Required only for Steam)\n" +
+                "1. Select \"Disable Anti Cheat\" and install.\n" +
+                "2. Go to the folder where the mod was installed and run \"toggle_anti_cheat.exe.\"\n" +
+                "3. Select \"Unlock FPS Elden\" and install.\n" +
+                "4. If you launch the game via Steam and it doesn't open, run it directly through the .exe \"eldenring.exe.\"\n" +
+                "5. To reactivate Anti Cheat, go to the folder where the mod was installed and run \"toggle_anti_cheat.exe\" again."
             },
             {
                 "Everspace 2",
@@ -700,14 +707,12 @@ namespace FSR3ModSetupUtilityEnhanced
 
             {
                 "Hitman 3",
-                "1 - Select a mod of your preference. (0.10.3 is recommended\r\n" +
-                "but if it doesn’t work, try 0.10.2)\r\n" +
-                "2 - Check the box for Fake Nvidia GPU (AMD/GTX).\r\n" +
-                "3 - In the game, select FSR and Frame Generation. If Frame\r\n" +
-                "Generation is not available, you can check the Nvapi Results\r\n" +
-                "box or download the file EnableDLSSFrameGenerationHitmanIII.reg\r\n" +
-                "and run it. This will activate Frame Generation even if\r\n" +
-                "it is not available.\r\n"
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen and Hud Fix boxes.\n" +
+                "5. To use AMD Anti Lag 2, select Reflex."
             },
             {
                 "Horizon Forbidden West",
@@ -877,6 +882,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - To fix flickering in the hud, activate DLSS and play for a few seconds, then return to the menu and deactivate DLSS.\r\n"
             },
             {
+                "Mortal Shell",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Open the game and select DX12.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler), select the path MortalShell\\Dungeonhaven\\Binaries\\Win64 and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen, FG Hud Fix, and FG Extended boxes.\n" +
+                "6. Select FSR 3.x to use FSR 3.1.3."
+            },
+            {
                 "Nobody Wants To Die",
                 "1 - Select Uniscaler FSR 3.1\r\n" +
                 "2 - For AMD/GTX users: Check the boxes for Fake Nvidia GPU, Ue compatibility Mode, Nvapi Results and Disable Signature Over.\r\n"
@@ -978,7 +993,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. In the menu, select Frame Gen."
             },
             {
-                "Resident Evil 4 Remake", 
+                "Resident Evil 4 Remake",
                 "1. Select the game root folder (RESIDENT EVIL 4 BIOHAZARD RE4).\n" +
                 "2. Disable FSR in the game.\n" +
                 "3. Select FSR 3.1.3/DLSS RE4 Remake and install.\n" +
@@ -1145,10 +1160,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 "6. If you want to update the game's upscalers, it is recommended to do so before installing the mod. Simply select \"Others Mods Sifu\" to update.\n"
             },
             {
-              "Smalland",
-              "1 - Select a mod of your choice. (0.10.3 is recommended)\n" +
-              "2 - Check the Fake Nvidia GPU box. (AMD/GTX)\n" +
-              "3 - In the game, select DLSS\n"
+                "Smalland",
+                "1 - Select a mod of your choice. (0.10.3 is recommended)\n" +
+                "2 - Check the Fake Nvidia GPU box. (AMD/GTX)\n" +
+                "3 - In the game, select DLSS\n"
             },
             {
                 "Spider Man/Miles",
@@ -1160,76 +1175,81 @@ namespace FSR3ModSetupUtilityEnhanced
                 "5. In the menu, check the Frame Gen and Hud Fix boxes."
             },
             {
-              "S.T.A.L.K.E.R. 2",
-              "Preset\n" +
-              "1. Install ReShade\n" +
-              "2. Inside ReShade, select the game’s .exe and click next\n" +
-              "3. Select DX 10/11/12 and click next\n" +
-              "4. Click \"Browse\" and locate the file Stalker2 REAL LIFE.ini that was installed in the folder selected in the Utility and click Next\n" +
-              "5. In the game, press the Home key to open the menu and select the options you prefer"
-            },
-
-            {
-              "Star Wars Jedi: Survivor",
-              "DLSS Jedi (if you have RTX, use this mod if you want to use native DLSS):\n" +
-              "1. Check the box Fake Nvidia GPU (GTX and AMD), Nvapi Results (GTX and AMD), and UE Compatibility (AMD).\n" +
-              "2. If you can't see DLSS in-game, select \"DLSS\" under \"Mod Operates\".\n" +
-              "3. In-game, select DLSS 3 and Frame Gen.\n\n" +
-
-              "ALL GPUs:\n" +
-              "1. Select Uniscaler FSR 3.1.\n" +
-              "2. Check the \"Enable Signature Over\" box.\n" +
-              "3. If you cannot see DLSS in the game, check the Nvngx.dll box, select Default, and reinstall the mod.\n" +
-              "4. If you have an RTX GPU and want to use native DLSS, select DLSS in \"Mod Operates.\" Other GPUs can use FSR 3.1/XESS.\n" +
-              "5. In the game, select DLSS FG.\n\n" +
-
-              "Others Mods:\n" +
-              "Intro Skip: Removes the initial intro when opening the game.\n\n" +
-
-              "Anti Stutter:\n" +
-              "1. Faster Loading Times.\n" +
-              "2. Enhanced Streaming and Level Loading.\n" +
-              "3. Optimized CPU and GPU Utilization.\n\n" +
-
-              "Fix RT:\n" +
-              "Fixes any crashes you experience with ray tracing enabled and also fixes occlusion culling. When you turn the camera and see white flashing at the corners of the screen, this resolves it and any crashes.\n\n" +
-
-              "Graphic Preset:\n" +
-              "1. Install ReShade.\n" +
-              "2. In ReShade, select Star Wars Jedi: Survivor.\n" +
-              "3. Select DirectX 10/11/12.\n" +
-              "4. Click \"Browse\" and locate the file STARWAR-ULTRA-REALISTA.ini that was installed in the destination folder selected in the Utility.\n" +
-              "5. Finish the installation and open the game.\n" +
-              "6. In the game, press the \"Home\" key to open the menu and select the graphic options you prefer."
+                "S.T.A.L.K.E.R. 2",
+                "Preset\n" +
+                "1. Install ReShade\n" +
+                "2. Inside ReShade, select the game’s .exe and click next\n" +
+                "3. Select DX 10/11/12 and click next\n" +
+                "4. Click \"Browse\" and locate the file Stalker2 REAL LIFE.ini that was installed in the folder selected in the Utility and click Next\n" +
+                "5. In the game, press the Home key to open the menu and select the options you prefer"
             },
             {
-              "Star Wars Outlaws",
-              "RTX:\r\n" +
-              "1 - Select Star Wars DLSS RTX and install.\r\n" +
-              "2 - Inside the game, select DLSS and Frame Gen.\r\n\r\n" +
+                "Star Wars Jedi: Survivor",
+                "DLSS Jedi (if you have RTX, use this mod if you want to use native DLSS):\n" +
+                "1. Check the box Fake Nvidia GPU (GTX and AMD), Nvapi Results (GTX and AMD), and UE Compatibility (AMD).\n" +
+                "2. If you can't see DLSS in-game, select \"DLSS\" under \"Mod Operates\".\n" +
+                "3. In-game, select DLSS 3 and Frame Gen.\n\n" +
 
-              "All GPUs:\r\n" +
-              "1 - Select FSR 3.1/DLSS Optiscaler.\r\n" +
-              "2 - Inside the game, select an upscaler of your choice.\r\n" +
-              "3 - Press the Insert key to open the menu and select an upscaler of your choice.\r\n\r\n" +
+                "ALL GPUs:\n" +
+                "1. Select Uniscaler FSR 3.1.\n" +
+                "2. Check the \"Enable Signature Over\" box.\n" +
+                "3. If you cannot see DLSS in the game, check the Nvngx.dll box, select Default, and reinstall the mod.\n" +
+                "4. If you have an RTX GPU and want to use native DLSS, select DLSS in \"Mod Operates.\" Other GPUs can use FSR 3.1/XESS.\n" +
+                "5. In the game, select DLSS FG.\n\n" +
 
-              "Graphic Preset:\n" +
-              "1 - Install the mod and the ReShade application.\n" +
-              "2 - In ReShade, select b1.exe, DirectX 10/11/12,\n" +
-              "   click on \"Browser,\" and find the file Outlaws2.ini (the path\n" +
-              "   should look something like Star Wars Outlaws\\Outlaws2.ini)\n" +
-              "   and select it, then click on \"Uncheck All\" and \"Next.\"\n" +
-              "3 - In the game, press the \"Insert\" key to open\n" +
-              "   the menu and check the options you want.\n"
+                "Others Mods:\n" +
+                "Intro Skip: Removes the initial intro when opening the game.\n\n" +
+
+                "Anti Stutter:\n" +
+                "1. Faster Loading Times.\n" +
+                "2. Enhanced Streaming and Level Loading.\n" +
+                "3. Optimized CPU and GPU Utilization.\n\n" +
+
+                "Fix RT:\n" +
+                "Fixes any crashes you experience with ray tracing enabled and also fixes occlusion culling. When you turn the camera and see white flashing at the corners of the screen, this resolves it and any crashes.\n\n" +
+
+                "Graphic Preset:\n" +
+                "1. Install ReShade.\n" +
+                "2. In ReShade, select Star Wars Jedi: Survivor.\n" +
+                "3. Select DirectX 10/11/12.\n" +
+                "4. Click \"Browse\" and locate the file STARWAR-ULTRA-REALISTA.ini that was installed in the destination folder selected in the Utility.\n" +
+                "5. Finish the installation and open the game.\n" +
+                "6. In the game, press the \"Home\" key to open the menu and select the graphic options you prefer."
             },
             {
-                "Suicide Squad: Kill the Justice League",
+                "Star Wars Outlaws",
+                "RTX:\r\n" +
+                "1 - Select Star Wars DLSS RTX and install.\r\n" +
+                "2 - Inside the game, select DLSS and Frame Gen.\r\n\r\n" +
+
+                "All GPUs:\r\n" +
+                "1 - Select FSR 3.1/DLSS Optiscaler.\r\n" +
+                "2 - Inside the game, select an upscaler of your choice.\r\n" +
+                "3 - Press the Insert key to open the menu and select an upscaler of your choice.\r\n\r\n" +
+
+                "Graphic Preset:\n" +
+                "1 - Install the mod and the ReShade application.\n" +
+                "2 - In ReShade, select b1.exe, DirectX 10/11/12,\n" +
+                "   click on \"Browser,\" and find the file Outlaws2.ini (the path\n" +
+                "   should look something like Star Wars Outlaws\\Outlaws2.ini)\n" +
+                "   and select it, then click on \"Uncheck All\" and \"Next.\"\n" +
+                "3 - In the game, press the \"Insert\" key to open\n" +
+                "   the menu and check the options you want.\n"
+            },
+            {
+                "Steelrising", 
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
-                "1. Select the .exe path. (Stones\\Binaries\\Win64).\n" +
-                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
-                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
-                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
-                "5. The game may crash the first time the mod is installed."
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and enter the campaign.\n" +
+                "4. In the campaign, press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen, Hud Fix, and FG Extended.\n" +
+                "6. Select FSR 3.x to use FSR 3.1.3.\n\n" +
+
+                "Default Mods\n" +
+                "1 - Choose a version of the mod you prefer (0.10.3 is recommended).\n" +
+                "2 - Enable Fake Nvidia GPU (only for AMD and GTX).\n" +
+                "3 - Enable NVAPI Results (only for GTX)."
             },
             {
               "Test Drive Unlimited Solar Crown",
@@ -1394,7 +1414,8 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" },
             { "Resident Evil 4 Remake", "https://www.youtube.com/embed/B28ntG0ef4E?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Sifu", "https://www.youtube.com/embed/-of2RI4jxSA?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Sifu", "https://www.youtube.com/embed/-of2RI4jxSA?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Steelrising", "https://www.youtube.com/embed/YIbtYUukW_4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1533,6 +1554,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Microsoft Flight Simulator 24","FlightSimulator242.png"},
                 {"Metro Exodus Enhanced","Metro.png"},
                 {"Monster Hunter Rise","Mrise.png"},
+                {"Mortal Shell","MShell2.png"},
                 {"Nobody Wants To Die","Nobody.png"},
                 {"Outpost Infinity Siege","Outpost.png"},
                 {"Pacific Drive","Pacific.png"},
@@ -1555,6 +1577,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Sifu","Sifu2.png"},
                 {"Silent Hill 2","Sh22.png"},
                 {"S.T.A.L.K.E.R. 2","Stalker2.png"},
+                {"Steelrising","Steelrising2.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
                 {"Suicide Squad: Kill the Justice League","Sskjl2.png"},
@@ -1650,7 +1673,7 @@ namespace FSR3ModSetupUtilityEnhanced
             buttonExit.Visible = false;
         }
 
-        private void webView21_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
+        private void WebView21_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
             if (!e.IsSuccess)
             {

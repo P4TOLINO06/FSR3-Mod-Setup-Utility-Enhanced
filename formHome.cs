@@ -167,6 +167,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Monster Hunter Rise","Mrise.png"},
                     {"Microsoft Flight Simulator 24","FlightSimulator24.png"},
                     {"MOTO GP 24","Moto.png"},
+                    {"Mortal Shell","MShell.png"},
                     {"Nightingale","Night.png"},
                     {"Nobody Wants To Die","Nobody.png"},
                     {"Outpost: Infinity Siege","Outpost.png"},
@@ -320,7 +321,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Suicide Squad: Kill the Justice League", new List<string> { "Others Mods SSKJL", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Resident Evil 4 Remake", new List<string> { "FSR 3.1.3/DLSS RE4" } },
                 { "Sifu", new List<string> { "Others Mods Sifu", "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS"}},
-                { "Path of Exile II", new List<string> { "Others Mods POEII", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } }
+                { "Path of Exile II", new List<string> { "Others Mods POEII", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
+                { "Steelrising", new List<string> { "Others Mods Steel"}},
+                { "Mortal Shell", new List<string> {"Others Mods MShell", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
+                { "Hitman 3", new List<string> { "Others Mods Hitman 3", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } }
             };
             #endregion
 
