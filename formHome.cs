@@ -324,7 +324,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Path of Exile II", new List<string> { "Others Mods POEII", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
                 { "Steelrising", new List<string> { "Others Mods Steel"}},
                 { "Mortal Shell", new List<string> {"Others Mods MShell", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Hitman 3", new List<string> { "Others Mods Hitman 3", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } }
+                { "Hitman 3", new List<string> { "Others Mods Hitman 3", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
+                { "Control", new List<string> { "Others Mods Control"} },
+                { "Remnant II", new List<string> { "Others Mods Remnant II", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } }
             };
             #endregion
 

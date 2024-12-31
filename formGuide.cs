@@ -230,10 +230,14 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Control",
-                "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
-                "2 - Check the Fake Nvidia GPU box. (AMD/GTX).\r\n" +
-                "3 - Check the Enable Signature Override box.\r\n" +
-                "4 - Before installing, configure the game as you wish, do not change the settings or turn off DLSS after the mod is installed, as the game will crash."
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select the .exe path.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen, Hud Fix boxes and FG Extended.\n" +
+                "6. Select FSR 3.x to use FSR 3.1.3.\n" +
+                "7. If you want to update FSR/DLSS, do this before installing the mod, select \"Others Mods Control\" to update."
             },
             {
                 "Crime Boss Rockay City",
@@ -993,6 +997,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. In the menu, select Frame Gen."
             },
             {
+                "Remnant II",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "5. Select FSR 3x to use FSR 3.1.3.\n" +
+                "6. If you want to update DLSS, select \"Others Mods Remnant II\", do this before installing the mod.\n" +
+                "7. It is not recommended to enable the game’s Frame Gen along with the mod’s FG, the game may crash."
+            },
+            {
                 "Resident Evil 4 Remake",
                 "1. Select the game root folder (RESIDENT EVIL 4 BIOHAZARD RE4).\n" +
                 "2. Disable FSR in the game.\n" +
@@ -1415,7 +1430,9 @@ namespace FSR3ModSetupUtilityEnhanced
             { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" },
             { "Resident Evil 4 Remake", "https://www.youtube.com/embed/B28ntG0ef4E?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Sifu", "https://www.youtube.com/embed/-of2RI4jxSA?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Steelrising", "https://www.youtube.com/embed/YIbtYUukW_4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Steelrising", "https://www.youtube.com/embed/YIbtYUukW_4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Elden Ring", "https://www.youtube.com/embed/RxF6WfjnVR4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Mortal Shell", "https://www.youtube.com/embed/cOSdkFftHgY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1565,6 +1582,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Ready or Not","Ready.png"},
                 {"Red Dead Redemption","Rdr12.png"},
                 {"Red Dead Redemption 2","RDR2.png"},
+                {"Remnant II","Remnant22.png"},
                 {"Resident Evil 4 Remake","Re42.png"},
                 {"Returnal","Returnal2.png"},
                 {"Ripout","Ripout.png"},

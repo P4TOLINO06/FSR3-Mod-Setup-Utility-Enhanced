@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -433,8 +433,8 @@ namespace FSR3ModSetupUtilityEnhanced
         Dictionary<string, string[]> folderBdg3 = new Dictionary<string, string[]>
         {
             { "Baldur's Gate 3 FSR3", new string[] { "mods\\FSR3_BDG" } },
-            { "Baldur's Gate 3 FSR3 V2", new string[] { "mods\\FSR3_BDG", "mods\\FSR3_BDG_2" } },
-            { "Baldur's Gate 3 FSR3 V3", new string[] { "mods\\FSR3_BDG", "mods\\FSR3_BDG_2" } }
+            { "Baldur's Gate 3 FSR3 V2", new string[] { "mods\\FSR3_BDG", "mods\\FSR3_BDG\\FSR3_BDG_2" } },
+            { "Baldur's Gate 3 FSR3 V3", new string[] { "mods\\FSR3_BDG", "mods\\FSR3_BDG\\FSR3_BDG_2" } }
         };
         #endregion
 
@@ -1589,6 +1589,33 @@ namespace FSR3ModSetupUtilityEnhanced
             return userChoice;
         }
 
+        public System.Windows.Forms.ProgressBar HandleProgressBar(bool isComplete, System.Windows.Forms.ProgressBar progressBar = null)
+        {
+            if (isComplete)
+            {
+                if (progressBar != null)
+                {
+                    this.Controls.Remove(progressBar);
+                    progressBar = null; 
+                }
+            }
+            else
+            {
+                progressBar = new System.Windows.Forms.ProgressBar
+                {
+                    Minimum = 0,
+                    Maximum = 100,
+                    Value = 0,
+                    Dock = DockStyle.Top
+                };
+
+                this.Controls.Add(progressBar);
+            }
+
+            return progressBar;
+        }
+
+
         private async Task optiscaler_custom()
         {
             #region Backup Files
@@ -1749,9 +1776,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Shadow Tomb", selectFolder },
                 { "Others Mods Tlou", selectFolder },
                 { "Others Mods Steel", selectFolder },
+                { "Others Mods Remnant II", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\Shared\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods POEII", Path.Combine(selectFolder, "Streamline") },
                 { "Others Mods MShell" , Path.GetFullPath(Path.Combine(selectFolder, @"..\\..\\..\\", @"Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
-                { "Others Mods GK", Path.GetFullPath(Path.Combine(selectFolder, @"..\\..\\..", @"Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64")) }
+                { "Others Mods GK", Path.GetFullPath(Path.Combine(selectFolder, @"..\\..\\..", @"Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"))}
             };
 
             Dictionary<string, string> gamesToUpdateDlssd = new Dictionary<string, string>
@@ -1761,7 +1789,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
             Dictionary<string, string> gamesToUpdateFsrDlss = new Dictionary<string, string>
             {
-                { "Others Mods Hitman 3", selectFolder }
+                { "Others Mods Hitman 3", selectFolder },
+                { "Others Mods Control", selectFolder}
             };
             #endregion
 
@@ -1987,6 +2016,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task bdg3Fsr3()
         {
+            string bdgV3Ini = "mods\\FSR3_BDG\\FSR3_BDG_3\\BG3Upscaler.ini";
             await Task.Run(() =>
             {
                 CopyFSR(folderBdg3);
@@ -1995,24 +2025,19 @@ namespace FSR3ModSetupUtilityEnhanced
             #region Copy ini file for mods folder Baldur's Gate 3 FSR3 V3 
             if (selectMod == "Baldur's Gate 3 FSR3 V3")
             {
-                string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string pathBdgIni = "mods\\FSR3_BDG_3\\BG3Upscaler.ini";
-                string fullPath = Path.Combine(exeDirectory, pathBdgIni);
                 try
                 {
-                    await Task.Delay((2000));
+                    await Task.Delay((1000));
                     {
-                        File.Copy(fullPath, selectFolder + "\\mods\\BG3Upscaler.ini", true);
+                        if (Path.Exists(Path.Combine(selectFolder, "mods")))
+                        {
+                            File.Copy(bdgV3Ini, Path.Combine(selectFolder, "mods\\BG3Upscaler.ini"), true);
+                        }
                     }
                 }
                 catch { }
             }
             #endregion
-        }
-
-        private DialogResult ShowMessage(string message, string titleMessage)
-        {
-            return MessageBox.Show(message,titleMessage , MessageBoxButtons.YesNo);
         }
 
         public void wukongFsr3()
@@ -2316,15 +2341,62 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void controlFsr3()
         {
-            #region Files nvngx required for the mod to work in the game Control
-            string pathNvngx = "mods\\FSR3_Control";
+            #region additional settings Control
+            var progressBar = HandleProgressBar(false);
 
-            foreach (string nvngxItem in Directory.GetFiles(pathNvngx))
+            var HdrControlPaths = new Dictionary<string, string>
             {
-                string nvngxName = Path.GetFileName(nvngxItem);
-                string fullpathNvngx = Path.Combine(selectFolder, nvngxName);
+                { "Steam", "mods\\FSR3_Control\\HDR\\Control HDR v1.5.1 (Steam)" },
+                { "Epic", "mods\\FSR3_Control\\HDR\\Control HDR v1.5.1 (Epic Store)" },
+                { "Others", "mods\\FSR3_Control\\HDR\\Control HDR v1.5.1 (No DRM)" }
+            };
 
-                File.Copy(pathNvngx + "\\" + nvngxName, fullpathNvngx, true);
+            string backupHdrControl = Path.Combine(selectFolder, "HDR Control");
+            string pathToBackup = null;
+
+            if (selectMod == "FSR 3.1.3/DLSS FG (Only Optiscaler)")
+            {
+                if (!Directory.Exists(backupHdrControl))
+                {
+                    Directory.CreateDirectory(backupHdrControl);
+                }
+
+                foreach (var store in HdrControlPaths.Keys)
+                {
+                    if (store != "Others" && MessageBox.Show($"Is your game on {store}?", store, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        pathToBackup = HdrControlPaths[store];
+                        break;
+                    }
+                }
+
+                if (pathToBackup == null)
+                {
+                    pathToBackup = HdrControlPaths["Others"];
+                }
+
+                var bkControlFiles = Directory.GetFiles(pathToBackup, "*.*", SearchOption.AllDirectories).ToList();
+                progressBar.Maximum = bkControlFiles.Count;
+
+                foreach (var sourceFile in bkControlFiles)
+                {
+                    string relativePath = Path.GetRelativePath(pathToBackup, sourceFile);
+                    string destFile = Path.Combine(selectFolder, relativePath);
+                    string backupFile = Path.Combine(backupHdrControl, relativePath);
+
+                    if (File.Exists(destFile) && File.ReadAllBytes(sourceFile).SequenceEqual(File.ReadAllBytes(destFile)))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(backupFile));
+                        File.Copy(destFile, backupFile, true);
+                    }
+
+                    Directory.CreateDirectory(Path.GetDirectoryName(destFile));
+                    File.Copy(sourceFile, destFile, true);
+
+                    progressBar.Value++;
+                    Application.DoEvents();
+                }
+                HandleProgressBar(true, progressBar);
             }
             #endregion
         }
@@ -5263,6 +5335,26 @@ namespace FSR3ModSetupUtilityEnhanced
                     string[] remove_dinput8_dd2 = { "openvr_api.dll", "openxr_loader.dll", "DELETE_OPENVR_API_DLL_IF_YOU_WANT_TO_USE_OPENXR", "dinput8.dll", "reframework_revision.txt" };
 
                     CleanupOthersMods3("Dinput 8", remove_dinput8_dd2, selectFolder, false, "reframework");
+                    #endregion
+                }
+
+                if (gameSelected == "Control")
+                {
+                    #region Clean Mods Control
+                    string bakControlHdr = Path.Combine(selectFolder, "HDR Control");
+                    {
+                        try
+                        {
+                            // Remove the files from the HDR Path.
+                            if (Path.Exists(bakControlHdr))
+                            {
+                                CopyFolder3(bakControlHdr, selectFolder);
+
+                                Directory.Delete(bakControlHdr, true);
+                            }
+                        }
+                        catch { };
+                    }
                     #endregion
                 }
 
