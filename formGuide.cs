@@ -434,8 +434,13 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Fist Forged in Shadow Torch",
-                "1 - Select a mod of your choice. (0.10.3 is recommended)\r\n" +
-                "2 - Check the Fake Nvidia GPU box (AMD/GTX)"
+                "FSR 3.1.3/DLSS (Only Optiscaler)\n" +
+                "1. Open the game and select DX12.\n" +
+                "2. Select FSR 3.1.3/DLSS (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "6. If you want to update DLSS, do it before installing the mod; just select \"Others Mods First.\""
             },
             {
                 "Flintlock: The Siege of Dawn",
@@ -846,6 +851,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - Inside the game, select DLSS or FSR\r\n" +
                 "• If you want to use Uniscaler with the DLSS upscaler, select DLSS in Mod Operates (the default option of Uniscaler uses the FSR upscaler)\r\n" +
                 "• If the game is on Epic Games, it is necessary to disable the Overlay, simply go to 'Epic Games Overlay'.\r\n"
+            },
+            {
+                "Marvel's Midnight Suns", 
+                "FSR 3.1.3/DLSS (Only Optiscaler) + AMD Anti Lag 2\n" +
+                "1. Open the game and select DX12.\n" +
+                "2. Select FSR 3.1.3/DLSS (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "6. To use AMD Anti Lag 2, select Nvidia Reflex.\n" +
+                "7. If you are a non-RTX user and DLSS is not available in the game, select \"Yes\" in the Anti Lag 2 window that appears during installation."
             },
             {
                 "Metro Exodus Enhanced",
@@ -1432,7 +1448,9 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Sifu", "https://www.youtube.com/embed/-of2RI4jxSA?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Steelrising", "https://www.youtube.com/embed/YIbtYUukW_4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Elden Ring", "https://www.youtube.com/embed/RxF6WfjnVR4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Mortal Shell", "https://www.youtube.com/embed/cOSdkFftHgY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Mortal Shell", "https://www.youtube.com/embed/cOSdkFftHgY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Control", "https://www.youtube.com/embed/MgK53le4uFM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Fist Forged in Shadow Torch", "https://www.youtube.com/embed/JVoM3mu0ig4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1568,6 +1586,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Martha Is Dead","Martha.png"},
                 {"Marvel's Avengers","Avengers2.png"},
                 {"Marvel's Guardians of the Galaxy","Got.png"},
+                {"Marvel\'s Midnight Suns","Mmds2.png"},
                 {"Microsoft Flight Simulator 24","FlightSimulator242.png"},
                 {"Metro Exodus Enhanced","Metro.png"},
                 {"Monster Hunter Rise","Mrise.png"},

@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1665,8 +1665,8 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising" };
-            string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "Path of Exile II", "Hitman 3" };
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "" };
+            string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "Path of Exile II", "Hitman 3", "Marvel\'s Midnight Suns" };
             string gpuName = await GetActiveGpu();
             string[] gpusVar = { "amd", "intel", "gtx" };
 
@@ -1684,11 +1684,12 @@ namespace FSR3ModSetupUtilityEnhanced
                 await CopyFolder(pathOptiscalerDlss);
             }
 
+            // AMD Anti Lag 2
             if (gamesToUseAntiLag2.Contains(gameSelected) && MessageBox.Show($"Do you want to use AMD Anti Lag 2? Check the {gameSelected} guide in FSR Guide to see how to enable it.", "Anti Lag 2", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 CopyFolder(nvapiAmd);
             }
-
+            // Nvapi for non-RTX users
             else if (copynvapi)
             {
                 if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -1776,6 +1777,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Shadow Tomb", selectFolder },
                 { "Others Mods Tlou", selectFolder },
                 { "Others Mods Steel", selectFolder },
+                { "Others Mods GR2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
+                { "Others Mods Fist", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods Remnant II", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\Shared\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods POEII", Path.Combine(selectFolder, "Streamline") },
                 { "Others Mods MShell" , Path.GetFullPath(Path.Combine(selectFolder, @"..\\..\\..\\", @"Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
@@ -2342,7 +2345,6 @@ namespace FSR3ModSetupUtilityEnhanced
         public void controlFsr3()
         {
             #region additional settings Control
-            var progressBar = HandleProgressBar(false);
 
             var HdrControlPaths = new Dictionary<string, string>
             {
@@ -2356,6 +2358,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (selectMod == "FSR 3.1.3/DLSS FG (Only Optiscaler)")
             {
+                var progressBar = HandleProgressBar(false);
                 if (!Directory.Exists(backupHdrControl))
                 {
                     Directory.CreateDirectory(backupHdrControl);

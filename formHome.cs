@@ -163,6 +163,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Marvel's Guardians of the Galaxy","Got.png"},
                     {"Marvel's Spider-Man Miles Morales","Miles.png"},
                     {"Marvel's Spider-Man Remastered","Spider.png"},
+                    {"Marvel\'s Midnight Suns","Mmds.png"},
                     {"Metro Exodus Enhanced Edition","Metro.png"},
                     {"Monster Hunter Rise","Mrise.png"},
                     {"Microsoft Flight Simulator 24","FlightSimulator24.png"},
@@ -326,7 +327,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Mortal Shell", new List<string> {"Others Mods MShell", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
                 { "Hitman 3", new List<string> { "Others Mods Hitman 3", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
                 { "Control", new List<string> { "Others Mods Control"} },
-                { "Remnant II", new List<string> { "Others Mods Remnant II", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } }
+                { "Remnant II", new List<string> { "Others Mods Remnant II", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
+                { "FIST: Forged In Shadow Torch", new List<string> { "Others Mods Fist"} },
+                { "Ghostrunner 2", new List<string> { "Others Mods GR2" } },
+                { "Marvel\'s Midnight Suns", new List<string> {"FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS"} },
             };
             #endregion
 
