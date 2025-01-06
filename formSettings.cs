@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -614,7 +614,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean DLSS To FSR
         List<string> del_dlss_to_fsr = new List<string>
         {
-            "dlssg_to_fsr3_amd_is_better.dll","version.dll"
+            "dlssg_to_fsr3_amd_is_better.dll","version.dll","DisableNvidiaSignatureChecks.reg","RestoreNvidiaSignatureChecks.reg"
         };
         #endregion
 
@@ -1665,8 +1665,8 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "" };
-            string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "Path of Exile II", "Hitman 3", "Marvel\'s Midnight Suns" };
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI" };
+            string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "Path of Exile II", "Hitman 3", "Marvel\'s Midnight Suns", "Hogwarts Legacy" };
             string gpuName = await GetActiveGpu();
             string[] gpusVar = { "amd", "intel", "gtx" };
 
@@ -1777,7 +1777,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Shadow Tomb", selectFolder },
                 { "Others Mods Tlou", selectFolder },
                 { "Others Mods Steel", selectFolder },
+                { "Others Mods FFXVI", selectFolder },
+                { "Others Mods HB2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods GR2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
+                { "Others Mods HL", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods Fist", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods Remnant II", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\Shared\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods POEII", Path.Combine(selectFolder, "Streamline") },
@@ -2987,6 +2990,124 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
+        public void hb2Fsr3()
+        {
+            #region Others Mods Hellblade 2
+            string fgRtxHb2 = "mods\\FSR3_GOT\\DLSS FG";
+            string regRtxHb2 = "mods\\FSR3_GOT\\DLSS FG\\DisableNvidiaSignatureChecks.reg";
+            string antiStutterHb2 = "mods\\FSR3_HB2\\Cpu_Hb2\\Install Hellblade 2 CPU Priority.reg";
+            var postProcessingHb2 = new Dictionary<string, string>
+            {
+                {"r.DefaultFeature.MotionBlur", "0"},
+                {"r.MotionBlurQuality", "0"},
+                {"r.NT.Lens.ChromaticAberration.Intensity", "0"},
+                {"r.Tonemapper.GrainQuantization", "0"},
+                {"r.DepthOfFieldQuality", "0"},
+                {"r.FilmGrain", "0"},
+                {"r.NT.DOF.NTBokehTransform", "0"},
+                {"r.NT.Lens.Distortion.Stretch", "0"},
+                {"r.NT.Lens.Distortion.Intensity", "0"},
+                {"r.SceneColorFringeQuality", "0"},
+                {"r.NT.DOF.RotationalBokeh", "0"},
+                {"r.NT.AllowAspectRatioHorizontalExtension", "0"},
+                {"r.Tonemapper.Quality", "0"},
+                {"r.NT.EnableConstrainAspectRatio", "0"}
+            };
+            string pathReplaceIniHb2 = "mods\\FSR3_HB2\\Replace_ini\\Engine.ini";
+            string pathIniHb2 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Hellblade2", "Saved", "Config", "Windows", "Engine.ini");
+            string altPathHb2 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Hellblade2", "Saved", "Config", "WinGDK", "Engine.ini");
+            string pathFinal = null;
+
+            if (selectMod == "HB2 FG (Only RTX)")
+            {
+                CopyFolder(fgRtxHb2);
+                runReg(regRtxHb2);
+            }
+
+            if (selectMod == "Others Mods HB2")
+            {
+                // Remove Post Processings Effects
+                if (Path.Exists(pathIniHb2))
+                {
+                    pathFinal = pathIniHb2;
+                }
+                else if (Path.Exists(altPathHb2))
+                {
+                    pathFinal = altPathHb2;
+                }
+                else
+                {
+                    HandlePrompt(
+                    "Not Found",
+                    "The Engine.ini file was not found. Would you like to manually select the path? (The path is similar to C:\\Users\\YourName\\AppData\\Local\\Hellblade2\\Saved\\Config\\Windows or WinGDK). It is required for the mod to be installed.\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+                    _ =>
+                    {
+                        FolderBrowserDialog searchIniPathHb2 = new FolderBrowserDialog();
+                        searchIniPathHb2.RootFolder = Environment.SpecialFolder.Desktop;
+                        searchIniPathHb2.Description = "Select the path C:\\Users\\YourName\\AppData\\Local\\Hellblade2\\Saved\\Config\\Windows or WinGDK.";
+                        searchIniPathHb2.ShowNewFolderButton = false;
+
+                        if (searchIniPathHb2.ShowDialog() == DialogResult.OK)
+                        {
+                            string selectedIniPathHb2 = searchIniPathHb2.SelectedPath;
+
+                            if (Path.Exists(Path.Combine(selectedIniPathHb2, "Engine.ini")))
+                            {
+                                pathFinal = Path.Combine(selectedIniPathHb2, "Engine.ini");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Engine.ini not found. Please select the correct path to install the mod.", "Not Found", MessageBoxButtons.OK);
+                                return;
+                            }
+                        }
+                    });
+                }
+
+                // Anti Stutter
+                HandlePrompt(
+                "Anti Stutter",
+                "Do you want to install the Anti Stutter?",
+                _ =>
+                {
+                    runReg(antiStutterHb2);
+                });
+
+                if (pathFinal is not null)
+                {
+                    // Remove Black Bars
+                    HandlePrompt(
+                       "Black Bars",
+                       "Do you want to remove the Black Bars?",
+                       _ =>
+                       {
+                           ConfigIni("r.NT.EnableConstrainAspectRatio", "0", pathFinal, "SystemSettings");
+                       });
+
+                    // Remove all Post Processings Effects
+                    HandlePrompt(
+                        "Post Processings Effects",
+                        "Do you want to remove all post-processing effects?",
+                        _ =>
+                        {
+                            ConfigIni3(postProcessingHb2, pathFinal, "SystemSettings");
+                        });
+
+                    // Restore Post Processing
+                    HandlePrompt(
+                        "Restore Post Processing",
+                        "Do you want to revert to the post-processing options? (Black bars, film grain, etc.)",
+                        _ =>
+                        {
+                            File.Copy(pathReplaceIniHb2, pathFinal, true);
+                        }
+                    );
+
+                }
+            }
+            #endregion
+        }
+
         public void di2Fsr3()
         {
             string pathTcpDi2 = "mods\\FSR3_DI2\\TCP";
@@ -4109,6 +4230,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     returnalFsr3();
                 }
+                if (gameSelected == "Hellblade 2")
+                {
+                    hb2Fsr3();
+                }
                 if (gameSelected == "Dead Island 2")
                 {
                     di2Fsr3();
@@ -4438,6 +4563,8 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             try
             {
+                string[] removeDlss = ["Hellblade 2"];
+
                 if (selectMod == modName && MessageBox.Show($"Do you want to remove the {modName}?","Cleanup",MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     string nvngxPath = Path.Combine(selectFolder, "nvngx.dll");
@@ -4445,7 +4572,14 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     if (File.Exists(nvngxPath))
                     {
-                        File.Move(nvngxPath, nvngxDlssPath, true); // Reverts the original nvngx_dlss.dll file
+                        if (!removeDlss.Contains(gameSelected))
+                        {
+                            File.Move(nvngxPath, nvngxDlssPath, true); // Reverts the original nvngx_dlss.dll file
+                        }
+                        else
+                        {
+                            File.Delete(nvngxPath);
+                        }
                     }
 
                     if (removeDxgi)
@@ -4479,7 +4613,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error clearing Callisto mods files, please try again or do it manually.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error clearing FSR 3.1.3/DLSS FG (Only Optiscaler) mod files, please try again or do it manually.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Debug.WriteLine(ex);
             }
             return false;
@@ -4653,6 +4787,30 @@ namespace FSR3ModSetupUtilityEnhanced
                     if (selectMod == "FSR 3.1.1 Custom Requiem")
                     {
                         CleanupMod3(del_optiscaler, "FSR 3.1.1 Custom Requiem");
+                    }
+                    #endregion
+                }
+
+                if (gameSelected == "Hellblade 2")
+                {
+                    #region Remove Others Mods Hellblade 2
+                    string removeAntiStutterHb2 = "mods\\FSR3_HB2\\Cpu_Hb2\\Uninstall Hellblade 2 CPU Priority.reg";
+
+                    if (selectMod == "HB2 FG (Only RTX)") 
+                    { 
+                        CleanupMod3(del_dlss_to_fsr, "HB2 FG (Only RTX)");
+                    }
+
+                    if (Path.Exists(Path.Combine(selectFolder, "Install Hellblade 2 CPU Priority.reg")))
+                    {
+                        HandlePrompt(
+                            "Anti Stutter",
+                            "Do you want to remove the Anti Stutter",
+                            _ =>
+                            {
+                                runReg(removeAntiStutterHb2);
+                                File.Delete(Path.Combine(selectFolder, "Install Hellblade 2 CPU Priority.reg"));
+                            });
                     }
                     #endregion
                 }

@@ -471,11 +471,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Final Fantasy XVI",
-                "FSR 3.1.2/DLSS FG Custom:\n" +
-                "1. Select FSR 3.1.2/DLSS FG Custom.\n" +
-                "2. Check the \"GPU\" box that will appear during installation.\n" +
-                "3. In-game, press the \"Insert\" key to open the menu.\n" +
-                "4. In the menu, select the upscaler you prefer.\n\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods FFVXI\", do\nthis before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select HDR in the menu (it is required for the mod to\nwork) and select DLSS. Then press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen, Hud Fix, and FG Extended.\n\n" +
 
                 "Anti Stutter:\n" +
                 "Prevents possible crashes during the game and optimizes CPU/GPU usage.\n\n" +
@@ -653,20 +654,30 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Hellblade 2",
-                "Only RTX\r\n" +
-                "1 - Select Hellblade 2 FSR3 and install it.\r\n" +
-                "2 - In the game, select Frame Generation.\r\n" +
-                "3 - This mod only works for RTX.\r\n\n" +
-                "All GPUs\r\n" +
-                "1 - Select Uniscaler V2 (you can also test with the other mods)\r\n" +
-                "2 - Check the box for Fake Nvidia GPU (AMD) and check the\r\nbox for UE compatibility mode (AMD and Nvidia)\r\n" +
-                "3 - In-game, select Frame Generation\r\n" +
-                "• If you can’t see the DLSS option in the game, select\r\n'YES' in the 'DLSS Fix' window during installation.\r\n\n" +
-                "• To remove the black bars, select the Engine.ini file folder in\r\n'Select Folder' (if the file is not found automatically), select\r\n'Remove Black Bars' in mod version, and install. (The path to\r\nthe engine.ini file is something like: C:\\Users\\YourName\\\r\nAppData\\Local\\Hellblade2\\Saved\\Config\\Windows or\r\nWinGDK)\r\n\n" +
-                "• If the bars are not removed, select 'Remove Black Bars Alt',\r\nthe removal of the black bars will be automatically performed if\r\nthe Engine.ini file is found. If it is not found, you need to select\r\nthe path in 'Select Folder' and press 'Install'.\r\n\n" +
-                "• To remove only the main effects, such as Lens Distortion,\r\nBlack Bars, and Chromatic Aberration, select Remove Post\r\nProcessing.\r\n\n" +
-                "• To remove all effects, select Remove All Post Processing\r\n(includes film grain).\r\n\n" +
-                "• To restore the Post Processing effects, simply select\r\n'Restore Post Processing', and the Engine.ini file will be replaced\r\nwith the default file.\r\n\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select the path Senua's Saga Hellblade II\\Hellblade2\\Binaries\\Win64.\n" +
+                "2. Select \"Others Mods\", install and select \"Yes\" in the \"Remove Black Bars\" window.\n" +
+                "3. If you want to update DLSS, select \"Others Mods HB2\", do this before installing the mod.\n" +
+                "4. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "5. Check the Enable Signature Over box.\n" +
+                "6. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "7. In the menu, check the Frame Gen, Hud Fix, and FG Extended.\n" +
+                "8. If you want to use the black bars, follow the steps above but do not remove the black bars and do not use the mod's Frame Gen. Go to the game menu, select DLSS and DLSS Frame Gen. You can use the mod's upscalers by pressing the \"Insert\" key, but do not check the Frame Gen box.\n" +
+                "9. The mod's Frame Gen can be disabled by switching upscalers. Just uncheck and check the Frame Gen box to make it work again.\n\n"+
+
+                "HB2 FG (Only RTX)\n" +
+                "1. Select Hellblade 2 FSR3 and install it.\r\n" +
+                "2. In the game, select Frame Generation.\r\n" +
+                "3. This mod only works for RTX.\r\n\n" +
+                
+                "Uniscaler\r\n" +
+                "1. Select Uniscaler V2 (you can also test with the other mods)\r\n" +
+                "2. Check the box for Fake Nvidia GPU (AMD) and check the box for UE compatibility mode (AMD and Nvidia)\r\n" +
+                "3. In-game, select Frame Generation\n\n" +
+                
+                "Post Processing Effects\n" + 
+                "• The black bars are removed automatically if the Engine.ini file is found. If it is not found, check if it is in the path C:\\Users\\YourName\\AppData\\Local\\Hellblade2\\Saved\\Config\\Windows or WinGDK.\nIf it's not there, open the game to have the file created.\n" +
+                "• To restore the Post Processing effects, select \"Others Mods HB2\", install it, and check \"Yes\" in the \"Restore Post Processings\" window.\n"+
                 "• If the Frame Generation is not visible, remove the black bars."
             },
             {
@@ -676,20 +687,23 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Hogwarts Legacy",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select the path Phoenix\\Binaries\\Win64.\n" +
+                "2. If you want to update the DLSS, select \"Others Mods HL\", do this before installing the mod.\n" +
+                "3. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "4. Check the Enable Signature Over box.\n" +
+                "5. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "6. In the menu, check the Frame Gen, Hud Fix, and FG Extended options.\n" +
+                "7. Select Nvidia Reflex to use AMD Anti Lag 2.\n\n" +
+
+                "Uniscaler/0.x\n" +
                 "1 - Select a version of the mod of your choice (versions from 0.9.0\r\n" +
                 "onwards are recommended to fix UI flickering).\r\n" +
                 "2 - Enable the 'Enable Signature Override' checkbox if the mod\r\ndoesn't work.\r\n" +
                 "3 - Enable Fake Nvidia GPU (Only for AMD GPUs).\r\n" +
                 "4 - Select 'Default' in Nvngx.dll.\r\n\n"+
 
-                "FSR 3.1.2/DLSS FG Custom / FSR 3.1.1/DLSS Optiscaler" +
-                "1 - Select the FSR 3.1/DLSS mod.\r\n" +
-                "2 - Check the 'GPU' window that will appear.\r\n" +
-                "3 - In-game, select DLSS before starting the campaign.\r\n" +
-                "4 - During the campaign, press the 'Insert' key to open the menu.\r\n" +
-                "5 - In the menu, select the desired upscaler, check the Frame Gen and Hud Fix boxes.\r\n\r\n"+
-
-                "ReShade Installation"+
+                "ReShade Installation\n"+
                 "1 - Install ReShade.\r\n" +
                 "2 - Inside ReShade, select the game's .exe and click next.\r\n" +
                 "3 - Select DX 10/11/12 and click next.\r\n" +
@@ -1450,7 +1464,8 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Elden Ring", "https://www.youtube.com/embed/RxF6WfjnVR4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Mortal Shell", "https://www.youtube.com/embed/cOSdkFftHgY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Control", "https://www.youtube.com/embed/MgK53le4uFM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Fist Forged in Shadow Torch", "https://www.youtube.com/embed/JVoM3mu0ig4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Fist Forged in Shadow Torch", "https://www.youtube.com/embed/JVoM3mu0ig4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Hellblade 2", "https://www.youtube.com/embed/BcW_E7g-9Hg?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1565,7 +1580,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"God of War Ragnarök","GowRag.png"},
                 {"Gotham Knights","Gk2.png"},
                 {"Hellblade: Senua's Sacrifice","Hell.png"},
-                {"Hellblade 2","Hell2.png"},
+                {"Hellblade 2","Hell22.png"},
                 {"High On Life","Hol.png"},
                 {"Hitman 3","Hitman.png"},
                 {"Hogwarts Legacy","Hog.png"},

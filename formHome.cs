@@ -331,6 +331,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "FIST: Forged In Shadow Torch", new List<string> { "Others Mods Fist"} },
                 { "Ghostrunner 2", new List<string> { "Others Mods GR2" } },
                 { "Marvel\'s Midnight Suns", new List<string> {"FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS"} },
+                { "Hellblade 2", new List<string> {"Others Mods HB2","HB2 FG (Only RTX)"} }
             };
             #endregion
 
