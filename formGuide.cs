@@ -255,7 +255,7 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Cyberpunk 2077",
-                 "RTX DLSS FG\n" +
+                "RTX DLSS FG\n" +
                 "1. Select RTX DLSS FG and install.\n" +
                 "2. It is recommended to install the \"FG Ghost Fix\" along with the mod, select \"Others Mods 2077\" to install.\n" +
                 "3. In the game, select DLSS and DLSS Frame Gen.\n\n" +
@@ -265,7 +265,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. In the game, select DLSS and DLSS Frame Gen.\n" +
                 "3. It is recommended to install the \"FG Ghost Fix\" along with the mod. Select \"Others Mods 2077\" to install.\n\n" +
 
-                "Uniscaler FSR 3.1:\n" +
+                "Uniscaler FSR 3.1\n" +
                 "1. Select Uniscaler FSR 3.1.\n" +
                 "2. If you have an RTX GPU and want to use the real DLSS, select DLSS under \"Mod Operates\". If you don't have an RTX GPU and can't see DLSS in the game, Click on Nvngx.dll and select \"Default\". You can also use XESS instead of FSR 3.1 by selecting XESS under \"Mod Operates\".\n" +
                 "3. Check the box \"Enable Signature Over\".\n" +
@@ -1083,17 +1083,17 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Saints Row",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select FSR 2 and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen and Hud Fix boxes, increase Hud Fix until the HUD is corrected.\n\n" +
+
                 "Default Mods\n"+
                 "1 - Select a mod of your preference (0.10.3 is recommended).\n" +
                 "2 - Choose the path for the overlay, under Epic Games Overlay, and select \"Disable.\"\n" +
                 "3 - Start the game in DX12.\n" +
-                "4 - Inside the game, select FSR.\n\n"+
-
-                 "FSR 3.1.2/DLSS Custom SR\n"+
-                "1 - Select FSR 3.1.2/DLSS Custom SR and install.\r\n" +
-                "2 - Check the 'Enable Signature Over' box.\r\n" +
-                "3 - In the game, select FSR 2 and press the 'Insert' key to open the menu.\r\n" +
-                "4 - In the menu, check the 'Frame Gen' and 'Hud Fix' boxes, increase 'Hud Fix' until the HUD is corrected."
+                "4 - Inside the game, select FSR."
             },
             {
                 "Sackboy: A Big Adventure",
@@ -1103,6 +1103,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - In \"Mod Operates\", select \"Replace DLSS FG\".\n" +
                 "5 - Select 'Default' in Nvngx.dll.\n" +
                 "6 - Enable the \"Enable Signature Override\" checkbox if the mod doesn’t work.\n"
+            },
+            {
+                "Scorn",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select FSR and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "5. If the game crashes when installing the mod, remove the mod, open the game, disable FSR, and install the mod again."
             },
             {
                 "Shadow of the Tomb Raider",
@@ -1313,33 +1322,34 @@ namespace FSR3ModSetupUtilityEnhanced
             {
               "The Callisto Protocol",
 
-              "The Callisto Protocol Fsr3\r\n"+
-              "1 - Select The Callisto Protocol Fsr3.\r\n" +
-              "2 - Check the Fake Nvidia GPU box and install.\r\n\r\n" +
+              "FSR 3.1.3/DLSS Custom Callisto and Optiscaler\n" +
+              "1. Select FSR 3.1.3/DLSS Custom Callisto or Optiscaler and Install\r\n" +
+              "2. Check the 'Enable Signature Over' box.\r\n" +
+              "3. In the game, select FSR 2 and press the 'Insert' key to open the menu.\r\n" +
+              "4. In the menu, check the 'Frame Gen','Hud Fix' and FG Extended boxes.\r\n" +
+              "5. Disable MSI Afterburner.\r\n\r\n" +
 
-              "FSR 3.1.2/DLSS Custom Callisto\n" +
-              "1 - Select FSR 3.1.2/DLSS Custom Callisto and install.\r\n" +
-              "2 - Check the 'Enable Signature Over' box.\r\n" +
-              "3 - In the game, select FSR 2 and press the 'Insert' key to open the menu.\r\n" +
-              "4 - In the menu, check the 'Frame Gen' and 'Fix Hud' boxes, select 2 in 'Fix Hud'.\r\n" +
-              "5 - Disable MSI Afterburner.\r\n\r\n" +
+
+              "The Callisto Protocol Fsr3\r\n"+
+              "1. Select The Callisto Protocol Fsr3.\r\n" +
+              "2. Check the Fake Nvidia GPU box and install.\r\n\r\n" +
 
               "Optiscaler Callisto\r\n" +
-              "1 - Select FSR 3.1.1/DLSS Callisto and install it.\r\n" +
-              "2 - In the game, select FSR 2 (which will act as DLSS for the mod to work).\r\n" +
-              "3 - Press the 'Insert' key to open the menu.\r\n" +
-              "4 - Select the Upscaler of your choice.\r\n" +
-              "5 - Check the 'Frame Gen' and 'Hud Fix + Extended' boxes.\r\n\r\n" +
+              "1. Select FSR 3.1.1/DLSS Callisto and install it.\r\n" +
+              "2. In the game, select FSR 2 (which will act as DLSS for the mod to work).\r\n" +
+              "3. Press the 'Insert' key to open the menu.\r\n" +
+              "4. Select the Upscaler of your choice.\r\n" +
+              "5. Check the 'Frame Gen' and 'Hud Fix + Extended' boxes.\r\n\r\n" +
 
               "0.10.4:\r\n" +
-              "1 - Select 0.10.4 and install it.\r\n" +
-              "2 - Inside the game, select FSR 2 and start the campaign.\r\n" +
-              "3 - If Frame Gen doesn't work, check the \"Nvngx.dll box andselect Default, then check the Enable Signature Override box. For Epic Games users: if the mod doesn't work or some bugs appear, check the \"Disable Overlay\" box.\r\n\r\n"+
+              "1. Select 0.10.4 and install it.\r\n" +
+              "2. Inside the game, select FSR 2 and start the campaign.\r\n" +
+              "3. If Frame Gen doesn't work, check the \"Nvngx.dll box andselect Default, then check the Enable Signature Override box. For Epic Games users: if the mod doesn't work or some bugs appear, check the \"Disable Overlay\" box.\r\n\r\n"+
 
-              "Uniscaler V3\r\n" +
-              "1 - Select Uniscaler V3.\r\n" +
-              "2 - Check the Nvngx box and select Default.\r\n" +
-              "3 - Check the Enable Signature Over box.\r\n\r\n" +
+              "Uniscaler V4\r\n" +
+              "1. Select Uniscaler V4.\r\n" +
+              "2. Check the Nvngx box and select Default.\r\n" +
+              "3. Check the Enable Signature Over box.\r\n\r\n" +
 
               "HUD Correction (FSR 3.1.1/DLSS is not necessary.) \r\n" +
               "Select FSR2 and start the campaign, play for a few seconds, and return to the menu. In the menu, select Temporal and return to the campaign.\r\n\r\n" +
@@ -1465,7 +1475,9 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Mortal Shell", "https://www.youtube.com/embed/cOSdkFftHgY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Control", "https://www.youtube.com/embed/MgK53le4uFM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Fist Forged in Shadow Torch", "https://www.youtube.com/embed/JVoM3mu0ig4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Hellblade 2", "https://www.youtube.com/embed/BcW_E7g-9Hg?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Hellblade 2", "https://www.youtube.com/embed/BcW_E7g-9Hg?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Scorn", "https://www.youtube.com/embed/z7-wozRQIms?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Saints Row","https://www.youtube.com/embed/RVbMT7gfD1Q?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1622,6 +1634,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Ripout","Ripout.png"},
                 {"Saints Row","SaintsRow2.png"},
                 {"Sackboy: A Big Adventure","Sackboy2.png"},
+                {"Scorn","Scorn2.png"},
                 {"Shadow of the Tomb Raider","ShadowTomb2.png"},
                 {"Shadow Warrior 3","Shadow32.png"},
                 {"Smalland","Smalland.png"},

@@ -652,7 +652,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Optiscaler Files
         List<string> del_optiscaler = new List<string>
         {
-            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg","winmm.dll","nvapi64.dll"
+            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg","winmm.dll","nvapi64.dll","fakenvapi.ini"
         };
         #endregion
 
@@ -1660,15 +1660,17 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
         }
 
-        private async Task optiscalerFsrDlss(bool copynvapi = true)
+        private async Task optiscalerFsrDlss()
         {
+            string gpuName = await GetActiveGpu();
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "Path of Exile II", "Hitman 3", "Marvel\'s Midnight Suns", "Hogwarts Legacy" };
-            string gpuName = await GetActiveGpu();
-            string[] gpusVar = { "amd", "intel", "gtx" };
+            string[] gpusVar = { "amd","rx","intel","arc","gtx" };
+
+            Debug.WriteLine(gpuName);
 
             if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")))
             {
@@ -1690,12 +1692,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 CopyFolder(nvapiAmd);
             }
             // Nvapi for non-RTX users
-            else if (copynvapi)
+            else if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    CopyFolder(nvapiAmd);
-                }
+                CopyFolder(nvapiAmd);
             }
         }
 
@@ -2266,12 +2265,6 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod == "FSR 3.1.3/DLSS Custom Callisto")
             {
                 CopyFolder2(fsrCustomCallisto, selectFolder);
-            }
-
-            if (selectMod == "FSR 3.1.1/DLSS Callisto")
-            {
-                CopyFolder(optiscalerCallisto);
-                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
             }
 
             if (selectMod == "The Callisto Protocol FSR3")
@@ -3227,19 +3220,6 @@ namespace FSR3ModSetupUtilityEnhanced
             return true;
         }
 
-        public void srFsr3()
-        {
-            string tcpSr = "mods\\FSR3_SR\\TCP";
-            string optiscalerSr = "mods\\Addons_mods\\Optiscaler DLSS";
-
-            if (selectMod == "FSR 3.1.3/DLSS Custom SR")
-            {
-                CopyFolder2(tcpSr, selectFolder);
-                CopyFolder2(optiscalerSr, selectFolder);
-                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
-            }
-        }
-
         public async void whmMarineFsr3()
         {
             string antiStutterMarine = "mods\\FSR3_Outlaws\\Anti_Stutter\\Install Star Wars Outlaws CPU Priority.reg";
@@ -4182,10 +4162,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     gtaTrilogyFsr3();
                 }
-                if (gameSelected == "Saints Row")
-                {
-                    srFsr3();
-                }
                 if (gameSelected == "Dragon Age: Veilguard")
                 {
                     dgVeilFsr3();
@@ -4692,11 +4668,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (selectMod == "FSR 3.1.3/DLSS FG (Only Optiscaler)")
                 {
                     CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.3/DLSS FG (Only Optiscaler)", true);
-
-                    if (Path.Exists(Path.Combine(selectFolder, "nvapi64.dll")))
-                    {
-                        File.Delete(Path.Combine(selectFolder, "nvapi64.dll"));
-                    }
                 }
 
                 if (gameSelected == "Cyberpunk 2077")
@@ -4764,9 +4735,8 @@ namespace FSR3ModSetupUtilityEnhanced
                     #region Remove others mods
 
                     CleanupOthersMods("TCP", "TCP.ini",selectFolder);
-                    CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",selectFolder); 
 
-                    CleanupMod3(del_callisto_custom, "FSR 3.1.1/DLSS Callisto");
+                    CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",selectFolder); 
 
                     CleanupMod3(del_optiscaler_custom_2, "FSR 3.1.3/DLSS Custom Callisto");
                     #endregion
@@ -5404,16 +5374,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
-                if (gameSelected == "Saints Row")
-                {
-                    #region Cleanup Custom Mods SR
-                    
-                    CleanupMod3(del_optiscaler_custom_2, "FSR 3.1.3/DLSS Custom SR");
-                    CleanupOthersMods3("FSR 3.1.3/DLSS Custom SR", delTcp, selectFolder, false);
-                    
-                    #endregion
-                }
-
                 if (gameSelected == "Assassin's Creed Mirage")
                 {
                     #region Cleanup Mod Custom Ac Mirage
@@ -5474,8 +5434,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         if (CleanupMod3(del_dlss_to_fsr, "Indy FG (Only RTX)"))
                         {
-                            if (File.Exists(Path.Combine(selectFolder, "dbghelp.dll"))) File.Delete(Path.Combine(selectFolder, "dbghelp.dll"));
-
                             if (Path.Exists(indyOldConfigPath))
                             {
                                 File.Delete(Path.Combine(indyConfigFilePath, "TheGreatCircleConfig.local"));

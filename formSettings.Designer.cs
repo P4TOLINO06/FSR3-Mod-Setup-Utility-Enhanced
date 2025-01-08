@@ -637,7 +637,7 @@
             label6.Location = new Point(1198, 0);
             label6.Margin = new Padding(5, 0, 5, 0);
             label6.Name = "label6";
-            label6.Size = new Size(562, 104);
+            label6.Size = new Size(569, 104);
             label6.TabIndex = 17;
             label6.Text = "Add-On Mods";
             label6.TextAlign = ContentAlignment.TopCenter;
