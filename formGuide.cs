@@ -104,6 +104,14 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Alone in the Dark",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS or FSR and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FSR 3x and FSR 3.1.3 right below. If you have an Nvidia GPU, select DLSS.\n" +
+                "5. Check the Frame Gen and Hud Fix boxes. In Hud Fix, select 2.\n\n" +
+
+                "Uniscaler/0.x\n" +
                 "1 - Select a version of the mod of your choice (version 0.10.3 is recommended).\r\n"+
                 "2 - Enable the 'Enable Signature Override' checkbox.\r\n"+
                 "3 - Enable Fake Nvidia GPU, if you want to use DLSS (Only for AMD GPUs).\r\n"+
@@ -1143,6 +1151,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Inside the game, select FSR. (You can use it with DLSS but there might be flickering).\n" +
                 "3 - Set Ambient Occlusion and Post Processing to Low.\n"
             },
+
             {
                 "Silent Hill 2",
                 "FSR 3.1.2/DLSS FG Custom / FSR 3.1/DLSS OptiScaler:\n" +
@@ -1201,7 +1210,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Motion blur\n" +
                 "Distortion"
             },
-                        {
+            {
                 "Sifu",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "Steam: Library > Game > Gear icon to the right of Achievements > Properties > Launch Options, add -dx12.\n" +
@@ -1212,6 +1221,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. In the menu, select FSR 3x and apply. Check the Frame Gen, Hud Fix, and FG Extended boxes. If you are an RTX user, you can select DLSS again if desired.\n" +
                 "5. The step above is required for the FG + Hud Fix to work. You can try enabling Hud Fix directly, but the game will likely crash.\n" +
                 "6. If you want to update the game's upscalers, it is recommended to do so before installing the mod. Simply select \"Others Mods Sifu\" to update.\n"
+            },
+            {
+                "Six Days in Fallujah",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select SixDays\\Binaries\\Win64.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "6. If you want to update DLSS, select \"Others Mods 6Days\" and install, do this before installing the main mod."
             },
             {
                 "Smalland",
@@ -1459,7 +1478,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - In the menu, select an Upscaler, check 'Frame Gen' and 'Fix HUD' boxes.\r\n" +
                 "4 - To install DLSS 3.7.20, click the 'Nvngx.dll' button and select 'DLSS 3.7.20'.\r\n\r\n"
             },
-
+            {
+                "Way Of The Hunter",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and Extended FG boxes.\n" +
+                "5. The consequences of using the mod in multiplayer are unknown; use at your own risk."
+            }
         };
 
         #endregion
@@ -1477,7 +1504,8 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Fist Forged in Shadow Torch", "https://www.youtube.com/embed/JVoM3mu0ig4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Hellblade 2", "https://www.youtube.com/embed/BcW_E7g-9Hg?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Scorn", "https://www.youtube.com/embed/z7-wozRQIms?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Saints Row","https://www.youtube.com/embed/RVbMT7gfD1Q?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Saints Row","https://www.youtube.com/embed/RVbMT7gfD1Q?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Way Of The Hunter", "https://www.youtube.com/embed/ocAwuQbwttE?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1641,6 +1669,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Spider Man/Miles","Spider2.png"},
                 {"Sifu","Sifu2.png"},
                 {"Silent Hill 2","Sh22.png"},
+                {"Six Days in Fallujah","6Days2.png"},
                 {"S.T.A.L.K.E.R. 2","Stalker2.png"},
                 {"Steelrising","Steelrising2.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
@@ -1655,7 +1684,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Unknown 9: Awakening","Unknown92.png" },
                 {"Until Dawn","Until2.png" },
                 {"Warhammer: Space Marine 2","SpaceMarine2.png"},
-                {"Watch Dogs Legion","Legion2.png"}
+                {"Watch Dogs Legion","Legion2.png"},
+                {"Way Of The Hunter","Woth2.png"}
             };
 
             #endregion

@@ -193,6 +193,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Shadow Warrior 3","Shadow3.png"},
                     {"Sifu","Sifu.png"},
                     {"Silent Hill 2","Sh2.png"},
+                    {"Six Days in Fallujah","6Days.png"},
                     {"Smalland","Smalland.png"},
                     {"Stalker 2","Stalker.png"},
                     {"STAR WARS Jedi: Survivor","JedSurvivor.png"},
@@ -217,7 +218,8 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Until Dawn","Until.png"},
                     {"Wanted: Dead","Wanted.png"},
                     {"Warhammer: Space Marine 2","SpaceMarine.png"},
-                    {"Watch Dogs Legion","Legion.png"}
+                    {"Watch Dogs Legion","Legion.png"},
+                    {"Way Of The Hunter","Woth.png"}
             };
             #endregion
 
@@ -331,7 +333,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "FIST: Forged In Shadow Torch", new List<string> { "Others Mods Fist"} },
                 { "Ghostrunner 2", new List<string> { "Others Mods GR2" } },
                 { "Marvel\'s Midnight Suns", new List<string> {"FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS"} },
-                { "Hellblade 2", new List<string> {"Others Mods HB2","HB2 FG (Only RTX)"} }
+                { "Hellblade 2", new List<string> {"Others Mods HB2","HB2 FG (Only RTX)"} },
+                { "Six Days in Fallujah", new List<string> {"Others Mods 6Days", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
+                { "Way Of The Hunter", new List<string> { "Others Mods WOTH", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
+                { "Alone in the Dark", new List<string> {"Others Mods AITD"}}
             };
             #endregion
 

@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1770,6 +1770,7 @@ namespace FSR3ModSetupUtilityEnhanced
         public void gamesToUpdateUpscalers()
         {
             #region Mods/Paths
+            string defaultDlssPath = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"));
             Dictionary<string, string> gamesToUpdateDlss = new Dictionary<string, string>
             {
                 { "Others Mods Sifu", selectFolder },
@@ -1777,14 +1778,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Tlou", selectFolder },
                 { "Others Mods Steel", selectFolder },
                 { "Others Mods FFXVI", selectFolder },
-                { "Others Mods HB2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"))},
+                { "Others Mods HB2", defaultDlssPath },
+                { "Others Mods HL", defaultDlssPath},
+                { "Others Mods Fist",defaultDlssPath},
+                { "Others Mods GK", defaultDlssPath},
+                { "Others Mods WOTH", defaultDlssPath},
+                { "Others Mods AITD", defaultDlssPath},
+                { "Others Mods 6Days", defaultDlssPath},
                 { "Others Mods GR2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
-                { "Others Mods HL", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"))},
-                { "Others Mods Fist", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods Remnant II", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\Shared\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods POEII", Path.Combine(selectFolder, "Streamline") },
                 { "Others Mods MShell" , Path.GetFullPath(Path.Combine(selectFolder, @"..\\..\\..\\", @"Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
-                { "Others Mods GK", Path.GetFullPath(Path.Combine(selectFolder, @"..\\..\\..", @"Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"))}
             };
 
             Dictionary<string, string> gamesToUpdateDlssd = new Dictionary<string, string>
