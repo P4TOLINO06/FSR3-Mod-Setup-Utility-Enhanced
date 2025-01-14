@@ -1136,7 +1136,7 @@
             AddOptionsSelect.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddOptionsSelect.ForeColor = Color.Gainsboro;
             AddOptionsSelect.FormattingEnabled = true;
-            AddOptionsSelect.Items.AddRange(new object[] { "Toml Editor", "Backup", "Fake Nvidia Gpu", "Nvapi Results", "Ue Compatibility Mode", "MacOS Crossover Support", "Auto Exposure", "Debug View", "Debug Tier Lines", "Off Frame Gen", "Disable Overlay", "Disable Console", "Ignore Ingame Fg", "Ignore Fg Resources", "Install lfz.sl.dlss", "Enable Signature Over", "Disable Signature Over", "Fps Limit" });
+            AddOptionsSelect.Items.AddRange(new object[] { "Toml Editor", "Backup", "Fake Nvidia Gpu", "Nvapi Results", "Ue Compatibility Mode", "MacOS Crossover Support", "Auto Exposure", "Debug View", "Debug Tier Lines", "Off Frame Gen", "Disable Overlay", "Disable Console", "Ignore Ingame Fg", "Ignore Fg Resources", "Enable Signature Over", "Disable Signature Over", "Fps Limit" });
             AddOptionsSelect.Location = new Point(5, 6);
             AddOptionsSelect.Margin = new Padding(5, 6, 5, 6);
             AddOptionsSelect.Name = "AddOptionsSelect";
@@ -1206,7 +1206,6 @@
             // textBox1
             // 
             textBox1.BackColor = Color.Silver;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.ForeColor = Color.Black;
             textBox1.Location = new Point(242, 6);
             textBox1.Margin = new Padding(5, 6, 5, 6);
@@ -1252,7 +1251,7 @@
             listMods.Location = new Point(233, 64);
             listMods.Margin = new Padding(5, 6, 5, 6);
             listMods.Name = "listMods";
-            listMods.Size = new Size(265, 38);
+            listMods.Size = new Size(272, 38);
             listMods.TabIndex = 3;
             listMods.SelectedIndexChanged += listMods_SelectedIndexChanged;
             // 

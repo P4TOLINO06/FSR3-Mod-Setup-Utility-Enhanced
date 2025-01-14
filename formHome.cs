@@ -33,6 +33,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         }
 
+
         private void searchImage(string imageName, string gameName)
         {
             object? selectGame = listGames.SelectedItem;
@@ -50,35 +51,17 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         try
                         {
-                            Image resizedImage = ResizeImageForScreen(backgroundPicture);
-
-                            panelBackgroundG = resizedImage;
-                            panelBG.Invalidate();
+                            using (Image originalImage = Image.FromFile(backgroundPicture))
+                            {
+                                panelBackgroundG = new Bitmap(originalImage);
+                                panelBG.Invalidate();
+                            }
                         }
                         catch (Exception ex)
                         {
                         }
                     }
                 }
-            }
-        }
-        private Image ResizeImageForScreen(string imagePath)
-        {
-            using (Image originalImage = Image.FromFile(imagePath))
-            {
-                var screenWidth = Screen.PrimaryScreen.Bounds.Width;
-                var screenHeight = Screen.PrimaryScreen.Bounds.Height;
-
-                Bitmap resizedImage = new Bitmap(screenWidth, screenHeight);
-
-                using (Graphics graphics = Graphics.FromImage(resizedImage))
-                {
-                    graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-
-                    graphics.DrawImage(originalImage, 0, 0, screenWidth, screenHeight);
-                }
-
-                return resizedImage;
             }
         }
 
@@ -145,8 +128,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Hitman 3","Hitman.png"},
                     {"Hogwarts Legacy","Hog.png"},
                     {"Horizon Forbidden West","HZDF.png"},
-                    {"Horizon Zero Dawn","Hzd.png"},
-                    {"Horizon Zero Dawn Remastered","HzdRem.png"},
+                    {"Horizon Zero Dawn\\Remastered","Hzd.png"},
                     {"Icarus","Icarus.png"},
                     {"Indiana Jones and the Great Circle","Indy.png"},
                     {"Judgment","Jud.png"},
@@ -219,7 +201,8 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Wanted: Dead","Wanted.png"},
                     {"Warhammer: Space Marine 2","SpaceMarine.png"},
                     {"Watch Dogs Legion","Legion.png"},
-                    {"Way Of The Hunter","Woth.png"}
+                    {"Way Of The Hunter","Woth.png"},
+                    {"Wayfinder","Wayfinder.png"}
             };
             #endregion
 
@@ -304,9 +287,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "A Quiet Place: The Road Ahead", new List<string> { "FSR 3.1.1/DLSS Quiet Place", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Metro Exodus Enhanced Edition", new List<string> { "Others Mods Metro" } },
                 { "Red Dead Redemption", new List<string> { "Others Mods RDR" } },
-                { "Horizon Zero Dawn Remastered", new List<string> { "FSR 3.1.3 HZD Rem", "Others Mods HZD Rem" } },
+                { "Horizon Zero Dawn\\Remastered", new List<string> {"Others Mods HZD"} },
                 { "Dragon Age: Veilguard", new List<string> { "FSR 3.1.3/DLSS DG Veil", "Others Mods DG Veil" } },
-                { "Dying Light 2", new List<string> { "FSR 3.1.3 Custom DL2" } },
                 { "Dead Rising Remaster", new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" } },
                 { "GTA Trilogy", new List<string> { "FSR 3.1.3/DLSS Custom GTA" } },
                 { "Assassin's Creed Mirage", new List<string> { "Others Mods Mirage" } },

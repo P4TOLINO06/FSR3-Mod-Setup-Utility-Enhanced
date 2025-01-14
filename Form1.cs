@@ -15,6 +15,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public mainForm()
         {
+
             InitializeComponent();
         }
 

@@ -41,7 +41,6 @@ namespace FSR3ModSetupUtilityEnhanced
         private List<string> pendingItems = new List<string>();
         private static formSettings instance;
         public string selectMod;
-        bool varLfz = false;
         private formEditorToml formEditor;
         private mainForm mainFormInstance;
         public System.Windows.Forms.TextBox fpsLimitTextBox;
@@ -92,7 +91,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Dying Light 2", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Horizon Zero Dawn Remastered", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1178,49 +1177,18 @@ namespace FSR3ModSetupUtilityEnhanced
                     return;
                 }
             }
-            if (itemText == "Install lfz.sl.dlss")
-            {
-                if (CheckedOption is true)
-                {
-                    varLfz = true;
-                }
-                else
-                {
-                    varLfz = false;
-                }
-            }
             if (itemText == "Enable Signature Over" && CheckedOption is true)
             {
 
-                string path_en_over = @"mods\\Temp\\enable signature override\\EnableSignatureOverride.reg";
+                string pathEnOver = @"mods\\Temp\\enable signature override\\EnableSignatureOverride.reg";
 
-                try
-                {
-                    Process process = new Process();
-                    process.StartInfo.FileName = "regedit.exe";
-                    process.StartInfo.Arguments = "/s \"" + path_en_over + "\"";
-                    process.Start();
-                    process.WaitForExit();
-                }
-                catch (Exception ex)
-                {
-                }
+                runReg(pathEnOver);
             }
             if (itemText == "Disable Signature Over" && CheckedOption is true)
             {
-                string path_dis_over = @"mods\Temp\disable signature override\DisableSignatureOverride.reg";
+                string pathDisOver = @"mods\\Temp\\disable signature override\\DisableSignatureOverride.reg";
 
-                try
-                {
-                    Process process = new Process();
-                    process.StartInfo.FileName = "regedit.exe";
-                    process.StartInfo.Arguments = "/s \"" + path_dis_over + "\"";
-                    process.Start();
-                    process.WaitForExit();
-                }
-                catch (Exception ex)
-                {
-                }
+                runReg(pathDisOver);
             }
         }
 
@@ -1311,10 +1279,10 @@ namespace FSR3ModSetupUtilityEnhanced
         }
 
         List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "Bright Memory: Infinite", "COD Black Ops Cold War", "Control", "Crysis 3 Remastered","Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dragon Age: Veilguard", "Dying Light 2",
-            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Horizon Zero Dawn Remastered", "Kena: Bridge of Spirits", "Lies of P", "Lego Horizon Adventures", "Loopmancer", "Manor Lords","Marvel's Avengers", "Metro Exodus Enhanced Edition", "Microsoft Flight Simulator 24","Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
+            "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Hellblade 2","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Horizon Zero Dawn\\Remastered", "Kena: Bridge of Spirits", "Lies of P", "Lego Horizon Adventures", "Loopmancer", "Manor Lords","Marvel's Avengers", "Metro Exodus Enhanced Edition", "Microsoft Flight Simulator 24","Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STalker 2" ,"STAR WARS Jedi: Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Unknown 9: Awakening", "Wanted: Dead","Warhammer: Space Marine 2"};
 
-        List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Horizon Zero Dawn", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
+        List<string> fsr_2_1_opt = new List<string> { "Chernobylite", "Dead Space (2023)", "Hellblade: Senua's Sacrifice", "Hitman 3", "Judgment", "Martha Is Dead", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Returnal", "Ripout", "Saints Row", "The Callisto Protocol", "Uncharted Legacy of Thieves Collection" };
 
         List<string> fsr_2_0_opt = new List<string> { "Alone in the Dark", "Brothers: A Tale of Two Sons Remake", "Crime Boss: Rockay City", "Deathloop", "Dying Light 2", "Ghostrunner 2", "High On Life", "Jusant", "Layers of Fear", "Marvel's Guardians of the Galaxy", "Nightingale", "Rise of The Tomb Raider", "Shadow of the Tomb Raider", "The Outer Worlds: Spacer's Choice Edition", "The Witcher 3" };
 
@@ -1678,7 +1646,11 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 await Task.Delay(500);
 
-                File.Move(Path.Combine(selectFolder, "nvngx.dll"), Path.Combine(selectFolder, "dxgi.dll"), true);
+                await Task.Run(() => File.Move(
+                     Path.Combine(selectFolder, "nvngx.dll"),
+                     Path.Combine(selectFolder, "dxgi.dll"),
+                     true
+                 ));
                 File.Copy(Path.Combine(selectFolder, "nvngx_dlss.dll"), Path.Combine(selectFolder, "nvngx.dll"), true);
             }
             else
@@ -1799,7 +1771,8 @@ namespace FSR3ModSetupUtilityEnhanced
             Dictionary<string, string> gamesToUpdateFsrDlss = new Dictionary<string, string>
             {
                 { "Others Mods Hitman 3", selectFolder },
-                { "Others Mods Control", selectFolder}
+                { "Others Mods Control", selectFolder},
+                { "Others Mods HZD", selectFolder}
             };
             #endregion
 
@@ -3332,16 +3305,6 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void dl2Fsr3()
-        {
-            string customDl2 = "mods\\FSR3_DL2\\Custom_FSR";
-            
-            if (selectMod == "FSR 3.1.3 Custom DL2")
-            {
-                CopyFolder(customDl2);
-            }
-        }
-
         public void outlawsFsr3()
         {
             string presetOutlaws = "mods\\FSR3_Outlaws\\Preset\\Outlaws2.ini";
@@ -3634,28 +3597,6 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string pathRegFz5 = @"mods\\FSR3_FH\RTX\\DisableNvidiaSignatureChecks.reg";
                 runReg(pathRegFz5);
-            }
-        }
-
-        public void hzdRemFsr3()
-        {
-            string optiscalerHzdRem = "mods\\FSR3_HZD_Remastered\\Optiscaler";
-            string xessHzdRem = "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll";
-            string dlssHzdRem = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
-
-            if (selectMod == "FSR 3.1.3 HZD Rem")
-            {
-                CopyFolder(optiscalerHzdRem);
-                runReg("mods\\Temp\\enable signature override\\EnableSignatureOverride.reg");
-            }
-
-            if (selectMod == "Others Mods HZD Rem")
-            {
-                if (MessageBox.Show("Do you want to update the game's upscalers? Xess 1.3.1 and DLSS 3.8.10 will be installed", "Upscalers", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    File.Copy(xessHzdRem, Path.Combine(selectFolder, "libxess.dll"), true);
-                    File.Copy(dlssHzdRem, Path.Combine(selectFolder, "nvngx_dlss.dll"), true);
-                }
             }
         }
 
@@ -4089,10 +4030,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     forzaFsr3();
                 }
-                if (gameSelected == "Horizon Zero Dawn Remastered")
-                {
-                    hzdRemFsr3();
-                }
                 if (gameSelected == "Ghost of Tsushima")
                 {
                     gotFsr3();
@@ -4153,10 +4090,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Until Dawn")
                 {
                     untilFsr3();
-                }
-                if (gameSelected == "Dying Light 2")
-                {
-                    dl2Fsr3();
                 }
                 if (gameSelected == "Indiana Jones and the Great Circle")
                 {
@@ -4266,11 +4199,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         CopyToml();
                     }
-                }
-                if (varLfz is true)
-                {
-                    string path_lfz = "mods\\Temp\\global _lfz\\lfz.sl.dlss.dll";
-                    File.Copy(path_lfz, selectFolder + "\\lfz.sl.dlss.dll", true);
                 }
 
                 if (gameSelected == "Select FSR Version" && fsrSelected != null)
@@ -4789,22 +4717,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
-                if (gameSelected == "Dying Light 2")
-                {
-                    #region Remove Custom Mod Dl2
-                    string[] del_custom_dl2 = {
-                        "amd_fidelityfx_vk.dll", "dxgi.dll", "nvngx.dll",
-                        "nvngx.ini", "Uniscaler.asi", "uniscaler.config.toml", "winmm.dll", "winmm.ini"
-                    };
-
-                    if (selectMod == "FSR 3.1.3 Custom DL2")
-                    {
-                        CleanupOthersMods3("FSR 3.1.3 Custom DL2", del_custom_dl2, selectFolder, true, "uniscaler");
-                    }
-
-                    #endregion
-                }
-
                 if (gameSelected == "God Of War 4")
                 {
                     #region Del Files Optiscaler Gow 4
@@ -4964,28 +4876,6 @@ namespace FSR3ModSetupUtilityEnhanced
                         {
                             runReg("mods\\FSR3_Outlaws\\Anti_Stutter\\Uninstall Star Wars Outlaws CPU Priority.reg");
                         }
-                    }
-                    #endregion
-                }
-
-                if (gameSelected == "Horizon Zero Dawn Remastered")
-                {
-                    #region Cleanup Others Mods Hzd Rem
-                    try
-                    {
-                        if (CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.3 HZD Rem", false))
-                        {
-                            runReg("mods\\Temp\\disable signature override\\DisableSignatureOverride.reg");
-
-                            if (File.Exists(Path.Combine(selectFolder, "nvgx.dll")))
-                            {
-                                File.Delete(Path.Combine(selectFolder, "nvgx.dll"));
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Error clearing Horizon Zero Dawn Remastered files, please try again or do it manually", "Error");
                     }
                     #endregion
                 }

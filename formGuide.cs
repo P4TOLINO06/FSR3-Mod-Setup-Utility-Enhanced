@@ -369,24 +369,19 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Dying Light 2",
-                "Default Mods\n"+
-                "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
-                "2 - Enable Fake Nvidia GPU (only for AMD and GTX).\r\n" +
-                "3 - In the game, select any upscaler and activate Frame Generation.\r\n" +
-                "4 - If you experience any flickering or ghosting, go to Video > Advanced Settings and decrease the Lod Range Multiplier.\r\n\r\n"+
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Open the game and select DX12.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS or Xess and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FSR 3x and FSR 3.1.3 right below. If you have an Nvidia GPU, select DLSS.\n" +
+                "6. Check the Frame Gen, Hud Fix, and FG Extended boxes.\n\n" +
 
-                "FSR 3.1.2/DLSS FG Custom\r\n" +
-                "1 - Select FSR 3.1.2/DLSS FG Custom and install it.\r\n" +
-                "2 - Select Frame Generation within the game.\r\n" +
-                "3 - Press the \"Insert\" key to open the menu.\r\n" +
-                "4 - In the menu, select the upscaler you prefer.\r\n" +
-                "5 - This mod cannot fix the HUD error, but you can reduce it slightly by decreasing the HUD size and enabling motion blur.\r\n\r\n"+
-
-                "FSR 3.1.2\r\n"+
-                "1 - Select the FSR 3.1.2 DL2 Custom and install.\r\n" +
-                "2 - In the game, select FSR 2 and press the 'Insert' key to open the menu.\r\n" +
-                "3 - In the menu, select FSR 3.x and select FSR 2.3.2 right below.\r\n" +
-                "4 - Check the 'Hud Fix' box to remove glitches.\r\n\r\n"
+                "Uniscaler/0.x\n"+
+                "1. Select a mod of your preference (0.10.3 is recommended).\r\n" +
+                "2. Enable Fake Nvidia GPU (only for AMD and GTX).\r\n" +
+                "3. In the game, select any upscaler and activate Frame Generation.\r\n" +
+                "4. If you experience any flickering or ghosting, go to Video > Advanced Settings and decrease the Lod Range Multiplier."
             },
             {
                 "Elden Ring",
@@ -677,13 +672,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1. Select Hellblade 2 FSR3 and install it.\r\n" +
                 "2. In the game, select Frame Generation.\r\n" +
                 "3. This mod only works for RTX.\r\n\n" +
-                
+
                 "Uniscaler\r\n" +
                 "1. Select Uniscaler V2 (you can also test with the other mods)\r\n" +
                 "2. Check the box for Fake Nvidia GPU (AMD) and check the box for UE compatibility mode (AMD and Nvidia)\r\n" +
                 "3. In-game, select Frame Generation\n\n" +
-                
-                "Post Processing Effects\n" + 
+
+                "Post Processing Effects\n" +
                 "• The black bars are removed automatically if the Engine.ini file is found. If it is not found, check if it is in the path C:\\Users\\YourName\\AppData\\Local\\Hellblade2\\Saved\\Config\\Windows or WinGDK.\nIf it's not there, open the game to have the file created.\n" +
                 "• To restore the Post Processing effects, select \"Others Mods HB2\", install it, and check \"Yes\" in the \"Restore Post Processings\" window.\n"+
                 "• If the Frame Generation is not visible, remove the black bars."
@@ -720,22 +715,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "6 - Install the Preset first and then the FSR3 mod if you plan to use it.\r\n\r\n"
             },
             {
-                "Horizon Zero Dawn",
-                "FSR 3.1.3/DLSS FG (Only Optiscaler), FSR 3.1/DLSS Optiscaler & FSR 3.1.2/DLSS FG Custom:\n" +
-                "1. FSR 3.1.3/DLSS FG (Only Optiscaler), FSR 3.1/DLSS Optiscaler or FSR 3.1.2/DLSS FG Custom.\n" +
-                "2. Check the \"Enable Signature Over\" box.\n" +
-                "3. In the game, press the \"Insert\" key to open the mod menu.\n" +
-                "4. In the menu, select the Upscaler of your choice.\n" +
-                "5. (For FSR 3.1/DLSS Optiscaler), if you cannot open the menu, select the desired upscaler in \"Upscaler Optiscaler\" and reinstall the mod."
+                "Horizon Zero Dawn\\Remastered",
+                "FSR 3.1.3/DLSS (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "5. If you want to update DLSS/FSR, select \"Others Mods HZD\" and install. Do this before installing the main mod."
             },
-            {
-                "Horizon Zero Dawn Remastered",
-                "FSR 3.1.2 HZD Rem\r\n" +
-                "1 - Select FSR 3.1.2 HZD Rem and install.\r\n" +
-                "2 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
-                "3 - In the menu, select FSR 3.1.2.\r\n\r\n"
-            },
-
             {
                 "Hitman 3",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
@@ -875,7 +862,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "• If the game is on Epic Games, it is necessary to disable the Overlay, simply go to 'Epic Games Overlay'.\r\n"
             },
             {
-                "Marvel's Midnight Suns", 
+                "Marvel's Midnight Suns",
                 "FSR 3.1.3/DLSS (Only Optiscaler) + AMD Anti Lag 2\n" +
                 "1. Open the game and select DX12.\n" +
                 "2. Select FSR 3.1.3/DLSS (Only Optiscaler) and install.\n" +
@@ -1310,7 +1297,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "   the menu and check the options you want.\n"
             },
             {
-                "Steelrising", 
+                "Steelrising",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
@@ -1486,6 +1473,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, check the Frame Gen, Hud Fix, and Extended FG boxes.\n" +
                 "5. The consequences of using the mod in multiplayer are unknown; use at your own risk."
+            },
+            {
+                "Wayfinder",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FSR 3x and FSR 3.1.3 right below. If you have an Nvidia GPU, select DLSS.\n" +
+                "5. Check the Frame Gen and Hud Fix boxes."
             }
         };
 
@@ -1505,7 +1501,8 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Hellblade 2", "https://www.youtube.com/embed/BcW_E7g-9Hg?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Scorn", "https://www.youtube.com/embed/z7-wozRQIms?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Saints Row","https://www.youtube.com/embed/RVbMT7gfD1Q?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Way Of The Hunter", "https://www.youtube.com/embed/ocAwuQbwttE?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Way Of The Hunter", "https://www.youtube.com/embed/ocAwuQbwttE?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Horizon Zero Dawn\\Remastered", "https://www.youtube.com/embed/agUramMMi4M?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"}
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1600,7 +1597,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Deathloop","Df.png"},
                 {"Dragon Age: Veilguard","DgVeil2.png"},
                 {"Dragons Dogma 2","Dg2.png"},
-                {"Dying Light 2","Dl2.png"},
+                {"Dying Light 2","Dl22.png"},
                 {"Elden Ring","Elden.png"},
                 {"Everspace 2","Es2.png"},
                 {"Evil West","Ew.png"},
@@ -1625,8 +1622,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Hitman 3","Hitman.png"},
                 {"Hogwarts Legacy","Hog.png"},
                 {"Horizon Forbidden West","HZDF.png"},
-                {"Horizon Zero Dawn","Hzd2.png" },
-                {"Horizon Zero Dawn Remastered","HzdRem2.png"},
+                {"Horizon Zero Dawn\\Remastered","HzdRem2.png"},
                 {"Icarus","Icarus.png"},
                 {"Indiana Jones and the Great Circle","Indy2.png"},
                 {"Judgment","Jud.png"},
@@ -1685,7 +1681,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Until Dawn","Until2.png" },
                 {"Warhammer: Space Marine 2","SpaceMarine2.png"},
                 {"Watch Dogs Legion","Legion2.png"},
-                {"Way Of The Hunter","Woth2.png"}
+                {"Way Of The Hunter","Woth2.png"},
+                {"Wayfinder","Wayfinder2.png"}
             };
 
             #endregion
