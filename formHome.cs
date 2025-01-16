@@ -171,6 +171,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Saints Row","SaintsRow.png"},
                     {"Satisfactory","SatsF.png"},
                     {"Scorn","Scorn.png"},
+                    {"Sengoku Dynasty","SG.png"},
                     {"Shadow of the Tomb Raider","ShadowTomb.png"},
                     {"Shadow Warrior 3","Shadow3.png"},
                     {"Sifu","Sifu.png"},
@@ -273,7 +274,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "TEKKEN 8", new List<string> { "Unlock FPS Tekken 8" } },
                 { "Flintlock: The Siege Of Dawn", new List<string> { "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Cod MW3", new List<string> { "COD MW3 FSR3" } },
-                { "God Of War 4", new List<string> { "Gow 4 FSR 3.1", "FSR 3.1.1/DLSS FG Custom" } },
+                { "God Of War 4", new List<string> { "Others Mods Gow4", "FSR 3.1.3/DLSS Gow4"} },
                 { "God of War Ragnarök", new List<string> { "Others Mods Gow Rag", "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Warhammer: Space Marine 2", new List<string> { "Others Mods Space Marine", "FSR 3.1.3/DLSS FG Marine", "FSR 3.1.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Black Myth: Wukong", new List<string> { "Others Mods Wukong", "DLSS FG (ALL GPUs) Wukong", "FSR 3.1 Custom Wukong" } },
@@ -318,7 +319,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Hellblade 2", new List<string> {"Others Mods HB2","HB2 FG (Only RTX)"} },
                 { "Six Days in Fallujah", new List<string> {"Others Mods 6Days", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
                 { "Way Of The Hunter", new List<string> { "Others Mods WOTH", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Alone in the Dark", new List<string> {"Others Mods AITD"}}
+                { "Alone in the Dark", new List<string> {"Others Mods AITD"}},
+                { "Evil West", new List<string>{"Others Mods EW"}}
             };
             #endregion
 

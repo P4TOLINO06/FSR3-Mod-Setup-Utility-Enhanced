@@ -91,7 +91,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1628,47 +1628,72 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
         }
 
+        string[] modsToInstallOptiscalerFsrDlss = { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSS Gow4" };
         private async Task optiscalerFsrDlss()
         {
+            var progressBar = HandleProgressBar(false);
+
             string gpuName = await GetActiveGpu();
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD";
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director\'s Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI" };
-            string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "Path of Exile II", "Hitman 3", "Marvel\'s Midnight Suns", "Hogwarts Legacy" };
-            string[] gpusVar = { "amd","rx","intel","arc","gtx" };
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty" };
+            string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4" };
+            string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
 
             Debug.WriteLine(gpuName);
 
-            if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")))
+            try
             {
-                await CopyFolder(pathOptiscaler);
+                progressBar.Maximum = 3;
+                progressBar.Value = 0;
 
-                await Task.Delay(500);
+                if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")))
+                {
+                    await CopyFolder(pathOptiscaler);
+                    progressBar.Value++;
+                    Application.DoEvents();
 
-                await Task.Run(() => File.Move(
-                     Path.Combine(selectFolder, "nvngx.dll"),
-                     Path.Combine(selectFolder, "dxgi.dll"),
-                     true
-                 ));
-                File.Copy(Path.Combine(selectFolder, "nvngx_dlss.dll"), Path.Combine(selectFolder, "nvngx.dll"), true);
-            }
-            else
-            {
-                await CopyFolder(pathOptiscalerDlss);
-            }
+                    await Task.Delay(500);
 
-            // AMD Anti Lag 2
-            if (gamesToUseAntiLag2.Contains(gameSelected) && MessageBox.Show($"Do you want to use AMD Anti Lag 2? Check the {gameSelected} guide in FSR Guide to see how to enable it.", "Anti Lag 2", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                CopyFolder(nvapiAmd);
+                    await Task.Run(() => File.Move(
+                        Path.Combine(selectFolder, "nvngx.dll"),
+                        Path.Combine(selectFolder, "dxgi.dll"),
+                        true
+                    ));
+
+                    File.Copy(Path.Combine(selectFolder, "nvngx_dlss.dll"), Path.Combine(selectFolder, "nvngx.dll"), true);
+                    progressBar.Value++;
+                    Application.DoEvents();
+                }
+                else
+                {
+                    await CopyFolder(pathOptiscalerDlss);
+                    progressBar.Value++;
+                    Application.DoEvents();
+                }
+
+                // AMD Anti Lag 2
+                if (gamesToUseAntiLag2.Contains(gameSelected) && MessageBox.Show($"Do you want to use AMD Anti Lag 2? Check the {gameSelected} guide in FSR Guide to see how to enable it.", "Anti Lag 2", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFolder(nvapiAmd);
+                    progressBar.Value++;
+                    Application.DoEvents();
+                }
+                // Nvapi for non-RTX users
+                else if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn't work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFolder(nvapiAmd);
+                    progressBar.Value++;
+                    Application.DoEvents();
+                }
             }
-            // Nvapi for non-RTX users
-            else if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn\\'t work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            finally
             {
-                CopyFolder(nvapiAmd);
+                HandleProgressBar(true, progressBar);
             }
         }
+
 
         public void UpdateUpscalers(string destPath, bool onlyDlss = false, bool copyDlssd = false, bool copyDlssDlssD = false, bool copyFsrDlss = false)
         {
@@ -1750,13 +1775,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Tlou", selectFolder },
                 { "Others Mods Steel", selectFolder },
                 { "Others Mods FFXVI", selectFolder },
+                { "Others Mods Gow4", selectFolder},
                 { "Others Mods HB2", defaultDlssPath },
                 { "Others Mods HL", defaultDlssPath},
                 { "Others Mods Fist",defaultDlssPath},
                 { "Others Mods GK", defaultDlssPath},
                 { "Others Mods WOTH", defaultDlssPath},
-                { "Others Mods AITD", defaultDlssPath},
                 { "Others Mods 6Days", defaultDlssPath},
+                { "Others Mods EW", defaultDlssPath},
+                { "Others Mods AITD", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods GR2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods Remnant II", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\Shared\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods POEII", Path.Combine(selectFolder, "Streamline") },
@@ -2139,19 +2166,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
             #endregion
-        }
-
-        public void gow4Fsr3()
-        {
-            if (selectMod == "Gow 4 FSR 3.1")
-            {
-                string var_gow4 = "mods\\FSR3_GOW4\\optiscaler.txt";
-
-                File.Copy(var_gow4, selectFolder + "\\optiscaler.txt",true);
-            }
-
-            MessageBox.Show("Check the God of War 4 guide on Guide to complete the installation. (If you do not follow the steps in the guide, the mod will not work).", "Guider", MessageBoxButtons.OK);
-        }
+        }    
 
         public void gowRagFsr3()
         {
@@ -3990,7 +4005,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     dlssGlobal();
                 }
-                if (selectMod == "FSR 3.1.3/DLSS FG (Only Optiscaler)")
+                if (modsToInstallOptiscalerFsrDlss.Contains(selectMod))
                 {
                     optiscalerFsrDlss();
                 }
@@ -4162,10 +4177,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Dragons Dogma 2")
                 {
                     dd2Fsr3();
-                }
-                if (gameSelected == "God Of War 4")
-                {
-                    gow4Fsr3();
                 }
                 if (gameSelected == "God of War Ragnarök")
                 {
@@ -4597,9 +4608,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanDlssGlobal("FSR 3.1.2/DLSS FG Custom");
                 }
 
-                if (selectMod == "FSR 3.1.3/DLSS FG (Only Optiscaler)")
+                if (modsToInstallOptiscalerFsrDlss.Contains(selectMod))
                 {
-                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.3/DLSS FG (Only Optiscaler)", true);
+                    if (CleanupOptiscalerFsrDlss(del_optiscaler, selectMod, true))
+                    {
+                        MessageBox.Show("Mods removed successfully", "Sucess");
+                    }
                 }
 
                 if (gameSelected == "Cyberpunk 2077")
@@ -4713,22 +4727,6 @@ namespace FSR3ModSetupUtilityEnhanced
                                 runReg(removeAntiStutterHb2);
                                 File.Delete(Path.Combine(selectFolder, "Install Hellblade 2 CPU Priority.reg"));
                             });
-                    }
-                    #endregion
-                }
-
-                if (gameSelected == "God Of War 4")
-                {
-                    #region Del Files Optiscaler Gow 4
-                    if (File.Exists(selectFolder + "\\amd_fidelityfx_vk.dll"))
-                    {
-                        CleanupMod3(del_optiscaler, "Gow 4 FSR 3.1");
-
-                        runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
-                    }
-                    if (File.Exists(selectFolder + "\\optiscaler.txt"))
-                    {
-                        File.Delete(selectFolder + "\\optiscaler.txt");
                     }
                     #endregion
                 }

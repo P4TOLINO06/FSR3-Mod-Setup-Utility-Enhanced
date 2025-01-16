@@ -413,9 +413,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Evil West",
-                "1 - Select a mod of your preference. (recommended 0.10.3)\r\n" +
-                "2 - Install, within the game, set post-processing to low and\r\n" +
-                "activate FSR."
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "5. If you want to update DLSS, do it before installing the mod; just select \"Others Mods EW\"."
             },
             {
                 "Fallout 4",
@@ -602,13 +605,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "God Of War 4",
-                "1 - Select \"Gow 4 FSR 3.1\".\n" +
-                "2 - Click on Add-on, then Optiscaler, and select 'Method Default.'\n" +
-                "3 - In 'Add-on Upscaler,' choose 'fsr3.1 DX11' and install.\n" +
-                "4 - In the game, select DLSS (do not choose ultra quality, as it will not work).\n" +
-                "5 - Press the 'Insert' key to open the menu and select the desired upscaler (XESS is recommended).\n" +
-                "6 - If the menu does not appear, set the preferred upscaler in 'Add-on Upscaler' in the Utility and install again. (Select only the DX11 upscalers, such as fsr3.1 DX11, xess DX11, etc.)\n" +
-                "7 - If you don't see DLSS in the game, check 'Enable Signature Override' under 'Additional Settings.'"
+                "FSR 3.1.3/DLSS (Only Optiscaler) + AMD Anti Lag 2\n"+
+                "1. Select FSR 3.1.3/DLSS Gow4 and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "5. Select Nvidia Reflex in the game to use AMD Anti Lag 2."
             },
             {
                 "God of War Ragnarök",
@@ -1109,6 +1111,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "5. If the game crashes when installing the mod, remove the mod, open the game, disable FSR, and install the mod again."
             },
             {
+                "Sengoku Dynasty",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes."
+            },
+            {
                 "Shadow of the Tomb Raider",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
@@ -1502,7 +1512,9 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Scorn", "https://www.youtube.com/embed/z7-wozRQIms?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Saints Row","https://www.youtube.com/embed/RVbMT7gfD1Q?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Way Of The Hunter", "https://www.youtube.com/embed/ocAwuQbwttE?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Horizon Zero Dawn\\Remastered", "https://www.youtube.com/embed/agUramMMi4M?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"}
+            { "Horizon Zero Dawn\\Remastered", "https://www.youtube.com/embed/agUramMMi4M?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
+            { "Alone in the Dark", "https://www.youtube.com/embed/Td5ozzpJGTM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
+            { "God Of War 4", "https://www.youtube.com/embed/qLWFPUNOnfI?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"}
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1600,7 +1612,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Dying Light 2","Dl22.png"},
                 {"Elden Ring","Elden.png"},
                 {"Everspace 2","Es2.png"},
-                {"Evil West","Ew.png"},
+                {"Evil West","Ew2.png"},
                 {"Fist Forged in Shadow Torch","Fist.png"},
                 {"Flintlock: The Siege of Dawn","Flint.png"},
                 {"Fort Solis","Fort.png"},
@@ -1659,6 +1671,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Saints Row","SaintsRow2.png"},
                 {"Sackboy: A Big Adventure","Sackboy2.png"},
                 {"Scorn","Scorn2.png"},
+                {"Sengoku Dynasty","SG2.png"},
                 {"Shadow of the Tomb Raider","ShadowTomb2.png"},
                 {"Shadow Warrior 3","Shadow32.png"},
                 {"Smalland","Smalland.png"},
