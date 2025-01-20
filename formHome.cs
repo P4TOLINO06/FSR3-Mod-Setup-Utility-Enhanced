@@ -104,6 +104,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Dragon Age: Veilguard","DgVeil.png"},
                     {"Dragons Dogma 2","Dg2.png"},
                     {"Dying Light 2","Dl2.png"},
+                    {"Dynasty Warriors: Origins","DWO.png"},
                     {"Elden Ring","Elden.png"},
                     {"Everspace 2","Es2.png"},
                     {"Evil West","Ew.png"},
@@ -190,8 +191,9 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"The Callisto Protocol","Callisto.png"},
                     {"The Chant","Chant.png"},
                     {"The Casting Of Frank Stone","FrankStone.png"},
+                    {"The First Berserker: Khazan","TFBK.png"},
                     {"The Invincible","Invicible.png"},
-                    {"The Last of Us Part I","Tlou.png"},
+                    {"The Last Of Us Part I","TLOU.png"},
                     {"The Medium","Medium.png"},
                     {"The Outer Worlds: Spacer's Choice Edition","Outer.png"},
                     {"The Thaumaturge","Thaumaturge.png"},
@@ -252,7 +254,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             #region Game List
 
-            var modsDefaultList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
+            var modsDefaultList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSSG FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
 
             var gamesModsConfig = new Dictionary<string, List<string>>
@@ -297,7 +299,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Lego Horizon Adventures", new List<string> { "Others Mods Lego HZD" } },
                 { "Stalker 2", new List<string> { "Others Mods Stalker 2", "DLSS FG (Only Nvidia)" } },
                 { "Returnal", new List<string> { "Others Mods Returnal" } },
-                { "The Last of Us Part I", new List<string> { "Others Mods Tlou" } },
+                { "The Last Of Us Part I", new List<string> { "Others Mods Tlou" } },
                 { "Marvel\\'s Spider-Man Miles Morales", new List<string> { "Others Mods Spider" } },
                 { "Marvel\\'s Spider-Man Remastered", new List<string> { "Others Mods Spider" } },
                 { "Microsoft Flight Simulator 24", new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
@@ -320,7 +322,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Six Days in Fallujah", new List<string> {"Others Mods 6Days", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
                 { "Way Of The Hunter", new List<string> { "Others Mods WOTH", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
                 { "Alone in the Dark", new List<string> {"Others Mods AITD"}},
-                { "Evil West", new List<string>{"Others Mods EW"}}
+                { "Evil West", new List<string> {"Others Mods EW"}},
+                { "The First Berserker: Khazan", new List<string> { "Others Mods TFBK"} }
             };
             #endregion
 
