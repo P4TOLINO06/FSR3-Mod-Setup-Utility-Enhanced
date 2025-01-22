@@ -81,6 +81,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Alone in the Dark","Alone.png"},
                     {"Assassin's Creed Mirage","Ac.png"},
                     {"Assassin's Creed Valhalla","Valhalla.png"},
+                    {"Assetto Corsa Evo","ACE.png"},
                     {"Atomic Heart","Atomic.png"},
                     {"Baldur's Gate 3","BG3.png"},
                     {"Banishers: Ghosts of New Eden","Banishers.png" },
@@ -184,6 +185,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Star Wars Outlaws","Outlaws.png"},
                     {"STARFIELD","Starfield.png"},
                     {"Steelrising","Steelrising.png"},
+                    {"Soulstice","STC.png"},
                     {"Suicide Squad: Kill the Justice League","Sskjl.png"},
                     {"TEKKEN 8","Tekken.png"},
                     {"Test Drive Unlimited Solar Crown","TestSolar.png"},
@@ -321,9 +323,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Hellblade 2", new List<string> {"Others Mods HB2","HB2 FG (Only RTX)"} },
                 { "Six Days in Fallujah", new List<string> {"Others Mods 6Days", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
                 { "Way Of The Hunter", new List<string> { "Others Mods WOTH", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Alone in the Dark", new List<string> {"Others Mods AITD"}},
-                { "Evil West", new List<string> {"Others Mods EW"}},
-                { "The First Berserker: Khazan", new List<string> { "Others Mods TFBK"} }
+                { "Alone in the Dark", new List<string> {"Others Mods AITD"} },
+                { "Evil West", new List<string> {"Others Mods EW"} },
+                { "The First Berserker: Khazan", new List<string> { "Others Mods TFBK"} },
+                { "Assetto Corsa Evo", new List<string> { "Others Mods ACE"} },
+                { "Soulstice", new List<string> { "Others Mods STC"} },
+                { "Watch Dogs Legion", new List<string> { "Others Mods Legion"} }
+
             };
             #endregion
 

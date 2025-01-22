@@ -158,6 +158,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "6. Install the Preset first and then the FSR3 mod if you plan to use it."
             },
             {
+                "Assetto Corsa Evo",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "5. To update the DLSS, select \"Others Mods ACE\"; do this before installing the mod."
+            },
+            {
                 "Assassin's Creed Valhalla",
                 "1 - Press the \"End\" key to open the Frame Gen menu or the\r\n" +
                 "\"Home\" key to open the main menu.\r\n" +
@@ -1331,6 +1340,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - Enable NVAPI Results (only for GTX)."
             },
             {
+                "Soulstice",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Run it in DX12. Right-click the game's exe and create a shortcut, then right-click the shortcut again, go to Properties, and at the end of Target (outside the quotes), add -dx12 or go to your Steam library, select the game, go to Settings > Properties > Startup options, and enter -dx12.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "6. To update the DLSS, select \"Others Mods STC\"; do this before installing the mod."
+            },
+            {
               "Test Drive Unlimited Solar Crown",
               "1. Select Uniscaler FSR 3.1.\n" +
               "2. Check the box \"Enable Signature Over.\"\n" +
@@ -1500,10 +1519,14 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Watch Dogs Legion",
-                "1 - Select the FSR 3.1.1/DLSS Optiscaler FG Custom and install.\r\n" +
-                "2 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
-                "3 - In the menu, select an Upscaler, check 'Frame Gen' and 'Fix HUD' boxes.\r\n" +
-                "4 - To install DLSS 3.7.20, click the 'Nvngx.dll' button and select 'DLSS 3.7.20'.\r\n\r\n"
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Open the game and select DX12 in the menu.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FSR 3x to use FSR 3.1.3; if you have an RTX GPU, select DLSS.\n" +
+                "6. Check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "7. To update DLSS, select \"Others Mods Legion\"; do this before installing the mod."
             },
             {
                 "Way Of The Hunter",
@@ -1620,6 +1643,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"A Plague Tale Requiem","Requiem.png"},
                 {"A Quiet Place: The Road Ahead","QuietPlace2.png"},
                 {"Assassin's Creed Valhalla","AcVal.png"},
+                {"Assetto Corsa Evo","ACE2.png"},
                 {"Atomic Heart","Atomic.png"},
                 {"Baldur's Gate 3","Baldurs.png"},
                 {"Black Myth: Wukong","wukong.png" },
@@ -1717,6 +1741,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Steelrising","Steelrising2.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
                 {"Star Wars Outlaws","Outlaws2.png" },
+                {"Soulstice","STC2.png"},
                 {"Suicide Squad: Kill the Justice League","Sskjl2.png"},
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
                 {"The Ascent","Ascent2.png"},

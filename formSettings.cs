@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan", "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1748,7 +1748,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 HandlePrompt(
                 "DLSS/DLSSD",
-                "Do you want to update DLSS/DLSSD? DLSS 3.8.1 and DLSSD 3.7.20 will be installed.",
+                "Do you want to update DLSS/DLSSD? DLSS 3.8.10 and DLSSD 3.7.20 will be installed.",
                 _ =>
                 {
                     File.Copy(pathDlssd, Path.Combine(destPath, "nvngx_dlssd.dll"), true);
@@ -1760,7 +1760,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 HandlePrompt(
                 "FSR/DLSS",
-                "Do you want to update DLSS/FSR? DLSS 3.8.1 and FSR 3.1.3 will be installed..",
+                "Do you want to update DLSS/FSR? DLSS 3.8.10 and FSR 3.1.3 will be installed..",
                 _ =>
                 {
                     CopyFolder3(pathFsr, destPath);
@@ -1795,13 +1795,16 @@ namespace FSR3ModSetupUtilityEnhanced
             string defaultDlssPath = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"));
             Dictionary<string, string> gamesToUpdateDlss = new Dictionary<string, string>
             {
-                { "Others Mods Sifu", selectFolder },
-                { "Others Mods Shadow Tomb", selectFolder },
-                { "Others Mods Tlou", selectFolder },
-                { "Others Mods Steel", selectFolder },
-                { "Others Mods FFXVI", selectFolder },
+                { "Others Mods Sifu", selectFolder},
+                { "Others Mods Shadow Tomb", selectFolder},
+                { "Others Mods Tlou", selectFolder},
+                { "Others Mods Steel", selectFolder},
+                { "Others Mods FFXVI", selectFolder},
                 { "Others Mods Gow4", selectFolder},
-                { "Others Mods HB2", defaultDlssPath },
+                { "Others Mods ACE", selectFolder},
+                { "Others Mods Legion", selectFolder},
+                { "Others Mods STC", defaultDlssPath},
+                { "Others Mods HB2", defaultDlssPath},
                 { "Others Mods HL", defaultDlssPath},
                 { "Others Mods Fist",defaultDlssPath},
                 { "Others Mods GK", defaultDlssPath},
@@ -6300,7 +6303,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 return;
             }
         }
-
         private void buttonAddUps1_Click(object sender, EventArgs e)
         {
             if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -6312,7 +6314,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
             }
         }
-
         private void buttonAddUps2_Click(object sender, EventArgs e)
         {
             if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -6324,7 +6325,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
             }
         }
-
         private void buttonAddUps3_Click(object sender, EventArgs e)
         {
             if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -6336,7 +6336,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
             }
         }
-
         private void buttonAddUps4_Click(object sender, EventArgs e)
         {
             if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -6348,7 +6347,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
             }
         }
-
         private void button4_Click_1(object sender, EventArgs e)
         {
             if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -6360,7 +6358,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigIni("Dx11Upscaler", "fsr31_12 ", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
             }
         }
-
         private void buttonDlssDX11_Click(object sender, EventArgs e)
         {
             if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -6372,7 +6369,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigIni("Dx11Upscaler", "dlss ", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
             }
         }
-
         private void buttonAddUps5_Click(object sender, EventArgs e)
         {
             if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -6454,7 +6450,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigIni("VulkanUpscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
             }
         }
-
         private void buttonFsr31Vulkan_Click(object sender, EventArgs e)
         {
             if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -6466,7 +6461,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigIni("VulkanUpscaler", "fsr31", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
             }
         }
-
         private void buttonDlssVulkan_Click(object sender, EventArgs e)
         {
             if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
@@ -6478,7 +6472,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 ConfigIni("VulkanUpscaler", "dlss", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
             }
         }
-
         private void buttonFg3_Click(object sender, EventArgs e)
         {
             if (selectMod == "Uniscaler FSR 3.1" || selectMod == "Uniscaler V4")
@@ -6491,7 +6484,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 return;
             }
         }
-
         private void buttonFg31_Click(object sender, EventArgs e)
         {
             if (selectMod == "Uniscaler FSR 3.1" || selectMod == "Uniscaler V4")
