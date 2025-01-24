@@ -92,7 +92,9 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy", "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan", "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
+                "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -650,14 +652,14 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region Clean Optiscaler Files
-        List<string> del_optiscaler = new List<string>
+        List<string> delOptiscaler = new List<string>
         {
-            "nvngx.ini", "nvngx.dll", "libxess.dll", "EnableSignatureOverride.reg", "DisableSignatureOverride.reg","winmm.dll","nvapi64.dll","fakenvapi.ini"
+            "nvngx.ini", "nvngx.dll", "libxess.dll","winmm.dll","nvapi64.dll","fakenvapi.ini","dlssg_to_fsr3_amd_is_better.dll"
         };
         #endregion
 
         #region Clean Optiscaler Custom Files
-        List<string> del_optiscaler_custom = new List<string>
+        List<string> delOptiscalerCustom = new List<string>
         {
         "amd_fidelityfx_dx12.dll", "amd_fidelityfx_vk.dll", "DisableNvidiaSignatureChecks.reg", "DisableSignatureOverride.reg", "dlss-enabler-upscaler.dll", "dlss-enabler.log", "dlss-finder.exe", "dlssg_to_fsr3.ini", "dlssg_to_fsr3.log", "dlssg_to_fsr3_amd_is_better.dll",
         "dxgi.dll", "EnableSignatureOverride.reg", "libxess.dll", "licenses", "nvapi64-proxy.dll", "nvngx-wrapper.dll", "nvngx.dll", "nvngx.ini", "RestoreNvidiaSignatureChecks.reg", "unins000.dat", "unins000.exe", "version.dll", "_nvngx.dll","dlss-enabler.dll",
@@ -666,7 +668,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #endregion
 
         #region Clean Optiscaler Custom Files 2
-        List<string> del_optiscaler_custom_2 = new List<string>
+        List<string> delOptiscalerCustom2 = new List<string>
         { 
             "amd_fidelityfx_dx12.dll", "dxgi.dll", "nvngx.dll", "nvngx.ini",
             "Uniscaler.asi", "uniscaler.config.toml", "winmm.dll", "winmm.ini"
@@ -1603,7 +1605,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {
                         string filesOptsName = Path.GetFileName(filesOpts);
 
-                        if (del_optiscaler_custom.Contains(filesOptsName))
+                        if (delOptiscalerCustom.Contains(filesOptsName))
                         {
                             string destBackupFolder = Path.Combine(backupFolderOpts, filesOptsName);
                             File.Copy(filesOpts, destBackupFolder, true);
@@ -1629,7 +1631,7 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
         }
 
-        string[] modsToInstallOptiscalerFsrDlss = { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSS Gow4", "FSR 3.1.3/DLSSG FG (Only Optiscaler)" };
+        string[] modsToInstallOptiscalerFsrDlss = { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSSG FG (Only Optiscaler)", "FSR 3.1.3/DLSS Gow4" };
         private async Task optiscalerFsrDlss()
         {
             var progressBar = HandleProgressBar(false);
@@ -1639,6 +1641,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
             string pathOptiscalerDlssg = "mods\\Addons_mods\\Optiscaler DLSSG\\nvngx.ini";
             string pathIniOlyUpscalers = "mods\\Addons_mods\\Optiscaler Only Upscalers\\nvngx.ini";
+            string pathDlssToFsr = "mods\\Addons_mods\\Optiscaler DLSSG\\dlssg_to_fsr3_amd_is_better.dll";
             string nvapiIni = "mods\\Addons_mods\\Nvapi AMD\\Nvapi Ini\\nvngx.ini";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD\\Nvapi";
             string nvapiAntiLagDlssg = "mods\\Addons_mods\\Nvapi AMD\\DLSSG Nvapi Ini\\nvngx.ini";
@@ -1646,7 +1649,9 @@ namespace FSR3ModSetupUtilityEnhanced
             string destPathNvapi = Path.Combine(selectFolder, "nvngx.ini");
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
-            string[] gamesOnlyUpscalers = { "The Last Of Us Part I", "The First Berserker: Khazan" };
+            string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
+            string[] gamesWithDlssg = { "The First Berserker: Khazan" };
+            string[] gamesWithAntiCheat = { "Back 4 Blood" };
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
 
             Debug.WriteLine(gpuName);
@@ -1684,11 +1689,22 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (selectMod == "FSR 3.1.3/DLSSG FG (Only Optiscaler)")
                 {
                     File.Copy(pathOptiscalerDlssg, destPathNvapi, true);
+
+                    if ((gamesWithDlssg.Contains(gameSelected) ||
+                    gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) ||
+                    gpuName.Contains("rtx")) &&
+                    !gamesOnlyUpscalers.Contains(gameSelected) &&
+                    MessageBox.Show("Do you want to install the dlssg_to_fsr3_amd_is_better.dll file? It is recommended to install this only if you are unable to enable the game's DLSS Frame Generation (this mod does not have its own FG; the game's DLSS FG is used).", "DLSS/FSR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        File.Copy(pathDlssToFsr, Path.Combine(selectFolder, "dlssg_to_fsr3_amd_is_better.dll"), true);
+                    }
                 }
 
                 if (gamesOnlyUpscalers.Contains(gameSelected))
                 {
+                    await Task.Delay(300);
                     File.Copy(pathIniOlyUpscalers, destPathNvapi, true);
+                    Debug.WriteLine("a");
                 }
 
                 // AMD Anti Lag 2
@@ -1713,6 +1729,11 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     progressBar.Value++;
                     Application.DoEvents();
+                }
+
+                if (gamesWithAntiCheat.Contains(gameSelected))
+                {
+                    MessageBox.Show("Do not use the mod in Online mode, or you may be banned", "Anti Cheat");
                 }
             }
             finally
@@ -1812,6 +1833,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods 6Days", defaultDlssPath},
                 { "Others Mods EW", defaultDlssPath},
                 { "Others Mods TFBK", defaultDlssPath},
+                { "Others Mods B4B", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
                 { "Others Mods AITD", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods GR2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods Remnant II", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\Shared\\DLSS\\Binaries\\ThirdParty\\Win64"))},
@@ -1836,7 +1858,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string pathDlss = gamesToUpdateDlss[selectMod];
 
-                if (Path.Exists(pathDlss))
+                if (Path.Exists(pathDlss.ToLower()))
                 {
                     UpdateUpscalers(pathDlss, true);
                 }
@@ -2813,6 +2835,23 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 Debug.WriteLine(ex);
             }
+
+        }
+
+        public void b4bFsr3()
+        {
+            string pathDisableEac = "mods\\FSR3_SSKJL\\Disable_EAC\\EAC Bypass";
+            string rootPathB4b = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
+
+            // Backup EAC
+            if (Path.Exists(Path.Combine(rootPathB4b, "EasyAntiCheat")))
+            {
+                CopyFolder3(Path.Combine(rootPathB4b, "EasyAntiCheat"), Path.Combine(rootPathB4b, "Backup EAC\\EasyAntiCheat"));
+                File.Copy(Path.Combine(rootPathB4b, "start_protected_game.exe"), Path.Combine(rootPathB4b, "Backup EAC\\start_protected_game.exe"), true);
+            }
+
+            // Disable EAC
+            CopyFolder3(pathDisableEac, rootPathB4b);
 
         }
         public void hogLegacyFsr3()
@@ -4621,12 +4660,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
                     #endregion
 
-                    CleanupMod2(del_optiscaler, folderFakeGpu, "Mod Successfully Removed");
+                    CleanupMod2(delOptiscaler, folderFakeGpu, "Mod Successfully Removed");
                 }
 
                 if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
                 {
-                    CleanupMod3(del_optiscaler_custom, "Optiscaler FSR 3.1.1/DLSS");
+                    CleanupMod3(delOptiscalerCustom, "Optiscaler FSR 3.1.1/DLSS");
                     runReg("mods\\Addons_mods\\OptiScaler\\EnableSignatureOverride.reg");
 
                     RestoreBackup("Backup Optiscaler");
@@ -4639,7 +4678,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (modsToInstallOptiscalerFsrDlss.Contains(selectMod))
                 {
-                    if (CleanupOptiscalerFsrDlss(del_optiscaler, selectMod, true))
+                    if (CleanupOptiscalerFsrDlss(delOptiscaler, selectMod, true))
                     {
                         MessageBox.Show("Mods removed successfully", "Sucess");
                     }
@@ -4713,7 +4752,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     CleanupOthersMods("Real Life", "The Real Life The Callisto Protocol Reshade BETTER TEXTURES and Realism 2022.ini",selectFolder); 
 
-                    CleanupMod3(del_optiscaler_custom_2, "FSR 3.1.3/DLSS Custom Callisto");
+                    CleanupMod3(delOptiscalerCustom2, "FSR 3.1.3/DLSS Custom Callisto");
                     #endregion
                 }
 
@@ -4731,7 +4770,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     #region Remove Custom Mods Requiem
                     if (selectMod == "FSR 3.1.1 Custom Requiem")
                     {
-                        CleanupMod3(del_optiscaler, "FSR 3.1.1 Custom Requiem");
+                        CleanupMod3(delOptiscaler, "FSR 3.1.1 Custom Requiem");
                     }
                     #endregion
                 }
@@ -4827,7 +4866,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
-                if (gameSelected == "Suicide Squad: Kill the Justice League")
+                if (gameSelected == "Suicide Squad: Kill the Justice League" || gameSelected == "Back 4 Blood")
                 {
                     try
                     {
@@ -4845,7 +4884,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     }
                     catch
                     {
-                        MessageBox.Show("Error clearing Suicide Squad: Kill the Justice League mods files, please try again or do it manually", "Error", MessageBoxButtons.OK);
+                        MessageBox.Show($"Error clearing {gameSelected} mods files, please try again or do it manually", "Error", MessageBoxButtons.OK);
                     }
                 }
 
@@ -4915,7 +4954,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     CleanupOthersMods("Anti Stutter", "~S2optimizedTweaksBASE_v1.31_P.pak", Path.Combine(rootstalker, "Content\\Paks\\~mods"));
 
-                    if (CleanupOptiscalerFsrDlss(del_optiscaler_custom, "DLSS FG (Only Nvidia)", true))
+                    if (CleanupOptiscalerFsrDlss(delOptiscalerCustom, "DLSS FG (Only Nvidia)", true))
                     {
                         if (Path.Exists(removeWinmmStalker)) File.Delete(removeWinmmStalker);
                     }
@@ -4985,7 +5024,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "GTA Trilogy")
                 {
                     #region Del Custom Mod GTA Trilogy
-                    CleanupOptiscalerFsrDlss(del_optiscaler, "FSR 3.1.3/DLSS Custom GTA", true);
+                    CleanupOptiscalerFsrDlss(delOptiscaler, "FSR 3.1.3/DLSS Custom GTA", true);
                     #endregion
                 }
 
@@ -5273,7 +5312,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     #region Cleanup Mods A Quiet Place: The Road Ahead
                     if (selectMod == "FSR 3.1.1/DLSS Quiet Place")
                     {
-                        CleanupMod3(del_optiscaler, "FSR 3.1.1/DLSS Quiet Place");
+                        CleanupMod3(delOptiscaler, "FSR 3.1.1/DLSS Quiet Place");
                         runReg("mods\\Temp\\disable signature override\\DisableSignatureOverride.reg");
                     }
                     #endregion

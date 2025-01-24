@@ -200,19 +200,52 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             clockTimer.Start();
 
+            var imagePaths = new Dictionary<string, List<string>>()
+            {
+                { "morning", new List<string> {
+                    "Images\\Wallpaper\\rdr2_morning3.png",
+                    "Images\\Wallpaper\\rdr2_morning3.png",
+                    "Images\\Wallpaper\\rdr2_morning3.png",
+                    "Images\\Wallpaper\\rdr2_morning3.png",
+                    "Images\\Wallpaper\\rdr2_morning3.png"
+                }},
+                { "afternoon", new List<string> {
+                    "Images\\Wallpaper\\rdr2_afternoon.png",
+                    "Images\\Wallpaper\\rdr2_afternoon2.png",
+                    "Images\\Wallpaper\\rdr2_afternoon3.png",
+                    "Images\\Wallpaper\\rdr2_afternoon4.png",
+                    "Images\\Wallpaper\\rdr2_afternoon5.png",
+                }},
+                { "night", new List<string> {
+                    "Images\\Wallpaper\\rdr2_night.png",
+                    "Images\\Wallpaper\\rdr2_night2.png",
+                    "Images\\Wallpaper\\rdr2_night3.png",
+                    "Images\\Wallpaper\\rdr2_night4.png",
+                    "Images\\Wallpaper\\rdr2_night5.png",
+                }}
+            };
+
             string hourNow = DateTime.Now.ToString("HH:mm:ss");
-            if ((string.Compare(hourNow, "18:00:00") >= 0 && string.Compare(hourNow, "23:59:59") <= 0) ||
-                (string.Compare(hourNow, "00:00:00") >= 0 && string.Compare(hourNow, "05:00:00") <= 0))
+
+            string period = hourNow switch
             {
-                pictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "Images\\Wallpaper\\Rdr2_night.png"));
-            }
-            else if (string.Compare(hourNow, "12:00:00") >= 0 && string.Compare(hourNow, "17:59:59") <= 0)
+                _ when (string.Compare(hourNow, "18:00:00") >= 0 && string.Compare(hourNow, "23:59:59") <= 0) ||
+                             (string.Compare(hourNow, "00:00:00") >= 0 && string.Compare(hourNow, "05:00:00") <= 0) => "night",
+                _ when string.Compare(hourNow, "12:00:00") >= 0 && string.Compare(hourNow, "17:59:59") <= 0 => "afternoon",
+                _ => "morning"
+            };
+
+            if (imagePaths.ContainsKey(period))
             {
-                pictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "Images\\Wallpaper\\rdr2_afternoon.png"));
-            }
-            else if (string.Compare(hourNow, "05:00:00") >= 0 && string.Compare(hourNow, "11:59:59") <= 0)
-            {
-                pictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, "Images\\Wallpaper\\rdr2_morning.png"));
+                var initialImages = imagePaths[period];
+                var randomImage = initialImages[new Random().Next(initialImages.Count)];
+                string fullPath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath)!, randomImage);
+
+                if (File.Exists(fullPath))
+                {
+                    pictureBox1.Image = Image.FromFile(fullPath);
+                }
+
             }
             mainPanel.BackgroundImage = pictureBox1.Image;
             this.BackgroundImage = pictureBox1.Image;

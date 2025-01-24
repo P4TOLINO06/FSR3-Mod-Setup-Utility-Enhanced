@@ -83,6 +83,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Assassin's Creed Valhalla","Valhalla.png"},
                     {"Assetto Corsa Evo","ACE.png"},
                     {"Atomic Heart","Atomic.png"},
+                    {"Back 4 Blood","B4B.png"},
                     {"Baldur's Gate 3","BG3.png"},
                     {"Banishers: Ghosts of New Eden","Banishers.png" },
                     {"Black Myth: Wukong","wukong.png"},
@@ -180,6 +181,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Silent Hill 2","Sh2.png"},
                     {"Six Days in Fallujah","6Days.png"},
                     {"Smalland","Smalland.png"},
+                    {"Soulslinger Envoy of Death","SL.png"},
                     {"Stalker 2","Stalker.png"},
                     {"STAR WARS Jedi: Survivor","JedSurvivor.png"},
                     {"Star Wars Outlaws","Outlaws.png"},
@@ -328,7 +330,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "The First Berserker: Khazan", new List<string> { "Others Mods TFBK"} },
                 { "Assetto Corsa Evo", new List<string> { "Others Mods ACE"} },
                 { "Soulstice", new List<string> { "Others Mods STC"} },
-                { "Watch Dogs Legion", new List<string> { "Others Mods Legion"} }
+                { "Watch Dogs Legion", new List<string> { "Others Mods Legion"} },
+                { "Back 4 Blood", new List<string> {"Others Mods B4B"} }
 
             };
             #endregion

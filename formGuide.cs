@@ -179,6 +179,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - In the game, select FSR."
             },
             {
+                "Back 4 Blood",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix and FG Extended boxes.\n" +
+                "5. To update the DLSS, select \"Others Mods B4B\"; do this before installing the mod.\n" +
+                "6. Do not use the mod in Online mode, or you may be banned."
+            },
+            {
                 "Baldur's Gate 3",
                 "1 - Start the game in DX11 and select Borderless.\r\n" +
                 "2 - Choose DLSS or DLAA.\r\n" +
@@ -1340,6 +1350,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - Enable NVAPI Results (only for GTX)."
             },
             {
+                "Soulslinger Envoy of Death",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Open the game and select DX12 in the menu.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FSR 3x to use FSR 3.1.3; if you have an RTX GPU, select DLSS.\n" +
+                "6. Check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
+                "7. To update DLSS, select \"Others Mods Legion\"; do this before installing the mod."
+            },
+            {
                 "Soulstice",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "1. Run it in DX12. Right-click the game's exe and create a shortcut, then right-click the shortcut again, go to Properties, and at the end of Target (outside the quotes), add -dx12 or go to your Steam library, select the game, go to Settings > Properties > Startup options, and enter -dx12.\n" +
@@ -1434,8 +1455,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. Check the Enable Signature Over box.\n" +
                 "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "5. In the menu, check the Frame Gen, Hud Fix, and FG Extended boxes.\n" +
-                "6. Select Nvidia Reflex to use AMD Anti Lag 2.\n" +
-                "7. To update the DLSS, select \"Others Mods TFBK\"; do this before installing the mod."
+                "6. Select Nvidia Reflex to use AMD Anti Lag 2. (Option available only if you selected \"Yes\" in the \"Anti Lag 2\"window that appears during installation.)\n" +
+                "7. To update the DLSS, select \"Others Mods TFBK\"; do this before installing the mod\n" +
+                "8. If you are unable to enable the game\'s DLSS Frame Gen,\nselect \"Yes\" in the \"Anti Lag 2\" window that appears during installation. (Only for the FSR 3.1.3/DLSSG mod)"
             },
             {
                 "The Last Of Us",
@@ -1645,6 +1667,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Assassin's Creed Valhalla","AcVal.png"},
                 {"Assetto Corsa Evo","ACE2.png"},
                 {"Atomic Heart","Atomic.png"},
+                {"Back 4 Blood","B4B2.png"},
                 {"Baldur's Gate 3","Baldurs.png"},
                 {"Black Myth: Wukong","wukong.png" },
                 {"Blacktail","Black.png"},
@@ -1721,7 +1744,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Rise of The Tomb Raider","Rtb.png"},
                 {"Ready or Not","Ready.png"},
                 {"Red Dead Redemption","Rdr12.png"},
-                {"Red Dead Redemption 2","RDR2.png"},
+                {"Red Dead Redemption 2","Rdr22.png"},
                 {"Remnant II","Remnant22.png"},
                 {"Resident Evil 4 Remake","Re42.png"},
                 {"Returnal","Returnal2.png"},
@@ -1740,7 +1763,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"S.T.A.L.K.E.R. 2","Stalker2.png"},
                 {"Steelrising","Steelrising2.png"},
                 {"Star Wars Jedi: Survivor","JediSurvivor2.png"},
-                {"Star Wars Outlaws","Outlaws2.png" },
+                {"Star Wars Outlaws","Outlaws2.png"},
+                {"Soulslinger Envoy of Death","SL2.png"},
                 {"Soulstice","STC2.png"},
                 {"Suicide Squad: Kill the Justice League","Sskjl2.png"},
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
