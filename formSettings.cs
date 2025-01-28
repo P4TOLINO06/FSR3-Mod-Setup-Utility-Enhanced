@@ -94,7 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
-                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -586,11 +586,11 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 { "NVNGX Version 1", "mods\\Temp\\nvngx_global\\nvngx\\nvngx.ini" },
                 { "Xess 1.3", "mods\\Temp\\nvngx_global\\nvngx\\libxess.dll" },
-                { "Dlss 3.7.0", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll" },
-                { "Dlss 3.7.0 FG", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll" },
-                { "Dlss 3.8.10", "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll"},
-                { "Dlssg 3.8.1", "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll" },
-                { "Dlssd 3.7.20", "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll" }
+                { "DLSS 3.8.10", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlss.dll" },
+                { "DLSSG 3.8.1", "mods\\Temp\\nvngx_global\\nvngx\\nvngx_dlssg.dll" },
+                { "DLSS 4", "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll"},
+                { "DLSSG 4", "mods\\Temp\\nvngx_global\\nvngx\\Dlssg_3_7_1\\nvngx_dlssg.dll" },
+                { "DLSSD 4", "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll" }
             };
         #endregion
 
@@ -1259,7 +1259,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (selectMod == "Uniscaler + Xess + Dlss")
             {
-                string[] removeOptNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG" };
+                string[] removeOptNvngx = { "Xess 1.3", "DLSS 3.8.10", "DLSSG 3.8.1" };
 
                 foreach (string nvngxOpt in removeOptNvngx)
                 {
@@ -1268,7 +1268,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else
             {
-                string[] addOptNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG" };
+                string[] addOptNvngx = { "Xess 1.3", "DLSS 3.8.10", "DLSSG 3.8.1" };
 
                 foreach (string addNvngx in addOptNvngx)
                 {
@@ -1647,6 +1647,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string nvapiAntiLagDlssg = "mods\\Addons_mods\\Nvapi AMD\\DLSSG Nvapi Ini\\nvngx.ini";
             string nvapiFile = null;
             string destPathNvapi = Path.Combine(selectFolder, "nvngx.ini");
+            string enableDlssOverlay = "mods\\Addons_mods\\DLSS Preset Overlay\\Enable Overlay.reg";
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
@@ -1667,7 +1668,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     progressBar.Value++;
                     Application.DoEvents();
 
-                    await Task.Delay(500);
+                    await Task.Delay(300);
 
                     await Task.Run(() => File.Move(
                         Path.Combine(selectFolder, "nvngx.dll"),
@@ -1704,7 +1705,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     await Task.Delay(300);
                     File.Copy(pathIniOlyUpscalers, destPathNvapi, true);
-                    Debug.WriteLine("a");
                 }
 
                 // AMD Anti Lag 2
@@ -1735,6 +1735,19 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     MessageBox.Show("Do not use the mod in Online mode, or you may be banned", "Anti Cheat");
                 }
+
+                // Enable DLSS Overlay
+                if (gpuName.Contains("rtx"))
+                {
+                    HandlePrompt(
+                    "DLSS Overlay",
+                    "Do you want to enable the DLSS Overlay? (It is useful for verifying if the preset selected for DLSS 4 in Optiscaler is correct (Preset J), but it is not required. It cannot be disabled in the game for now; to remove it, uninstall the mod and reinstall it.)",
+                    _ =>
+                    {
+                        runReg(enableDlssOverlay);
+                        File.Copy(enableDlssOverlay, Path.Combine(selectFolder, "Enable Overlay.reg"), true);
+                    });
+                }
             }
             finally
             {
@@ -1758,7 +1771,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 HandlePrompt(
                 "DLSS",
-                "Do you want to update DLSS? DLSS 3.8.10 will be installed",
+                "Do you want to update DLSS? DLSS 4 will be installed",
                 _ =>
                 {
                     File.Copy(pathOnlyDlss, Path.Combine(destPath, "nvngx_dlss.dll"), true);
@@ -1769,7 +1782,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 HandlePrompt(
                 "DLSS/DLSSD",
-                "Do you want to update DLSS/DLSSD? DLSS 3.8.10 and DLSSD 3.7.20 will be installed.",
+                "Do you want to update DLSS/DLSSD? DLSS 4 and DLSSD 4 will be installed.",
                 _ =>
                 {
                     File.Copy(pathDlssd, Path.Combine(destPath, "nvngx_dlssd.dll"), true);
@@ -1781,7 +1794,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 HandlePrompt(
                 "FSR/DLSS",
-                "Do you want to update DLSS/FSR? DLSS 3.8.10 and FSR 3.1.3 will be installed..",
+                "Do you want to update DLSS/FSR? DLSS 4 and FSR 3.1.3 will be installed..",
                 _ =>
                 {
                     CopyFolder3(pathFsr, destPath);
@@ -1833,6 +1846,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods 6Days", defaultDlssPath},
                 { "Others Mods EW", defaultDlssPath},
                 { "Others Mods TFBK", defaultDlssPath},
+                { "Others GTA Trilogy", defaultDlssPath},
+                { "Others Mods FF7RBT", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\DLSSSubset\\Binaries\\ThirdParty\\Win6"))},
                 { "Others Mods B4B", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
                 { "Others Mods AITD", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods GR2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
@@ -3026,7 +3041,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     // Update DLSS
                     if (Path.Exists(pathDefaultFolderDlssReturnal))
                     {
-                        if (MessageBox.Show("Do you want to update DLSS? DLSS 3.8.10 will be installed", "DLSS", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show("Do you want to update DLSS? DLSS 4 will be installed", "DLSS", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             File.Copy(pathDlssReturnal, Path.Combine(pathDefaultFolderDlssReturnal, "nvngx_dlss.dll"), true);
                         }
@@ -3229,29 +3244,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
         }
-
-        public void gtaTrilogyFsr3()
-        {
-            string optiscalerGta = "mods\\FSR3_Gta_Trilogy\\Optiscaler_GTA";
-            string dlssGta = "mods\\FSR3_Gta_Trilogy\\DLSS\\nvngx.dll";
-            string pathDefaultDlssGta = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..\\Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64\\nvngx_dlss.dll"));
-        
-            if (selectMod == "FSR 3.1.3/DLSS Custom GTA")
-            {
-                CopyFolder(optiscalerGta);
-
-                if (Path.Exists(pathDefaultDlssGta))
-                {
-                    File.Copy(pathDefaultDlssGta, Path.Combine(selectFolder, "nvngx.dll"), true);
-                }
-                else
-                {
-                    File.Copy(dlssGta, Path.Combine(selectFolder, "nvngx.dll"),true);
-                }
-            }
-
-        }
-
         public bool drrFsr3()
         {
             string dlssToFsrDrr = "mods\\FSR3_DRR\\FSR3FG\\Dlss_to_Fsr";
@@ -4178,10 +4170,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     indyFsr3();
                 }
-                if (gameSelected == "GTA Trilogy")
-                {
-                    gtaTrilogyFsr3();
-                }
                 if (gameSelected == "Dragon Age: Veilguard")
                 {
                     dgVeilFsr3();
@@ -4678,9 +4666,23 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (modsToInstallOptiscalerFsrDlss.Contains(selectMod))
                 {
+                    string disableDlssOverlay = "mods\\Addons_mods\\DLSS Preset Overlay\\Disable Overlay.reg";
+
                     if (CleanupOptiscalerFsrDlss(delOptiscaler, selectMod, true))
                     {
                         MessageBox.Show("Mods removed successfully", "Sucess");
+                    }
+
+                    if (Path.Exists(Path.Combine(selectFolder, "Enable Overlay.reg")))
+                    {
+                        HandlePrompt(
+                        "DLSS Ovelay",
+                        "Do you want to disable the DLSS Overlay?",
+                        _ =>
+                        {
+                            runReg(disableDlssOverlay);
+                            File.Delete(Path.Combine(selectFolder, "Enable Overlay.reg"));
+                        });
                     }
                 }
 
@@ -5018,13 +5020,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     string[] delUnlockFpsTekken8 = { "TekkenOverlay.exe", "Tekken8Overlay.dll", "Tekken7Overlay.dll" };
 
                     CleanupOthersMods3("Unlock FPS Tekken 8", delUnlockFpsTekken8, selectFolder);
-                    #endregion
-                }
-
-                if (gameSelected == "GTA Trilogy")
-                {
-                    #region Del Custom Mod GTA Trilogy
-                    CleanupOptiscalerFsrDlss(delOptiscaler, "FSR 3.1.3/DLSS Custom GTA", true);
                     #endregion
                 }
 
@@ -6280,7 +6275,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private void ShowSelectedNvngx(object sender, EventArgs e)
         {
-            string[] optNvngx = { "Xess 1.3", "Dlss 3.7.0", "Dlss  3.7.0 FG", "Dlss 3.8.10", "Dlssg 3.8.1", "Dlssd 3.7.20" };
+            string[] optNvngx = { "Xess 1.3", "DLSS 3.8.10", "Dlss  3.7.0 FG", "DLSS 4", "DLSSG 4", "DLSSD 4" };
             foreach (string opt in optNvngx)
             {
 

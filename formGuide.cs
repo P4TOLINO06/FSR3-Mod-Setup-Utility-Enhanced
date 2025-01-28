@@ -42,9 +42,14 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 "Optiscaler FSR 3.1.3/DLSS (Only Optiscaler)",
                 "Optiscaler FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
-                "This mod works for most games that have DLSS; just follow the guide for the chosen game in the FSR Guide. (It is necessary to run the game in DX12 for Frame Gen to work.)\n\n" +
+                "This mod works for most games that have DLSS; just follow the guide for the chosen game in the Guide section. (It is necessary to run the game in DX12 for Frame Gen to work.)\n\n" +
                 "Optiscaler FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
-                "This version disables the mod's FG and uses the game's DLSS Frame Gen. It works only for games with this feature and is compatible with all GPUs. You can use the mod's upscalers (e.g., FSR 3.1.3) together with the game's DLSS FG."
+                "This version disables the mod's FG and uses the game's DLSS Frame Gen. It works only for games with this feature and is compatible with all GPUs. You can use the mod's upscalers (e.g., FSR 3.1.3) together with the game's DLSS FG.\n\n" +
+
+                "DLSS4 (Only RTX)\n" +
+                "In the mod menu, check the Render Presets Override and select Preset G for the DLSS quality you are using. For example: if you are using DLSS Quality in the game, select Preset G in the Quality Preset in the mod.\n" +
+                "To update the game's DLSS to DLSS4, select \"Others Mods\" (only some games have this option). The mod already includes DLSS4, and the update will update the game's native DLSS in case you want to use DLSS without the mod.\n" +
+                "To check if Preset J is selected, check \"Yes\" in the \"DLSS Overlay\" window that will appear during installation. When selecting the preset in the mod menu, Preset J may not appear right away in the DLSS Overlay. Restart the game and select Preset G again in the mod menu.\n"
             },
             {
                 "Optiscaler Method","Installation Method for Optiscaler\r\n" +
@@ -504,6 +509,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "ghosting."
             },
             {
+                "Final Fantasy VII Rebirth",
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended.\n" +
+                "5. If you want to update the DLSS, select \"Others Mods FFVIIRBT\", do this before installing the mod.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
+            },
+            {
                 "Final Fantasy XVI",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "1. If you want to update the DLSS, select \"Others Mods FFVXI\", do\nthis before installing the mod.\n" +
@@ -562,12 +576,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "GTA Trilogy",
-                "FSR 3.1.2/DLSS Custom GTA\r\n" +
-                "1 - Select FSR 3.1.2/DLSS Custom GTA and install.\r\n" +
-                "2 - Check the 'Enable Signature Over' box.\r\n" +
-                "3 - In the game, select DLSS and press the 'Insert' key to open the menu.\r\n" +
-                "4 - In the menu, select an upscaler, check 'Frame Gen' and 'Fix Hud', then select 2 in 'Fix Hud'.\r\n" +
-                "5 - The installation method is the same for the three GTA versions.\r\n\r\n"
+                "FSR 3.1.3/DLSS (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the Insert key to open the menu.\n" +
+                "4. In the menu, check Frame Gen, Fix Hud and FG Extended.\n" +
+                "5. The installation method is the same for the three GTA versions."
             },
             {
                 "GTA V",
@@ -588,9 +602,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - If you encounter any issues related to DX12, select 'YES'\r\n" +
                 "in the 'DX12' window that will appear during the installation.\r\n" +
                 "First, test the mod without confirming this window.\r\n" +
-                "4 - If you are experiencing any issues with crashes, select\r\n" +
-                "'Yes' in the 'Crash Issues' window that will appear during\r\n" +
-                "the mod installation.\r\n" +
 
                 "FSR 3.1\r\n" +
                 "1 - Select Uniscaler FSR 3.1\r\n" +
@@ -1465,9 +1476,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1. This mod uses the game's native FG.\n" +
                 "2. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
                 "3. Check Enable Signature Over box.\n" +
-                "4. In the game, select FSR3, Frame Gen and press the \"Insert\" key to open the menu.\n" +
-                "5. In the menu, select FSR 3.x to use FSR 3.1.3. If you have an RTX, select DLSS to use DLSS 3.8.10.\n" +
-                "6. To update DLSS, select \"Others Mods Tlou\"; do this before installing the mod."
+                "4. It’s possible that the game may crash when selecting FSR FG; just open it again.\n" +
+                "5. In the menu, select FSR 3.x to use FSR 3.1.3; if you have an RTX, select DLSS to use DLSS 4.\n" +
+                "6. To update DLSS, select \"Others Mods Tlou\"; do this before installing the mod.\n" +
+                "7. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it. (Game version 1.1.4.)"
             },
             {
                 "The Witcher 3",
@@ -1590,7 +1602,7 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Horizon Zero Dawn\\Remastered", "https://www.youtube.com/embed/agUramMMi4M?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
             { "Alone in the Dark", "https://www.youtube.com/embed/Td5ozzpJGTM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
             { "God Of War 4", "https://www.youtube.com/embed/qLWFPUNOnfI?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
-            { "The Last Of Us", "https://www.youtube.com/embed/FFV1OJK6Rqc?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
+            { "The Last Of Us", "https://www.youtube.com/embed/dZJk41NT1oo?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
             { "The First Berserker: Khazan", "https://www.youtube.com/embed/pECh53i_YDU?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"}
         };
         #endregion
@@ -1698,6 +1710,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Flintlock: The Siege of Dawn","Flint.png"},
                 {"Fort Solis","Fort.png"},
                 {"Forza Horizon 5","Forza.png"},
+                {"Final Fantasy VII Rebirth","FFVIIRBT2.png"},
                 {"Final Fantasy XVI","Ffxvi2.png"},
                 {"F1 2022","F1.png"},
                 {"F1 2023","F1_23.png"},

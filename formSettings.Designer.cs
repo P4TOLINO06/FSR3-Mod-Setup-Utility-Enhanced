@@ -582,7 +582,7 @@
             buttonDxgi.Name = "buttonDxgi";
             buttonDxgi.Size = new Size(286, 56);
             buttonDxgi.TabIndex = 18;
-            buttonDxgi.Text = "Dxgi..dll";
+            buttonDxgi.Text = "Dxgi.dll";
             buttonDxgi.UseVisualStyleBackColor = false;
             buttonDxgi.Click += buttonDxgi_Click_1;
             // 
@@ -620,7 +620,7 @@
             optionsNvngx.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             optionsNvngx.ForeColor = Color.Gainsboro;
             optionsNvngx.FormattingEnabled = true;
-            optionsNvngx.Items.AddRange(new object[] { "Default", "NVNGX Version 1", "Xess 1.3", "Dlss 3.7.0", "Dlss 3.7.0 FG", "Dlss 3.8.10", "Dlssg 3.8.1", "Dlssd 3.7.20" });
+            optionsNvngx.Items.AddRange(new object[] { "Default", "NVNGX Version 1", "Xess 1.3", "DLSS 3.8.10", "DLSSG 3.8.1", "DLSS 4", "DLSSG 4", "DLSSD 4" });
             optionsNvngx.Location = new Point(5, 0);
             optionsNvngx.Margin = new Padding(5, 6, 5, 6);
             optionsNvngx.Name = "optionsNvngx";

@@ -110,6 +110,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Elden Ring","Elden.png"},
                     {"Everspace 2","Es2.png"},
                     {"Evil West","Ew.png"},
+                    {"Final Fantasy VII Rebirth","FFVIIRBT.png"},
                     {"Final Fantasy XVI","Ffxvi.png"},
                     {"F1 2022","F1.png"},
                     {"F1 2023","F1_23.png"},
@@ -297,7 +298,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Horizon Zero Dawn\\Remastered", new List<string> {"Others Mods HZD"} },
                 { "Dragon Age: Veilguard", new List<string> { "FSR 3.1.3/DLSS DG Veil", "Others Mods DG Veil" } },
                 { "Dead Rising Remaster", new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" } },
-                { "GTA Trilogy", new List<string> { "FSR 3.1.3/DLSS Custom GTA" } },
+                { "GTA Trilogy", new List<string> { "Others GTA Trilogy" } },
                 { "Assassin's Creed Mirage", new List<string> { "Others Mods Mirage" } },
                 { "Alan Wake Remastered", new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
                 { "Lego Horizon Adventures", new List<string> { "Others Mods Lego HZD" } },
@@ -331,7 +332,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Assetto Corsa Evo", new List<string> { "Others Mods ACE"} },
                 { "Soulstice", new List<string> { "Others Mods STC"} },
                 { "Watch Dogs Legion", new List<string> { "Others Mods Legion"} },
-                { "Back 4 Blood", new List<string> {"Others Mods B4B"} }
+                { "Back 4 Blood", new List<string> {"Others Mods B4B"} },
+                { "Final Fantasy VII Rebirth", new List<string> { "Others Mods FF7RBT" } }
 
             };
             #endregion
