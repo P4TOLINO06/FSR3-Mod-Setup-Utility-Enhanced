@@ -108,6 +108,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Dying Light 2","Dl2.png"},
                     {"Dynasty Warriors: Origins","DWO.png"},
                     {"Elden Ring","Elden.png"},
+                    {"Empire of the Ants","Eota.png"},
                     {"Everspace 2","Es2.png"},
                     {"Evil West","Ew.png"},
                     {"Final Fantasy VII Rebirth","FFVIIRBT.png"},
@@ -203,6 +204,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"The Outer Worlds: Spacer's Choice Edition","Outer.png"},
                     {"The Thaumaturge","Thaumaturge.png"},
                     {"The Witcher 3","Witcher.png"},
+                    {"Thymesia","Thymesia.png"},
                     {"Uncharted Legacy of Thieves Collection","Uncharted.png"},
                     {"Unknown 9: Awakening","Unknown9.png"},
                     {"Until Dawn","Until.png"},
@@ -264,14 +266,14 @@ namespace FSR3ModSetupUtilityEnhanced
 
             var gamesModsConfig = new Dictionary<string, List<string>>
             {
-                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.3/DLSS FG Custom RDR2", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.3/DLSS FG RDR2", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
                 { "Alan Wake 2", new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1", "Others Mods AW2" } },
                 { "Assassin's Creed Valhalla", new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" } },
                 { "Baldur's Gate 3", new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" } },
                 { "Dragons Dogma 2", new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom" } },
                 { "The Callisto Protocol", new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "The Callisto Protocol FSR3", "FSR 3.1.3/DLSS Custom Callisto", "0.10.4", "Uniscaler V4" } },
-                { "GTA V", new List<string> { "Dinput8", "GTA V FSR3", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" } },
+                { "GTA V", new List<string> { "Dinput8", "GTA V FSR3/DLSS4", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" } },
                 { "Cyberpunk 2077", new List<string> { "Others Mods 2077", "RTX DLSS FG CB2077", "FSR 3.1.3/XESS FG 2077"} },
                 { "Ghost of Tsushima", new List<string> { "Ghost of Tsushima FG DLSS", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Lords of the Fallen", new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" } },
@@ -333,7 +335,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Soulstice", new List<string> { "Others Mods STC"} },
                 { "Watch Dogs Legion", new List<string> { "Others Mods Legion"} },
                 { "Back 4 Blood", new List<string> {"Others Mods B4B"} },
-                { "Final Fantasy VII Rebirth", new List<string> { "Others Mods FF7RBT" } }
+                { "Final Fantasy VII Rebirth", new List<string> { "Others Mods FF7RBT" } },
+                { "Lies of P", new List<string> { "Others Mods LOP" } }
 
             };
             #endregion

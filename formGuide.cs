@@ -41,6 +41,8 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Optiscaler FSR 3.1.3/DLSS (Only Optiscaler)",
+                "Look for the .exe file ending in \"Win64-Shipping.exe\", for example: Hellblade2-Win64-Shipping.exe. It is usually located in the path \"Game Name\\Binaries\\Win64\". Some games, such as PlayStation games, do not have this .exe, so install it in the folder of the standard .exe instead.\n\n" +
+
                 "Optiscaler FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "This mod works for most games that have DLSS; just follow the guide for the chosen game in the Guide section. (It is necessary to run the game in DX12 for Frame Gen to work.)\n\n" +
                 "Optiscaler FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
@@ -423,6 +425,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. For Steam users, add the following command in 'Launch Options' before starting the game: cmd /c start eldenring.exe & rem %command%\r\n" +
                 "3. In the game, press the 'Home' key to open the menu.\r\n" +
                 "4. In the menu, select 'Frame Gen' and an 'Upscaler'.\n\n" +
+                "5. DLSS 4, select DLSS in the menu and Default in the Render Preset. If you selected \"Yes\" in the \"DLSS Overlay\" window during installation, you will be able to see if Preset J is active. The overlay appears in the bottom-left corner of the screen.(Only RTX)\n\n" +
 
                 "Default Mod\r\n"+
                 "1. Select \"Disable AntiCheat\" in the Select Mod and choose \"Yes\" in the anticheat deactivation confirmation window. Select the folder where the game exe is located, otherwise, it will not be possible to deactivate the anticheat. (Steam Only)\r\n" +
@@ -437,6 +440,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. Select \"Unlock FPS Elden\" and install.\n" +
                 "4. If you launch the game via Steam and it doesn't open, run it directly through the .exe \"eldenring.exe.\"\n" +
                 "5. To reactivate Anti Cheat, go to the folder where the mod was installed and run \"toggle_anti_cheat.exe\" again."
+            },
+            {
+                "Empire of the Ants",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Everspace 2",
@@ -585,15 +597,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "GTA V",
-                "Single Player and Multiplayer\r\n" +
-                "1 - Select Dinput 8 and install. (only single player)\r\n" +
-                "2 - Open the game and disable MSAA and TXAA and select\r\n" +
-                "borderless window. If the mod doesn't work, disable FXAA.\r\n" +
-                "3 - Close the game and select GTA V FSR3 and install\r\n" +
-                "4 - Turn on Vsync, Nvidia (Vertical Sync), or AMD Adrenalin\r\n" +
-                "(Wait for Vertical Sync Update)\r\n" +
-                "5 - Press 'Home' to open the menu. If the mod is disabled,\r\n" +
-                "check 'Enable Frame Generation'."
+                "1. Select Dinput 8 and install. (only single player)\n" +
+                "2. Open the game and disable MSAA and TXAA and select borderless window. If the mod doesn't work, disable FXAA.\n" +
+                "3. Close the game and select GTA V FSR3/DLSS4 and install.\n" +
+                "4. Press \"Home\" to open the menu. If the mod is disabled, check \"Enable Frame Generation\".\n" +
+                "5. DLSS4, in the menu, select Default in the DLSS Preset and Auto Exposure in the Advanced Settings. If you enabled the DLSS Overlay during installation, check if Preset J is activated in the overlay. (The overlay is located in the bottom left corner of the screen). (Only RTX)\n" +
+                "6. All mods have DLSS4."
             },
             {
                 "Ghost of Tsushima",
@@ -691,10 +700,16 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Hellblade: Senua's Sacrifice",
-                "1 - Select a version of the mod of your choice (version 0.10.3\r\n" +
-                "is recommended).\r\n" +
-                "2 - Select Fake Nvidia Gpu and UE Compatibility (AMD only),\r\n" +
-                "select Fake Nvidia Gpu and Nvapi Results (GTX only)."
+                "1. Open the game and select DX12 in the menu.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen, Hud Fix, and FG Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n\n" +
+
+                "Uniscaler/0.x\n" +
+                "1. Select a version of the mod of your choice (version 0.10.3 is recommended).\n" +
+                "2. Select Fake Nvidia Gpu and UE Compatibility,select Fake Nvidia Gpu and Nvapi Results (AMD/GTX only)."
             },
             {
                 "Hellblade 2",
@@ -844,20 +859,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. In the game, select DLSS and Frame Gen.\r\n" +
                 "3. If you want to use FSR 3.1.2, press the \"Insert\" key and select FSR 3x."
             },
-
             {
                 "Lies of P",
-                "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
-                "2 - Activate Fake Nvidia Gpu and UE Compatibility Mode (AMD only).\r\n" +
-                "3 - To fix the flickering of the HUD, first select DLSS Quality, then select FSR Quality (without disabling DLSS), then select DLSS again.\r\n\r\n"+
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the \"Enable Signature Over\" box.\n" +
+                "3. In the game, select DLSS.\n" +
+                "4. Press the Insert key to open the menu.\n" +
+                "5. In the menu, check the Frame Gen and Hud Fix boxes.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it. (Only RTX)\n\n" +
 
-                "FSR 3.1.3/DLSS FG (Only Optiscaler)\r\n"+
-                "1 - Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install it.\r\n" +
-                "2 - Check the 'Enable Signature Over' box.\r\n" +
-                "3 - In the game, select DLSS.\r\n" +
-                "4 - Press the 'Insert' key to open the menu.\r\n" +
-                "5 - Select an Upscaler of your choice, check the 'Frame Gen' and 'Hud Fix' boxes.\r\n" +
-                "6 - If you cannot see DLSS in the game, go back to the Utility and check the 'Disable Signature Over' box."
+                "Uniscaler/0.x\n" +
+                "1. Select a version of the mod of your choice (version 0.10.4 is recommended).\n" +
+                "2. Activate Fake Nvidia Gpu and UE Compatibility Mode (AMD only).\n" +
+                "3. To fix the flickering of the Hud, first select DLSS Quality, then select FSR Quality (without disabling DLSS), then select DLSS again."
             },
             {
                 "Loopmancer",
@@ -1040,13 +1055,13 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Red Dead Redemption 2",
-                "FSR 3.1.2/DLSS FG Custom RDR2\r\n"+
+                "FSR 3.1.3/DLSS FG Custom RDR2\r\n"+
                 "1. Disable Vsync, Triple Buffering, select Borderless Windowed, and run in DirectX 12.\n" +
                 "2. Select FSR 3.1.2/DLSS FG Custom RDR2 and install.\n" +
                 "3. Check the Enable Signature Over box.\n" +
                 "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
-                "5. In the menu, check the Frame Gen and HUD Fix boxes.\n" +
-                "6. If you want to use FSR 3.1.2, select FSR 3x in \"Upscalers.\"\n" +
+                "5. In the menu, check the Frame Gen and HUD Fix boxes.(The game may crash. If the crashes continue, use the RDR2 Mix to use the FG.)\n" +
+                "6. If you want to use FSR 3.1.3, select FSR 3x in \"Upscalers.\"\n" +
                 "7. Close MSI Afterburner, or the game may crash.\n\n" +
 
                 "Red Dead Redemption 2 MIX\r\n" +
@@ -1078,10 +1093,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1. Select the game root folder (RESIDENT EVIL 4 BIOHAZARD RE4).\n" +
                 "2. Disable FSR in the game.\n" +
                 "3. Select FSR 3.1.3/DLSS RE4 Remake and install.\n" +
-                "4. In the game, close the \"ReFramework\" window and press the \"Insert\" key to open the menu.\n" +
-                "5. In the menu, select an upscaler. It is recommended to choose the upscaler before entering the campaign, as the cursor may get stuck, and you will need to navigate the menu options using the arrow keys.\n" +
-                "6. Do not select the game's native FSR, or the game may crash.\n" +
-                "7. The game HUD might experience slight flickering."
+                "4. In the game, select DLSS in the Reframework menu, close the window (press the Home key), and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, check the Render Presets Override box and select Preset J for the DLSS quality mode you are using. For example, if you are using DLSS in Quality mode, select Preset J in the Quality Preset menu. If you selected \"Yes\" in the \"DLSS Overlay\" window during installation, you will be able to see if Preset J is selected. The overlay appears in the bottom-left corner. (Only RTX)\n" +
+                "6. For non-RTX GPUs, select FSR or XESS in the menu.\n" +
+                "7. Do not select the game's native FSR, or the game may crash.\n" +
+                "8. The game HUD might experience slight flickering."
             },
             {
                 "Returnal",
@@ -1281,7 +1297,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. Check the Enable Signature Over box.\n" +
                 "3. When launching the game, select DLSS in the initial settings menu. If that’s not possible, select it in-game.\n" +
                 "4. In the game, press the \"Insert\" key to open the menu.\n" +
-                "5. In the menu, check the Frame Gen and Hud Fix boxes."
+                "5. In the menu, check the Frame Gen and Hud Fix boxes.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n" +
+                "7. You can also use the game's native FG along with the mod's upscalers. Simply select an upscaler in the mod and enable FG in the game. (Uncheck any box you have enabled).\n" +
+                "8. The game may crash when enabling the mod's FG. If crashes persist, use the game's FG."
             },
             {
                 "S.T.A.L.K.E.R. 2",
@@ -1488,13 +1507,22 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "3. Check the Enable Signature Over box.\n" +
                 "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
-                "5. In the menu, check the Frame Gen and FG Hud fix. If you want to use FSR 3.1.2, select FSR 3x in \"Upscales.\"\n" +
-                "6. For RTX users, this mod is not compatible with RT; if you want to use RT, use the Uniscaler V4 mod.\n\n" +
+                "5. In the menu, check the Frame Gen and FG Hud fix. If you want to use FSR 3.1.3, select FSR 3x in \"Upscales.\"\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n\n" +
 
                 "Uniscaler V4\n" +
                 "1. Select Uniscaler V4 and install.\n" +
                 "2. For AMD/GTX users: Check the boxes \"Fake Nvidia GPU\" and \"Enable Signature Over.\"\n" +
                 "3. In the game, select DLSS and Frame Gen boxes."
+            },
+            {
+                "Thymesia",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, check the Frame Gen, Hud Fix, and FG Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Uncharted Legacy Of Thieves",
@@ -1588,10 +1616,10 @@ namespace FSR3ModSetupUtilityEnhanced
         Dictionary<string, string> guideLinks = new Dictionary<string, string>
         {
             { "Optiscaler FSR 3.1.3/DLSS (Only Optiscaler)", "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" },
-            { "Resident Evil 4 Remake", "https://www.youtube.com/embed/B28ntG0ef4E?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Resident Evil 4 Remake", "https://www.youtube.com/embed/rEjeziIBVEk?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Sifu", "https://www.youtube.com/embed/-of2RI4jxSA?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Steelrising", "https://www.youtube.com/embed/YIbtYUukW_4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Elden Ring", "https://www.youtube.com/embed/RxF6WfjnVR4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Elden Ring", "https://www.youtube.com/embed/xG89IgV8HSg?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Mortal Shell", "https://www.youtube.com/embed/cOSdkFftHgY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Control", "https://www.youtube.com/embed/MgK53le4uFM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Fist Forged in Shadow Torch", "https://www.youtube.com/embed/JVoM3mu0ig4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
@@ -1704,6 +1732,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Dying Light 2","Dl22.png"},
                 {"Dynasty Warriors: Origins","DWO2.png"},
                 {"Elden Ring","Elden.png"},
+                {"Empire of the Ants","Eota2.png"},
                 {"Everspace 2","Es2.png"},
                 {"Evil West","Ew2.png"},
                 {"Fist Forged in Shadow Torch","Fist.png"},
@@ -1787,6 +1816,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"The First Berserker: Khazan","TFBK2.png"},
                 {"The Last Of Us","TlouP12.png"},
                 {"The Witcher 3","Tw32.png"},
+                {"Thymesia","Thymesia2.png"},
                 {"Uncharted Legacy Of Thieves","Uncharted2.png"},
                 {"Unknown 9: Awakening","Unknown92.png" },
                 {"Until Dawn","Until2.png" },

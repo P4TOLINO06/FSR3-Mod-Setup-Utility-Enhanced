@@ -94,7 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
-                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -444,12 +444,15 @@ namespace FSR3ModSetupUtilityEnhanced
         Dictionary<string, string[]> folderGtaV = new Dictionary<string, string[]>
         {
             { "Dinput8", new string[] { "mods\\FSR3_GTAV\\dinput8_gtav" } },
-            { "GTA V FSR3", new string[] { "mods\\FSR3_GTAV\\GtaV_B02_FSR3" } },
+            { "GTA V FSR3/DLSS4", new string[] { "mods\\FSR3_GTAV\\GtaV_B02_FSR3" } },
             { "GTA V Online", new string []{"mods\\FSR3_GTAV\\GtaV_B02_FSR3"} },
             { "GTA V FiveM", new string []{"mods\\FSR3_GTAV\\GtaV_B02_FSR3"} },
             { "GYA V Epic", new string[] { "mods\\FSR3_GTAV\\GtaV_B02_FSR3" } },
             { "GTA V Epic V2", new string[] { "mods\\FSR3_GTAV\\Gtav_Epic" } },
         };
+
+        string[] delGtavFsr3 = { "GTAVUpscaler.org.asi", "GTAVUpscaler.asi", "d3d12.dll", "dxgi.asi", "GTAVUpscaler.dll", "GTAVUpscaler.org.dll", "dinput8.dll" };
+
         #endregion 
 
         #region Clean RDR2 Files
@@ -654,7 +657,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Optiscaler Files
         List<string> delOptiscaler = new List<string>
         {
-            "nvngx.ini", "nvngx.dll", "libxess.dll","winmm.dll","nvapi64.dll","fakenvapi.ini","dlssg_to_fsr3_amd_is_better.dll"
+            "nvngx.ini", "nvngx.dll", "libxess.dll","winmm.dll","nvapi64.dll","fakenvapi.ini","dlssg_to_fsr3_amd_is_better.dll","version.dll"
         };
         #endregion
 
@@ -1318,7 +1321,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 await CopyModsAsync(dir, destDir);
             }
         }
-
         public async Task CopyFSR(Dictionary<string, string[]> DictionaryFSR)
         {
             string path_dest = selectFolder;
@@ -1348,31 +1350,37 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
         }
-
         public async Task CopyFolder(string pathFolder)
         {
-            Task.Run(async () =>
+            foreach (string files_fsr in Directory.GetFiles(pathFolder))
             {
-                foreach (string files_fsr in Directory.GetFiles(pathFolder))
-                {
-                    string fileName = Path.GetFileName(files_fsr);
-                    File.Copy(files_fsr, selectFolder + "\\" + fileName, true);
-                }
-                foreach (var subPath in Directory.GetDirectories(pathFolder, "*", SearchOption.AllDirectories))
-                {
-                    string relativePath = subPath.Substring(pathFolder.Length + 1);
-                    string fullPath = Path.Combine(selectFolder, relativePath);
+                string fileName = Path.GetFileName(files_fsr);
+                string destFile = Path.Combine(selectFolder, fileName);
 
-                    Directory.CreateDirectory(fullPath);
+                using FileStream sourceStream = File.Open(files_fsr, FileMode.Open, FileAccess.Read, FileShare.Read);
+                using FileStream destinationStream = File.Create(destFile);
 
-                    foreach (string filePath in Directory.GetFiles(subPath))
-                    {
-                        string relativeFilePath = filePath.Substring(subPath.Length + 1);
-                        string destFilePath = Path.Combine(fullPath, relativeFilePath);
-                        File.Copy(filePath, destFilePath, true);
-                    }
+                await sourceStream.CopyToAsync(destinationStream);
+            }
+
+            foreach (var subPath in Directory.GetDirectories(pathFolder, "*", SearchOption.AllDirectories))
+            {
+                string relativePath = subPath.Substring(pathFolder.Length + 1);
+                string fullPath = Path.Combine(selectFolder, relativePath);
+
+                Directory.CreateDirectory(fullPath); // Não tem versão async, mas é rápido
+
+                foreach (string filePath in Directory.GetFiles(subPath))
+                {
+                    string relativeFilePath = filePath.Substring(subPath.Length + 1);
+                    string destFilePath = Path.Combine(fullPath, relativeFilePath);
+
+                    using FileStream sourceStream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                    using FileStream destinationStream = File.Create(destFilePath);
+
+                    await sourceStream.CopyToAsync(destinationStream);
                 }
-            });
+            }
         }
 
         #region CopyFolder2
@@ -1631,11 +1639,12 @@ namespace FSR3ModSetupUtilityEnhanced
             CopyFolder("mods\\Optiscaler FSR 3.1 Custom");
         }
 
-        string[] modsToInstallOptiscalerFsrDlss = { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSSG FG (Only Optiscaler)", "FSR 3.1.3/DLSS Gow4" };
+        string[] modsToInstallOptiscalerFsrDlss = { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSSG FG (Only Optiscaler)", "FSR 3.1.3/DLSS Gow4"};
         private async Task optiscalerFsrDlss()
         {
             var progressBar = HandleProgressBar(false);
 
+            #region Paths
             string gpuName = await GetActiveGpu();
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
@@ -1655,6 +1664,8 @@ namespace FSR3ModSetupUtilityEnhanced
             string[] gamesWithAntiCheat = { "Back 4 Blood" };
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
 
+            #endregion
+
             Debug.WriteLine(gpuName);
 
             try
@@ -1664,7 +1675,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")))
                 {
-                    await CopyFolder(pathOptiscaler);
+                    await Task.Run(() => CopyFolder(pathOptiscaler));
+                    
                     progressBar.Value++;
                     Application.DoEvents();
 
@@ -1741,7 +1753,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     HandlePrompt(
                     "DLSS Overlay",
-                    "Do you want to enable the DLSS Overlay? (It is useful for verifying if the preset selected for DLSS 4 in Optiscaler is correct (Preset J), but it is not required. It cannot be disabled in the game for now; to remove it, uninstall the mod and reinstall it.)",
+                    "Do you want to enable the DLSS Overlay? (It is useful for verifying if the preset selected for DLSS 4 in Optiscaler is correct (Preset J), but it is not required. It cannot be disabled in the game for now; to remove it, uninstall the mod and reinstall it. Check the FSR 3.1.3/DLSS Guide (Only Optiscaler) in the FSR Guide to learn how to use DLSS 4)",
                     _ =>
                     {
                         runReg(enableDlssOverlay);
@@ -1847,6 +1859,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods EW", defaultDlssPath},
                 { "Others Mods TFBK", defaultDlssPath},
                 { "Others GTA Trilogy", defaultDlssPath},
+                { "Others Mods LOP", Path.GetFullPath(Path.Combine(selectFolder, "\\..\\..\\..", @"Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods FF7RBT", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\DLSSSubset\\Binaries\\ThirdParty\\Win6"))},
                 { "Others Mods B4B", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
                 { "Others Mods AITD", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
@@ -1994,9 +2007,27 @@ namespace FSR3ModSetupUtilityEnhanced
 
             string gpuName = await GetActiveGpu();
 
-            if (selectMod == "FSR 3.1.3/DLSS FG (Only Optiscaler)" && gpuName.Contains("amd"))
+            if (selectMod == "FSR 3.1.3/DLSS FG RDR2")
             {
-                CopyFolder(iniOptiscalerRdr2);
+                await optiscalerFsrDlss(); 
+
+                if (gpuName.Contains("amd"))
+                {
+                    await CopyFolder(iniOptiscalerRdr2);
+                }
+
+                if (gpuName.Contains("rtx"))
+                {
+                    if (Path.Exists(Path.Combine(selectFolder, "nvngx.dll")))
+                    {
+                        File.Delete(Path.Combine(selectFolder, "nvngx.dll"));
+
+                        if (Path.Exists(Path.Combine(selectFolder, "dxgi.dll")))
+                        {
+                            File.Move(Path.Combine(selectFolder, "dxgi.dll"), Path.Combine(selectFolder, "version.dll"), true);
+                        }
+                    }
+                }
             }
 
             if (selectMod == "RDR2 Mix")
@@ -2355,6 +2386,9 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             string updateDlssElden = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
             string updateFsrElden = "mods\\Temp\\FSR_Update";
+            string gpuName = await GetActiveGpu();
+            string enableDlssOverlay = "mods\\Addons_mods\\DLSS Preset Overlay\\Enable Overlay.reg";
+            string[] otModsElden = { "Unlock FPS Elden", "Disable Anti Cheat" };
 
             if (folderEldenRing.ContainsKey(selectMod))
             {
@@ -2368,14 +2402,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 CopyFolder("mods\\Elden_Ring_FSR3\\Unlock_Fps");
             }
 
-            if (selectMod == "FSR 3.1.3/DLSS FG Custom Elden")
+            // Enable DLSS Overlay
+            if (gpuName.Contains("rtx") && !otModsElden.Contains(selectMod))
             {
-                if (Path.Exists(Path.Combine(selectFolder, "ERSS2\\bin")))
+                HandlePrompt(
+                "DLSS Overlay",
+                "Do you want to enable the DLSS Overlay? (It is useful for verifying if the preset selected for DLSS 4 in Optiscaler is correct (Preset J), but it is not required. It cannot be disabled in the game for now; to remove it, uninstall the mod and reinstall it. Check the FSR 3.1.3/DLSS Guide (Only Optiscaler) in the FSR Guide to learn how to use DLSS 4)",
+                _ =>
                 {
-                    CopyFolder3(updateFsrElden, Path.Combine(selectFolder, "ERSS2\\bin"));
-                    File.Copy(updateDlssElden, Path.Combine(selectFolder, "ERSS2\\bin\\nvngx_dlss.dll"), true);
-                }
-
+                    runReg(enableDlssOverlay);
+                    File.Copy(enableDlssOverlay, Path.Combine(selectFolder, "Enable Overlay.reg"), true);
+                });
             }
         }
 
@@ -2475,13 +2512,28 @@ namespace FSR3ModSetupUtilityEnhanced
             }
         }
 
-        public void re4RemakeFsr3()
+        public async void re4RemakeFsr3()
         {
             string fsrDlssRe4 = "mods\\FSR3_RE4Remake\\FSR_DLSS";
+            string gpuName = await GetActiveGpu();
+            string enableDlssOverlay = "mods\\Addons_mods\\DLSS Preset Overlay\\Enable Overlay.reg";
 
             if (selectMod == "FSR 3.1.3/DLSS RE4")
             {
                 CopyFolder(fsrDlssRe4);
+            }
+
+            // Enable DLSS Overlay
+            if (gpuName.Contains("rtx"))
+            {
+                HandlePrompt(
+                "DLSS Overlay",
+                "Do you want to enable the DLSS Overlay? (It is useful for verifying if the preset selected for DLSS 4 in Optiscaler is correct (Preset J), but it is not required. It cannot be disabled in the game for now; to remove it, uninstall the mod and reinstall it. Check the FSR 3.1.3/DLSS Guide (Only Optiscaler) in the FSR Guide to learn how to use DLSS 4)",
+                _ =>
+                {
+                    runReg(enableDlssOverlay);
+                    File.Copy(enableDlssOverlay, Path.Combine(selectFolder, "Enable Overlay.reg"), true);
+                });
             }
         }
 
@@ -3516,7 +3568,10 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task gtavFsr3()
         {
-            if (selectMod != "GTA V FSR3")
+            string gpuName = await GetActiveGpu();
+            string enableDlssOverlay = "mods\\Addons_mods\\DLSS Preset Overlay\\Enable Overlay.reg";
+
+            if (selectMod != "GTA V FSR3/DLSS4")
             {
                 CopyFSR(folderGtaV);
             }
@@ -3524,12 +3579,12 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 CopyFSR(folderGtaV);
             }
-            else if (selectMod == "GTA V FSR3" && !File.Exists(selectFolder + "\\dinput8.dll"))
+            else if (selectMod == "GTA V FSR3/DLSS4" && !File.Exists(selectFolder + "\\dinput8.dll"))
             {
                 MessageBox.Show("Install \"Dinput8\" before installing the main mod", "Dinput8", MessageBoxButtons.OK);
                 return;
             }
-            else if (selectMod == "GTA V FSR3" && File.Exists(selectFolder + "\\Dinput8.dll"))
+            else if (selectMod == "GTA V FSR3/DLSS4" && File.Exists(selectFolder + "\\Dinput8.dll"))
             {
                 CopyFSR(folderGtaV);
             }
@@ -3559,6 +3614,18 @@ namespace FSR3ModSetupUtilityEnhanced
                     File.Copy(selectFolder + "\\GTAVUpscaler.dll", selectFolder + "\\mods\\GTAVUpscaler.dll", true);
                     File.Copy(selectFolder + "\\GTAVUpscaler.org.dll", selectFolder + "\\mods\\GTAVUpscaler.org.dll", true);
                 }
+            }
+
+            if (!Path.Exists(Path.Combine(selectFolder, "Enable Overlay.reg")))
+            {
+                HandlePrompt(
+                "DLSS Overlay",
+                "Do you want to enable the DLSS Overlay? (It is useful for verifying if the preset selected for DLSS 4 in Optiscaler is correct (Preset J), but it is not required. It cannot be disabled in the game for now; to remove it, uninstall the mod and reinstall it.)",
+                _ =>
+                {
+                    runReg(enableDlssOverlay);
+                    File.Copy(enableDlssOverlay, Path.Combine(selectFolder, "Enable Overlay.reg"));
+                });
             }
         }
         public async Task cyberFsr3()
@@ -4250,7 +4317,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (folderGtaV.ContainsKey(selectMod))
                 {
                     gtavFsr3();
-                    if (selectMod == "GTA V FSR3" && !File.Exists(selectFolder + "\\dinput8.dll"))
+                    if (selectMod == "GTA V FSR3/DLSS4" && !File.Exists(selectFolder + "\\dinput8.dll"))
                     {
                         return;
                     }
@@ -4893,9 +4960,23 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Resident Evil 4 Remake")
                 {
                     #region Cleanup Mods Resident Evil 4 Remake
+                    string disableDlssOverlay = "mods\\Addons_mods\\DLSS Preset Overlay\\Disable Overlay.reg";
+                    
                     if (CleanupOthersMods("FSR 3.1.3/DLSS RE4", "dinput8.dll", selectFolder))
                     {
                         Directory.Delete(Path.Combine(selectFolder, "reframework"), true);
+                    }
+
+                    if (Path.Exists(Path.Combine(selectFolder, "Enable Overlay.reg")))
+                    {
+                        HandlePrompt(
+                        "DLSS Ovelay",
+                        "Do you want to disable the DLSS Overlay?",
+                        _ =>
+                        {
+                            runReg(disableDlssOverlay);
+                            File.Delete(Path.Combine(selectFolder, "Enable Overlay.reg"));
+                        });
                     }
                     #endregion
                 }
@@ -5011,6 +5092,10 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     CleanupMod3(del_rdr2_custom_files, "RDR2 Mix");
                     CleanupMod3(del_rdr2_custom_files, "RDR2 FG Custom");
+                    if(CleanupOptiscalerFsrDlss(delOptiscaler, "FSR 3.1.3/DLSS FG RDR2"))
+                    {
+                       MessageBox.Show("Mods removed successfully", "Sucess");
+                    }
                     #endregion
                 }
 
@@ -5378,6 +5463,41 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
+                if (gameSelected == "GTA V")
+                {
+                    #region Clean GTA V Mods
+
+                    string pathDxgi = Path.Combine(selectFolder, "dxgi.dll");
+                    string disableDlssOverlay = "mods\\Addons_mods\\DLSS Preset Overlay\\Disable Overlay.reg";
+                    try
+                    {
+                        CleanupOthersMods3(selectMod, delGtavFsr3, selectFolder, true, "mods\\UpscalerBasePlugin");
+
+                        if (Path.Exists(Path.Combine(selectFolder, "mods\\Shaders")))
+                        {
+                            Directory.Delete(Path.Combine(selectFolder, "mods\\Shaders"), true);
+                        }
+
+                        if (Path.Exists(Path.Combine(selectFolder, "Enable Overlay.reg")))
+                        {
+                            HandlePrompt(
+                            "DLSS Overlay",
+                            "Do you want to disable the DLSS Overlay?",
+                            _ =>
+                            {
+                                runReg(disableDlssOverlay);
+                                File.Delete(Path.Combine(selectFolder, "Enable Overlay.reg"));
+                            });
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error clearing GTA V mods files, please try again or do it manually", "Error");
+                    }
+
+                    #endregion
+                }
+
                 if (gameSelected == "Indiana Jones and the Great Circle")
                 {
                     #region Cleanup Others Mods Indiana Jones and the Great Circle
@@ -5557,6 +5677,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 else if (folderEldenRing.ContainsKey(selectMod) || selectMod == "Unlock FPS Elden")
                 {
                     #region Del Others Mods Elden Ring
+                    string disableDlssOverlay = "mods\\Addons_mods\\DLSS Preset Overlay\\Disable Overlay.reg";
                     string[] del_elden_custom =
                     {
                         "dxgi.dll","ERSS-FG.dll"
@@ -5594,6 +5715,17 @@ namespace FSR3ModSetupUtilityEnhanced
 
                         if (Directory.Exists(Path.Combine(selectFolder, "reshade-shaders"))) Directory.Delete(Path.Combine(selectFolder, "reshade-shaders"), true);
 
+                    }
+                    if (Path.Exists(Path.Combine(selectFolder, "Enable Overlay.reg")))
+                    {
+                        HandlePrompt(
+                        "DLSS Ovelay",
+                        "Do you want to disable the DLSS Overlay?",
+                        _ =>
+                        {
+                            runReg(disableDlssOverlay);
+                            File.Delete(Path.Combine(selectFolder, "Enable Overlay.reg"));
+                        });
                     }
                     #endregion
                 }
