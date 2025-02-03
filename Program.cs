@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices;
-
 namespace FSR3ModSetupUtilityEnhanced
 
 
@@ -10,16 +8,11 @@ namespace FSR3ModSetupUtilityEnhanced
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr SetProcessDpiAwarenessContext(int dpiContext);
-
-        const int DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = -4;
         static void Main()
         {
-            SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             ApplicationConfiguration.Initialize();
             Application.Run(new mainForm());
         }

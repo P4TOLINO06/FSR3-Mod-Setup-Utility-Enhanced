@@ -1210,8 +1210,11 @@
             textBox1.Location = new Point(242, 6);
             textBox1.Margin = new Padding(5, 6, 5, 6);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(269, 35);
             textBox1.TabIndex = 1;
+            textBox1.TabStop = false;
+            textBox1.Click += textBox1_Click;
             // 
             // button1
             // 

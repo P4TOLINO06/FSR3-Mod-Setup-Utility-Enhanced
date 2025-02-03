@@ -203,11 +203,11 @@ namespace FSR3ModSetupUtilityEnhanced
             var imagePaths = new Dictionary<string, List<string>>()
             {
                 { "morning", new List<string> {
+                    "Images\\Wallpaper\\rdr2_morning.png",
+                    "Images\\Wallpaper\\rdr2_morning2.png",
                     "Images\\Wallpaper\\rdr2_morning3.png",
-                    "Images\\Wallpaper\\rdr2_morning3.png",
-                    "Images\\Wallpaper\\rdr2_morning3.png",
-                    "Images\\Wallpaper\\rdr2_morning3.png",
-                    "Images\\Wallpaper\\rdr2_morning3.png"
+                    "Images\\Wallpaper\\rdr2_morning4.png",
+                    "Images\\Wallpaper\\rdr2_morning5.png"
                 }},
                 { "afternoon", new List<string> {
                     "Images\\Wallpaper\\rdr2_afternoon.png",
