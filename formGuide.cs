@@ -51,7 +51,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "DLSS4 (Only RTX)\n" +
                 "In the mod menu, check the Render Presets Override and select Preset G for the DLSS quality you are using. For example: if you are using DLSS Quality in the game, select Preset G in the Quality Preset in the mod.\n" +
                 "To update the game's DLSS to DLSS4, select \"Others Mods\" (only some games have this option). The mod already includes DLSS4, and the update will update the game's native DLSS in case you want to use DLSS without the mod.\n" +
-                "To check if Preset J is selected, check \"Yes\" in the \"DLSS Overlay\" window that will appear during installation. When selecting the preset in the mod menu, Preset J may not appear right away in the DLSS Overlay. Restart the game and select Preset G again in the mod menu.\n"
+                "To check if Preset K is selected (In some games, the preset may appear as J.), check \"Yes\" in the \"DLSS Overlay\" window that will appear during installation. When selecting the preset in the mod menu, Preset K may not appear right away in the DLSS Overlay. Restart the game and select Preset G again in the mod menu.\n"
             },
             {
                 "Optiscaler Method","Installation Method for Optiscaler\r\n" +
@@ -425,7 +425,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. For Steam users, select Disable Anti-Cheat and install. Go to the installation folder and run \"start_protected_game.exe\". Open the game through eldenring.exe, not through Steam.\n" +
                 "3. In the game, press the \"Home\" key to open the menu.\n" +
                 "4. In the menu, select Frame Gen and an Upscaler.\n" +
-                "5. DLSS 4: Select DLSS in the menu and Default in the Render Preset. If you selected \"Yes\" in the \"DLSS Overlay\" window during installation, you will be able to see if Preset J is active. The overlay appears in the bottom-left corner of the screen. (Only RTX)\n\n" +
+                "5. DLSS 4: Select DLSS in the menu and Default in the Render Preset. If you selected \"Yes\" in the \"DLSS Overlay\" window during installation, you will be able to see if Preset K is active. The overlay appears in the bottom-left corner of the screen. (Only RTX)\n\n" +
 
                 "Others Mods\n" +
                 "1. Select \"Disable Anti-Cheat\" in the Select Mod and choose \"Yes\" in the anticheat deactivation confirmation window. Select the folder where the game exe is located; otherwise, it will not be possible to deactivate the anticheat. (Steam Only)\n" +
@@ -594,7 +594,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. Open the game and disable MSAA and TXAA and select borderless window. If the mod doesn't work, disable FXAA.\n" +
                 "3. Close the game and select GTA V FSR3/DLSS4 and install.\n" +
                 "4. Press \"Home\" to open the menu. If the mod is disabled, check \"Enable Frame Generation\".\n" +
-                "5. DLSS4, in the menu, select Default in the DLSS Preset and Auto Exposure in the Advanced Settings. If you enabled the DLSS Overlay during installation, check if Preset J is activated in the overlay. (The overlay is located in the bottom left corner of the screen). (Only RTX)\n" +
+                "5. DLSS4, in the menu, select Default in the DLSS Preset and Auto Exposure in the Advanced Settings. If you enabled the DLSS Overlay during installation, check if Preset K is activated in the overlay. (The overlay is located in the bottom left corner of the screen). (Only RTX)\n" +
                 "6. All mods have DLSS4."
             },
             {
@@ -982,6 +982,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - For AMD/GTX users: Check the boxes for Fake Nvidia GPU, Ue compatibility Mode, Nvapi Results and Disable Signature Over.\r\n"
             },
             {
+                "Orcs Must Die! Deathtrap",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
+            },
+            {
                 "Outpost Infinity Siege",
                 "1 - Select a mod of your preference; (0.10.3 is recommended)\r\n" +
                 "2 - Check the box Fake Nvidia GPU (AMD/GTX).\r\n" +
@@ -1094,7 +1103,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. Disable FSR in the game.\n" +
                 "3. Select FSR 3.1.3/DLSS RE4 Remake and install.\n" +
                 "4. In the game, select DLSS in the Reframework menu, close the window (press the Home key), and press the \"Insert\" key to open the menu.\n" +
-                "5. In the menu, check the Render Presets Override box and select Preset J for the DLSS quality mode you are using. For example, if you are using DLSS in Quality mode, select Preset J in the Quality Preset menu. If you selected \"Yes\" in the \"DLSS Overlay\" window during installation, you will be able to see if Preset J is selected. The overlay appears in the bottom-left corner. (Only RTX)\n" +
+                "5. In the menu, check the Render Presets Override box and select Preset K for the DLSS quality mode you are using. For example, if you are using DLSS in Quality mode, select Preset K in the Quality Preset menu. If you selected \"Yes\" in the \"DLSS Overlay\" window during installation, you will be able to see if Preset K is selected. The overlay appears in the bottom-left corner. (Only RTX)\n" +
                 "6. For non-RTX GPUs, select FSR or XESS in the menu.\n" +
                 "7. Do not select the game's native FSR, or the game may crash.\n" +
                 "8. The game HUD might experience slight flickering."
@@ -1507,6 +1516,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "7. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it. (Game version 1.1.4.)"
             },
             {
+                "The Talos Principle 2",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
+            },
+            {
                 "The Witcher 3",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "1. Install the mod in the \"x64_dx12\" folder.\n" +
@@ -1632,7 +1650,7 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Mortal Shell", "https://www.youtube.com/embed/cOSdkFftHgY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Control", "https://www.youtube.com/embed/MgK53le4uFM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Fist Forged in Shadow Torch", "https://www.youtube.com/embed/JVoM3mu0ig4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Hellblade 2", "https://www.youtube.com/embed/BcW_E7g-9Hg?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Hellblade 2", "https://www.youtube.com/embed/g70VXsJH3AY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Scorn", "https://www.youtube.com/embed/z7-wozRQIms?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Saints Row","https://www.youtube.com/embed/RVbMT7gfD1Q?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Way Of The Hunter", "https://www.youtube.com/embed/ocAwuQbwttE?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
@@ -1789,6 +1807,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Mortal Shell","MShell2.png"},
                 {"Ninja Gaiden 2 Black","NinjaG2.png"},
                 {"Nobody Wants To Die","Nobody.png"},
+                {"Orcs Must Die! Deathtrap","Omdd2.png"},
                 {"Outpost Infinity Siege","Outpost.png"},
                 {"Pacific Drive","Pacific.png"},
                 {"Palworld","Palworld.png"},
@@ -1826,6 +1845,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"The Casting Of Frank Stone","FrankStone2.png" },
                 {"The First Berserker: Khazan","TFBK2.png"},
                 {"The Last Of Us","TlouP12.png"},
+                {"The Talos Principle 2","Ttp2.png"},
                 {"The Witcher 3","Tw32.png"},
                 {"Thymesia","Thymesia2.png"},
                 {"Uncharted Legacy Of Thieves","Uncharted2.png"},

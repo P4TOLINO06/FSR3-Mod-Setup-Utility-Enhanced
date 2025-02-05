@@ -93,7 +93,7 @@ namespace FSR3ModSetupUtilityEnhanced
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
-                "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered", "Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
+                "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
                 "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
@@ -1778,16 +1778,19 @@ namespace FSR3ModSetupUtilityEnhanced
                     Application.DoEvents();
                 }
                 // Nvapi for non-RTX users
-                else if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) && gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn't work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                else if (gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)))            
                 {
-                    CopyFolder(nvapiAmd);
+                    if (selectMod == "FSR 3.1.3/DLSSG FG (Only Optiscaler)" || gamesToInstallNvapiAmd.Contains(gameSelected) && MessageBox.Show("Do you want to install Nvapi? Only select \"Yes\" if the mod doesn't work with the default files.", "Nvapi", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        CopyFolder(nvapiAmd);
 
-                    nvapiFile = selectMod == "FSR 3.1.3/DLSSG FG (Only Optiscaler)" ? nvapiAntiLagDlssg : nvapiIni;
+                        nvapiFile = selectMod == "FSR 3.1.3/DLSSG FG (Only Optiscaler)" ? nvapiAntiLagDlssg : nvapiIni;
 
-                    File.Copy(nvapiFile, destPathNvapi, true);
+                        File.Copy(nvapiFile, destPathNvapi, true);
 
-                    progressBar.Value++;
-                    Application.DoEvents();
+                        progressBar.Value++;
+                        Application.DoEvents();
+                    }
                 }
 
                 if (gamesWithAntiCheat.Contains(gameSelected))
