@@ -138,6 +138,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Indiana Jones and the Great Circle","Indy.png"},
                     {"Judgment","Jud.png"},
                     {"Jusant","Jusant.png"},
+                    {"Kingdom Come: Deliverance II","KCD2.png"},
                     {"Kena: Bridge of Spirits","KENA.png"},
                     {"Layers of Fear","Layers.png"},
                     {"Lego Horizon Adventures","LegoHzd.png"},
@@ -265,7 +266,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             #region Game List
 
-            var modsDefaultList = new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSSG FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
+            var modsDefaultList = new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSSG FG (Only Optiscaler)", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
 
             var gamesModsConfig = new Dictionary<string, List<string>>
@@ -340,7 +341,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Watch Dogs Legion", new List<string> { "Others Mods Legion"} },
                 { "Back 4 Blood", new List<string> {"Others Mods B4B"} },
                 { "Final Fantasy VII Rebirth", new List<string> { "Others Mods FF7RBT" } },
-                { "Lies of P", new List<string> { "Others Mods LOP" } }
+                { "Lies of P", new List<string> { "Others Mods LOP" } },
+                { "Kingdom Come: Deliverance II", new List<string> {"Others Mods KCD2"} },
+                { "Atomic Heart", new List<string> { "Others Mods ATH"} }
 
             };
             #endregion

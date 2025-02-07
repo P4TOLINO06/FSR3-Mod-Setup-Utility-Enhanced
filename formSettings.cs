@@ -94,7 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
-                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1373,7 +1373,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 string relativePath = subPath.Substring(pathFolder.Length + 1);
                 string fullPath = Path.Combine(selectFolder, relativePath);
 
-                Directory.CreateDirectory(fullPath); // Não tem versão async, mas é rápido
+                Directory.CreateDirectory(fullPath); 
 
                 foreach (string filePath in Directory.GetFiles(subPath))
                 {
@@ -1711,6 +1711,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 progressBar.Maximum = 3;
                 progressBar.Value = 0;
 
+                // Rename the dxgi.dll file from ReShade to d3d12.dll
+                if (Path.Exists(Path.Combine(selectFolder, "dxgi.dll")) && Path.Exists(Path.Combine(selectFolder, "reshade-shaders")))
+                {
+                    File.Move(Path.Combine(selectFolder, "dxgi.dll"), Path.Combine(selectFolder, "d3d12.dll"));
+                }
+
+                // Rename the DLSS file (nvngx_dlss.dll) to nvngx.dll
                 if (File.Exists(Path.Combine(selectFolder, "nvngx_dlss.dll")))
                 {
                     await Task.Run(() => CopyFolder(pathOptiscaler));
@@ -1899,6 +1906,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods EW", defaultDlssPath},
                 { "Others Mods TFBK", defaultDlssPath},
                 { "Others GTA Trilogy", defaultDlssPath},
+                { "Others Mods ATH", selectFolder},
+                { "Others Mods KCD2", Path.GetFullPath(Path.Combine(selectFolder, "..", "Win64Shared"))},
                 { "Others Mods LOP", Path.GetFullPath(Path.Combine(selectFolder, "\\..\\..\\..", @"Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods FF7RBT", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\DLSSSubset\\Binaries\\ThirdParty\\Win6"))},
                 { "Others Mods B4B", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},

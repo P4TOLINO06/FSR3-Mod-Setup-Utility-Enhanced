@@ -50,8 +50,15 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 "DLSS4 (Only RTX)\n" +
                 "In the mod menu, check the Render Presets Override and select Preset G for the DLSS quality you are using. For example: if you are using DLSS Quality in the game, select Preset G in the Quality Preset in the mod.\n" +
-                "To update the game's DLSS to DLSS4, select \"Others Mods\" (only some games have this option). The mod already includes DLSS4, and the update will update the game's native DLSS in case you want to use DLSS without the mod.\n" +
-                "To check if Preset K is selected (In some games, the preset may appear as J.), check \"Yes\" in the \"DLSS Overlay\" window that will appear during installation. When selecting the preset in the mod menu, Preset K may not appear right away in the DLSS Overlay. Restart the game and select Preset G again in the mod menu.\n"
+                "To update the game's DLSS to DLSS4, select \"Others Mods\" (only some games have this option).\n" +
+                "To check if Preset K is selected (Some games, the Preset will be J.), check \"Yes\" in the \"DLSS Overlay\" box that will appear during installation. When selecting the preset in the mod menu, Preset K may not appear right away in the DLSS Overlay. Restart the game and select Preset G again in the mod menu.\n" +
+                "Update DLSS before installing the mod.\n" +
+                "Select \"Others Mods\" (only some games have this option).\n" +
+                "If the game does not have this option, go to the game's folder and check if the file nvngx_dlss.dll is present.\n" +
+                "Check the \"Nvngx.dll\" box, select DLSS 4 and install it along with the mod.\n" +
+                "If the file is not present, follow the same procedure and copy the new nvngx_dlss.dll file to the DLSS folder.\n" +
+                "The DLSS folder is usually something like: Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64 (Some games have different paths; look for the file nvngx_dlss.dll.)\n" +
+                "(Perform these steps only if DLSS 4 (54.2.1 version that should appear in the mod.) is not available in the mod, only RTX)."
             },
             {
                 "Optiscaler Method","Installation Method for Optiscaler\r\n" +
@@ -181,8 +188,22 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Atomic Heart",
-                "1 - Select a mod of your choice (0.10.3 is recommended).\r\n" +
-                "2 - In the game, select FSR."
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n\n" +
+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation. (RTX users, only check \"yes\" if it's not possible to activate the game's FG).\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
+
+                "Uniscaler/0.x\n" +
+                "1. Select a mod of your choice (0.10.3 is recommended).\n" +
+                "2. In the game, select FSR."
             },
             {
                 "Back 4 Blood",
@@ -824,6 +845,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1 - Select a mod of your preference (0.10.3 is recommended)\r\n" +
                 "2 - Check the box for Fake Nvidia GPU. If the mod doesn’t work, also check Nvapi Results (only for AMD and GTX) and select Default for Nvngx.dll\r\n" +
                 "3 - In-game, select DLSS and check the Frame Generation box.\r\n"
+            },
+            {
+                "Kingdom Come: Deliverance II",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Install in the Bin\\Win64MasterMasterSteamPGO folder.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Kena: Bridge of Spirits",
@@ -1734,7 +1765,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"A Quiet Place: The Road Ahead","QuietPlace2.png"},
                 {"Assassin's Creed Valhalla","AcVal.png"},
                 {"Assetto Corsa Evo","ACE2.png"},
-                {"Atomic Heart","Atomic.png"},
+                {"Atomic Heart","Atomic2.png"},
                 {"Back 4 Blood","B4B2.png"},
                 {"Baldur's Gate 3","Baldurs.png"},
                 {"Black Myth: Wukong","wukong.png" },
@@ -1790,6 +1821,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Indiana Jones and the Great Circle","Indy2.png"},
                 {"Judgment","Jud.png"},
                 {"Jusant","Jusant.png"},
+                {"Kingdom Come: Deliverance II","KCD22.png"},
                 {"Kena: Bridge of Spirits","KENA.png"},
                 {"Layers of Fear","Layers.png"},
                 {"Lego Horizon Adventures","LegoHzd2.png"},
