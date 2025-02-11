@@ -94,7 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
-                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -535,7 +535,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Folder Palworld
         Dictionary<string, string[]> folderPw = new Dictionary<string, string[]>
         {
-            { "Palworld FG Build03", new string[] {"mods\\FSR3_PW"}},
+            { "Palworld FG Build03", new string[] {"mods\\FSR3_PW\\FG"}},
         };
         #endregion
 
@@ -1698,8 +1698,8 @@ namespace FSR3ModSetupUtilityEnhanced
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
-            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" };
-            string[] gamesWithAntiCheat = { "Back 4 Blood" };
+            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2" };
+            string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
             #endregion
@@ -1757,14 +1757,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     File.Copy(pathOptiscalerDlssg, destPathNvapi, true);
 
-                    if ((gamesWithDlssg.Contains(gameSelected) ||
-                    gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) ||
-                    gpuName.Contains("rtx")) &&
+                    if (((gpusVar.Any(gpuVar => gpuName.Contains(gpuVar)) || gpuName.Contains("rtx")) &&
                     !gamesOnlyUpscalers.Contains(gameSelected) &&
-                    MessageBox.Show("Do you want to install the dlssg_to_fsr3_amd_is_better.dll file? It is recommended to install this only if you are unable to enable the game's DLSS Frame Generation (this mod does not have its own FG; the game's DLSS FG is used).", "DLSS/FSR", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    MessageBox.Show("Do you want to install the dlssg_to_fsr3_amd_is_better.dll file? It is recommended to install this only if you are unable to enable the game's DLSS Frame Generation (this mod does not have its own FG; the game's DLSS FG is used).",
+                    "DLSS/FSR", MessageBoxButtons.YesNo) == DialogResult.Yes) ||
+                    gamesWithDlssg.Contains(gameSelected))
                     {
                         File.Copy(pathDlssToFsr, Path.Combine(selectFolder, "dlssg_to_fsr3_amd_is_better.dll"), true);
                     }
+
                 }
 
                 if (gamesOnlyUpscalers.Contains(gameSelected))
@@ -1896,6 +1897,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Gow4", selectFolder},
                 { "Others Mods ACE", selectFolder},
                 { "Others Mods Legion", selectFolder},
+                { "Others Mods AW2", selectFolder},
+                { "Others Mods ATH", selectFolder},
                 { "Others Mods STC", defaultDlssPath},
                 { "Others Mods HB2", defaultDlssPath},
                 { "Others Mods HL", defaultDlssPath},
@@ -1906,7 +1909,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods EW", defaultDlssPath},
                 { "Others Mods TFBK", defaultDlssPath},
                 { "Others GTA Trilogy", defaultDlssPath},
-                { "Others Mods ATH", selectFolder},
+                { "Others Mods PW", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods KCD2", Path.GetFullPath(Path.Combine(selectFolder, "..", "Win64Shared"))},
                 { "Others Mods LOP", Path.GetFullPath(Path.Combine(selectFolder, "\\..\\..\\..", @"Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods FF7RBT", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\DLSSSubset\\Binaries\\ThirdParty\\Win6"))},
@@ -2145,26 +2148,59 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task pwFSR3()
         {
+            string gpuName = await GetActiveGpu();
+            string appdataPw = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string pathIniPw = Path.Combine(appdataPw, "Pal\\Saved\\Config\\WinGDK");
+            string dx12IniPw = "mods\\FSR3_PW\\Dx12\\Engine.ini";
+
             #region FSR3 Palworld
             if (selectMod == "Palworld FG Build03")
             {
                 CopyFSR(folderPw);
+
+                if (gpuName.Contains("rtx"))
+                {
+                    ConfigIni2("mUpscaleType", "0", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", "Settings");
+                }
+                else
+                {
+                    ConfigIni2("mUpscaleType", "3", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", "Settings");
+                }
+                await Task.Delay((2000));
+                {
+                    File.Copy("mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", Path.Combine(selectFolder, "mods\\PalworldUpscaler.ini"), true);
+                    File.Copy("mods\\FSR3_PW\\mods\\PalworldUpscaler.ini", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", true);
+                }
             }
 
-            AutoShortCut(selectFolder + "\\Palworld-Win64-Shipping.exe", "Palworld", "-dx12", "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\" . This is necessary for the mod to work correctly");
-
-            if (MessageBox.Show("Do you have an Nvidia RTX GPU?", "Select GPU", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            try
             {
-                ConfigIni2("mUpscaleType", "0", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", "Settings");
+                if (Path.Exists(Path.Combine(selectFolder, "Palworld-WinGDK-Shipping.exe")))
+                {
+                    if (Path.Exists(pathIniPw))
+                    {
+                        if (!Path.Exists(Path.GetFullPath(Path.Combine(pathIniPw, "..", "Engine.ini"))))
+                        {
+                            Debug.WriteLine(appdataPw);
+                            File.Copy(Path.Combine(pathIniPw, "Engine.ini"), Path.Combine(Path.GetFullPath(Path.Combine(pathIniPw, "..", "Engine.ini"))), true); // Engine.ini Backup
+                            File.Copy(dx12IniPw, Path.Combine(pathIniPw, "Engine.ini"), true);
+                        }
+                    }
+                    else
+                    {
+                        File.Copy(dx12IniPw, Path.Combine(selectFolder, "Engine.ini"), true);
+                        MessageBox.Show("Unable to activate DX12 (it is required for the mod to work). Try reinstalling or copy the Engine.ini file, which was installed in the selected folder in Utility, to the following path:\"C:\\Users\\YourName\\AppData\\Local\\Pal\\Saved\\Config\\WinGDK\".", "Error");
+                    }
+                }
+                else if (Path.Exists(Path.Combine(selectFolder, "Palworld-Win64-Shipping.exe")))
+                {
+                    MessageBox.Show("Check the \"Palworld\" guide in FSR Guide on how to enable DX12 (it is required for the mod to work).", "DX12");
+                }
             }
-            else
+            catch
             {
-                ConfigIni2("mUpscaleType", "3", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", "Settings");
-            }
-            await Task.Delay((2000));
-            {
-                File.Copy("mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", selectFolder + "\\mods\\PalworldUpscaler.ini", true);
-                File.Copy("mods\\FSR3_PW\\mods\\PalworldUpscaler.ini", "mods\\Temp\\FSR2FSR3_PW\\PalworldUpscaler.ini", true);
+                File.Copy(dx12IniPw, Path.Combine(selectFolder, "Engine.ini"), true);
+                MessageBox.Show("Unable to activate DX12 (it is required for the mod to work). Try reinstalling or copy the Engine.ini file, which was installed in the selected folder in Utility, to the following path:\"C:\\Users\\YourName\\AppData\\Local\\Pal\\Saved\\Config\\WinGDK\".", "Error");
             }
             #endregion
         }
@@ -4203,7 +4239,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     jediFsr3();
                 }
-                if (selectMod == "Palworld FG Build03")
+                if (gameSelected == "Palworld")
                 {
                     pwFSR3();
                 }
@@ -5094,6 +5130,22 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
+                if (gameSelected == "Palworld")
+                {
+                    string appDataPw = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                    string pathIniPw = Path.Combine(appDataPw, "Pal\\Saved\\Config\\WinGDK");
+
+                    if (folderPw.ContainsKey(selectMod))
+                    {
+                        CleanupMod(del_pw_files, folderPw);
+                    }
+
+                    if (Path.Exists(Path.GetFullPath(Path.Combine(pathIniPw, "..", "Engine.ini"))))
+                    {
+                        File.Move(Path.GetFullPath(Path.Combine(pathIniPw, "..", "Engine.ini")), Path.Combine(pathIniPw, "Engine.ini"), true);
+                    }
+                }
+
                 if (gameSelected == "TEKKEN 8")
                 {
                     #region Cleanup Unlock FPS Tekken 8
@@ -5617,10 +5669,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 else if (selectMod == "Ac Valhalla Dlss (Only RTX)")
                 {
                     CleanupMod3(del_valhalla, "Ac Valhalla Dlss (Only RTX)");
-                }
-                else if (folderPw.ContainsKey(selectMod))
-                {
-                    CleanupMod(del_pw_files, folderPw);
                 }
                 else if (folderJedi.ContainsKey(selectMod))
                 {

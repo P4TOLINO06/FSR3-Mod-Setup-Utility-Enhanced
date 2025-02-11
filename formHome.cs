@@ -134,6 +134,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Hogwarts Legacy","Hog.png"},
                     {"Horizon Forbidden West","HZDF.png"},
                     {"Horizon Zero Dawn\\Remastered","Hzd.png"},
+                    {"Hot Wheels Unleashed","Hwu.png"},
                     {"Icarus","Icarus.png"},
                     {"Indiana Jones and the Great Circle","Indy.png"},
                     {"Judgment","Jud.png"},
@@ -273,7 +274,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 { "Red Dead Redemption 2", new List<string> { "FSR 3.1.3/DLSS FG RDR2", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
-                { "Alan Wake 2", new List<string> { "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1", "Others Mods AW2" } },
+                { "Alan Wake 2", new List<string> { "Others Mods AW2", "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom"} },
                 { "Assassin's Creed Valhalla", new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" } },
                 { "Baldur's Gate 3", new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" } },
                 { "Dragons Dogma 2", new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom" } },
@@ -282,7 +283,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Cyberpunk 2077", new List<string> { "Others Mods 2077", "RTX DLSS FG CB2077", "FSR 3.1.3/XESS FG 2077"} },
                 { "Ghost of Tsushima", new List<string> { "Ghost of Tsushima FG DLSS", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Lords of the Fallen", new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" } },
-                { "Palworld", new List<string> { "Palworld FG Build03" } },
+                { "Palworld", new List<string> { "Others Mods PW", "Palworld FG Build03" } },
                 { "STAR WARS Jedi: Survivor", new List<string> { "DLSS Jedi" } },
                 { "Icarus", new List<string> { "RTX DLSS FG ICR", "FSR3 FG ICR All GPU" } },
                 { "TEKKEN 8", new List<string> { "Unlock FPS Tekken 8" } },
@@ -343,7 +344,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Final Fantasy VII Rebirth", new List<string> { "Others Mods FF7RBT" } },
                 { "Lies of P", new List<string> { "Others Mods LOP" } },
                 { "Kingdom Come: Deliverance II", new List<string> {"Others Mods KCD2"} },
-                { "Atomic Heart", new List<string> { "Others Mods ATH"} }
+                { "Atomic Heart", new List<string> { "Others Mods ATH"} },
 
             };
             #endregion

@@ -92,27 +92,38 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Alan Wake 2",
-                "RTX\r\n 1 - Select Alan Wake 2 FG RTX and install it.\r\n"+
-                "2 - In the game, select DLSS and enable Frame Generation.\r\n"+
-                "3 - It is also possible to use other versions of the mod.\r\n\r\n"+
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the 'Insert' key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n\n" +
 
-                "AMD/GTX\r\n 1 - Select Alan Wake 2 Uniscaler Custom and install it.\r\n"+
-                "2 - In the game, select DLSS and enable Frame Generation if it is not enabled by default.\r\n"+
-                "3 - Do not switch to FSR as the game will crash.\r\n"+
-                "4 - It is also possible to use other versions of the mod, except Alan Wake 2 FG RTX.\r\n\r\n"+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check 'yes' in the 'DLSS/FSR' window that will appear during installation.\n" +
+                "(RTX 20/30 users, only check 'yes' if it's not possible to activate the game's FG).\n" +
+                "3. In the game, select DLSS, Frame Gen and press the 'Insert' key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
 
-                "Optiscaler FSR 3.1.1/DLSS\r\n" +
-                "1 - Select Optiscaler FSR 3.1.1/DLSS.\r\n"+
-                "2 - In-game, press the Insert key to open the menu and select your preferred upscaler.\r\n"+
-                "3 - If the menu does not appear, you can select the upscaler during installation. Choose Optiscaler and under Addon Upscaler, select your preferred upscaler.\r\n\r\n" +
+                "Alan Wake 2 FG RTX\n" +
+                "1. Select Alan Wake 2 FG RTX and install it.\n" +
+                "2. In the game, select DLSS and enable Frame Generation.\n" +
+                "3. It is also possible to use other versions of the mod.\n\n" +
 
-                "Preset\r\n" +
-                "1 - Install ReShade.\r\n" +
-                "2 - Inside ReShade, select the game's .exe and click next.\r\n" +
-                "3 - Select DX 10/11/12 and click next.\r\n" +
-                "4 - Click 'Browse' and locate the file 'Realistic Reshade.ini' that was installed in the folder selected in the Utility and click next.\r\n" +
-                "5 - In the game, press the 'Home' key to open the menu and select the options you prefer.\r\n" +
-                "6 - Install the Preset first and then the FSR3 mod if you plan to use it.\r\n\r\n"
+                "Alan Wake 2 Uniscaler Custom (AMD\\GTX)\n" +
+                "1. Select Alan Wake 2 Uniscaler Custom and install it.\n" +
+                "2. In the game, select DLSS and enable Frame Generation if it is not enabled by default.\n" +
+                "3. Do not switch to FSR as the game will crash.\n" +
+                "4. It is also possible to use other versions of the mod, except Alan Wake 2 FG RTX.\n\n" +
+
+                "Preset\n" +
+                "1. Install ReShade.\n" +
+                "2. Inside ReShade, select the game’s .exe and click next.\n" +
+                "3. Select DX 10/11/12 and click next.\n" +
+                "4. Click 'Browse' and locate the file Realistic Reshade.ini that was installed in the folder selected in the Utility and click Next.\n" +
+                "5. In the game, press the Home key to open the menu and select the options you prefer.\n" +
+                "6. Install the Preset first and then the FSR3 mod if you plan to use it."
             },
             {
                 "Alone in the Dark",
@@ -811,6 +822,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - Select Xess or FSR.\r\n"
             },
             {
+                "Hot Wheels Unleashed",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the 'Insert' key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n"
+            },
+            {
                 "Icarus",
                 "1 - Select Icarus FSR3 in mod version.\r\n" +
                 "2 - If the option selected is RTX, confirm the window that appears.\r\n" +
@@ -1037,19 +1056,27 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 "Palworld",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
-                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
-                "2. Check the Enable Signature Over box.\n" +
-                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
-                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended\n" +
-                "5. Not recommended to utilize the mod in online mode.\n\n" +
+                "1. Install in the Palworld\\Content\\Pal\\Binaries\\WinGDK or 64.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the 'Insert' key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n\n" +
 
-                "Others Mods\n" +
-                "For standard mods (0.10+ and Uniscaler), simply enable the Fake Nvidia GPU (for AMD and GTX) and UE Compatibility mode (for AMD) and set the game to DX12. Throughout the guide, it will be explained how to do this.\r\n" +
-                "1. Select Palworld Build03 and locate the game folder with the ending binaries/win64 and see if the executable with the ending Win64-shipping.exe is present.\r\n" +
-                "2. Install, confirm the GPU selection window that will appear.\r\n" +
-                "3. To run the game in DX12, simply confirm the window that appears after confirming the GPU selection. Make sure the mentioned exe is in the selected folder. Alternatively, you can ignore the window and do it manually, by creating a shortcut and adding '-dx12' after the quotes in the 'Target' field.\r\n" +
-                "4. Run the game through the shortcut.\r\n" +
-                "• Currently, the mod only works on Steam versions and alternative versions with Steam files.\r\n"
+                "(0.10+ and Uniscaler)" +
+                "1. Check the 'Fake Nvidia GPU' (for AMD and GTX) and UE Compatibility mode (for AMD).\n" +
+                "2. In the game, select DLSS or FSR\n\n" +
+
+                "Palworld Build03\n" +
+                "1. Select Palworld Build03 and locate the game folder with the ending binaries/win64 and see if the executable with the ending Win64-shipping.exe is present.\n" +
+                "2. In the game, press the 'Home' key to open the menu\n" +
+                "3. In the menu, check the Frame Gen box\n" +
+                "• Currently, the mod only works on Steam versions and alternative versions with Steam files.\n\n" +
+
+                "Steam: Library > Game > Gear icon to the right of Achievements > Properties > Launch Options, add -dx12.\n" +
+                "For Xbox Game Pass/Microsoft Store, DX12 does not need to be enabled during installation.\n\n" +
+
+                "It is not recommended to use mods in online mode."
             },
             {
                 "Path of Exile II",
@@ -1690,7 +1717,8 @@ namespace FSR3ModSetupUtilityEnhanced
             { "God Of War 4", "https://www.youtube.com/embed/qLWFPUNOnfI?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
             { "The Last Of Us", "https://www.youtube.com/embed/dZJk41NT1oo?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
             { "The First Berserker: Khazan", "https://www.youtube.com/embed/pECh53i_YDU?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
-            { "Spider Man/Miles", "https://www.youtube.com/embed/Al4iiKZ_CD8?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Spider Man/Miles", "https://www.youtube.com/embed/Al4iiKZ_CD8?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Palworld", "https://www.youtube.com/embed/u447nns-yCM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1817,6 +1845,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Hogwarts Legacy","Hog.png"},
                 {"Horizon Forbidden West","HZDF.png"},
                 {"Horizon Zero Dawn\\Remastered","HzdRem2.png"},
+                {"Hot Wheels Unleashed","Hwu2.png"},
                 {"Icarus","Icarus.png"},
                 {"Indiana Jones and the Great Circle","Indy2.png"},
                 {"Judgment","Jud.png"},
@@ -1842,7 +1871,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Orcs Must Die! Deathtrap","Omdd2.png"},
                 {"Outpost Infinity Siege","Outpost.png"},
                 {"Pacific Drive","Pacific.png"},
-                {"Palworld","Palworld.png"},
+                {"Palworld","Palworld2.png"},
                 {"Path of Exile II","POE22.png"},
                 {"Ratchet and Clank","Ratchet.png"},
                 {"Rise of The Tomb Raider","Rtb.png"},
