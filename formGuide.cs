@@ -49,6 +49,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "This version disables the mod's FG and uses the game's DLSS Frame Gen. It works only for games with this feature and is compatible with all GPUs. You can use the mod's upscalers (e.g., FSR 3.1.3) together with the game's DLSS FG.\n\n" +
 
                 "DLSS4 (Only RTX)\n" +
+                "Open the Nvidia APP, go to Graphics, select the game, scroll down until you find Driver Settings. In DLSS Override, select \"Latest\" for all available options. Some games, like Alone In The Dark 2023, are not included in the APP. Follow the steps below to enable DLSS 4.\n\n" +
                 "In the mod menu, check the Render Presets Override and select Preset G for the DLSS quality you are using. For example: if you are using DLSS Quality in the game, select Preset G in the Quality Preset in the mod.\n" +
                 "To update the game's DLSS to DLSS4, select \"Others Mods\" (only some games have this option).\n" +
                 "To check if Preset K is selected (Some games, the Preset will be J.), check \"Yes\" in the \"DLSS Overlay\" box that will appear during installation. When selecting the preset in the mod menu, Preset K may not appear right away in the DLSS Overlay. Restart the game and select Preset G again in the mod menu.\n" +
@@ -102,7 +103,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
                 "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
                 "2. Check 'yes' in the 'DLSS/FSR' window that will appear during installation.\n" +
-                "(RTX 20/30 users, only check 'yes' if it's not possible to activate the game's FG).\n" +
                 "3. In the game, select DLSS, Frame Gen and press the 'Insert' key to open the menu.\n" +
                 "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
 
@@ -491,6 +491,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 "5. If you want to update DLSS, do it before installing the mod; just select \"Others Mods EW\"."
             },
             {
+                "Eternal Strands",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the 'Insert' key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n\n" +
+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check 'yes' in the 'DLSS/FSR' window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the 'Insert' key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)."
+            },
+            {
                 "Fallout 4",
                 "Usage of the Sym Link:\r\n" +
                 "1 - In SymLink, click on add file and navigate to the root folder of the game. In the root folder, look\r\n" +
@@ -529,11 +543,16 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Fort Solis",
-                "1 - Select a mod of your preference. (0.10.3 is recommended)\r\n" +
-                "2 - Check the box for Fake Nvidia GPU (AMD/GTX) and the\r\n" +
-                "box for Nvapi Results (GTX). If DLSS is not available for AMD,\r\n" +
-                "check the Nvapi Results box.\r\n" +
-                "3 - In the game, select DLSS and Frame Generation."
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the 'Insert' key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n\n" +
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check 'yes' in the 'DLSS/FSR' window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the 'Insert' key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)."
             },
             {
                 "Forza Horizon 5",
@@ -778,6 +797,12 @@ namespace FSR3ModSetupUtilityEnhanced
                 "5. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "6. In the menu, select FG Enabled, Active, Hud Fix and Extended\n" +
                 "7. Select Nvidia Reflex to use AMD Anti Lag 2.\n\n" +
+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check 'yes' in the 'DLSS/FSR' window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the 'Insert' key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
 
                 "Uniscaler/0.x\n" +
                 "1 - Select a version of the mod of your choice (versions from 0.9.0\r\n" +
@@ -1380,6 +1405,19 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "S.T.A.L.K.E.R. 2",
+                "Disable any upscaler/FG in the game before installing the mod.\n\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select 'Others Mods Stalker 2', do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the 'Insert' key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n\n" +
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check 'yes' in the 'DLSS/FSR' window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the 'Insert' key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
+
                 "Preset\n" +
                 "1. Install ReShade\n" +
                 "2. Inside ReShade, select the game’s .exe and click next\n" +
@@ -1822,9 +1860,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Empire of the Ants","Eota2.png"},
                 {"Everspace 2","Es2.png"},
                 {"Evil West","Ew2.png"},
+                {"Eternal Strands","Ets2.png"},
                 {"Fist Forged in Shadow Torch","Fist.png"},
                 {"Flintlock: The Siege of Dawn","Flint.png"},
-                {"Fort Solis","Fort.png"},
+                {"Fort Solis","Fort2.png"},
                 {"Forza Horizon 5","Forza.png"},
                 {"Final Fantasy VII Rebirth","FFVIIRBT2.png"},
                 {"Final Fantasy XVI","Ffxvi2.png"},

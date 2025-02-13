@@ -111,6 +111,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Empire of the Ants","Eota.png"},
                     {"Everspace 2","Es2.png"},
                     {"Evil West","Ew.png"},
+                    {"Eternal Strands","Ets.png"},
                     {"Final Fantasy VII Rebirth","FFVIIRBT.png"},
                     {"Final Fantasy XVI","Ffxvi.png"},
                     {"F1 2022","F1.png"},
