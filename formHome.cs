@@ -83,6 +83,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Assassin's Creed Valhalla","Valhalla.png"},
                     {"Assetto Corsa Evo","ACE.png"},
                     {"Atomic Heart","Atomic.png"},
+                    {"AVOWED","AWD.png"},
                     {"Back 4 Blood","B4B.png"},
                     {"Baldur's Gate 3","BG3.png"},
                     {"Banishers: Ghosts of New Eden","Banishers.png" },
@@ -158,6 +159,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Metro Exodus Enhanced Edition","Metro.png"},
                     {"Monster Hunter Rise","Mrise.png"},
                     {"Microsoft Flight Simulator 24","FlightSimulator24.png"},
+                    {"Monster Hunter Wilds","MHW.png"},
                     {"MOTO GP 24","Moto.png"},
                     {"Mortal Shell","MShell.png"},
                     {"Nightingale","Night.png"},
@@ -346,6 +348,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Lies of P", new List<string> { "Others Mods LOP" } },
                 { "Kingdom Come: Deliverance II", new List<string> {"Others Mods KCD2"} },
                 { "Atomic Heart", new List<string> { "Others Mods ATH"} },
+                { "Monster Hunter Wilds", new List<string> {"Others Mods MHW"} }
 
             };
             #endregion

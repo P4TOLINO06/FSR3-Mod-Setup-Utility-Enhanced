@@ -158,12 +158,11 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "A Quiet Place: The Road Ahead",
-                "1 - Select an FSR 3.1.1/DLSS mod and install it.\r\n" +
-                "2 - In the game, select DLSS.\r\n" +
-                "3 - Press the 'Insert' key to open the menu.\r\n" +
-                "4 - Select an upscaler of your choice.\r\n" +
-                "5 - Check the Frame Gen and Hud Fix boxes.\r\n" +
-                "6 - If you can't see DLSS, enable Hardware Acceleration in Graphics Settings on Windows.\r\n\r\n"
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended."
             },
             {
                 "Assassin\'s Creed Mirage",
@@ -216,6 +215,24 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1. Select a mod of your choice (0.10.3 is recommended).\n" +
                 "2. In the game, select FSR."
             },
+            {
+                "AVOWED",
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. Check the \"Show Advanced Settings\" box, in the \"Resource Barriers\" section set it to \"Common\" in the \"Color\" tab.\n" +
+                "5. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
+
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. Check the \"Show Advanced Settings\" box, in the \"Resource Barriers\" section set it to \"Common\" in the \"Color\" tab.\n" +
+                "This mod may not work on some GPUs."
+            },
+
             {
                 "Back 4 Blood",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
@@ -1034,6 +1051,22 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - To fix flickering in the hud, activate DLSS and play for a few seconds, then return to the menu and deactivate DLSS.\r\n"
             },
             {
+                "Monster Hunter Wilds",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods MH\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "This mod may not work on some GPUs. If it doesn't work, use the mod below.\n\n" +
+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)."
+            },
+            {
                 "Mortal Shell",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "1. Open the game and select DX12.\n" +
@@ -1832,6 +1865,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Assassin's Creed Valhalla","AcVal.png"},
                 {"Assetto Corsa Evo","ACE2.png"},
                 {"Atomic Heart","Atomic2.png"},
+                {"AVOWED","AWD2.png"},
                 {"Back 4 Blood","B4B2.png"},
                 {"Baldur's Gate 3","Baldurs.png"},
                 {"Black Myth: Wukong","wukong.png" },
@@ -1904,6 +1938,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Microsoft Flight Simulator 24","FlightSimulator242.png"},
                 {"Metro Exodus Enhanced","Metro.png"},
                 {"Monster Hunter Rise","Mrise.png"},
+                {"Monster Hunter Wilds","MHW2.png"},
                 {"Mortal Shell","MShell2.png"},
                 {"Ninja Gaiden 2 Black","NinjaG2.png"},
                 {"Nobody Wants To Die","Nobody.png"},
