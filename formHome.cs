@@ -146,6 +146,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Layers of Fear","Layers.png"},
                     {"Lego Horizon Adventures","LegoHzd.png"},
                     {"Lies of P","Lop.png"},
+                    {"Like a Dragon: Pirate Yakuza in Hawaii","LDPYH.png"},
                     {"Loopmancer","Loopmancer.png"},
                     {"Lords of the Fallen","Lotf.png"},
                     {"Manor Lords","Manor.png"},
@@ -294,7 +295,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "God Of War 4", new List<string> { "Others Mods Gow4", "FSR 3.1.3/DLSS Gow4"} },
                 { "God of War Ragnarök", new List<string> { "Others Mods Gow Rag", "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Warhammer: Space Marine 2", new List<string> { "Others Mods Space Marine", "FSR 3.1.3/DLSS FG Marine", "FSR 3.1.1/DLSS FG Custom", "Uniscaler FSR 3.1", "Optiscaler FSR 3.1.1/DLSS" } },
-                { "Black Myth: Wukong", new List<string> { "Others Mods Wukong", "DLSS FG (ALL GPUs) Wukong", "FSR 3.1 Custom Wukong" } },
+                { "Black Myth: Wukong", new List<string> { "Others Mods Wukong", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSSG FG (Only Optiscaler)", "DLSS FG (ALL GPUs) Wukong" } },
                 { "Final Fantasy XVI", new List<string> { "FFXVI DLSS RTX", "Others Mods FFXVI" } },
                 { "Forza Horizon 5", new List<string>  { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Star Wars Outlaws", new List<string> { "Outlaws DLSS RTX", "FSR 3.1.1/DLSS FG Custom" } },
@@ -348,7 +349,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Lies of P", new List<string> { "Others Mods LOP" } },
                 { "Kingdom Come: Deliverance II", new List<string> {"Others Mods KCD2"} },
                 { "Atomic Heart", new List<string> { "Others Mods ATH"} },
-                { "Monster Hunter Wilds", new List<string> {"Others Mods MHW"} }
+                { "Monster Hunter Wilds", new List<string> {"Others Mods MHW"} },
+                { "Like a Dragon: Pirate Yakuza in Hawaii", new List<string> { "Others Mods LDPYH", "DLSSG Yakuza" } }
 
             };
             #endregion

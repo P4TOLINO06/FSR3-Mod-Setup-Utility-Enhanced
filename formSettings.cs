@@ -92,7 +92,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Black Myth: Wukong", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
                 "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Monster Hunter Wilds" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
@@ -270,7 +270,6 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler V4",@"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"},
             {"The Callisto Protocol FSR3",@"\mods\Temp\FSR3_Callisto\enable_fake_gpu\\fsr2fsr3.config.toml"},
-            {"FSR 3.1 Custom Wukong",@"\mods\Temp\Wukong_FSR31\enable_fake_gpu\\uniscaler.config.toml" }
         };
         #endregion
 
@@ -286,7 +285,6 @@ namespace FSR3ModSetupUtilityEnhanced
             "Uniscaler V3",
             "Uniscaler V4",
             "Uniscaler FSR 3.1",
-            "FSR 3.1 Custom Wukong"
         };
         #endregion
 
@@ -602,7 +600,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             "dlss-enabler-upscaler.dll", "dlss-enabler.dll", "dlss-enabler.log", "dlssg_to_fsr3.log","nvapi64-proxy",
             "dlssg_to_fsr3_amd_is_better-3.0.dll", "dlssg_to_fsr3_amd_is_better.dll", "dxgi.dll", "fakenvapi.log", "nvngx-wrapper.dll",
-            "nvngx.ini", "unins000.dat"
+            "nvngx.ini", "unins000.dat","winmm.dll", "fakenvapi.ini", "nvapi64.dll"
 
 
         };
@@ -657,7 +655,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Optiscaler Files
         List<string> delOptiscaler = new List<string>
         {
-            "nvngx.ini", "nvngx.dll", "libxess.dll","winmm.dll","nvapi64.dll","fakenvapi.ini","dlssg_to_fsr3_amd_is_better.dll","version.dll"
+            "Optiscaler.ini", "nvngx.dll", "libxess.dll","winmm.dll","nvapi64.dll","fakenvapi.ini","dlssg_to_fsr3_amd_is_better.dll","version.dll"
         };
         #endregion
 
@@ -703,7 +701,6 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Uniscaler", "mods\\FSR2FSR3_Uniscaler\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler + Xess + Dlss", "mods\\FSR2FSR3_Uniscaler_Xess_Dlss\\enable_fake_gpu\\uniscaler.config.toml" },
             { "The Callisto Protocol FSR3", "mods\\FSR3_Callisto\\enable_fake_gpu\\fsr2fsr3.config.toml" },
-            { "FSR 3.1 Custom Wukong","mods\\FSR3_WUKONG\\WukongFSR31\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler V2", "mods\\FSR2FSR3_Uniscaler_V2\\enable_fake_gpu\\uniscaler.config.toml" },
             { "Uniscaler V3", "mods\\FSR2FSR3_Uniscaler_V3\\enable_fake_gpu\\uniscaler.config.toml"},
             { "Uniscaler V4", "mods\\FSR2FSR3_Uniscaler_V4\\enable_fake_gpu\\uniscaler.config.toml"},
@@ -736,7 +733,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Folder Optiscaler
         static Dictionary<string, string> folder_optiscaler = new Dictionary<string, string>()
         {
-            { "fsr22","@mods\\Temp\\OptiScaler\\nvngx.ini" }
+            { "fsr22","mods\\Temp\\OptiScaler\\Optiscaler.ini" }
         };
         #endregion
 
@@ -1687,12 +1684,12 @@ namespace FSR3ModSetupUtilityEnhanced
             string gpuName = await GetActiveGpu();
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
-            string pathOptiscalerDlssg = "mods\\Addons_mods\\Optiscaler DLSSG\\nvngx.ini";
-            string pathIniOlyUpscalers = "mods\\Addons_mods\\Optiscaler Only Upscalers\\nvngx.ini";
+            string pathOptiscalerDlssg = "mods\\Addons_mods\\Optiscaler DLSSG\\Optiscaler.ini";
+            string pathIniOlyUpscalers = "mods\\Addons_mods\\Optiscaler Only Upscalers\\Optiscaler.ini";
             string pathDlssToFsr = "mods\\Addons_mods\\Optiscaler DLSSG\\dlssg_to_fsr3_amd_is_better.dll";
-            string nvapiIni = "mods\\Addons_mods\\Nvapi AMD\\Nvapi Ini\\nvngx.ini";
+            string nvapiIni = "mods\\Addons_mods\\Nvapi AMD\\Nvapi Ini\\Optiscaler.ini";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD\\Nvapi";
-            string nvapiAntiLagDlssg = "mods\\Addons_mods\\Nvapi AMD\\DLSSG Nvapi Ini\\nvngx.ini";
+            string nvapiAntiLagDlssg = "mods\\Addons_mods\\Nvapi AMD\\DLSSG Nvapi Ini\\Optiscaler.ini";
             string nvapiFile = null;
             string destPathNvapi = Path.Combine(selectFolder, "nvngx.ini");
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", "Stalker 2", "Monster Hunter Wilds", "AVOWED" };
@@ -1914,6 +1911,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Legion", selectFolder},
                 { "Others Mods AW2", selectFolder},
                 { "Others Mods ATH", selectFolder},
+                { "Others Mods LDPYH", selectFolder},
                 { "Others Mods STC", defaultDlssPath},
                 { "Others Mods HB2", defaultDlssPath},
                 { "Others Mods HL", defaultDlssPath},
@@ -1940,6 +1938,11 @@ namespace FSR3ModSetupUtilityEnhanced
             Dictionary<string, string> gamesToUpdateDlssd = new Dictionary<string, string>
             {
                 { "Others Mods Spider", selectFolder }
+            };
+
+            Dictionary<string, string> gamesToUpdateDlssDlssd = new Dictionary<string, string>
+            {
+                { "Others Mods Wukong", defaultDlssPath }
             };
 
             Dictionary<string, string> gamesToUpdateDlssXess = new Dictionary<string, string>
@@ -1980,6 +1983,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 else
                 {
                     MessageBox.Show("To update DLSSD, select the .exe path", "DLSSD");
+                }
+            }
+
+            else if (gamesToUpdateDlssDlssd.ContainsKey(selectMod))
+            {
+                string pathDlssDlssd = gamesToUpdateDlssDlssd[selectMod];
+
+                if (Path.Exists(pathDlssDlssd))
+                {
+                    UpdateUpscalers(pathDlssDlssd, false, false, true);
+                }
+                else
+                {
+                    MessageBox.Show("To update DLSS/DLSSD, select the .exe path", "DLSS/DLSSD");
                 }
             }
 
@@ -2273,7 +2290,6 @@ namespace FSR3ModSetupUtilityEnhanced
             string wukongUe4Map = @"mods\FSR3_WUKONG\Map\WukongUE4SS";
             string wukongMap = @"mods\FSR3_WUKONG\Map\LogicMods";
             string wukongHdr = @"mods\FSR3_WUKONG\HDR\Force_HDR_Mode_P.pak";
-            string wukongFsrCustom = @"mods\FSR3_WUKONG\WukongFSR31\FSR31_Wukong";
             string wukongCacheEnviroment = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string wukongCache = Path.Combine(wukongCacheEnviroment, "AppData");
             bool finalMessage = false;
@@ -2284,34 +2300,22 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 dlss_to_fsr();
             }
-            if (selectMod == "FSR 3.1 Custom Wukong")
+
+            if (selectMod == "FSR 3.1.3/DLSS FG (Only Optiscaler)" || selectMod == "FSR 3.1.3/DLSSG FG (Only Optiscaler)")
             {
-                CopyFolder(wukongFsrCustom);
-            }
-            if (selectMod == "Optiscaler FSR 3.1.1/DLSS")
-            {
-                if (Path.Exists(wukongCache + "\\Local\\b1\\Saved\\D3DDriverByteCodeBlob_V4098_D5686_S372641794_R220.ushaderprecache"))
+                if (Path.Exists(Path.Combine(wukongCache, "Local\\b1\\Saved")) && MessageBox.Show("Do you want to clear the game cache? (it may prevent possible texture errors caused by the mod)", "Cache", MessageBoxButtons.YesNo) == DialogResult.Yes) 
                 {
-                    if (MessageBox.Show("Do you want to clear the game cache? (it may prevent possible texture errors caused by the mod)", "Cache", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    foreach (string cacheWukong in Directory.GetFiles(Path.Combine(wukongCache, "Local", "b1", "Saved"), "*.ushaderprecache"))
                     {
-                        File.Delete(wukongCache + "\\Local\\b1\\Saved\\D3DDriverByteCodeBlob_V4098_D5686_S372641794_R220.ushaderprecache");
+                        File.Delete(cacheWukong);
                     }
+
                 }
             }
 
             #region Others Mods
             if (selectMod == "Others Mods Wukong")
             {
-
-                if (Path.Exists(Path.Combine(fullPathWukong, "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64")))
-                {
-                    UpdateUpscalers(Path.Combine(fullPathWukong, "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"), false, false, true);
-                }
-                else
-                {
-                    MessageBox.Show("To update DLSS, select the path to the .exe (BlackMythWukong\\b1\\Binaries\\Win64).", "DLSS", MessageBoxButtons.OK);
-                }
-
                 if (Path.Exists(fullPathWukong + "\\b1\\Binaries\\Win64"))
                 {
                     string modsPath = Path.Combine(fullPathWukong, "b1", "Content", "Paks", "~mods");
@@ -2633,6 +2637,29 @@ namespace FSR3ModSetupUtilityEnhanced
             // Enable DLSS Overlay
             dlssOverlay();
         }
+
+        public async void ldpyhFsr3()
+        {
+            string ldFgNvidia = "mods\\FSR2FSR3_LDPYH\\NVIDIA";
+            string ldFgOthers = "mods\\FSR2FSR3_LDPYH\\Others";
+            string ldNvidiaChecks = "mods\\Temp\\NvidiaChecks\\DisableNvidiaSignatureChecks.reg";
+            string gpuName = await GetActiveGpu();
+
+            if (selectMod == "DLSSG Yakuza")
+            {
+                if (gpuName.Contains("nvidia"))
+                {
+                    CopyFolder(ldFgNvidia);
+                }
+                else
+                {
+                    CopyFolder(ldFgOthers);
+                }
+
+                runReg(ldNvidiaChecks);
+            }
+        }
+
         public void metroFsr3()
         {
             string presetMetro = "mods\\FSR3_Metro\\Preset\\DefinitiveEdition.ini";
@@ -4251,6 +4278,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     forzaFsr3();
                 }
+                if (gameSelected == "Like a Dragon: Pirate Yakuza in Hawaii")
+                {
+                    ldpyhFsr3();
+                }
                 if (gameSelected == "Ghost of Tsushima")
                 {
                     gotFsr3();
@@ -4497,12 +4528,12 @@ namespace FSR3ModSetupUtilityEnhanced
                             {
                                 string nameOptiscaler = Path.GetFileName(optFile);
                                 string fullPath = Path.Combine(selectFolder, nameOptiscaler);
-                                string pathIni = "mods\\Temp\\OptiScaler\\nvngx.ini";
+                                string pathIni = "mods\\Temp\\OptiScaler\\Optiscaler.ini";
                                 File.Copy(optFile, fullPath, true);
                                 File.Copy(pathIni, selectFolder + "\\nvngx.ini", true);
                             }
-                            string oldIni = "mods\\Temp\\OptiScaler\\nvngx.ini";
-                            string newIni = "mods\\Addons_mods\\OptiScaler\\nvngx.ini";
+                            string oldIni = "mods\\Temp\\OptiScaler\\Optiscaler.ini";
+                            string newIni = "mods\\Addons_mods\\OptiScaler\\Optiscaler.ini";
                             File.Copy(newIni, oldIni, true);
                         }
                         if (optAddOn == "Tweak")
@@ -5618,6 +5649,25 @@ namespace FSR3ModSetupUtilityEnhanced
                     #endregion
                 }
 
+                if (gameSelected == "Like a Dragon: Pirate Yakuza in Hawaii")
+                {
+                    #region Clean Mods Yakuza
+                    string gpuName = await GetActiveGpu();
+                    string enableNvidiaChecks = "mods\\Temp\\NvidiaChecks\\RestoreNvidiaSignatureChecks.reg";
+
+                    if (gpuName.Contains("nvidia"))
+                    {
+                        CleanupMod3(del_dlss_global_rtx, "DLSSG Yakuza");
+                    }
+                    else
+                    {
+                        CleanupMod3(del_dlss_global_amd, "DLSSG Yakuza");
+                    }
+
+                    runReg(enableNvidiaChecks);
+                    #endregion
+                }
+
                 if (gameSelected == "Alan Wake 2")
                 {
                     #region Paths AW2
@@ -5817,24 +5867,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     CleanupMod3(del_dlss_to_fsr, "DLSS FG (ALL GPUs) Wukong");
 
                     #region Remove other mods
-
-                    if (selectMod == "FSR 3.1 Custom Wukong")
-                    {
-                        if (File.Exists(selectFolder + "\\libxess.dll"))
-                        {
-                            string[] filesFsrWukong = { "libxess.dll", "nvngx.dll", "amd_fidelityfx_vk.dll", "amd_fidelityfx_dx12.dll" };
-
-                            foreach (string fsrFilesWukong in Directory.GetFiles(selectFolder))
-                            {
-                                string wukongFsrName = Path.GetFileName(fsrFilesWukong);
-
-                                if (filesFsrWukong.Contains(wukongFsrName))
-                                {
-                                    File.Delete(fsrFilesWukong);
-                                }
-                            }
-                        }
-                    }
 
                     if (File.Exists(fullPathOptimizedDel + "\\~mods\\pakchunk99-Mods_CustomMod_P.pak"))
                     {
@@ -6545,7 +6577,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps2_Click(object sender, EventArgs e)
@@ -6556,7 +6588,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps3_Click(object sender, EventArgs e)
@@ -6567,7 +6599,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps4_Click(object sender, EventArgs e)
@@ -6578,7 +6610,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void button4_Click_1(object sender, EventArgs e)
@@ -6589,7 +6621,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "fsr31_12 ", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "fsr31_12 ", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void buttonDlssDX11_Click(object sender, EventArgs e)
@@ -6600,7 +6632,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "dlss ", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "dlss ", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps5_Click(object sender, EventArgs e)
@@ -6611,7 +6643,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx12Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx12Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void button5_Click_1(object sender, EventArgs e)
@@ -6622,7 +6654,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx12Upscaler", "fsr31", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx12Upscaler", "fsr31", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps6_Click(object sender, EventArgs e)
@@ -6633,7 +6665,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx12Upscaler", "fsr21", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx12Upscaler", "fsr21", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
 
@@ -6645,7 +6677,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx12Upscaler", "xess", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx12Upscaler", "xess", "mods\\Temp\\OptiScaler\\Optiscalerini", "Upscalers");
             }
         }
 
@@ -6657,7 +6689,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx12Upscaler", "dlss", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("Dx12Upscaler", "dlss", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
 
@@ -6669,7 +6701,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("VulkanUpscaler", "fsr21", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("VulkanUpscaler", "fsr21", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
 
@@ -6681,7 +6713,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("VulkanUpscaler", "fsr22", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("VulkanUpscaler", "fsr22", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void buttonFsr31Vulkan_Click(object sender, EventArgs e)
@@ -6692,7 +6724,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("VulkanUpscaler", "fsr31", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("VulkanUpscaler", "fsr31", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void buttonDlssVulkan_Click(object sender, EventArgs e)
@@ -6703,7 +6735,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("VulkanUpscaler", "dlss", "mods\\Temp\\OptiScaler\\nvngx.ini", "Upscalers");
+                ConfigIni("VulkanUpscaler", "dlss", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
             }
         }
         private void buttonFg3_Click(object sender, EventArgs e)
