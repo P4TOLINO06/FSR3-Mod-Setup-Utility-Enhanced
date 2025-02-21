@@ -142,18 +142,23 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4 - Set FSR in the game settings.\r\n"+
                 "5 - If the mod doesn't work, select 'Default' in Nvngx.dll."
             },
-            {
+           {
                 "A Plague Tale Requiem",
-               
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. To update the DLSS, select \"Others Mods Requiem\"; do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. In the game, press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n\n" +
 
-                "FSR 3.1.3/DLSS FG (Only Optiscaler)\r\n"+
-                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\r\n" +
-                "2. In the game, press the 'Insert' key to open the menu.\r\n" +
-                "3. In the menu, select FG Enabled, Active, Hud Fix and Extended\n\n" +
-                
-                "Uniscaler/0.x\n"+
-                "1. Select a mod of your choice (0.10.3 is recommended).\r\n"+
-                "2. Check the box for Fake Nvidia GPU (AMD/GTX) and Nvapi Results (GTX). (If the mod doesn't work for AMD, also check Nvapi Results).\r\n"+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
+
+                "Uniscaler/0.x\n" +
+                "1. Select a mod of your choice (0.10.3 is recommended).\n" +
+                "2. Check the box for Fake Nvidia GPU (AMD/GTX) and Nvapi Results (GTX). (If the mod doesn't work for AMD, also check Nvapi Results).\n" +
                 "3. To fix hub flickering, enable DLSS and Frame Generation and play for a few seconds, then disable DLSS and leave only Frame Generation enabled."
             },
             {
@@ -566,6 +571,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 "preference. If you cannot see the menu, after installing the\r\n" +
                 "mod, select Optiscaler in the Utility and choose an upscaler\r\n" +
                 "in Upscaler Optiscaler and install."
+            },
+            {
+                "Fobia – St. Dinfna Hotel",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n\n" +
+
+                "Steam: When launching the game via Steam, select DX12 (Ray Tracing). If the window does not appear, go to Library > Game > Gear icon to the right of Achievements > Properties > Launch Options, and add -dx12.\n" +
+                "Others: Go to the game's .exe > Properties and add -dx12 after the .exe."
             },
             {
                 "Fort Solis",
@@ -990,6 +1006,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
                 "2 - Check the Fake Nvidia GPU box. (Only for AMD/GTX).\r\n" +
                 "3 - In-game, select DLSS.\r\n"
+            },
+            {
+                "Lost Records Bloom And Rage",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n\n" +
+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)."
             },
             {
                 "Martha Is Dead",
@@ -1806,7 +1836,8 @@ namespace FSR3ModSetupUtilityEnhanced
             { "The First Berserker: Khazan", "https://www.youtube.com/embed/pECh53i_YDU?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
             { "Spider Man/Miles", "https://www.youtube.com/embed/Al4iiKZ_CD8?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Palworld", "https://www.youtube.com/embed/u447nns-yCM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Black Myth: Wukong", "https://www.youtube.com/embed/ns_YxKqjnEk?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Black Myth: Wukong", "https://www.youtube.com/embed/ns_YxKqjnEk?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Lies of P", "https://www.youtube.com/embed/UaJmZrbgAcM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1914,6 +1945,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Eternal Strands","Ets2.png"},
                 {"Fist Forged in Shadow Torch","Fist.png"},
                 {"Flintlock: The Siege of Dawn","Flint.png"},
+                {"Fobia – St. Dinfna Hotel","Fobia2.png"},
                 {"Fort Solis","Fort2.png"},
                 {"Forza Horizon 5","Forza.png"},
                 {"Final Fantasy VII Rebirth","FFVIIRBT2.png"},
@@ -1944,10 +1976,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Kena: Bridge of Spirits","KENA.png"},
                 {"Layers of Fear","Layers.png"},
                 {"Lego Horizon Adventures","LegoHzd2.png"},
-                {"Lies of P","Lop.png"},
+                {"Lies of P","Lop2.png"},
                 {"Like a Dragon: Pirate Yakuza in Hawaii","LDPYH2.png"},
                 {"Loopmancer","Loopmancer.png"},
                 {"Lords of the Fallen","Lotf.png"},
+                {"Lost Records Bloom And Rage","LRBR2.png"},
                 {"Manor Lords","Manor.png"},
                 {"Martha Is Dead","Martha.png"},
                 {"Marvel's Avengers","Avengers2.png"},

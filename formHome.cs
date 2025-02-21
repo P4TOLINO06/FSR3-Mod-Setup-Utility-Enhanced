@@ -119,6 +119,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"F1 2023","F1_23.png"},
                     {"FIST: Forged In Shadow Torch","Fist.png"},
                     {"Flintlock: The Siege Of Dawn","Flint.png"},
+                    {"Fobia – St. Dinfna Hotel","Fobia.png"},
                     {"Fort Solis","Fort.png"},
                     {"Forza Horizon 5","Forza.png"},
                     {"Ghost of Tsushima","GhostT.png"},
@@ -149,6 +150,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Like a Dragon: Pirate Yakuza in Hawaii","LDPYH.png"},
                     {"Loopmancer","Loopmancer.png"},
                     {"Lords of the Fallen","Lotf.png"},
+                    {"Lost Records Bloom And Rage","LRBR.png"},
                     {"Manor Lords","Manor.png"},
                     {"Martha Is Dead","Martha.png"},
                     {"Marvel's Avengers","Avengers.png"},
@@ -350,7 +352,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Kingdom Come: Deliverance II", new List<string> {"Others Mods KCD2"} },
                 { "Atomic Heart", new List<string> { "Others Mods ATH"} },
                 { "Monster Hunter Wilds", new List<string> {"Others Mods MHW"} },
-                { "Like a Dragon: Pirate Yakuza in Hawaii", new List<string> { "Others Mods LDPYH", "DLSSG Yakuza" } }
+                { "Like a Dragon: Pirate Yakuza in Hawaii", new List<string> { "Others Mods LDPYH", "DLSSG Yakuza" } },
+                { "A Plague Tale Requiem", new List<string> {"Others Mods Requiem"} },
+                { "Fobia – St. Dinfna Hotel", new List<string> {"Others Mods Fobia", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } }
 
             };
             #endregion

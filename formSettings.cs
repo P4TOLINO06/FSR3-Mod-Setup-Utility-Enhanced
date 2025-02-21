@@ -655,7 +655,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Optiscaler Files
         List<string> delOptiscaler = new List<string>
         {
-            "Optiscaler.ini", "nvngx.dll", "libxess.dll","winmm.dll","nvapi64.dll","fakenvapi.ini","dlssg_to_fsr3_amd_is_better.dll","version.dll"
+            "OptiScaler.ini", "nvngx.dll", "libxess.dll","winmm.dll","nvapi64.dll","fakenvapi.ini","dlssg_to_fsr3_amd_is_better.dll","version.dll"
         };
         #endregion
 
@@ -733,7 +733,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Folder Optiscaler
         static Dictionary<string, string> folder_optiscaler = new Dictionary<string, string>()
         {
-            { "fsr22","mods\\Temp\\OptiScaler\\Optiscaler.ini" }
+            { "fsr22","mods\\Temp\\OptiScaler\\OptiScaler.ini" }
         };
         #endregion
 
@@ -1684,18 +1684,18 @@ namespace FSR3ModSetupUtilityEnhanced
             string gpuName = await GetActiveGpu();
             string pathOptiscaler = "mods\\Addons_mods\\OptiScaler";
             string pathOptiscalerDlss = "mods\\Addons_mods\\Optiscaler DLSS";
-            string pathOptiscalerDlssg = "mods\\Addons_mods\\Optiscaler DLSSG\\Optiscaler.ini";
-            string pathIniOlyUpscalers = "mods\\Addons_mods\\Optiscaler Only Upscalers\\Optiscaler.ini";
+            string pathOptiscalerDlssg = "mods\\Addons_mods\\Optiscaler DLSSG\\OptiScaler.ini";
+            string pathIniOlyUpscalers = "mods\\Addons_mods\\Optiscaler Only Upscalers\\OptiScaler.ini";
             string pathDlssToFsr = "mods\\Addons_mods\\Optiscaler DLSSG\\dlssg_to_fsr3_amd_is_better.dll";
-            string nvapiIni = "mods\\Addons_mods\\Nvapi AMD\\Nvapi Ini\\Optiscaler.ini";
+            string nvapiIni = "mods\\Addons_mods\\Nvapi AMD\\Nvapi Ini\\OptiScaler.ini";
             string nvapiAmd = "mods\\Addons_mods\\Nvapi AMD\\Nvapi";
-            string nvapiAntiLagDlssg = "mods\\Addons_mods\\Nvapi AMD\\DLSSG Nvapi Ini\\Optiscaler.ini";
+            string nvapiAntiLagDlssg = "mods\\Addons_mods\\Nvapi AMD\\DLSSG Nvapi Ini\\OptiScaler.ini";
             string nvapiFile = null;
-            string destPathNvapi = Path.Combine(selectFolder, "nvngx.ini");
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", "Stalker 2", "Monster Hunter Wilds", "AVOWED" };
+            string destPathNvapi = Path.Combine(selectFolder, "OptiScaler.ini");
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
-            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED" };
+            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage" };
             string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
@@ -1811,7 +1811,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 HandleProgressBar(true, progressBar);
             }
         }
-        public void UpdateUpscalers(string destPath, bool onlyDlss = false, bool copyDlssd = false, bool copyDlssDlssD = false, bool copyFsrDlss = false, bool copyDlssXess = false)
+        public void UpdateUpscalers(string destPath, bool onlyDlss = false, bool copyDlssd = false, bool copyDlssDlssD = false, bool copyFsrDlss = false, bool copyDlssXess = false, bool copyDlssDlssg = false, bool copyDlssDlssdDlssg = false, string dlssgPath = null)
         {
             string pathOnlyDlss = "mods\\Temp\\nvngx_global\\nvngx\\Dlss_3_7_1\\nvngx_dlss.dll";
             string pathDlssd = "mods\\Temp\\nvngx_global\\nvngx\\Dlssd_3_7_1\\nvngx_dlssd.dll";
@@ -1846,6 +1846,68 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     File.Copy(pathDlssd, Path.Combine(destPath, "nvngx_dlssd.dll"), true);
                     File.Copy(pathOnlyDlss, Path.Combine(destPath, "nvngx_dlss.dll"), true);
+                });
+            }
+
+            else if (copyDlssDlssg)
+            {
+                HandlePrompt(
+                "DLSS/DLSSG",
+                "Do you want to update DLSS/DLSSG? DLSS 4 and DLSSG 4 will be installed.",
+                _ =>
+                {
+                    File.Copy(pathOnlyDlss, Path.Combine(destPath, "nvngx_dlss.dll"), true);
+
+                    if (dlssgPath != null)
+                    {
+                        File.Copy(pathDlssg, Path.Combine(dlssgPath, "nvngx_dlssg.dll"), true);
+                    }
+                    else
+                    {
+                        File.Copy(pathDlssg, Path.Combine(destPath, "nvngx_dlssg.dll"), true);
+                    }
+                });
+            }
+
+            else if (copyDlssDlssdDlssg)
+            {
+                HandlePrompt(
+                "DLSS/DLSSG/DLSSD",
+                "Do you want to update DLSS/DLSSG/DLSSD? DLSS, DLSSG and DLSSD 4 will be installed.",
+                _ =>
+                {
+                    File.Copy(pathOnlyDlss, Path.Combine(destPath, "nvngx_dlss.dll"), true);
+                    File.Copy(pathDlssd, Path.Combine(destPath, "nvngx_dlssd.dll"), true);
+
+                    if (dlssgPath != null)
+                    {
+                        File.Copy(pathDlssg, Path.Combine(dlssgPath, "nvngx_dlssg.dll"), true);
+                    }
+                    else
+                    {
+                        File.Copy(pathDlssg, Path.Combine(destPath, "nvngx_dlssg.dll"), true);
+                    }
+                });
+            }
+
+            else if (copyFsrDlss)
+            {
+                HandlePrompt(
+                "DLSS/DLSSD/DLSSG",
+                "Do you want to update DLSS/DLSSD/DLSSG? DLSS, DLSSD and DLSSG 4 will be installed.",
+                _ =>
+                {
+                    File.Copy(pathOnlyDlss, Path.Combine(destPath, "nvngx_dlss.dll"), true);
+                    File.Copy(pathDlssd, Path.Combine(destPath, "nvngx_dlssd.dll"), true);
+
+                    if (pathDlssg != null)
+                    {
+                        File.Copy(pathDlssg, Path.Combine(dlssgPath, "nvngx_dlssg.dll"), true);
+                    }
+                    else
+                    {
+                        File.Copy(pathDlssg, Path.Combine(destPath, "nvngx_dlssg.dll"), true);
+                    }
                 });
             }
 
@@ -1899,6 +1961,8 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             #region Mods/Paths
             string defaultDlssPath = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64"));
+            string defaultDlssgPath = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Runtime\\Nvidia\\Streamline\\Binaries\\ThirdParty\\Win64"));
+            
             Dictionary<string, string> gamesToUpdateDlss = new Dictionary<string, string>
             {
                 { "Others Mods Sifu", selectFolder},
@@ -1922,10 +1986,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods EW", defaultDlssPath},
                 { "Others Mods TFBK", defaultDlssPath},
                 { "Others GTA Trilogy", defaultDlssPath},
+                { "Others Mods Fobia", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods Stalker 2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods PW", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods KCD2", Path.GetFullPath(Path.Combine(selectFolder, "..", "Win64Shared"))},
-                { "Others Mods LOP", Path.GetFullPath(Path.Combine(selectFolder, "\\..\\..\\..", @"Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64"))},
+                { "Others Mods LOP", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods FF7RBT", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\DLSSSubset\\Binaries\\ThirdParty\\Win6"))},
                 { "Others Mods B4B", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
                 { "Others Mods AITD", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
@@ -1940,9 +2005,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Spider", selectFolder }
             };
 
-            Dictionary<string, string> gamesToUpdateDlssDlssd = new Dictionary<string, string>
+            Dictionary<string, string> gamesToUpdateDlssDlssg = new Dictionary<string, string>
             {
-                { "Others Mods Wukong", defaultDlssPath }
+                { "Others Mods Requiem", selectFolder }
+            };
+
+            Dictionary<string, string[]> gamesToUpdateDlssDlssdDlssg = new Dictionary<string, string[]>
+            {
+                { "Others Mods Wukong", new string[] { defaultDlssPath, defaultDlssgPath } }
             };
 
             Dictionary<string, string> gamesToUpdateDlssXess = new Dictionary<string, string>
@@ -1958,6 +2028,7 @@ namespace FSR3ModSetupUtilityEnhanced
             };
             #endregion
 
+            // Update DLSS
             if (gamesToUpdateDlss.ContainsKey(selectMod))
             {
                 string pathDlss = gamesToUpdateDlss[selectMod];
@@ -1972,41 +2043,46 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
 
-            else if (gamesToUpdateDlssd.ContainsKey(selectMod))
+            // Update DLSS/DLSSG/DLSSD
+            else if (gamesToUpdateDlssDlssdDlssg.ContainsKey(selectMod))
             {
-                string pathDlssd = gamesToUpdateDlssd[selectMod];
+                string[] pathDlssDlssd = gamesToUpdateDlssDlssdDlssg[selectMod];
+                string pathUpdateDlss = pathDlssDlssd[0];
+                string pathUpdateDlssg = pathDlssDlssd[1];
 
-                if (Path.Exists(pathDlssd))
+                if (Path.Exists(pathUpdateDlss) & Path.Exists(pathUpdateDlssg))
                 {
-                    UpdateUpscalers(pathDlssd, false, true);
+                    UpdateUpscalers(pathUpdateDlss, copyDlssDlssdDlssg:true, dlssgPath:pathUpdateDlssg);
                 }
                 else
                 {
-                    MessageBox.Show("To update DLSSD, select the .exe path", "DLSSD");
+                    MessageBox.Show("To update DLSS/DLSSD/DLSSG, select the .exe path", "DLSS/DLSSD/DLSSG");
                 }
             }
 
-            else if (gamesToUpdateDlssDlssd.ContainsKey(selectMod))
+            // Update DLSS/DLSSG
+            else if (gamesToUpdateDlssDlssg.ContainsKey(selectMod))
             {
-                string pathDlssDlssd = gamesToUpdateDlssDlssd[selectMod];
+                string pathDlssDlssg = gamesToUpdateDlssDlssg[selectMod];
 
-                if (Path.Exists(pathDlssDlssd))
+                if (Path.Exists(pathDlssDlssg))
                 {
-                    UpdateUpscalers(pathDlssDlssd, false, false, true);
+                    UpdateUpscalers(pathDlssDlssg, copyDlssDlssg:true);
                 }
                 else
                 {
-                    MessageBox.Show("To update DLSS/DLSSD, select the .exe path", "DLSS/DLSSD");
+                    MessageBox.Show("To update DLSS/DLSSG, select the .exe path", "DLSS/DLSSG");
                 }
             }
 
+            // Update DLSS/XESS
             else if (gamesToUpdateDlssXess.ContainsKey(selectMod))
             {
                 string pathDlssXess = gamesToUpdateDlssXess[selectMod];
 
                 if (Path.Exists(pathDlssXess))
                 {
-                    UpdateUpscalers(pathDlssXess, false, false, false, false, true);
+                    UpdateUpscalers(pathDlssXess, copyDlssXess:true);
                 }
                 else
                 {
@@ -2014,17 +2090,33 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
 
+            // Update FSR/DLSS
             else if (gamesToUpdateFsrDlss.ContainsKey(selectMod))
             {
                 string pathFsrDlss = gamesToUpdateFsrDlss[selectMod];
 
                 if (Path.Exists(pathFsrDlss))
                 {
-                    UpdateUpscalers(pathFsrDlss, false, false, false, true);
+                    UpdateUpscalers(pathFsrDlss, copyFsrDlss:true);
                 }
                 else
                 {
                     MessageBox.Show("To update FSR/DLSS, select the .exe path", "FSR/DLSS");
+                }
+            }
+
+            // Update All Upscalers
+            else if (gamesToUpdateDlssd.ContainsKey(selectMod))
+            {
+                string pathDlssd = gamesToUpdateDlssd[selectMod];
+
+                if (Path.Exists(pathDlssd))
+                {
+                    UpdateUpscalers(pathDlssd, copyDlssd: true);
+                }
+                else
+                {
+                    MessageBox.Show("To update all upscalers, select the .exe path", "All Upscalers");
                 }
             }
         }
@@ -4528,12 +4620,12 @@ namespace FSR3ModSetupUtilityEnhanced
                             {
                                 string nameOptiscaler = Path.GetFileName(optFile);
                                 string fullPath = Path.Combine(selectFolder, nameOptiscaler);
-                                string pathIni = "mods\\Temp\\OptiScaler\\Optiscaler.ini";
+                                string pathIni = "mods\\Temp\\OptiScaler\\OptiScaler.ini";
                                 File.Copy(optFile, fullPath, true);
                                 File.Copy(pathIni, selectFolder + "\\nvngx.ini", true);
                             }
-                            string oldIni = "mods\\Temp\\OptiScaler\\Optiscaler.ini";
-                            string newIni = "mods\\Addons_mods\\OptiScaler\\Optiscaler.ini";
+                            string oldIni = "mods\\Temp\\OptiScaler\\OptiScaler.ini";
+                            string newIni = "mods\\Addons_mods\\OptiScaler\\OptiScaler.ini";
                             File.Copy(newIni, oldIni, true);
                         }
                         if (optAddOn == "Tweak")
@@ -6577,7 +6669,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps2_Click(object sender, EventArgs e)
@@ -6588,7 +6680,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "fsr22_12", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps3_Click(object sender, EventArgs e)
@@ -6599,7 +6691,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "fsr21_12", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps4_Click(object sender, EventArgs e)
@@ -6610,7 +6702,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "xess", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void button4_Click_1(object sender, EventArgs e)
@@ -6621,7 +6713,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "fsr31_12 ", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "fsr31_12 ", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void buttonDlssDX11_Click(object sender, EventArgs e)
@@ -6632,7 +6724,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx11Upscaler", "dlss ", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx11Upscaler", "dlss ", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps5_Click(object sender, EventArgs e)
@@ -6643,7 +6735,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx12Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx12Upscaler", "fsr22", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void button5_Click_1(object sender, EventArgs e)
@@ -6654,7 +6746,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx12Upscaler", "fsr31", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx12Upscaler", "fsr31", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void buttonAddUps6_Click(object sender, EventArgs e)
@@ -6665,7 +6757,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx12Upscaler", "fsr21", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx12Upscaler", "fsr21", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
 
@@ -6689,7 +6781,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("Dx12Upscaler", "dlss", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("Dx12Upscaler", "dlss", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
 
@@ -6701,7 +6793,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("VulkanUpscaler", "fsr21", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("VulkanUpscaler", "fsr21", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
 
@@ -6713,7 +6805,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("VulkanUpscaler", "fsr22", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("VulkanUpscaler", "fsr22", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void buttonFsr31Vulkan_Click(object sender, EventArgs e)
@@ -6724,7 +6816,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("VulkanUpscaler", "fsr31", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("VulkanUpscaler", "fsr31", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void buttonDlssVulkan_Click(object sender, EventArgs e)
@@ -6735,7 +6827,7 @@ namespace FSR3ModSetupUtilityEnhanced
             }
             else if (optionsAddOn.CheckedItems.Contains("Optiscaler"))
             {
-                ConfigIni("VulkanUpscaler", "dlss", "mods\\Temp\\OptiScaler\\Optiscaler.ini", "Upscalers");
+                ConfigIni("VulkanUpscaler", "dlss", "mods\\Temp\\OptiScaler\\OptiScaler.ini", "Upscalers");
             }
         }
         private void buttonFg3_Click(object sender, EventArgs e)
