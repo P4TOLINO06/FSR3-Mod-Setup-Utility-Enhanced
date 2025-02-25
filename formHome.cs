@@ -73,7 +73,7 @@ namespace FSR3ModSetupUtilityEnhanced
             Dictionary<string, string> gamesToAdd = new Dictionary<string, string>
             {
                     {"Select FSR Version","Ds2.png" },
-                    {"A Plague Tale Requiem","APTL.png"},
+                    {"A Plague Tale Requiem","Requiem.png"},
                     {"A Quiet Place: The Road Ahead","QuietPlace.png"},
                     {"Achilles Legends Untold","Achilles.png"},
                     {"Alan Wake Remastered","AwRemaster.png"},
@@ -88,10 +88,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Baldur's Gate 3","BG3.png"},
                     {"Banishers: Ghosts of New Eden","Banishers.png" },
                     {"Black Myth: Wukong","wukong.png"},
-                    {"Blacktail","Black.png" },
+                    {"Blacktail","Black.png"},
+                    {"Bright Memory","BM.png"},
                     {"Bright Memory: Infinite","Bmi.png"},
                     {"Brothers: A Tale of Two Sons Remake","Brothers.png" },
                     {"Chernobylite","Cherno.png"},
+                    {"Choo-Choo Charles","CCC.png"},
                     {"Cod Black Ops Cold War","Cod.png"},
                     {"Cod MW3","mw3.png"},
                     {"Control","Control.png"},
@@ -121,6 +123,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Flintlock: The Siege Of Dawn","Flint.png"},
                     {"Fobia – St. Dinfna Hotel","Fobia.png"},
                     {"Fort Solis","Fort.png"},
+                    {"Frostpunk 2","FP2.png"},
                     {"Forza Horizon 5","Forza.png"},
                     {"Ghost of Tsushima","GhostT.png"},
                     {"Ghostrunner 2","Ghost2.png"},
@@ -354,7 +357,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Monster Hunter Wilds", new List<string> {"Others Mods MHW"} },
                 { "Like a Dragon: Pirate Yakuza in Hawaii", new List<string> { "Others Mods LDPYH", "DLSSG Yakuza" } },
                 { "A Plague Tale Requiem", new List<string> {"Others Mods Requiem"} },
-                { "Fobia – St. Dinfna Hotel", new List<string> {"Others Mods Fobia", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } }
+                { "Fobia – St. Dinfna Hotel", new List<string> {"Others Mods Fobia", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
+                { "Frostpunk 2", new List<string> {"Others Mods FP2" } },
+                { "Bright Memory",  new List<string> {"Others Mods BM" } },
+                { "Choo-Choo Charles",  new List<string> {"Others Mods CCC" } },
+                { "Lost Records Bloom And Rage",  new List<string> {"Others Mods LRBR" } }
 
             };
             #endregion

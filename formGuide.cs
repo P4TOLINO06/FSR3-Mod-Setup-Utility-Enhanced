@@ -295,6 +295,18 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Check the Fake Nvidia GPU box."
             },
             {
+                "Bright Memory",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n\n" +
+
+                "Steam: When launching the game via Steam, select DX12 if the window does not appear. Go to Library > Game > Gear icon to the right of Achievements > Properties > Launch Options, and add -dx12.\n" +
+                "Others: Go to the game's .exe > Properties and add -dx12 after the .exe."
+            },
+            {
                 "Bright Memory: Infinite",
                 "1 - Select a version of the mod of your choice (version 0.10.4 is recommended).\r\n" +
                 "2 - To make the mod work, run it in DX12. To run it in DX12, right-click the game's exe and create a shortcut, then right-click the shortcut again, go to \"Properties,\" and at the end of \"Target\" (outside the quotes), add -dx12 or go to your Steam library, select the game, go to Settings > Properties > Startup options, and enter -dx12."
@@ -311,6 +323,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - Check the box 'Fake Nvidia GPU' (only for AMD/GTX).\r\n" +
                 "3 - To fix flickering in the hub, select DLSS, play for a few seconds, then select FSR3 and repeat the process, finally select DLSS."
 
+            },
+            {
+                "Choo-Choo Charles",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. Select DLSS and press the Insert key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Cod Black Ops Cold War",
@@ -565,12 +586,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Flintlock: The Siege of Dawn",
-                "1 - Select the FSR 3.1/DLSS Optiscaler mod and install it.\r\n" +
-                "2 - In the game, select DLSS, press the Insert key to open\r\n" +
-                "the Optiscaler menu, in Upscalers select an upscaler of your\r\n" +
-                "preference. If you cannot see the menu, after installing the\r\n" +
-                "mod, select Optiscaler in the Utility and choose an upscaler\r\n" +
-                "in Upscaler Optiscaler and install."
+                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Fobia – St. Dinfna Hotel",
@@ -650,6 +671,20 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1. Download and install ReShade.\n" +
                 "2. Select ffxvi.exe, DirectX 10/11/12, Update ReShade and Effects, and choose the FINAL FANTASY XVI.ini. (The .ini is in the selected folder in the Utility).\n" +
                 "3. Select check all effects (you can also use \"Uncheck all\" and \"Check"
+            },
+            {
+                "Frostpunk 2",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n\n" +
+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)."
             },
             {
                 "F1 2022",
@@ -1908,7 +1943,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"FSR 3.1.3/DLSS FG (Only Optiscaler)","Opti.png"},
                 {"Add-on Mods","Addon.png" },
                 {"Alone in the Dark","Alone.png"},
-                {"A Plague Tale Requiem","Requiem.png"},
+                {"A Plague Tale Requiem","Requiem2.png"},
                 {"A Quiet Place: The Road Ahead","QuietPlace2.png"},
                 {"Assassin's Creed Valhalla","AcVal.png"},
                 {"Assetto Corsa Evo","ACE2.png"},
@@ -1919,9 +1954,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Black Myth: Wukong","wukong2.png" },
                 {"Blacktail","Black.png"},
                 {"Banishers Ghost of New Eden","Banishers.png"},
+                {"Bright Memory","BM2.png"},
                 {"Bright Memory: Infinite","Bmi.png"},
                 {"Brothers a Tale of Two Sons","Brothers.png"},
                 {"Chernobylite","Cherno.png"},
+                {"Choo-Choo Charles","CCC2.png"},
                 {"Cod Black Ops Cold War","Cod.png"},
                 {"Cod MW3","mw3.png"},
                 {"Control","Control.png"},
@@ -1952,6 +1989,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Final Fantasy XVI","Ffxvi2.png"},
                 {"F1 2022","F1.png"},
                 {"F1 2023","F1_23.png"},
+                {"Frostpunk 2","FP22.png"},
                 {"GTA Trilogy","GtaTrilogy2.png"},
                 {"GTA V","GtaV.png"},
                 {"Ghost of Tsushima","GhostT.png"},

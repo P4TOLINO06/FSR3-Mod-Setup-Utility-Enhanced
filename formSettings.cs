@@ -94,7 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
-                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Monster Hunter Wilds" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Monster Hunter Wilds", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1692,10 +1692,10 @@ namespace FSR3ModSetupUtilityEnhanced
             string nvapiAntiLagDlssg = "mods\\Addons_mods\\Nvapi AMD\\DLSSG Nvapi Ini\\OptiScaler.ini";
             string nvapiFile = null;
             string destPathNvapi = Path.Combine(selectFolder, "OptiScaler.ini");
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage" };
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
-            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage" };
+            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2" };
             string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
@@ -1986,6 +1986,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods EW", defaultDlssPath},
                 { "Others Mods TFBK", defaultDlssPath},
                 { "Others GTA Trilogy", defaultDlssPath},
+                { "Others Mods CCC", defaultDlssPath},
+                { "Others Mods BM", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
                 { "Others Mods Fobia", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods Stalker 2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods PW", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
@@ -2005,9 +2007,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Spider", selectFolder }
             };
 
-            Dictionary<string, string> gamesToUpdateDlssDlssg = new Dictionary<string, string>
+            Dictionary<string, string[]> gamesToUpdateDlssDlssg = new Dictionary<string, string[]>
             {
-                { "Others Mods Requiem", selectFolder }
+                { "Others Mods Requiem", new string[] {selectFolder, null} },
+                { "Others Mods FP2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\Streamline\\Binaries\\ThirdParty\\Win64")) } },
+                { "Others Mods LRBR", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\Streamline\\Binaries\\ThirdParty\\Win64"))} }
             };
 
             Dictionary<string, string[]> gamesToUpdateDlssDlssdDlssg = new Dictionary<string, string[]>
@@ -2063,11 +2067,21 @@ namespace FSR3ModSetupUtilityEnhanced
             // Update DLSS/DLSSG
             else if (gamesToUpdateDlssDlssg.ContainsKey(selectMod))
             {
-                string pathDlssDlssg = gamesToUpdateDlssDlssg[selectMod];
+                string[] pathDlssDlssg = gamesToUpdateDlssDlssg[selectMod];
+                string pathUpdateDlss2 = pathDlssDlssg[0];
 
-                if (Path.Exists(pathDlssDlssg))
+                string? pathUpdateDlssg2 = pathDlssDlssg.Length > 1 ? pathDlssDlssg[1] : null;
+
+                if (Path.Exists(pathUpdateDlss2) && (pathUpdateDlssg2 == null || Path.Exists(pathUpdateDlssg2)))
                 {
-                    UpdateUpscalers(pathDlssDlssg, copyDlssDlssg:true);
+                    if (pathUpdateDlssg2 == null)
+                    {
+                        UpdateUpscalers(pathUpdateDlss2, copyDlssDlssg: true);
+                    }
+                    else
+                    {
+                        UpdateUpscalers(pathUpdateDlss2, copyDlssDlssg: true, dlssgPath: pathUpdateDlssg2);
+                    }
                 }
                 else
                 {
