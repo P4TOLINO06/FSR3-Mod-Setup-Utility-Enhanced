@@ -117,6 +117,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Eternal Strands","Ets.png"},
                     {"Final Fantasy VII Rebirth","FFVIIRBT.png"},
                     {"Final Fantasy XVI","Ffxvi.png"},
+                    {"Five Nights at Freddy’s: Security Breach","FNAF.png"},
                     {"F1 2022","F1.png"},
                     {"F1 2023","F1_23.png"},
                     {"FIST: Forged In Shadow Torch","Fist.png"},
@@ -131,6 +132,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"God Of War 4","Gow4.png"},
                     {"God of War Ragnarök","GowRag2.png"},
                     {"Gotham Knights","Gk.png"},
+                    {"GreedFall II: The Dying World","GF2.png"},
                     {"GTA Trilogy","GtaTrilogy.png"},
                     {"GTA V","GtaV.png"},
                     {"Hellblade 2","Hell2.png" },
@@ -281,7 +283,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             var gamesModsConfig = new Dictionary<string, List<string>>
             {
-                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.3/DLSS FG RDR2", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler RDR2)", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
                 { "Alan Wake 2", new List<string> { "Others Mods AW2", "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom"} },
                 { "Assassin's Creed Valhalla", new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" } },
@@ -361,7 +363,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Frostpunk 2", new List<string> {"Others Mods FP2" } },
                 { "Bright Memory",  new List<string> {"Others Mods BM" } },
                 { "Choo-Choo Charles",  new List<string> {"Others Mods CCC" } },
-                { "Lost Records Bloom And Rage",  new List<string> {"Others Mods LRBR" } }
+                { "Lost Records Bloom And Rage",  new List<string> {"Others Mods LRBR" } },
+                { "GreedFall II: The Dying World", new List<string> { "Others Mods Greed 2" } },
+                { "Five Nights at Freddy’s: Security Breach", new List<string> {"Others Mods FNAF"} },
+                { "Pacific Drive", new List<string> {"Others Mods PD"} }
 
             };
             #endregion

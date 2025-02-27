@@ -94,7 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
-                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Monster Hunter Wilds", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Monster Hunter Wilds", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory", "Five Nights at Freddy’s: Security Breach", "GreedFall II: The Dying World", "Pacific Drive" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1695,7 +1695,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
-            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2" };
+            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "God of War Ragnarök" };
             string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
@@ -1976,6 +1976,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods AW2", selectFolder},
                 { "Others Mods ATH", selectFolder},
                 { "Others Mods LDPYH", selectFolder},
+                { "Others Mods Greed 2", selectFolder},
                 { "Others Mods STC", defaultDlssPath},
                 { "Others Mods HB2", defaultDlssPath},
                 { "Others Mods HL", defaultDlssPath},
@@ -1987,9 +1988,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods TFBK", defaultDlssPath},
                 { "Others GTA Trilogy", defaultDlssPath},
                 { "Others Mods CCC", defaultDlssPath},
+                { "Others Mods FNAF", defaultDlssPath},
+                { "Others Mods PD", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", "Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods BM", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
                 { "Others Mods Fobia", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
-                { "Others Mods Stalker 2", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods PW", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods KCD2", Path.GetFullPath(Path.Combine(selectFolder, "..", "Win64Shared"))},
                 { "Others Mods LOP", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", @"Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64"))},
@@ -2004,14 +2006,16 @@ namespace FSR3ModSetupUtilityEnhanced
 
             Dictionary<string, string> gamesToUpdateDlssd = new Dictionary<string, string>
             {
-                { "Others Mods Spider", selectFolder }
+                { "Others Mods Spider", selectFolder },
+                { "Others Mods Gow Rag", selectFolder }
             };
 
             Dictionary<string, string[]> gamesToUpdateDlssDlssg = new Dictionary<string, string[]>
             {
                 { "Others Mods Requiem", new string[] {selectFolder, null} },
                 { "Others Mods FP2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\Streamline\\Binaries\\ThirdParty\\Win64")) } },
-                { "Others Mods LRBR", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\Streamline\\Binaries\\ThirdParty\\Win64"))} }
+                { "Others Mods LRBR", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\Streamline\\Binaries\\ThirdParty\\Win64"))} },
+                { "Others Mods Stalker 2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\Streamline\\Binaries\\ThirdParty\\Win64"))} }
             };
 
             Dictionary<string, string[]> gamesToUpdateDlssDlssdDlssg = new Dictionary<string, string[]>
@@ -2210,34 +2214,16 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task rdr2Fsr3()
         {
-            string iniOptiscalerRdr2 = "mods\\FSR3_RDR2\\Optiscaler";
             string rdr2Mix = "mods\\RDR2_FSR3_mix";
             string rdr2FgCustom = "mods\\FSR3_RDR2\\RDR2 FG Custom\\FG";
             string rdr2AmdIni = "mods\\FSR3_RDR2\\RDR2 FG Custom\\Amd Ini\\RDR2Upscaler.ini";
+            string rdr2Optiscaler = "mods\\FSR3_RDR2\\Optiscaler_fsr_dlss";
 
             string gpuName = await GetActiveGpu();
 
-            if (selectMod == "FSR 3.1.3/DLSS FG RDR2")
+            if (selectMod == "FSR 3.1.3/DLSS FG (Only Optiscaler RDR2)")
             {
-                await optiscalerFsrDlss();
-
-                if (gpuName.Contains("amd"))
-                {
-                    await CopyFolder(iniOptiscalerRdr2);
-                }
-
-                if (gpuName.Contains("rtx"))
-                {
-                    if (Path.Exists(Path.Combine(selectFolder, "nvngx.dll")))
-                    {
-                        File.Delete(Path.Combine(selectFolder, "nvngx.dll"));
-
-                        if (Path.Exists(Path.Combine(selectFolder, "dxgi.dll")))
-                        {
-                            File.Move(Path.Combine(selectFolder, "dxgi.dll"), Path.Combine(selectFolder, "version.dll"), true);
-                        }
-                    }
-                }
+                CopyFolder(rdr2Optiscaler);
             }
 
             if (selectMod == "RDR2 Mix")
@@ -2509,7 +2495,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (selectMod == "Others Mods Gow Rag")
             {
-                UpdateUpscalers(selectFolder);
                 if (Path.Exists(gowRagIntroPath))
                 {
                     if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -3257,7 +3242,7 @@ namespace FSR3ModSetupUtilityEnhanced
             string presetStalker = "mods\\FSR3_Stalker2\\Preset";
             string dlssFgStalker = "mods\\FSR3_Stalker2\\FG DLSS";
 
-            if (selectMod == "DLSS FG (Only Nvidia)")
+            if (selectMod == "DLSS FG (Only RTX)")
             {
                 CopyFolder(dlssFgStalker);
                 runReg("mods\\Temp\\NvidiaChecks\\DisableNvidiaSignatureChecks.reg");
@@ -3285,7 +3270,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
         }
-
         public async Task returnalFsr3()
         {
             string rootPathReturnal = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\.."));
@@ -5288,8 +5272,12 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     CleanupMod3(del_rdr2_custom_files, "RDR2 Mix");
                     CleanupMod3(del_rdr2_custom_files, "RDR2 FG Custom");
-                    if (CleanupOptiscalerFsrDlss(delOptiscaler, "FSR 3.1.3/DLSS FG RDR2"))
+                    if (CleanupOptiscalerFsrDlss(delOptiscaler, "FSR 3.1.3/DLSS FG (Only Optiscaler RDR2)"))
                     {
+                        if (Path.Exists(Path.Combine(selectFolder, "winmm.dll")))
+                        {
+                            File.Delete(Path.Combine(selectFolder, "winmm.dll"));
+                        }
                         MessageBox.Show("Mods removed successfully", "Sucess");
                     }
                     #endregion

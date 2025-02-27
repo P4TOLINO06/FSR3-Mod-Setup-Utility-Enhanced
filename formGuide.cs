@@ -673,6 +673,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. Select check all effects (you can also use \"Uncheck all\" and \"Check"
             },
             {
+                "Five Nights at Freddy’s: Security Breach",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods FNAF\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
+            },
+            {
                 "Frostpunk 2",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
                 "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
@@ -782,21 +792,28 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "God of War Ragnarök",
+
+                "FSR 3.1.3/DLSS FG (Only Optiscaler) + AMD Anti Lag 2\n" +
+                "1. If you want to update all upscalers, select \"Others Mods Gow Rag\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check Enable Signature Over box.\n" +
+                "4. Check the \"AMD Anti Lag 2\" option that appears during installation.\n" +
+                "5. In the game, select \"Reflex\" under \"Latency Reduction\".\n" +
+                "6. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "7. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n\n" +
+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only Nvidia).\n\n" +
+
                 "DLSS FG ALL GPU:\n" +
                 "1. Select Uniscaler FSR 3.1.\n" +
                 "2. Select FSR3 in \"Mod Operates\" (if you can\'t see DLSS in the game, select FSR3 in \"Frame Gen Method\" as well).\n" +
                 "3. Check the \"Enable Signature Over\" box.\n" +
                 "4. If you still can\'t see DLSS in the game, check the Nvngx.dll box, select \"Default,\" and reinstall the mod.\n" +
                 "5. The game may freeze for a few seconds when selecting DLSS FG.\n\n" +
-
-                "FSR 3.1.3/DLSS FG + AMD Anti Lag 2 GowR\n" +
-                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
-                "2. Check the Enable Signature Over box.\n" +
-                "3. If you want to update the game's upscalers, it is recommended to do so before installing the mod. Simply select \"Others Mods Gow Rag\" to update.\n" +
-                "4. Check the \"AMD Anti Lag 2\" option that appears during installation.\n" +
-                "5. In the game, select \"Reflex\" under \"Latency Reduction\".\n" +
-                "6. Press the Insert key to open the menu.\n" +
-                "7. In the menu, select FG Enabled, Active, Hud Fix and Extended\n\n" +
 
                 "Unlock VRAM:\n" +
                 "Removes the error for GPUs with less than 6GB of VRAM.\n\n" +
@@ -817,6 +834,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, select FG Enabled, Active, Hud Fix and Extended\n" +
                 "5. If you want to update DLSS, select \"Others Mods GK\" and install it. Select the .exe folder (Mercury\\Binaries\\Win64); otherwise, it will not be possible to update DLSS."
+            },
+            {
+                "GreedFall II: The Dying World",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods Greed 2\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Hellblade: Senua's Sacrifice",
@@ -1188,9 +1215,17 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Pacific Drive",
-                "1 - Select a mod of your preference, (0.10.3 is recommended)\r\n" +
-                "2 - Check the box Fake Nvidia GPU (AMD/GTX).\r\n" +
-                "3 - If you have any issues, in Nvngx.dll, select Default.\r\n"
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n\n" +
+
+                "Uniscaler/0.x\n" +
+                "1. Select a mod of your preference (0.10.3 is recommended).\n" +
+                "2. Check the box Fake Nvidia GPU (AMD/GTX).\n" +
+                "3. If you have any issues, in Nvngx.dll, select Default."
             },
             {
                 "Palworld",
@@ -1261,27 +1296,31 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Red Dead Redemption 2",
-                "FSR 3.1.3/DLSS FG Custom RDR2\r\n"+
+                "FSR 3.1.3/DLSS FG (Only Optiscaler RDR2)\n" +
                 "1. Disable Vsync, Triple Buffering, select Borderless Windowed, and run in DirectX 12.\n" +
-                "2. Select FSR 3.1.2/DLSS FG Custom RDR2 and install.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler RDR2) and install.\n" +
                 "3. Check the Enable Signature Over box.\n" +
-                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
-                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended. (The game may crash. If the crashes continue, use the RDR2 Mix to use the FG.)\n" +
-                "6. If you want to use FSR 3.1.3, select FSR 3x in \"Upscalers.\"\n" +
-                "7. Close MSI Afterburner, or the game may crash.\n\n" +
+                "4. In the game, select DLSS in the game menu before entering the campaign.\n" +
+                "5. In the campaign, press \"Insert\" key to open the menu.\n" +
+                "6. In the menu, check the Frame Gen, HUD Fix and FG Extended boxes. (The game may crash. If the crashes continue, use the RDR2 Mix to use the FG.)\n" +
+                "7. If you want to use FSR 3.1.3, select FSR 3x in \"Upscalers.\"\n" +
+                "8. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n" +
+                "9. Do not change the game's upscaler or uncheck HUD Fix and FG Extended after enabling them, or the game may crash.\n" +
+                "10. Close MSI Afterburner, or the game may crash.\n\n" +
 
-                "Red Dead Redemption 2 MIX\r\n" +
+                "Red Dead Redemption 2 MIX\n" +
                 "1. Set the game to DX12 in advanced options.\n" +
                 "2. Turn off Triple Buffering and Vsync, and set the game to Full Screen.\n" +
-                "3. Select the RDR2 Mix mod and install it.\n" +
-                "4. You don\'t need to use any upscaler, as Frame Generation is automatically activated.\n" +
-                "However, if you want to use an upscaler, when installing, check the Addon Mods box, select Optiscaler, and below in DX11 select FSR 2.1 DX11, and in DX12 select FSR 2.1 DX12.\n\n" +
+                "3. Select the RDR2 Mix mod and install.\n" +
+                "4. You don't need to use any upscaler, as Frame Generation is automatically activated. However, if you want to use an upscaler, when installing, check the Addon Mods box, select Optiscaler, and below in DX11 select FSR 2.1 DX11, and in DX12 select FSR 2.1 DX12.\n\n" +
 
                 "RDR2 FG Custom\n" +
                 "1. Select an upscaler, disable Triple Buffering, Vsync, and set the game to DX12 before installing the mod.\n" +
                 "2. Select RDR2 Custom FG and install.\n" +
                 "3. In the game, press the \"END\" key to open the menu.\n" +
-                "4. In the menu, select Frame Gen."
+                "4. In the menu, select Frame Gen.\n\n" +
+
+                "Do not use the mods in Online mode, or you may get banned."
             },
             {
                 "Remnant II",
@@ -1872,7 +1911,8 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Spider Man/Miles", "https://www.youtube.com/embed/Al4iiKZ_CD8?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Palworld", "https://www.youtube.com/embed/u447nns-yCM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Black Myth: Wukong", "https://www.youtube.com/embed/ns_YxKqjnEk?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Lies of P", "https://www.youtube.com/embed/UaJmZrbgAcM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Lies of P", "https://www.youtube.com/embed/UaJmZrbgAcM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "Red Dead Redemption 2", "https://www.youtube.com/embed/DLatayQd3HI?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)
@@ -1987,6 +2027,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Forza Horizon 5","Forza.png"},
                 {"Final Fantasy VII Rebirth","FFVIIRBT2.png"},
                 {"Final Fantasy XVI","Ffxvi2.png"},
+                {"Five Nights at Freddy’s: Security Breach","FNAF2.png"},
                 {"F1 2022","F1.png"},
                 {"F1 2023","F1_23.png"},
                 {"Frostpunk 2","FP22.png"},
@@ -1998,6 +2039,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"God Of War 4","Gow42.png"},
                 {"God of War Ragnarök","GowRag.png"},
                 {"Gotham Knights","Gk2.png"},
+                {"GreedFall II: The Dying World","GF22.png"},
                 {"Hellblade: Senua's Sacrifice","Hell.png"},
                 {"Hellblade 2","Hell22.png"},
                 {"High On Life","Hol.png"},
@@ -2033,7 +2075,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Nobody Wants To Die","Nobody.png"},
                 {"Orcs Must Die! Deathtrap","Omdd2.png"},
                 {"Outpost Infinity Siege","Outpost.png"},
-                {"Pacific Drive","Pacific.png"},
+                {"Pacific Drive","Pacific2.png"},
                 {"Palworld","Palworld2.png"},
                 {"Path of Exile II","POE22.png"},
                 {"Ratchet and Clank","Ratchet.png"},
