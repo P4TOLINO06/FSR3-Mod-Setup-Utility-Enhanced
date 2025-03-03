@@ -319,10 +319,13 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Chernobylite",
-                "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
-                "2 - Check the box 'Fake Nvidia GPU' (only for AMD/GTX).\r\n" +
-                "3 - To fix flickering in the hub, select DLSS, play for a few seconds, then select FSR3 and repeat the process, finally select DLSS."
-
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. Start the game in DX12.\n" +
+                "2. If you want to update the DLSS, select \"Others Mods CBL\", do this before installing the mod.\n" +
+                "3. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "4. Check Enable Signature Over box.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Choo-Choo Charles",
@@ -330,6 +333,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
                 "3. Select DLSS and press the Insert key to open the menu.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
+            },
+            {
+                "Chorus",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods Chorus\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check Enable Signature Over box.\n" +
                 "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
                 "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
@@ -462,6 +474,30 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Deathloop",
                 "1 - Select a version of the mod of your choice (version 0.10.3 is recommended).\r\n" +
                 "2 - Activate Fake Nvidia GPU and Nvapi Results (Only for AMD and GTX)."
+            },
+            {
+                "Deliver Us Mars",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods DUM\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check Enable Signature Over box.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n\n" +
+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check 'yes' in the 'DLSS/FSR' window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the 'Insert' key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only Nvidia)."
+            },
+            {
+                "Deliver Us The Moon",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods DUTM\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check Enable Signature Over box.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Dragon Age: Veilguard",
@@ -1580,30 +1616,34 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Star Wars Jedi: Survivor",
-                "DLSS Jedi (if you have RTX, use this mod if you want to use native DLSS):\n" +
-                "1. Check the box Fake Nvidia GPU (GTX and AMD), Nvapi Results (GTX and AMD), and UE Compatibility (AMD).\n" +
-                "2. If you can't see DLSS in-game, select \"DLSS\" under \"Mod Operates\".\n" +
-                "3. In-game, select DLSS 3 and Frame Gen.\n\n" +
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update upscalers, select \"Others Mods Jedi\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check Enable Signature Over box.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
 
-                "ALL GPUs:\n" +
-                "1. Select Uniscaler FSR 3.1.\n" +
-                "2. Check the \"Enable Signature Over\" box.\n" +
-                "3. If you cannot see DLSS in the game, check the Nvngx.dll box, select Default, and reinstall the mod.\n" +
-                "4. If you have an RTX GPU and want to use native DLSS, select DLSS in \"Mod Operates.\" Other GPUs can use FSR 3.1/XESS.\n" +
-                "5. In the game, select DLSS FG.\n\n" +
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
 
-                "Others Mods:\n" +
-                "Intro Skip: Removes the initial intro when opening the game.\n\n" +
+                "Others Mods\n" +
+                "Intro Skip\n" +
+                "Removes the initial intro when opening the game.\n\n" +
 
-                "Anti Stutter:\n" +
+                "Anti Stutter\n" +
                 "1. Faster Loading Times.\n" +
                 "2. Enhanced Streaming and Level Loading.\n" +
                 "3. Optimized CPU and GPU Utilization.\n\n" +
 
-                "Fix RT:\n" +
-                "Fixes any crashes you experience with ray tracing enabled and also fixes occlusion culling. When you turn the camera and see white flashing at the corners of the screen, this resolves it and any crashes.\n\n" +
+                "Fix RT\n" +
+                "Fixes any crashes you experience with ray tracing enabled and also fixes occlusion culling.\n" +
+                "When you turn the camera and see white flashing at the corners of the screen, this resolves it and any crashes.\n\n" +
 
-                "Graphic Preset:\n" +
+                "Graphic Preset\n" +
                 "1. Install ReShade.\n" +
                 "2. In ReShade, select Star Wars Jedi: Survivor.\n" +
                 "3. Select DirectX 10/11/12.\n" +
@@ -1997,8 +2037,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Bright Memory","BM2.png"},
                 {"Bright Memory: Infinite","Bmi.png"},
                 {"Brothers a Tale of Two Sons","Brothers.png"},
-                {"Chernobylite","Cherno.png"},
+                {"Chernobylite","Cherno2.png"},
                 {"Choo-Choo Charles","CCC2.png"},
+                {"Chorus","Chorus2.png"},
                 {"Cod Black Ops Cold War","Cod.png"},
                 {"Cod MW3","mw3.png"},
                 {"Control","Control.png"},
@@ -2011,6 +2052,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Dead Rising Remaster","Drr2.png"},
                 {"Death Stranding Director's Cut","Ds.png"},
                 {"Deathloop","Df.png"},
+                {"Deliver Us Mars","DUM2.png"},
+                {"Deliver Us The Moon","DUTM2.png"},
                 {"Dragon Age: Veilguard","DgVeil2.png"},
                 {"Dragons Dogma 2","Dg2.png"},
                 {"Dying Light 2","Dl22.png"},

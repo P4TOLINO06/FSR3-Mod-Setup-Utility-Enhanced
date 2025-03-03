@@ -92,9 +92,9 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Final Fantasy XVI", "Star Wars Outlaws", "Horizon Zero Dawn\\Remastered", "Until Dawn", "Hogwarts Legacy", "Metro Exodus Enhanced Edition", "Lies of P", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row", "GTA Trilogy",
+            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Final Fantasy XVI", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
-                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Monster Hunter Wilds", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory", "Five Nights at Freddy’s: Security Breach", "GreedFall II: The Dying World", "Pacific Drive" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Monster Hunter Wilds", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory", "Five Nights at Freddy’s: Security Breach", "GreedFall II: The Dying World", "Pacific Drive", "Dying Light 2", "Kena: Bridge of Spirits", "The Witcher 3" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -523,13 +523,6 @@ namespace FSR3ModSetupUtilityEnhanced
         };
         #endregion
 
-        #region Folder Jedi 
-        Dictionary<string, string[]> folderJedi = new Dictionary<string, string[]>
-        {
-            { "DLSS Jedi", new string[] {"mods\\FSR2FSR3_Miles\\Uni_Custom_miles"}},
-        };
-        #endregion
-
         #region Folder Palworld
         Dictionary<string, string[]> folderPw = new Dictionary<string, string[]>
         {
@@ -725,8 +718,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {"Uniscaler V3",@"\mods\Temp\Uniscaler_V3\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler V4",@"\mods\Temp\Uniscaler_V4\enable_fake_gpu\uniscaler.config.toml"},
             {"Uniscaler FSR 3.1",@"\mods\Temp\Uniscaler_FSR31\enable_fake_gpu\uniscaler.config.toml"},
-            {"The Callisto Protocol FSR3",@"\mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"},
-            {"Dlss Jedi", @"mods\Temp\FSR3_Miles\enable_fake_gpu\uniscaler.config.toml"}
+            {"The Callisto Protocol FSR3",@"\mods\FSR3_Callisto\enable_fake_gpu\fsr2fsr3.config.toml"}
         };
         #endregion
 
@@ -1070,7 +1062,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     { "folderForza",folderForza },
                     { "folderCb2077",folderCb2077 },
                     { "folderPw",folderPw },
-                    { "folderJedi",folderJedi },
                     { "folderTekken",folderTekken },
                     { "folderIcr",folderIcr },
                     { "folderValhalla",folderValhalla }
@@ -1692,10 +1683,12 @@ namespace FSR3ModSetupUtilityEnhanced
             string nvapiAntiLagDlssg = "mods\\Addons_mods\\Nvapi AMD\\DLSSG Nvapi Ini\\OptiScaler.ini";
             string nvapiFile = null;
             string destPathNvapi = Path.Combine(selectFolder, "OptiScaler.ini");
-            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2" };
+            string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", 
+            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "STAR WARS Jedi: Survivor", "Deliver Us Mars" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
-            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "God of War Ragnarök" };
+            string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "God of War Ragnarök",
+            "STAR WARS Jedi: Survivor", "Deliver Us Mars"};
             string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
@@ -1989,6 +1982,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others GTA Trilogy", defaultDlssPath},
                 { "Others Mods CCC", defaultDlssPath},
                 { "Others Mods FNAF", defaultDlssPath},
+                { "Others Mods Kena", defaultDlssPath},
+                { "Others Mods DUTM", defaultDlssPath},
+                { "Others Mods CBL", defaultDlssPath},
+                { "Others Mods Chorus", defaultDlssPath},
                 { "Others Mods PD", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", "Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods BM", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
                 { "Others Mods Fobia", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
@@ -2013,6 +2010,10 @@ namespace FSR3ModSetupUtilityEnhanced
             Dictionary<string, string[]> gamesToUpdateDlssDlssg = new Dictionary<string, string[]>
             {
                 { "Others Mods Requiem", new string[] {selectFolder, null} },
+                { "Others Mods TW3", new string[] {selectFolder, null} },
+                { "Others Mods DL2", new string[] {selectFolder, null} },
+                { "Others Mods DUM", new string[] {defaultDlssPath, defaultDlssgPath} },
+                { "Others Mods Jedi", new string[] {defaultDlssPath, defaultDlssgPath} },
                 { "Others Mods FP2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\Streamline\\Binaries\\ThirdParty\\Win64")) } },
                 { "Others Mods LRBR", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\Streamline\\Binaries\\ThirdParty\\Win64"))} },
                 { "Others Mods Stalker 2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\Streamline\\Binaries\\ThirdParty\\Win64"))} }
@@ -2255,38 +2256,36 @@ namespace FSR3ModSetupUtilityEnhanced
             string jediIntroSkip = "mods\\FSR3_Jedi\\Mods\\Jedi Intro Skip\\Default_Startup.mp4";
             string originFolderJedi = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..\\SwGame"));
 
-            if (selectMod == "DLSS Jedi")
+            if (selectMod == "Others Mods Jedi")
             {
-                CopyFSR(folderJedi);
-            }
-
-            if (MessageBox.Show("Do you want to install Graphics Preset?", "Graphic Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                File.Copy(jediPreset, selectFolder + "\\STARWAR-ULTRA-REALISTA.ini", true);
-            }
-            if (Path.Exists(originFolderJedi + "\\Content\\Paks"))
-            {
-                if (MessageBox.Show("Do you want to install fix Ray Tracing?", "Fix RT", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to install Graphics Preset?", "Graphic Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    File.Copy(jediFixRt, originFolderJedi + "\\Content\\Paks\\pakchunk99-Mods_CustomMod_P.pak", true);
+                    File.Copy(jediPreset, selectFolder + "\\STARWAR-ULTRA-REALISTA.ini", true);
                 }
-
-                if (MessageBox.Show("Do you want to install Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (Path.Exists(originFolderJedi + "\\Content\\Paks"))
                 {
-                    File.Copy(jediAntiStutter, originFolderJedi + "\\Content\\Paks\\SWJSFAI.pak", true);
-                }
-
-                if (Path.Exists(originFolderJedi + "\\Content\\Movies"))
-                {
-                    if (MessageBox.Show("Do you want to skip the game\'s initial intro?", "intro SKip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Do you want to install fix Ray Tracing?", "Fix RT", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        File.Copy(jediIntroSkip, originFolderJedi + "\\Content\\Movies\\Default_Startup.mp4", true);
+                        File.Copy(jediFixRt, originFolderJedi + "\\Content\\Paks\\pakchunk99-Mods_CustomMod_P.pak", true);
+                    }
+
+                    if (MessageBox.Show("Do you want to install Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        File.Copy(jediAntiStutter, originFolderJedi + "\\Content\\Paks\\SWJSFAI.pak", true);
+                    }
+
+                    if (Path.Exists(originFolderJedi + "\\Content\\Movies"))
+                    {
+                        if (MessageBox.Show("Do you want to skip the game\'s initial intro?", "intro SKip", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            File.Copy(jediIntroSkip, originFolderJedi + "\\Content\\Movies\\Default_Startup.mp4", true);
+                        }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("If you want to install the other mods (Anti Stutter, Fix Rt, and Intro Skip), select the path to the game\\'s .exe file. The path should look like: Jedi Survivor\\SwGame\\Binaries\\Win64", "Path Not Found");
+                else
+                {
+                    MessageBox.Show("If you want to install the other mods (Anti Stutter, Fix Rt, and Intro Skip), select the path to the game\\'s .exe file. The path should look like: Jedi Survivor\\SwGame\\Binaries\\Win64", "Path Not Found");
+                }
             }
         }
 
@@ -2628,12 +2627,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     Directory.Delete(selectFolder + "\\uniscaler", true);
                 }
             }
-        }
-
-        public void chernobyliteFsr3()
-        {
-            string pathExeCherno = selectFolder + "\\ChernobylGame-Win64-Shipping.exe";
-            AutoShortCut(pathExeCherno, "Chernobylite", "-dx12", "Do you want to create a DX12 shortcut? If you prefer to create it manually, click \"NO\". This is necessary for the mod to work correctly.");
         }
 
         public void controlFsr3()
@@ -4397,10 +4390,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     tekkenFsr3();
                     MessageBox.Show("Run TekkenOverlay.exe for the mod to work, the .exe is in the folder where the mod was installed", "Run Overlay", MessageBoxButtons.OK);
                 }
-                if (gameSelected == "Chernobylite")
-                {
-                    chernobyliteFsr3();
-                }
                 if (gameSelected == "Icarus")
                 {
                     icrFsr3();
@@ -5313,11 +5302,6 @@ namespace FSR3ModSetupUtilityEnhanced
                     #region Cleanup others mods Jedi Survivor
                     string rootPathJedi = Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..\\SwGame"));
 
-                    if (selectMod == "DLSS Jedi")
-                    {
-                        CleanupMod(del_uni_files, folderJedi);
-                    }
-
                     CleanupOthersMods("Fix RT", "pakchunk99-Mods_CustomMod_P.pak", rootPathJedi + "\\Content\\Paks");
                     CleanupOthersMods("Anti Stutter", "SWJSFAI.pak", rootPathJedi + "\\Content\\Paks");
                     CleanupOthersMods("Intro Skip", "Default_Startup.mp4", rootPathJedi + "\\Content\\Movies");
@@ -5842,10 +5826,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     CleanupMod3(del_valhalla, "Ac Valhalla Dlss (Only RTX)");
                 }
-                else if (folderJedi.ContainsKey(selectMod))
-                {
-                    CleanupMod(del_uni_files, folderJedi);
-                }
                 else if (folderGot.ContainsKey(selectMod))
                 {
                     #region Addition Mods
@@ -6045,7 +6025,7 @@ namespace FSR3ModSetupUtilityEnhanced
         //Config Resolution/Mod Operates
         #region Unlock Mod Operates
         List<string> unlock_mod_operates_list = new List<string> { "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4" };
-        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uniscaler V4", "Uniscaler FSR 3.1", "Dlss Jedi" };
+        List<string> uniscaler_list = new List<string> { "Uniscaler", "Uniscaler + Xess + Dlss", "Uniscaler V2", "Uniscaler V3", "Uniscaler V4", "Uniscaler FSR 3.1"};
         #endregion
 
         #region UniResolutionCustom
