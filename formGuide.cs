@@ -764,12 +764,14 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "GTA V",
-                "1. Select Dinput 8 and install. (only single player)\n" +
-                "2. Open the game and disable MSAA and TXAA and select borderless window. If the mod doesn't work, disable FXAA.\n" +
-                "3. Close the game and select GTA V FSR3/DLSS4 and install.\n" +
-                "4. Press \"Home\" to open the menu. If the mod is disabled, check \"Enable Frame Generation\".\n" +
-                "5. DLSS4, in the menu, select Default in the DLSS Preset and Auto Exposure in the Advanced Settings. If you enabled the DLSS Overlay during installation, check if Preset K is activated in the overlay. (The overlay is located in the bottom left corner of the screen). (Only Nvidia)\n" +
-                "6. All mods have DLSS4."
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods GTA V\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check Enable Signature Over box.\n" +
+                "4. Rockstar Launcher, go to settings and uncheck the \"Battleye\" box.\n" +
+                "5. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "6. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "7. It is not recommended to use mods in Online mode, or you may get banned. Use at your own risk."
             },
             {
                 "Ghost of Tsushima",
@@ -1007,6 +1009,16 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Indiana Jones and the Great Circle",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler Indy)\n" +
+                "1. In the game, select FSR and disable Frame Gen.\n" +
+                "2. In the utility, select FSR 3.1.3/DLSS FG (Only Optiscaler Indy) and install.\n" +
+                "3. Check the \"Enable Signature Over\" box.\n" +
+                "4. To install DLSS 4, select \"Others Mods Indy\".\n" +
+                "5. In the game, before enabling Frame Gen, press the \"Insert\" key and select your preferred upscaler in the mod menu.\n" +
+                "6. Enable Frame Gen in the game menu.\n" +
+                "7. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only Nvidia).\n" +
+                "8. This mod works with cinematic mode.\n\n" +
+
                 "Indy FG (Only RTX)\n" +
                 "1. Select \"Indy FG (Only RTX)\" and install.\n" +
                 "2. Check the Enable Signature Over box.\n" +
@@ -1017,7 +1029,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. In the ReShade, select the game’s .exe and click next.\n" +
                 "3. Select DX 10/11/12 and click next.\n" +
                 "4. Click \"Browse\" and locate the file TheGreatCircle.ini that was installed in the folder selected in the Utility and click Next.\n" +
-                "5. In the game, press the Home key to open the menu and select the options you prefer.\n"
+                "5. In the game, press the Home key to open the menu and select the options you prefer."
             },
             {
                 "Judgment\r\n",
@@ -1197,18 +1209,23 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 "Monster Hunter Wilds",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
-                "1. If you want to update the DLSS, select \"Others Mods MH\", do this before installing the mod.\n" +
+                "1. If you want to update the DLSS, select \"Others Mods MHW\", do this before installing the mod.\n" +
                 "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
                 "3. Check Enable Signature Over box.\n" +
                 "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
-                "This mod may not work on some GPUs. If it doesn't work, use the mod below.\n\n" +
+                "This mod may not work on some GPUs. If it doesn’t work, use the mod below.\n\n" +
 
                 "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
                 "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
                 "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
                 "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
-                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only Nvidia)."
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
+
+                "DLSSG Wilds (Only RTX)\n" +
+                "1. Select DLSSG Wilds (Only RTX) and install.\n" +
+                "2. Close the \"ReFramework\" menu that will appear when launching the game.\n" +
+                "3. In the game, select DLSS and Frame Gen."
             },
             {
                 "Mortal Shell",
@@ -1952,7 +1969,8 @@ namespace FSR3ModSetupUtilityEnhanced
             { "Palworld", "https://www.youtube.com/embed/u447nns-yCM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Black Myth: Wukong", "https://www.youtube.com/embed/ns_YxKqjnEk?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
             { "Lies of P", "https://www.youtube.com/embed/UaJmZrbgAcM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Red Dead Redemption 2", "https://www.youtube.com/embed/DLatayQd3HI?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
+            { "Red Dead Redemption 2", "https://www.youtube.com/embed/DLatayQd3HI?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
+            { "GTA V","https://www.youtube.com/embed/WZucoHY0434?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" }
         };
         #endregion
         private void formGuide_Load(object sender, EventArgs e)

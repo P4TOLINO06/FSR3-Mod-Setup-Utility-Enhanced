@@ -94,7 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Final Fantasy XVI", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Hellblade 2", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
-                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Monster Hunter Wilds", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory", "Five Nights at Freddy’s: Security Breach", "GreedFall II: The Dying World", "Pacific Drive", "Dying Light 2", "Kena: Bridge of Spirits", "The Witcher 3" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory", "Five Nights at Freddy’s: Security Breach", "GreedFall II: The Dying World", "Pacific Drive", "Dying Light 2", "Kena: Bridge of Spirits", "The Witcher 3" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -441,14 +441,12 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Folder GTA V
         Dictionary<string, string[]> folderGtaV = new Dictionary<string, string[]>
         {
-            { "Dinput8", new string[] { "mods\\FSR3_GTAV\\dinput8_gtav" } },
-            { "GTA V FSR3/DLSS4", new string[] { "mods\\FSR3_GTAV\\GtaV_B02_FSR3" } },
             { "GTA V Online", new string []{"mods\\FSR3_GTAV\\GtaV_B02_FSR3"} },
             { "GTA V FiveM", new string []{"mods\\FSR3_GTAV\\GtaV_B02_FSR3"} },
             { "GYA V Epic", new string[] { "mods\\FSR3_GTAV\\GtaV_B02_FSR3" } },
             { "GTA V Epic V2", new string[] { "mods\\FSR3_GTAV\\Gtav_Epic" } },
         };
-
+        
         string[] delGtavFsr3 = { "GTAVUpscaler.org.asi", "GTAVUpscaler.asi", "d3d12.dll", "dxgi.asi", "GTAVUpscaler.dll", "GTAVUpscaler.org.dll", "dinput8.dll" };
 
         #endregion 
@@ -648,7 +646,7 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Clean Optiscaler Files
         List<string> delOptiscaler = new List<string>
         {
-            "OptiScaler.ini", "nvngx.dll", "libxess.dll","winmm.dll","nvapi64.dll","fakenvapi.ini","dlssg_to_fsr3_amd_is_better.dll","version.dll"
+            "OptiScaler.ini", "nvngx.dll", "libxess.dll","winmm.dll","nvapi64.dll","fakenvapi.ini","dlssg_to_fsr3_amd_is_better.dll","version.dll", "nvngx.ini"
         };
         #endregion
 
@@ -1684,12 +1682,12 @@ namespace FSR3ModSetupUtilityEnhanced
             string nvapiFile = null;
             string destPathNvapi = Path.Combine(selectFolder, "OptiScaler.ini");
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", 
-            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "STAR WARS Jedi: Survivor", "Deliver Us Mars" };
+            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "STAR WARS Jedi: Survivor", "Deliver Us Mars", "GTA V" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
             string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "God of War Ragnarök",
             "STAR WARS Jedi: Survivor", "Deliver Us Mars"};
-            string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld" };
+            string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld", "GTA V" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
             #endregion
@@ -1970,6 +1968,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods ATH", selectFolder},
                 { "Others Mods LDPYH", selectFolder},
                 { "Others Mods Greed 2", selectFolder},
+                { "Others Mods GTA V", selectFolder},
                 { "Others Mods STC", defaultDlssPath},
                 { "Others Mods HB2", defaultDlssPath},
                 { "Others Mods HL", defaultDlssPath},
@@ -2021,7 +2020,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
             Dictionary<string, string[]> gamesToUpdateDlssDlssdDlssg = new Dictionary<string, string[]>
             {
-                { "Others Mods Wukong", new string[] { defaultDlssPath, defaultDlssgPath } }
+                { "Others Mods Wukong", new string[] { defaultDlssPath, defaultDlssgPath } },
+                { "Others Mods Indy", new string[] { Path.Combine(selectFolder, "streamline"), Path.Combine(selectFolder, "streamline") } }
             };
 
             Dictionary<string, string> gamesToUpdateDlssXess = new Dictionary<string, string>
@@ -2210,8 +2210,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
             runReg("mods\\Temp\\disable signature override\\DisableSignatureOverride.reg");
         }
-
-
 
         public async Task rdr2Fsr3()
         {
@@ -3162,6 +3160,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public void indyFsr3()
         {
+            string optiscalerIndy = "mods\\FSR3_Indy\\Optiscaler Indy";
             string smoothReshadeIndy = "mods\\FSR3_Indy\\Others Mods\\Reshade\\Normal\\TheGreatCircle smooth.ini";
             string normalReshadeIndy = "mods\\FSR3_Indy\\Others Mods\\Reshade\\Smooth\\TheGreatCircle .ini";
             string introSkipIndy = "mods\\FSR3_Indy\\Others Mods\\Intro Skip";
@@ -3169,6 +3168,11 @@ namespace FSR3ModSetupUtilityEnhanced
             string configFilePathIndy = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), @"Saved Games\MachineGames\TheGreatCircle\base");
             string configFileIndy = "mods\\FSR3_Indy\\FG\\Config File\\TheGreatCircleConfig.local";
             string oldConfigFileIndy = Path.Combine(configFilePathIndy, "TheGreatCircleConfig.local");
+
+            if (selectMod == "FSR 3.1.3/DLSS FG (Only Optiscaler Indy")
+            {
+                CopyFolder2(optiscalerIndy,selectFolder);
+            }
 
             if (selectMod == "Indy FG (Only RTX)")
             {
@@ -3188,15 +3192,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (selectMod == "Others Mods Indy")
             {
-                if (Path.Exists(Path.Combine(selectFolder, "streamline")))
-                {
-                    UpdateUpscalers(Path.Combine(selectFolder, "streamline"), true);
-                }
-                else
-                {
-                    MessageBox.Show("If you want to update the DLSS, select the game\'s root folder.", "DLSS");
-                }
-
                 // Intro SKip
                 HandlePrompt(
                     "Intro SKip",
@@ -3767,24 +3762,16 @@ namespace FSR3ModSetupUtilityEnhanced
 
         public async Task gtavFsr3()
         {
-            string gpuName = await GetActiveGpu();
-
-            if (selectMod != "GTA V FSR3/DLSS4")
+            if (folderGtaV.ContainsKey(selectMod))
             {
-                CopyFSR(folderGtaV);
-            }
-            else if (selectMod == "Dinput8")
-            {
-                CopyFSR(folderGtaV);
-            }
-            else if (selectMod == "GTA V FSR3/DLSS4" && !File.Exists(selectFolder + "\\dinput8.dll"))
-            {
-                MessageBox.Show("Install \"Dinput8\" before installing the main mod", "Dinput8", MessageBoxButtons.OK);
-                return;
-            }
-            else if (selectMod == "GTA V FSR3/DLSS4" && File.Exists(selectFolder + "\\Dinput8.dll"))
-            {
-                CopyFSR(folderGtaV);
+                if (MessageBox.Show("We are not responsible for any bans that may occur when using the mod in Online mode. Do you wish to continue with the installation?", "Ban", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    CopyFSR(folderGtaV);
+                }
+                else
+                {
+                    return;
+                }
             }
 
             if (selectMod == "GTA V FiveM")
@@ -3798,20 +3785,15 @@ namespace FSR3ModSetupUtilityEnhanced
             }
 
             if (selectMod == "GTA V Online")
-            {
-                DialogResult ban = MessageBox.Show("We are not responsible if you get banned. Do you want to proceed with the installation of the mod?", "Ban", MessageBoxButtons.YesNo);
-
+            { 
                 await Task.Delay((2000));//Delay to rename files, to avoid the possibility of renaming before the files are copied
-                if (DialogResult.Yes == ban && File.Exists(selectFolder + "\\dxgi.asi"))
-                {
-                    File.Move(selectFolder + "\\dxgi.asi", selectFolder + "\\d3d12.dll", true);
-                    File.Move(selectFolder + "\\GTAVUpscaler.asi", selectFolder + "\\GTAVUpscaler.dll", true);
-                    File.Move(selectFolder + "\\GTAVUpscaler.org.asi", selectFolder + "\\GTAVUpscaler.org.dll", true);
+                File.Move(selectFolder + "\\dxgi.asi", selectFolder + "\\d3d12.dll", true);
+                File.Move(selectFolder + "\\GTAVUpscaler.asi", selectFolder + "\\GTAVUpscaler.dll", true);
+                File.Move(selectFolder + "\\GTAVUpscaler.org.asi", selectFolder + "\\GTAVUpscaler.org.dll", true);
 
-                    File.Copy(selectFolder + "\\d3d12.dll", selectFolder + "\\mods\\d3d12.dll", true);
-                    File.Copy(selectFolder + "\\GTAVUpscaler.dll", selectFolder + "\\mods\\GTAVUpscaler.dll", true);
-                    File.Copy(selectFolder + "\\GTAVUpscaler.org.dll", selectFolder + "\\mods\\GTAVUpscaler.org.dll", true);
-                }
+                File.Copy(selectFolder + "\\d3d12.dll", selectFolder + "\\mods\\d3d12.dll", true);
+                File.Copy(selectFolder + "\\GTAVUpscaler.dll", selectFolder + "\\mods\\GTAVUpscaler.dll", true);
+                File.Copy(selectFolder + "\\GTAVUpscaler.org.dll", selectFolder + "\\mods\\GTAVUpscaler.org.dll", true);
             }
 
             // Enable DLSS Overlay
@@ -3928,6 +3910,16 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string pathRegFz5 = @"mods\\FSR3_FH\RTX\\DisableNvidiaSignatureChecks.reg";
                 runReg(pathRegFz5);
+            }
+        }
+
+        public void mhwFsr3()
+        {
+            string dlssgRtxMhw = "mods\\FSR3_Wilds\\DLSSG RTX";
+
+            if (selectMod == "DLSSG Wilds (Only RTX)")
+            {
+                CopyFolder(dlssgRtxMhw);
             }
         }
 
@@ -4369,6 +4361,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     gotFsr3();
                 }
+                if (gameSelected == "Monster Hunter Wilds")
+                {
+                    mhwFsr3();
+                }
                 if (gameSelected == "The Medium")
                 {
                     mediumFsr3();
@@ -4506,10 +4502,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (folderGtaV.ContainsKey(selectMod))
                 {
                     gtavFsr3();
-                    if (selectMod == "GTA V FSR3/DLSS4" && !File.Exists(selectFolder + "\\dinput8.dll"))
-                    {
-                        return;
-                    }
                 }
 
                 gamesToUpdateUpscalers();
@@ -5651,25 +5643,49 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     #region Clean GTA V Mods
 
-                    string pathDxgi = Path.Combine(selectFolder, "dxgi.dll");
+                    if (folderGtaV.ContainsKey(selectMod))
+                    {
 
+                        try
+                        {
+                            CleanupOthersMods3(selectMod, delGtavFsr3, selectFolder, true, "mods\\UpscalerBasePlugin");
+
+                            if (Path.Exists(Path.Combine(selectFolder, "mods\\Shaders")))
+                            {
+                                Directory.Delete(Path.Combine(selectFolder, "mods\\Shaders"), true);
+                            }
+
+                            // Disable Dlss Overlay
+                            disableDlssOverlay();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Error clearing GTA V mods files, please try again or do it manually", "Error");
+                        }
+                    }
+
+                    #endregion
+                }
+
+                if (gameSelected == "Monster Hunter Wilds")
+                {
+                    #region Clean Mods Indy
                     try
                     {
-                        CleanupOthersMods3(selectMod, delGtavFsr3, selectFolder, true, "mods\\UpscalerBasePlugin");
-
-                        if (Path.Exists(Path.Combine(selectFolder, "mods\\Shaders")))
+                        if (selectMod == "DLSSG Wilds (Only RTX)")
                         {
-                            Directory.Delete(Path.Combine(selectFolder, "mods\\Shaders"), true);
-                        }
+                            CleanupMod3(del_dlss_to_fsr, "DLSSG Wilds (Only RTX)");
 
-                        // Disable Dlss Overlay
-                        disableDlssOverlay();
+                            if (Path.Exists(Path.Combine(selectFolder, "dinput8.dll")))
+                            {
+                                File.Delete(Path.Combine(selectFolder, "dinput8.dll"));
+                            }
+                        }
                     }
                     catch
                     {
-                        MessageBox.Show("Error clearing GTA V mods files, please try again or do it manually", "Error");
+                        MessageBox.Show("Error clearing Monster Hunter Wilds files, please try again or do it manually", "Error");
                     }
-
                     #endregion
                 }
 
@@ -5679,6 +5695,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     string indyConfigFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), @"Saved Games\MachineGames\TheGreatCircle\base");
                     string indyOldConfigPath = Path.Combine(indyConfigFilePath, "TheGreatCircleConfig.txt");
+
+                    CleanupMod3(delOptiscaler, "FSR 3.1.3/DLSS FG (Only Optiscaler Indy");
 
                     if (selectMod == "Indy FG (Only RTX)")
                     {
