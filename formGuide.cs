@@ -312,10 +312,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2 - To make the mod work, run it in DX12. To run it in DX12, right-click the game's exe and create a shortcut, then right-click the shortcut again, go to \"Properties,\" and at the end of \"Target\" (outside the quotes), add -dx12 or go to your Steam library, select the game, go to Settings > Properties > Startup options, and enter -dx12."
             },
             {
-                "Brothers a Tale of Two Sons",
-                "1 - Select a mod of your preference (0.10.3 is recommended).\r\n" +
-                "2 - Check the box Fake Nvidia GPU (AMD/GTX).\r\n" +
-                "In-game, select DLSS or FSR."
+                "Brothers: A Tale of Two Sons Remake",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods Brothers\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Chernobylite",
@@ -326,6 +330,21 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. Check Enable Signature Over box.\n" +
                 "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
                 "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
+            },
+            {
+                "Chernobylite 2: Exclusion Zone",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods CBL2\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check Enable Signature Over box.\n" +
+                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n\n" +
+
+                "FSR 3.1.3/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.3/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. Check the FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)."
             },
             {
                 "Choo-Choo Charles",
@@ -344,6 +363,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. Check Enable Signature Over box.\n" +
                 "4. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
                 "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
+            },
+            {
+                "Cities: Skylines 2",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods CTS2\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
             },
             {
                 "Cod Black Ops Cold War",
@@ -376,13 +405,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3 - In the game, turn off Anti-Aliasing and select DLSS as the upscaler."
             },
             {
-                "Crysis 3 Remastered",
+                "Crysis Remastered",
                 "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
-                "1. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
-                "2. Check the Enable Signature Over box.\n" +
-                "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
-                "4. In the menu, select FG Enabled, Active, Hud Fix and Extended\n" +
-                "5. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
+                "1. If you want to update the DLSS, select \"Others Mods Crysis\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it.\n" +
+                "7. The installation for the 3 remastered versions is the same."
             },
             {
                 "Cyberpunk 2077",
@@ -1940,7 +1971,18 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. Check the Enable Signature Over box.\n" +
                 "3. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "4. In the menu, select FG Enabled, Active, Hud Fix and Extended."
-            }
+            },
+            {
+                "WILD HEARTS",
+                "FSR 3.1.3/DLSS FG (Only Optiscaler)\n" +
+                "1. If you want to update the DLSS, select \"Others Mods WH\", do this before installing the mod.\n" +
+                "2. Select FSR 3.1.3/DLSS FG (Only Optiscaler) and install.\n" +
+                "3. Check the Enable Signature Over.\n" +
+                "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
+                "6. DLSS4, see the Optiscaler FSR 3.1.3/DLSS (Only Optiscaler) guide to see how to use it."
+            },
+
         };
 
         #endregion
@@ -2054,15 +2096,17 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Banishers Ghost of New Eden","Banishers.png"},
                 {"Bright Memory","BM2.png"},
                 {"Bright Memory: Infinite","Bmi.png"},
-                {"Brothers a Tale of Two Sons","Brothers.png"},
+                {"Brothers: A Tale of Two Sons Remake","BrothersR2.png"},
                 {"Chernobylite","Cherno2.png"},
+                {"Chernobylite 2: Exclusion Zone","Chernob22.png"},
                 {"Choo-Choo Charles","CCC2.png"},
                 {"Chorus","Chorus2.png"},
+                {"Cities: Skylines 2","CTS22.png"},
                 {"Cod Black Ops Cold War","Cod.png"},
                 {"Cod MW3","mw3.png"},
                 {"Control","Control.png"},
                 {"Crime Boss Rockay City","Rockay.png"},
-                {"Crysis 3 Remastered","Crysis2.png"},
+                {"Crysis Remastered","Crysis2.png"},
                 {"Cyberpunk 2077","Cyber.png"},
                 {"Dakar Desert Rally","Dakar.png"},
                 {"Dead Space Remake","DeadSpace.png"},
@@ -2182,7 +2226,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Wanted Dead","Wanted2.png"},
                 {"Watch Dogs Legion","Legion2.png"},
                 {"Way Of The Hunter","Woth2.png"},
-                {"Wayfinder","Wayfinder2.png"}
+                {"Wayfinder","Wayfinder2.png"},
+                {"WILD HEARTS","WH2.png"}
             };
 
             #endregion

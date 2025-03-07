@@ -91,15 +91,17 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Blacktail","Black.png"},
                     {"Bright Memory","BM.png"},
                     {"Bright Memory: Infinite","Bmi.png"},
-                    {"Brothers: A Tale of Two Sons Remake","Brothers.png" },
+                    {"Brothers: A Tale of Two Sons Remake","BrothersR.png" },
                     {"Chernobylite","Cherno.png"},
+                    {"Chernobylite 2: Exclusion Zone", "Chernob2.png"},
                     {"Choo-Choo Charles","CCC.png"},
                     {"Chorus","Chorus.png"},
+                    {"Cities: Skylines II", "CTS2.png"},
                     {"Cod Black Ops Cold War","Cod.png"},
                     {"Cod MW3","mw3.png"},
                     {"Control","Control.png"},
                     {"Crime Boss: Rockay City","Rockay.png"},
-                    {"Crysis 3 Remastered", "Crysis.png"},
+                    {"Crysis Remastered", "Crysis.png"},
                     {"Cyberpunk 2077","Cyber.png"},
                     {"Dakar Desert Rally","Dakar.png"},
                     {"Dead Island 2","Dead2.png"},
@@ -232,7 +234,8 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Warhammer: Space Marine 2","SpaceMarine.png"},
                     {"Watch Dogs Legion","Legion.png"},
                     {"Way Of The Hunter","Woth.png"},
-                    {"Wayfinder","Wayfinder.png"}
+                    {"Wayfinder","Wayfinder.png"},
+                    {"WILD HEARTS","WH.png"}
             };
             #endregion
 
@@ -378,7 +381,12 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Deliver Us The Moon", new List<string> { "Others Mods DUTM"}.Concat(fsr31DlssMods).ToList() },
                 { "Dying Light 2", new List<string> { "Others Mods DL2"} },
                 { "Kena: Bridge of Spirits", new List<string> { "Others Mods Kena" } },
-                { "The Witcher 3", new List<string> { "Others Mods TW3"} }
+                { "The Witcher 3", new List<string> { "Others Mods TW3"} },
+                { "WILD HEARTS", new List<string> { "Others Mods WH"}.Concat(fsr31DlssMods).ToList() },
+                { "Chernobylite 2: Exclusion Zone", new List<string> { "Others Mods CBL2"}.Concat(fsr31DlssMods).ToList() },
+                { "Brothers: A Tale of Two Sons Remake", new List<string> {"Others Mods Brothers"}.Concat(fsr31DlssMods).ToList() },
+                { "Cities: Skylines II", new List<string> {"Others Mods CTS2"}.Concat(fsr31DlssMods).ToList() },
+                { "Crysis Remastered", new List<string> {"Others Mods Crysis"}.Concat(fsr31DlssMods).ToList() }
 
             };
             #endregion

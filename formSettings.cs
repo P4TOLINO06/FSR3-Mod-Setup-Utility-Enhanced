@@ -1682,11 +1682,11 @@ namespace FSR3ModSetupUtilityEnhanced
             string nvapiFile = null;
             string destPathNvapi = Path.Combine(selectFolder, "OptiScaler.ini");
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty", 
-            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "STAR WARS Jedi: Survivor", "Deliver Us Mars", "GTA V" };
+            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "STAR WARS Jedi: Survivor", "Deliver Us Mars", "GTA V", "Chernobylite 2: Exclusion Zone" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
             string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "God of War Ragnarök",
-            "STAR WARS Jedi: Survivor", "Deliver Us Mars"};
+            "STAR WARS Jedi: Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone"};
             string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld", "GTA V" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
@@ -1969,6 +1969,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods LDPYH", selectFolder},
                 { "Others Mods Greed 2", selectFolder},
                 { "Others Mods GTA V", selectFolder},
+                { "Others Mods CTS2", selectFolder},
+                { "Others Mods Crysis", selectFolder},
+                { "Others Mods WH", selectFolder},
                 { "Others Mods STC", defaultDlssPath},
                 { "Others Mods HB2", defaultDlssPath},
                 { "Others Mods HL", defaultDlssPath},
@@ -1985,6 +1988,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods DUTM", defaultDlssPath},
                 { "Others Mods CBL", defaultDlssPath},
                 { "Others Mods Chorus", defaultDlssPath},
+                { "Others Mods Brothers", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", "Brothers\\Plugins\\NVIDIA\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods PD", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", "Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods BM", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Binaries\\ThirdParty\\NVIDIA\\NGX\\Win64"))},
                 { "Others Mods Fobia", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", @"Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
@@ -2015,7 +2019,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Jedi", new string[] {defaultDlssPath, defaultDlssgPath} },
                 { "Others Mods FP2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\Streamline\\Binaries\\ThirdParty\\Win64")) } },
                 { "Others Mods LRBR", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\Streamline\\Binaries\\ThirdParty\\Win64"))} },
-                { "Others Mods Stalker 2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\Streamline\\Binaries\\ThirdParty\\Win64"))} }
+                { "Others Mods Stalker 2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\Streamline\\Binaries\\ThirdParty\\Win64"))} },
+                { "Others Mods CBL2", new string[] { Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NVIDIA\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NVIDIA\\Streamline\\Binaries\\ThirdParty\\Win64"))} }
             };
 
             Dictionary<string, string[]> gamesToUpdateDlssDlssdDlssg = new Dictionary<string, string[]>
