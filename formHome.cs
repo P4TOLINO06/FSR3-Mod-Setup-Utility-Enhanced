@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography.X509Certificates;
@@ -20,10 +21,19 @@ namespace FSR3ModSetupUtilityEnhanced
     {
         private Image panelBackgroundG;
         private formSettings settingsForm;
+        public static Dictionary<string, List<string>> gamesModsConfig;
+        public static List<string> modsDefaultList;
+        public static List<string> fsr31DlssMods;
+        public string gamesSelected { get; set; }
 
         public formHome()
         {
             InitializeComponent();
+
+            typeof(Panel).InvokeMember("DoubleBuffered",
+            BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+            null, panelBG, new object[] { true });
+
             panelBG.Paint += new PaintEventHandler(panelBG_Paint);  
             settingsForm = new formSettings();
         }
@@ -32,45 +42,158 @@ namespace FSR3ModSetupUtilityEnhanced
         {
 
         }
-
-
-        private void searchImage(string imageName, string gameName)
+        private async Task searchImage(string imageName, string gameName)
         {
-            object? selectGame = listGames.SelectedItem;
-            if (selectGame != null)
-            {
-                if (selectGame.Equals(gameName))
-                {
-                    string backgroundPicture = Path.Combine(
-                        Path.GetDirectoryName(Application.ExecutablePath)!,
-                        "Images\\Wallpaper",
-                        imageName
-                    );
+            object? selectedGame = listGames.SelectedItem;
+            if (selectedGame == null || !selectedGame.Equals(gameName))
+                return;
 
-                    if (File.Exists(backgroundPicture))
-                    {
-                        try
-                        {
-                            using (Image originalImage = Image.FromFile(backgroundPicture))
-                            {
-                                panelBackgroundG = new Bitmap(originalImage);
-                                panelBG.Invalidate();
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                        }
-                    }
-                }
+            string imagePath = Path.Combine(
+                Path.GetDirectoryName(Application.ExecutablePath)!,
+                "Images\\Wallpaper",
+                imageName
+            );
+
+            if (!File.Exists(imagePath))
+                return;
+
+            try
+            {
+                Image loadedImage = await Task.Run(() => Image.FromFile(imagePath));
+                Bitmap bitmap = new Bitmap(loadedImage);
+
+                panelBackgroundG?.Dispose();
+                panelBackgroundG = bitmap;
+
+                panelBG.Invalidate();
+            }
+            catch (Exception ex)
+            {
             }
         }
 
-        private void buttonSelectGame_Click(object sender, EventArgs e)
+        public Dictionary<string, List<string>> ReturnGamesMods()
         {
-            Dictionary<string, string> path_images = new Dictionary<string, string>();
+            #region Game List
+
+            modsDefaultList = new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler)", "FSR 3.1.4/DLSSG FG (Only Optiscaler)", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
+                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
+
+            fsr31DlssMods = new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler)", "FSR 3.1.4/DLSSG FG (Only Optiscaler)"};
+
+            gamesModsConfig = new Dictionary<string, List<string>>
+            {
+                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler RDR2)", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.4/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
+                { "Alan Wake 2", new List<string> { "Others Mods AW2", "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom"} },
+                { "Assassin's Creed Valhalla", new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" } },
+                { "Baldur's Gate 3", new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" } },
+                { "Dragons Dogma 2", new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom" } },
+                { "The Callisto Protocol", new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler)", "The Callisto Protocol FSR3", "FSR 3.1.4/DLSS Custom Callisto", "0.10.4", "Uniscaler V4" } },
+                { "Grand Theft Auto V", new List<string> {"Others Mods Grand Theft Auto V", "FSR 3.1.4/DLSS FG (Only Optiscaler)", "Grand Theft Auto V FiveM", "Grand Theft Auto V Online", "Grand Theft Auto V Epic", "Grand Theft Auto V Epic V2" } },
+                { "Cyberpunk 2077", new List<string> { "Others Mods 2077", "RTX DLSS FG CB2077", "FSR 3.1.4/XESS FG 2077"} },
+                { "Ghost of Tsushima", new List<string> { "Ghost of Tsushima FG DLSS", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
+                { "Lords of the Fallen", new List<string> { "DLSS FG LOTF2 (RTX)" } },
+                { "Palworld", new List<string> { "Others Mods PW", "Palworld FG Build03" } },
+                { "Star Wars: Jedi Survivor",  new List <string> { "Others Mods Jedi" }.Concat(fsr31DlssMods).ToList() },
+                { "Icarus", new List<string> { "RTX DLSS FG ICR", "FSR3 FG ICR All GPU" } },
+                { "TEKKEN 8", new List<string> { "Unlock FPS Tekken 8" } },
+                { "Cod MW3", new List<string> { "COD MW3 FSR3" } },
+                { "God Of War", new List<string> { "Others Mods Gow4", "FSR 3.1.4/DLSS Gow4"} },
+                { "God of War Ragnarök", new List<string> { "Others Mods Gow Rag", "Uniscaler FSR 3.1" }.Concat(fsr31DlssMods).ToList() },
+                { "Warhammer: Space Marine 2", new List<string> { "Others Mods Space Marine", "FSR 3.1.4/DLSS FG Marine", "Uniscaler FSR 3.1" }.Concat(fsr31DlssMods).ToList() },
+                { "Black Myth: Wukong", new List<string> { "Others Mods Wukong", "DLSS FG (ALL GPUs) Wukong" }.Concat(fsr31DlssMods).ToList() },
+                { "Final Fantasy XVI", new List<string> { "FFXVI DLSS RTX", "Others Mods FFXVI" } },
+                { "Forza Horizon 5", new List<string>  { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Star Wars Outlaws", new List<string> { "Outlaws DLSS RTX" }.Concat(fsr31DlssMods).ToList() },
+                { "The Casting Of Frank Stone", new List<string> { "0.10.4", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Silent Hill 2", new List<string> { "Others Mods Sh2", "FSR 3.1.1/DLSS FG RTX Custom", "DLSS FG RTX", "Ultra Plus Complete", "Ultra Plus Optimized", "FSR3 FG Native SH2", "FSR3 FG Native SH2 + Optimization"}.Concat(fsr31DlssMods).ToList()  },
+                { "Until Dawn", new List<string> { "Others Mods UD" }.Concat(fsr31DlssMods).ToList() },
+                { "Hogwarts Legacy", new List<string> { "Others Mods HL" }.Concat(fsr31DlssMods).ToList() },
+                { "A Quiet Place: The Road Ahead", new List<string> { "FSR 3.1.1/DLSS Quiet Place" }.Concat(fsr31DlssMods).ToList() },
+                { "Metro Exodus Enhanced Edition", new List<string> { "Others Mods Metro" }.Concat(fsr31DlssMods).ToList() },
+                { "Red Dead Redemption", new List<string> { "Others Mods RDR" } },
+                { "Horizon Zero Dawn\\Remastered", new List<string> {"Others Mods HZD"}.Concat(fsr31DlssMods).ToList() },
+                { "Dragon Age: Veilguard", new List<string> { "FSR 3.1.4/DLSS DG Veil", "Others Mods DG Veil" } },
+                { "Dead Rising Remaster", new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" } },
+                { "GTA Trilogy", new List<string> { "Others GTA Trilogy" }.Concat(fsr31DlssMods).ToList() },
+                { "Assassin's Creed Mirage", new List<string> { "Others Mods Mirage" } },
+                { "Alan Wake Remastered", new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler)" } },
+                { "Lego Horizon Adventures", new List<string> { "Others Mods Lego HZD" } },
+                { "Stalker 2", new List<string> { "Others Mods Stalker 2", "DLSS FG (Only Nvidia)" } },
+                { "Returnal", new List<string> { "Others Mods Returnal" } },
+                { "The Last Of Us Part I", new List<string> { "Others Mods Tlou" } },
+                { "The Last of Us Part II", new List<string> { "Others Mods Tlou2" }.Concat(fsr31DlssMods).ToList() },
+                { "Marvel\'s Spider-Man Miles Morales", new List<string> { "Others Mods Spider" } },
+                { "Marvel\'s Spider-Man Remastered", new List<string> { "Others Mods Spider" } },
+                { "Marvel\'s Spider-Man 2", new List<string> { "Others Mods Spider" } },
+                { "Microsoft Flight Simulator 24", new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.4/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Shadow of the Tomb Raider", new List<string> { "Others Mods Shadow Tomb" } },
+                { "Gotham Knights", new List<string> { "Others Mods GK" } },
+                { "Indiana Jones and the Great Circle", new List<string> { "Others Mods Indy", "Indy FG (Only RTX)", "FSR 3.1.4/DLSS FG (Only Optiscaler Indy" } },
+                { "Suicide Squad: Kill the Justice League", new List<string> { "Others Mods SSKJL", "FSR 3.1.4/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Resident Evil 4", new List<string> { "FSR 3.1.4/DLSS RE4" } },
+                { "Sifu", new List<string> { "Others Mods Sifu", "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.4/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS"}},
+                { "Path of Exile II", new List<string> { "Others Mods POEII", "FSR 3.1.4/DLSS FG (Only Optiscaler)" } },
+                { "Steelrising", new List<string> { "Others Mods Steel"}},
+                { "Mortal Shell", new List<string> {"Others Mods MShell", "FSR 3.1.4/DLSS FG (Only Optiscaler)" } },
+                { "Hitman 3", new List<string> { "Others Mods Hitman 3", "FSR 3.1.4/DLSS FG (Only Optiscaler)" } },
+                { "Control", new List<string> { "Others Mods Control"} },
+                { "Remnant II", new List<string> { "Others Mods Remnant II", "FSR 3.1.4/DLSS FG (Only Optiscaler)" } },
+                { "FIST: Forged In Shadow Torch", new List<string> { "Others Mods Fist"} },
+                { "Ghostrunner 2", new List<string> { "Others Mods GR2" } },
+                { "Marvel\'s Midnight Suns", new List<string> {"FSR 3.1.1/DLSS FG Custom", "FSR 3.1.4/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS"} },
+                { "Senua's Saga Hellblade II", new List<string> {"Others Mods HB2","HB2 FG (Only RTX)"}.Concat(fsr31DlssMods).ToList() },
+                { "Six Days in Fallujah", new List<string> {"Others Mods 6Days", "FSR 3.1.4/DLSS FG (Only Optiscaler)" } },
+                { "Way Of The Hunter", new List<string> { "Others Mods WOTH", "FSR 3.1.4/DLSS FG (Only Optiscaler)" } },
+                { "Alone in the Dark", new List<string> {"Others Mods AITD"} },
+                { "Evil West", new List<string> {"Others Mods EW"} },
+                { "The First Berserker: Khazan", new List<string> { "Others Mods TFBK"} },
+                { "Assetto Corsa Evo", new List<string> { "Others Mods ACE"} },
+                { "Soulstice", new List<string> { "Others Mods STC"} },
+                { "Watch Dogs Legion", new List<string> { "Others Mods Legion"} },
+                { "Back 4 Blood", new List<string> {"Others Mods B4B"} },
+                { "Final Fantasy VII Rebirth", new List<string> { "Others Mods FF7RBT" } },
+                { "Lies of P", new List<string> { "Others Mods LOP" }.Concat(fsr31DlssMods).ToList() },
+                { "Kingdom Come: Deliverance 2", new List<string> {"Others Mods KCD2"}.Concat(fsr31DlssMods).ToList() },
+                { "Atomic Heart", new List<string> { "Others Mods ATH"} },
+                { "Monster Hunter Wilds", new List<string> {"Others Mods MHW", "DLSSG Wilds (Only RTX)" }.Concat(fsr31DlssMods).ToList() },
+                { "Like a Dragon: Pirate Yakuza in Hawaii", new List<string> { "Others Mods LDPYH", "DLSSG Yakuza" } },
+                { "A Plague Tale Requiem", new List<string> {"Others Mods Requiem"} },
+                { "Fobia – St. Dinfna Hotel", new List<string> {"Others Mods Fobia", "FSR 3.1.4/DLSS FG (Only Optiscaler)" } },
+                { "Frostpunk 2", new List<string> {"Others Mods FP2" } },
+                { "Bright Memory", new List<string> {"Others Mods BM" } },
+                { "Bright Memory Infinite", new List<string>(fsr31DlssMods) },
+                { "Choo-Choo Charles",  new List<string> {"Others Mods CCC" } },
+                { "Lost Records Bloom And Rage",  new List<string> {"Others Mods LRBR" } },
+                { "GreedFall II: The Dying World", new List<string> { "Others Mods Greed 2" } },
+                { "Five Nights at Freddy’s: Security Breach", new List<string> {"Others Mods FNAF"} },
+                { "Pacific Drive", new List<string> {"Others Mods PD"} },
+                { "Chernobylite", new List<string> { "Others Mods CBL" } },
+                { "Chorus", new List<string> { "Others Mods Chorus"} },
+                { "Deliver Us Mars", new List<string> { "Others Mods DUM"}.Concat(fsr31DlssMods).ToList() },
+                { "Deliver Us The Moon", new List<string> { "Others Mods DUTM"}.Concat(fsr31DlssMods).ToList() },
+                { "Dying Light 2", new List<string> { "Others Mods DL2"} },
+                { "Kena: Bridge of Spirits", new List<string> { "Others Mods Kena" } },
+                { "The Witcher 3", new List<string> { "Others Mods TW3"} },
+                { "WILD HEARTS", new List<string> { "Others Mods WH"}.Concat(fsr31DlssMods).ToList() },
+                { "Chernobylite 2: Exclusion Zone", new List<string> { "Others Mods CBL2"}.Concat(fsr31DlssMods).ToList() },
+                { "Brothers: A Tale of Two Sons Remake", new List<string> {"Others Mods Brothers"}.Concat(fsr31DlssMods).ToList() },
+                { "Cities: Skylines 2", new List<string> {"Others Mods CTS2"}.Concat(fsr31DlssMods).ToList() },
+                { "Crysis Remastered", new List<string> {"Others Mods Crysis"}.Concat(fsr31DlssMods).ToList() },
+                { "Clair Obscur Expedition 33", new List<string> {"Others Mods Coe3"}.Concat(fsr31DlssMods).ToList() },
+                { "The Outlast Trials", new List<string> {"Others Mods Tot"}.Concat(fsr31DlssMods).ToList() },
+                { "South of Midnight", new List<string> {"Others Mods Som"}.Concat(fsr31DlssMods).ToList() }
+            };
+            #endregion
+
+            return gamesModsConfig;
+        }
+        public async Task SelectGameWp(string gameName = null, bool cleanSettingsCtrl = false)
+        {
+            Dictionary<string, string> path_images = new Dictionary<string, string>
 
             #region Background Images formHome
-            Dictionary<string, string> gamesToAdd = new Dictionary<string, string>
             {
                     {"Select FSR Version","Ds2.png" },
                     {"A Plague Tale Requiem","Requiem.png"},
@@ -90,22 +213,25 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Black Myth: Wukong","wukong.png"},
                     {"Blacktail","Black.png"},
                     {"Bright Memory","BM.png"},
-                    {"Bright Memory: Infinite","Bmi.png"},
-                    {"Brothers: A Tale of Two Sons Remake","Brothers.png" },
+                    {"Bright Memory Infinite","Bmi.png"},
+                    {"Brothers: A Tale of Two Sons Remake","BrothersR.png" },
                     {"Chernobylite","Cherno.png"},
+                    {"Chernobylite 2: Exclusion Zone", "Chernob2.png"},
                     {"Choo-Choo Charles","CCC.png"},
                     {"Chorus","Chorus.png"},
+                    {"Cities: Skylines 2", "CTS2.png"},
+                    {"Clair Obscur: Expedition 33", "Coe33.png"},
                     {"Cod Black Ops Cold War","Cod.png"},
                     {"Cod MW3","mw3.png"},
                     {"Control","Control.png"},
                     {"Crime Boss: Rockay City","Rockay.png"},
-                    {"Crysis 3 Remastered", "Crysis.png"},
+                    {"Crysis Remastered", "Crysis.png"},
                     {"Cyberpunk 2077","Cyber.png"},
                     {"Dakar Desert Rally","Dakar.png"},
                     {"Dead Island 2","Dead2.png"},
                     {"Dead Rising Remaster","Drr.png"},
                     {"Dead Space (2023)","DeadSpace.png"},
-                    {"Death Stranding Director's Cut","Ds.png"},
+                    {"Death Stranding","Ds.png"},
                     {"Deathloop","Df.png"},
                     {"Deliver Us Mars","DUM.png"},
                     {"Deliver Us The Moon","DUTM.png"},
@@ -137,8 +263,8 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Gotham Knights","Gk.png"},
                     {"GreedFall II: The Dying World","GF2.png"},
                     {"GTA Trilogy","GtaTrilogy.png"},
-                    {"GTA V","GtaV.png"},
-                    {"Hellblade 2","Hell2.png" },
+                    {"Grand Theft Auto V","GtaV.png"},
+                    {"Senua's Saga Hellblade II","Hell2.png" },
                     {"Hellblade: Senua's Sacrifice","Hell.png"},
                     {"High On Life","Hol.png"},
                     {"Hitman 3","Hitman.png"},
@@ -150,7 +276,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Indiana Jones and the Great Circle","Indy.png"},
                     {"Judgment","Jud.png"},
                     {"Jusant","Jusant.png"},
-                    {"Kingdom Come: Deliverance II","KCD2.png"},
+                    {"Kingdom Come: Deliverance 2","KCD2.png"},
                     {"Kena: Bridge of Spirits","KENA.png"},
                     {"Layers of Fear","Layers.png"},
                     {"Lego Horizon Adventures","LegoHzd.png"},
@@ -186,7 +312,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Red Dead Redemption","Rdr1.png"},
                     {"Red Dead Redemption 2","RDR2.png"},
                     {"Remnant II","Remnant2.png"},
-                    {"Resident Evil 4 Remake","Re4.png"},
+                    {"Resident Evil 4","Re4.png"},
                     {"Returnal","Returnal.png"},
                     {"Ripout","Ripout.png"},
                     {"Rise of The Tomb Raider","Rtb.png"},
@@ -204,11 +330,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Smalland","Smalland.png"},
                     {"Soulslinger Envoy of Death","SL.png"},
                     {"Stalker 2","Stalker.png"},
-                    {"STAR WARS Jedi: Survivor","JedSurvivor.png"},
+                    {"Star Wars: Jedi Survivor","JedSurvivor.png"},
                     {"Star Wars Outlaws","Outlaws.png"},
                     {"STARFIELD","Starfield.png"},
                     {"Steelrising","Steelrising.png"},
                     {"Soulstice","STC.png"},
+                    {"South of Midnight","Som.png"},
                     {"Suicide Squad: Kill the Justice League","Sskjl.png"},
                     {"TEKKEN 8","Tekken.png"},
                     {"Test Drive Unlimited Solar Crown","TestSolar.png"},
@@ -219,8 +346,10 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"The First Berserker: Khazan","TFBK.png"},
                     {"The Invincible","Invicible.png"},
                     {"The Last Of Us Part I","TLOU.png"},
+                    {"The Last of Us Part II","Tlou2.png"},
                     {"The Medium","Medium.png"},
                     {"The Outer Worlds: Spacer's Choice Edition","Outer.png"},
+                    {"The Outlast Trials","Tot.png"},
                     {"The Talos Principle 2","Ttp.png"},
                     {"The Thaumaturge","Thaumaturge.png"},
                     {"The Witcher 3","Witcher.png"},
@@ -232,14 +361,52 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Warhammer: Space Marine 2","SpaceMarine.png"},
                     {"Watch Dogs Legion","Legion.png"},
                     {"Way Of The Hunter","Woth.png"},
-                    {"Wayfinder","Wayfinder.png"}
+                    {"Wayfinder","Wayfinder.png"},
+                    {"WILD HEARTS","WH.png"}
             };
             #endregion
 
-            foreach(var gameName in gamesToAdd)
+            if (!string.IsNullOrEmpty(gameName) && path_images.ContainsKey(gameName))
             {
-                path_images.Add(gameName.Key, gameName.Value);
+                string imagePath = path_images[gameName];
+                await searchImage(imagePath, gameName);
             }
+
+            formSettings.gameSelected = gameName;
+
+            if (gameName != null)
+            {
+                ReturnGamesMods();
+
+                if (gamesModsConfig.ContainsKey(gameName))
+                {
+                    formSettings.Instance.ClearListMods();
+                    formSettings.Instance.AddItemlistMods(gamesModsConfig[gameName], modsDefaultList);
+                }
+                else
+                {
+                    foreach (var lists in modsDefaultList)
+                    {
+                        formSettings.Instance.RemoveItemlistMods(modsDefaultList);
+                    }
+                    formSettings.Instance.AddItemlistMods(modsDefaultList);
+                }
+            }
+
+            if (cleanSettingsCtrl)
+            {
+                foreach (var lists in modsDefaultList)
+                {
+                    formSettings.Instance.RemoveItemlistMods(modsDefaultList);
+                }
+                formSettings.Instance.AddItemlistMods(modsDefaultList);
+
+            }
+        }
+
+        private void buttonSelectGame_Click(object sender, EventArgs e)
+        {
+            ReturnGamesMods();
 
             object? gameGet = listGames.SelectedItem;
 
@@ -247,15 +414,12 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 string? selectedGame = gameGet.ToString();
 
-                if (!string.IsNullOrEmpty(selectedGame) && path_images.ContainsKey(selectedGame))
+                if (!string.IsNullOrEmpty(selectedGame))
                 {
-                    string imagePath = path_images[selectedGame];
-
-                    searchImage(imagePath, selectedGame);
+                    SelectGameWp(selectedGame);
                 }
             }
 
-            string gamesSelected = null;
             formSettings.gameSelected = gamesSelected;
 
             if (listGames.SelectedItem != null)
@@ -278,127 +442,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 panelSelectFSR.Visible = false;
                 listFSR.Visible = false;
             }
-
-            #region Game List
-
-            var modsDefaultList = new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSSG FG (Only Optiscaler)", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
-                                 "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
-
-            List<string> fsr31DlssMods = new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "FSR 3.1.3/DLSSG FG (Only Optiscaler)", "FSR 3.1.2/DLSS FG Custom", "FSR 3.1.1/DLSS Optiscaler" };
-
-            var gamesModsConfig = new Dictionary<string, List<string>>
-            {
-                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler RDR2)", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
-                { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.3/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
-                { "Alan Wake 2", new List<string> { "Others Mods AW2", "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom"} },
-                { "Assassin's Creed Valhalla", new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" } },
-                { "Baldur's Gate 3", new List<string> { "Baldur's Gate 3 FSR3", "Baldur's Gate 3 FSR3 V2", "Baldur's Gate 3 FSR3 V3" } },
-                { "Dragons Dogma 2", new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom" } },
-                { "The Callisto Protocol", new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler)", "The Callisto Protocol FSR3", "FSR 3.1.3/DLSS Custom Callisto", "0.10.4", "Uniscaler V4" } },
-                { "GTA V", new List<string> { "Dinput8", "GTA V FSR3/DLSS4", "GTA V FiveM", "GTA V Online", "GTA V Epic", "GTA V Epic V2" } },
-                { "Cyberpunk 2077", new List<string> { "Others Mods 2077", "RTX DLSS FG CB2077", "FSR 3.1.3/XESS FG 2077"} },
-                { "Ghost of Tsushima", new List<string> { "Ghost of Tsushima FG DLSS", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
-                { "Lords of the Fallen", new List<string> { "Lords of The Fallen DLSS RTX", "Lords of The Fallen FSR3 ALL GPU" } },
-                { "Palworld", new List<string> { "Others Mods PW", "Palworld FG Build03" } },
-                { "STAR WARS Jedi: Survivor",  new List <string> { "Others Mods Jedi" }.Concat(fsr31DlssMods).ToList() },
-                { "Icarus", new List<string> { "RTX DLSS FG ICR", "FSR3 FG ICR All GPU" } },
-                { "TEKKEN 8", new List<string> { "Unlock FPS Tekken 8" } },
-                { "Cod MW3", new List<string> { "COD MW3 FSR3" } },
-                { "God Of War 4", new List<string> { "Others Mods Gow4", "FSR 3.1.3/DLSS Gow4"} },
-                { "God of War Ragnarök", new List<string> { "Others Mods Gow Rag", "Uniscaler FSR 3.1" }.Concat(fsr31DlssMods).ToList() },
-                { "Warhammer: Space Marine 2", new List<string> { "Others Mods Space Marine", "FSR 3.1.3/DLSS FG Marine", "Uniscaler FSR 3.1" }.Concat(fsr31DlssMods).ToList() },
-                { "Black Myth: Wukong", new List<string> { "Others Mods Wukong", "DLSS FG (ALL GPUs) Wukong" }.Concat(fsr31DlssMods).ToList() },
-                { "Final Fantasy XVI", new List<string> { "FFXVI DLSS RTX", "Others Mods FFXVI" } },
-                { "Forza Horizon 5", new List<string>  { "RTX DLSS FG FZ5", "FSR3 FG FZ5 All GPU", "Optiscaler FSR 3.1.1/DLSS" } },
-                { "Star Wars Outlaws", new List<string> { "Outlaws DLSS RTX" }.Concat(fsr31DlssMods).ToList() },
-                { "The Casting Of Frank Stone", new List<string> { "0.10.4", "Optiscaler FSR 3.1.1/DLSS" } },
-                { "Silent Hill 2", new List<string> { "Others Mods Sh2", "FSR 3.1.1/DLSS FG RTX Custom", "DLSS FG RTX", "Ultra Plus Complete", "Ultra Plus Optimized", "FSR3 FG Native SH2", "FSR3 FG Native SH2 + Optimization"}.Concat(fsr31DlssMods).ToList()  },
-                { "Until Dawn", new List<string> { "Others Mods UD" }.Concat(fsr31DlssMods).ToList() },
-                { "Hogwarts Legacy", new List<string> { "Others Mods HL" }.Concat(fsr31DlssMods).ToList() },
-                { "A Quiet Place: The Road Ahead", new List<string> { "FSR 3.1.1/DLSS Quiet Place" }.Concat(fsr31DlssMods).ToList() },
-                { "Metro Exodus Enhanced Edition", new List<string> { "Others Mods Metro" }.Concat(fsr31DlssMods).ToList() },
-                { "Red Dead Redemption", new List<string> { "Others Mods RDR" } },
-                { "Horizon Zero Dawn\\Remastered", new List<string> {"Others Mods HZD"}.Concat(fsr31DlssMods).ToList() },
-                { "Dragon Age: Veilguard", new List<string> { "FSR 3.1.3/DLSS DG Veil", "Others Mods DG Veil" } },
-                { "Dead Rising Remaster", new List<string> { "Dinput8 DRR", "FSR 3.1 FG DRR" } },
-                { "GTA Trilogy", new List<string> { "Others GTA Trilogy" }.Concat(fsr31DlssMods).ToList() },
-                { "Assassin's Creed Mirage", new List<string> { "Others Mods Mirage" } },
-                { "Alan Wake Remastered", new List<string> { "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Lego Horizon Adventures", new List<string> { "Others Mods Lego HZD" } },
-                { "Stalker 2", new List<string> { "Others Mods Stalker 2", "DLSS FG (Only Nvidia)" } },
-                { "Returnal", new List<string> { "Others Mods Returnal" } },
-                { "The Last Of Us Part I", new List<string> { "Others Mods Tlou" } },
-                { "Marvel\'s Spider-Man Miles Morales", new List<string> { "Others Mods Spider" } },
-                { "Marvel\'s Spider-Man Remastered", new List<string> { "Others Mods Spider" } },
-                { "Marvel\'s Spider-Man 2", new List<string> { "Others Mods Spider" } },
-                { "Microsoft Flight Simulator 24", new List<string> { "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
-                { "Shadow of the Tomb Raider", new List<string> { "Others Mods Shadow Tomb" } },
-                { "Gotham Knights", new List<string> { "Others Mods GK" } },
-                { "Indiana Jones and the Great Circle", new List<string> { "Others Mods Indy", "Indy FG (Only RTX)" } },
-                { "Suicide Squad: Kill the Justice League", new List<string> { "Others Mods SSKJL", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS" } },
-                { "Resident Evil 4 Remake", new List<string> { "FSR 3.1.3/DLSS RE4" } },
-                { "Sifu", new List<string> { "Others Mods Sifu", "FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS"}},
-                { "Path of Exile II", new List<string> { "Others Mods POEII", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Steelrising", new List<string> { "Others Mods Steel"}},
-                { "Mortal Shell", new List<string> {"Others Mods MShell", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Hitman 3", new List<string> { "Others Mods Hitman 3", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Control", new List<string> { "Others Mods Control"} },
-                { "Remnant II", new List<string> { "Others Mods Remnant II", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "FIST: Forged In Shadow Torch", new List<string> { "Others Mods Fist"} },
-                { "Ghostrunner 2", new List<string> { "Others Mods GR2" } },
-                { "Marvel\'s Midnight Suns", new List<string> {"FSR 3.1.1/DLSS FG Custom", "FSR 3.1.3/DLSS FG (Only Optiscaler)", "Optiscaler FSR 3.1.1/DLSS"} },
-                { "Hellblade 2", new List<string> {"Others Mods HB2","HB2 FG (Only RTX)"} },
-                { "Six Days in Fallujah", new List<string> {"Others Mods 6Days", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Way Of The Hunter", new List<string> { "Others Mods WOTH", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Alone in the Dark", new List<string> {"Others Mods AITD"} },
-                { "Evil West", new List<string> {"Others Mods EW"} },
-                { "The First Berserker: Khazan", new List<string> { "Others Mods TFBK"} },
-                { "Assetto Corsa Evo", new List<string> { "Others Mods ACE"} },
-                { "Soulstice", new List<string> { "Others Mods STC"} },
-                { "Watch Dogs Legion", new List<string> { "Others Mods Legion"} },
-                { "Back 4 Blood", new List<string> {"Others Mods B4B"} },
-                { "Final Fantasy VII Rebirth", new List<string> { "Others Mods FF7RBT" } },
-                { "Lies of P", new List<string> { "Others Mods LOP" }.Concat(fsr31DlssMods).ToList() },
-                { "Kingdom Come: Deliverance II", new List<string> {"Others Mods KCD2"} },
-                { "Atomic Heart", new List<string> { "Others Mods ATH"} },
-                { "Monster Hunter Wilds", new List<string> {"Others Mods MHW"} },
-                { "Like a Dragon: Pirate Yakuza in Hawaii", new List<string> { "Others Mods LDPYH", "DLSSG Yakuza" } },
-                { "A Plague Tale Requiem", new List<string> {"Others Mods Requiem"} },
-                { "Fobia – St. Dinfna Hotel", new List<string> {"Others Mods Fobia", "FSR 3.1.3/DLSS FG (Only Optiscaler)" } },
-                { "Frostpunk 2", new List<string> {"Others Mods FP2" } },
-                { "Bright Memory",  new List<string> {"Others Mods BM" } },
-                { "Choo-Choo Charles",  new List<string> {"Others Mods CCC" } },
-                { "Lost Records Bloom And Rage",  new List<string> {"Others Mods LRBR" } },
-                { "GreedFall II: The Dying World", new List<string> { "Others Mods Greed 2" } },
-                { "Five Nights at Freddy’s: Security Breach", new List<string> {"Others Mods FNAF"} },
-                { "Pacific Drive", new List<string> {"Others Mods PD"} },
-                { "Chernobylite", new List<string> { "Others Mods CBL" } },
-                { "Chorus", new List<string> { "Others Mods Chorus"} },
-                { "Deliver Us Mars", new List<string> { "Others Mods DUM"}.Concat(fsr31DlssMods).ToList() },
-                { "Deliver Us The Moon", new List<string> { "Others Mods DUTM"}.Concat(fsr31DlssMods).ToList() },
-                { "Dying Light 2", new List<string> { "Others Mods DL2"} },
-                { "Kena: Bridge of Spirits", new List<string> { "Others Mods Kena" } },
-                { "The Witcher 3", new List<string> { "Others Mods TW3"} }
-
-            };
-            #endregion
-
-            if (gamesModsConfig.ContainsKey(gamesSelected))
-            {
-                formSettings.Instance.ClearListMods();
-                formSettings.Instance.AddItemlistMods(gamesModsConfig[gamesSelected], modsDefaultList);
-            }
-            else
-            {
-                foreach (var lists in modsDefaultList)
-                {
-                    formSettings.Instance.RemoveItemlistMods(modsDefaultList);
-                }
-                formSettings.Instance.AddItemlistMods(modsDefaultList);
-            }
-
         }
-
         private void panelBG_Paint(object sender, PaintEventArgs e)
         {
             if (panelBackgroundG != null)
@@ -407,7 +451,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 g.DrawImage(panelBackgroundG, new Rectangle(0, 0, panelBG.Width, panelBG.Height));
             }
         }
-
         private void listFSR_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedFsr = listFSR.SelectedItem.ToString();

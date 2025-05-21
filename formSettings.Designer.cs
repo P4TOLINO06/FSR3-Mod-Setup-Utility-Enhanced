@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formSettings));
             panel1 = new Panel();
             panelAddOn = new Panel();
@@ -108,6 +109,7 @@
             label2 = new Label();
             listMods = new ComboBox();
             searchFolder = new FolderBrowserDialog();
+            toolTip1 = new ToolTip(components);
             panel1.SuspendLayout();
             panelAddOn.SuspendLayout();
             panelFgMethod.SuspendLayout();
@@ -148,9 +150,8 @@
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(5, 6, 5, 6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1930, 1338);
+            panel1.Size = new Size(1126, 422);
             panel1.TabIndex = 0;
             // 
             // panelAddOn
@@ -165,10 +166,9 @@
             panelAddOn.Controls.Add(buttonDxgi);
             panelAddOn.Controls.Add(buttonNvngx);
             panelAddOn.Controls.Add(panelNvngx);
-            panelAddOn.Location = new Point(1198, 110);
-            panelAddOn.Margin = new Padding(5, 6, 5, 6);
+            panelAddOn.Location = new Point(699, 55);
             panelAddOn.Name = "panelAddOn";
-            panelAddOn.Size = new Size(574, 1222);
+            panelAddOn.Size = new Size(335, 611);
             panelAddOn.TabIndex = 18;
             // 
             // panelFgMethod
@@ -176,10 +176,9 @@
             panelFgMethod.BackColor = Color.Transparent;
             panelFgMethod.Controls.Add(buttonFg31);
             panelFgMethod.Controls.Add(buttonFg3);
-            panelFgMethod.Location = new Point(0, 452);
-            panelFgMethod.Margin = new Padding(5, 6, 5, 6);
+            panelFgMethod.Location = new Point(0, 226);
             panelFgMethod.Name = "panelFgMethod";
-            panelFgMethod.Size = new Size(285, 140);
+            panelFgMethod.Size = new Size(166, 70);
             panelFgMethod.TabIndex = 24;
             // 
             // buttonFg31
@@ -188,10 +187,9 @@
             buttonFg31.FlatAppearance.BorderSize = 0;
             buttonFg31.FlatStyle = FlatStyle.Flat;
             buttonFg31.ForeColor = Color.Gainsboro;
-            buttonFg31.Location = new Point(-5, 62);
-            buttonFg31.Margin = new Padding(5, 6, 5, 6);
+            buttonFg31.Location = new Point(-3, 31);
             buttonFg31.Name = "buttonFg31";
-            buttonFg31.Size = new Size(285, 62);
+            buttonFg31.Size = new Size(166, 31);
             buttonFg31.TabIndex = 23;
             buttonFg31.Text = "FSR 3.1";
             buttonFg31.UseVisualStyleBackColor = false;
@@ -203,10 +201,9 @@
             buttonFg3.FlatAppearance.BorderSize = 0;
             buttonFg3.FlatStyle = FlatStyle.Flat;
             buttonFg3.ForeColor = Color.Gainsboro;
-            buttonFg3.Location = new Point(-5, 0);
-            buttonFg3.Margin = new Padding(5, 6, 5, 6);
+            buttonFg3.Location = new Point(-3, 0);
             buttonFg3.Name = "buttonFg3";
-            buttonFg3.Size = new Size(285, 62);
+            buttonFg3.Size = new Size(166, 31);
             buttonFg3.TabIndex = 22;
             buttonFg3.Text = "FSR 3";
             buttonFg3.UseVisualStyleBackColor = false;
@@ -228,10 +225,9 @@
             panelAddOnUps.Controls.Add(panel3);
             panelAddOnUps.Controls.Add(buttonAddUps6);
             panelAddOnUps.Controls.Add(buttonAddUps5);
-            panelAddOnUps.Location = new Point(283, 254);
-            panelAddOnUps.Margin = new Padding(5, 6, 5, 6);
+            panelAddOnUps.Location = new Point(165, 127);
             panelAddOnUps.Name = "panelAddOnUps";
-            panelAddOnUps.Size = new Size(286, 248);
+            panelAddOnUps.Size = new Size(167, 124);
             panelAddOnUps.TabIndex = 23;
             // 
             // button5
@@ -240,10 +236,9 @@
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.ForeColor = Color.Gainsboro;
-            button5.Location = new Point(0, 430);
-            button5.Margin = new Padding(5, 6, 5, 6);
+            button5.Location = new Point(0, 215);
             button5.Name = "button5";
-            button5.Size = new Size(254, 64);
+            button5.Size = new Size(148, 32);
             button5.TabIndex = 16;
             button5.Text = "Fsr 3.1 DX12";
             button5.UseVisualStyleBackColor = false;
@@ -255,10 +250,9 @@
             buttonDlssVulkan.FlatAppearance.BorderSize = 0;
             buttonDlssVulkan.FlatStyle = FlatStyle.Flat;
             buttonDlssVulkan.ForeColor = Color.Gainsboro;
-            buttonDlssVulkan.Location = new Point(0, 864);
-            buttonDlssVulkan.Margin = new Padding(5, 6, 5, 6);
+            buttonDlssVulkan.Location = new Point(0, 432);
             buttonDlssVulkan.Name = "buttonDlssVulkan";
-            buttonDlssVulkan.Size = new Size(254, 62);
+            buttonDlssVulkan.Size = new Size(148, 31);
             buttonDlssVulkan.TabIndex = 18;
             buttonDlssVulkan.Text = "DLSS Vulkan";
             buttonDlssVulkan.UseVisualStyleBackColor = false;
@@ -270,10 +264,9 @@
             buttonFsr31Vulkan.FlatAppearance.BorderSize = 0;
             buttonFsr31Vulkan.FlatStyle = FlatStyle.Flat;
             buttonFsr31Vulkan.ForeColor = Color.Gainsboro;
-            buttonFsr31Vulkan.Location = new Point(0, 802);
-            buttonFsr31Vulkan.Margin = new Padding(5, 6, 5, 6);
+            buttonFsr31Vulkan.Location = new Point(0, 401);
             buttonFsr31Vulkan.Name = "buttonFsr31Vulkan";
-            buttonFsr31Vulkan.Size = new Size(254, 62);
+            buttonFsr31Vulkan.Size = new Size(148, 31);
             buttonFsr31Vulkan.TabIndex = 24;
             buttonFsr31Vulkan.Text = "Fsr 3.1 Vulkan";
             buttonFsr31Vulkan.UseVisualStyleBackColor = false;
@@ -285,10 +278,9 @@
             buttonFsr22Vulkan.FlatAppearance.BorderSize = 0;
             buttonFsr22Vulkan.FlatStyle = FlatStyle.Flat;
             buttonFsr22Vulkan.ForeColor = Color.Gainsboro;
-            buttonFsr22Vulkan.Location = new Point(0, 740);
-            buttonFsr22Vulkan.Margin = new Padding(5, 6, 5, 6);
+            buttonFsr22Vulkan.Location = new Point(0, 370);
             buttonFsr22Vulkan.Name = "buttonFsr22Vulkan";
-            buttonFsr22Vulkan.Size = new Size(254, 62);
+            buttonFsr22Vulkan.Size = new Size(148, 31);
             buttonFsr22Vulkan.TabIndex = 24;
             buttonFsr22Vulkan.Text = "Fsr 2.2 Vulkan";
             buttonFsr22Vulkan.UseVisualStyleBackColor = false;
@@ -300,10 +292,9 @@
             buttonDlssDx12.FlatAppearance.BorderSize = 0;
             buttonDlssDx12.FlatStyle = FlatStyle.Flat;
             buttonDlssDx12.ForeColor = Color.Gainsboro;
-            buttonDlssDx12.Location = new Point(0, 616);
-            buttonDlssDx12.Margin = new Padding(5, 6, 5, 6);
+            buttonDlssDx12.Location = new Point(0, 308);
             buttonDlssDx12.Name = "buttonDlssDx12";
-            buttonDlssDx12.Size = new Size(254, 62);
+            buttonDlssDx12.Size = new Size(148, 31);
             buttonDlssDx12.TabIndex = 18;
             buttonDlssDx12.Text = "DLSS DX12";
             buttonDlssDx12.UseVisualStyleBackColor = false;
@@ -315,10 +306,9 @@
             buttonFsr21Vulkan.FlatAppearance.BorderSize = 0;
             buttonFsr21Vulkan.FlatStyle = FlatStyle.Flat;
             buttonFsr21Vulkan.ForeColor = Color.Gainsboro;
-            buttonFsr21Vulkan.Location = new Point(0, 678);
-            buttonFsr21Vulkan.Margin = new Padding(5, 6, 5, 6);
+            buttonFsr21Vulkan.Location = new Point(0, 339);
             buttonFsr21Vulkan.Name = "buttonFsr21Vulkan";
-            buttonFsr21Vulkan.Size = new Size(254, 62);
+            buttonFsr21Vulkan.Size = new Size(148, 31);
             buttonFsr21Vulkan.TabIndex = 17;
             buttonFsr21Vulkan.Text = "Fsr 2.1 Vulkan";
             buttonFsr21Vulkan.UseVisualStyleBackColor = false;
@@ -330,10 +320,9 @@
             buttonAddUps4.FlatAppearance.BorderSize = 0;
             buttonAddUps4.FlatStyle = FlatStyle.Flat;
             buttonAddUps4.ForeColor = Color.Gainsboro;
-            buttonAddUps4.Location = new Point(0, 234);
-            buttonAddUps4.Margin = new Padding(5, 6, 5, 6);
+            buttonAddUps4.Location = new Point(0, 117);
             buttonAddUps4.Name = "buttonAddUps4";
-            buttonAddUps4.Size = new Size(254, 72);
+            buttonAddUps4.Size = new Size(148, 36);
             buttonAddUps4.TabIndex = 14;
             buttonAddUps4.Text = "Xess DX11";
             buttonAddUps4.UseVisualStyleBackColor = false;
@@ -345,10 +334,9 @@
             buttonDlssDX11.FlatAppearance.BorderSize = 0;
             buttonDlssDX11.FlatStyle = FlatStyle.Flat;
             buttonDlssDX11.ForeColor = Color.Gainsboro;
-            buttonDlssDX11.Location = new Point(0, 306);
-            buttonDlssDX11.Margin = new Padding(5, 6, 5, 6);
+            buttonDlssDX11.Location = new Point(0, 153);
             buttonDlssDX11.Name = "buttonDlssDX11";
-            buttonDlssDX11.Size = new Size(254, 62);
+            buttonDlssDX11.Size = new Size(148, 31);
             buttonDlssDX11.TabIndex = 16;
             buttonDlssDX11.Text = "DLSS DX11";
             buttonDlssDX11.UseVisualStyleBackColor = false;
@@ -360,10 +348,9 @@
             buttonAddUps7.FlatAppearance.BorderSize = 0;
             buttonAddUps7.FlatStyle = FlatStyle.Flat;
             buttonAddUps7.ForeColor = Color.Gainsboro;
-            buttonAddUps7.Location = new Point(0, 554);
-            buttonAddUps7.Margin = new Padding(5, 6, 5, 6);
+            buttonAddUps7.Location = new Point(0, 277);
             buttonAddUps7.Name = "buttonAddUps7";
-            buttonAddUps7.Size = new Size(254, 62);
+            buttonAddUps7.Size = new Size(148, 31);
             buttonAddUps7.TabIndex = 3;
             buttonAddUps7.Text = "Xess DX12";
             buttonAddUps7.UseVisualStyleBackColor = false;
@@ -377,9 +364,8 @@
             panel3.Controls.Add(buttonAddUps1);
             panel3.Controls.Add(button4);
             panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(5, 6, 5, 6);
             panel3.Name = "panel3";
-            panel3.Size = new Size(254, 240);
+            panel3.Size = new Size(148, 120);
             panel3.TabIndex = 14;
             // 
             // buttonAddUps3
@@ -389,9 +375,8 @@
             buttonAddUps3.FlatStyle = FlatStyle.Flat;
             buttonAddUps3.ForeColor = Color.Gainsboro;
             buttonAddUps3.Location = new Point(0, 0);
-            buttonAddUps3.Margin = new Padding(5, 6, 5, 6);
             buttonAddUps3.Name = "buttonAddUps3";
-            buttonAddUps3.Size = new Size(254, 62);
+            buttonAddUps3.Size = new Size(148, 31);
             buttonAddUps3.TabIndex = 3;
             buttonAddUps3.Text = "Fsr 2.1 DX11";
             buttonAddUps3.UseVisualStyleBackColor = false;
@@ -403,10 +388,9 @@
             buttonAddUps2.FlatAppearance.BorderSize = 0;
             buttonAddUps2.FlatStyle = FlatStyle.Flat;
             buttonAddUps2.ForeColor = Color.Gainsboro;
-            buttonAddUps2.Location = new Point(0, 56);
-            buttonAddUps2.Margin = new Padding(5, 6, 5, 6);
+            buttonAddUps2.Location = new Point(0, 28);
             buttonAddUps2.Name = "buttonAddUps2";
-            buttonAddUps2.Size = new Size(254, 62);
+            buttonAddUps2.Size = new Size(148, 31);
             buttonAddUps2.TabIndex = 2;
             buttonAddUps2.Text = "Fsr 2.2 DX11 - DX12";
             buttonAddUps2.UseVisualStyleBackColor = false;
@@ -418,10 +402,9 @@
             buttonAddUps1.FlatAppearance.BorderSize = 0;
             buttonAddUps1.FlatStyle = FlatStyle.Flat;
             buttonAddUps1.ForeColor = Color.Gainsboro;
-            buttonAddUps1.Location = new Point(0, 116);
-            buttonAddUps1.Margin = new Padding(5, 6, 5, 6);
+            buttonAddUps1.Location = new Point(0, 58);
             buttonAddUps1.Name = "buttonAddUps1";
-            buttonAddUps1.Size = new Size(254, 62);
+            buttonAddUps1.Size = new Size(148, 31);
             buttonAddUps1.TabIndex = 1;
             buttonAddUps1.Text = "Fsr 2.2 DX11";
             buttonAddUps1.UseVisualStyleBackColor = false;
@@ -433,10 +416,9 @@
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.ForeColor = Color.Gainsboro;
-            button4.Location = new Point(0, 178);
-            button4.Margin = new Padding(5, 6, 5, 6);
+            button4.Location = new Point(0, 89);
             button4.Name = "button4";
-            button4.Size = new Size(259, 62);
+            button4.Size = new Size(151, 31);
             button4.TabIndex = 15;
             button4.Text = "Fsr 3.1 DX11";
             button4.UseVisualStyleBackColor = false;
@@ -448,10 +430,9 @@
             buttonAddUps6.FlatAppearance.BorderSize = 0;
             buttonAddUps6.FlatStyle = FlatStyle.Flat;
             buttonAddUps6.ForeColor = Color.Gainsboro;
-            buttonAddUps6.Location = new Point(0, 368);
-            buttonAddUps6.Margin = new Padding(5, 6, 5, 6);
+            buttonAddUps6.Location = new Point(0, 184);
             buttonAddUps6.Name = "buttonAddUps6";
-            buttonAddUps6.Size = new Size(254, 62);
+            buttonAddUps6.Size = new Size(148, 31);
             buttonAddUps6.TabIndex = 2;
             buttonAddUps6.Text = "Fsr 2.1  DX12";
             buttonAddUps6.UseVisualStyleBackColor = false;
@@ -463,10 +444,9 @@
             buttonAddUps5.FlatAppearance.BorderSize = 0;
             buttonAddUps5.FlatStyle = FlatStyle.Flat;
             buttonAddUps5.ForeColor = Color.Gainsboro;
-            buttonAddUps5.Location = new Point(0, 492);
-            buttonAddUps5.Margin = new Padding(5, 6, 5, 6);
+            buttonAddUps5.Location = new Point(0, 246);
             buttonAddUps5.Name = "buttonAddUps5";
-            buttonAddUps5.Size = new Size(254, 62);
+            buttonAddUps5.Size = new Size(148, 31);
             buttonAddUps5.TabIndex = 1;
             buttonAddUps5.Text = "Fsr 2.2 DX12";
             buttonAddUps5.UseVisualStyleBackColor = false;
@@ -479,10 +459,9 @@
             buttonFgMethod.FlatAppearance.BorderSize = 0;
             buttonFgMethod.FlatStyle = FlatStyle.Flat;
             buttonFgMethod.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonFgMethod.Location = new Point(0, 394);
-            buttonFgMethod.Margin = new Padding(5, 6, 5, 6);
+            buttonFgMethod.Location = new Point(0, 197);
             buttonFgMethod.Name = "buttonFgMethod";
-            buttonFgMethod.Size = new Size(279, 56);
+            buttonFgMethod.Size = new Size(163, 28);
             buttonFgMethod.TabIndex = 21;
             buttonFgMethod.Text = "Frame Gen Method";
             buttonFgMethod.UseVisualStyleBackColor = false;
@@ -495,10 +474,9 @@
             buttonAddUps.FlatAppearance.BorderSize = 0;
             buttonAddUps.FlatStyle = FlatStyle.Flat;
             buttonAddUps.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonAddUps.Location = new Point(283, 204);
-            buttonAddUps.Margin = new Padding(5, 6, 5, 6);
+            buttonAddUps.Location = new Point(165, 102);
             buttonAddUps.Name = "buttonAddUps";
-            buttonAddUps.Size = new Size(286, 56);
+            buttonAddUps.Size = new Size(167, 28);
             buttonAddUps.TabIndex = 22;
             buttonAddUps.Text = "Add-On Upscaler";
             buttonAddUps.UseVisualStyleBackColor = false;
@@ -508,10 +486,9 @@
             // 
             panelAddOn2.BackColor = Color.Transparent;
             panelAddOn2.Controls.Add(optionsAddOn);
-            panelAddOn2.Location = new Point(0, 254);
-            panelAddOn2.Margin = new Padding(5, 6, 5, 6);
+            panelAddOn2.Location = new Point(0, 127);
             panelAddOn2.Name = "panelAddOn2";
-            panelAddOn2.Size = new Size(279, 154);
+            panelAddOn2.Size = new Size(163, 77);
             panelAddOn2.TabIndex = 21;
             // 
             // optionsAddOn
@@ -522,10 +499,9 @@
             optionsAddOn.ForeColor = Color.Silver;
             optionsAddOn.FormattingEnabled = true;
             optionsAddOn.Items.AddRange(new object[] { "Optiscaler", "Tweak" });
-            optionsAddOn.Location = new Point(0, 8);
-            optionsAddOn.Margin = new Padding(5, 6, 5, 6);
+            optionsAddOn.Location = new Point(0, 4);
             optionsAddOn.Name = "optionsAddOn";
-            optionsAddOn.Size = new Size(267, 117);
+            optionsAddOn.Size = new Size(156, 44);
             optionsAddOn.TabIndex = 7;
             optionsAddOn.ItemCheck += optionsAddOn_ItemCheck;
             optionsAddOn.SelectedIndexChanged += optionsAddOn_SelectedIndexChanged;
@@ -537,10 +513,9 @@
             buttonAddOn.FlatAppearance.BorderSize = 0;
             buttonAddOn.FlatStyle = FlatStyle.Flat;
             buttonAddOn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonAddOn.Location = new Point(0, 204);
-            buttonAddOn.Margin = new Padding(5, 6, 5, 6);
+            buttonAddOn.Location = new Point(0, 102);
             buttonAddOn.Name = "buttonAddOn";
-            buttonAddOn.Size = new Size(279, 56);
+            buttonAddOn.Size = new Size(163, 28);
             buttonAddOn.TabIndex = 20;
             buttonAddOn.Text = "Add-On";
             buttonAddOn.UseVisualStyleBackColor = false;
@@ -550,10 +525,9 @@
             // 
             panelDxgi.BackColor = Color.Transparent;
             panelDxgi.Controls.Add(optionsDxgi);
-            panelDxgi.Location = new Point(290, 60);
-            panelDxgi.Margin = new Padding(5, 6, 5, 6);
+            panelDxgi.Location = new Point(169, 30);
             panelDxgi.Name = "panelDxgi";
-            panelDxgi.Size = new Size(279, 88);
+            panelDxgi.Size = new Size(163, 44);
             panelDxgi.TabIndex = 19;
             // 
             // optionsDxgi
@@ -564,10 +538,9 @@
             optionsDxgi.ForeColor = Color.Gainsboro;
             optionsDxgi.FormattingEnabled = true;
             optionsDxgi.Items.AddRange(new object[] { "Dxgi.dll", "D3D12.dll" });
-            optionsDxgi.Location = new Point(5, 0);
-            optionsDxgi.Margin = new Padding(5, 6, 5, 6);
+            optionsDxgi.Location = new Point(3, 0);
             optionsDxgi.Name = "optionsDxgi";
-            optionsDxgi.Size = new Size(267, 117);
+            optionsDxgi.Size = new Size(156, 44);
             optionsDxgi.TabIndex = 7;
             // 
             // buttonDxgi
@@ -577,10 +550,9 @@
             buttonDxgi.FlatAppearance.BorderSize = 0;
             buttonDxgi.FlatStyle = FlatStyle.Flat;
             buttonDxgi.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDxgi.Location = new Point(283, 0);
-            buttonDxgi.Margin = new Padding(5, 6, 5, 6);
+            buttonDxgi.Location = new Point(165, 0);
             buttonDxgi.Name = "buttonDxgi";
-            buttonDxgi.Size = new Size(286, 56);
+            buttonDxgi.Size = new Size(167, 28);
             buttonDxgi.TabIndex = 18;
             buttonDxgi.Text = "Dxgi.dll";
             buttonDxgi.UseVisualStyleBackColor = false;
@@ -595,9 +567,8 @@
             buttonNvngx.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonNvngx.ForeColor = Color.Black;
             buttonNvngx.Location = new Point(0, 0);
-            buttonNvngx.Margin = new Padding(5, 6, 5, 6);
             buttonNvngx.Name = "buttonNvngx";
-            buttonNvngx.Size = new Size(279, 56);
+            buttonNvngx.Size = new Size(163, 28);
             buttonNvngx.TabIndex = 17;
             buttonNvngx.Text = "Nvngx.dll";
             buttonNvngx.UseVisualStyleBackColor = false;
@@ -607,10 +578,9 @@
             // 
             panelNvngx.BackColor = Color.Transparent;
             panelNvngx.Controls.Add(optionsNvngx);
-            panelNvngx.Location = new Point(0, 54);
-            panelNvngx.Margin = new Padding(5, 6, 5, 6);
+            panelNvngx.Location = new Point(0, 27);
             panelNvngx.Name = "panelNvngx";
-            panelNvngx.Size = new Size(279, 154);
+            panelNvngx.Size = new Size(163, 77);
             panelNvngx.TabIndex = 16;
             // 
             // optionsNvngx
@@ -621,10 +591,9 @@
             optionsNvngx.ForeColor = Color.Gainsboro;
             optionsNvngx.FormattingEnabled = true;
             optionsNvngx.Items.AddRange(new object[] { "Default", "NVNGX Version 1", "Xess 1.3", "DLSS 3.8.10", "DLSSG 3.8.1", "DLSS 4", "DLSSG 4", "DLSSD 4" });
-            optionsNvngx.Location = new Point(5, 0);
-            optionsNvngx.Margin = new Padding(5, 6, 5, 6);
+            optionsNvngx.Location = new Point(3, 0);
             optionsNvngx.Name = "optionsNvngx";
-            optionsNvngx.Size = new Size(279, 156);
+            optionsNvngx.Size = new Size(163, 66);
             optionsNvngx.TabIndex = 7;
             optionsNvngx.ItemCheck += optionsNvngx_ItemCheck;
             // 
@@ -634,10 +603,9 @@
             label6.FlatStyle = FlatStyle.Flat;
             label6.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(1198, 0);
-            label6.Margin = new Padding(5, 0, 5, 0);
+            label6.Location = new Point(699, 0);
             label6.Name = "label6";
-            label6.Size = new Size(569, 104);
+            label6.Size = new Size(332, 52);
             label6.TabIndex = 17;
             label6.Text = "Add-On Mods";
             label6.TextAlign = ContentAlignment.TopCenter;
@@ -648,10 +616,9 @@
             label5.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
             label5.ImageAlign = ContentAlignment.TopLeft;
-            label5.Location = new Point(91, 278);
-            label5.Margin = new Padding(5, 0, 5, 0);
+            label5.Location = new Point(53, 139);
             label5.Name = "label5";
-            label5.Size = new Size(850, 104);
+            label5.Size = new Size(496, 52);
             label5.TabIndex = 16;
             label5.Text = "Resolution | Upscaler";
             label5.TextAlign = ContentAlignment.TopCenter;
@@ -664,10 +631,9 @@
             mainPanelUpsRes.Controls.Add(button3);
             mainPanelUpsRes.Controls.Add(button2);
             mainPanelUpsRes.Controls.Add(panelModOp);
-            mainPanelUpsRes.Location = new Point(91, 388);
-            mainPanelUpsRes.Margin = new Padding(5, 6, 5, 6);
+            mainPanelUpsRes.Location = new Point(53, 194);
             mainPanelUpsRes.Name = "mainPanelUpsRes";
-            mainPanelUpsRes.Size = new Size(850, 490);
+            mainPanelUpsRes.Size = new Size(496, 245);
             mainPanelUpsRes.TabIndex = 14;
             // 
             // panelResPreset
@@ -676,10 +642,9 @@
             panelResPreset.Controls.Add(button2160);
             panelResPreset.Controls.Add(button1440);
             panelResPreset.Controls.Add(button1080);
-            panelResPreset.Location = new Point(290, 54);
-            panelResPreset.Margin = new Padding(5, 6, 5, 6);
+            panelResPreset.Location = new Point(169, 27);
             panelResPreset.Name = "panelResPreset";
-            panelResPreset.Size = new Size(279, 174);
+            panelResPreset.Size = new Size(163, 87);
             panelResPreset.TabIndex = 17;
             // 
             // button2160
@@ -688,10 +653,9 @@
             button2160.FlatAppearance.BorderSize = 0;
             button2160.FlatStyle = FlatStyle.Flat;
             button2160.ForeColor = Color.Gainsboro;
-            button2160.Location = new Point(0, 112);
-            button2160.Margin = new Padding(5, 6, 5, 6);
+            button2160.Location = new Point(0, 56);
             button2160.Name = "button2160";
-            button2160.Size = new Size(279, 62);
+            button2160.Size = new Size(163, 31);
             button2160.TabIndex = 3;
             button2160.Text = "2160p";
             button2160.UseVisualStyleBackColor = false;
@@ -703,10 +667,9 @@
             button1440.FlatAppearance.BorderSize = 0;
             button1440.FlatStyle = FlatStyle.Flat;
             button1440.ForeColor = Color.Gainsboro;
-            button1440.Location = new Point(0, 56);
-            button1440.Margin = new Padding(5, 6, 5, 6);
+            button1440.Location = new Point(0, 28);
             button1440.Name = "button1440";
-            button1440.Size = new Size(279, 62);
+            button1440.Size = new Size(163, 31);
             button1440.TabIndex = 2;
             button1440.Text = "1440p";
             button1440.UseVisualStyleBackColor = false;
@@ -719,9 +682,8 @@
             button1080.FlatStyle = FlatStyle.Flat;
             button1080.ForeColor = Color.Gainsboro;
             button1080.Location = new Point(0, 0);
-            button1080.Margin = new Padding(5, 6, 5, 6);
             button1080.Name = "button1080";
-            button1080.Size = new Size(279, 62);
+            button1080.Size = new Size(163, 31);
             button1080.TabIndex = 1;
             button1080.Text = "1080p";
             button1080.UseVisualStyleBackColor = false;
@@ -734,10 +696,9 @@
             buttonResPreset.FlatAppearance.BorderSize = 0;
             buttonResPreset.FlatStyle = FlatStyle.Flat;
             buttonResPreset.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonResPreset.Location = new Point(290, 0);
-            buttonResPreset.Margin = new Padding(5, 6, 5, 6);
+            buttonResPreset.Location = new Point(169, 0);
             buttonResPreset.Name = "buttonResPreset";
-            buttonResPreset.Size = new Size(279, 56);
+            buttonResPreset.Size = new Size(163, 28);
             buttonResPreset.TabIndex = 16;
             buttonResPreset.Text = "Resolution Preset";
             buttonResPreset.UseVisualStyleBackColor = false;
@@ -760,10 +721,9 @@
             panelRes.Controls.Add(buttonQ);
             panelRes.Controls.Add(buttonUltraQ);
             panelRes.Controls.Add(button7);
-            panelRes.Location = new Point(0, 54);
-            panelRes.Margin = new Padding(5, 6, 5, 6);
+            panelRes.Location = new Point(0, 27);
             panelRes.Name = "panelRes";
-            panelRes.Size = new Size(279, 426);
+            panelRes.Size = new Size(163, 213);
             panelRes.TabIndex = 15;
             // 
             // buttonNative
@@ -772,10 +732,9 @@
             buttonNative.FlatAppearance.BorderSize = 0;
             buttonNative.FlatStyle = FlatStyle.Flat;
             buttonNative.ForeColor = Color.Gainsboro;
-            buttonNative.Location = new Point(0, 350);
-            buttonNative.Margin = new Padding(5, 6, 5, 6);
+            buttonNative.Location = new Point(0, 175);
             buttonNative.Name = "buttonNative";
-            buttonNative.Size = new Size(211, 62);
+            buttonNative.Size = new Size(123, 31);
             buttonNative.TabIndex = 15;
             buttonNative.Text = "FSR Native";
             buttonNative.UseVisualStyleBackColor = false;
@@ -787,10 +746,9 @@
             buttonUltraP.FlatAppearance.BorderSize = 0;
             buttonUltraP.FlatStyle = FlatStyle.Flat;
             buttonUltraP.ForeColor = Color.Gainsboro;
-            buttonUltraP.Location = new Point(0, 292);
-            buttonUltraP.Margin = new Padding(5, 6, 5, 6);
+            buttonUltraP.Location = new Point(0, 146);
             buttonUltraP.Name = "buttonUltraP";
-            buttonUltraP.Size = new Size(211, 62);
+            buttonUltraP.Size = new Size(123, 31);
             buttonUltraP.TabIndex = 25;
             buttonUltraP.Text = "FSR Ultra P";
             buttonUltraP.UseVisualStyleBackColor = false;
@@ -802,10 +760,9 @@
             buttonPerf.FlatAppearance.BorderSize = 0;
             buttonPerf.FlatStyle = FlatStyle.Flat;
             buttonPerf.ForeColor = Color.Gainsboro;
-            buttonPerf.Location = new Point(0, 234);
-            buttonPerf.Margin = new Padding(5, 6, 5, 6);
+            buttonPerf.Location = new Point(0, 117);
             buttonPerf.Name = "buttonPerf";
-            buttonPerf.Size = new Size(211, 62);
+            buttonPerf.Size = new Size(123, 31);
             buttonPerf.TabIndex = 24;
             buttonPerf.Text = "FSR Performance";
             buttonPerf.UseVisualStyleBackColor = false;
@@ -817,10 +774,9 @@
             buttonBalanced.FlatAppearance.BorderSize = 0;
             buttonBalanced.FlatStyle = FlatStyle.Flat;
             buttonBalanced.ForeColor = Color.Gainsboro;
-            buttonBalanced.Location = new Point(0, 172);
-            buttonBalanced.Margin = new Padding(5, 6, 5, 6);
+            buttonBalanced.Location = new Point(0, 86);
             buttonBalanced.Name = "buttonBalanced";
-            buttonBalanced.Size = new Size(211, 62);
+            buttonBalanced.Size = new Size(123, 31);
             buttonBalanced.TabIndex = 23;
             buttonBalanced.Text = "FSR Balanced";
             buttonBalanced.UseVisualStyleBackColor = false;
@@ -828,72 +784,65 @@
             // 
             // valueNative
             // 
-            valueNative.Location = new Point(216, 356);
-            valueNative.Margin = new Padding(5, 6, 5, 6);
+            valueNative.Location = new Point(126, 178);
             valueNative.Minimum = new decimal(new int[] { 25, 0, 0, 0 });
             valueNative.Name = "valueNative";
-            valueNative.Size = new Size(63, 35);
+            valueNative.Size = new Size(37, 23);
             valueNative.TabIndex = 22;
             valueNative.Value = new decimal(new int[] { 25, 0, 0, 0 });
             // 
             // valueUltraP
             // 
-            valueUltraP.Location = new Point(216, 298);
-            valueUltraP.Margin = new Padding(5, 6, 5, 6);
+            valueUltraP.Location = new Point(126, 149);
             valueUltraP.Minimum = new decimal(new int[] { 25, 0, 0, 0 });
             valueUltraP.Name = "valueUltraP";
-            valueUltraP.Size = new Size(63, 35);
+            valueUltraP.Size = new Size(37, 23);
             valueUltraP.TabIndex = 21;
             valueUltraP.Value = new decimal(new int[] { 25, 0, 0, 0 });
             // 
             // valuePerf
             // 
-            valuePerf.Location = new Point(216, 240);
-            valuePerf.Margin = new Padding(5, 6, 5, 6);
+            valuePerf.Location = new Point(126, 120);
             valuePerf.Minimum = new decimal(new int[] { 25, 0, 0, 0 });
             valuePerf.Name = "valuePerf";
-            valuePerf.Size = new Size(63, 35);
+            valuePerf.Size = new Size(37, 23);
             valuePerf.TabIndex = 16;
             valuePerf.Value = new decimal(new int[] { 25, 0, 0, 0 });
             // 
             // valueBalanced
             // 
-            valueBalanced.Location = new Point(216, 182);
-            valueBalanced.Margin = new Padding(5, 6, 5, 6);
+            valueBalanced.Location = new Point(126, 91);
             valueBalanced.Minimum = new decimal(new int[] { 25, 0, 0, 0 });
             valueBalanced.Name = "valueBalanced";
-            valueBalanced.Size = new Size(72, 35);
+            valueBalanced.Size = new Size(42, 23);
             valueBalanced.TabIndex = 16;
             valueBalanced.Value = new decimal(new int[] { 25, 0, 0, 0 });
             // 
             // valueQ
             // 
-            valueQ.Location = new Point(216, 124);
-            valueQ.Margin = new Padding(5, 6, 5, 6);
+            valueQ.Location = new Point(126, 62);
             valueQ.Minimum = new decimal(new int[] { 25, 0, 0, 0 });
             valueQ.Name = "valueQ";
-            valueQ.Size = new Size(72, 35);
+            valueQ.Size = new Size(42, 23);
             valueQ.TabIndex = 20;
             valueQ.Value = new decimal(new int[] { 25, 0, 0, 0 });
             // 
             // valueUltraQ
             // 
-            valueUltraQ.Location = new Point(216, 64);
-            valueUltraQ.Margin = new Padding(5, 6, 5, 6);
+            valueUltraQ.Location = new Point(126, 32);
             valueUltraQ.Minimum = new decimal(new int[] { 25, 0, 0, 0 });
             valueUltraQ.Name = "valueUltraQ";
-            valueUltraQ.Size = new Size(72, 35);
+            valueUltraQ.Size = new Size(42, 23);
             valueUltraQ.TabIndex = 19;
             valueUltraQ.Value = new decimal(new int[] { 25, 0, 0, 0 });
             // 
             // valueSharpOver
             // 
-            valueSharpOver.Location = new Point(216, 6);
-            valueSharpOver.Margin = new Padding(5, 6, 5, 6);
+            valueSharpOver.Location = new Point(126, 3);
             valueSharpOver.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
             valueSharpOver.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
             valueSharpOver.Name = "valueSharpOver";
-            valueSharpOver.Size = new Size(72, 35);
+            valueSharpOver.Size = new Size(42, 23);
             valueSharpOver.TabIndex = 15;
             // 
             // buttonQ
@@ -902,10 +851,9 @@
             buttonQ.FlatAppearance.BorderSize = 0;
             buttonQ.FlatStyle = FlatStyle.Flat;
             buttonQ.ForeColor = Color.Gainsboro;
-            buttonQ.Location = new Point(0, 112);
-            buttonQ.Margin = new Padding(5, 6, 5, 6);
+            buttonQ.Location = new Point(0, 56);
             buttonQ.Name = "buttonQ";
-            buttonQ.Size = new Size(211, 62);
+            buttonQ.Size = new Size(123, 31);
             buttonQ.TabIndex = 3;
             buttonQ.Text = "FSR Quality";
             buttonQ.UseVisualStyleBackColor = false;
@@ -917,10 +865,9 @@
             buttonUltraQ.FlatAppearance.BorderSize = 0;
             buttonUltraQ.FlatStyle = FlatStyle.Flat;
             buttonUltraQ.ForeColor = Color.Gainsboro;
-            buttonUltraQ.Location = new Point(0, 56);
-            buttonUltraQ.Margin = new Padding(5, 6, 5, 6);
+            buttonUltraQ.Location = new Point(0, 28);
             buttonUltraQ.Name = "buttonUltraQ";
-            buttonUltraQ.Size = new Size(211, 62);
+            buttonUltraQ.Size = new Size(123, 31);
             buttonUltraQ.TabIndex = 2;
             buttonUltraQ.Text = "FSR Ultra Q";
             buttonUltraQ.UseVisualStyleBackColor = false;
@@ -933,9 +880,8 @@
             button7.FlatStyle = FlatStyle.Flat;
             button7.ForeColor = Color.Gainsboro;
             button7.Location = new Point(0, 0);
-            button7.Margin = new Padding(5, 6, 5, 6);
             button7.Name = "button7";
-            button7.Size = new Size(211, 62);
+            button7.Size = new Size(123, 31);
             button7.TabIndex = 1;
             button7.Text = "Sharpness Override";
             button7.UseVisualStyleBackColor = false;
@@ -949,9 +895,8 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.Location = new Point(0, 0);
-            button3.Margin = new Padding(5, 6, 5, 6);
             button3.Name = "button3";
-            button3.Size = new Size(288, 56);
+            button3.Size = new Size(168, 28);
             button3.TabIndex = 14;
             button3.Text = "Resolution";
             button3.UseVisualStyleBackColor = false;
@@ -964,10 +909,9 @@
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(571, 0);
-            button2.Margin = new Padding(5, 6, 5, 6);
+            button2.Location = new Point(333, 0);
             button2.Name = "button2";
-            button2.Size = new Size(279, 56);
+            button2.Size = new Size(163, 28);
             button2.TabIndex = 0;
             button2.Text = "Mod Operates";
             button2.UseVisualStyleBackColor = false;
@@ -981,10 +925,9 @@
             panelModOp.Controls.Add(modOpt3);
             panelModOp.Controls.Add(modOpt2);
             panelModOp.Controls.Add(modOpt1);
-            panelModOp.Location = new Point(571, 54);
-            panelModOp.Margin = new Padding(5, 6, 5, 6);
+            panelModOp.Location = new Point(333, 27);
             panelModOp.Name = "panelModOp";
-            panelModOp.Size = new Size(279, 320);
+            panelModOp.Size = new Size(163, 160);
             panelModOp.TabIndex = 13;
             // 
             // modOpt5
@@ -993,10 +936,9 @@
             modOpt5.FlatAppearance.BorderSize = 0;
             modOpt5.FlatStyle = FlatStyle.Flat;
             modOpt5.ForeColor = Color.Gainsboro;
-            modOpt5.Location = new Point(-3, 234);
-            modOpt5.Margin = new Padding(5, 6, 5, 6);
+            modOpt5.Location = new Point(-2, 117);
             modOpt5.Name = "modOpt5";
-            modOpt5.Size = new Size(288, 72);
+            modOpt5.Size = new Size(168, 36);
             modOpt5.TabIndex = 18;
             modOpt5.Text = "button7";
             modOpt5.UseVisualStyleBackColor = false;
@@ -1008,10 +950,9 @@
             modOpt4.FlatAppearance.BorderSize = 0;
             modOpt4.FlatStyle = FlatStyle.Flat;
             modOpt4.ForeColor = Color.Gainsboro;
-            modOpt4.Location = new Point(-3, 164);
-            modOpt4.Margin = new Padding(5, 6, 5, 6);
+            modOpt4.Location = new Point(-2, 82);
             modOpt4.Name = "modOpt4";
-            modOpt4.Size = new Size(283, 72);
+            modOpt4.Size = new Size(165, 36);
             modOpt4.TabIndex = 14;
             modOpt4.Text = "button6";
             modOpt4.UseVisualStyleBackColor = false;
@@ -1023,10 +964,9 @@
             modOpt3.FlatAppearance.BorderSize = 0;
             modOpt3.FlatStyle = FlatStyle.Flat;
             modOpt3.ForeColor = Color.Gainsboro;
-            modOpt3.Location = new Point(0, 112);
-            modOpt3.Margin = new Padding(5, 6, 5, 6);
+            modOpt3.Location = new Point(0, 56);
             modOpt3.Name = "modOpt3";
-            modOpt3.Size = new Size(279, 62);
+            modOpt3.Size = new Size(163, 31);
             modOpt3.TabIndex = 3;
             modOpt3.Text = "button5";
             modOpt3.UseVisualStyleBackColor = false;
@@ -1038,10 +978,9 @@
             modOpt2.FlatAppearance.BorderSize = 0;
             modOpt2.FlatStyle = FlatStyle.Flat;
             modOpt2.ForeColor = Color.Gainsboro;
-            modOpt2.Location = new Point(0, 56);
-            modOpt2.Margin = new Padding(5, 6, 5, 6);
+            modOpt2.Location = new Point(0, 28);
             modOpt2.Name = "modOpt2";
-            modOpt2.Size = new Size(279, 62);
+            modOpt2.Size = new Size(163, 31);
             modOpt2.TabIndex = 2;
             modOpt2.Text = "button4";
             modOpt2.UseVisualStyleBackColor = false;
@@ -1054,9 +993,8 @@
             modOpt1.FlatStyle = FlatStyle.Flat;
             modOpt1.ForeColor = Color.Gainsboro;
             modOpt1.Location = new Point(0, 0);
-            modOpt1.Margin = new Padding(5, 6, 5, 6);
             modOpt1.Name = "modOpt1";
-            modOpt1.Size = new Size(279, 62);
+            modOpt1.Size = new Size(163, 31);
             modOpt1.TabIndex = 1;
             modOpt1.Text = "modOpt1";
             modOpt1.UseVisualStyleBackColor = false;
@@ -1067,10 +1005,9 @@
             flowDel.Anchor = AnchorStyles.Bottom;
             flowDel.Controls.Add(buttonDel);
             flowDel.FlowDirection = FlowDirection.BottomUp;
-            flowDel.Location = new Point(429, 1266);
-            flowDel.Margin = new Padding(5, 6, 5, 6);
+            flowDel.Location = new Point(250, 386);
             flowDel.Name = "flowDel";
-            flowDel.Size = new Size(171, 72);
+            flowDel.Size = new Size(100, 36);
             flowDel.TabIndex = 9;
             // 
             // buttonDel
@@ -1082,10 +1019,9 @@
             buttonDel.ForeColor = Color.Black;
             buttonDel.Image = (Image)resources.GetObject("buttonDel.Image");
             buttonDel.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonDel.Location = new Point(5, 21);
-            buttonDel.Margin = new Padding(5, 6, 5, 6);
+            buttonDel.Location = new Point(3, 4);
             buttonDel.Name = "buttonDel";
-            buttonDel.Size = new Size(147, 45);
+            buttonDel.Size = new Size(92, 29);
             buttonDel.TabIndex = 4;
             buttonDel.Text = "      Cleanup";
             buttonDel.UseVisualStyleBackColor = false;
@@ -1097,10 +1033,9 @@
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(696, 0);
-            label4.Margin = new Padding(5, 0, 5, 0);
+            label4.Location = new Point(406, 0);
             label4.Name = "label4";
-            label4.Size = new Size(477, 104);
+            label4.Size = new Size(278, 52);
             label4.TabIndex = 7;
             label4.Text = " Additional Settings";
             label4.Click += label4_Click;
@@ -1111,10 +1046,9 @@
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Segoe UI Semibold", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ControlText;
-            label3.Location = new Point(91, 0);
-            label3.Margin = new Padding(5, 0, 5, 0);
+            label3.Location = new Point(53, 0);
             label3.Name = "label3";
-            label3.Size = new Size(578, 104);
+            label3.Size = new Size(337, 52);
             label3.TabIndex = 6;
             label3.Text = "         Initial settings";
             // 
@@ -1123,10 +1057,9 @@
             flowLayoutPanel3.BackColor = Color.Transparent;
             flowLayoutPanel3.BackgroundImageLayout = ImageLayout.None;
             flowLayoutPanel3.Controls.Add(AddOptionsSelect);
-            flowLayoutPanel3.Location = new Point(696, 110);
-            flowLayoutPanel3.Margin = new Padding(5, 6, 5, 6);
+            flowLayoutPanel3.Location = new Point(406, 55);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(477, 138);
+            flowLayoutPanel3.Size = new Size(278, 69);
             flowLayoutPanel3.TabIndex = 8;
             // 
             // AddOptionsSelect
@@ -1136,23 +1069,22 @@
             AddOptionsSelect.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddOptionsSelect.ForeColor = Color.Gainsboro;
             AddOptionsSelect.FormattingEnabled = true;
-            AddOptionsSelect.Items.AddRange(new object[] { "Toml Editor", "Backup", "Fake Nvidia Gpu", "Nvapi Results", "Ue Compatibility Mode", "MacOS Crossover Support", "Auto Exposure", "Debug View", "Debug Tier Lines", "Off Frame Gen", "Disable Overlay", "Disable Console", "Ignore Ingame Fg", "Ignore Fg Resources", "Enable Signature Over", "Disable Signature Over", "Fps Limit" });
-            AddOptionsSelect.Location = new Point(5, 6);
-            AddOptionsSelect.Margin = new Padding(5, 6, 5, 6);
+            AddOptionsSelect.Items.AddRange(new object[] { "DLSS Overlay", "Toml Editor", "Backup", "Fake Nvidia Gpu", "Nvapi Results", "Ue Compatibility Mode", "MacOS Crossover Support", "Auto Exposure", "Debug View", "Debug Tier Lines", "Off Frame Gen", "Disable Overlay", "Disable Console", "Ignore Ingame Fg", "Ignore Fg Resources", "Enable Signature Over", "Disable Signature Over", "Fps Limit" });
+            AddOptionsSelect.Location = new Point(3, 3);
             AddOptionsSelect.Name = "AddOptionsSelect";
-            AddOptionsSelect.Size = new Size(471, 156);
+            AddOptionsSelect.Size = new Size(275, 66);
             AddOptionsSelect.TabIndex = 6;
             AddOptionsSelect.SelectedIndexChanged += AddOptionsSelect_SelectedIndexChanged;
+            AddOptionsSelect.MouseMove += AddOptionsSelect_MouseMove;
             // 
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.Anchor = AnchorStyles.Bottom;
             flowLayoutPanel2.Controls.Add(buttonInstall);
             flowLayoutPanel2.FlowDirection = FlowDirection.BottomUp;
-            flowLayoutPanel2.Location = new Point(267, 1266);
-            flowLayoutPanel2.Margin = new Padding(5, 6, 5, 6);
+            flowLayoutPanel2.Location = new Point(156, 386);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(166, 72);
+            flowLayoutPanel2.Size = new Size(97, 36);
             flowLayoutPanel2.TabIndex = 5;
             // 
             // buttonInstall
@@ -1164,10 +1096,9 @@
             buttonInstall.ForeColor = Color.Black;
             buttonInstall.Image = (Image)resources.GetObject("buttonInstall.Image");
             buttonInstall.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonInstall.Location = new Point(5, 21);
-            buttonInstall.Margin = new Padding(5, 6, 5, 6);
+            buttonInstall.Location = new Point(3, 4);
             buttonInstall.Name = "buttonInstall";
-            buttonInstall.Size = new Size(164, 45);
+            buttonInstall.Size = new Size(96, 29);
             buttonInstall.TabIndex = 4;
             buttonInstall.Text = "      Install";
             buttonInstall.UseVisualStyleBackColor = false;
@@ -1181,10 +1112,9 @@
             flowLayoutPanel1.Controls.Add(button1);
             flowLayoutPanel1.Controls.Add(label2);
             flowLayoutPanel1.Controls.Add(listMods);
-            flowLayoutPanel1.Location = new Point(91, 110);
-            flowLayoutPanel1.Margin = new Padding(5, 6, 5, 6);
+            flowLayoutPanel1.Location = new Point(53, 55);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(578, 114);
+            flowLayoutPanel1.Size = new Size(337, 57);
             flowLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -1196,10 +1126,9 @@
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.LightGray;
             label1.ImageAlign = ContentAlignment.BottomLeft;
-            label1.Location = new Point(5, 0);
-            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(227, 48);
+            label1.Size = new Size(128, 27);
             label1.TabIndex = 2;
             label1.Text = "Select Folder";
             // 
@@ -1207,11 +1136,10 @@
             // 
             textBox1.BackColor = Color.Silver;
             textBox1.ForeColor = Color.Black;
-            textBox1.Location = new Point(242, 6);
-            textBox1.Margin = new Padding(5, 6, 5, 6);
+            textBox1.Location = new Point(137, 3);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(269, 35);
+            textBox1.Size = new Size(159, 23);
             textBox1.TabIndex = 1;
             textBox1.TabStop = false;
             textBox1.Click += textBox1_Click;
@@ -1221,10 +1149,9 @@
             button1.Cursor = Cursors.Hand;
             button1.ForeColor = Color.Black;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(521, 6);
-            button1.Margin = new Padding(5, 6, 5, 6);
+            button1.Location = new Point(302, 3);
             button1.Name = "button1";
-            button1.Size = new Size(46, 46);
+            button1.Size = new Size(27, 23);
             button1.TabIndex = 2;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -1236,10 +1163,9 @@
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.LightGray;
-            label2.Location = new Point(5, 58);
-            label2.Margin = new Padding(5, 0, 5, 0);
+            label2.Location = new Point(3, 29);
             label2.Name = "label2";
-            label2.Size = new Size(218, 52);
+            label2.Size = new Size(128, 27);
             label2.TabIndex = 2;
             label2.Text = "Select Mod";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -1251,23 +1177,21 @@
             listMods.FlatStyle = FlatStyle.Flat;
             listMods.FormattingEnabled = true;
             listMods.Items.AddRange(new object[] { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0", "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3", "Uniscaler V4", "Uniscaler FSR 3.1", "Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG Custom" });
-            listMods.Location = new Point(233, 64);
-            listMods.Margin = new Padding(5, 6, 5, 6);
+            listMods.Location = new Point(137, 32);
             listMods.Name = "listMods";
-            listMods.Size = new Size(272, 38);
+            listMods.Size = new Size(160, 23);
             listMods.TabIndex = 3;
             listMods.SelectedIndexChanged += listMods_SelectedIndexChanged;
             // 
             // formSettings
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(1930, 1338);
+            ClientSize = new Size(1126, 422);
             Controls.Add(panel1);
             ForeColor = Color.Black;
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(5, 6, 5, 6);
             Name = "formSettings";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formSettings";
@@ -1383,5 +1307,6 @@
         private Button buttonFg3;
         private Button buttonFgMethod;
         private Button buttonFg31;
+        private ToolTip toolTip1;
     }
 }
