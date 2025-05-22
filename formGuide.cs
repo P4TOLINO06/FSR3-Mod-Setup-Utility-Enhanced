@@ -1088,7 +1088,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "2. In the ReShade, select the game’s .exe and click next.\n" +
                 "3. Select DX 10/11/12 and click next.\n" +
                 "4. Click \"Browse\" and locate the file TheGreatCircle.ini that was installed in the folder selected in the Utility and click Next.\n" +
-                "5. In the game, press the Home key to open the menu and select the options you prefer.\n"
+                "5. In the game, press the Home key to open the menu and select the options you prefer."
             },
             {
                 "Judgment\r\n",
@@ -1274,7 +1274,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. Check Enable Signature Over box.\n" +
                 "4. In the game, select DLSS and press the \"Insert\" key to open the menu.\n" +
                 "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
-                "This mod may not work on some GPUs. If it doesn't work, use the mod below.\n\n" +
+                "This mod may not work on some GPUs. If it doesn’t work, use the mod below.\n\n" +
 
                 "FSR 3.1.4/DLSSG FG (Only Optiscaler)\n" +
                 "1. Select FSR 3.1.4/DLSSG FG (Only Optiscaler) and install.\n" +

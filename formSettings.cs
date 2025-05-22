@@ -533,14 +533,12 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Folder GTA V
         Dictionary<string, string[]> folderGtaV = new Dictionary<string, string[]>
         {
-            { "Dinput8", new string[] { "mods\\FSR3_GTAV\\dinput8_gtav" } },
-            { "GTA V FSR3/DLSS4", new string[] { "mods\\FSR3_GTAV\\GtaV_B02_FSR3" } },
             { "GTA V Online", new string []{"mods\\FSR3_GTAV\\GtaV_B02_FSR3"} },
             { "GTA V FiveM", new string []{"mods\\FSR3_GTAV\\GtaV_B02_FSR3"} },
             { "GYA V Epic", new string[] { "mods\\FSR3_GTAV\\GtaV_B02_FSR3" } },
             { "GTA V Epic V2", new string[] { "mods\\FSR3_GTAV\\Gtav_Epic" } },
         };
-
+        
         string[] delGtavFsr3 = { "GTAVUpscaler.org.asi", "GTAVUpscaler.asi", "d3d12.dll", "dxgi.asi", "GTAVUpscaler.dll", "GTAVUpscaler.org.dll", "dinput8.dll" };
 
         #endregion 
@@ -2317,8 +2315,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
             runReg("mods\\Temp\\disable signature override\\DisableSignatureOverride.reg");
         }
-
-
 
         public async Task rdr2Fsr3()
         {
@@ -4463,6 +4459,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 if (gameSelected == "Ghost of Tsushima")
                 {
                     gotFsr3();
+                }
+                if (gameSelected == "Monster Hunter Wilds")
+                {
+                    mhwFsr3();
                 }
                 if (gameSelected == "The Medium")
                 {
