@@ -100,6 +100,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"A Quiet Place: The Road Ahead", "Aqp.ico"},
                 {"Assassin\'s Creed Mirage", "Mirage.ico"},
                 {"Assetto Corsa Evo", "ACEvo.ico"},
+                {"Assassin\'s Creed Shadows", "AcShadows.ico"},
                 {"Assassin's Creed Valhalla", "Valhalla.ico"},
                 {"Atomic Heart", "Atomic.ico"},
                 {"AVOWED", "Avowed.ico"},
@@ -129,6 +130,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Dragons Dogma 2","DD2.ico"},
                 {"Dying Light 2","DL2.ico"},
                 {"Dynasty Warriors: Origins","DWO.ico"},
+                {"The Elder Scrolls IV: Oblivion Remastered", "Elder4.ico"},
                 {"Empire of the Ants","EOTA.ico"},
                 {"Everspace 2","ES2.ico"},
                 {"Evil West","EW.ico"},
@@ -340,9 +342,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Frostpunk 2", "Ghost of Tsushima", "Ghostwire: Tokyo", "Hellblade: Senua's Sacrifice", "Senua's Saga Hellblade II", "High On Life", "Horizon Forbidden West", "Hogwarts Legacy", "Hitman 3", "Hot Wheels Unleashed", "Indiana Jones and the Great Circle", "Kena: Bridge of Spirits",
                 "Lego Horizon Adventures", "Like a Dragon: Pirates", "Lords of the Fallen", "Manor Lords", "Lost Records Bloom And Rage", "Martha Is Dead", "Marvel's Avengers", "Marvel's Guardians of the Galaxy", "Marvel's Midnight Suns", "Metro Exodus", "Monster Hunter Rise", "Monster Hunter Wilds",
                 "Mortal Shell", "Ninja Gaiden 2 Black", "Orcs Must Die! Deathtrap", "Pacific Drive", "Path of Exile 2", "Ready or Not", "Resident Evil 4", "Rise of The Tomb Raider", "SOTTR", "Six Days in Fallujah", "SuicideSquadKTJL", "Test Drive Unlimited Solar Crown", "The Casting Of Frank Stone", "The Talos Principle 2",
-                "The Witcher 3", "Thymesia", "Way Of The Hunter", "The Last of Us Part I", "Banishers Ghost of New Eden", "The Outlast Trials", "South of Midnight"};
+                "The Witcher 3", "Thymesia", "Way Of The Hunter", "The Last of Us Part I", "Banishers Ghost of New Eden", "The Outlast Trials", "South of Midnight", "The Elder Scrolls IV: Oblivion Remastered"};
                 string[] otGamesToIgnoreInd2 = { "Flintlock: The Siege of Dawn", "Final Fantasy VII Rebirth", "F1 22", "F1 23", "Silent Hill 2" };
-                string[] otGamesToIgnoreInd3 = { "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Jedi Survivor", "Star Wars Outlaws", "Steelrising", "Soulslinger Envoy of Death", "The Callisto Protocol", "The First Berserker: Khazan", "The Last of Us Part II", "Stalker 2", "Death Stranding", "Fist", "Clair Obscur: Expedition 33" };
+                string[] otGamesToIgnoreInd3 = { "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Jedi Survivor", "Star Wars Outlaws", "Steelrising", "Soulslinger Envoy of Death", "The Callisto Protocol", "The First Berserker: Khazan", "The Last of Us Part II", "Stalker 2", "Death Stranding", "Fist", "Clair Obscur: Expedition 33", "Assassin\'s Creed Shadows" };
                 #endregion
 
                 if (gamesToIgnoreInd.Contains(matchedGame))
@@ -457,6 +459,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"A Plague Tale Requiem", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Red Dead Redemption 2", ("FSR 3.1.4/DLSS FG (Only Optiscaler RDR2) or Red Dead Redemption 2 MIX", defSettings.Item1, defSettings.Item2, defVideoGuide) },
                 {"Grand Theft Auto V", ("FSR 3.1.4/DLSS FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defVideoGuide) },
+                {"Assassin's Creed Shadows", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Bright Memory Infinite", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Assassin's Creed Valhalla", ("AC Valhalla DLSS (Only RTX) or AC Valhalla FSR3 ALL GPUs ", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Atomic Heart", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
@@ -468,6 +471,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Dead Rising Remaster", ("FSR 3.1 FG DRR", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Deathloop", ("0.10.3 or 0.10.4", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Dragon Age: Veilguard", ("FSR 3.1.1/DLSS FG DG Veil", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
+                {"The Elder Scrolls IV: Oblivion Remastered", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Dragons Dogma 2", ("FSR 3.1.2/DLSS FG Custom", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Everspace 2", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or 0.10.3", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Eternal Strands", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
@@ -512,27 +516,39 @@ namespace FSR3ModSetupUtilityEnhanced
             "Pacific Drive", "Path of Exile 2", "Ratchet & Clank Rift Apart", "Ready or Not", "Red Dead Redemption", "Remnant 2", "Returnal", "Rise of The Tomb Raider", "Ripout", "Saints Row", "Sackboy: A Big Adventure", "Scorn", "Sengoku Dynasty", "Shadow of the Tomb Raider", "Shadow Warrior 3", "Silent Hill 2", "Sifu", "Six Days in Fallujah", "Smalland",
             "Star Wars Outlaws", "Steelrising", "Soulslinger Envoy of Death", "Soulstice", "South of Midnight", "Suicide Squad: Kill the Justice League", "Test Drive Unlimited Solar Crown", "The Ascent", "The Callisto Protocol", "The Casting Of Frank Stone", "The Outlast Trials","The Talos Principle 2", "The Witcher 3", "Thymesia", "Uncharted Legacy Of Thieves", "Until Dawn", "Wanted Dead", "Warhammer 40.000: Space Marine 2", "Way Of The Hunter", "Wayfinder"};
 
-
             foreach (var gameOpti in gamesWithVideoGuide)
             {
-                if (gameInfo.Keys.Any(k => k.Contains(gameOpti)))
+                foreach (var key in gameInfo.Keys.Where(k => k.Contains(gameOpti)).ToList())
                 {
-                    gameInfo[gameOpti] = (defOptiscaler.Item1, defOptiscaler.Item2, defOptiscaler.Item3, defVideoGuide);
+                    if (gameInfo[key].Item1 == defOptiscaler.Item1)
+                    {
+                        gameInfo[key] = (defOptiscaler.Item1, defOptiscaler.Item2, defOptiscaler.Item3, defVideoGuide);
+                    }
                 }
             }
 
             foreach (var gameOpti in gamesWithDefOptiscaler)
             {
-                if (gameInfo.ContainsKey(gameOpti) && gameInfo[gameOpti].Item4 == defVideoGuide)
-                    continue;
-
-                if (gamesWithVideoGuide.Contains(gameOpti))
+                if (gameInfo.ContainsKey(gameOpti))
                 {
-                    gameInfo[gameOpti] = (defOptiscaler.Item1, defOptiscaler.Item2, defOptiscaler.Item3, defVideoGuide);
+                    if (gameInfo[gameOpti].Item4 == defVideoGuide)
+                        continue;
+
+                    if (gamesWithVideoGuide.Contains(gameOpti) && gameInfo[gameOpti].Item1 == defOptiscaler.Item1)
+                    {
+                        gameInfo[gameOpti] = (defOptiscaler.Item1, defOptiscaler.Item2, defOptiscaler.Item3, defVideoGuide);
+                    }
                 }
                 else
                 {
-                    gameInfo[gameOpti] = defOptiscaler;
+                    if (gamesWithVideoGuide.Contains(gameOpti))
+                    {
+                        gameInfo[gameOpti] = (defOptiscaler.Item1, defOptiscaler.Item2, defOptiscaler.Item3, defVideoGuide);
+                    }
+                    else
+                    {
+                        gameInfo[gameOpti] = defOptiscaler;
+                    }
                 }
             }
 
@@ -855,6 +871,11 @@ namespace FSR3ModSetupUtilityEnhanced
 
                     MessageBox.Show("It was not possible to load/save the paths because the configuration file was corrupted. The file has been removed; please try adding/updating the paths again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+
+            if (checkBoxPreset.Checked)
+            {
+                checkBoxPreset.Checked = false;
             }
 
             main.ScanGames(possiblePaths: pathsJson);

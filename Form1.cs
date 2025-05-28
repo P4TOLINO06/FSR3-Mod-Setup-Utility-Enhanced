@@ -201,14 +201,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Lies of P", "Watch Dogs Legion", "Bright Memory", "Fobia – St. Dinfna Hotel",
                 "A Plague Tale Requiem", "Alan Wake Remastered", "Horizon Zero Dawn",
                 "Bright Memory Infinite", "A Quiet Place: The Road Ahead", "Assassin\'s Creed Mirage",
-                "Assetto Corsa Evo", "Assassin's Creed Valhalla", "Atomic Heart",
+                "Assetto Corsa Evo","Assassin's Creed Shadows", "Assassin's Creed Valhalla", "Atomic Heart",
                 "AVOWED", "Back 4 Blood", "Baldur's Gate 3", "Banishers Ghost of New Eden","Black Myth: Wukong",
                 "Blacktail", "Brothers a Tale of Two Sons", "Chernobylite",
                 "Choo-Choo Charles", "Chorus", "Clair Obscur: Expedition 33", "Control", "Crime Boss Rockay City",
                 "Crysis 3 Remastered", "Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2",
                 "Dead Rising Remaster", "Death Stranding", "Dead Space (2023)", "Deathloop",
                 "Deliver Us Mars", "Deliver Us The Moon", "Dragon Age: Veilguard", "Dragons Dogma 2",
-                "Dying Light 2", "Dynasty Warriors: Origins", "Empire of the Ants", "Everspace 2",
+                "Dying Light 2", "Dynasty Warriors: Origins","The Elder Scrolls IV: Oblivion Remastered" ,"Empire of the Ants", "Everspace 2",
                 "Evil West", "Eternal Strands", "Fist", "Flintlock: The Siege of Dawn", "Fort Solis",
                 "Forza Horizon 5", "Final Fantasy VII Rebirth", "Final Fantasy XVI", "Frostpunk 2",
                 "F1 22", "F1 23", "GTA San Andreas", "GTA Vice City", "GTA III", "Ghost of Tsushima",
@@ -508,7 +508,7 @@ namespace FSR3ModSetupUtilityEnhanced
         public async Task<bool> CheckVersion()
         {
             System.Windows.Forms.Timer swingTimer;
-            Version currentVersion = new Version("5.0");
+            Version currentVersion = new Version("5.1");
             labelVersion.Text = $"v{currentVersion.ToString()}";
             labelVersion.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
 

@@ -51,6 +51,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Optiscaler FSR 3.1.4/DLSS (Only Optiscaler)",
                 "Look for the .exe file ending in \"Win64-Shipping.exe\", for example: Hellblade2-Win64-Shipping.exe. It is usually located in the path \"Game Name\\Binaries\\Win64\". Some games, such as PlayStation games, do not have this .exe, so install it in the folder of the standard .exe instead.\n\n" +
 
+                "Enable Hardware Accelerated GPU Scheduling (HAGS) — it is required for the mods to work.\n\n" +
+
                 "Optiscaler FSR 3.1.4/DLSS FG (Only Optiscaler)\n" +
                 "This mod works for most games that have DLSS; just follow the guide for the chosen game in the Guide section. (It is necessary to run the game in DX12 for Frame Gen to work.)\n\n" +
                 "Optiscaler FSR 3.1.4/DLSSG FG (Only Optiscaler)\n" +
@@ -208,6 +210,16 @@ namespace FSR3ModSetupUtilityEnhanced
                 "\"Home\" key to open the main menu.\r\n" +
                 "2 - Select AC Valhalla DLSS3\r\n" +
                 "3 - In the game, enable Motion Blur and disable FSR"
+            },
+            {
+                "Assassin's Creed Shadows",
+                "FSR 3.1.4/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.4/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation. (RTX users, only check \"yes\" if it's not possible to activate the game's FG).\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. To update the DLSS, select \"Others Mods Ac Shadows\"; do this before installing the mod.\n" +
+                "5. If you are playing through Ubisoft Connect, disable the Ubisoft overlay in the menu.\n" +
+                "6. Check the FSR 3.1.4/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)."
             },
             {
                 "Atomic Heart",
@@ -613,6 +625,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. In the game, press the \"Home\" key to open the mod menu. In \"Upscale Type,\" select the Upscaler according to your GPU (DLSS for RTX or FSR3 for non-RTX), then check the box \"Enable Frame Generation\" below.\n" +
                 "• To remove Full Screen borders, select \"Full Screen\" in the game before installing the mod. If there is screen overflow after mod installation, select Full Screen -> Window -> Full Screen.\n" +
                 "• Enable Anti-Aliasing and Motion Blur; this mod will skip the actual rendering of motion blur, so don’t worry if you don’t like motion blur. The game only needs it to render motion vectors.\n"
+            },
+            {
+                "The Elder Scrolls IV: Oblivion Remastered",
+                "FSR 3.1.4/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.4/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, set DLSS Sharpness to 0, select Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. To update the DLSS, select \"Others Mods IV Oblivion\"; do this before installing the mod.\n" +
+                "5. Check the FSR 3.1.4/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)."
             },
             {
                 "Empire of the Ants",
@@ -1730,14 +1751,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Star Wars Outlaws",
-                "RTX:\r\n" +
-                "1 - Select Star Wars DLSS RTX and install.\r\n" +
-                "2 - Inside the game, select DLSS and Frame Gen.\r\n\r\n" +
-
-                "All GPUs:\r\n" +
-                "1 - Select FSR 3.1/DLSS Optiscaler.\r\n" +
-                "2 - Inside the game, select an upscaler of your choice.\r\n" +
-                "3 - Press the Insert key to open the menu and select an upscaler of your choice.\r\n\r\n" +
+                "FSR 3.1.4/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.4/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu.\n" +
+                "4. This mod may not work on non-RTX GPUs.\n" +
+                "5. Check the FSR 3.1.4/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
 
                 "Graphic Preset:\n" +
                 "1 - Install the mod and the ReShade application.\n" +
@@ -2204,6 +2223,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Alone in the Dark","Alone.png"},
                 {"A Plague Tale Requiem","Requiem2.png"},
                 {"A Quiet Place: The Road Ahead","QuietPlace2.png"},
+                {"Assassin's Creed Shadows","AcShadows2.png"},
                 {"Assassin's Creed Valhalla","AcVal.png"},
                 {"Assetto Corsa Evo","ACE2.png"},
                 {"Atomic Heart","Atomic2.png"},
@@ -2241,6 +2261,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Dying Light 2","Dl22.png"},
                 {"Dynasty Warriors: Origins","DWO2.png"},
                 {"Elden Ring","Elden.png"},
+                {"The Elder Scrolls IV: Oblivion Remastered","Elder42.png"},
                 {"Empire of the Ants","Eota2.png"},
                 {"Everspace 2","Es2.png"},
                 {"Evil West","Ew2.png"},
@@ -2404,7 +2425,6 @@ namespace FSR3ModSetupUtilityEnhanced
                 listBox1.Visible = true;
             }
         }
-
         private void buttonVideo_Click(object sender, EventArgs e)
         {
 

@@ -150,7 +150,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Final Fantasy XVI", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Senua's Saga: Hellblade II", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
-                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory", "Five Nights at Freddy’s: Security Breach", "GreedFall II: The Dying World", "Pacific Drive", "Dying Light 2", "Kena: Bridge of Spirits", "The Witcher 3" }; //List of games that have custom mods (e.g., Outlaws DLSS RTX) and also have default mods (0.7.6, etc.)
+                "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory", "Five Nights at Freddy’s: Security Breach", "GreedFall II: The Dying World", "Pacific Drive", "Dying Light 2", "Kena: Bridge of Spirits", "The Witcher 3" }; //List of games that have custom mods (e.g., RDR2 Mix) and also have default mods (0.7.6, etc.)
 
             if (itensDelete.Any(item => listMods.Items.Contains(item)))
             {
@@ -1783,11 +1783,11 @@ namespace FSR3ModSetupUtilityEnhanced
             string nvapiFile = null;
             string destPathNvapi = Path.Combine(selectFolder, "OptiScaler.ini");
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty",
-            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "Grand Theft Auto V" };
+            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "Grand Theft Auto V", "Assassin\'s Creed Shadows", "Star Wars Outlaws", "The Elder Scrolls IV: Oblivion Remastered" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
             string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "God of War Ragnarök",
-            "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "The Last of Us Part II" };
+            "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "The Last of Us Part II", "Assassin\'s Creed Shadows", "The Elder Scrolls IV: Oblivion Remastered", "Star Wars Outlaws" };
             string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld", "Grand Theft Auto V" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
@@ -2088,6 +2088,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Chorus", defaultDlssPath},
                 { "Others Mods Tot", defaultDlssPath},
                 { "Others Mods Som", defaultDlssPath},
+                { "Others Mods IV Oblivion", Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\nvidia\\DLSS\\DLSS\\Binaries\\ThirdParty"))},
                 { "Others Mods Coe33", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", "Plugins\\NVIDIA\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods Brothers", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", "Brothers\\Plugins\\NVIDIA\\DLSS\\Binaries\\ThirdParty\\Win64"))},
                 { "Others Mods PD", Path.GetFullPath(Path.Combine(selectFolder, "..\\..", "Plugins\\DLSS\\Binaries\\ThirdParty\\Win64"))},
@@ -2119,6 +2120,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Others Mods Tlou2", new string[] {selectFolder, null} },
                 { "Others Mods DUM", new string[] {defaultDlssPath, defaultDlssgPath} },
                 { "Others Mods Jedi", new string[] {defaultDlssPath, defaultDlssgPath} },
+                { "Others Mods Ac Shadows", new string[] {Path.Combine(selectFolder, "NVStreamline\\production"), null} },
                 { "Others Mods FP2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Elb\\Streamline\\Binaries\\ThirdParty\\Win64")) } },
                 { "Others Mods LRBR", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\NvidiaDLSS\\Plugins\\Streamline\\Binaries\\ThirdParty\\Win64"))} },
                 { "Others Mods Stalker 2", new string[] {Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\DLSS\\Binaries\\ThirdParty\\Win64")), Path.GetFullPath(Path.Combine(selectFolder, "..\\..\\..", "Engine\\Plugins\\Marketplace\\Streamline\\Binaries\\ThirdParty\\Win64"))} },
@@ -3721,11 +3723,6 @@ namespace FSR3ModSetupUtilityEnhanced
             string presetOutlaws = "mods\\FSR3_Outlaws\\Preset\\Outlaws2.ini";
             string varStutterOutlaws = "mods\\FSR3_Outlaws\\Anti_Stutter\\Anti_Sttuter.txt";
 
-            if (selectMod == "Outlaws DLSS RTX")
-            {
-                dlss_to_fsr();
-            }
-
             if (MessageBox.Show("Do you want to install the Anti Stutter?", "Anti Stutter", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 runReg("mods\\FSR3_Outlaws\\Anti_Stutter\\Install Star Wars Outlaws CPU Priority.reg");
@@ -5179,11 +5176,6 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (gameSelected == "Star Wars Outlaws")
                 {
-                    if (selectMod == "Outlaws DLSS RTX")
-                    {
-                        CleanupMod3(del_dlss_to_fsr, "Outlaws DLSS RTX");
-                    }
-
                     #region Others Mods
 
                     if (Path.Exists(selectFolder + "\\Anti_Sttuter.txt"))
