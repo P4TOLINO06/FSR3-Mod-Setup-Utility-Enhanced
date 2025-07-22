@@ -85,6 +85,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 { "Red Dead Redemption 2", new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler RDR2)", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
                 { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.4/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
+                { "Elden Ring Nightreign", new List<string> { "FSR 3.1.4/DLSS Nightreign RTX" } },
                 { "Alan Wake 2", new List<string> { "Others Mods AW2", "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom"} },
                 { "The Elder Scrolls IV: Oblivion Remastered", new List<string> { "Others Mods  IV Oblivion" }.Concat(fsr31DlssMods).ToList() },
                 { "Assassin's Creed Valhalla", new List<string> { "Ac Valhalla Dlss (Only RTX)", "AC Valhalla FSR3 All GPU" } },
@@ -93,7 +94,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Dragons Dogma 2", new List<string> { "Dinput8 DD2", "FSR 3.1.1/DLSS FG Custom" } },
                 { "The Callisto Protocol", new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler)", "The Callisto Protocol FSR3", "FSR 3.1.4/DLSS Custom Callisto", "0.10.4", "Uniscaler V4" } },
                 { "Grand Theft Auto V", new List<string> {"Others Mods Grand Theft Auto V", "FSR 3.1.4/DLSS FG (Only Optiscaler)", "Grand Theft Auto V FiveM", "Grand Theft Auto V Online", "Grand Theft Auto V Epic", "Grand Theft Auto V Epic V2" } },
-                { "Cyberpunk 2077", new List<string> { "Others Mods 2077", "RTX DLSS FG CB2077", "FSR 3.1.4/XESS FG 2077"} },
+                { "Cyberpunk 2077", new List<string> { "Others Mods 2077", "RTX DLSS FG CB2077", "FSR 3.1.4/XESS FG 2077"}.Concat(fsr31DlssMods).ToList() },
                 { "Ghost of Tsushima", new List<string> { "Ghost of Tsushima FG DLSS", "Optiscaler FSR 3.1.1/DLSS", "Uniscaler FSR 3.1" } },
                 { "Lords of the Fallen", new List<string> { "DLSS FG LOTF2 (RTX)" } },
                 { "Palworld", new List<string> { "Others Mods PW", "Palworld FG Build03" } },
@@ -185,7 +186,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "Crysis Remastered", new List<string> {"Others Mods Crysis"}.Concat(fsr31DlssMods).ToList() },
                 { "Clair Obscur Expedition 33", new List<string> {"Others Mods Coe3"}.Concat(fsr31DlssMods).ToList() },
                 { "The Outlast Trials", new List<string> {"Others Mods Tot"}.Concat(fsr31DlssMods).ToList() },
-                { "South of Midnight", new List<string> {"Others Mods Som"}.Concat(fsr31DlssMods).ToList() }
+                { "South of Midnight", new List<string> {"Others Mods Som"}.Concat(fsr31DlssMods).ToList() },
+                { "Satisfactory" , new List<string>{}.Concat(fsr31DlssMods).ToList() },
+                { "The Alters" , new List<string>{}.Concat(fsr31DlssMods).ToList() },
+                { "Tainted Grail Fall of Avalon" , new List<string>{}.Concat(fsr31DlssMods).ToList() }
             };
             #endregion
 
@@ -243,6 +247,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Dying Light 2","Dl2.png"},
                     {"Dynasty Warriors: Origins","DWO.png"},
                     {"Elden Ring","Elden.png"},
+                    {"Elden Ring Nightreign","Nightreign.png"},
                     {"The Elder Scrolls IV: Oblivion Remastered","Elder4.png"},
                     {"Empire of the Ants","Eota.png"},
                     {"Everspace 2","Es2.png"},
@@ -323,13 +328,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"RoboCop: Rogue City","RoboCop.png"},
                     {"Sackboy: A Big Adventure","Sackboy.png"},
                     {"Saints Row","SaintsRow.png"},
-                    {"Satisfactory","SatsF.png"},
+                    {"Satisfactory","Satisfactory.png"},
                     {"Scorn","Scorn.png"},
                     {"Sengoku Dynasty","SG.png"},
                     {"Shadow of the Tomb Raider","ShadowTomb.png"},
                     {"Shadow Warrior 3","Shadow3.png"},
-                    {"Sifu","Sifu.png"},
-                    {"Silent Hill 2","Sh2.png"},
+                    {"Sifu","Sifu.png"}, 
                     {"Six Days in Fallujah","6Days.png"},
                     {"Smalland","Smalland.png"},
                     {"Soulslinger Envoy of Death","SL.png"},
@@ -341,8 +345,10 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Soulstice","STC.png"},
                     {"South of Midnight","Som.png"},
                     {"Suicide Squad: Kill the Justice League","Sskjl.png"},
+                    {"Tainted Grail Fall of Avalon","Tainted.png"},
                     {"TEKKEN 8","Tekken.png"},
                     {"Test Drive Unlimited Solar Crown","TestSolar.png"},
+                    {"The Alters","The Alters.png"},
                     {"The Ascent","Ascent.png"},
                     {"The Callisto Protocol","Callisto.png"},
                     {"The Chant","Chant.png"},

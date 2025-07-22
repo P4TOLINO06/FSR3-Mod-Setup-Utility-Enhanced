@@ -88,6 +88,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 {"A Plague Tale Requiem","Requiem.ico"},
                 {"Elden Ring","Elden.ico"},
+                {"Elden Ring Nightreign","Elden Ring Nightreign.ico"},
                 {"Red Dead Redemption 2","Rdr2.ico"},
                 {"Grand Theft Auto V","GTAV.ico"},
                 {"Watch Dogs Legion","Legion.ico"},
@@ -200,6 +201,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Ripout","Ripout.ico"},
                 {"Saints Row","Saints Row.ico"},
                 {"Sackboy: A Big Adventure","Sackboy.ico"},
+                {"Satisfactory","Satisfactory.ico"},
                 {"Scorn","Scorn.ico"},
                 {"Sengoku Dynasty","Sengoku.ico"},
                 {"SOTTR","ShadowTomb.ico"},
@@ -218,7 +220,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Soulslinger Envoy of Death","SoulSlinger.ico"},
                 {"Soulstice","Soulstice.ico"},
                 {"South of Midnight","Som.ico"},
+                {"Tainted Grail Fall of Avalon","Tainted.ico"},
                 {"Test Drive Unlimited Solar Crown","TestDrive.ico"},
+                {"The Alters","The Alters.ico"},
                 {"The Ascent", "TheAscent.ico"},
                 {"The Callisto Protocol","Callisto.ico"},
                 {"The Casting Of Frank Stone","Frankstone.ico"},
@@ -338,13 +342,13 @@ namespace FSR3ModSetupUtilityEnhanced
                 int maxLength = 10;
                 string[] gamesToIgnoreInd = { "Elden Ring", "Fobia – St. Dinfna Hotel", "A Plague Tale Requiem", "God Of War", "Loopmancer", "Red Dead Redemption", "Remnant 2", "The Ascent", "Uncharted Legacy Of Thieves", "Until Dawn", "Wayfinder" };
                 string[] otGamesToIgnoreInd = { "Fobia – St. Dinfna Hotel", "A Plague Tale Requiem", "Horizon Zero Dawn", "Alan Wake Remastered", "Bright Memory Infinite", "Back 4 Blood", "Baldur's Gate 3", "Black Myth: Wukong", "Brothers a Tale of Two Sons", "Chernobylite",
-                "Chorus", "Dead Island 2", "Dead Rising Remaster", "Deliver Us The Moon", "Dragon Age: Veilguard", "Dragons Dogma 2", "Dying Light 2", "Dynasty Warriors: Origins", "Empire of the Ants", "Everspace 2", "Evil West", "Eternal Strands", "Forza Horizon 5",
+                "Chorus", "Dead Island 2", "Dead Rising Remaster", "Deliver Us The Moon", "Dragon Age: Veilguard", "Dragons Dogma 2", "Dying Light 2", "Dynasty Warriors: Origins", "Elden Ring Nightreign","Empire of the Ants", "Everspace 2", "Evil West", "Eternal Strands", "Forza Horizon 5",
                 "Frostpunk 2", "Ghost of Tsushima", "Ghostwire: Tokyo", "Hellblade: Senua's Sacrifice", "Senua's Saga Hellblade II", "High On Life", "Horizon Forbidden West", "Hogwarts Legacy", "Hitman 3", "Hot Wheels Unleashed", "Indiana Jones and the Great Circle", "Kena: Bridge of Spirits",
                 "Lego Horizon Adventures", "Like a Dragon: Pirates", "Lords of the Fallen", "Manor Lords", "Lost Records Bloom And Rage", "Martha Is Dead", "Marvel's Avengers", "Marvel's Guardians of the Galaxy", "Marvel's Midnight Suns", "Metro Exodus", "Monster Hunter Rise", "Monster Hunter Wilds",
-                "Mortal Shell", "Ninja Gaiden 2 Black", "Orcs Must Die! Deathtrap", "Pacific Drive", "Path of Exile 2", "Ready or Not", "Resident Evil 4", "Rise of The Tomb Raider", "SOTTR", "Six Days in Fallujah", "SuicideSquadKTJL", "Test Drive Unlimited Solar Crown", "The Casting Of Frank Stone", "The Talos Principle 2",
-                "The Witcher 3", "Thymesia", "Way Of The Hunter", "The Last of Us Part I", "Banishers Ghost of New Eden", "The Outlast Trials", "South of Midnight", "The Elder Scrolls IV: Oblivion Remastered"};
+                "Mortal Shell", "Ninja Gaiden 2 Black", "Orcs Must Die! Deathtrap", "Pacific Drive", "Path of Exile 2", "Ready or Not", "Resident Evil 4", "Rise of The Tomb Raider","SOTTR", "Six Days in Fallujah", "SuicideSquadKTJL", "Test Drive Unlimited Solar Crown","The Casting Of Frank Stone", "The Talos Principle 2",
+                "The Witcher 3", "Thymesia", "Way Of The Hunter", "The Alters","The Last of Us Part I", "Banishers Ghost of New Eden", "The Outlast Trials", "South of Midnight", "Tainted Grail Fall of Avalon", "The Elder Scrolls IV: Oblivion Remastered"};
                 string[] otGamesToIgnoreInd2 = { "Flintlock: The Siege of Dawn", "Final Fantasy VII Rebirth", "F1 22", "F1 23", "Silent Hill 2" };
-                string[] otGamesToIgnoreInd3 = { "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Jedi Survivor", "Star Wars Outlaws", "Steelrising", "Soulslinger Envoy of Death", "The Callisto Protocol", "The First Berserker: Khazan", "The Last of Us Part II", "Stalker 2", "Death Stranding", "Fist", "Clair Obscur: Expedition 33", "Assassin\'s Creed Shadows" };
+                string[] otGamesToIgnoreInd3 = { "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Jedi Survivor", "Star Wars Outlaws", "Steelrising", "Soulslinger Envoy of Death", "The Callisto Protocol", "The First Berserker: Khazan", "The Last of Us Part II", "Stalker 2", "Death Stranding", "Fist", "Clair Obscur: Expedition 33", "Assassin\'s Creed Shadows", "Satisfactory" };
                 #endregion
 
                 if (gamesToIgnoreInd.Contains(matchedGame))
@@ -456,6 +460,7 @@ namespace FSR3ModSetupUtilityEnhanced
             var gameInfo = new Dictionary<string, (string, string, string, string)>
             {
                 {"Elden Ring", ("FSR 3.1.4/DLSS FG Custom Elden", defSettings.Item1, defSettings.Item2, defVideoGuide)},
+                {"Elden Ring Nightreign", ("FSR 3.1.4/DLSS Nightreign RTX", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"A Plague Tale Requiem", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Red Dead Redemption 2", ("FSR 3.1.4/DLSS FG (Only Optiscaler RDR2) or Red Dead Redemption 2 MIX", defSettings.Item1, defSettings.Item2, defVideoGuide) },
                 {"Grand Theft Auto V", ("FSR 3.1.4/DLSS FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defVideoGuide) },
@@ -467,7 +472,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Back 4 Blood", ("FSR 3.1.4/DLSS FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Baldur's Gate 3", ("Baldur's Gate 3 FSR3", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Black Myth: Wukong", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
-                {"Cyberpunk 2077", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
+                {"Cyberpunk 2077", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Dead Rising Remaster", ("FSR 3.1 FG DRR", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Deathloop", ("0.10.3 or 0.10.4", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Dragon Age: Veilguard", ("FSR 3.1.1/DLSS FG DG Veil", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
@@ -498,8 +503,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Resident Evil 4", ("FSR 3.1.4/DLSS RE4", defSettings.Item1, defSettings.Item2, defSettings.Item3)},
                 {"Marvel's Spider-Man Remastered", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Marvel's Spider-Man Miles Morales", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
-                {"Stalker 2", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Star Wars: Jedi Survivor", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
+                {"Stalker 2", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
+                {"Satisfactory", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
+                {"The Alters", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"The First Berserker: Khazan", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"The Last of Us Part I", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"The Last of Us Part II", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
@@ -514,7 +521,7 @@ namespace FSR3ModSetupUtilityEnhanced
             "Final Fantasy VII Rebirth", "Final Fantasy XVI", "F1 22", "F1 23", "GTA San Andreas", "GTA Vice City", "GTA III", "Grand Theft Auto V", "Ghostwire: Tokyo", "Gotham Knights", "GreedFall II: The Dying World", "Hellblade: Senua's Sacrifice", "High On Life", "Horizon Zero Dawn Remastered", "Hitman 3", "Horizon Forbidden West", "Hot Wheels Unleashed",
             "Judgment", "Jusant", "Kingdom Come: Deliverance 2", "Kena: Bridge of Spirits", "Layers of Fear", "Lego Horizon Adventures", "Marvel's Avengers", "Marvel's Guardians of the Galaxy", "Marvel's Midnight Suns", "Metro Exodus", "Mortal Shell", "Ninja Gaiden 2 Black", "Nobody Wants To Die", "Orcs Must Die! Deathtrap", "Outpost",
             "Pacific Drive", "Path of Exile 2", "Ratchet & Clank Rift Apart", "Ready or Not", "Red Dead Redemption", "Remnant 2", "Returnal", "Rise of The Tomb Raider", "Ripout", "Saints Row", "Sackboy: A Big Adventure", "Scorn", "Sengoku Dynasty", "Shadow of the Tomb Raider", "Shadow Warrior 3", "Silent Hill 2", "Sifu", "Six Days in Fallujah", "Smalland",
-            "Star Wars Outlaws", "Steelrising", "Soulslinger Envoy of Death", "Soulstice", "South of Midnight", "Suicide Squad: Kill the Justice League", "Test Drive Unlimited Solar Crown", "The Ascent", "The Callisto Protocol", "The Casting Of Frank Stone", "The Outlast Trials","The Talos Principle 2", "The Witcher 3", "Thymesia", "Uncharted Legacy Of Thieves", "Until Dawn", "Wanted Dead", "Warhammer 40.000: Space Marine 2", "Way Of The Hunter", "Wayfinder"};
+            "Star Wars Outlaws", "Steelrising", "Soulslinger Envoy of Death", "Soulstice", "South of Midnight", "Suicide Squad: Kill the Justice League", "Tainted Grail Fall of Avalon", "Test Drive Unlimited Solar Crown", "The Ascent", "The Callisto Protocol", "The Casting Of Frank Stone", "The Outlast Trials","The Talos Principle 2", "The Witcher 3", "Thymesia", "Uncharted Legacy Of Thieves", "Until Dawn", "Wanted Dead", "Warhammer 40.000: Space Marine 2", "Way Of The Hunter", "Wayfinder"};
 
             foreach (var gameOpti in gamesWithVideoGuide)
             {

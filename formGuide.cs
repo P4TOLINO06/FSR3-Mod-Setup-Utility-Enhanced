@@ -458,6 +458,12 @@ namespace FSR3ModSetupUtilityEnhanced
             },
             {
                 "Cyberpunk 2077",
+                "FSR 3.1.4/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.4/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check 'yes' in the 'DLSS/FSR' window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the 'Insert' key to open the menu.\n" +
+                "4. Check the FSR 3.1.4/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX).\n\n" +
+
                 "RTX DLSS FG\n" +
                 "1. Select RTX DLSS FG and install.\n" +
                 "2. It is recommended to install the \"FG Ghost Fix\" along with the mod, select \"Others Mods 2077\" to install.\n" +
@@ -625,6 +631,15 @@ namespace FSR3ModSetupUtilityEnhanced
                 "3. In the game, press the \"Home\" key to open the mod menu. In \"Upscale Type,\" select the Upscaler according to your GPU (DLSS for RTX or FSR3 for non-RTX), then check the box \"Enable Frame Generation\" below.\n" +
                 "• To remove Full Screen borders, select \"Full Screen\" in the game before installing the mod. If there is screen overflow after mod installation, select Full Screen -> Window -> Full Screen.\n" +
                 "• Enable Anti-Aliasing and Motion Blur; this mod will skip the actual rendering of motion blur, so don’t worry if you don’t like motion blur. The game only needs it to render motion vectors.\n"
+            },
+            {
+                "Elden Ring Nightreign",
+                "FSR 3.1.4/DLSS Nightreign RTX\n" +
+                "1. Select FSR 3.1.4/DLSS Nightreign RTX and install\n" +
+                "2. Go to \"Launch Options\" in the game properties on Steam and add cmd /c start nightreign.exe & rem %command%\n" +
+                "3. In the game, press the END key to open the menu, select DLSS, preset K, check \"Offset screen edges\" and close the menu\n" +
+                "4. In the game settings, select Borderless Windowed, disable Depth of Field and Motion Blur.\n" +
+                "5. In-game, press Insert to open the menu and select FG Active and FG Allow Sync"
             },
             {
                 "The Elder Scrolls IV: Oblivion Remastered",
@@ -1536,6 +1551,14 @@ namespace FSR3ModSetupUtilityEnhanced
                 "6 - Enable the \"Enable Signature Override\" checkbox if the mod doesn’t work.\n"
             },
             {
+                "Satisfactory",
+                "FSR 3.1.4/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.4/DLSSG FG (Only Optiscaler) and install\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu\n" +
+                "4. Check the FSR 3.1.4/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)"
+            },
+            {
                 "Scorn",
                 "FSR 3.1.4/DLSS FG (Only Optiscaler)\n" +
                 "1. Select FSR 3.1.4/DLSS FG (Only Optiscaler) and install.\n" +
@@ -1830,11 +1853,28 @@ namespace FSR3ModSetupUtilityEnhanced
                 "4. In the menu, select FG Enabled, Active, Hud Fix and Extended"
             },
             {
+                "Tainted Grail Fall of Avalon",
+                "FSR 3.1.4/DLSS FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.4/DLSS FG (Only Optiscaler) and install.\n" +
+                "2. Check the Enable Signature Over box.\n" +
+                "3. Run it in DX12. Right-click the game's exe and create a shortcut, then right-click the shortcut again, go to Properties, and at the end of Target (outside the quotes), add -dx12 or go to your Steam library, select the game, go to Settings > Properties > Startup options, and enter -dx12 or -force-d3d12.\n" +
+                "4. In the game, Select DLSS and press the Insert key to open the menu.\n" +
+                "5. In the menu, select FG Enabled, Active, Hud Fix and FG Flip\n\n"
+            },
+            {
               "Test Drive Unlimited Solar Crown",
               "1. Select Uniscaler FSR 3.1.\n" +
               "2. Check the box \"Enable Signature Over.\"\n" +
               "3. In-game, select DLSS FG.\n" +
               "4. If you can't see DLSS in the game, check the \"Nvngx.dll\" box, select \"Default,\" and install again."
+            },
+            {
+                "The Alters",
+                "FSR 3.1.4/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.4/DLSSG FG (Only Optiscaler) and install\n" +
+                "2. Check \"yes\" in the \"DLSS/FSR\" window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the \"Insert\" key to open the menu\n" +
+                "4. Check the FSR 3.1.4/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only RTX)"
             },
             {
                 "The Ascent",
@@ -2261,6 +2301,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Dying Light 2","Dl22.png"},
                 {"Dynasty Warriors: Origins","DWO2.png"},
                 {"Elden Ring","Elden.png"},
+                {"Elden Ring Nightreign","Nightreign2.png"},
                 {"The Elder Scrolls IV: Oblivion Remastered","Elder42.png"},
                 {"Empire of the Ants","Eota2.png"},
                 {"Everspace 2","Es2.png"},
@@ -2335,6 +2376,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Ripout","Ripout.png"},
                 {"Saints Row","SaintsRow2.png"},
                 {"Sackboy: A Big Adventure","Sackboy2.png"},
+                {"Satisfactory","Satisfactory2.png"},
                 {"Scorn","Scorn2.png"},
                 {"Sengoku Dynasty","SG2.png"},
                 {"Shadow of the Tomb Raider","ShadowTomb2.png"},
@@ -2353,6 +2395,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"South of Midnight","Som2.png"},
                 {"Suicide Squad: Kill the Justice League","Sskjl2.png"},
                 {"Test Drive Unlimited Solar Crown","TestSolar2.png"},
+                {"Tainted Grail Fall of Avalon","Tainted2.png"},
+                {"The Alters","The Alters2.png"},
                 {"The Ascent","Ascent2.png"},
                 {"The Callisto Protocol","Callisto2.png"},
                 {"The Casting Of Frank Stone","FrankStone2.png" },

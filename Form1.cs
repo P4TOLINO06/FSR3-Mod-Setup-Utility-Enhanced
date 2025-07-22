@@ -197,7 +197,7 @@ namespace FSR3ModSetupUtilityEnhanced
             #region Root folder name
             return new List<string>
             {
-                "Elden Ring", "Red Dead Redemption 2", "Grand Theft Auto V",
+                "Elden Ring", "Elden Ring Nightreign","Red Dead Redemption 2", "Grand Theft Auto V",
                 "Lies of P", "Watch Dogs Legion", "Bright Memory", "Fobia – St. Dinfna Hotel",
                 "A Plague Tale Requiem", "Alan Wake Remastered", "Horizon Zero Dawn",
                 "Bright Memory Infinite", "A Quiet Place: The Road Ahead", "Assassin\'s Creed Mirage",
@@ -220,9 +220,9 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Manor Lords", "Lost Records Bloom And Rage", "Martha Is Dead", "Marvel's Avengers", "Marvel's Guardians of the Galaxy","Marvel's Midnight Suns",
                 "Metro Exodus", "Monster Hunter Rise", "Monster Hunter Wilds", "Mortal Shell", "Ninja Gaiden 2 Black","Nobody Wants To Die","Orcs Must Die! Deathtrap",
                 "Outpost", "Pacific Drive","Palworld", "Path of Exile 2", "Ratchet & Clank Rift Apart", "Ready or Not", "Red Dead Redemption", "Remnant 2", "Resident Evil 4",
-                "Returnal", "Rise of The Tomb Raider", "Ripout", "Saints Row", "Sackboy: A Big Adventure", "Scorn", "Sengoku Dynasty", "SOTTR", "Shadow Warrior 3", "Silent Hill 2",
+                "Returnal", "Rise of The Tomb Raider", "Ripout", "Saints Row", "Sackboy: A Big Adventure", "Satisfactory","Scorn", "Sengoku Dynasty", "SOTTR", "Shadow Warrior 3", "Silent Hill 2",
                 "Sifu", "Six Days in Fallujah", "Smalland", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Stalker 2", "Jedi Survivor", "Star Wars Outlaws",
-                "Steelrising", "Soulslinger Envoy of Death", "Soulstice", "South of Midnight", "SuicideSquadKTJL", "Test Drive Unlimited Solar Crown", "The Ascent", "The Callisto Protocol", "The Casting Of Frank Stone", "The First Berserker: Khazan",
+                "Steelrising", "Soulslinger Envoy of Death", "Soulstice", "South of Midnight", "SuicideSquadKTJL", "Tainted Grail Fall of Avalon","Test Drive Unlimited Solar Crown", "The Alters","The Ascent", "The Callisto Protocol", "The Casting Of Frank Stone", "The First Berserker: Khazan",
                 "The Last of Us Part I", "The Last of Us Part II", "The Outlast Trials", "The Talos Principle 2", "The Witcher 3", "Thymesia", "Uncharted Legacy Of Thieves", "Unknown 9: Awakening", "Until Dawn", "Wanted Dead", "Space Marine 2", "Way Of The Hunter",
                 "Wayfinder"
             };
@@ -508,7 +508,7 @@ namespace FSR3ModSetupUtilityEnhanced
         public async Task<bool> CheckVersion()
         {
             System.Windows.Forms.Timer swingTimer;
-            Version currentVersion = new Version("5.1");
+            Version currentVersion = new Version("5.2");
             labelVersion.Text = $"v{currentVersion.ToString()}";
             labelVersion.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
 

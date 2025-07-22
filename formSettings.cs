@@ -148,7 +148,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             List<string> itensDelete = new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.4/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" };
 
-            List<string> gamesIgnore = new List<string> { "Cyberpunk 2077", "Final Fantasy XVI", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row",
+            List<string> gamesIgnore = new List<string> { "Final Fantasy XVI", "Red Dead Redemption", "Dragon Age: Veilguard", "A Plague Tale Requiem", "Watch Dogs Legion", "Saints Row",
                 "Lego Horizon Adventures", "Assassin's Creed Mirage", "Stalker 2", "The Last Of Us Part I" , "Returnal", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man Remastered","Marvel\'s Spider-Man 2","Shadow of the Tomb Raider", "Gotham Knights", "Steelrising", "Control", "FIST: Forged In Shadow Torch", "Ghostrunner 2", "Senua's Saga: Hellblade II", "Alone in the Dark", "Evil West", "The First Berserker: Khazan",
                 "Assetto Corsa Evo", "Watch Dogs Legion", "Soulstice", "Back 4 Blood", "Final Fantasy VII Rebirth", "Lies of P", "Kingdom Come: Deliverance II", "Atomic Heart", "Palworld", "Alan Wake 2", "Stalker 2", "Frostpunk 2", "Lost Records Bloom And Rage", "Choo-Choo Charles", "Bright Memory", "Five Nights at Freddy’s: Security Breach", "GreedFall II: The Dying World", "Pacific Drive", "Dying Light 2", "Kena: Bridge of Spirits", "The Witcher 3" }; //List of games that have custom mods (e.g., RDR2 Mix) and also have default mods (0.7.6, etc.)
 
@@ -1411,7 +1411,7 @@ namespace FSR3ModSetupUtilityEnhanced
             toolTip.SetToolTip(listMods, listMods.Text);
         }
 
-        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "COD Black Ops Cold War", "Control", "Crysis 3 Remastered","Cyberpunk 2077", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dragon Age: Veilguard", "Dying Light 2",
+        List<string> fsr_2_2_opt = new List<string> {"A Plague Tale Requiem", "Achilles Legends Untold", "Alan Wake 2", "Assassin's Creed Mirage", "Atomic Heart", "Banishers: Ghosts of New Eden","Black Myth: Wukong","Blacktail", "COD Black Ops Cold War", "Control", "Crysis 3 Remastered", "Dakar Desert Rally", "Dead Island 2", "Death Stranding Director's Cut", "Dragon Age: Veilguard", "Dying Light 2",
             "Everspace 2", "Evil West", "F1 2022", "F1 2023","Final Fantasy XVI","FIST: Forged In Shadow Torch", "Fort Solis", "Senua's Saga: Hellblade II","Ghostwire: Tokyo","God of War Ragnarök", "Hogwarts Legacy", "Horizon Zero Dawn\\Remastered", "Kena: Bridge of Spirits", "Lies of P", "Lego Horizon Adventures", "Loopmancer", "Manor Lords","Marvel's Avengers", "Metro Exodus Enhanced Edition", "Microsoft Flight Simulator 24","Monster Hunter Rise","Nobody Wants To Die", "Outpost: Infinity Siege", "Palworld", "Ready or Not", "Remnant II", "RoboCop: Rogue City",
             "Sackboy: A Big Adventure", "Satisfactory", "Shadow Warrior 3", "Silent Hill 2", "Smalland", "STalker 2" ,"Star Wars: Jedi Survivor","Star Wars Outlaws", "Starfield", "Steelrising", "TEKKEN 8","Test Drive Unlimited Solar Crown", "The Chant","The Casting Of Frank Stone", "The Invincible", "The Medium","Until Dawn", "Unknown 9: Awakening", "Wanted: Dead","Warhammer: Space Marine 2"};
 
@@ -1783,11 +1783,11 @@ namespace FSR3ModSetupUtilityEnhanced
             string nvapiFile = null;
             string destPathNvapi = Path.Combine(selectFolder, "OptiScaler.ini");
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty",
-            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "Grand Theft Auto V", "Assassin\'s Creed Shadows", "Star Wars Outlaws", "The Elder Scrolls IV: Oblivion Remastered" };
+            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "Grand Theft Auto V", "Assassin\'s Creed Shadows", "Star Wars Outlaws", "The Elder Scrolls IV: Oblivion Remastered", "Satisfactory", "The Alters" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
             string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "God of War Ragnarök",
-            "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "The Last of Us Part II", "Assassin\'s Creed Shadows", "The Elder Scrolls IV: Oblivion Remastered", "Star Wars Outlaws" };
+            "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "The Last of Us Part II", "Assassin\'s Creed Shadows", "The Elder Scrolls IV: Oblivion Remastered", "Star Wars Outlaws", "Satisfactory", "The Alters" };
             string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld", "Grand Theft Auto V" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
@@ -2704,16 +2704,32 @@ namespace FSR3ModSetupUtilityEnhanced
             string updateFsrElden = "mods\\Temp\\FSR_Update";
             string[] otModsElden = { "Unlock FPS Elden", "Disable Anti Cheat" };
 
-            if (folderEldenRing.ContainsKey(selectMod))
+            string disable_eac_nightreign = "mods\\Elden_Ring_FSR3\\Nightreign FSR3\\Disable EAC\\steam_appid.txt";
+            string nrss_nightreign = "mods\\Elden_Ring_FSR3\\Nightreign FSR3\\NRSS";
+            string remove_vignette_aberration = "mods\\Elden_Ring_FSR3\\Nightreign FSR3\\Remove Vignette & Aberration";
+
+            if (gameSelected == "Elden Ring")
             {
-                CopyFSR(folderEldenRing);
+
+                if (folderEldenRing.ContainsKey(selectMod))
+                {
+                    CopyFSR(folderEldenRing);
+                }
+
+                await Task.Delay((2000));
+
+                if (selectMod == "Unlock FPS Elden")
+                {
+                    CopyFolder("mods\\Elden_Ring_FSR3\\Unlock_Fps");
+                }
             }
-
-            await Task.Delay((2000));
-
-            if (selectMod == "Unlock FPS Elden")
+            else
             {
-                CopyFolder("mods\\Elden_Ring_FSR3\\Unlock_Fps");
+                CopyFolder(nrss_nightreign);
+                CopyFolder(remove_vignette_aberration);
+                File.Copy(disable_eac_nightreign, Path.Combine(selectFolder, "steam_appid.txt"), true);
+
+                MessageBox.Show("It is recommended to check the guide to complete the installation (it includes additional steps, such as disabling the Anti-Cheat)", "Guide", MessageBoxButtons.OK);
             }
         }
         public async Task motogpFsr3()
@@ -4413,7 +4429,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 {
                     optiscaler_custom();
                 }
-                if (gameSelected == "Elden Ring")
+                if (gameSelected == "Elden Ring" || gameSelected == "Elden Ring Nightreign")
                 {
                     eldenFsr3();
                 }
@@ -5917,6 +5933,63 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 }
 
+                if (gameSelected == "Elden Ring" || gameSelected == "Elden Ring Nightreign")
+                {
+                    #region Del Others Mods Elden Ring
+
+                    string[] delOthersModsElden = { "mods\\EldenRingUpscaler.ini", "mods\\RDR2Upscaler.dll", "mods\\RDR2Upscaler.org" };
+
+                    string[] del_elden_custom =
+                    {
+                        "dxgi.dll","ERSS-FG.dll"
+                    };
+
+                    string[] delEldenNightreign = { "dinput8.dll", "mod_loader.ini", "d3d12.dll", "NRSS.dll", "steam_appid.txt", "RemoveChromaticAberration.dll", "RemoveChromaticAberration.dl", "RemoveVignette.dll" };
+
+                    if (selectMod == "Unlock FPS Elden")
+                    {
+                        string[] filesToDelete =
+                        {
+                        "UnlockFps.txt",
+                        "mods\\UnlockTheFps.dll",
+                        "dinput8.dll",
+                        "mod_loader_config.ini"
+                    };
+
+                        if (File.Exists(Path.Combine(selectFolder, "UnlockFps.txt")))
+                        {
+                            HandlePrompt(
+                            "Unlock FPS Elden",
+                            "Do you want to remove the Unlock FPS mod?",
+                            _ =>
+                            {
+                                CleanupOthersMods3("Unlock FPS", filesToDelete, selectFolder, false, Path.Combine(selectFolder, "mods\\UnlockTheFps"));
+                            });
+                        }
+                    }
+
+                    if (selectMod == "FSR 3.1.4/DLSS FG Custom Elden")
+                    {
+                        CleanupOthersMods3("FSR 3.1.2/DLSS FG Custom Elden", del_elden_custom, selectFolder, true, "ERSS2");
+                    }
+                    else if (folderEldenRing.ContainsKey(selectMod))
+                    {
+                        CleanupMod(del_elden, folderEldenRing);
+                        CleanupOthersMods3("", delOthersModsElden, selectFolder, false, "mods\\UpscalerBasePlugin");
+
+                        if (Directory.Exists(Path.Combine(selectFolder, "reshade-shaders"))) Directory.Delete(Path.Combine(selectFolder, "reshade-shaders"), true);
+
+                    }
+
+                    if (selectMod == "FSR 3.1.4/DLSS Nightreign RTX")
+                    {
+                        CleanupOthersMods3("FSR 3.1.4/DLSS Nightreign RTX", delEldenNightreign, selectFolder, true, "NRSS");
+
+                        CleanupOthersMods3("FSR 3.1.4/DLSS Nightreign RTX", delEldenNightreign, Path.Combine(selectFolder, "mods"), true, "NRSS");
+                    }
+                    #endregion
+                }
+
                 else if (selectMod == "Ac Valhalla Dlss (Only RTX)")
                 {
                     CleanupMod3(del_valhalla, "Ac Valhalla Dlss (Only RTX)");
@@ -5953,50 +6026,6 @@ namespace FSR3ModSetupUtilityEnhanced
                         }
                     }
                     CleanupMod(del_got_files, folderGot);
-                    #endregion
-                }
-                else if (folderEldenRing.ContainsKey(selectMod) || selectMod == "Unlock FPS Elden")
-                {
-                    #region Del Others Mods Elden Ring
-
-                    string[] del_elden_custom =
-                    {
-                        "dxgi.dll","ERSS-FG.dll"
-                    };
-
-                    string[] delOthersModsElden = { "mods\\EldenRingUpscaler.ini", "mods\\RDR2Upscaler.dll", "mods\\RDR2Upscaler.org" };
-
-                    string[] filesToDelete =
-                    {
-                        "UnlockFps.txt",
-                        "mods\\UnlockTheFps.dll",
-                        "dinput8.dll",
-                        "mod_loader_config.ini"
-                    };
-
-                    if (File.Exists(Path.Combine(selectFolder, "UnlockFps.txt")))
-                    {
-                        HandlePrompt(
-                        "Unlock FPS Elden",
-                        "Do you want to remove the Unlock FPS mod?",
-                        _ =>
-                        {
-                            CleanupOthersMods3("Unlock FPS", filesToDelete, selectFolder, false, Path.Combine(selectFolder, "mods\\UnlockTheFps"));
-                        });
-                    }
-
-                    if (selectMod == "FSR 3.1.4/DLSS FG Custom Elden")
-                    {
-                        CleanupOthersMods3("FSR 3.1.2/DLSS FG Custom Elden", del_elden_custom, selectFolder, true, "ERSS2");
-                    }
-                    else
-                    {
-                        CleanupMod(del_elden, folderEldenRing);
-                        CleanupOthersMods3("", delOthersModsElden, selectFolder, false, "mods\\UpscalerBasePlugin");
-
-                        if (Directory.Exists(Path.Combine(selectFolder, "reshade-shaders"))) Directory.Delete(Path.Combine(selectFolder, "reshade-shaders"), true);
-
-                    }
                     #endregion
                 }
                 else if (folderIcr.ContainsKey(selectMod))
