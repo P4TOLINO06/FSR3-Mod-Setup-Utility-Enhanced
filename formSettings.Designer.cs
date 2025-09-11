@@ -1176,7 +1176,7 @@
             listMods.Cursor = Cursors.Hand;
             listMods.FlatStyle = FlatStyle.Flat;
             listMods.FormattingEnabled = true;
-            listMods.Items.AddRange(new object[] { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0", "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3", "Uniscaler V4", "Uniscaler FSR 3.1", "Uniscaler + Xess + Dlss", "Optiscaler FSR 3.1.1/DLSS", "FSR 3.1.1/DLSS FG Custom" });
+            listMods.Items.AddRange(new object[] { "0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0", "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3", "0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3", "Uniscaler V4", "Uniscaler FSR 3.1", "Uniscaler + Xess + Dlss", "FSR 3.1.4/DLSS FG (Only Optiscaler)", "FSR 3.1.4/DLSSG FG (Only Optiscaler)" });
             listMods.Location = new Point(137, 32);
             listMods.Name = "listMods";
             listMods.Size = new Size(160, 23);

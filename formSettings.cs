@@ -33,8 +33,10 @@ using System.Reflection;
 
 namespace FSR3ModSetupUtilityEnhanced
 {
+
     public partial class formSettings : Form
     {
+        private mainForm mainFormInstance;
         public static string gameSelected { get; set; }
         public static string fsrSelected { get; set; }
         public string selectFolder { get; set; }
@@ -92,15 +94,15 @@ namespace FSR3ModSetupUtilityEnhanced
         private static formSettings instance;
         public string selectMod;
         private formEditorToml formEditor;
-        private mainForm mainFormInstance;
         public System.Windows.Forms.TextBox fpsLimitTextBox;
         public System.Windows.Forms.Label labelFpsLimit;
         private System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
         Form screenMethod = new Form(); //Optiscaler installation method screen
 
-        public formSettings()
+        public formSettings(mainForm main)
         {
             InitializeComponent();
+            this.mainFormInstance = main;
 
             this.DoubleBuffered = true;
 
@@ -116,17 +118,15 @@ namespace FSR3ModSetupUtilityEnhanced
             TextBoxFpsLimit();
             SubMenuClose();
         }
-        public static formSettings Instance
+        public static formSettings Instance(mainForm main)
         {
-            get
+            if (instance == null || instance.IsDisposed)
             {
-                if (instance == null)
-                {
-                    instance = new formSettings();
-                }
-                return instance;
+                instance = new formSettings(main);
             }
+            return instance;
         }
+
         static async Task<string[]> RunPowerShellCommandAsync(string command)
         {
             using (var process = Process.Start(new ProcessStartInfo("powershell", $"-Command {command}")
@@ -160,9 +160,10 @@ namespace FSR3ModSetupUtilityEnhanced
                 }
             }
 
-            if (listMods == null && !items.All(item => listMods.Items.Contains(item)))
+            if (listMods == null)
             {
                 pendingItems.AddRange(items.Where(i => !pendingItems.Contains(i)));
+                return;
             }
 
             else if (listMods != null && !listMods.Items.Contains(items) && !gamesIgnore.Contains(gameSelected))
@@ -1324,6 +1325,8 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private async void formSettings_Load(object sender, EventArgs e)
         {
+            
+
             if (!gpuNameSettings.Contains("rtx", StringComparison.OrdinalIgnoreCase))
             {
                 AddOptionsSelect.Items.Remove("DLSS Overlay");
@@ -1783,11 +1786,11 @@ namespace FSR3ModSetupUtilityEnhanced
             string nvapiFile = null;
             string destPathNvapi = Path.Combine(selectFolder, "OptiScaler.ini");
             string[] gamesToInstallNvapiAmd = { "Microsoft Flight Simulator 2024", "Death Stranding Director's Cut", "Shadow of the Tomb Raider", "The Witcher 3", "Rise of The Tomb Raider", "Uncharted Legacy of Thieves Collection", "Suicide Squad: Kill the Justice League", "Mortal Shell", "Steelrising", "FIST: Forged In Shadow Torch", "Final Fantasy XVI", "Sengoku Dynasty",
-            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "Grand Theft Auto V", "Assassin\'s Creed Shadows", "Star Wars Outlaws", "The Elder Scrolls IV: Oblivion Remastered", "Satisfactory", "The Alters" };
+            "Stalker 2", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "Grand Theft Auto V", "Assassin\'s Creed Shadows", "Star Wars Outlaws", "The Elder Scrolls IV: Oblivion Remastered", "Satisfactory", "The Alters", "Wuchang: Fallen Feathers" };
             string[] gamesToUseAntiLag2 = { "God of War Ragnarök", "God Of War 4", "Path of Exile II", "Hitman 3", "Marvel's Midnight Suns", "Hogwarts Legacy", "God Of War 4", "The First Berserker: Khazan" };
             string[] gamesOnlyUpscalers = { "The Last Of Us Part I" };
             string[] gamesWithDlssg = { "The First Berserker: Khazan", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2", "Alan Wake 2", "Stalker 2", "Eternal Strands", "Hogwarts Legacy", "Fort Solis", "Monster Hunter Wilds", "AVOWED", "A Plague Tale Requiem", "Lost Records Bloom And Rage", "Frostpunk 2", "God of War Ragnarök",
-            "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "The Last of Us Part II", "Assassin\'s Creed Shadows", "The Elder Scrolls IV: Oblivion Remastered", "Star Wars Outlaws", "Satisfactory", "The Alters" };
+            "Star Wars: Jedi Survivor", "Deliver Us Mars", "Chernobylite 2: Exclusion Zone", "The Last of Us Part II", "Assassin\'s Creed Shadows", "The Elder Scrolls IV: Oblivion Remastered", "Star Wars Outlaws", "Satisfactory", "The Alters", "Wuchang: Fallen Feathers" };
             string[] gamesWithAntiCheat = { "Back 4 Blood", "Palworld", "Grand Theft Auto V" };
             string[] gamesNoNvngx = { "Red Dead Redemption 2", "Marvel\'s Spider-Man Remastered", "Marvel\'s Spider-Man Miles Morales", "Marvel\'s Spider-Man 2" }; // Games that don't need the file nvngx_dlss.dll renamed to nvngx.dll (Only RTX)
             string[] gpusVar = { "amd", "rx", "intel", "arc", "gtx" };
@@ -2829,6 +2832,11 @@ namespace FSR3ModSetupUtilityEnhanced
             if (selectMod == "FSR 3.1.4/DLSS RE4")
             {
                 CopyFolder(fsrDlssRe4);
+
+                if (Path.Exists(Path.Combine(selectFolder, "shader.cache2")))
+                {
+                    File.Delete(Path.Combine(selectFolder, "shader.cache2"));
+                }
             }
         }
 

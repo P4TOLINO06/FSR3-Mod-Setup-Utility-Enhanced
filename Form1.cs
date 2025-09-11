@@ -26,6 +26,8 @@ namespace FSR3ModSetupUtilityEnhanced
         private Button btnNewVersion;
 
         public string valueForSettings;
+        public List<string> pendingModsForSettings { get; set; }
+
         public string valueListModsForSettings;
         public bool? valueSigForSettings;
         public bool valueDlssOverlayForSettings;
@@ -48,6 +50,7 @@ namespace FSR3ModSetupUtilityEnhanced
             null, sidebar, new object[] { true });
 
             ScanGames(GetGameNames(), StorageHelper.GetGameDirectories().ToList());
+
         }
 
         public void ScanGames(List<string> gameNames = null, List<string> possiblePaths = null)
@@ -224,7 +227,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 "Sifu", "Six Days in Fallujah", "Smalland", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Stalker 2", "Jedi Survivor", "Star Wars Outlaws",
                 "Steelrising", "Soulslinger Envoy of Death", "Soulstice", "South of Midnight", "SuicideSquadKTJL", "Tainted Grail Fall of Avalon","Test Drive Unlimited Solar Crown", "The Alters","The Ascent", "The Callisto Protocol", "The Casting Of Frank Stone", "The First Berserker: Khazan",
                 "The Last of Us Part I", "The Last of Us Part II", "The Outlast Trials", "The Talos Principle 2", "The Witcher 3", "Thymesia", "Uncharted Legacy Of Thieves", "Unknown 9: Awakening", "Until Dawn", "Wanted Dead", "Space Marine 2", "Way Of The Hunter",
-                "Wayfinder"
+                "Wayfinder", "Wuchang: Fallen Feathers"
             };
             #endregion
         }
@@ -329,7 +332,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 if (homeForm == null)
                 {
-                    homeForm = new formHome();
+                    homeForm = new formHome(this);
                     homeForm.TopLevel = false;
                     homeForm.Dock = DockStyle.Fill;
                     this.mainPanel.Controls.Add(homeForm);
@@ -351,7 +354,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (homeSettings == null)
                 {
-                    homeSettings = formSettings.Instance;
+                    homeSettings = new formSettings(this);
 
                     homeSettings.gpuNameSettings = GpuName;
 
@@ -363,6 +366,12 @@ namespace FSR3ModSetupUtilityEnhanced
                     homeSettings.Dock = DockStyle.Fill;
                     this.mainPanel.Controls.Add(homeSettings);
                     this.mainPanel.Tag = homeSettings;
+
+                    if (pendingModsForSettings != null && pendingModsForSettings.Any())
+                    {
+                        homeSettings.ClearListMods();
+                        homeSettings.AddItemlistMods(pendingModsForSettings, formHome.modsDefaultList);
+                    }
 
                     if (valueSigForSettings.HasValue)
                     {
@@ -406,7 +415,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
                 if (homeLibrary == null)
                 {
-                    homeLibrary = new formLibrary();
+                    homeLibrary = new formLibrary(this);
                     homeLibrary.gpuName = GpuName;
                     homeLibrary.TopLevel = false;
                     homeLibrary.Dock = DockStyle.Fill;
@@ -425,7 +434,7 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 if (homeGuide == null)
                 {
-                    homeGuide = new formGuide();
+                    homeGuide = new formGuide(this);
                     homeGuide.TopLevel = false;
                     homeGuide.Dock = DockStyle.Fill;
                     this.mainPanel.Controls.Add(homeGuide);
@@ -499,7 +508,7 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             if (homeGuide == null || homeGuide.IsDisposed)
             {
-                homeGuide = new formGuide();
+                homeGuide = new formGuide(this);
             }
 
             return homeGuide.ShowGameGuide(gameName);
@@ -508,7 +517,7 @@ namespace FSR3ModSetupUtilityEnhanced
         public async Task<bool> CheckVersion()
         {
             System.Windows.Forms.Timer swingTimer;
-            Version currentVersion = new Version("5.2");
+            Version currentVersion = new Version("5.3");
             labelVersion.Text = $"v{currentVersion.ToString()}";
             labelVersion.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
 

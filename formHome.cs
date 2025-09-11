@@ -25,17 +25,18 @@ namespace FSR3ModSetupUtilityEnhanced
         public static List<string> modsDefaultList;
         public static List<string> fsr31DlssMods;
         public string gamesSelected { get; set; }
+        public mainForm MainFormInstance { get; set; }
 
-        public formHome()
+        public formHome(mainForm mainForm)
         {
             InitializeComponent();
+            this.MainFormInstance = mainForm;
 
             typeof(Panel).InvokeMember("DoubleBuffered",
             BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
             null, panelBG, new object[] { true });
 
             panelBG.Paint += new PaintEventHandler(panelBG_Paint);  
-            settingsForm = new formSettings();
         }
 
         private void formHome_Load(object sender, EventArgs e)
@@ -76,14 +77,14 @@ namespace FSR3ModSetupUtilityEnhanced
         {
             #region Game List
 
-            modsDefaultList = new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler)", "FSR 3.1.4/DLSSG FG (Only Optiscaler)", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
+            modsDefaultList = new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler)", "FSR 3.1.4/DLSSG FG (Only Optiscaler)","0.7.4", "0.7.5", "0.7.6", "0.8.0", "0.9.0",
                                  "0.10.0", "0.10.1", "0.10.1h1", "0.10.2h1", "0.10.3","0.10.4", "Uniscaler", "Uniscaler V2", "Uniscaler V3","Uniscaler V4","Uniscaler FSR 3.1","Uniscaler + Xess + Dlss"};
 
             fsr31DlssMods = new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler)", "FSR 3.1.4/DLSSG FG (Only Optiscaler)"};
 
             gamesModsConfig = new Dictionary<string, List<string>>
             {
-                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler RDR2)", "RDR2 Mix", "RDR2 FG Custom", "FSR 3.1.1/DLSS FG Custom", "Optiscaler FSR 3.1.1/DLSS" } },
+                { "Red Dead Redemption 2", new List<string> { "FSR 3.1.4/DLSS FG (Only Optiscaler RDR2)", "RDR2 Mix", "RDR2 FG Custom" } },
                 { "Elden Ring", new List<string> { "Elden Ring FSR3", "Elden Ring FSR3 V2", "FSR 3.1.4/DLSS FG Custom Elden", "Disable Anti Cheat", "Unlock FPS Elden" } },
                 { "Elden Ring Nightreign", new List<string> { "FSR 3.1.4/DLSS Nightreign RTX" } },
                 { "Alan Wake 2", new List<string> { "Others Mods AW2", "Alan Wake 2 FG RTX", "Alan Wake 2 Uniscaler Custom"} },
@@ -189,7 +190,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 { "South of Midnight", new List<string> {"Others Mods Som"}.Concat(fsr31DlssMods).ToList() },
                 { "Satisfactory" , new List<string>{}.Concat(fsr31DlssMods).ToList() },
                 { "The Alters" , new List<string>{}.Concat(fsr31DlssMods).ToList() },
-                { "Tainted Grail Fall of Avalon" , new List<string>{}.Concat(fsr31DlssMods).ToList() }
+                { "Tainted Grail Fall of Avalon", new List<string>{}.Concat(fsr31DlssMods).ToList() },
+                { "Wuchang: Fallen Feathers", new List<string>{}.Concat(fsr31DlssMods).ToList() }
             };
             #endregion
 
@@ -333,7 +335,7 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Sengoku Dynasty","SG.png"},
                     {"Shadow of the Tomb Raider","ShadowTomb.png"},
                     {"Shadow Warrior 3","Shadow3.png"},
-                    {"Sifu","Sifu.png"}, 
+                    {"Sifu","Sifu.png"},
                     {"Six Days in Fallujah","6Days.png"},
                     {"Smalland","Smalland.png"},
                     {"Soulslinger Envoy of Death","SL.png"},
@@ -372,7 +374,8 @@ namespace FSR3ModSetupUtilityEnhanced
                     {"Watch Dogs Legion","Legion.png"},
                     {"Way Of The Hunter","Woth.png"},
                     {"Wayfinder","Wayfinder.png"},
-                    {"WILD HEARTS","WH.png"}
+                    {"WILD HEARTS","WH.png"},
+                    {"Wuchang: Fallen Feathers", "Wuchang.png"}
             };
             #endregion
 
@@ -388,28 +391,45 @@ namespace FSR3ModSetupUtilityEnhanced
             {
                 ReturnGamesMods();
 
-                if (gamesModsConfig.ContainsKey(gameName))
+                if (gameName != null)
                 {
-                    formSettings.Instance.ClearListMods();
-                    formSettings.Instance.AddItemlistMods(gamesModsConfig[gameName], modsDefaultList);
-                }
-                else
-                {
-                    foreach (var lists in modsDefaultList)
-                    {
-                        formSettings.Instance.RemoveItemlistMods(modsDefaultList);
-                    }
-                    formSettings.Instance.AddItemlistMods(modsDefaultList);
-                }
-            }
+                    ReturnGamesMods();
 
-            if (cleanSettingsCtrl)
-            {
-                foreach (var lists in modsDefaultList)
-                {
-                    formSettings.Instance.RemoveItemlistMods(modsDefaultList);
+                    var modsAct = gamesModsConfig.ContainsKey(gameName)
+                        ? gamesModsConfig[gameName]
+                        : modsDefaultList;
+
+                    if (MainFormInstance?.HomeSettings != null)
+                    {
+                        MainFormInstance.HomeSettings.ClearListMods();
+
+                        if (gamesModsConfig.ContainsKey(gameName))
+                        {
+                            MainFormInstance.HomeSettings.AddItemlistMods(modsAct, modsDefaultList);
+                        }
+                        else
+                        {
+                            MainFormInstance.HomeSettings.AddItemlistMods(modsDefaultList);
+                        }
+                    }
+                    else
+                    {
+                        MainFormInstance.pendingModsForSettings = new List<string>(modsAct);
+                    }
                 }
-                formSettings.Instance.AddItemlistMods(modsDefaultList);
+
+                if (cleanSettingsCtrl)
+                {
+                    if (MainFormInstance?.HomeSettings != null)
+                    {
+                        MainFormInstance.HomeSettings.ClearListMods();
+                        MainFormInstance.HomeSettings.AddItemlistMods(modsDefaultList);
+                    }
+                    else
+                    {
+                        MainFormInstance.pendingModsForSettings = new List<string>(modsDefaultList);
+                    }
+                }
 
             }
         }

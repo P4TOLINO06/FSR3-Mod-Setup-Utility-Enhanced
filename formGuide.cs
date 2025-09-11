@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.LinkLabel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FSR3ModSetupUtilityEnhanced
@@ -19,7 +20,10 @@ namespace FSR3ModSetupUtilityEnhanced
     public partial class formGuide : Form
     {
         private Image panelBG;
-        public formGuide()
+        private bool isPlayerInitialized = false;
+        private string lastVideoId = null;
+        private double lastVideoTime = 0;
+        public formGuide(mainForm main)
         {
             InitializeComponent();
             listBox1.Visible = false;
@@ -2117,6 +2121,15 @@ namespace FSR3ModSetupUtilityEnhanced
                  "5. In the menu, select FG Enabled, Active, Hud Fix and Extended.\n" +
                  "6. DLSS4, see the Optiscaler FSR 3.1.4/DLSS (Only Optiscaler) guide to see how to use it."
              },
+
+            {
+                "Wuchang: Fallen Feathers",
+                "FSR 3.1.4/DLSSG FG (Only Optiscaler)\n" +
+                "1. Select FSR 3.1.4/DLSSG FG (Only Optiscaler) and install.\n" +
+                "2. Check 'yes' in the 'DLSS/FSR' window that will appear during installation.\n" +
+                "3. In the game, select DLSS, Frame Gen and press the 'Insert' key to open the menu.\n" +
+                "4. Check the FSR 3.1.4/DLSS (Only Optiscaler) guide to see how to use DLSS 4. (Only Nvidia)."
+            }
         };
 
         #endregion
@@ -2124,35 +2137,43 @@ namespace FSR3ModSetupUtilityEnhanced
         #region Guide Links
         Dictionary<string, string> guideLinks = new Dictionary<string, string>
         {
-            { "Optiscaler FSR 3.1.4/DLSS (Only Optiscaler)", "https://www.youtube.com/embed/NEd0S5V6pns?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" },
-            { "Resident Evil 4", "https://www.youtube.com/embed/rEjeziIBVEk?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Sifu", "https://www.youtube.com/embed/-of2RI4jxSA?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Steelrising", "https://www.youtube.com/embed/YIbtYUukW_4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Elden Ring", "https://www.youtube.com/embed/xG89IgV8HSg?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Mortal Shell", "https://www.youtube.com/embed/cOSdkFftHgY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Control", "https://www.youtube.com/embed/MgK53le4uFM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Fist Forged in Shadow Torch", "https://www.youtube.com/embed/JVoM3mu0ig4?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Senua's Saga Hellblade II", "https://www.youtube.com/embed/g70VXsJH3AY?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Scorn", "https://www.youtube.com/embed/z7-wozRQIms?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Saints Row","https://www.youtube.com/embed/RVbMT7gfD1Q?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Way Of The Hunter", "https://www.youtube.com/embed/ocAwuQbwttE?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Horizon Zero Dawn\\Remastered", "https://www.youtube.com/embed/agUramMMi4M?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
-            { "Alone in the Dark", "https://www.youtube.com/embed/Td5ozzpJGTM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
-            { "God Of War", "https://www.youtube.com/embed/qLWFPUNOnfI?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
-            { "The Last of Us Part I", "https://www.youtube.com/embed/dZJk41NT1oo?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
-            { "The First Berserker: Khazan", "https://www.youtube.com/embed/pECh53i_YDU?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n"},
-            { "Spider/Miles", "https://www.youtube.com/embed/Al4iiKZ_CD8?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Palworld", "https://www.youtube.com/embed/u447nns-yCM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Black Myth: Wukong", "https://www.youtube.com/embed/ns_YxKqjnEk?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Lies of P", "https://www.youtube.com/embed/UaJmZrbgAcM?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Red Dead Redemption 2", "https://www.youtube.com/embed/DLatayQd3HI?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Grand Theft Auto V", "https://www.youtube.com/embed/WZucoHY0434?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "Dead Island 2", "https://www.youtube.com/embed/tgMehfUQFrg?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n" },
-            { "The Last of Us Part II", "https://www.youtube.com/embed/JhCRTJxc_GE?autoplay=1&fs=1&controls=1&modestbranding=1&rel=0&enablejsapi=1\r\n\r\n" }
+            { "Optiscaler FSR 3.1.4/DLSS (Only Optiscaler)", "https://www.youtube.com/embed/NEd0S5V6pns" },
+            { "Resident Evil 4", "https://www.youtube.com/embed/rEjeziIBVEk" },
+            { "Sifu", "https://www.youtube.com/embed/-of2RI4jxSA" },
+            { "Steelrising", "https://www.youtube.com/embed/YIbtYUukW_4" },
+            { "Elden Ring", "https://www.youtube.com/embed/xG89IgV8HSg" },
+            { "Mortal Shell", "https://www.youtube.com/embed/cOSdkFftHgY" },
+            { "Control", "https://www.youtube.com/embed/MgK53le4uFM" },
+            { "Fist Forged in Shadow Torch", "https://www.youtube.com/embed/JVoM3mu0ig4" },
+            { "Senua's Saga Hellblade II", "https://www.youtube.com/embed/g70VXsJH3AY" },
+            { "Scorn", "https://www.youtube.com/embed/z7-wozRQIms" },
+            { "Saints Row", "https://www.youtube.com/embed/RVbMT7gfD1Q" },
+            { "Way Of The Hunter", "https://www.youtube.com/embed/ocAwuQbwttE" },
+            { "Horizon Zero Dawn\\Remastered", "https://www.youtube.com/embed/agUramMMi4M" },
+            { "Alone in the Dark", "https://www.youtube.com/embed/Td5ozzpJGTM" },
+            { "God Of War", "https://www.youtube.com/embed/qLWFPUNOnfI" },
+            { "The Last of Us Part I", "https://www.youtube.com/embed/dZJk41NT1oo" },
+            { "The First Berserker: Khazan", "https://www.youtube.com/embed/pECh53i_YDU" },
+            { "Spider/Miles", "https://www.youtube.com/embed/Al4iiKZ_CD8" },
+            { "Palworld", "https://www.youtube.com/embed/u447nns-yCM" },
+            { "Black Myth: Wukong", "https://www.youtube.com/embed/ns_YxKqjnEk" },
+            { "Lies of P", "https://www.youtube.com/embed/UaJmZrbgAcM" },
+            { "Red Dead Redemption 2", "https://www.youtube.com/embed/DLatayQd3HI" },
+            { "Grand Theft Auto V", "https://www.youtube.com/embed/WZucoHY0434" },
+            { "Dead Island 2", "https://www.youtube.com/embed/tgMehfUQFrg" },
+            { "The Last of Us Part II", "https://www.youtube.com/embed/JhCRTJxc_GE" },
+            { "Wuchang: Fallen Feathers", "https://www.youtube.com/embed/yyaygOwC8wo" }
         };
+
+
+
+
         #endregion
-        private void formGuide_Load(object sender, EventArgs e)
+        private async void formGuide_Load(object sender, EventArgs e)
         {
+            await webView21.EnsureCoreWebView2Async(null);
+
+
             panel1.Left = (panel3.Width - panel1.Width) / 2;
             panel1.Top = (panel3.Height - panel1.Height) / 2;
 
@@ -2415,7 +2436,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Watch Dogs Legion","Legion2.png"},
                 {"Way Of The Hunter","Woth2.png"},
                 {"Wayfinder","Wayfinder2.png"},
-                {"WILD HEARTS","WH2.png"}
+                {"WILD HEARTS","WH2.png"},
+                {"Wuchang: Fallen Feathers","Wuchang2.png"}
             };
 
             #endregion
@@ -2469,30 +2491,87 @@ namespace FSR3ModSetupUtilityEnhanced
                 listBox1.Visible = true;
             }
         }
-        private void buttonVideo_Click(object sender, EventArgs e)
+        private async void buttonVideo_Click(object sender, EventArgs e)
         {
-
-            if (listBox1.SelectedItem != null && guideLinks.TryGetValue(listBox1.SelectedItem.ToString(), out string videoLink))
-            {
-
-                buttonExit.Visible = true;
-
-                webView21.Dock = DockStyle.Fill;
-                string tutorialVideo = videoLink;
-                webView21.Source = new Uri(tutorialVideo);
-                webView21.Visible = true;
-            }
-            else
+            if (listBox1.SelectedItem == null ||
+                !guideLinks.TryGetValue(listBox1.SelectedItem.ToString(), out string videoLink))
             {
                 buttonExit.Visible = false;
                 webView21.Visible = false;
+                Debug.WriteLine("Link not found.");
+                return;
             }
+
+            buttonExit.Visible = true;
+            webView21.Dock = DockStyle.Fill;
+
+            string videoId = ExtractYouTubeId(videoLink);
+            if (string.IsNullOrEmpty(videoId))
+            {
+                Debug.WriteLine("Unable to identify video.");
+                return;
+            }
+
+            await webView21.EnsureCoreWebView2Async(null);
+
+            if (!isPlayerInitialized)
+            {
+                string html = $@"
+                <html>
+                <head>
+                    <meta charset='utf-8'>
+                    <style>
+                        body,html {{margin:0;height:100%;background:#000;}}
+                        #player {{position:absolute;top:0;left:0;width:100%;height:100%;}}
+                    </style>
+                    <script src='https://www.youtube.com/iframe_api'></script>
+                    <script>
+                        var player;
+                        function onYouTubeIframeAPIReady(){{
+                            player = new YT.Player('player',{{
+                                videoId:'{videoId}',
+                                playerVars:{{autoplay:1,controls:1,modestbranding:1,rel:0}},
+                                events:{{'onReady':e=>{{e.target.mute();e.target.playVideo();}}}}
+                            }});
+                        }}
+                        function pauseVideo(){{if(player)player.pauseVideo();}}
+                        function playVideo(){{if(player)player.playVideo();}}
+                    </script>
+                </head>
+                <body><div id='player'></div></body>
+                </html>";
+
+                webView21.NavigateToString(html);
+                isPlayerInitialized = true;
+                lastVideoId = videoId;
+            }
+            else
+            {
+                if (lastVideoId != videoId)
+                {
+                    // different video → loads in the same player
+                    await webView21.CoreWebView2.ExecuteScriptAsync($"player.loadVideoById('{videoId}');");
+                    lastVideoId = videoId;
+                }
+                else
+                {
+                    // same video → I'll just return
+                    await webView21.CoreWebView2.ExecuteScriptAsync("playVideo();");
+                }
+            }
+
+            webView21.Visible = true;
+        }
+
+        private string ExtractYouTubeId(string url)
+        {
+            var m = System.Text.RegularExpressions.Regex.Match(url, @"(?:youtu\.be/|youtube\.com/(?:watch\?v=|embed/))([A-Za-z0-9_-]{11})");
+            return m.Success ? m.Groups[1].Value : null;
         }
 
         private async void buttonExit_Click(object sender, EventArgs e)
         {
-            string pauseVideoGuide = "var video = document.querySelector('video'); if (video) video.pause();";
-            await webView21.CoreWebView2.ExecuteScriptAsync(pauseVideoGuide);
+            try { await webView21.CoreWebView2.ExecuteScriptAsync("pauseVideo();"); } catch { }
             webView21.Visible = false;
             buttonExit.Visible = false;
         }
@@ -2500,9 +2579,7 @@ namespace FSR3ModSetupUtilityEnhanced
         private void WebView21_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
         {
             if (!e.IsSuccess)
-            {
-                MessageBox.Show("The video could not be loaded. Please check your internet connection or try again later.", "Error loading video", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show("The video could not be loaded. Please check your internet connection or try again later.","Error loading video", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void formGuide_Resize(object sender, EventArgs e)
@@ -2516,7 +2593,7 @@ namespace FSR3ModSetupUtilityEnhanced
 
             if (panel4.Bottom >= panel1.Height)
             {
-                panel4.Height = panel4.Height - panel1.Height - 15 ;
+                panel4.Height = panel4.Height - panel1.Height - 15;
             }
         }
     }

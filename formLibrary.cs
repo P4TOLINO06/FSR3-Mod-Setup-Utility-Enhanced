@@ -38,7 +38,7 @@ namespace FSR3ModSetupUtilityEnhanced
         private string rootExeDir = AppDomain.CurrentDomain.BaseDirectory;
         private string gameName;
         private string jsonScanPath;
-        public formLibrary()
+        public formLibrary(mainForm main)
         {
             InitializeComponent();
 
@@ -239,7 +239,8 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"Wanted Dead","WD.ico"},
                 {"Space Marine 2","SpaceMarine2.ico"},
                 {"Way Of The Hunter","WOTH.ico"},
-                {"Wayfinder","Wayfinder.ico"}
+                {"Wayfinder","Wayfinder.ico"},
+                {"Wuchang: Fallen Feathers", "Wuchang.ico" }
             };
 
             List<string> validGames = new List<string> // Similar games that require exact comparison
@@ -511,10 +512,11 @@ namespace FSR3ModSetupUtilityEnhanced
                 {"The Last of Us Part I", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"The Last of Us Part II", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
                 {"Unknown 9 Awakening", ("FSR 3.1.4/DLSS FG (Only Optiscaler) or Uniscaler V4", defSettings.Item1, defSettings.Item2, defSettings.Item3) },
+                {"Wuchang: Fallen Feathers", ("FSR 3.1.4/DLSSG FG (Only Optiscaler)", defSettings.Item1, defSettings.Item2, defSettings.Item3) }
             };
             #endregion
 
-            var gamesWithVideoGuide = new List<string> { "Resident Evil 4", "Sifu", "Steelrising", "Elden Ring", "Mortal Shell", "Control", "Fist Forged in Shadow Torch", "Senua's Saga Hellblade II", "Scorn", "Saints Row", "Way Of The Hunter", "Horizon Zero Dawn", "Horizon Zero Dawn Remastered", "Alone in the Dark", "God Of War", "The Last of Us Part I", "The Last of Us Part II", "The First Berserker: Khazan", "Spider/Miles", "Palworld", "Black Myth: Wukong", "Lies of P", "Red Dead Redemption 2", "Grand Theft Auto V", "Dead Island 2", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales" };
+            var gamesWithVideoGuide = new List<string> { "Resident Evil 4", "Sifu", "Steelrising", "Elden Ring", "Mortal Shell", "Control", "Fist Forged in Shadow Torch", "Senua's Saga Hellblade II", "Scorn", "Saints Row", "Way Of The Hunter", "Horizon Zero Dawn", "Horizon Zero Dawn Remastered", "Alone in the Dark", "God Of War", "The Last of Us Part I", "The Last of Us Part II", "The First Berserker: Khazan", "Spider/Miles", "Palworld", "Black Myth: Wukong", "Lies of P", "Red Dead Redemption 2", "Grand Theft Auto V", "Dead Island 2", "Marvel's Spider-Man Remastered", "Marvel's Spider-Man Miles Morales", "Wuchang: Fallen Feathers" };
 
             var gamesWithDefOptiscaler = new List<string> { "Bright Memory", "Alan Wake Remastered", "Watch Dogs Legion", "Fobia – St. Dinfna Hotel", "Lies of P", "Horizon Zero Dawn", "A Quiet Place: The Road Ahead", "Assassin\'s Creed Mirage", "Assetto Corsa Evo" ,"Banishers Ghost of New Eden", "Blacktail", "Brothers a Tale of Two Sons", "Chernobylite", "Choo-Choo Charles",
             "Chorus", "Clair Obscur: Expedition 33", "Control", "Crime Boss Rockay City", "Crysis 3 Remastered", "Dakar Desert Rally", "Dead Island 2", "Death Stranding", "Dead Space (2023)", "Deliver Us Mars", "Deliver Us The Moon", "Dying Light 2", "Dynasty Warriors: Origins", "Empire of the Ants", "Evil West", "Fist Forged in Shadow Torch", "Flintlock: The Siege of Dawn", "Fort Solis",
@@ -1195,8 +1197,9 @@ namespace FSR3ModSetupUtilityEnhanced
         }
         private void btnGuide_Click(object sender, EventArgs e)
         {
+            var mainFormInstance = (mainForm)this.ParentForm;
             string gameName = labelGameIcon.Text;
-            var tempGuide = new formGuide();
+            var tempGuide = new formGuide(mainFormInstance);
             bool gameExists = tempGuide.ShowGameGuide(gameName);
             tempGuide.Dispose();
 
@@ -1217,34 +1220,33 @@ namespace FSR3ModSetupUtilityEnhanced
         private async void checkBoxPreset_CheckedChanged(object sender, EventArgs e)
         {
             var princForm = (mainForm)this.ParentForm;
-            using (var tempHome = new formHome())
-            {
-                if (checkBoxPreset.Checked)
-                {
-                    var gamesModsConfig = tempHome.ReturnGamesMods();
-                    bool gameFound = gamesModsConfig.Keys.Any(key => key.Contains(labelGameIcon.Text));
+            var tempHome = princForm.FormHomeInstance ?? new formHome(princForm);
 
-                    if (gameFound)
+            if (checkBoxPreset.Checked)
+            {
+                var gamesModsConfig = tempHome.ReturnGamesMods();
+                bool gameFound = gamesModsConfig.Keys.Any(key => key.Contains(labelGameIcon.Text));
+
+                if (gameFound)
+                {
+                    await tempHome.SelectGameWp(labelGameIcon.Text);
+                }
+                else
+                {
+                    if (MessageBox.Show("This game does not have a specific preset. Please install the mod manually. Refer to the guide if you need help.\r\n\r\nWould you like to keep the default settings in the \"Mods Settings\" section? (The installation folder path for the selected game will be added, along with the default mod (FSR 3.1.4/DLSS — note that the mod may not work; it is recommended to check the guide and manually select the mod mentioned there), and \"Enable Signature Override\" will be enabled.)", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         await tempHome.SelectGameWp(labelGameIcon.Text);
                     }
                     else
                     {
-                        if (MessageBox.Show("This game does not have a specific preset. Please install the mod manually. Refer to the guide if you need help.\r\n\r\nWould you like to keep the default settings in the \"Mods Settings\" section? (The installation folder path for the selected game will be added, along with the default mod (FSR 3.1.4/DLSS — note that the mod may not work; it is recommended to check the guide and manually select the mod mentioned there), and \"Enable Signature Override\" will be enabled.)", "Preset", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            await tempHome.SelectGameWp(labelGameIcon.Text);
-                        }
-                        else
-                        {
-                            checkBoxPreset.Checked = false;
-                        }
+                        checkBoxPreset.Checked = false;
                     }
                 }
-                else
-                {
-                    tempHome.SelectGameWp(cleanSettingsCtrl: true);
-                    checkBoxDlssOverlay.Checked = false;
-                }
+            }
+            else
+            {
+                tempHome.SelectGameWp(cleanSettingsCtrl: true);
+                checkBoxDlssOverlay.Checked = false;
             }
 
             FormsControl();
@@ -1254,6 +1256,7 @@ namespace FSR3ModSetupUtilityEnhanced
                 princForm.HomeSettings.cleanCtrl(true);
             }
         }
+
         private void checkBoxDlssOverlay_CheckedChanged(object sender, EventArgs e)
         {
             FormsControl();
