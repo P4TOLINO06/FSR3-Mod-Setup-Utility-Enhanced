@@ -1325,32 +1325,47 @@ namespace FSR3ModSetupUtilityEnhanced
 
         private async void formSettings_Load(object sender, EventArgs e)
         {
-            
-
-            if (!gpuNameSettings.Contains("rtx", StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(gpuNameSettings) &&
+            !gpuNameSettings.Contains("rtx", StringComparison.OrdinalIgnoreCase) &&
+            AddOptionsSelect != null)
             {
                 AddOptionsSelect.Items.Remove("DLSS Overlay");
             }
 
-            foreach (var item in pendingItems)
+            if (pendingItems != null && listMods != null)
             {
-                listMods.Items.Add(item);
+                foreach (var item in pendingItems)
+                {
+                    listMods.Items.Add(item);
+                }
+                pendingItems.Clear();
             }
-            pendingItems.Clear();
 
-            buttonAddOn.Top = buttonNvngx.Top + 30;
-            panelAddOn2.Top = panelNvngx.Top + 33;
-            buttonAddUps.Top = buttonNvngx.Top + 30;
-            panelAddOnUps.Top = panelNvngx.Top + 32;
-            buttonFgMethod.Top = buttonAddOn.Top + 30;
-            panelFgMethod.Top = panelAddOn.Top + 34;
-
-            if (!string.IsNullOrEmpty(PresetValueFromLibrary) && FlagTextBox1)
+            if (!string.IsNullOrEmpty(PresetValueFromLibrary) && FlagTextBox1 && textBox1 != null)
             {
                 selectFolder = PresetValueFromLibrary;
                 textBox1.Text = PresetValueFromLibrary;
                 PresetValueFromLibrary = null;
             }
+
+            if (buttonAddOn != null && buttonNvngx != null)
+                buttonAddOn.Top = buttonNvngx.Top + 30;
+
+            if (panelAddOn2 != null && panelNvngx != null)
+                panelAddOn2.Top = panelNvngx.Top + 33;
+
+            if (buttonAddUps != null && buttonNvngx != null)
+                buttonAddUps.Top = buttonNvngx.Top + 30;
+
+            if (panelAddOnUps != null && panelNvngx != null)
+                panelAddOnUps.Top = panelNvngx.Top + 32;
+
+            if (buttonFgMethod != null && buttonAddOn != null)
+                buttonFgMethod.Top = buttonAddOn.Top + 30;
+
+            if (panelFgMethod != null && panelAddOn != null)
+                panelFgMethod.Top = panelAddOn.Top + 34;
+
         }
 
         public void button1_Click(object sender, EventArgs e)

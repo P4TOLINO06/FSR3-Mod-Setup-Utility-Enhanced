@@ -517,7 +517,7 @@ namespace FSR3ModSetupUtilityEnhanced
         public async Task<bool> CheckVersion()
         {
             System.Windows.Forms.Timer swingTimer;
-            Version currentVersion = new Version("5.3");
+            Version currentVersion = new Version("5.3.1");
             labelVersion.Text = $"v{currentVersion.ToString()}";
             labelVersion.Font = new Font("Segoe UI Semibold", 10, FontStyle.Bold);
 
